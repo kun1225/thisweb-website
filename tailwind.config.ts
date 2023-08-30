@@ -8,11 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: '#00334E',
+        secondary: '#5588A3'
       },
+      fontFamily: {
+        "tw-sans": 'Noto Sans TC',
+        "tw-serif": 'Noto Serif TC',
+        "tw-code": "JetBrains Mono"
+      }
     },
   },
   plugins: [],
