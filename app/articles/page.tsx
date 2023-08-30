@@ -11,7 +11,7 @@ const ArticlesPage = () => {
       <h2 className="text-2xl mb-8">文章列表</h2>
       <ul className="flex flex-col gap-10">
         {articles.map(({title, desc, date, url}) => (
-          <li>
+          <li key={title}>
             <Link href={url}>
               <h3 className='mb-1'>{title}</h3>
               <p className='mb-2 text-xs text-gray-500 italic font-normal'>{format(parseISO(date), 'LLLL d, yyyy')}</p>

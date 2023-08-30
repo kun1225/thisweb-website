@@ -18,7 +18,7 @@ const Header = () => {
       <nav>
         <ul className="text-xs flex gap-4 text-gray-500">
           {navContent.map(({title, url}) => (
-            <Link href={url}>
+            <Link href={url} key={title}>
               <li>{title}</li>
             </Link>
           ))}
