@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`bg-gray-50 min-h-screen`}>
         <ProgressBar/>
         <Header></Header>
-        <main className='px-4 md:px-16  lg:px-32'>
+        <main className='px-4 md:px-16 lg:px-32'>
           {children}
         </main>
         <Footer></Footer>

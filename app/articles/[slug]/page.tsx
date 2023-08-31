@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { format, parseISO } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 
@@ -8,13 +10,21 @@ export const generateStaticParams = async () => allArticles.map((article) => ({ 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const article = allArticles.find((article) => article._raw.flattenedPath === params.slug)
   if (!article) throw new Error(`article not found for slug: ${params.slug}`)
-  return { title: article.title }
+  return { title: `${article.title} | ThisWeb` }
 }
 
-const articleLayout = ({ params }: { params: { slug: string } }) => {
+const articleLayout = ({
+  params
+}: {
+  params: { slug: string }
+}) => {
 
   const article = allArticles.find((article) => article._raw.flattenedPath === params.slug)
   if (!article) throw new Error(`article not found for slug: ${params.slug}`)
+
+  const articleIndex = allArticles.findIndex((article) => article._raw.flattenedPath === params.slug);
+  const nextArticle = articleIndex + 1 < allArticles.length ? allArticles[articleIndex + 1] : undefined;
+  const prevArticle = articleIndex - 1 >= 0 ? allArticles[articleIndex - 1] : undefined;
 
   const MDXContent = useMDXComponent(article.body.code);
 
@@ -28,7 +38,34 @@ const articleLayout = ({ params }: { params: { slug: string } }) => {
       </div>
       {/* <div className="[&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: article.body.html }} /> */}
       <MDXContent />
-    </article>
+
+      <div className="flex flex-col gap-4 mt-16 md:flex-row md:justify-between xl:gap-8">
+        {prevArticle ? (
+          <Link
+            href={prevArticle.url}
+            className="basis-1/2"
+          >
+            <h2 className="mb-1 text-xs tracking-wide text-secondary transition-colors">
+              上一篇
+            </h2>
+            <span className='hidden md:inline'>←</span> {prevArticle.title}
+          </Link>
+        ) : (
+          <div className="basis-1/2"></div>
+        )}
+        {nextArticle && (
+          <Link
+            href={nextArticle.url}
+            className="basis-1/2 block md:text-right"
+          >
+            <h2 className="mb-1 text-left text-xs uppercase tracking-wide text-secondary transition-colors md:text-right">
+              下一篇
+            </h2>
+            {nextArticle.title} <span className='hidden md:inline'>→</span>
+          </Link>
+        )}
+      </div>
+    </article >
   )
 }
 
