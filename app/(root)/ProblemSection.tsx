@@ -4,6 +4,7 @@ import { AiOutlineFrown } from 'react-icons/ai'
 import { BsCodeSlash } from 'react-icons/bs'
 import { IoLanguageOutline } from 'react-icons/io5'
 import { GiBrokenWall } from 'react-icons/gi'
+import Stack from "@/app/components/Stack"
 
 const problemCardContent = [
   {
@@ -30,13 +31,13 @@ const problemCardContent = [
 
 const ProblemSection = () => {
   return (
-    <section className="text-center mb-32">
+    <Stack as="section" gap={8} direction="col" className="text-center mb-32">
       <h2 className="text-2xl">自學程式的你也遇過這些問題嗎?</h2>
 
-      <div className="flex flex-wrap gap-8 mt-8">
+      <Stack gap={8} wrap>
         {problemCardContent.map(({icon, title, desc}) => <ProblemCard icon={icon} title={title} desc={desc} key={title}/>)}
-      </div>
-    </section>
+      </Stack>
+    </Stack>
   )
 }
 

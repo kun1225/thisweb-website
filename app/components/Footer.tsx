@@ -1,4 +1,5 @@
-
+import Link from 'next/link'
+import { navContent } from "./Header"
 
 const Footer = () => {
   return (
@@ -6,17 +7,20 @@ const Footer = () => {
       <div>
         <h4 className="text-secondary text-sm">頁面導覽</h4>
         <ul className="mt-2 flex flex-col gap-2">
-          <li>主頁</li>
-          <li>文章</li>
+          {navContent.map(({ title, url }) => (
+            <Link href={url} key={title}>
+              <li>{title}</li>
+            </Link>
+          ))}
         </ul>
       </div>
 
       <div>
         <h4 className="text-secondary text-sm">聯絡資訊</h4>
-          <ul className="mt-2 flex flex-col gap-2">
-            <li>Email: thisweb.tech@gmail.com</li>
-            <li>Instagram: this.web</li>
-          </ul>
+        <ul className="mt-2 flex flex-col gap-2">
+          <li>Email: thisweb.tech@gmail.com</li>
+          <li>Instagram: this.web</li>
+        </ul>
       </div>
     </footer>
   )

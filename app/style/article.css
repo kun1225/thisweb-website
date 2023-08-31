@@ -1,0 +1,32 @@
+.article code, 
+.article pre {
+  @apply font-tw-code 
+}
+
+.article {
+  @apply text-sm leading-6;
+}
+
+.article h2 {
+  @apply text-2xl mt-4 mb-2 font-semibold font-tw-sans;
+}
+
+.article h3 {
+  @apply text-xl mt-2 mb-1 font-semibold font-tw-sans;
+}
+
+.article p,
+.article ul,
+.article ol,
+.article pre,
+.article img {
+  @apply mb-4
+}
+
+.article .rehype-code-title {
+  @apply -mb-3 rounded-tl rounded-tr bg-slate-600 px-4 pt-1 pb-2 font-mono text-sm text-gray-200;
+}
+
+article div.rehype-code-title + pre {
+  @apply rounded-tl-none rounded-tr-none;
+}

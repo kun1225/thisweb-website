@@ -1,14 +1,22 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import rehypeCodeTitles from 'rehype-code-titles';
+import rehypePrism from 'rehype-prism-plus';
 
 export const Articles = defineDocumentType(() => ({
   name: 'Articles',
-  filePathPattern: `**/*.md`,
+  filePathPattern: `**/*.mdx`,
+  contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     desc: { type: 'string', required: true },
     date: { type: 'date', required: true },
     isActive: { type: 'boolean', required: false, default: true },
-    showAt: { type: 'enum', options: ['index', 'articles'], require: false, default: 'articles'}
+    showAt: {
+      type: 'enum',
+      options: ['index', 'articles'],
+      require: false,
+      default: 'articles',
+    },
   },
   computedFields: {
     url: {
@@ -18,4 +26,10 @@ export const Articles = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: 'articles', documentTypes: [Articles] });
+export default makeSource({
+  contentDirPath: 'articles',
+  documentTypes: [Articles],
+  mdx: {
+    rehypePlugins: [rehypeCodeTitles, [rehypePrism]],
+  },
+});

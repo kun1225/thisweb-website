@@ -8,12 +8,11 @@ date: "2023/8/31"
 ## 前言
 相信 webpack 對於前端的開發者或多或少都有聽過，他是一個打包工具，那他究竟打包了甚麼，或是說他做了什麼以及解決了甚麼問題呢? 下面我們就來看看吧！
 
-## 傳統的 JavaScript
+### 傳統的 JavaScript
 在了解 webpack 之前，我們先來看看前端在引入 JS 方法的歷史。
 在早期我們寫 HTML 和 JS 時，需要手動的將 JS 函式庫一一引入，例如我們需要 moment.js 這個函式庫的時候，就要像這樣
 
-```html
-<!-- index.html -->
+```html:index.html
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -29,7 +28,7 @@ date: "2023/8/31"
 </html>
 ```
 
-```js
+```js:index.js
 // index.js
 console.log("Hello from JavaScript!");  
 console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
@@ -71,8 +70,7 @@ moment.js 的程式碼本體就在 node_modules 裡面，而 package.json 則是
 
 接著我們可以在 index.html 裡面引入 moment.js
 
-```html
-<!-- index.html -->  
+```html:index.html
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -94,8 +92,7 @@ moment.js 的程式碼本體就在 node_modules 裡面，而 package.json 則是
 
 然而在 2009 年，一個名為 CommonJS 的專案計畫誕生，他讓 JS 和其他語言一樣，有了導入導出程式碼的功能，node.js 到現在都還是使用 commonJS 的規範。在 node.js 中，我們可以這樣來引入　moment.js，而 node.js 也知道各個 module 的位置，因此不需要寫 `require('./node_modules/moment/min/moment.min.js)`
 
-```js
-// index.js  
+```js:index.js
 const moment = require('moment');
 console.log("Hello from JavaScript!");  
 console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
@@ -113,8 +110,7 @@ npm install webpack webpack-cli --save-dev
 ```
 我們安裝了 webpack 本體和 cli，cli 是讓我們能夠在終端機執行一些 webpack 的命令，安裝好後可以看 package.json 檔案看到相關的依賴。
 
-```json
-// package.json
+```json:package.json
 {
   "name": "1-introduce",
   "version": "1.0.0",
@@ -140,7 +136,7 @@ npm install webpack webpack-cli --save-dev
 ./node_modules/.bin/webpack ./index.js --mode=development
 ```
 或是執行
-```
+```bash
 npx webpack ./index.js --mode=development
 ```
 npx 會自動在當前專案下找到相對的命令運行。
