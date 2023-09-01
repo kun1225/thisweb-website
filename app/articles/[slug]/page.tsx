@@ -13,7 +13,7 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   return { title: `${article.title} | ThisWeb` }
 }
 
-const articleLayout = ({
+const articlePage = ({
   params
 }: {
   params: { slug: string }
@@ -69,4 +69,4 @@ const articleLayout = ({
   )
 }
 
-export default articleLayout
+export default articlePage
