@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { format, parseISO } from 'date-fns'
+import { compareDesc, format, parseISO } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 
 import { useMDXComponent } from 'next-contentlayer/hooks';
@@ -19,12 +19,13 @@ const articlePage = ({
   params: { slug: string }
 }) => {
 
-  const article = allArticles.find((article) => article._raw.flattenedPath === params.slug)
+  const sortedArticles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const article = sortedArticles.find((article) => article._raw.flattenedPath === params.slug)
   if (!article) throw new Error(`article not found for slug: ${params.slug}`)
 
-  const articleIndex = allArticles.findIndex((article) => article._raw.flattenedPath === params.slug);
-  const nextArticle = articleIndex + 1 < allArticles.length ? allArticles[articleIndex + 1] : undefined;
-  const prevArticle = articleIndex - 1 >= 0 ? allArticles[articleIndex - 1] : undefined;
+  const articleIndex = sortedArticles.findIndex((article) => article._raw.flattenedPath === params.slug);
+  const nextArticle = articleIndex + 1 < sortedArticles.length ? sortedArticles[articleIndex + 1] : undefined;
+  const prevArticle = articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
 
   const MDXContent = useMDXComponent(article.body.code);
 

@@ -32,7 +32,7 @@
 }
 
 .article strong {
-  @apply font-extrabold text-orange-500
+  @apply font-extrabold text-orange-600
 }
 
 .article ul,

@@ -28,6 +28,7 @@ const ArticlesPage = () => {
   const endIndex = numPage * ARTICLES_PER_PAGE
 
   const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  
   const paginatedPosts = articles.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(allArticles.length / ARTICLES_PER_PAGE);
