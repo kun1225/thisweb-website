@@ -28,7 +28,7 @@ const SiteOwnerSection = () => {
       <div className="text-sm flex flex-col gap-4 items-center">
         <p>我會提供一系列的前端教學文章，並用初學者的角度，帶你能打好基礎，完善學習。</p>
         <p>我也會提供多個專案教學，讓你能運用所學的知識，快速上手前端程式設計。</p>
-        <Button className="mt-8">開始你的前端之旅</Button>
+        {/* <Button className="mt-8">開始你的前端之旅</Button> */}
       </div>
 
     </section >

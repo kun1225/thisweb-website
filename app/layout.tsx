@@ -2,10 +2,9 @@
 import type { Metadata } from 'next';
 
 // Style
-import './style/globals.css';
-import './style/prism.css';
-import './style/article.css';
+import './../style/globals.css';
 
+// Components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';

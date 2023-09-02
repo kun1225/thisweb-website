@@ -15,7 +15,7 @@ const RecommendedArticles = ({ articles }: { articles: Articles[] }) => {
           <ArticlesCard title={title} desc={desc} url={url} key={_id} />
         ))}
       </div>
-      <Link href="/articles">
+      <Link href="/articles/page/1">
         <Button className='w-40'>觀看更多文章</Button>
       </Link>
     </section>

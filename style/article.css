@@ -43,3 +43,7 @@
 .article ol {
   @apply list-decimal list-inside
 }
+
+.article li:has( > p)  p:first-of-type {
+  display: inline-block;
+}

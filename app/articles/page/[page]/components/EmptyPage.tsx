@@ -1,6 +1,6 @@
 const EmptyPage = () => {
   return (
-    <p>喔！這裡沒有文章呢！</p>
+    <p className="min-h-[50vh]">喔！這裡沒有文章呢！</p>
   )
 }
 
