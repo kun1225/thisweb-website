@@ -1,0 +1,473 @@
+---
+title: "如何在 React 中實現 solid 原則"
+desc: "SOLID 是軟體設計中的五種重要原則的縮寫，這五種原則可以幫助我們寫出乾淨、易維護、可讀性佳的程式碼，雖然 React 的 Functional Components (FC) 中，開發的風格會更接近 Functional Programming (FP) 而不是 OOP，但理解 solid 也能對編寫程式碼的能力提升有幫助，讓我們一起看看所謂的 solid，以及在 react 中要如何應用吧！"
+date: "2023-09-05"
+---
+
+SOLID 是軟體設計中的五種重要原則的縮寫，這五種原則可以幫助我們寫出乾淨、易維護、可讀性佳的程式碼，雖然 React 的 Functional Components (FC) 中，開發的風格會更接近 Functional Programming (FP) 而不是 OOP，但理解 solid 也能對編寫程式碼的能力提升有幫助。
+
+如果你一直不知道如何寫出乾淨的 code，那就讓我們一起看看所謂的 solid，以及在 react 中要如何應用吧！
+
+## S.O.L.I.D
+
+SOLID 分別為以下五種設計原則的縮寫
+
+### 1. 單一職責原則 (Single Responsibility Principle, SRP)：
+
+這個原則建議每個類別、模組、組件應該只有一個職責，也就是他只負責處理一件事情。
+
+這是因為如果一個組件若同時處理多件事情，當其中一個功能需要修改時，可能會影響到其他功能，導致程式碼變得複雜且難以維護。
+
+不過這不代表組件只能有一個功能，而是可以多個功能但只達成一件事情。
+
+### 2. 開放封閉原則 (Open-Closed Principle, OCP)：
+
+這個原則強調軟體實體（如類別、模組、函數、組件）應該對擴展是開放的，但對修改是封閉的。
+
+舉例來說 `Promise` 搭配 `.then()` 就是擴展性很好的寫法，當我們需要多做些功能時，只要加上 `.then()` 就能對其擴充。
+
+所以我們在設計功能或組件時，要設想未來可能會新增什麼樣的功能，提前預留好擴充的功能。
+
+對擴展開放，但對修改封閉。當需要新增功能時，我們應該儘量通過擴展現有的程式碼來實現，而不是修改原有的程式碼，以避免破壞已經運作正常的程式碼。Promise 的 `.then()` 就符合開放封閉。
+
+### 3. 里氏替換原則 (Liskov Substitution Principle, LSP)：
+
+這個原則建議子類別應該能夠替換其父類別並保持程式的正確性。這代表著程式中使用繼承時，必須確保子類別可以完全替代父類別的行為，而不會產生錯誤或不一致的結果。
+
+不過在 React FC 中不會使用到繼承，但可以想像成，我們在使用不同組件時，他們在使用相同的 props 時要有一致的行為。也就是無論使用哪個組件，只要將相同的props傳遞給它們，它們應該能夠按預期工作。
+
+### 4. 介面隔離原則 (Interface Segregation Principle, ISP)：
+
+這個原則建議設計細粒度的介面，以避免子類別強制實現它們不需要的方法。
+
+在 React 中，你可以想成，子組件不應該被傳入它們用不到的 props，減少不必要的複雜性。
+
+### 5. 依賴反轉原則 (Dependency Inversion Principle, DIP)：
+
+這個原則鼓勵高層模組不應該直接依賴於低層模組，兩者都應該依賴於抽象。
+
+也就是說不應該由子組件決定畫面要顯示什麼，而是讓父組件或更上層的組件，透過 props 決定子組件要顯示的資料。
+
+若是沒有 OOP 經驗的前端新手，可能會不太理解上面有關類別、介面的敘述，接下來讓我們透過範例來看如何將每個原則應用在 React 中吧！
+
+## 1. 單一職責原則：
+
+在 React 中，一個組件應該只要有一個職責就好，比如父組件負責獲取資料，子組件負責顯示 UI，不應該把所有的程式碼都塞到一個組件中，舉例來說：
+
+假設我們有一個名為**`UserProfile`**的組件，該組件負責顯示用戶的個人資訊和訂單歷史。這個組件可能會包含以下不同的職責：
+
+1. 獲取和管理用戶資訊的狀態。
+2. 從服務器獲取用戶資訊的邏輯。
+3. 顯示用戶資訊的UI。
+4. 獲取和管理用戶訂單歷史的狀態。
+5. 從服務器獲取訂單歷史的邏輯。
+6. 顯示訂單歷史的UI。
+
+我們先來看看比較不好的寫法
+
+```tsx
+const UserProfile = () => {
+  const [user, setUser] = useState(null);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    // 獲取用戶資訊的邏輯
+    fetch('...')
+      .then((response) => response.json())
+      .then((responseData) => {
+        setUser(responseData);
+      })
+      .catch((error) => {
+        ...
+      });
+
+  }, []);
+
+  useEffect(() => {
+    // 獲取用戶訂單歷史的邏輯
+    fetch('...')
+      .then((response) => response.json())
+      .then((responseData) => {
+        setOrders(responseData);
+      })
+      .catch((error) => {
+        ...
+      });
+  }, []);
+	
+	return (
+    <div>
+      <h1>User Profile</h1>
+      {user && (
+        <div>
+          <h2>User Information</h2>
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+          {/* 其他用戶資訊 */}
+        </div>
+      )}
+      {orders.length > 0 && (
+        <div>
+          <ul>
+            {orders.map((order) => (
+              <li key={order.id}>Order ID: {order.id}, Total: {order.total}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+	)
+}
+```
+
+整個程式碼非常冗長，如果我們又要加入根據條件過濾訂單的功能或是修改使用者資料的功能，會讓程式碼非常複雜難以維護。
+
+這個時候可以利用單一職責原則，將這個功能複雜的組件拆分成多個小組件，每個小組件專注於處理單一職責。例如把處理使用者資料的的功能拆成一個組件，處理訂單的功能拆成另一個組件。如下：
+
+```tsx:UserProfile.tsx
+// 用戶個人資訊和訂單歷史的父組件
+const UserProfile = () => {
+  const [user, setUser] = useState(null);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await fetchUserDate('...');
+        const ordersList = await fetchOrdersList('...');
+        setUser(userData);
+        setOrders(ordersList);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>User Profile</h1>
+      {user && <UserInfo user={user} />}
+      {orders.length > 0 && <OrderHistory orders={orders} />}
+    </div>
+  );
+}
+```
+
+```ts:ChildComponent.tsx
+// 獲取資料
+const async fetchUserDate = (url) => {
+  const response = await fetch(url);
+  const responseData = await response.json();
+  return responseData;
+}
+
+const async fetchOrdersList = (url) => {
+  const response = await fetch(url);
+  const responseData = await response.json();
+  return responseData;
+}
+
+// 用戶資訊顯示的UI組件
+const UserInfo = ({ user }) => {
+  return (
+    <div>
+      <h2>User Information</h2>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
+      {/* 其他用戶資訊 */}
+    </div>
+  );
+}
+
+// 用戶訂單歷史顯示的UI組件
+const OrderHistory = ({ orders }) => {
+  return (
+    <div>
+      <ul>
+        {orders.map((order) => (
+          <li key={order.id}>Order ID: {order.id}, Total: {order.total}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+```
+
+## 2. 開放封閉原則
+
+這個原則是在說當需要添加新功能時，不應該修改現有的程式碼，而是應該通過擴展現有程式碼來實現新功能。
+
+比如在封裝組件時，我們要考慮未來是否可能對他添加新的樣式，假設我們有一個簡單的按鈕組件，他可能有 primary、secondary、error、submit，等多種樣式，一種比較不好的寫法為
+
+```tsx
+
+type ButtonProps = {
+  onClick: () => void;
+  label: string;
+	role?: "primary" | "secondary" | "error" | "submit";
+  style?: React.CSSProperties; // 可選的樣式屬性
+}
+
+const Button: React.FC<ButtonProps> = ({ onClick, label, style }) => {
+  return (
+			{role === "primary" && (
+				<button onClick={onClick} className="primaryBtn">
+		      {label}
+		    </button>
+			)}
+      {role === "secondary" && (
+				<button onClick={onClick} className="secondaryBtn">
+		      {label}
+		    </button>
+			)}
+		...
+  );
+};
+```
+
+這樣若未來有新的樣式要增加或 btn 裡面要傳入 icon，就必須要不斷修改這裡的程式碼，也會讓程式碼更冗長，所以我們可以透過下面這樣來做修改。
+
+```tsx
+// 封裝的通用按鈕組件
+type ButtonProps = {
+  onClick: () => void;
+  className?; string // 可選的樣式屬性
+  children: React.ReactNode
+}
+
+const Button: React.FC<ButtonProps> = ({ onClick, className, children }) => {
+  return (
+    <button onClick={onClick} className={`defaultBtn ${className}`}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+```
+
+不要將 className 寫死，並把 label 改成 children，如此我們就能根據情況去製作各種按鈕組件
+
+```tsx
+type PrimaryButtonProps = {
+  onClick: () => void;
+  hildren: React.ReactNode
+}
+
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({ onClick, label }) => {
+  return (
+    <Button onClick={onClick} label={label} className={primaryBtn} />
+  );
+};
+
+type SecondaryButtonProps = {
+  onClick: () => void;
+  hildren: React.ReactNode
+}
+
+const SecondaryButton: React.FC<SecondaryButtonProps> = ({ onClick, label }) => {
+  return (
+    <Button onClick={onClick} label={label} className={secondaryBtn} />
+  );
+};
+```
+## 3. 里氏替換原則
+
+我們在封裝類似功能但不同組件時，應該要在使用相同的 props 時要有一致的行為。也就是無論使用哪個組件，只要將相同的 props 傳遞給它們，它們應該能夠按預期工作。
+
+舉例來說，若有個 InputField 組件，他可以快速製作表格中的每個 input，我們要確保不管 input 的 type 是甚麼，他都應該要能正常運作，而不是在 type=email，而在 type=checkbox` 時卻不能使用。
+
+```tsx
+import { HTMLInputTypeAttribute } from "react";
+
+type InputComponentType = {
+  type?: HTMLInputTypeAttribute;
+  onChange: () => void;
+  className?: string;
+  placeholder?: string;
+}
+
+const InputComponent: React.FC<InputComponentType> = ({ type, onChange, className, placeholder }) => {
+  return (
+    <input type={type} placeholder={placeholder} onChange={onChange} className={`defaultClass ${className}`} />
+  )
+}
+
+type InputFieldProps = {
+  InputComponent: React.FC<InputComponentType>;
+  label: React.ReactNode;
+} & InputComponentType
+
+const InputField: React.FC<InputFieldProps> = ({ label, type, InputComponent, onChange, className }) => {
+  return (
+    <label className="labelClass">
+      {label}
+      <InputComponent type={type} onChange={onChange} className={className} />
+    </label>
+  );
+};
+```
+
+## 4. 介面隔離原則：
+
+在 React 中，你可以想成，子組件不應該被傳入它們用不到的 props，減少不必要的複雜性。
+
+舉例來說，有個 Product 組件，裡面有產品的介紹和圖片，我們在 `ThumbnailProps` 傳入 props 時，不應該如下把整個 Product 都傳入，只要傳入他需要的 product.image 即可
+
+```tsx
+export interface IProduct {
+  id: string;
+  title: string;
+  price: number;
+  rating: { rate: number };
+  image: string;
+}
+
+interface IProductProps {
+  product: IProduct;
+}
+
+export function Product(props: IProductProps) {
+  const { product } = props;
+  const { id, title, price, rating, image } = product;
+
+  return (
+    <div>
+      <a href="#">
+        <Thumbnail product={product} />
+      </a>
+      <div>
+        <h2>{title}</h2>
+        <div>{rating}</div>
+        <p>{price}</p>
+      </div>
+    </div>
+  );
+}
+
+type ThumbnailProps = {
+  product: IProduct;
+	desc?: string;
+}
+
+const Thumbnail = (props: ThumbnailProps) => {
+  const { product } = props;
+
+  return (
+    <>
+      <img
+        src={product.imgage}
+        alt="product image"
+      />
+      <p>{desc}</p>
+    </>
+  );
+}
+```
+
+應該改成這樣
+
+```tsx: Product.tsx
+type ProductProps = {
+  id: string;
+  title: string;
+  price: number;
+  rating: { rate: number };
+  image: string;
+}
+
+const Product = ({id, title, price, rating, image}: ProductProps) => {
+  return (
+    <div>
+      <a href="#">
+        <Thumbnail imageUrl={product.image} />
+      </a>
+      <div>
+        <h2>{title}</h2>
+        <div>{rating}</div>
+        <p>{price}</p>
+      </div>
+    </div>
+  );
+}
+```
+```tsx:Thumbnail.tsx
+type ThumbnailProps = {
+  imgageUrl: string;
+	desc?: string;
+}
+
+const Thumbnail = (props: ThumbnailProps) => {
+  const { imageUrl } = props;
+
+  return (
+    <>
+			<img
+        src={imageUrl}
+        alt="product image"
+      />
+			<p>{desc}</p>
+		</>
+  );
+}
+```
+
+## 5. 依賴反轉原則 (Dependency Inversion Principle, DIP)：
+
+在 React 中，我們不應該由子組件決定畫面要顯示什麼，而是讓父組件或更上層的組件，透過 props 決定子組件要顯示的資料。
+
+通過這種方式，子組件變得可重用，因為它們不關心具體的資料內容，只是接受和顯示資料。同一個子組件可以在不同的上層組件中多次使用，並且根據接收的不同 props 顯示不同的資料。
+
+例如，假設現在有一個產品列表組件，不應該在該子組件中決定要顯示哪些產品，而是應該從父組件中將產品資料作為 props 傳遞給該組件。
+
+```tsx:App.tsx
+const App: React.FC = () => {
+  // 模擬從 API 或其他來源獲取產品資料
+  const products = [
+    { id: 1, name: 'Product 1', price: 19.99 },
+    { id: 2, name: 'Product 2', price: 29.99 },
+    { id: 3, name: 'Product 3', price: 39.99 },
+  ];
+
+  return (
+    <div>
+      <h1>Online Store</h1>
+      <ProductList products={products} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+```tsx:ProductList.tsx
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+}
+
+type ProductListProps = {
+  products: Product[];
+}
+
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  return (
+    <div>
+      <h2>Product List</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.name} - ${product.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ProductList;
+```

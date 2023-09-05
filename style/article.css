@@ -8,11 +8,15 @@
 }
 
 .article h2 {
-  @apply text-2xl mt-4 mb-2 font-semibold font-tw-sans;
+  @apply text-2xl mt-4 mb-2;
 }
 
 .article h3 {
-  @apply text-xl mt-2 mb-1 font-semibold font-tw-sans;
+  @apply text-xl mt-2 mb-1;
+}
+
+.article h4 {
+  @apply text-lg;
 }
 
 .article p,
