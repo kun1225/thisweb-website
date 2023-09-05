@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#00334E',
-        secondary: '#5588A3'
+        secondary: '#477086'
       },
       fontFamily: {
         "tw-sans": 'Noto Sans TC',
