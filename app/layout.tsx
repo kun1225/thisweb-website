@@ -12,6 +12,8 @@ import ProgressBar from './components/ProgressBar';
 export const metadata: Metadata = {
   title: '請網這邊走 ThisWeb - 幫助你自學前端 ',
   description: '',
+  creator: 'thisweb',
+  keywords: ['thisweb', '請網這邊走', 'js 教學'],
 }
 
 export default function RootLayout({

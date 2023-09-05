@@ -155,7 +155,7 @@ const UserProfile = () => {
 }
 ```
 
-```ts:ChildComponent.tsx
+```tsx:ChildComponent.tsx
 // 獲取資料
 const async fetchUserDate = (url) => {
   const response = await fetch(url);
@@ -213,17 +213,17 @@ type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = ({ onClick, label, style }) => {
   return (
-			{role === "primary" && (
-				<button onClick={onClick} className="primaryBtn">
-		      {label}
-		    </button>
-			)}
+      {role === "primary" && (
+        <button onClick={onClick} className="primaryBtn">
+          {label}
+        </button>
+      )}
       {role === "secondary" && (
-				<button onClick={onClick} className="secondaryBtn">
-		      {label}
-		    </button>
-			)}
-		...
+        <button onClick={onClick} className="secondaryBtn">
+          {label}
+        </button>
+      )}
+      // ...
   );
 };
 ```
