@@ -1,4 +1,3 @@
-import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 import HeroBanner from './(root)/HeroBanner'
 import ProblemSection from './(root)/ProblemSection'

@@ -3,10 +3,9 @@ import './../../../style/prism.css';
 import './../../../style/article.css';
 
 // lib
-import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
 import { useMDXComponent } from 'next-contentlayer/hooks';
-
+import { sortArticleByDate, filterActiveArticles, composeWithInitialValue } from '@/lib/lib'
 
 // Components
 import ArticleTitle from './components/ArticleTitle';
@@ -34,7 +33,12 @@ const articlePage = ({
 
   const completedUrl = params.slug.reduce((all, val) => `${all}/${val}`, '').slice(1)
 
-  const sortedArticles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const sortedArticles = composeWithInitialValue(
+    allArticles,
+    filterActiveArticles,
+    sortArticleByDate,
+  );
+
   const article = sortedArticles.find((article) => article._raw.flattenedPath === completedUrl)
 
   if (!article) return <NotFoundPage />

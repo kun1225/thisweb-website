@@ -39,7 +39,7 @@ const ArticlesPage = () => {
   const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
 
   return (
-    <main className="my-16">
+    <div className="my-16">
       <h2 className="text-3xl mb-10 pb-2 border-b-2 border-gray-200">文章列表</h2>
       <ul className="flex flex-col gap-10 mb-16">
         {paginatedPosts.length > 0
@@ -58,7 +58,7 @@ const ArticlesPage = () => {
       </ul>
 
       {paginatedPosts.length > 0 && <PaginatedNav currentPage={numPage} totalPages={totalPages} articlesPerPage={ARTICLES_PER_PAGE}/>}
-    </main>
+    </div>
   )
 }
 

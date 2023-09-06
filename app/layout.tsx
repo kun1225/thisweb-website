@@ -28,12 +28,10 @@ export default function RootLayout({
       <body className={`bg-gray-50 min-h-screen`}>
         <ProgressBar />
         <Header></Header>
-        
-          <PageTransitionLayout className='px-4 md:px-16 lg:px-32 overflow-x-hidden'>
-            {children}
-          </PageTransitionLayout>
-          <Footer></Footer>
-
+        <PageTransitionLayout className='px-4 md:px-16 lg:px-32 overflow-x-hidden'>
+          {children}
+        </PageTransitionLayout>
+        <Footer></Footer>
       </body>
     </html>
   )
