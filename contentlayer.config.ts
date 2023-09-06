@@ -10,7 +10,7 @@ export const Articles = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     desc: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    isActive: { type: 'boolean', required: false, default: true },
+    isActive: { type: 'boolean', required: true, default: true },
     showAt: {
       type: 'enum',
       options: ['index', 'articles'],
