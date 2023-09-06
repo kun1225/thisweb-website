@@ -5,9 +5,15 @@ import ProblemSection from './(root)/ProblemSection'
 import SiteOwnerSection from './(root)/SiteOwnerSection'
 import RecommendedArticles from './(root)/RecommendedArticles'
 
+import { sortArticleByDate, filterActiveArticles, composeWithInitialValue } from '@/lib/lib'
+
 export default function Home() {
   
-  const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const articles = composeWithInitialValue(
+    allArticles,
+    filterActiveArticles,
+    sortArticleByDate,
+  );
 
   return (
     <>
