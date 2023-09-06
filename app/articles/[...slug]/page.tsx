@@ -2,16 +2,17 @@
 import './../../../style/prism.css';
 import './../../../style/article.css';
 
-
+// lib
 import { compareDesc } from 'date-fns'
 import { allArticles } from 'contentlayer/generated'
-
 import { useMDXComponent } from 'next-contentlayer/hooks';
+
 
 // Components
 import ArticleTitle from './components/ArticleTitle';
 import ArticleNavigation from './components/ArticleNavigation';
 import NotFoundPage from '@/app/not-found';
+import mdxComponents from '@/lib/mdxComponents';
 
 export const generateStaticParams = async () => allArticles.map((article) => ({ slug: article._raw.flattenedPath.split('/') }))
 
@@ -39,15 +40,15 @@ const articlePage = ({
   if (!article) return <NotFoundPage />
 
   const articleIndex = sortedArticles.findIndex((article) => article._raw.flattenedPath === completedUrl);
-  const nextArticle = articleIndex + 1 < sortedArticles.length ? sortedArticles[articleIndex + 1] : undefined;
-  const prevArticle = articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
+  const prevArticle = articleIndex + 1 < sortedArticles.length ? sortedArticles[articleIndex + 1] : undefined;
+  const nextArticle = articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
 
   const MDXContent = useMDXComponent(article.body.code);
 
   return (
-    <article className="mx-auto max-w-xl py-8 article">
+    <article className="mx-auto max-w-2xl py-8 article">
       <ArticleTitle date={article.date} title={article.title} />
-      <MDXContent />
+      <MDXContent components={mdxComponents}/>
       <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
     </article >
   )

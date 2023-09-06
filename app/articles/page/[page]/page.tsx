@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 // Lib
-import { compareDesc, format, parseISO } from 'date-fns'
+import { format, parseISO } from 'date-fns'
+import { sortArticleByDate, filterActiveArticles, composeWithInitialValue } from '@/lib/lib'
 
 // ContentLayer
 import { allArticles } from 'contentlayer/generated'
@@ -26,14 +27,16 @@ const ArticlesPage = () => {
 
   const startIndex = (numPage - 1) * ARTICLES_PER_PAGE;
   const endIndex = numPage * ARTICLES_PER_PAGE
-
-  const articles = allArticles.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+    
+  const articles = composeWithInitialValue(
+    allArticles,
+    filterActiveArticles,
+    sortArticleByDate,
+  );
   
   const paginatedPosts = articles.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(allArticles.length / ARTICLES_PER_PAGE);
-
-
+  const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
 
   return (
     <main className="my-16">
