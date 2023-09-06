@@ -1,10 +1,8 @@
-"use client"
 // Next
 import type { Metadata } from 'next';
 
 // Style
 import './../style/globals.css';
-import { AnimatePresence } from 'framer-motion';
 
 // Components
 import Header from './components/Header';
@@ -30,12 +28,11 @@ export default function RootLayout({
       <body className={`bg-gray-50 min-h-screen`}>
         <ProgressBar />
         <Header></Header>
-        <AnimatePresence mode='wait'>
+        
           <PageTransitionLayout className='px-4 md:px-16 lg:px-32 overflow-x-hidden'>
             {children}
           </PageTransitionLayout>
           <Footer></Footer>
-        </AnimatePresence>
 
       </body>
     </html>

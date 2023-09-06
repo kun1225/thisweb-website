@@ -1,8 +1,8 @@
 "use client"
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import path from "path";
-import { HTMLProps } from "react";
+
+import { HTMLProps, useEffect, useState } from "react";
 
 const PageTransitionLayout = ({
   className,
@@ -20,7 +20,7 @@ const PageTransitionLayout = ({
       initial={{ opacity: 0, y: pathName === '/' ? 0 : 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.1, 
+        duration: 0.1,
         type: "spring",
         damping: 15,
         stiffness: 80
