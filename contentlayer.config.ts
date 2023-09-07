@@ -1,6 +1,8 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
+
 
 export const Articles = defineDocumentType(() => ({
   name: 'Articles',
@@ -30,6 +32,10 @@ export default makeSource({
   contentDirPath: 'articles',
   documentTypes: [Articles],
   mdx: {
-    rehypePlugins: [rehypeCodeTitles, [rehypePrism]],
+    rehypePlugins: [
+      rehypeSlug,
+      rehypeCodeTitles, 
+      [rehypePrism], 
+    ],
   },
 });

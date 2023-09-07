@@ -1,4 +1,4 @@
-import CustomLink from "@/app/components/CustomLink";
+import CustomLink from '@/app/components/CustomLink';
 
 // Custom components/renderers to pass to MDX.
 const mdxComponents = {
