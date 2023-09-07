@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const ArticlesCard = ({
+const ArticleCard = ({
   title,
   desc,
   url
@@ -20,4 +20,4 @@ const ArticlesCard = ({
   )
 }
 
-export default ArticlesCard;    
+export default ArticleCard;    

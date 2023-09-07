@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Articles } from 'contentlayer/generated'
-import ArticlesCard from './components/ArticlesCard.'
+import ArticleCard from './components/ArticleCard.'
 import Button from '../components/Button'
 
 const RecommendedArticles = ({ articles }: { articles: Articles[] }) => {
@@ -12,7 +12,7 @@ const RecommendedArticles = ({ articles }: { articles: Articles[] }) => {
       <h2 className="text-2xl text-center">推薦文章</h2>
       <div className='flex flex-col md:flex-row gap-8 w-full mb-4'>
         {topThreeArticles.map(({ title, desc, url, _id }) => (
-          <ArticlesCard title={title} desc={desc} url={url} key={_id} />
+          <ArticleCard title={title} desc={desc} url={url} key={_id} />
         ))}
       </div>
       <Link href="/articles/page/1">

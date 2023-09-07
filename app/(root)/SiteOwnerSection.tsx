@@ -4,10 +4,10 @@ import Button from "../components/Button"
 const SiteOwnerSection = () => {
   return (
     <section className="md:px-8 pt-8 mb-32">
-      <h2 className="text-2xl text-center mb-8">別擔心，讓我來幫助你</h2>
+      <h2 className="text-2xl text-center md:mb-8">別擔心，讓我來幫助你</h2>
 
-      <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
-        <div className="flex-1 basis-1/3 grid place-content-center">
+      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8">
+        <div className="flex-1 basis-1/3 grid place-content-center p-10">
           <Image width={360} height={360} src="/images/siteOwner.jpg" alt="site owner" className="shadow-md shadow-gray-500 rounded-md" />
         </div>
         <div className="flex-1 basis-2/3 flex flex-col gap-4 text-sm">
@@ -28,6 +28,7 @@ const SiteOwnerSection = () => {
       <div className="text-sm flex flex-col gap-4 items-center">
         <p>我會提供一系列的前端教學文章，並用初學者的角度，帶你能打好基礎，完善學習。</p>
         <p>我也會提供多個專案教學，讓你能運用所學的知識，快速上手前端程式設計。</p>
+        <p>那就讓我們開始吧！</p>
         {/* <Button className="mt-8">開始你的前端之旅</Button> */}
       </div>
 

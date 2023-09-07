@@ -32,7 +32,7 @@ const problemCardContent = [
 const ProblemSection = () => {
   return (
     <Stack as="section" gap={8} direction="col" className="text-center mb-32">
-      <h2 className="text-2xl">自學程式的你也遇過這些問題嗎?</h2>
+      <h2 className="text-2xl md:mb-8">自學程式的你也遇過這些問題嗎?</h2>
 
       <Stack gap={8} wrap>
         {problemCardContent.map(({icon, title, desc}) => <ProblemCard icon={icon} title={title} desc={desc} key={title}/>)}

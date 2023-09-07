@@ -25,10 +25,10 @@ const PaginatedNav = ({
   };
 
   return (
-    <div className='flex gap-2 md:gap-6 justify-center md:text-sm text-xs'>
+    <div className='flex gap-3 md:gap-6 justify-center text-base'>
       {currentPage > 1 && (
         <Link href={`${BASE_URL}${currentPage - 1}`}>
-          <span>← </span> <p className='hidden md:inline'>上一頁</p>
+          <p className=' hover:text-secondary duration-200'><span>← </span> <span className='hidden md:inline'>上一頁</span></p>
         </Link>
       )}
 
@@ -39,8 +39,11 @@ const PaginatedNav = ({
       {getPageNumbers().map((pageNumber) => (
         <Link key={pageNumber} href={`${BASE_URL}${pageNumber}`}>
           <p className={`
-          md:w-5 w-4 rounded-[50%] text-center
-          ${clsx(currentPage === pageNumber && 'text-white bg-primary')}
+          w-6 h-6 rounded-[50%] text-center
+          ${clsx(
+            currentPage === pageNumber && 'text-white bg-primary',
+            currentPage !== pageNumber && 'hover:bg-secondary hover:text-white duration-100'
+          )}
         `}>{pageNumber}</p>
         </Link>
       ))}
@@ -51,7 +54,7 @@ const PaginatedNav = ({
 
       {currentPage < totalPages && (
         <Link href={`${BASE_URL}${currentPage + 1}`}>
-          <p className='hidden md:inline'>下一頁</p> <span> →</span>
+          <p className=' hover:text-secondary duration-200'><span className='hidden md:inline'>下一頁</span> <span> →</span></p>
         </Link>
       )}
     </div>

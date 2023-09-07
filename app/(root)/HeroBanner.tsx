@@ -14,7 +14,7 @@ const HeroBanner = () => {
           duration: 0.8,
         }}
       >
-        <p className="text-sm font-light tracking-widest text-gray-500">請網這邊走 ThisWeb</p>
+        <p className="text-sm font-normal tracking-widest text-gray-500">請網這邊走 ThisWeb | 前端 x 轉職 x 提升競爭力</p>
         <h2 className="text-4xl md:text-5xl md:leading-tight leading-tight">幫助你從零開始學習網頁程式</h2>
         <p>提供完整入門教學、JS 核心觀念講解，以及實作教學，讓你快速上手網頁程式。</p>
       </motion.div>

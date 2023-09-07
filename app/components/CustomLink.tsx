@@ -11,7 +11,7 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
   const isInternalLink = href.startsWith('/');
   const isAnchorLink = href.startsWith('#');
 
-  const className = 'text-secondary relative hover:text-white duration-200 after:absolute after:inset-x-[-6px] after:inset-y-[-1px] after:duration-200 after:origin-bottom after:bg-secondary after:scale-y-0 hover:after:scale-y-100 after:-z-10'
+  const className = 'text-secondary relative hover:text-white duration-200 after:absolute after:inset-x-[-4px] after:inset-y-0 after:duration-200 after:origin-bottom after:bg-secondary after:scale-y-0 hover:after:scale-y-100 after:-z-10'
 
   return (
     <>
@@ -31,9 +31,9 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
       }
       {
         !isInternalLink && !isAnchorLink && (
-          <a target="_blank" rel="noopener noreferrer" href={href} className={className} {...rest} >
+          <a target="_blank" rel="noopener noreferrer" href={href} className={`${className} inline-flex items-baseline gap-[1px]`} {...rest} >
             {typeof children === 'string' && (
-              <AiOutlineLink className="mr-1 inline-block h-4 w-4" />
+              <AiOutlineLink />
             )}
             {children}
           </a>
