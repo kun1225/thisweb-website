@@ -51,3 +51,7 @@
 .article li:has( > p)  p:first-of-type {
   display: inline-block;
 }
+
+.article ul li {
+  list-style: inside;
+}
