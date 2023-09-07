@@ -1,0 +1,184 @@
+---
+title: "TypeScript 教學 0 - 基本介紹"
+desc: "最近在前端， TypeScript (簡稱 TS) 已經越來越流行了，以現在的職缺來看，很多都會要求 TS 技能，不過對於一般前端的初學者來說，他可能沒有那麼容易學習，因此想寫一系列的 TS 教學，幫助新手快速上手 TS，如果你還沒用過 TS，那就讓我們開始學習吧！"
+date: "2023-10-01"
+isActive: false
+---
+
+## 前言
+
+最近在前端， TypeScript (簡稱 TS) 已經越來越流行了，以現在的職缺來看，很多都會要求 TS 技能，
+
+不過對於一般前端的初學者來說，他可能沒有那麼容易學習，因此想寫一系列的 TS 教學，幫助新手快速上手 TS，如果你還沒用過 TS，那就讓我們開始學習吧！
+
+(如果你對 JS 還不熟悉，建議先學習 JS)
+
+## TypeScript  是甚麼
+TypeScript 是微軟基於 JavaScript 開發與維護的一個程式語言，他的目的不是開發一個全新的語言，而是增強擴充 JS 的功能，彌補 JS 的不足。
+
+而 TS 對 JS 添加最主要的部份，就是一個獨立的類型系統，用很白話的方式講，**TS 就是加了型別的 JS**，所以他的核心仍然是 JS，不過多了一些語法。
+
+所以在開始之前，我們要先有型別的概念。
+
+### 型別的概念
+
+在 JS 裡，我們有很多不同類型的數據資料，例如 `number`、`string`、`Object` ... 等等。
+
+而目前 JS 把數據類型分成了八大類，分別是
+1. 數字 Number
+2. 字串 String
+3. 布林值 Boolean
+4. 物件 Object
+5. 未定義 Undefined
+6. 空 Null
+7. Symbol
+8. BigInt
+
+第七和八平常較少使用，我們可以先忽略他
+
+這八大類就是 JS 的內建型別，我們可以用 `typeof` 來看每個變數的型別，例如
+
+```js
+const a = 1;
+const b = '1'
+const c = {c: 1};
+const d = false;
+const e;
+
+console.log(typeof a) // number
+console.log(typeof b) // string
+console.log(typeof c) // object
+console.log(typeof d) // boolean
+console.log(typeof e) // undefined
+```
+有趣的是，那些 `Array`、`Map`、`Set` 在 JS 中都算是 `object 物件` 型別
+
+```js
+const arr = [1,2,3];
+const map = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three']
+]);
+const set = new Set([1,2,3]);
+
+console.log(typeof arr); // object
+console.log(typeof map); // object
+console.log(typeof set); // object
+```
+
+### JS 是動態型別
+
+為什麼對於寫前端的新手來說，型別的概念會比較薄弱呢？那是因為 JS 是動態型別，也就是一個變數的型別是可以改動的，例如
+
+```js
+let a = 1;
+console.log(typeof a); // number
+
+a = '2';
+console.log(typeof a);// string
+```
+所以 JS 非常自由，這是他相對好上手的原因，不過也因此引發了一些問題，像上面那樣把隨意更改型別很容易發生預料之外的錯誤。
+
+所以 TypeScript 引入了一個更強大、更嚴格的**靜態型別**系統，幫助開發者在開發時就能預先發現錯誤。以下我用 TS 簡單做個示範：
+
+```ts
+let a: string = '1';
+a = 2; // 直接報錯
+// Type 'number' is not assignable to type 'string'
+```
+
+可以發現 TS 決定型別之後，就不能隨意更改了，這可以讓程式碼更加嚴謹。
+
+## 為甚麼要用 TypeScript 
+
+那 TS 引入靜態型別有那些好處呢？基本上有
+
+1. 易於發現錯誤：減少了型別相關的錯誤，提高了程式碼的可靠性。
+2. 維護性好、容易重構：靜態類型檢查有助於維護程式碼，在後續修改程式碼時，比較不會發生遇料之外的錯誤。
+3. 更好的語法提示：在 TS 裡定義好的型別，都會有語法提示
+
+用講的很難理解，我們直接看一個例子體會一下，在 TS 裡只要宣告好型別，之後使用程式碼都會自動提示，假設我們定義好 `Product` 型別後
+
+```ts
+type Product = {
+  name: string,
+  price: number,
+  description: string,
+  imgUrl: string,
+}
+
+const product1: Product = {
+  name: 'product1',
+  price: 100,
+  description: 'my product',
+  imgUrl: 'https://...'
+}
+```
+
+在之後我們調用 `product1` 時，都會自動出現提示，如下
+![ts syntax highlight](/images/ts/0-intro/syntax.png)
+
+這不但可以大大增加開發速度以及降低錯誤發生機會，也利於後續維護。這也是為甚麼很多 JS 的專案，都漸漸轉成 TS 的原因。
+
+## TypeScript 的缺點
+
+儘管如此，TS 靜態型別也有一些缺點，例如
+1. 增加工作量：我們需要在每個地方都定義型別
+2. 更高的學習成本：需要學習 TS 的一些語法
+3. 增加開發心智負擔：在不熟悉的情況下，很多地方都會跳出 TS 型別方面的錯誤
+
+所以對於小型個人項目，JS 也有他的好處，不過以長遠來看， TS 還是很值得學習的！
+
+## TypeScript 如何安裝
+
+講了那麼多，還是直接動手做比較實際，那我們就先安裝 TS 吧！
+
+安裝 TypeScript（TS）只需要幾個簡單的步驟。
+1. 安裝 Node.js
+    
+    可以從[Node.js 官方網站](（https://nodejs.org/）)下載和安裝它。安裝 Node.js 同時也會安裝 Node 包管理器（npm）。
+
+    檢查 Node.js 和 npm 安裝是否成功： 打開終端機運行以下命令來確保 Node.js 和 npm 安裝成功：
+    ```bash
+    node -v
+    npm -v
+    ```
+2. 全局安裝 TypeScript：
+
+    接著使用以下命令來全局安裝 TypeScript：
+
+    ```bash
+    npm install -g typescript
+    ```
+    檢查 TypeScript 安裝是否成功
+
+    ```bash
+    tsc -v
+    ```
+
+3. 創建一個新的 .ts 文件，例如 hello.ts，
+
+    ```typescript:hello.ts
+    function sayHello(name: string) {
+        console.log(`Hello, ${name}!`);
+    }
+
+    sayHello("John");
+    ```
+    在終端機中，切換到包含 hello.ts 文件的目錄。
+
+    使用 tsc 將 TypeScript 編譯成 JavaScript：
+
+    ```bash
+    tsc hello.ts
+    ```
+    這樣就會生成一個 hello.js 文件！
+
+
+如果你只是想趕快體驗一下 TS，也可以上網找 ts playground 直接開始練習，這裡提供一個 [playground 網站](https://www.typescriptlang.org/play)
+
+而現在的框架腳手架都可以選擇 TS 做為開發語言了，所以也可以直接用框架當練習。
+
+## 小結
+今天介紹了 TS 以及型別系統，下篇文章開始就讓我們正式進入 TS 的世界吧！
