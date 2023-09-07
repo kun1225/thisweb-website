@@ -25,10 +25,10 @@ export default function RootLayout({
 
   return (
     <html lang="zh-TW">
-      <body className={`bg-gray-50 min-h-screen font-bold`}>
+      <body className={`bg-gray-50 min-h-screen font-bold scroll-smooth scroll-m-20`}>
         <ProgressBar />
         <Header></Header>
-        <PageTransitionLayout className='px-4 md:px-16 lg:px-32 overflow-x-hidden'>
+        <PageTransitionLayout className='px-4 md:px-16 lg:px-40'>
           {children}
         </PageTransitionLayout>
         <Footer></Footer>

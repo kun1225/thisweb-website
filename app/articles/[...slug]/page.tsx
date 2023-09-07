@@ -12,7 +12,7 @@ import ArticleTitle from './components/ArticleTitle';
 import ArticleNavigation from './components/ArticleNavigation';
 import NotFoundPage from '@/app/not-found';
 import mdxComponents from '@/lib/mdxComponents';
-import TableOfContents from './components/SideBar';
+import TableOfContents from './components/TableOfContents';
 
 export const generateStaticParams = async () => allArticles.map((article) => ({ slug: article._raw.flattenedPath.split('/') }));
 
@@ -52,11 +52,23 @@ const articlePage = ({
   const MDXContent = useMDXComponent(article.body.code);
 
   return (
-    <article className="mx-auto max-w-2xl py-8 article">
+    <article className="mx-auto article my-8">
       <ArticleTitle date={article.date} title={article.title} />
-      <MDXContent components={mdxComponents} />
+
+      <aside className="lg:hidden mb-8 border-2 p-4 rounded-md">
+          <TableOfContents source={article.body.raw} />
+      </aside>
+
+      <section className="lg:flex justify-center">
+        <div className="max-w-2xl border-gray-200 lg:border-r-2 lg:pr-8">
+          <MDXContent components={mdxComponents} />
+        </div>
+        <aside className="pl-8 hidden lg:block self-start sticky top-20">
+          <TableOfContents source={article.body.raw} />
+        </aside>
+      </section>
       <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
-      {/* <TableOfContents source={article.body.raw} /> */}
+
     </article >
   )
 }

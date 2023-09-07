@@ -80,11 +80,10 @@ const TableOfContents = ({ source }: Props) => {
 
   return (
     <>
-    <aside className="fixed left-0 top-24 -translate-x-[90%] hover:translate-x-[10%]">
       <p className="mb-5 text-lg">
         目錄
       </p>
-      <div className="flex flex-col ">
+      <div className="flex flex-col text-xs">
         {headings.map((heading, index) => 
            (
             <button
@@ -92,16 +91,16 @@ const TableOfContents = ({ source }: Props) => {
               type="button"
               className={clsx(
                 heading.id === activeId
-                  ? 'font-medium text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
-                  : 'font-normal text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200',
+                  ? 'font-medium text-primary-500 hover:text-primary-600'
+                  : 'font-normal text-gray-500 hover:text-gray-800',
                 heading.level === 3 && 'pl-4',
-                'mb-2 text-left text-sm transition-colors hover:underline'
+                'mb-2 text-left'
               )}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector(`#${heading.id}`)?.scrollIntoView({
                   behavior: 'smooth',
-                  block: 'start',
+                  block: 'center',
                   inline: 'nearest',
                 });
               }}
@@ -111,7 +110,6 @@ const TableOfContents = ({ source }: Props) => {
           )
         )}
       </div>
-    </aside>
     </>
   );
 };
