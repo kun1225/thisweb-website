@@ -5,23 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@200;300;400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap');
 
 body, html {
-  font-family: '微軟正黑體', 'Noto Sans TC';
-  @apply min-h-full font-semibold
+  @apply min-h-full font-medium font-tw-sans;
 }
 
 h1, h2, h3, h4 {
   /* font-family: 'Noto Serif TC'; */
-  @apply text-primary
+  @apply text-primary;
 }
 
 ::selection {
-  @apply bg-primary text-white
-}
-
-:global(.rehype-code-title) {
-  @apply -mb-3 rounded-tl rounded-tr bg-slate-600 px-4 pt-1 pb-2 font-mono text-sm text-gray-200;
-}
-
-div:global(.rehype-code-title) + pre {
-  @apply rounded-tl-none rounded-tr-none;
+  @apply bg-primary text-white;
 }

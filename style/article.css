@@ -14,15 +14,19 @@
 }
 
 .article h2 {
-  @apply text-2xl;
+  @apply text-2xl font-bold;
 }
 
 .article h3 {
-  @apply text-lg;
+  @apply text-lg font-semibold;
 }
 
 .article h4 {
   @apply text-base;
+}
+
+.article p strong {
+  @apply font-semibold;
 }
 
 .article p,

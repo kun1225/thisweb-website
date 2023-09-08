@@ -13,9 +13,9 @@ const config: Config = {
         secondary: '#477086'
       },
       fontFamily: {
-        "tw-sans": 'Noto Sans TC',
-        "tw-serif": 'Noto Serif TC',
-        "tw-code": "JetBrains Mono"
+        "tw-sans": 'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial',
+        "tw-serif": 'Noto Serif TC, ui-serif',
+        "tw-code": "JetBrains Mono, ui-monospace, Consolas,  monospace"
       }
     },
   },
