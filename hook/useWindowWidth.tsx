@@ -13,13 +13,13 @@ const useWindowWidth = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const parseScreenString = (screenSize: string): number => {
-    return parseInt(screenSize.slice(0. - 2))
+    return parseInt(screenSize.replace('px', ''))
   }
 
   const modifyWidth = () => {
 
     setWindowWidth(window.innerWidth);
-
+    
     if (window.innerWidth > parseScreenString(lg)) {
       setIsDesktop(true);
       setIsTablet(false);
