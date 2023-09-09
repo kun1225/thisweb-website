@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import theme from './style/theme'
 
 const config: Config = {
   content: [
@@ -7,6 +8,7 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    screens: theme.screens,
     extend: {
       colors: {
         primary: '#00334E',
