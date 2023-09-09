@@ -25,7 +25,7 @@ export default function RootLayout({
 
   return (
     <html lang="zh-TW">
-      <body className={`bg-gray-50 min-h-screen text-sm`}>
+      <body className={`bg-gray-50 min-h-screen text-base font-medium font-tw-sans`}>
         <ProgressBar />
         <Header></Header>
         <PageTransitionLayout className='px-4 md:px-16 lg:px-40'>

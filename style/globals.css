@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@200;300;400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap');
 
 body, html {
-  @apply min-h-full font-medium font-tw-sans;
+  @apply min-h-full;
 }
 
 h1, h2, h3, h4 {

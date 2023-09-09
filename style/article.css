@@ -1,10 +1,14 @@
 .article code, 
 .article pre {
-  @apply font-tw-code 
+  @apply font-tw-code text-base leading-6;
+}
+
+.article pre {
+  @apply mb-4;
 }
 
 .article {
-  @apply text-sm leading-6;
+  @apply text-base leading-8;
 }
 
 .article h2,
@@ -32,7 +36,6 @@
 .article p,
 .article ul,
 .article ol,
-.article pre,
 .article img,
 .article h2,
 .article h3,
