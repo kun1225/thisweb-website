@@ -3,7 +3,6 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 
-
 export const Articles = defineDocumentType(() => ({
   name: 'Articles',
   filePathPattern: `**/*.mdx`,
@@ -13,11 +12,12 @@ export const Articles = defineDocumentType(() => ({
     desc: { type: 'string', required: true },
     date: { type: 'date', required: true },
     isActive: { type: 'boolean', required: true, default: true },
-    showAt: {
+    isInIndex: { type: 'boolean', required: false },
+    topic: {
       type: 'enum',
-      options: ['index', 'articles'],
+      options: ['JavaScript', 'css', 'React', 'Vue', 'software design','others'],
       require: false,
-      default: 'articles',
+      default: 'JavaScript',
     },
   },
   computedFields: {
@@ -32,10 +32,6 @@ export default makeSource({
   contentDirPath: 'articles',
   documentTypes: [Articles],
   mdx: {
-    rehypePlugins: [
-      rehypeSlug,
-      rehypeCodeTitles, 
-      [rehypePrism], 
-    ],
+    rehypePlugins: [rehypeSlug, rehypeCodeTitles, [rehypePrism]],
   },
 });
