@@ -1,0 +1,287 @@
+---
+title: "TypeScript 教學 1 - 型別與定義型別"
+desc: "上篇貼文介紹了 Typescript 以及型別，今天就來看看 TypeScript 的基本用法和一些特性吧！"
+date: "2023-10-02"
+isActive: false
+---
+
+在 [TypeScript 教學 0 - 基本介紹](/articles/ts/0-intro) 中介紹了 Typescript 以及型別，那今天就來看看 TypeScript 的基本用法和一些特性吧！
+
+## 如何定義型別
+
+在 TypeScript 可以用 `:` 來定義型別類型，像是 `let x: string = '123'`，我們來看看每種型別的定義方式與細節。
+
+### 字串 string
+字串定義的方式很單純，就像上面示範的一樣
+```ts
+let x: string = '123';
+```
+而如果我們已經定義是字串了，就不能賦予他其它類型
+
+```ts
+let x: string = 123; // ❌ 報錯
+let x: string = true; // ❌ 報錯
+```
+要注意的是，如果我們用構造函數宣告字串變數的話，他的型別會是 `String`，而不是 `string` (大小寫的差異)，所以平常盡量少用這種方式宣告變數。
+
+```ts
+let x: string = new String('123');
+// ❌ 報錯：Type 'String' is not assignable to type 'string'.
+```
+
+### 數字 number
+數字用 `number` 定義型別
+
+```ts
+let x: number = 123;
+```
+一樣，如果我們已經定義是數字了，也不能賦予他其它類型
+
+```ts
+let x: number = '123'; // ❌ 報錯
+let x: string = true; // ❌ 報錯
+```
+這裡也一樣如果我們用構造函數定義數字的話，他的型別會是 `Number`，而不是 `number` (大小寫的差異)。
+
+```ts
+let x: number = new Number(123);
+// ❌ 報錯：Type 'Number' is not assignable to type 'number'.
+```
+
+### 布林值 boolean
+布林用 `boolean` 定義型別
+
+```ts
+let x: boolean = true;
+```
+一樣，如果我們已經定義是布林了，也不能賦予他其它類型
+
+```ts
+let x: boolean = '123'; // ❌ 報錯
+let x: boolean = 123; // ❌ 報錯
+```
+這裡也一樣如果我們用構造函數定義布林的話，他的型別會是 `Boolena`，而不是 `boolean` (大小寫的差異)。
+
+```ts
+let x: boolean = new Boolean(true);
+// ❌ 報錯：Type 'Boolean' is not assignable to type 'boolean'.
+```
+
+### undefined & null
+undefined 和 null 是比要特殊一組型別，它們各自都只有一個值
+
+```ts
+let x: undefined = undefined;
+let y: null = null
+```
+### 陣列 Array
+在 TS 裡，所有陣列裡的元素的**型別都必須一樣**，而我們有兩種方式這樣來定義陣列的型別。
+
+第一種是直接用中括號 `[]`
+```ts
+let arr1: string[] = ['1', '2', '3'];
+let arr2: number[] = [1, 2, 3, 4, 5];
+let arr3: boolean[] = [true, false];
+
+let errorArr: string[] = ['1', 2]; // ❌ 報錯
+```
+如果真的希望陣列裡面有多種型別，我們可以用 `| 聯合型別` 或是 `any`，這兩個放在之後說，但可以先了解
+
+```ts
+let arr1: (string | number)[] = ['1', 2, '3'];
+let arr2: any[] = [1, '2', true]
+```
+不過要盡量避免 any 這種寫法。
+
+此外，如果是多維陣列，可以這樣定義。
+```ts
+let arr: number[][] = [[1,2,3], [4,5,6]]
+```
+
+第二種寫法是用 `Array<>` 來定義，使用方法差不多，只是把型別放在 `<>` 裡面。
+
+```ts
+let arr1: Array<string> = ['1', '2', '3'];
+let arr2: Array<number> = [1,2,3];
+let arr3: Array<boolean> = [true, false];
+let arr4: Array<Array<number>> = [[1,2,3], [4,5,6]]
+```
+
+### 元組 tuple
+在 TS 中，有個比較特別的型別，**元組 tuple**，可以把他想像成**固定長度的陣列**，裡面的元素會依照我們定義的方式存在，像是這樣
+
+```ts
+let tuple1: [number, number] = [1, 2];
+let tuple2: [number, string, number] = [1, '2', 3];
+
+let errorTuple: [number, number] = [1, 2, 3]; // ❌ 報錯
+```
+
+我們不能用賦值的方式增加其元素
+
+```ts
+let tuple: [number, number] = [1, 2];
+tuple[2] = 3; // ❌ 報錯
+```
+
+不過奇怪的是，我們可以用 `push` 等方法強制增加元素，不過只能增加存在類型的元素
+
+```ts
+let tuple: [number, number] = [1, 2];
+tuple.push(3); // ✅ 不報錯
+tuple.push('4'); // ❌ 報錯
+```
+最後，如果元組有元素不一定存在時，可以用 `?` 來表示
+
+```ts
+let tuple: [number, number, number?] = [1, 2]; // ✅ 不報錯
+tuple[2] = 3; // ✅ 不報錯
+```
+
+### 函數 function
+函數的型別定義，需要給參數的型別和返回值的型別，裡如以下的函數需要傳入兩個 `number` 以及函數的返回也是 `number`
+```ts
+function sum(x: number, y: number): number {
+    return x + y;
+}
+```
+在 JS 還有另一種宣告函數的寫法 - 函數表達式，寫法大同小異。
+```ts
+const sum = function (x: number, y: number): number {
+    return x + y;
+};
+
+// 箭頭函數的寫法也相同，省略 function 而已
+const sum =  (x: number, y: number): number => {
+    return x + y;
+};
+```
+但函數表達式等號左邊的 `sum` 型別，是 TS 自己推算出來的，如果我們想要手動給 `sum` 增加型別，可以這樣寫
+```ts
+const sum: (x: number, y:number) => number
+  = (x: number, y: number): number => {
+    return x + y;
+  };
+```
+不過我覺得這種寫法比較麻煩，除非有特別要求，不然讓 ts 去推斷型別就可以了。
+
+如果函數沒有返回任何值，則可以使用 `void` 來定義型別類型，像是
+```ts
+function sayHi(message: string): void {
+  console.log(message);
+}
+```
+如果某些參數不一定要帶入，一樣可以用 `?` 來表示
+```ts
+const saySomething = (message1: string, message2?: string) => {
+  console.log(message1, message2)
+}
+
+saySomething('hello'); // ✅ 不報錯
+saySomething('hello', 'hi'); // ✅ 不報錯
+```
+當然，對於可選參數，我們最好加上一些判斷，確定他有無傳入。
+
+最後，我們也可以結合 rest 參數表示剩下的所有參數，他可以是陣列也可能是元組，看情況定義型別
+```ts
+// rest 參數為陣列
+function joinNumbers(...nums:number[]) {
+  return nums.reduce((total, val) => total += val, 0)
+}
+
+// rest 參數為元组
+function repeatStr(...args:[string, number]) {
+  console.log(args[0].repeat(args[1]))
+}
+repeatStr('a', 3) // aaa
+```
+
+### 物件 object
+物件定義型別的方式比較複雜一點，讓我們留到下一章整合介紹
+
+## 任意值 any
+任意值表示型別是任意的，比如說
+```ts
+let anyType: any = 1;
+anyType = 'a'; // ✅ 不報錯
+anyType = [1, 2, 3]; // ✅ 不報錯
+anyType = {name: 'jack'}; // ✅ 不報錯
+```
+變數在宣告時，如果沒有指定型別，ts 都會默認其為 `any` 型別，基本上我們應該要盡量避免使用 `any` 型別，否則就失去了使用 TS 的意義了。
+
+### 使用 any 的時機
+但有時候我們為了開發順暢，還是會使用到 `any`，以下兩種場合適合用 `any`
+
+1. 出於某些原因，我們需要關閉型別的檢查，就可以將變數的型別設定為 `any`。
+2. 將 JS 專案升級 TS 專案時，為了快速遷移，將較複雜的物件型別定義為 `any`。
+
+簡單說就是希望 ts 不要在這裡報出型別的錯時，就可以用 `any`，但我們還是要避免使用 `any`，以上兩種情況都是逼不得已時才使用的。
+
+### 使用 any 的汙染問題
+使用 `any` 除了失去 ts 的意義以外，還會讓其它有定義的變數被汙染
+```ts
+let x:any = 'hello';
+let y:number;
+
+y = x; // 不報錯
+let z = y * 123; // 不報錯
+
+y.toFixed() // 編譯時不報錯，但執行時會出錯。
+console.log(z) // NaN
+```
+雖然以上程式碼，TypeScript 不會檢查出錯誤，但運行時就會出現錯誤，這會造成維護的困難。
+
+也就是 any 會污染其他具有正確類型的變數，把錯誤留到運行時，這就是不宜使用any類型的另一個主要原因。
+
+### nuknown 型別
+為了解決 any 所帶來的汙染問題，我們可以用 `unknown` 型別，他和 `any` 有點類似，但多了幾個限制
+
+1. 不能賦值給其他型別的變數（除了 `any` 和 `unknown` 類型）。
+
+    ```ts
+    let x:unknown = 123;
+
+    let x1:boolean = x; // ❌ 報錯
+    let x2:number = x; // ❌ 報錯
+    ```
+2. 不能直接調用 `unknown` 變數的方法和屬性。
+
+    ```ts
+    let user:unknown = { name: 'jack' };
+    user.name  // ❌ 報錯
+
+    let message:unknown = 'hello';
+    message.trim() // ❌ 報錯
+
+    let fn:unknown = (n) => n + 1;
+    fn(1) // ❌ 報錯
+    ```
+
+3. 只能進行比較運算（運算符==、===、!=、!==、||、&&、?）、取反運算（運算符!）、typeof 運算符和 instanceof 運算符，其他運算都會報錯。
+
+    ```ts
+    let a:unknown = 1;
+
+    a + 1 // ❌ 報錯
+    a === 1 // ✅ 不報錯
+    ```
+
+如果我們要使用 unknown 型別，只能透過 `typeof` 來縮小型別的範圍
+
+```ts
+let x:unknown = 1;
+
+if (typeof x === 'number') {
+  let y = x + 2; // ✅ 不報錯
+}
+```
+
+所以 `nuknown` 可以說是更安全的 `any` 型別，不過還是老話一句，盡量避免使用 `any` 和 `nuknown`。
+
+
+## 小結
+
+今天一次講了很多有關 ts 的型別，全部整合在一起之後也比較方便查詢，而比較特別型別有元組和函數的寫法，需要多練習來習慣。
+
+那下一篇我們就來聊聊有關物件的型別是如何定義的吧！
+
