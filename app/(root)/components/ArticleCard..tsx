@@ -15,7 +15,7 @@ const ArticleCard = ({
   return (
     <Link href={url} className="flex-1 p-8 shadow-sm shadow-gray-500 rounded-md duration-200 hover:shadow-gray-800">
         <h3 className='mb-2'>{title}</h3>
-        <p className="text-sm">{truncateDesc}...</p>
+        <p className="text-xs">{truncateDesc}...</p>
     </Link>
   )
 }

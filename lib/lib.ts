@@ -25,3 +25,7 @@ export const sortArticleByDate = (allArticles: Articles[]) => {
 export const filterActiveArticles = (allArticles: Articles[]) => {
   return allArticles.filter((article) => article.isActive === true)
 }
+
+export const filteArticlesByTopic = (allArticles: Articles[], topic: string) => {
+  return allArticles.filter((article) => article.topic === topic)
+}

@@ -16,7 +16,7 @@ const Magnetic = ({
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const ref = useRef<HTMLDivElement>(null);
 
-  const { isDesktop } = useWindowWidth()
+  const { isDesktop } = useWindowWidth();
 
   const mouseMove = (e: any) => {
 

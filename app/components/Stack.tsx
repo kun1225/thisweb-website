@@ -1,5 +1,4 @@
 import { HTMLProps } from "react"
-import clsx from "clsx"
 
 const Stack = ({
   as: Component = 'div',
@@ -18,13 +17,7 @@ const Stack = ({
 }) => {
 
   return (
-    <Component className={`
-      flex
-      gap-${gap}
-      flex-${direction}
-      ${wrap && 'flex-wrap'}
-      ${className}
-    `}>
+    <Component className={`flex gap-${gap} flex-${direction} ${wrap && 'flex-wrap'} ${className ? className : ''}`}>
       {children}
     </Component>
   )

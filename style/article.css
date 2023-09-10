@@ -22,11 +22,11 @@
 }
 
 .article h3 {
-  @apply text-lg font-semibold;
+  @apply text-xl font-semibold;
 }
 
 .article h4 {
-  @apply text-base;
+  @apply text-lg;
 }
 
 .article p strong {

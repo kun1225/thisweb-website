@@ -7,7 +7,7 @@ const useWindowWidth = () => {
 
   const { lg, md } = theme.screens
 
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isDesktop, setIsDesktop] = useState(true);
   const [isTablet, setIsTablet] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
