@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { navContent } from "./Header"
+import { navContent } from './Header/Header'
 
 const Footer = () => {
   return (
