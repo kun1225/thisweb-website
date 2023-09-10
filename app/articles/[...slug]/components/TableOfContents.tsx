@@ -40,11 +40,11 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
     };
 
     const observer = new IntersectionObserver(callback, {
-      rootMargin: '0px 0px -70% 0px',
+      rootMargin: '0px 0px -45% 0px',
     });
 
     const headingElements = Array.from(
-      document.querySelectorAll('article h2,h3')
+      document.querySelectorAll('.article h2,h3')
     );
 
     headingElements.forEach((element) => observer.observe(element));
