@@ -15,23 +15,17 @@ const Newsletter = ({
     e.preventDefault();
 
     const target = e.currentTarget;
-
     const email = (target.elements.namedItem('email') as HTMLInputElement).value
 
     const body = JSON.stringify({
       "api_key": process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY,
       email,
     });
-
     const headers = new Headers({
       'Content-Type': 'application/json; charset=utf-8',
     });
 
-
-    console.log(JSON.stringify(body))
-
     try {
-
       const response = await fetch(
         `https://api.convertkit.com/v3/forms/${formId}/subscribe`,
         {
