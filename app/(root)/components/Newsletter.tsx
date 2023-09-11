@@ -1,23 +1,71 @@
-"use client"
-import { useForm, SubmitHandler } from "react-hook-form"
+'use client'
+import { useState } from 'react';
+import clsx from 'clsx';
 
-// Components
-import InputField from "@/app/components/InputField"
+const Newsletter = ({
+  formId
+}: {
+  formId: string
+}) => {
 
-type EmailInput = {
-  email: string
-}
+  const [isSuccess, setIsSuccess] = useState(false);
 
-const Newsletter = () => {
+  const subscribeEmail = async (e: React.FormEvent<HTMLFormElement>) => {
 
-  const { register, handleSubmit } = useForm<EmailInput>();
-  const onSubmit: SubmitHandler<EmailInput> = (data) => console.log(data)
+    e.preventDefault();
+
+    const target = e.currentTarget;
+
+    const email = (target.elements.namedItem('email') as HTMLInputElement).value
+
+    const body = JSON.stringify({
+      "api_key": process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY,
+      email,
+    });
+
+    const headers = new Headers({
+      'Content-Type': 'application/json; charset=utf-8',
+    });
+
+
+    console.log(JSON.stringify(body))
+
+    try {
+
+      const response = await fetch(
+        `https://api.convertkit.com/v3/forms/${formId}/subscribe`,
+        {
+          method: 'POST',
+          cache: 'no-cache',
+          headers,
+          body,
+        }
+      );
+
+      if (!response.ok) {
+        setIsSuccess(false);
+        throw new Error(`status: ${response.status}, message: ${response.statusText} `);
+      }
+
+      setIsSuccess(true);
+
+    } catch (err: any) {
+      console.log(`There was a problem with fetch operation in Newsleeter.tsx: ${err}`)
+    }
+
+  }
 
   return (
-    <form className="flex gap-4 flex-col md:flex-row" onSubmit={handleSubmit(onSubmit)} >
-      <InputField className="basis-3/4" type="email" placeholder="輸入你的 email ..."/>
-      <input type="submit" value="免費訂閱" className="p-2 text-sm basis-1/4 bg-secondary text-white rounded-md cursor-pointer hover:bg-[#2577a3] duration-200" />
-    </form >
+    <>
+      <form onSubmit={subscribeEmail} className="flex gap-4 flex-col md:flex-row"  >
+        <input type="email" name='email' required placeholder="輸入你的 email ..." className="basis-3/4 p-2 border-2 rounded-md w-full outline-none focus:border-secondary duration-200 text-sm font-light" />
+        <input type="submit" value="免費訂閱" className="p-2 text-sm basis-1/4 bg-secondary text-white rounded-md cursor-pointer hover:bg-[#2577a3] duration-200" />
+      </form >
+      <p className={`text-xs text-gray-500 duration-200 ${
+        clsx(isSuccess ? 'translate-y-0 opacity-100 visible' : '-translate-y-2 opacity-0 invisible')
+      }`}>訂閱成功！記得去 email 按確認！</p>
+    </>
+
   )
 }
 
