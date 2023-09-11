@@ -1,4 +1,4 @@
-import { HTMLProps } from "react"
+import { HTMLProps, ReactHTMLElement } from "react"
 
 const Stack = ({
   as: Component = 'div',
@@ -6,9 +6,9 @@ const Stack = ({
   direction = 'row',
   wrap = false,
   className,
-  children
+  children,
 }: {
-  as?: 'div' | 'section' | 'main' | 'ul' | 'li' | 'article' | 'nav',
+  as?: keyof HTMLElementTagNameMap ,
   gap?: number,
   direction?: 'row' | 'col' | 'row-reverse' | 'col-reverse'
   wrap?: boolean
