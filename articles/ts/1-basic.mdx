@@ -142,18 +142,18 @@ tuple[2] = 3; // ✅ 不報錯
 函數的型別定義，需要給參數的型別和返回值的型別，裡如以下的函數需要傳入兩個 `number` 以及函數的返回也是 `number`
 ```ts
 function sum(x: number, y: number): number {
-    return x + y;
+  return x + y;
 }
 ```
 在 JS 還有另一種宣告函數的寫法 - 函數表達式，寫法大同小異。
 ```ts
 const sum = function (x: number, y: number): number {
-    return x + y;
+  return x + y;
 };
 
 // 箭頭函數的寫法也相同，省略 function 而已
 const sum =  (x: number, y: number): number => {
-    return x + y;
+  return x + y;
 };
 ```
 但函數表達式等號左邊的 `sum` 型別，是 TS 自己推算出來的，如果我們想要手動給 `sum` 增加型別，可以這樣寫
@@ -161,7 +161,7 @@ const sum =  (x: number, y: number): number => {
 const sum: (x: number, y:number) => number
   = (x: number, y: number): number => {
     return x + y;
-  };
+};
 ```
 不過我覺得這種寫法比較麻煩，除非有特別要求，不然讓 ts 去推斷型別就可以了。
 
@@ -198,6 +198,8 @@ repeatStr('a', 3) // aaa
 
 ### 物件 object
 物件定義型別的方式比較複雜一點，讓我們留到下一章整合介紹
+
+[TypeScript 教學 2 - 物件型別、interface、type](/articles/ts/2-object)
 
 ## 任意值 any
 任意值表示型別是任意的，比如說
@@ -257,7 +259,7 @@ console.log(z) // NaN
     fn(1) // ❌ 報錯
     ```
 
-3. 只能進行比較運算（運算符==、===、!=、!==、||、&&、?）、取反運算（運算符!）、typeof 運算符和 instanceof 運算符，其他運算都會報錯。
+3. 只能進行比較運算（運算符==、===、!=、!==、||、&&、?）、取反運算（運算符!）、typeof 運算符和 instanceof 運算符。
 
     ```ts
     let a:unknown = 1;
