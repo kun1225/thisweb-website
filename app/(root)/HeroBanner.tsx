@@ -10,7 +10,7 @@ import Newsletter from "./components/Newsletter"
 
 const HeroBanner = () => {
   return (
-    <section className="min-h-[120vh] md:min-h-[80vh] h-[80vh] flex flex-col md:flex-row lg:gap-16 mb-32">
+    <section className="min-h-[120vh] md:min-h-[90vh] flex flex-col md:flex-row lg:gap-16 mb-32">
 
       <motion.div
         className="flex-1 basis-1/3 md:basis-2/3 flex flex-col justify-center md:gap-4 gap-2 text-center md:text-left"
