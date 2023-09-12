@@ -1,9 +1,249 @@
 ---
-title: "TypeScript 教學 2 - 物件與介面"
-desc: "上篇貼文介紹了 Typescript 以及型別，今天就來看看 TypeScript 的基本用法和一些特性吧！"
+title: "TypeScript 教學 2 - 物件型別、interface、type"
+desc: "上篇貼文介紹了 Typescript 的基本用法和一些特性，這篇文章主講有關物件型別的定義方法，主要可以分為直接寫、interface、type 幾種方法，今天會介紹彼此的用法和差異以及應用場景，讓我們往下看看吧～！"
 date: "2023-10-03"
 isActive: false
 ---
 
+上篇貼文介紹了 Typescript 的基本用法和一些特性，這篇文章主講有關物件型別的定義方法，主要可以分為直接寫、interface、class、type 幾種方法，今天會介紹彼此的用法和差異以及應用場景，讓我們往下看看吧～！
+
+## 如何定義物件的型別
+
+最簡單的方式是直接寫在宣告的物件上
+```ts
+const user: {
+  name: string;
+  age: number;
+  getName: () => void;
+} = {
+  name: 'Jack',
+  age: 18,
+  getName() { console.log(this.name) }
+}
+
+user.getName(); // Jack
+```
+
+也可以透過 `?` 來表示可選
+
+```ts
+const user: {
+  name: string;
+  age?: number; // 👈 ? 表示不一定要填入 
+  getName: () => void;
+} = {
+  name: 'Jack',
+  getName() { console.log(this.name) }
+}
+```
+被定義的型別就不能被刪掉了，只能修改他的值
+
+```ts
+delete user.name // ❌ 報錯
+user.name = 'Rose' // ✅ 不報錯
+```
+
+### readonly
+如果我們希望物件的某個屬性不能更改，可以在前面加上 `readonly` 表是唯讀，只能在宣告物件時賦予初始值，而不能在後續更改。
+
+```ts
+const user: {
+  readonly name: string; // 👈 readonly 表示唯讀
+  age?: number; 
+  getName: () => void;
+} = {
+  name: 'Jack',
+  getName() { console.log(this.name) }
+}
+
+user.name = 'Rose' // ❌ 報錯
+```
+
+### 屬性索引
+有時候物件的屬性非常多，而且我們不一定能是先知道物件的屬性有多少，此時可以使用這個寫法
+```ts
+const user: {
+  [property: string]: string; // 👈
+} = {
+  name: 'Jack',
+  age: '23'
+}
+```
+
+我們也可以這樣來表示任意的屬性
+
+```ts
+const user: {
+  [property: string]: any; // 👈
+} = {
+  name: 'Jack',
+  age: 23
+}
+```
+不過我並不建議這種寫法，因約束太少，使用起來用不太方便。
 
 
+到這邊不知道你有沒有發現一個問題，如果我們要宣告很多相同的物件時，難道每個物件都要重新定義型別嗎？
+
+當然不用，所以我們用到 `interface` 來幫助我們解決這個問題。
+
+## interface 介面 (接口)
+在程式語言中，介面是很重要的觀念，只是前端比較少接觸到，介面代表的是一個物件的行結構。(對岸翻譯叫接口)
+
+換句話說，就是**我們用介面定義物件的結構(屬性以及方法，但不包含方法具體的細節)**。
+
+你可能有聽過**抽象化**這樣的名詞，介面就是所謂的抽象化，我們只管物件的結構，不管細節，也就是**我們把細節抽象化出來了變成介面**。這樣的好處是提高程式碼的可讀性、可維護性和可擴展性，同時確保了程式碼的一致性。
+
+在 JS 中是沒有 interface 這個語法的，是 TS 新增的，講了這麼多，來看看如何使用吧！
+
+```ts
+interface User {
+  readonly name: string; // 👈 readonly 表示唯讀
+  age?: number;          // 👈 ? 表示不一定要填入 
+  getName: () => void;
+  [property: string]: any; // 👈 也能和前面一樣表示任意屬性
+}
+
+let user1: User = {
+  name: 'Jack',
+  age: 18,
+  getName() { console.log(this.name) }
+};
+
+let user2: User = {
+  name: 'Rose',
+  age: 24,
+  getName() { console.log(this.name) }
+}
+```
+
+在上面，我們先用 interface 定義出了 `User` 介面，並指定 `user1`、`user2` 的型別為 `User`，這樣就達到複用的效果了。並且和上面介紹的一樣，可以使用 `readonly`、`?`、屬性索引，等關鍵字。
+
+要注意的是，interface 我們習慣使用大寫表示，有些人習慣在前面加上 `I` 來表示介面。
+```ts
+interface IUser { ... } // 👈 名字前面加上 I 表示介面。
+```
+
+### extends 繼承
+在 OOP (物件導向)中，繼承是很重要的觀念，JS 身為 OOP 的一員，也有這方面的關鍵字，只是平常可能比較少用到，而 TS 當然也不會錯過這樣重要的用法。
+
+如果我們現在有另一個 interface 是 `VIP`，裡面也有 `name`、`age` 屬性，難道我們要重新寫一遍嗎？當然不用，直接繼承就好。
+
+```ts
+interface User {
+  readonly name: string;
+  age: number;          
+  getName: () => void;
+}
+
+interface VIP extends User {  // 👈 繼承
+  id: number,
+  level: number,
+}
+
+const vip1: VIP = {
+  name: 'Jack',
+  age: 23,
+  getName() {console.log(this.name)},
+  id: 0,
+  level: 1
+}
+```
+上面我們定義了 `VIP` 介面，他會繼承 `User` 的屬性，這樣的好處是我們不用不斷重複寫一樣的屬性名字了。
+
+### 接口合併
+如果我們重複定義了兩個一樣的型別，則會將其合併
+```ts
+interface Box {
+  height: number;
+  width: number;
+}
+
+interface Box {
+  length: number;
+}
+
+// 等於
+
+interface Box {
+  height: number;
+  width: number;
+  length: number;
+}
+```
+這樣的設計是因為 JS 開發者常常會對全局的物件 (ex: window、document) 等添加新的方法，如果直接添加會報錯，所以可以用 `interface` 來合併
+
+```ts
+interface Document {
+  doSomething: () => void;
+}
+
+document.doSomething = () => { 
+  // do something
+}
+```
+要注意的是，同個屬性名不同型別，會造成合併衝突
+
+```ts
+interface A {
+  a: number;
+}
+
+interface A {
+  a: string; // ❌ 報錯
+}
+```
+
+## type 別名
+在 TS 中，有個和 interface 很像的東西，就是 `type`。基本上能用 `interface` 表示的也能用 `type` 表示。
+
+```ts
+type User = { // 👈 多一個 = (等號)
+  readonly name: string; 
+  age?: number;          
+  getName: () => void;
+  [property: string]: any;
+}
+
+let user1: User = {
+  name: 'Jack',
+  age: 18,
+  getName() { console.log(this.name) }
+};
+```
+
+### interface 和 type 的差異
+
+`interface` 與 `type` 的區別有下面幾點。
+
+1. type 能夠表示非物件型別，而interface只能表示物件型別（包括數組、函數等）
+
+    ```ts
+    type Name = string;
+    const myName: Name = 'thisweb'
+
+    type NumArr = number[];
+    const myArr: NumArr = [1, 2, 3];
+
+    type VoidFn = () => void;
+    const myFn: VoidFn = () => { console.log('Hi') }
+    ```
+2. interface 可以繼承其他型別，type 不支持繼承
+3. 同名 interface 會自動合併，同名 type 則會報錯
+4. this 關鍵字只能用於 interface
+5. type 支持 `&`、`|`，interface，interface 不支持
+
+    這是 type 和 interface 最大的差別，在 TS 中可以用 `|` 表示型別的 or， `&` 表示型別 and
+
+    ```ts
+    type A = { /* ... */ };
+    type B = { /* ... */ };
+
+    type AorB = A | B;
+    type AorBwithName = AorB & {
+      name: string
+    };
+    ```
+
+## 小結
+今天介紹了物件型別 interface 以及 type 別名，並介紹了它們的差異。基本上如果有比較複雜的類型運算時，只能透過 `type` 並搭配 `|`、`&` 來運算，靈活性較高，而 interface 是專門用來表示物件的型別，至於要用哪個，就是看需求和習慣囉！
