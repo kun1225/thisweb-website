@@ -80,7 +80,7 @@ const TableOfContents = ({ source }: Props) => {
 
   return (
     <>
-      <p className="mb-5 text-lg">
+      <p className="!mb-2 text-lg">
         目錄
       </p>
       <div className="flex flex-col text-xs">

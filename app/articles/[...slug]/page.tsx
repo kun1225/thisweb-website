@@ -59,7 +59,7 @@ const articlePage = ({
         <div className="max-w-2xl border-gray-200 lg:border-r-2 lg:pr-8">
           <MDXContent components={mdxComponents} />
         </div>
-        <aside className="block mb-8 border-2 p-4 rounded-md lg:sticky lg:top-20 lg:mb-0 lg:border-0 lg:pl-8 lg:self-start">
+        <aside className="block mb-8 border-2 p-4 rounded-md lg:sticky lg:top-20 lg:mb-0 lg:border-0 lg:pl-8 lg:self-start lg:max-h-[80vh] lg:overflow-y-scroll">
           <TableOfContents source={article.body.raw} />
         </aside>
       </section>
