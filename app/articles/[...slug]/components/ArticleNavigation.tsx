@@ -9,13 +9,13 @@ const ArticleNavigation = ({
   nextArticle: Articles | undefined,
 }) => {
   return (
-    <div className="flex flex-col gap-4 mt-16 md:flex-row md:justify-between xl:gap-8">
+    <div className="flex flex-col gap-4 mt-24 md:flex-row md:justify-between xl:gap-8">
       {prevArticle ? (
         <Link
           href={prevArticle.url}
           className="basis-1/2"
         >
-          <h2 className="mb-1 text-xs tracking-wide text-secondary transition-colors">
+          <h2 className="mb-1 text-xl tracking-wide text-secondary transition-colors">
             上一篇
           </h2>
           <span className='hidden md:inline'>←</span> {prevArticle.title}
@@ -28,7 +28,7 @@ const ArticleNavigation = ({
           href={nextArticle.url}
           className="basis-1/2 block md:text-right"
         >
-          <h2 className="mb-1 text-left text-xs uppercase tracking-wide text-secondary transition-colors md:text-right">
+          <h2 className="mb-1 text-left text-xl uppercase tracking-wide text-secondary transition-colors md:text-right">
             下一篇
           </h2>
           {nextArticle.title} <span className='hidden md:inline'>→</span>
