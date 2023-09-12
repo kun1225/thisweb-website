@@ -18,9 +18,13 @@ h1, h2, h3, h4 {
 }
 
 ::-webkit-scrollbar {
-  @apply w-[6px]
+  @apply w-[8px]
 }
 
 ::-webkit-scrollbar-thumb {
   @apply bg-secondary
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary2
 }

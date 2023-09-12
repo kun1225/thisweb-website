@@ -12,7 +12,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#00334E',
-        secondary: '#477086'
+        secondary: '#477086',
+        secondary2: '#2577a3'
       },
       fontFamily: {
         "tw-sans": 'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial',

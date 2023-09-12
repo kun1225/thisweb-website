@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 
 // Components
 import Newsletter from "./components/Newsletter"
-import Stack from "../components/Stack"
 
 const HeroBanner = () => {
   return (

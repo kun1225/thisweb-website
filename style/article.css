@@ -66,13 +66,21 @@
 }
 
 .article li:has( > p)  p:first-of-type {
-  display: inline-block;
+  display: inline;
 }
 
 .article li {
   @apply mb-[2px]
 }
 
+.article li::marker {
+  @apply inline
+}
+
 .article aside::-webkit-scrollbar {
   @apply w-[2px]
+}
+
+.article pre::-webkit-scrollbar {
+  @apply h-[8px];
 }
