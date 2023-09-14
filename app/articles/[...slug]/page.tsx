@@ -55,11 +55,11 @@ const articlePage = ({
     <>
       <article className="mx-auto article my-8">
         <ArticleTitle date={article.date} title={article.title} />
-        <section className="flex flex-col-reverse lg:flex-row justify-center">
-          <div className="max-w-2xl border-gray-200 lg:border-r-2 lg:pr-8">
+        <section className="flex flex-col-reverse xl:flex-row justify-center">
+          <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:pr-8">
             <MDXContent components={mdxComponents} />
           </div>
-          <aside className="block mb-8 border-2 p-4 rounded-md lg:sticky lg:top-20 lg:mb-0 lg:border-0 lg:pl-8 lg:self-start lg:max-h-[80vh] lg:overflow-y-scroll">
+          <aside className="block mb-8 border-2 p-4 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
             <TableOfContents source={article.body.raw} />
           </aside>
         </section>
