@@ -1,0 +1,231 @@
+---
+title: "CSS 教學 - 一篇貼文帶你吃透 Flexbox"
+desc: "在上篇文章說到甚麼是 API，而 ajax 就是前端一種用來串接 API 的技術。在以前沒有 ajax 技術時，若要獲得資料或是傳送資料給後端，網頁需要向後端發送請求，然後等待後端回應，回應後需要**重新載入整個頁面**來完成資料的傳遞，這對於用戶體驗很不好..."
+date: "2023-07-23"
+---
+
+import Codepen from '../../app/components/Codepen.tsx'
+
+如果你是初學網頁程式設計的新手，而且在每次做網站時，都無法做出腦袋裡想的畫面和排版，往往想要動手卻無從下手的話，那你一定要知道 CSS 的排版神器 - flex！
+
+今天就讓我用一篇貼文，十分鐘帶你徹底學會 flex 排版！
+
+## Flexbox 是什麼
+
+CSS Flexbox 有時又被簡稱為 flex，是一種專門**用來排列元素的屬性**，不管你是要做什麼，只要需要橫向或縱向排列，那就一定可以用到 flex。
+
+它主要有兩個概念：
+  1. 容器 Container，也就是在外層的父元素
+  2. 項目 Items，也就是被包在裡面的子元素
+
+當我們要創造 flex 元素時，我們要先在父元素設定 `display: flex` 告訴 CSS 說我們要使用 flex 排版了。
+
+```html
+<div class="container">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+```
+```css
+.container {
+  width: 500px;
+  height: 300px;
+  display: flex; // 👈
+}
+```
+有了基本概念後，就讓我們更深入看看 flex 以及相關的應用吧！
+
+## flexbox 父容器相關屬性
+
+就像上面所說，flexbox 有兩大部分分為容器和項目，而彼此有專門的屬性可以做調整，就讓我們先看看父容器有那些好用的屬性吧！
+
+### display
+
+除了設置 flex，也可以設置 inline-flex。
+
+差別在於，`flex` 會讓容器占據整個寬度，類似 `div` 的效果
+
+而 `inline-flex` 只會佔據內容所需的寬度，類似 `span`
+
+<Codepen penId="WNLOLjB"/>
+
+簡單說就是 `inline-flex` 不會換行，除非空間不夠。
+
+### flex-direction 排列方向
+
+預設情況下，flex 都會是橫向排列的，如果我們希望它變成直向排列，可以加上 `flex-direction`
+
+它有以下屬性
+
+- `row`：預設值，橫向排列
+- `column`：直向排列
+- `row-reverse`：橫向反向排列
+- `column-reverse`：直向反向排列
+
+所以當我們要直向排列時，可以這樣做
+
+```css
+.column {
+  flex-direction: column;
+}
+```
+範例：
+
+<Codepen penId="ZEVywjr" defaultTab="css" />
+
+### justify-content 主軸對齊
+
+對齊可以說是 flex 最好用的屬性了！它可以很快速的讓元素向左或右對齊，也可以平分整個空間，或是讓元素在正中間。
+
+而如果 flex 是橫向排列 (`row`) 那主軸就是橫的，反之就是直的，所以它會根據 `flex-direction` 而**更動主軸的方向**。
+ 
+它有以下幾個屬性
+
+- `flex-start`：預設值，靠左對齊
+- `flex-end`：靠右對齊
+- `center`：置中對齊
+- `space-between`：平均分配，但左右貼齊父元素
+- `space-around`：平均分配，每個子元素的邊距會相同，像是 `margin`
+- `space-evenly`：平均分配，每個間距都是相同寬度
+
+(若為 `flex-direction: column`， 則 `flex-start` 為靠上對齊，其他值依此類推，也就是更換主軸方向)
+
+<Codepen penId="poqwYzL" defaultTab="css"/>
+
+最常使用的就是 `center` 了，而 `space-between` 也可以搭配父元素設置 `padding` 來排出想要的間距，非常好用。
+
+### align-items 交叉軸對齊
+
+交叉軸其實就是跟主軸相反的軸，主軸是橫的，交叉軸就是直的，反之。
+
+而它的值和 `justify-content` 相似。 
+
+- `flex-start`：靠上方對齊
+- `flex-end`：靠下方對齊
+- `center`：置中對齊
+- `stretch`：預設值，所有元素撐開與父元素同高
+- `baseline`：依元素的基準線對齊
+
+其中 `baseline` 最特別，他會根據子元素裡面的內容，來對齊，可以看以下範例發現，最大的 1，中等的 2，和最小的 3，它們會對齊同一條底線
+
+<Codepen penId="vYvZPLL" defaultTab="css"/>
+
+
+### gap 間距
+
+在 `flex` 出現之前，我們習慣用 `padding` 或 `margin` 來設定間距，但有了 `flex` 我們可以輕易地用 `gap` 屬性來設定間距，比如我們設置 `30px` 為它們的間距。
+
+```css
+.flex {
+  border: 2px solid #ffffff;
+  width: 500px;
+  height: 100px;
+  display: flex;
+  gap: 30px; /* 👈 */
+}
+```
+
+`gap` 的用法和 `padding` 相同，數字加上單位即可，是非常好用的屬性。
+
+
+<Codepen penId="dywRaJL" defaultTab="css"/>
+
+
+### flex-wrap 換行
+
+換行也是很方便的屬性，當父元素的空間不夠時，只要設定 `flex-wrap: wrap` 就會讓子元素自動換行
+
+而它有以下幾個值:
+
+- nowrap：預設值，不換行
+- wrap：超出父元素寬度的子元素會換到下一行
+- wrap-reverse：反向換行，也就是各行的順序會顛倒
+
+### flex-flow
+
+`flex-flow` 就只是 `flex-direction` 和 `flex-wrap` 的縮寫，所以當我們希望直向排列且換行的時候就可以
+
+```css
+/*  flex-flow: flex-direction flex-wrap;  */
+
+.container {
+  flex-flow: column wrap;
+}
+```
+
+## flexbox 子元素的相關屬性
+除了前面提到的幾個數性以外，我們也可以針對每個子元素去調整，比如我們希望某個子元素占比較多比例，就可以用 `flex-grow` 來調整，接著就讓我們看看有哪些屬性吧！
+
+### flex
+
+flex 是三個屬性的縮寫，分別是
+
+```css
+.items {
+  flex: flex-grow flex-shrink flex-basis
+}
+```
+讓我們一個一個看功能吧！
+
+### flex-grow
+`flex-grow` 是照比例分配剩餘的空間給元素，例如將三個元素都設 `flex-grow` 為 1 時，你會發現它們平分整個空間。
+
+而如果把他們的 `flex-grow` 設為 1 2 3，那它們的比例就是 1 : 2 : 3，如下面的程式範例。
+
+<Codepen penId="LYMzyYO" />
+
+### flex-basis
+再來先看看第三個屬性 `flex-basis`，他是指子元素寬度的初始值，預設 auto。
+
+甚麼是初始值呢? 如果我們把第一個子元素設為 `flex-basis: 50px`，而三個元素都設為 `flex-grow: 1`，你會發現第一個子元素比其它元素多 `50px`
+
+```css
+.container {
+  width: 366px;
+  height: 200px;
+  display: flex;
+  gap: 8px;
+}
+.item1 {
+  flex: 1 50px;
+}
+.item2 {
+  flex: 1 ;
+}
+.item3 {
+  flex: 1;
+}
+```
+
+如下範例：
+
+<Codepen penId="bGOoWpP" />
+
+
+所以初始值的意思就是，先給他 `50px`，在依據 `flex-grow` 的比例去分配剩下的寬度。
+
+若 `flex-grow` 為 0 就是不分配任何剩餘的空間，元素的寬度由 `flex-basis` 決定。
+
+### flex-shrink
+如果你去網路上查會查到很多人說 `flex-shrink` 的意思是，空間不足時，決定分配的空間，說真的，我完全看不懂他在說什麼。
+
+其實 `flex-shrink` 就是當元素寬度低於 `flex-basis` 時，元素縮小的比例。
+
+舉例來說，若把三個子元素的 `flex-shrink` 分別設為 0、1、2，而 `flex-basis `都設為 `100px`，那當父元素空間小於 300px 後
+
+1. 第一個子元素不會縮小，維持在 100px
+2. 第二個子元素和第三個子元素，依照 1 : 2 的比例縮小。
+
+可以看下面的程式範例，我透過動畫演示，可以很清楚看到第二和三個元素縮小的速度是 1 : 2。
+
+<Codepen penId="vYvemyz" />
+
+
+### align-self
+
+### order 順序
+
+## 實際應用
+
+### header

@@ -1,4 +1,4 @@
-name: lighthouse-ci CI
+name: lighthouse-ci
 on: [push]
 jobs:
   lighthouseci:
