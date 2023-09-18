@@ -36,7 +36,8 @@
 .article p,
 .article ul,
 .article ol,
-.article img {
+.article img,
+.article .codepen {
   @apply mb-6;
 }
 
