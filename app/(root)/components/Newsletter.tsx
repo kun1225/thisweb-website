@@ -1,12 +1,14 @@
 'use client'
 import { useState } from 'react';
+import { FormHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 const Newsletter = ({
-  formId
+  formId,
+  ...props
 }: {
-  formId: string
-}) => {
+  formId: string;
+} & FormHTMLAttributes<HTMLFormElement>) => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -51,7 +53,7 @@ const Newsletter = ({
 
   return (
     <>
-      <form onSubmit={subscribeEmail} className="flex gap-4 flex-col md:flex-row"  >
+      <form onSubmit={subscribeEmail} className="flex gap-4 flex-col md:flex-row" {...props} >
         <input type="email" name='email' required placeholder="輸入你的 email ..." className="basis-3/4 p-2 border-2 rounded-md w-full outline-none focus:border-secondary duration-200 text-sm font-light" />
         <input type="submit" value="免費訂閱" className="p-2 text-sm basis-1/4 bg-secondary text-white rounded-md cursor-pointer hover:bg-[#2577a3] duration-200" />
       </form >
