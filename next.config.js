@@ -1,8 +1,8 @@
 const { withContentlayer } = require('next-contentlayer');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = { 
-  reactStrictMode: false, 
+const nextConfig = {
+  reactStrictMode: false,
   swcMinify: true,
   eslint: {
     // Warning: This allows production builds to successfully complete even if
@@ -13,8 +13,7 @@ const nextConfig = {
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     ignoreBuildErrors: true,
-  },
-  output: 'export'
+  }
 };
 
 module.exports = withContentlayer(nextConfig);
