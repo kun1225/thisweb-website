@@ -1,8 +1,5 @@
-"use client"
-
 // Next
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 
 // Lib
 import { format, parseISO } from 'date-fns'
@@ -17,23 +14,26 @@ import PaginatedNav from './components/PaginatedNav'
 
 const ARTICLES_PER_PAGE = 10;
 
-const ArticlesPage = () => {
+const ArticlesPage = ({
+  params
+}: {
+  params: { page: string }
+}) => {
 
   // filter article by page
   // start with 1, and there are ten articles per page
   // page = 1, article = 0 ~ 9 ; page = 2, article = 10 ~ 19 ...
-  const { page } = useParams();
-  const numPage = parseInt(page as string);
+  const numPage = parseInt(params.page as string);
 
   const startIndex = (numPage - 1) * ARTICLES_PER_PAGE;
   const endIndex = numPage * ARTICLES_PER_PAGE
-    
+
   const articles = composeWithInitialValue(
     allArticles,
     filterActiveArticles,
     sortArticleByDate,
   );
-  
+
   const paginatedPosts = articles.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
@@ -53,11 +53,11 @@ const ArticlesPage = () => {
             </li>
           ))
           :
-        <EmptyPage />
+          <EmptyPage />
         }
       </ul>
 
-      {paginatedPosts.length > 0 && <PaginatedNav currentPage={numPage} totalPages={totalPages} articlesPerPage={ARTICLES_PER_PAGE}/>}
+      {paginatedPosts.length > 0 && <PaginatedNav currentPage={numPage} totalPages={totalPages} articlesPerPage={ARTICLES_PER_PAGE} />}
     </div>
   )
 }
