@@ -1,5 +1,9 @@
 {
   "ci": {
+    "collect": {
+      "startServerCommand": "npm run start",
+      "url": ["https://thisweb-website-git-release-thisweb1225.vercel.app/"]
+    },
     "upload": {
       "target": "temporary-public-storage"
     }
