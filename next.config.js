@@ -13,7 +13,9 @@ const nextConfig = {
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     ignoreBuildErrors: true,
-  }
+  },
+  output: 'export',
+  images: { unoptimized: true },
 };
 
 module.exports = withContentlayer(nextConfig);
