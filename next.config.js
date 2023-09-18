@@ -14,6 +14,7 @@ const nextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  output: 'export'
 };
 
 module.exports = withContentlayer(nextConfig);
