@@ -1,6 +1,6 @@
 ---
 title: "CSS 教學 - 一篇貼文帶你吃透 Flexbox"
-desc: "在上篇文章說到甚麼是 API，而 ajax 就是前端一種用來串接 API 的技術。在以前沒有 ajax 技術時，若要獲得資料或是傳送資料給後端，網頁需要向後端發送請求，然後等待後端回應，回應後需要**重新載入整個頁面**來完成資料的傳遞，這對於用戶體驗很不好..."
+desc: "如果你是初學網頁程式設計的新手，而且每次做網站時，都無法做出腦袋裡想的畫面或排版，往往想要動手卻無從下手的話，那你一定要知道 CSS 的排版神器 - flex，今天就讓我用一篇貼文，十分鐘帶你徹底學會 flex 排版 ... "
 date: "2023-07-23"
 ---
 
@@ -223,9 +223,59 @@ flex 是三個屬性的縮寫，分別是
 
 
 ### align-self
+`align-self` 是專門針對個子元素做交叉軸的對齊。和 `align-items` 相似，只不過 `align-items` 是針對整體來調整。
+
+它有的值和 `align-items` 一樣：
+
+- flex-start：靠上方對齊
+- flex-end：靠下方對齊
+- center：置中對齊
+- stretch：所有元素撐開與父元素同高
+- baseline：依元素的基準線對齊
+
+所以如果我們需要某個子元素靠上，而其它子元素靠下的話就可以這樣
+
+```css
+.container {
+  display: flex;
+  align-items: flex-end;
+}
+.item1 {
+  flex: 1 0 0;
+}
+.item2 {
+  flex: 1 0 0;
+  align-self: flex-start;
+}
+.item3 {
+  flex: 1 0 0;
+}
+```
+
+程式範例如下：
+
+<Codepen penId="BavwmPR" />
 
 ### order 順序
+`order` 可以讓我們針對個別子元素去調整他們排列的順序，比如我將第二個子元素設為 `order: 1` 那他就會在第一個位置。`order` 只能給定數字。
 
-## 實際應用
+```css
+.item1 {
+  flex: 1 0 0;
+}
+.item2 {
+  flex: 1 0 0;
+  order: 1;
+}
+.item3 {
+  flex: 1 0 0;
+}
+```
+程式碼範例如下：
 
-### header
+<Codepen penId="QWzqOZQ" />
+
+## 小結
+今天很詳細的說了所有有關 flexbox 屬性的內容，不過學程式動手做是最重要的，所以以後如果要用到排版的時候，就直接用 flexbox 來練習吧！
+
+那今天就這樣，下篇貼文見～！
