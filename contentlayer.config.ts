@@ -15,7 +15,15 @@ export const Articles = defineDocumentType(() => ({
     isInIndex: { type: 'boolean', required: false },
     topic: {
       type: 'enum',
-      options: ['JavaScript', 'css', 'React', 'Vue', 'software design','others'],
+      options: [
+        'JavaScript',
+        'css',
+        'React',
+        'Vue',
+        'software design',
+        'others',
+        'effect',
+      ],
       require: false,
       default: 'JavaScript',
     },
