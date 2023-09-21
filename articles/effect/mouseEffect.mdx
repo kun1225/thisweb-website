@@ -1,0 +1,153 @@
+---
+title: "板塊設計的滑鼠跟隨效果 - 如何用 JS 幫網站客製化滑鼠呢？"
+desc: "你知道怎麼做滑鼠更隨的效果嗎？版塊設計是一家台灣的網站公司，一直蠻喜歡它們家的網站設計，前幾天看到他的的官網改版了，覺得它們的滑鼠效果很不錯，就試著把它做成貼文分享給你，來看看怎麼做的吧！"
+date: "2023-09-02"
+isActive: true
+topic: "effect"
+---
+import Codepen from '../../app/components/Codepen.tsx'
+
+你知道怎麼做 JS 滑鼠更隨的效果嗎？
+
+版塊設計是一家台灣的網站公司，一直蠻喜歡它們家的網站設計 (沒有業配，但歡迎XD)，前幾天看到他的的官網改版了，覺得它們的滑鼠效果很不錯，就試著把它做成貼文分享給你
+
+最終效果會像下面這樣
+
+<Codepen penId="ZEVaqYE" />
+
+## HTML & CSS
+首先一樣我們先來做基本的 HTML 和 CSS。
+
+mouse 父元素我們用 fixed 和 寬高 100 %，讓他永遠固定在視窗內
+
+而 mouse__item 子元素我們用 CSS 變數來設定 translate 和 scale，現在 CSS 的 transform 動畫也可以分開寫了，分開寫的好處是不容易被新的 transform 覆蓋。
+
+最後要注意的是，一定要加上 `pointer-events: none;`，讓滑鼠可以正常點擊到頁面的其它元素。
+
+```html
+<div class="mouse">
+  <div class="mouse__item"></div>
+  <div class="mouse__item"></div>
+  <div class="mouse__item"></div>
+  <div class="mouse__item"></div>
+  <div class="mouse__item"></div>
+</div>
+```
+```css
+.mouse {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mouse__item {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #2ecee0;
+  translate: var(--x) var(--y);
+  scale: var(--scale);
+  pointer-events: none;
+}
+```
+
+接著就可以來 JS 做滑鼠跟隨效果了
+
+## JavaScript 做滑鼠跟隨效果
+首先先獲得元素，因為等等會做 hover 的效果，所以我們先獲得全部的 a 元素
+
+```js
+const body = document.querySelector('body');
+const mouse = document.querySelector('.mouse');
+const mouseItems = document.querySelectorAll('.mouse__item');
+const links = document.querySelectorAll('a');
+```
+
+接著我們設定每個元素的 `scale` 和 `delay`，可以用 `forEach` 來跑迴圈，而 `scale` 出來的值分別會是 `1 0.9 0.8 0/7 ...`
+
+最後再利用 `style.setProperty` 來設置 CSS 變數
+
+```js
+const body = document.querySelector('body');
+const mouse = document.querySelector('.mouse');
+const mouseItems = document.querySelectorAll('.mouse__item');
+const links = document.querySelectorAll('a');
+
+function setScaleAndDelay() {
+  mouseItems.forEach((item, index) => {
+    const scale = (10 - index) / 10,
+          delay = index / 20;
+
+    item.style.setProperty('--scale', scale);
+    item.style.setProperty('--delay', `${delay}s`);
+  })
+}
+setScaleAndDelay();
+```
+
+接著要來設定滑鼠跟隨的效果了，其實很簡單，就只是把 `e.clientX` 和 `e.clientY` 的值設給 CSS 變數，`e.clientX/Y` 是滑鼠位於視窗左上角的距離。
+
+```js
+function mouseMoveEffect(e) {
+  const x = e.clientX;
+  const y = e.clientY;
+  mouse.style.setProperty('--x', `${x - 10}px`);
+  mouse.style.setProperty('--y', `${y - 10}px`)
+}
+
+body.addEventListener('mousemove', mouseMoveEffect);
+```
+
+這樣滑鼠跟隨就完成了！然後我們可以來繼續做 hover 時的效果。
+
+## JS 做 hover 效果
+
+這部分也很簡單
+
+* 在滑鼠移入 link 時，在 `mouse__item` 添加 `hover` 的 class
+* 在出 link 時，在 `mouse__item` 刪掉 `hover` 的 class
+
+```js
+function mouseEnterEffect() {
+  mouseItems.forEach((item, index) => {
+    item.classList.add('hover');
+  })
+}
+function mouseOutEffect() {
+  mouseItems.forEach((item, index) => {
+    item.classList.remove('hover');
+  })
+}
+links.forEach(link => {
+  link.addEventListener('mouseenter', mouseEnterEffect);
+  link.addEventListener('mouseout', mouseOutEffect);
+});
+```
+
+所以我們要回去調整 CSS
+
+## 最後調整 CSS
+我們利用 `:first-of-type` 來讓第一個 `mouse__item` 產生變化，把他放大並變成圓形
+
+而其它的 mouse__item 就讓它隱藏就，這樣就很簡單的做出 hover 效果了！
+
+```css
+.mouse__item.hover:first-of-type {
+  transition: scale 0.4s;
+  scale: 5;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+.mouse__item.hover:not(:first-of-type) {
+  opacity: 0;
+}
+```
+大功告成！
+
+## 小結
+
+你覺得這次的效果怎麼樣呢，或是你有看過其它滑鼠的特效嗎，可以直接私訊我的 IG 跟我討論喔！
+
+那今天就這樣，下篇貼文見～！
