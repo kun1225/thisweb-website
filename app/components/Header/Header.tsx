@@ -13,7 +13,7 @@ export const navContent = [
   },
 ];
 
-const Header = () => {
+function Header() {
   return (
     <header className="flex justify-between items-center px-4 md:px-8 py-2 shadow-sm shadow-gray-200 sticky top-0 backdrop-blur-md z-50">
       <Link href="/">
@@ -22,7 +22,7 @@ const Header = () => {
         </Magnetic>
       </Link>
       <nav>
-        <Stack as="ul" gap={2} className="text-xs">
+        <Stack as="ul" className="text-xs" gap={2}>
           {navContent.map(({ title, url }) => (
             <li key={title}>
               <Link href={url}>
@@ -36,6 +36,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;

@@ -1,4 +1,4 @@
-const Codepen = ({
+function Codepen({
   author = 'thisWeb1225',
   penId,
   showResult = true,
@@ -12,7 +12,7 @@ const Codepen = ({
   editable?: boolean;
   clickToLoad?: boolean;
   defaultTab?: 'html' | 'css' | 'js';
-}) => {
+}) {
   const preview = clickToLoad ? '/preveiw' : '';
   const editableContent = editable ? '&editable=true' : '';
   const showResultContent = showResult ? '%2Cresult' : '';
@@ -20,13 +20,14 @@ const Codepen = ({
   return (
     <div className="codepen">
       <iframe
+        title={penId}
         height="500"
-        style={{ width: '100%' }}
-        src={`https://codepen.io/${author}/embed${preview}/${penId}?default-tab=${defaultTab}${showResultContent}${editableContent}`}
         loading="lazy"
-      ></iframe>
+        src={`https://codepen.io/${author}/embed${preview}/${penId}?default-tab=${defaultTab}${showResultContent}${editableContent}`}
+        style={{ width: '100%' }}
+      />
     </div>
   );
-};
+}
 
 export default Codepen;

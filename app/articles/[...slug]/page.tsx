@@ -3,7 +3,7 @@ import '../../../style/prism.css';
 import '../../../style/article.css';
 
 // lib
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent as callMDXComponent } from 'next-contentlayer/hooks'; // avoid the error of react-hook-rule
 import { allArticles } from 'contentlayer/generated';
 import {
   sortArticleByDate,
@@ -18,10 +18,11 @@ import ArticleTitle from './components/ArticleTitle';
 import ArticleNavigation from './components/ArticleNavigation';
 import TableOfContents from './components/TableOfContents';
 
-export const generateStaticParams = async () =>
+export const generateStaticParams = () => {
   allArticles.map((article) => ({
     slug: article._raw.flattenedPath.split('/'),
   }));
+};
 
 export const generateMetadata = ({
   params,
@@ -32,7 +33,7 @@ export const generateMetadata = ({
     .reduce((all, val) => `${all}/${val}`, '')
     .slice(1);
   const article = allArticles.find(
-    (article) => article._raw.flattenedPath === completedUrl,
+    (nonFindArticle) => nonFindArticle._raw.flattenedPath === completedUrl,
   );
   if (!article) return;
 
@@ -54,13 +55,14 @@ const articlePage = ({ params }: { params: { slug: string[] } }) => {
   );
 
   const article = sortedArticles.find(
-    (article) => article._raw.flattenedPath === completedUrl,
+    (nonFindArticle) => nonFindArticle._raw.flattenedPath === completedUrl,
   );
 
   if (!article) return <NotFoundPage />;
 
   const articleIndex = sortedArticles.findIndex(
-    (article) => article._raw.flattenedPath === completedUrl,
+    (nonFindIndexArticle) =>
+      nonFindIndexArticle._raw.flattenedPath === completedUrl,
   );
   const prevArticle =
     articleIndex + 1 < sortedArticles.length
@@ -69,7 +71,7 @@ const articlePage = ({ params }: { params: { slug: string[] } }) => {
   const nextArticle =
     articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
 
-  const MDXContent = useMDXComponent(article.body.code);
+  const MDXContent = callMDXComponent(article.body.code);
 
   return (
     <>
@@ -85,7 +87,7 @@ const articlePage = ({ params }: { params: { slug: string[] } }) => {
         </section>
       </article>
 
-      <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
+      <ArticleNavigation nextArticle={nextArticle} prevArticle={prevArticle} />
     </>
   );
 };

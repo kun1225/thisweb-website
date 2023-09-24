@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 const BASE_URL = '/articles/page/';
 
-const PaginatedNav = ({
+function PaginatedNav({
   currentPage,
   totalPages,
   articlesPerPage,
@@ -12,7 +12,7 @@ const PaginatedNav = ({
   currentPage: number;
   totalPages: number;
   articlesPerPage: number;
-}) => {
+}) {
   const getPageNumbers = () => {
     const pageNumbers = [];
     for (
@@ -40,7 +40,7 @@ const PaginatedNav = ({
       {currentPage > articlesPerPage + 2 && <span>...</span>}
 
       {getPageNumbers().map((pageNumber) => (
-        <Link key={pageNumber} href={`${BASE_URL}${pageNumber}`}>
+        <Link href={`${BASE_URL}${pageNumber}`} key={pageNumber}>
           <p
             className={`
           w-6 h-6 rounded-[50%] text-center
@@ -67,6 +67,6 @@ const PaginatedNav = ({
       )}
     </div>
   );
-};
+}
 
 export default PaginatedNav;

@@ -3,7 +3,7 @@ import { AiOutlineLink } from 'react-icons/ai';
 
 type Props = React.ComponentPropsWithoutRef<'a'>;
 
-const CustomLink = ({ href, children, ...rest }: Props) => {
+function CustomLink({ href, children, ...rest }: Props) {
   if (!href) return;
 
   const isInternalLink = href.startsWith('/');
@@ -14,22 +14,18 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
 
   return (
     <>
-      {isInternalLink && (
-        <Link href={href} className={className} target="_blank" {...rest}>
+      {isInternalLink ? <Link className={className} href={href} target="_blank" {...rest}>
           {children}
-        </Link>
-      )}
-      {isAnchorLink && (
-        <a href={href} className="text-secondary" {...rest}>
+        </Link> : null}
+      {isAnchorLink ? <a className="text-secondary" href={href} {...rest}>
           {children}
-        </a>
-      )}
+        </a> : null}
       {!isInternalLink && !isAnchorLink && (
         <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={href}
           className={`${className} inline-flex items-baseline gap-[1px]`}
+          href={href}
+          rel="noopener noreferrer"
+          target="_blank"
           {...rest}
         >
           {typeof children === 'string' && <AiOutlineLink />}
@@ -38,6 +34,6 @@ const CustomLink = ({ href, children, ...rest }: Props) => {
       )}
     </>
   );
-};
+}
 
 export default CustomLink;

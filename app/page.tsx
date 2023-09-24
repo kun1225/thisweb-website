@@ -18,10 +18,10 @@ export default function Home() {
 
   return (
     <>
-      <HeroBanner></HeroBanner>
-      <ProblemSection></ProblemSection>
-      <SiteOwnerSection></SiteOwnerSection>
-      <RecommendedArticles articles={articles}></RecommendedArticles>
+      <HeroBanner />
+      <ProblemSection />
+      <SiteOwnerSection />
+      <RecommendedArticles articles={articles} />
     </>
   );
 }

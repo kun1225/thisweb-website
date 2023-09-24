@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import Button from '../components/Button';
 
-const SiteOwnerSection = () => {
+function SiteOwnerSection() {
   return (
     <section className="md:px-8 pt-8 mb-32 text-sm">
       <h2 className="text-2xl text-center md:mb-8">別擔心，讓我來幫助你</h2>
@@ -9,11 +8,11 @@ const SiteOwnerSection = () => {
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8">
         <div className="flex-1 basis-1/3 grid place-content-center p-10">
           <Image
-            width={360}
-            height={360}
-            src="/images/siteOwner.jpg"
             alt="site owner"
             className="shadow-md shadow-gray-500 rounded-md"
+            height={360}
+            src="/images/siteOwner.jpg"
+            width={360}
           />
         </div>
         <div className="flex-1 basis-2/3 flex flex-col gap-4 leading-6">
@@ -33,7 +32,7 @@ const SiteOwnerSection = () => {
       </div>
 
       <div className="flex justify-center h-[1px] mb-8">
-        <div className="border-b-2 border-gray-500 border-dotted w-[100px]"></div>
+        <div className="border-b-2 border-gray-500 border-dotted w-[100px]" />
       </div>
 
       <div className="flex flex-col gap-2 items-center">
@@ -48,6 +47,6 @@ const SiteOwnerSection = () => {
       </div>
     </section>
   );
-};
+}
 
 export default SiteOwnerSection;

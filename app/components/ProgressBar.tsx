@@ -3,15 +3,15 @@
 // NProgress
 import { AppProgressBar } from 'next-nprogress-bar';
 
-const ProgressBar = () => {
+function ProgressBar() {
   return (
     <AppProgressBar
-      height="2px"
       color="#5588A3"
+      height="2px"
       options={{ showSpinner: false }}
       shallowRouting
     />
   );
-};
+}
 
 export default ProgressBar;

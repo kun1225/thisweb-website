@@ -29,14 +29,14 @@ const problemCardContent = [
   },
 ];
 
-const ProblemSection = () => {
+const ProblemSection: React.FC = () => {
   return (
-    <Stack as="section" gap={8} direction="col" className="text-center mb-32">
+    <Stack as="section" className="text-center mb-32" direction="col" gap={8}>
       <h2 className="text-2xl md:mb-8">自學程式的你也遇過這些問題嗎?</h2>
 
       <Stack gap={8} wrap>
         {problemCardContent.map(({ icon, title, desc }) => (
-          <ProblemCard icon={icon} title={title} desc={desc} key={title} />
+          <ProblemCard desc={desc} icon={icon} key={title} title={title} />
         ))}
       </Stack>
     </Stack>

@@ -1,7 +1,6 @@
 import type { HTMLProps } from 'react';
-import { ReactHTMLElement } from 'react';
 
-const Stack = ({
+function Stack({
   as: Component = 'div',
   gap = 4,
   direction = 'row',
@@ -15,7 +14,7 @@ const Stack = ({
   wrap?: boolean;
   className?: HTMLProps<HTMLElement>['className'];
   children?: React.ReactNode;
-}) => {
+}) {
   return (
     <Component
       className={`flex gap-${gap} flex-${direction} ${wrap && 'flex-wrap'} ${
@@ -25,6 +24,6 @@ const Stack = ({
       {children}
     </Component>
   );
-};
+}
 
 export default Stack;

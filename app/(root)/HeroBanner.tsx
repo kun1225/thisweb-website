@@ -15,13 +15,13 @@ import Newsletter from './components/Newsletter';
 
 const { heroFormId } = convertKitFormId;
 
-const HeroBanner = () => {
+function HeroBanner() {
   return (
     <section className="min-h-[120vh] md:min-h-[90vh] flex flex-col md:flex-row lg:gap-16 mb-24">
       <motion.div
+        animate={{ x: 0, opacity: 1 }}
         className="flex-1 basis-1/3 md:basis-2/3 flex flex-col justify-center md:gap-4 gap-2 text-center md:text-left"
         initial={{ x: '-100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
         transition={{
           duration: 0.8,
         }}
@@ -41,24 +41,24 @@ const HeroBanner = () => {
           篇前端的技術文章。
         </p>
         <Newsletter
-          formId={heroFormId}
           data-testid="newsletter"
+          formId={heroFormId}
           onSubscribe={subscribeConvertKitEmail}
         />
       </motion.div>
 
       <motion.div
+        animate={{ x: 0, opacity: 1 }}
         className="flex-1 md:basis-1/3 relative"
         initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
         transition={{
           duration: 0.8,
         }}
       >
-        <Image src="/heroBanner.svg" fill alt="hero banner" priority></Image>
+        <Image alt="hero banner" fill priority src="/heroBanner.svg" />
       </motion.div>
     </section>
   );
-};
+}
 
 export default HeroBanner;
