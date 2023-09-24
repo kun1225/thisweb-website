@@ -18,7 +18,7 @@ import ArticleTitle from './components/ArticleTitle';
 import ArticleNavigation from './components/ArticleNavigation';
 import TableOfContents from './components/TableOfContents';
 
-export const generateStaticParams = () => {
+export const generateStaticParams = async () => {
   allArticles.map((article) => ({
     slug: article._raw.flattenedPath.split('/'),
   }));
