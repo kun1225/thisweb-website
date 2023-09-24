@@ -31,7 +31,7 @@ export const filterActiveArticles = (allArticles: Articles[]) => {
   return allArticles.filter((article) => article.isActive);
 };
 
-export const filteArticlesByTopic = (
+export const filterArticlesByTopic = (
   allArticles: Articles[],
   topic: string,
 ) => {

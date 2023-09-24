@@ -19,7 +19,7 @@ import ArticleNavigation from './components/ArticleNavigation';
 import TableOfContents from './components/TableOfContents';
 
 export const generateStaticParams = async () => {
-  allArticles.map((article) => ({
+  return allArticles.map((article) => ({
     slug: article._raw.flattenedPath.split('/'),
   }));
 };
@@ -43,7 +43,7 @@ export const generateMetadata = ({
   };
 };
 
-const articlePage = ({ params }: { params: { slug: string[] } }) => {
+const ArticlePage = ({ params }: { params: { slug: string[] } }) => {
   const completedUrl = params.slug
     .reduce((all, val) => `${all}/${val}`, '')
     .slice(1);
@@ -92,4 +92,4 @@ const articlePage = ({ params }: { params: { slug: string[] } }) => {
   );
 };
 
-export default articlePage;
+export default ArticlePage;
