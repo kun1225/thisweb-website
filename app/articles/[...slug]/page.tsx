@@ -1,39 +1,52 @@
 // style
-import './../../../style/prism.css';
-import './../../../style/article.css';
+import '../../../style/prism.css';
+import '../../../style/article.css';
 
 // lib
-import { allArticles } from 'contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { sortArticleByDate, filterActiveArticles, composeWithInitialValue } from '@/lib/lib'
+import { useMDXComponent as callMDXComponent } from 'next-contentlayer/hooks'; // avoid the error of react-hook-rule
+import { allArticles } from 'contentlayer/generated';
+import {
+  sortArticleByDate,
+  filterActiveArticles,
+  composeWithInitialValue,
+} from '@/lib/lib';
 
 // Components
-import ArticleTitle from './components/ArticleTitle';
-import ArticleNavigation from './components/ArticleNavigation';
 import NotFoundPage from '@/app/not-found';
 import mdxComponents from '@/lib/mdxComponents';
+import ArticleTitle from './components/ArticleTitle';
+import ArticleNavigation from './components/ArticleNavigation';
 import TableOfContents from './components/TableOfContents';
 
-export const generateStaticParams = async () => allArticles.map((article) => ({ slug: article._raw.flattenedPath.split('/') }));
+export const generateStaticParams = async () => {
+  return allArticles.map((article) => ({
+    slug: article._raw.flattenedPath.split('/'),
+  }));
+};
 
-export const generateMetadata = ({ params }: { params: { slug: string[] } }) => {
-  const completedUrl = params.slug.reduce((all, val) => `${all}/${val}`, '').slice(1);
-  const article = allArticles.find((article) => article._raw.flattenedPath === completedUrl);
+export const generateMetadata = ({
+  params,
+}: {
+  params: { slug: string[] };
+}) => {
+  const completedUrl = params.slug
+    .reduce((all, val) => `${all}/${val}`, '')
+    .slice(1);
+  const article = allArticles.find(
+    (nonFindArticle) => nonFindArticle._raw.flattenedPath === completedUrl,
+  );
   if (!article) return;
 
   return {
     title: `${article.title} | ThisWeb`,
     description: article.desc,
-  }
-}
+  };
+};
 
-const articlePage = ({
-  params
-}: {
-  params: { slug: string[] }
-}) => {
-
-  const completedUrl = params.slug.reduce((all, val) => `${all}/${val}`, '').slice(1)
+const ArticlePage = ({ params }: { params: { slug: string[] } }) => {
+  const completedUrl = params.slug
+    .reduce((all, val) => `${all}/${val}`, '')
+    .slice(1);
 
   const sortedArticles = composeWithInitialValue(
     allArticles,
@@ -41,15 +54,24 @@ const articlePage = ({
     sortArticleByDate,
   );
 
-  const article = sortedArticles.find((article) => article._raw.flattenedPath === completedUrl)
+  const article = sortedArticles.find(
+    (nonFindArticle) => nonFindArticle._raw.flattenedPath === completedUrl,
+  );
 
-  if (!article) return <NotFoundPage />
+  if (!article) return <NotFoundPage />;
 
-  const articleIndex = sortedArticles.findIndex((article) => article._raw.flattenedPath === completedUrl);
-  const prevArticle = articleIndex + 1 < sortedArticles.length ? sortedArticles[articleIndex + 1] : undefined;
-  const nextArticle = articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
+  const articleIndex = sortedArticles.findIndex(
+    (nonFindIndexArticle) =>
+      nonFindIndexArticle._raw.flattenedPath === completedUrl,
+  );
+  const prevArticle =
+    articleIndex + 1 < sortedArticles.length
+      ? sortedArticles[articleIndex + 1]
+      : undefined;
+  const nextArticle =
+    articleIndex - 1 >= 0 ? sortedArticles[articleIndex - 1] : undefined;
 
-  const MDXContent = useMDXComponent(article.body.code);
+  const MDXContent = callMDXComponent(article.body.code);
 
   return (
     <>
@@ -63,11 +85,11 @@ const articlePage = ({
             <TableOfContents source={article.body.raw} />
           </aside>
         </section>
-      </article >
+      </article>
 
-      <ArticleNavigation prevArticle={prevArticle} nextArticle={nextArticle} />
+      <ArticleNavigation nextArticle={nextArticle} prevArticle={prevArticle} />
     </>
-  )
-}
+  );
+};
 
-export default articlePage
+export default ArticlePage;

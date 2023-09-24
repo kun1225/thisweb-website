@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss'
-import theme from './style/theme'
+import type { Config } from 'tailwindcss';
+import theme from './style/theme';
 
 const config: Config = {
   content: [
@@ -13,15 +13,16 @@ const config: Config = {
       colors: {
         primary: '#00334E',
         secondary: '#477086',
-        secondary2: '#2577a3'
+        secondary2: '#2577a3',
       },
       fontFamily: {
-        "tw-sans": 'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial',
-        "tw-serif": 'Noto Serif TC, ui-serif',
-        "tw-code": "JetBrains Mono, ui-monospace, Consolas,  monospace"
-      }
+        'tw-sans':
+          'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial',
+        'tw-serif': 'Noto Serif TC, ui-serif',
+        'tw-code': 'JetBrains Mono, ui-monospace, Consolas,  monospace',
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

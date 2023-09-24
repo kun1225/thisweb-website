@@ -1,11 +1,8 @@
-import { Dispatch, SetStateAction } from 'react';
-
 const BASEURL = `https://api.convertkit.com/v3/forms`;
 
 export async function subscribeConvertKitEmail(
   e: React.FormEvent<HTMLFormElement>,
   formId: string,
-  setIsSuccess?: Dispatch<SetStateAction<boolean>>
 ) {
   e.preventDefault();
 
@@ -29,16 +26,13 @@ export async function subscribeConvertKitEmail(
     });
 
     if (!response.ok) {
-      if (setIsSuccess) setIsSuccess(false);
       throw new Error(
-        `status: ${response.status}, message: ${response.statusText} `
+        `status: ${response.status}, message: ${response.statusText} `,
       );
     }
-
-    if (setIsSuccess) setIsSuccess(false);
   } catch (err: any) {
     console.log(
-      `There was a problem with fetch operation in Newsletter.tsx: ${err}`
+      `There was a problem with fetch operation in Newsletter.tsx: ${err}`,
     );
   }
 }

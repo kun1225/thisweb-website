@@ -1,14 +1,15 @@
 ---
-title: "JavaScript 教學 中階篇 1 - 創造物件的工廠模式和構造函數"
-desc: "不知道你有沒有想過一個問題，如果我們要創建 100 個物件，難道要一個一個打嗎？會累死掉吧，所以我們可以用一些方法來更輕鬆的創造物件，分別為工廠模式和構造函數模式，而這些模式都是一種設計方法，並不是一個新的語法或函數，他是只是觀念和用法，那就讓我們這兩個方法分別是甚麼吧！"
-date: "2023-08-05"
+title: 'JavaScript 教學 中階篇 1 - 創造物件的工廠模式和構造函數'
+desc: '不知道你有沒有想過一個問題，如果我們要創建 100 個物件，難道要一個一個打嗎？會累死掉吧，所以我們可以用一些方法來更輕鬆的創造物件，分別為工廠模式和構造函數模式，而這些模式都是一種設計方法，並不是一個新的語法或函數，他是只是觀念和用法，那就讓我們這兩個方法分別是甚麼吧！'
+date: '2023-08-05'
 ---
 
 我們在上篇文章中講了 JS 物件的基本用法和一些要注意的地方，那今天我們來更深入聊聊物件這個東西吧！
- 
+
 不知道你有沒有想過一個問題，如果我們要創建 100 個物件，難道要一個一個打嗎？會累死掉吧，所以我們可以用一些方法來更輕鬆的創造物件，分別為工廠模式和構造函數模式，而這些模式都是一種**設計方法**，並不是一個新的語法或函數，他是只是觀念和用法，那就讓我們這兩個方法分別是甚麼吧！
 
 ## 工廠模式
+
 工廠模式就是把每個**函數**都**當成一個工廠**，在**工廠內部**自己**創建一個物件**，並且輸出物件：
 
 ```javascript
@@ -16,14 +17,15 @@ function createPerson(name, age, job) {
   let o = new Object();
   o.name = name;
   o.age = age;
-  o,sayName = function() {
-    console.log(this.name)
-  };
+  o,
+    (sayName = function () {
+      console.log(this.name);
+    });
   return o;
 }
 
-let person1 = createPerson("Jack", 20, "webDeveloper");
-let perons2 = createPerson("Rose", 22, "webDesign");
+let person1 = createPerson('Jack', 20, 'webDeveloper');
+let perons2 = createPerson('Rose', 22, 'webDesign');
 ```
 
 上面的例子可以看出這個工廠是來造人的，可以重複造出好多類似的人。
@@ -33,6 +35,7 @@ let perons2 = createPerson("Rose", 22, "webDesign");
 就像上面的例子，除非看程式碼，不然無法判斷說 Jack 到底是人還是車子，所以有了接下來的**構造函數**。
 
 ## 構造函數模式
+
 如果你還記得的話，宣告陣列的其中一個方法是 `let arr = new Array()`，宣告物件也有一個方式是 `let obj = new Object()`，`Object` 和 `Array` 就是JS內建的原生構造函數，我們也可以自定義一個構造函數，像是:
 
 ```js
@@ -41,7 +44,7 @@ function Person(name, age, job) {
 	this.age = age;
 	this.job = job;
 	this.sayName() {
-		console.log(name)	
+		console.log(name)
 	}
 }
 
@@ -54,6 +57,7 @@ console.log(person2.constructor === Person) // true
 console.log(person1 instanceof Object) // true
 console.log(person1 instanceof Person) // true
 ```
+
 你可以發現我們能用 `constructor` 或 `instanceof` 來識別對象的類型，通常認為 `instanceof` 是確定對象類型比較可靠的方式。
 
 要注意的是，構造函數習慣用**大寫開頭**，這樣有助於後人來分別是構造函數還是普通函數。
@@ -72,50 +76,54 @@ console.log(person1 instanceof Person) // true
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.sayName = function() {
-    console.log(this.name)
-  }
+  this.sayName = function () {
+    console.log(this.name);
+  };
 }
-let person1 = new Person('Jack', 18) // 作為構造函數使用
+let person1 = new Person('Jack', 18); // 作為構造函數使用
 Person('Rose', 20); // 作為普通函數使用
 window.sayName(); // "person1" 添加到 window 中
-
 ```
+
 ## 構造函數的問題
 
 構造函數的優點前面說完了，該來說說問題了！在構造函數裡面宣告的函數，會在每一個用構造函數式創建的物件(稱為實例)上都宣告一次，造成資源的浪費:
 
 ```js
-function Person(name, age, job){ 
- this.name = name; 
- this.age = age; 
- this.job = job; 
- this.sayName = function() {console.log(this.name)}; 
+function Person(name, age, job) {
+  this.name = name;
+  this.age = age;
+  this.job = job;
+  this.sayName = function () {
+    console.log(this.name);
+  };
 }
 
 console.log(person1.sayName == person2.sayName); // false
 ```
+
 有沒有發現一樣功能的函數重複宣告了，造成資源的浪費！所以我們用**原型（prototype）**來解決這個問題，**原型就像一個大倉庫**，讓每個實例都可以來倉庫共用一些資源。
 
 ```js
-function  Person(name, age) {
-	this.name = name;
-	this.age = age;
-  
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+
   // 將 sayName 放到 prototype 原型上
-	Person.prototype.sayName = function() {
-    console.log(this.name)
-  }
+  Person.prototype.sayName = function () {
+    console.log(this.name);
+  };
 }
 
-let person1 = new Person('Jack', 20); 
-person1.sayName(); // "Jack" 
-let person2 = new Person('Rose', 22); 
-person2.sayName(); // "Rose" 
+let person1 = new Person('Jack', 20);
+person1.sayName(); // "Jack"
+let person2 = new Person('Rose', 22);
+person2.sayName(); // "Rose"
 console.log(person1.sayName == person2.sayName); // true
 ```
 
 ## 小結
+
 今天我們說了創建物件最常使用的構造函數，基本上構造函數用於創建和初始化物件，並且通常使用關鍵字 "new" 來調用。
 
 雖然構造函數很好用，但它仍然有一個問題，就是會重複宣告功能相同的函數，造成資源的浪費，所以需要**原型 prototype**來解決這個問題，原型就讓我們留到下次說吧！今天就這樣，下次見囉！

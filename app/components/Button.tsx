@@ -1,15 +1,17 @@
-import { HTMLProps } from "react"
+import type { HTMLProps } from 'react';
 
-const Button = ({ 
+function Button({
   className,
-  children
-}: { 
-  className?: HTMLProps<HTMLElement>["className"]
-  children: React.ReactNode 
-}) => {
-
+  children,
+  type = 'button',
+}: {
+  className?: HTMLProps<HTMLElement>['className'];
+  children: React.ReactNode;
+  type?: HTMLButtonElement['type'];
+}) {
   return (
-    <button className={`
+    <button
+      className={`
       w-full 
       md:w-80 
       border-2 
@@ -21,8 +23,12 @@ const Button = ({
       duration-200 
       hover:bg-gray-200
       hover:border-transparent
-      ${className}`}>{children}</button>
-  )
+      ${className}`}
+      type={type}
+    >
+      {children}
+    </button>
+  );
 }
 
-export default Button
+export default Button;

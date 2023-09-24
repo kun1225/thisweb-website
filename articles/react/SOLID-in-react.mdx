@@ -1,8 +1,8 @@
 ---
-title: "如何在 React 中實現 solid 原則"
-desc: "SOLID 是軟體設計中的五種重要原則的縮寫，這五種原則可以幫助我們寫出乾淨、易維護、可讀性佳的程式碼，雖然 React 的 Functional Components (FC) 中，開發的風格會更接近 Functional Programming (FP) 而不是 OOP，但理解 solid 也能對編寫程式碼的能力提升有幫助，讓我們一起看看所謂的 solid，以及在 react 中要如何應用吧！"
-date: "2023-09-05"
-topic: "React"
+title: '如何在 React 中實現 solid 原則'
+desc: 'SOLID 是軟體設計中的五種重要原則的縮寫，這五種原則可以幫助我們寫出乾淨、易維護、可讀性佳的程式碼，雖然 React 的 Functional Components (FC) 中，開發的風格會更接近 Functional Programming (FP) 而不是 OOP，但理解 solid 也能對編寫程式碼的能力提升有幫助，讓我們一起看看所謂的 solid，以及在 react 中要如何應用吧！'
+date: '2023-09-05'
+topic: 'React'
 isActive: false
 ---
 
@@ -96,7 +96,7 @@ const UserProfile = () => {
         ...
       });
   }, []);
-	
+
 	return (
     <div>
       <h1>User Profile</h1>
@@ -236,9 +236,10 @@ const Button: React.FC<ButtonProps> = ({ onClick, label, style }) => {
 // 封裝的通用按鈕組件
 type ButtonProps = {
   onClick: () => void;
-  className?; string // 可選的樣式屬性
-  children: React.ReactNode
-}
+  className?;
+  string; // 可選的樣式屬性
+  children: React.ReactNode;
+};
 
 const Button: React.FC<ButtonProps> = ({ onClick, className, children }) => {
   return (
@@ -256,26 +257,26 @@ export default Button;
 ```tsx
 type PrimaryButtonProps = {
   onClick: () => void;
-  hildren: React.ReactNode
-}
+  hildren: React.ReactNode;
+};
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({ onClick, label }) => {
-  return (
-    <Button onClick={onClick} label={label} className={primaryBtn} />
-  );
+  return <Button onClick={onClick} label={label} className={primaryBtn} />;
 };
 
 type SecondaryButtonProps = {
   onClick: () => void;
-  hildren: React.ReactNode
-}
+  hildren: React.ReactNode;
+};
 
-const SecondaryButton: React.FC<SecondaryButtonProps> = ({ onClick, label }) => {
-  return (
-    <Button onClick={onClick} label={label} className={secondaryBtn} />
-  );
+const SecondaryButton: React.FC<SecondaryButtonProps> = ({
+  onClick,
+  label,
+}) => {
+  return <Button onClick={onClick} label={label} className={secondaryBtn} />;
 };
 ```
+
 ## 3. 里氏替換原則
 
 我們在封裝類似功能但不同組件時，應該要在使用相同的 props 時要有一致的行為。也就是無論使用哪個組件，只要將相同的 props 傳遞給它們，它們應該能夠按預期工作。
@@ -283,27 +284,43 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({ onClick, label }) => 
 舉例來說，若有個 InputField 組件，他可以快速製作表格中的每個 input，我們要確保不管 input 的 type 是甚麼，他都應該要能正常運作，而不是在 type=email，而在 type=checkbox` 時卻不能使用。
 
 ```tsx
-import { HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute } from 'react';
 
 type InputComponentType = {
   type?: HTMLInputTypeAttribute;
   onChange: () => void;
   className?: string;
   placeholder?: string;
-}
+};
 
-const InputComponent: React.FC<InputComponentType> = ({ type, onChange, className, placeholder }) => {
+const InputComponent: React.FC<InputComponentType> = ({
+  type,
+  onChange,
+  className,
+  placeholder,
+}) => {
   return (
-    <input type={type} placeholder={placeholder} onChange={onChange} className={`defaultClass ${className}`} />
-  )
-}
+    <input
+      type={type}
+      placeholder={placeholder}
+      onChange={onChange}
+      className={`defaultClass ${className}`}
+    />
+  );
+};
 
 type InputFieldProps = {
   InputComponent: React.FC<InputComponentType>;
   label: React.ReactNode;
-} & InputComponentType
+} & InputComponentType;
 
-const InputField: React.FC<InputFieldProps> = ({ label, type, InputComponent, onChange, className }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  type,
+  InputComponent,
+  onChange,
+  className,
+}) => {
   return (
     <label className="labelClass">
       {label}
@@ -352,22 +369,19 @@ export function Product(props: IProductProps) {
 
 type ThumbnailProps = {
   product: IProduct;
-	desc?: string;
-}
+  desc?: string;
+};
 
 const Thumbnail = (props: ThumbnailProps) => {
   const { product } = props;
 
   return (
     <>
-      <img
-        src={product.imgage}
-        alt="product image"
-      />
+      <img src={product.imgage} alt="product image" />
       <p>{desc}</p>
     </>
   );
-}
+};
 ```
 
 應該改成這樣
@@ -396,6 +410,7 @@ const Product = ({id, title, price, rating, image}: ProductProps) => {
   );
 }
 ```
+
 ```tsx:Thumbnail.tsx
 type ThumbnailProps = {
   imgageUrl: string;
