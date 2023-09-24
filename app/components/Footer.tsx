@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { navContent } from './Header/Header'
+import Link from 'next/link';
+import { navContent } from './Header/Header';
 
 const Footer = () => {
   return (
@@ -23,7 +23,7 @@ const Footer = () => {
         </ul>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

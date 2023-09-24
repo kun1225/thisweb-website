@@ -1,11 +1,12 @@
 ---
-title: "板塊設計的滑鼠跟隨效果 - 如何用 JS 幫網站客製化滑鼠呢？"
-desc: "你知道怎麼做滑鼠更隨的效果嗎？版塊設計是一家台灣的網站公司，一直蠻喜歡它們家的網站設計，前幾天看到他的的官網改版了，覺得它們的滑鼠效果很不錯，就試著把它做成貼文分享給你，來看看怎麼做的吧！"
-date: "2023-09-02"
+title: '板塊設計的滑鼠跟隨效果 - 如何用 JS 幫網站客製化滑鼠呢？'
+desc: '你知道怎麼做滑鼠更隨的效果嗎？版塊設計是一家台灣的網站公司，一直蠻喜歡它們家的網站設計，前幾天看到他的的官網改版了，覺得它們的滑鼠效果很不錯，就試著把它做成貼文分享給你，來看看怎麼做的吧！'
+date: '2023-09-02'
 isActive: true
-topic: "effect"
+topic: 'effect'
 ---
-import Codepen from '../../app/components/Codepen.tsx'
+
+import Codepen from '../../app/components/Codepen.tsx';
 
 你知道怎麼做 JS 滑鼠更隨的效果嗎？
 
@@ -16,11 +17,12 @@ import Codepen from '../../app/components/Codepen.tsx'
 <Codepen penId="ZEVaqYE" />
 
 ## HTML & CSS
+
 首先一樣我們先來做基本的 HTML 和 CSS。
 
 mouse 父元素我們用 fixed 和 寬高 100 %，讓他永遠固定在視窗內
 
-而 mouse__item 子元素我們用 CSS 變數來設定 translate 和 scale，現在 CSS 的 transform 動畫也可以分開寫了，分開寫的好處是不容易被新的 transform 覆蓋。
+而 mouse\_\_item 子元素我們用 CSS 變數來設定 translate 和 scale，現在 CSS 的 transform 動畫也可以分開寫了，分開寫的好處是不容易被新的 transform 覆蓋。
 
 最後要注意的是，一定要加上 `pointer-events: none;`，讓滑鼠可以正常點擊到頁面的其它元素。
 
@@ -33,6 +35,7 @@ mouse 父元素我們用 fixed 和 寬高 100 %，讓他永遠固定在視窗內
   <div class="mouse__item"></div>
 </div>
 ```
+
 ```css
 .mouse {
   position: fixed;
@@ -56,6 +59,7 @@ mouse 父元素我們用 fixed 和 寬高 100 %，讓他永遠固定在視窗內
 接著就可以來 JS 做滑鼠跟隨效果了
 
 ## JavaScript 做滑鼠跟隨效果
+
 首先先獲得元素，因為等等會做 hover 的效果，所以我們先獲得全部的 a 元素
 
 ```js
@@ -78,11 +82,11 @@ const links = document.querySelectorAll('a');
 function setScaleAndDelay() {
   mouseItems.forEach((item, index) => {
     const scale = (10 - index) / 10,
-          delay = index / 20;
+      delay = index / 20;
 
     item.style.setProperty('--scale', scale);
     item.style.setProperty('--delay', `${delay}s`);
-  })
+  });
 }
 setScaleAndDelay();
 ```
@@ -94,7 +98,7 @@ function mouseMoveEffect(e) {
   const x = e.clientX;
   const y = e.clientY;
   mouse.style.setProperty('--x', `${x - 10}px`);
-  mouse.style.setProperty('--y', `${y - 10}px`)
+  mouse.style.setProperty('--y', `${y - 10}px`);
 }
 
 body.addEventListener('mousemove', mouseMoveEffect);
@@ -106,21 +110,21 @@ body.addEventListener('mousemove', mouseMoveEffect);
 
 這部分也很簡單
 
-* 在滑鼠移入 link 時，在 `mouse__item` 添加 `hover` 的 class
-* 在出 link 時，在 `mouse__item` 刪掉 `hover` 的 class
+- 在滑鼠移入 link 時，在 `mouse__item` 添加 `hover` 的 class
+- 在出 link 時，在 `mouse__item` 刪掉 `hover` 的 class
 
 ```js
 function mouseEnterEffect() {
   mouseItems.forEach((item, index) => {
     item.classList.add('hover');
-  })
+  });
 }
 function mouseOutEffect() {
   mouseItems.forEach((item, index) => {
     item.classList.remove('hover');
-  })
+  });
 }
-links.forEach(link => {
+links.forEach((link) => {
   link.addEventListener('mouseenter', mouseEnterEffect);
   link.addEventListener('mouseout', mouseOutEffect);
 });
@@ -129,9 +133,10 @@ links.forEach(link => {
 所以我們要回去調整 CSS
 
 ## 最後調整 CSS
+
 我們利用 `:first-of-type` 來讓第一個 `mouse__item` 產生變化，把他放大並變成圓形
 
-而其它的 mouse__item 就讓它隱藏就，這樣就很簡單的做出 hover 效果了！
+而其它的 mouse\_\_item 就讓它隱藏就，這樣就很簡單的做出 hover 效果了！
 
 ```css
 .mouse__item.hover:first-of-type {
@@ -144,6 +149,7 @@ links.forEach(link => {
   opacity: 0;
 }
 ```
+
 大功告成！
 
 ## 小結

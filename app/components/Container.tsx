@@ -2,12 +2,10 @@ const Container = ({
   as: Component = 'section',
   children,
 }: {
-  as: 'section' | 'div'
-  children: React.ReactNode
+  as: 'section' | 'div';
+  children: React.ReactNode;
 }) => {
-  return (
-    <Component>Container</Component>
-  )
-}
+  return <Component>Container</Component>;
+};
 
-export default Container
+export default Container;

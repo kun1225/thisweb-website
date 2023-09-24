@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 // NProgress
 import { AppProgressBar } from 'next-nprogress-bar';
@@ -11,7 +11,7 @@ const ProgressBar = () => {
       options={{ showSpinner: false }}
       shallowRouting
     />
-  )
-}
+  );
+};
 
 export default ProgressBar;

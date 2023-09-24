@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore .",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "start": "next start",
     "test": "vitest"
   },
+  "prettier": "@vercel/style-guide/prettier",
   "dependencies": {
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
@@ -41,8 +45,10 @@
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@types/nprogress": "^0.2.0",
+    "@vercel/style-guide": "^5.0.1",
     "@vitejs/plugin-react": "^4.0.4",
     "jsdom": "^22.1.0",
+    "prettier": "3.0.3",
     "vitest": "^0.34.4"
   }
 }

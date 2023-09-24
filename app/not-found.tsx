@@ -7,7 +7,7 @@ const NotFoundPage = () => {
       <p>希望你能聯絡我，告訴我哪裡貼錯了</p>
       <p>謝謝你！</p>
     </div>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

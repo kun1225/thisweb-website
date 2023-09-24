@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
 import { useEffect, useRef, useState } from 'react';
@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from 'react';
 type UseIntersectionObserverType = (setActiveId: (id: string) => void) => void;
 
 const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
-  const headingElementsRef = useRef<{
-    [key: string]: IntersectionObserverEntry;
-  }>({});
+  const headingElementsRef = useRef<Record<string, IntersectionObserverEntry>>(
+    {},
+  );
 
   useEffect(() => {
     const callback = (headings: IntersectionObserverEntry[]) => {
@@ -32,7 +32,7 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
         setActiveId(visibleHeadings[0].target.id);
       } else if (visibleHeadings.length > 1) {
         const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id)
+          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id),
         );
 
         setActiveId(sortedVisibleHeadings[0].target.id);
@@ -44,27 +44,31 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
     });
 
     const headingElements = Array.from(
-      document.querySelectorAll('.article h2,h3')
+      document.querySelectorAll('.article h2,h3'),
     );
 
-    headingElements.forEach((element) => observer.observe(element));
+    headingElements.forEach((element) => {
+      observer.observe(element);
+    });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, [setActiveId]);
 };
 
-type Props = {
+interface Props {
   source: string;
-};
+}
 
 const TableOfContents = ({ source }: Props) => {
   const headingLines = source
     .split('\n')
-    .filter((line) => line.match(/^###?\s/));
+    .filter((line) => /^###?\s/.exec(line));
 
   const headings = headingLines.map((raw) => {
     const text = raw.replace(/^###*\s/, '');
-    const level = raw.slice(0, 3) === '###' ? 3 : 2;
+    const level = raw.startsWith('###') ? 3 : 2;
     const slugger = new GithubSlugger();
 
     return {
@@ -80,35 +84,31 @@ const TableOfContents = ({ source }: Props) => {
 
   return (
     <>
-      <p className="!mb-2 text-lg">
-        目錄
-      </p>
+      <p className="!mb-2 text-lg">目錄</p>
       <div className="flex flex-col text-xs">
-        {headings.map((heading, index) => 
-           (
-            <button
-              key={index}
-              type="button"
-              className={clsx(
-                heading.id === activeId
-                  ? 'font-medium text-primary-500 hover:text-primary-600'
-                  : 'font-normal text-gray-500 hover:text-gray-800',
-                heading.level === 3 && 'pl-4',
-                'mb-2 text-left'
-              )}
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(`#${heading.id}`)?.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'center',
-                  inline: 'nearest',
-                });
-              }}
-            >
-              {heading.text}
-            </button>
-          )
-        )}
+        {headings.map((heading, index) => (
+          <button
+            key={index}
+            type="button"
+            className={clsx(
+              heading.id === activeId
+                ? 'font-medium text-primary-500 hover:text-primary-600'
+                : 'font-normal text-gray-500 hover:text-gray-800',
+              heading.level === 3 && 'pl-4',
+              'mb-2 text-left',
+            )}
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector(`#${heading.id}`)?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'nearest',
+              });
+            }}
+          >
+            {heading.text}
+          </button>
+        ))}
       </div>
     </>
   );
