@@ -1,0 +1,121 @@
+---
+title: '如何實現水平滾動 - gsap scrollTrigger'
+desc: '相信你多少聽過或用過 npm 這個 js 包管理工具，它提供了一個方便的方式來安裝、更新和管理 JavaScript 套件，不過 npm 也有一些缺點，例如依賴衝突、磁碟空間浪費的問題，所以後來有了 yarn，他解決了依賴衝突的問題，而最近有個包管理工具也蠻紅的，正是 pnpm，今天就讓我們看看 pnpm 有那些優點以及如何使用吧！'
+topic: 'others'
+date: '2023-09-29'
+isActive: false
+---
+
+## 你知道國外網站的水平滾動怎麼做的嗎？
+
+很多國外網站為了打造獨特的官網或吸引用戶的目光，都會使用水平滾動來加強體驗。
+
+今天就來看看是怎麼做出來的吧！
+
+## gsap scrollTrigger
+
+我們使用 gsap 這個套件和他的 ScrollTrigger 功能來做水平滾動，gsap 是用來專門做網頁動患的函式庫，很多酷炫的網站特效都可以靠 gsap 做出，所以我們先引入他。
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+```
+
+## 水平滾動的 HTML & CSS
+接著就來做 HTML 和基本的 CSS，這部分沒有太多特別的地方。
+
+```html
+<div class="something">
+  <p>Horizontal Scroll</p>
+</div>
+
+<div class="galleryWrapper">
+  <div class="gallery">
+    <h2>Korea</h2>
+    <h2>Taiwan</h2>
+    <h2>China</h2>
+    <h2>Netherlands</h2>
+    <h2>Japan</h2>
+  </div>
+</div>
+
+<div class="something"></div>
+```
+
+```css
+.gallery {
+  width: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 168px;
+}
+
+.gallery h2 {
+  font-family: 'poppins', cursive;
+  font-size: 10vw;
+  padding: 3rem 8rem;
+  margin: 0;
+  color: #fff;
+}
+
+.something {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  color: #fff;
+  font-size: 64px;
+}
+```
+
+接著個別放上圖片。
+
+```css
+.gallery h2:nth-of-type(1) {
+  background: center/cover url(./korea.jpg);
+}
+
+.gallery h2:nth-of-type(2) {
+  background: center/cover url(./taiwan.jpg);
+}
+
+.gallery h2:nth-of-type(3) {
+  background: center/cover url(./china.jpg);
+}
+
+.gallery h2:nth-of-type(4) {
+  background: center/cover url(./netherlands.jpg);
+}
+
+.gallery h2:nth-of-type(5) {
+  background: center/cover url(./japan.jpg);
+}
+```
+
+我們使用 `nth-of-type` 這個偽類，他可以用來指定第幾個元素，很方便。
+
+
+## 水平滾動的 js
+
+因為使用了 gsap，所以 JS 的部分不會太難。
+
+```js
+const galleryWidth = document.querySelector(".gallery").scrollWidth
+const scrollLength = galleryWidth - window.innerWidth;
+```
+
+我們先獲得整個 gallery 的寬度，並將整個 gallery 的寬度，減去螢幕的寬度，就會是需要滾動的長度 `scrollLength`。
+
+接著用 gsap 來製作水平滾動：
+
+* gsap.to('.gallery', ...) 的意思是將 .gallery 依照 ... 的內容執行動畫
+  所以 x: -scrollLength 就是向左位移，距離是 scrollLength
+* scrollTrigger 是依靠滾動觸發這個動畫
+  * trigger 是用哪個元素當基準
+  * start 是開始滾動的距離，
+    * 第一個 top 是螢幕的頂部
+    * 第二個 top 是基準元素的頂部
+    所以這裡就是當螢幕的頂部碰到基準元素的頂部時觸發動畫
+  * end 就是到哪裡結束動畫
+  * scrub 是指邊滾動邊觸發，值越大會越平滑
+
+到這邊就大功告成了！利用 gsap 來製作水平滾動非常簡單好用，你有用過 gsap 嗎，歡迎私訊跟我討論，那老樣子，今天就這樣，下次見！
