@@ -1,0 +1,125 @@
+---
+title: 'pnpm 是什麼？'
+desc: '相信你多少聽過或用過 npm 這個 js 包管理工具，它提供了一個方便的方式來安裝、更新和管理 JavaScript 套件，不過 npm 也有一些缺點，例如依賴衝突、磁碟空間浪費的問題，所以後來有了 yarn，他解決了依賴衝突的問題，而最近有個包管理工具也蠻紅的，正是 pnpm，今天就讓我們看看 pnpm 有那些優點以及如何使用吧！'
+topic: 'others'
+date: '2023-09-27'
+isActive: true
+---
+
+相信你多少聽過或用過 `npm` 這個 js 套件管理工具，它提供了一個方便的方式來安裝、更新和管理 JavaScript 套件，不過 `npm` 也有一些缺點，例如依賴衝突、磁碟空間浪費的問題，所以後來有了 `yarn`，他解決了依賴衝突的問題，而最近有個包管理工具越來越受歡迎，正是 `pnpm`，今天就讓我們看看 `pnpm` 有那些優點以及如何使用吧！
+
+## pnpm 是什麼？
+如同前面所說，pnpm 和 npm 一樣是套件管理工具，但 pnpm 速度比 npm 快，占用的空間更少、安全性高，特別的是他有一個非扁平化的 `node_modules` 設計，可以說 pnpm 是 npm 的直接替代品，作者很直接的說 pnpm 全名是 Performant NPM (高效率的 NPM)。
+
+接下來就讓我們看看 pnpm 具體解決了 npm 那些問題吧！
+
+## pnpm 解決了 npm 的什麼問題？
+
+### 重複安裝相同依賴
+在以前，也就是 npm3 之前，使用 npm 時，如果你的專案有 100 套件，而這些套件都有依賴另一個相同的套件，假設是 `lodash`，那 npm 會在每個套件下面都安裝這個依賴套件 `lodash`，也就是你的專案會安裝 100 次 `lodash`。
+
+而 pnpm 會把這個共同的依賴套件 `lodash` 抽取出來，放到一個叫做 `content-addressable store` 讓每個庫去使用相同的依賴套件，讓你的專案只會安裝 1 次 `lodash`。
+
+也因此，pnpm 可以大幅減少占用的磁碟空間，安裝的速度也更快。
+
+不過在 npm3 之後，npm 透過扁平化的 node_modules 解決了這個問題，但也因此產生新的問題。
+
+### 幽靈依賴
+
+為了解決 npm 重複安裝相同依賴的問題，npm 把 node_modules 扁平化了，把所有用到的套件全部放到 node_modules 下，這樣重複依賴套件的問題就解決了。
+
+你打開 node_modules 就能看到所有的套件。
+
+![npm-structure](/images/tools/what-is-pnpm/npm-structure.png)
+
+但壞處就是，因為 npm 把所有套件都放到最頂層，所以我在任何地方也都可以 `import` 這些套件。
+
+這樣是有風險的，如果有一天某個套件不依賴這個套件了，那套件沒有被安裝卻又被程式碼引入，程式碼就會出錯。這個錯誤被稱作幽靈依賴。
+
+所以 pnpm 透過使用
+
+1. 硬軟連結
+2. 全局套件 content-addressable
+3. 非扁平化的 node_modules 資料夾
+
+來解決這些問題，我們一一來看這些特性。
+
+## pnpm 軟連結和硬連結
+
+硬連結和軟連結都是指向檔案的捷徑。差別在於：
+
+* 硬連結(hard link)：直接指向 inode (儲存資料的訊息)
+* 軟連結、虛擬連結(symbol link)：指向硬連結的文件路徑
+
+有了硬軟連結的概念，就可以來看 pnpm content-addressable。
+
+## pnpm 的 content-addressable 目錄
+
+pnpm 會新增一個 content-addressable 目錄，當我們使用 pnpm 後，會發現多了一個 `.pnpm-store` 資料夾，當你使用 pnpm 安裝套件時，他會優先到這裏面去找套件是否已經存在，如果存在，pnpm 就會建立硬連結來取得套件。
+
+簡單說，他就像 vue 的 store 或是 react 的 useContext 一樣，管理全局的狀態。
+
+所以在效能上，pnpm 也會比 npm 還快，npm 會直接複製整個依賴到 node_modules，而 pnpm 只會建立連結到 node_modules。
+
+## pnpm 非扁平化 node_modules
+
+而 pnpm 為了解決幽靈依賴的問題，他又把 node_modules 變成非扁平化的，再加上使用硬軟連結加全局套件的方式，來解決非扁平化會重複依賴的問題。
+
+我們透過 pnpm 建立一個 vite + react 專案，可以案到 node_modules 裡很整潔乾淨，pnpm 會將專案會直接使用到的套件，放到 node_modules 跟目錄，並且 pnpm 會建立了一個名為 「.pnpm」 的特殊資料夾，裡面包含所有套件的資訊，點開可以發每個套件都有各自的 node_modules。
+
+![pnpm-structure](/images/tools/what-is-pnpm/pnpm-structure.png)
+
+但當你點開套件底下的 node_modules 時，會發現沒什麼東西。
+
+![pnpm-structure2](/images/tools/what-is-pnpm/pnpm-structure2.png)
+
+這是因為 pnpm 透過硬連結直接指向前面說的 global Store。
+
+而有些套件會依賴另一個套件，比如 `foo` 套件依賴 `bar` 套件，那 pnpm 就會在 `foo` 建立軟連結指向 `bar`。
+
+```bash
+node_modules
+├── foo -> ./.pnpm/foo@1.0.0/node_modules/foo
+│   // 👆 將專案會直接用到的套件直接放到 node_modules 下
+│ 
+└── .pnpm
+    ├── bar@1.0.0
+    │   └── node_modules
+    │       └── bar -> <store>/bar   // 👈 硬連結指向 store 的 bar
+    └── foo@1.0.0
+        └── node_modules
+            ├── foo -> <store>/foo   // 👈 硬連結指向 store 的 foo
+            └── bar -> ../../bar@1.0.0/node_modules/bar // 👈 軟連結指向 bar
+```
+
+所有的依賴都是從全域 store 硬連結到了 node_modules/.pnpm 下，然後每個套件之間透過軟連結來相互依賴。
+
+## 如何安裝 pnpm
+安裝 pnpm 的方法非常簡單，只要用 npm 全局安裝即可。
+
+```bash
+npm install -g pnpm
+```
+這樣就可以使用 pnpm 了，非常方便
+
+## 如何使用 pnpm
+pnpm 受歡迎的其中一個原因就是，他使用方法和 npm 幾乎一樣
+
+1. 使用 pnpm install 來為專案安裝所有相依套件
+2. 使用 pnpm add package-name 獨立安裝套件。也可以加上 `-g`、`-D` 等參數
+3. 使用 pnpm update 將套件更新至其允許範圍內的最新版本
+3. 使用 pnpm remove package-name　刪除相關依賴
+
+假設我要用 vite 安裝框架，也可直接將 npm 換成 pnpm。
+
+```bash
+pnpm create vite@latest
+```
+
+所以會用 npm，pnpm 幾乎是無痛上手。當然還有其他比較複雜的使用方法，這裡就不說太多，有興趣可以去關網看看！
+
+## 小結
+
+今天介紹了 pnpm 以及他的基本原理，至於硬軟連結具體是怎麼做的，就先不用管太多了 XD，其實 pnpm 還有一個最大的優勢，就是他很好的支援 monorepo，至於甚麼是 monorepo，就等之後有機會在寫一篇貼文來聊聊 XD。如果你有新專案要執行，可以試試 pnpm 喔！
+
+你有用過 pnpm 嗎，留言或私訊跟我討論你的想法吧！那老樣子，今天就這樣，下篇貼文見～！
