@@ -1,13 +1,14 @@
 ---
-title: "webpack 的基本觀念和使用"
-desc: "在上篇文章中我們了解到了 webpack 的由來，那今天來更深入看看 webpack 基本觀念和使用方法吧！"
-date: "2023-08-31"
+title: 'webpack 的基本觀念和使用'
+desc: '在上篇文章中我們了解到了 webpack 的由來，那今天來更深入看看 webpack 基本觀念和使用方法吧！'
+date: '2023-08-31'
 isActive: false
 ---
 
 在上篇文章中我們了解到了 webpack 的由來，那今天來更深入看看 webpack 基本觀念和使用方法吧！
 
 這篇文章分別會介紹
+
 1. 入口
 2. 出口
 3. 模式
@@ -22,6 +23,7 @@ isActive: false
 ```jsx
 npx webpack ./index.js --mode=development
 ```
+
 除了我們手動打上名稱和模式，我們還可以新增 `webpack.config.js` 設定檔，來調整一些基本設定，讓我們不用每次都打這麼長的指令，比如我們可以設定入口來指定我們要打包的檔案
 
 ## 入口 entry
@@ -61,9 +63,9 @@ module.exports = {
 ```jsx
 const path = require('path');
 module.exports = {
-entry: './index.js',
+  entry: './index.js',
   output: {
-		path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'main.bundle.js',
   },
   mode: 'development', // 👈 指定模式
@@ -81,17 +83,17 @@ npx webpack --watch
 不過我們遇到了另一個問題，也就是將打包完的檔案名稱改掉後，我們要回到 `index.html` 檔手動更改引入的打包 JS 檔案
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <script src="./public/main.bundle.js"></script> 
-  <!-- 👆 手動更改 -->
-</head>
-<body>
-  <h1>Hello from HTML</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./public/main.bundle.js"></script>
+    <!-- 👆 手動更改 -->
+  </head>
+  <body>
+    <h1>Hello from HTML</h1>
+  </body>
 </html>
 ```
 
@@ -110,59 +112,61 @@ npm install html-webpack-plugin -D
 接著打開 `webpack.config.js` 設定檔引入插件，
 
 ```jsx
-// webpack.config.js  
+// webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {  
-  mode: 'development',  
-  entry: './index.js',  
-  output: {  
-		path: path.resolve(__dirname, 'public'),
-    filename: 'main.js',  
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'main.js',
   },
-  plugins: [ // 👈 記得加 s
-    new HtmlWebpackPlugin()
-  ]
+  plugins: [
+    // 👈 記得加 s
+    new HtmlWebpackPlugin(),
+  ],
 };
 ```
 
 此時可以發現 public 裡面多了一個 `index.html`，而且自動幫我們新增了一個 script，引入打包完的 JS 檔案
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Webpack App</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script defer src="main.bundle.js"></script>
-		<!-- 👆 插件會自動幫我們引入 -->
-</head>
- <body>
- </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="main.bundle.js"></script>
+    <!-- 👆 插件會自動幫我們引入 -->
+  </head>
+  <body></body>
+</html>
 ```
 
 但我們可以發現網站的標題並不是我們原本 `index.html` 所設定的，這只要在插件裡面調整模板就好
 
 ```jsx
-// webpack.config.js  
+// webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {  
-  mode: 'development',  
-  entry: './index.js',  
-  output: {  
-    filename: 'main.bundle.js',  
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    filename: 'main.bundle.js',
     path: path.resolve(__dirname, 'public'),
-		clean: true // 👈 將舊的打包檔案自動刪除
+    clean: true, // 👈 將舊的打包檔案自動刪除
   },
-  plugins: [    // 👈 記得加 s
+  plugins: [
+    // 👈 記得加 s
     new HtmlWebpackPlugin({
-      template: './index.html' // 👈 設定模板
-    })
-  ]
+      template: './index.html', // 👈 設定模板
+    }),
+  ],
 };
 ```
 
@@ -179,28 +183,28 @@ npm install webpack-dev-server -D
 接著設定 webpack.config.js，這裡要注意的是，因為瀏覽器有緩存的特性，所以如果輸出的檔案名稱沒有變，那瀏覽器就會認為我們的檔案沒有變，所以我們在輸出的檔案名稱加入 `main.[contenthash].js` 這樣文件的名稱就會根據內容改變了
 
 ```jsx
-// webpack.config.js  
+// webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {  
-  mode: 'development',  
-  entry: './index.js',  
-  output: {  
-		path: path.resolve(__dirname, 'public'),
-    filename: 'main.[contenthash].js',  // 👈 調整輸出的檔案名稱
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'main.[contenthash].js', // 👈 調整輸出的檔案名稱
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
-    })
+      template: './index.html',
+    }),
   ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'), // 👈 設定路徑
     },
-  }
+  },
 };
 ```
 
@@ -228,19 +232,18 @@ npx webpack server
 4. asset : 導出資源的 uri 和源程式碼
 
 ```jsx
-// webpack.config.js  
-module.exports = {  
-
+// webpack.config.js
+module.exports = {
   // ...
 
   module: {
     rules: [
       {
-        test: /\.(png\jpg)$/,   // 👈 利用正則偵測文件
-        type: 'asset/resource'  // 👈 指定資源類型
-      }
-    ]
-  }
+        test: /\.(png\jpg)$/, // 👈 利用正則偵測文件
+        type: 'asset/resource', // 👈 指定資源類型
+      },
+    ],
+  },
 };
 ```
 
@@ -251,13 +254,14 @@ module.exports = {
 import imgSrc from './assets/webpack.jpg';
 
 const img = document.createElement('img');
-img.src = imgSrc
+img.src = imgSrc;
 document.querySelector('body').appendChild(img);
 ```
 
 也可以發現打包完的 public 資料夾裡面多了一個圖片檔案
 
 ## loader
+
 webpack 真正厲害的地方是，除了資源模組，它也可以透過 loader 引入其他資源，例如 CSS、SASS 等。
 
 可以看下面這張圖來知道 webpack 扮演的角色，由入口開始，利用 loader 引入各種資源，經過 webpack 和插件之後，會打包出一個 JS 檔案
@@ -286,22 +290,21 @@ npm install style-loader -D
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {  
-
+module.exports = {
   // ...
 
   module: {
     rules: [
       {
         test: /\.(png|jpg)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
       },
       {
-        test: /\.css$/,                     // 👈 利用正則判斷 css 檔案
-        use: ['style-loader', 'css-loader'] // 👈 使用陣列說明要使用的 loader
-      }
-    ]
-  }
+        test: /\.css$/, // 👈 利用正則判斷 css 檔案
+        use: ['style-loader', 'css-loader'], // 👈 使用陣列說明要使用的 loader
+      },
+    ],
+  },
 };
 ```
 
@@ -317,7 +320,8 @@ module.exports = {
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   font-family: sans-serif;
 }
@@ -329,12 +333,12 @@ body {
 ```
 
 ```jsx
-// index.js  
+// index.js
 import imgSrc from './assets/webpack.jpg';
 import './index.scss';
 
 const img = document.createElement('img');
-img.src = imgSrc
+img.src = imgSrc;
 document.querySelector('body').appendChild(img);
 ```
 
@@ -350,22 +354,22 @@ npm install sass-loader -D
 ```
 
 ```jsx
-// webpack.config.js  
+// webpack.config.js
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {  
-  mode: 'development',  
-  entry: './index.js',  
-  output: {  
-		path: path.resolve(__dirname, 'public'),
-    filename: 'main.[contenthash].js',  
+module.exports = {
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'main.[contenthash].js',
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
-    })
+      template: './index.html',
+    }),
   ],
   devServer: {
     static: {
@@ -376,14 +380,14 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
       },
       {
-        test: /\.(css|scss|sass)$/,   // 👈 利用正則判斷 scss、sass 檔案
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
-  }
+        test: /\.(css|scss|sass)$/, // 👈 利用正則判斷 scss、sass 檔案
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
 };
 ```
 

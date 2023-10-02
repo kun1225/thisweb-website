@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 
 // Style
-import './../style/globals.css';
+import '../style/globals.css';
 
 // Components
 import Header from './components/Header/Header';
@@ -15,24 +15,25 @@ export const metadata: Metadata = {
   description: '',
   creator: 'thisweb',
   keywords: ['thisweb', '請網這邊走', 'js 教學'],
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
   return (
     <html lang="zh-TW">
-      <body className={`bg-gray-50 text-base font-normal font-tw-sans overflow-x-hidden`}>
+      <body
+        className="bg-gray-50 text-base font-normal font-tw-sans overflow-x-hidden"
+      >
         <ProgressBar />
-        <Header></Header>
-        <PageTransitionLayout className='px-4 md:px-8 lg:px-20 xl:px-40'>
+        <Header />
+        <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-40">
           {children}
         </PageTransitionLayout>
-        <Footer></Footer>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }

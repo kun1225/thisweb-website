@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import { navContent } from './Header/Header'
+import Link from 'next/link';
+import { navContent } from './Header/Header';
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className="bg-primary text-white text-xs flex flex-col gap-8 md:flex-row justify-between mt-32 p-16">
       <div>
@@ -23,7 +23,7 @@ const Footer = () => {
         </ul>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

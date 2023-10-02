@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react"
-import theme from "@/style/theme";
-
-
+import { useEffect, useState } from 'react';
+import theme from '@/style/theme';
 
 const useWindowWidth = () => {
-
-  const { lg, md } = theme.screens
+  const { lg, md } = theme.screens;
 
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isDesktop, setIsDesktop] = useState(true);
@@ -13,18 +10,20 @@ const useWindowWidth = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const parseScreenString = (screenSize: string): number => {
-    return parseInt(screenSize.replace('px', ''))
-  }
+    return parseInt(screenSize.replace('px', ''));
+  };
 
   const modifyWidth = () => {
-
     setWindowWidth(window.innerWidth);
-    
+
     if (window.innerWidth > parseScreenString(lg)) {
       setIsDesktop(true);
       setIsTablet(false);
       setIsMobile(false);
-    } else if (window.innerWidth < parseScreenString(lg) && window.innerWidth > parseScreenString(md)) {
+    } else if (
+      window.innerWidth < parseScreenString(lg) &&
+      window.innerWidth > parseScreenString(md)
+    ) {
       setIsDesktop(false);
       setIsTablet(true);
       setIsMobile(false);
@@ -33,21 +32,21 @@ const useWindowWidth = () => {
       setIsTablet(false);
       setIsMobile(true);
     }
-  }
+  };
 
   useEffect(() => {
     window.addEventListener('resize', modifyWidth);
     return () => {
       window.removeEventListener('resize', modifyWidth);
-    }
-  }, [])
+    };
+  }, []);
 
   return {
     windowWidth,
     isDesktop,
     isTablet,
-    isMobile
-  }
-}
+    isMobile,
+  };
+};
 
-export default useWindowWidth
+export default useWindowWidth;

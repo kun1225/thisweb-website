@@ -1,3 +1,3 @@
 export const convertKitFormId = {
-  heroFormId: '5590412'
-}
+  heroFormId: '5590412',
+};

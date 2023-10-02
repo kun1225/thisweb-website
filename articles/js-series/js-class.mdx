@@ -1,7 +1,7 @@
 ---
-title: "JavaScript 教學 中階篇 3 - 類 class"
-desc: "在 ES6 中，JS 新增了創造物件的語法 - **類 class**，而在前面原型的文章中，你也可以發現原型鏈的寫法不太友善，於是才有了 class 的誕生。不過 class 的原理就是原型鏈，他只是為了讓我們更快速開發，以及銜接其它語言(因為其它語言大多有 class 這個用法)而有的語法。！"
-date: "2023-08-07"
+title: 'JavaScript 教學 中階篇 3 - 類 class'
+desc: '在 ES6 中，JS 新增了創造物件的語法 - **類 class**，而在前面原型的文章中，你也可以發現原型鏈的寫法不太友善，於是才有了 class 的誕生。不過 class 的原理就是原型鏈，他只是為了讓我們更快速開發，以及銜接其它語言(因為其它語言大多有 class 這個用法)而有的語法。！'
+date: '2023-08-07'
 ---
 
 在 ES6 中，JS 新增了創造物件的語法 - **類 class**，而在前面原型的文章中，你也可以發現原型鏈的寫法不太友善，於是才有了 class 的誕生。
@@ -9,35 +9,39 @@ date: "2023-08-07"
 不過 class 的原理就是原型鏈，他只是為了讓我們更快速開發，以及銜接其它語言(因為其它語言大多有 class 這個用法)而有的語法。
 
 ## class 怎麼宣告
+
 不管是聲明式還是表達式都可以宣告 class:
 
 ```javascript
-class Person {}; // 類聲明式
-const Animal = class {} // 類表達式
+class Person {} // 類聲明式
+const Animal = class {}; // 類表達式
 ```
+
 但和函數一樣，**聲明式會被 hoisting(提升)**，表達式則不會，而函數和類最不一樣的地方是，**函數不受區塊作用域影響，而類受到區塊作用域限制**。
 
 建議閱讀: <a href="https://thisweb.tech/javascript-block-scope-tdz/" target="_blank" rel="noopener">什麼是區塊作用域？</a>
 
 ```js
-{ 
- function FunctionDeclaration() {} 
- class ClassDeclaration {} 
-} 
-console.log(FunctionDeclaration); // FunctionDeclaration() {} 
+{
+  function FunctionDeclaration() {}
+  class ClassDeclaration {}
+}
+console.log(FunctionDeclaration); // FunctionDeclaration() {}
 console.log(ClassDeclaration); // ReferenceError: ClassDeclaration is not defined
 ```
+
 ## 類的構造函數
+
 前面說過類的原理跟構造函數、原型鏈一模一樣，所以類也會有構造函數，只是寫法變成了 `constructor()` 關鍵字:
 
 ```js
 // 類
-class Person { 
- constructor(name, age) { 
-  this.name = name;
-  this.age = age;
- } 
-} 
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
 
 // 構造函數
 function Animal(name, age) {
@@ -45,47 +49,48 @@ function Animal(name, age) {
   this.age = age;
 }
 
-let thisWeb = new Person('thisWeb', 18); 
+let thisWeb = new Person('thisWeb', 18);
 let duan = new Animal('duan', 3);
-console.log(thisWeb) // Person {name:'thisWeb', age: 18}
+console.log(thisWeb); // Person {name:'thisWeb', age: 18}
 ```
+
 有沒有發現跟構造函數差不多，只是類使用 `constructor()` 當作構造函數，不過最不同的地方是，類一定要用 new 操作符，如果沒有用的話會直接報錯，這一點倒是比構造函數好，可以避免預期之外的錯誤。
 (話說 duan 是我家貓咪的名字XD，叫做短短)
 
 而類也跟普通的構造函數一樣，可以用 `instanceof` 檢查實例和類的關係:
 
 ```js
-class Person { 
- constructor() { 
-	 
-	}
- } 
+class Person {
+  constructor() {}
+}
 let p1 = new Person();
-console.log(p1 instanceof Person); // true 
+console.log(p1 instanceof Person); // true
 ```
 
 ## 類也是函數
+
 前面講了那麼多，相信你也有發現類跟函數蠻像的，其實它們可以說是一樣，為什麼這麼說？
-是因為 JS 中其實沒有一種類別(type)叫做類(class)  
+是因為 JS 中其實沒有一種類別(type)叫做類(class)
 
 那類到底是甚麼呢？直接來測試就知道了:
 
 ```js
 class Person {}
-console.log(typeof Person) // function
+console.log(typeof Person); // function
 ```
+
 欸居然還是函數？沒錯，所以類跟構造函數有一樣的行為，一樣有　prototype，prototype 裡一樣有 constructor 可以指回類本身:
 
 ```js
-class Person{} 
-console.log(Person.prototype); // { constructor: f() } 
+class Person {}
+console.log(Person.prototype); // { constructor: f() }
 console.log(Person === Person.prototype.constructor); // true
 
-let p = new Person(); 
+let p = new Person();
 console.log(p instanceof Person); // true
 ```
 
-*這裡如果不懂的話，建議先來看看<a href="https://thisweb.tech/js-prototype-inherit/" target="_blank" rel="noopener"> JS 原型鏈和繼承</a>*
+_這裡如果不懂的話，建議先來看看<a href="https://thisweb.tech/js-prototype-inherit/" target="_blank" rel="noopener"> JS 原型鏈和繼承</a>_
 
 ## 類的原型
 
@@ -110,10 +115,11 @@ class Person {
 function Person(name) {
   this.name = name;
 }
-Person.prototype.sayName = function() {
+Person.prototype.sayName = function () {
   console.log(this.name);
-}
+};
 ```
+
 不過很明顯感覺 class 更好寫一點對吧，不過要注意的是下面這種情況:
 
 ```js
@@ -131,15 +137,17 @@ class Person {
   hobbits = ['coding', 'design'];
 }
 ```
+
 在原型鏈上定義屬性值是一種不太好的寫法，因為若有任何一個實例去修改屬性的話，會影響到所有的實力，所以類不支持這種寫法。
 
 不過如果真的要的話還是可以直接寫在原型上的:
 
 ```js
-Person.prototype.hobbits = ['coding', 'design']
+Person.prototype.hobbits = ['coding', 'design'];
 ```
 
 ## 繼承
+
 在原型鏈和繼承那篇文章花了很多篇幅討論如何在 ES6 之前實現繼承，但在 class 中繼承變得很簡單，只需要用 `extend` 關鍵字就好:
 
 ```js
@@ -183,6 +191,7 @@ class Cat extends Animal {
   }
 }
 ```
+
 但要注意，子類的構造函數再調用 `super()` 之前，是不能寫 `this` 關鍵字的:
 
 ```js
@@ -198,6 +207,7 @@ let myDog = new Dog('duan', 2);
 ```
 
 ## static 靜態函數
+
 這個關鍵字可以讓方法被宣告在類本身，而不會被宣告在實例上，主要用在不限定於實例上面的方法:
 
 ```js
@@ -239,6 +249,7 @@ Rabbit.jump(); // jumping
 不能單獨引用 `console.log(super)` 會報錯喔
 
 ## 總結
+
 今天我們講了ES6 新增的類語法，其實就只是原型鏈的語法糖(比較好看的寫法)，背後的原理是一樣的，所以學會原型鏈，就學會了類了喔！
 
 而學會類除了可以更方便的創造物件，很多程式語言也都有類的觀念，JS 也是為了能快速銜接其它語言的語法，才新增類這個語法。而現在很流行的 React 框架，在之前也是大量使用到類，所以類的觀念是很重要的喔！

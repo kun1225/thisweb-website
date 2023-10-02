@@ -1,7 +1,7 @@
 ---
-title: "webpack 的懶加載"
+title: 'webpack 的懶加載'
 desc: "在上篇'程式碼拆分'的最後，我們介紹了動態導入，你可能會想要動態導入有什麼用，接下來就介紹動態導入的應用之一，懶加載。"
-date: "2023-08-31"
+date: '2023-08-31'
 isActive: false
 ---
 
@@ -15,13 +15,13 @@ isActive: false
 
 ```jsx
 // ./src/math.js
-export const add = (x , y) => {
+export const add = (x, y) => {
   return x + y;
-}
+};
 
 export const minus = (x, y) => {
   return x - y;
-}
+};
 ```
 
 並且新增一個按鈕，當點擊時會引入 math.js 裡的 add 函數
@@ -35,9 +35,9 @@ console.log('Hello from index');
 const button = document.createElement('button');
 button.textContent = 'click to add';
 button.addEventListener('click', () => {
-  import(/*webpackChunkName: 'math'*/'./math.js').then(({ add }) => {
-				 // 👆 可以像這樣指定打包後的名稱
-		console.log(add(4, 5));
+  import(/*webpackChunkName: 'math'*/ './math.js').then(({ add }) => {
+    // 👆 可以像這樣指定打包後的名稱
+    console.log(add(4, 5));
   });
 });
 
@@ -71,9 +71,11 @@ console.log('Hello from index');
 const button = document.createElement('button');
 button.textContent = 'click to add';
 button.addEventListener('click', () => {
-  import(/*webpackChunkName: 'math', webpackPrefetch: true*/'./math.js').then(({ add }) => {
-    console.log(add(4, 5));
-  });
+  import(/*webpackChunkName: 'math', webpackPrefetch: true*/ './math.js').then(
+    ({ add }) => {
+      console.log(add(4, 5));
+    },
+  );
 });
 
 document.body.appendChild(button);
@@ -92,9 +94,11 @@ console.log('Hello from index');
 const button = document.createElement('button');
 button.textContent = 'click to add';
 button.addEventListener('click', () => {
-  import(/*webpackChunkName: 'math', webpackPreload: true*/'./math.js').then(({ add }) => {
-    console.log(add(4, 5));
-  });
+  import(/*webpackChunkName: 'math', webpackPreload: true*/ './math.js').then(
+    ({ add }) => {
+      console.log(add(4, 5));
+    },
+  );
 });
 
 document.body.appendChild(button);

@@ -1,4 +1,4 @@
-.article code, 
+.article code,
 .article pre {
   @apply font-tw-code text-sm leading-6;
 }
@@ -26,7 +26,7 @@
 }
 
 .article em {
-  @apply border-l-4 py-1 pl-4 border-gray-200
+  @apply border-l-4 py-1 pl-4 border-gray-200;
 }
 
 .article p,
@@ -52,31 +52,31 @@
 
 .article ul,
 .article ol {
-  @apply ml-4
+  @apply ml-4;
 }
 
 .article ol {
-  @apply list-decimal list-inside
+  @apply list-decimal list-inside;
 }
 
 .article ul {
-  @apply list-inside list-disc
+  @apply list-inside list-disc;
 }
 
-.article li:has( > p)  p:first-of-type {
+.article li:has(> p) p:first-of-type {
   display: inline;
 }
 
 .article li {
-  @apply mb-[2px]
+  @apply mb-[2px];
 }
 
 .article li::marker {
-  @apply inline
+  @apply inline;
 }
 
 .article aside::-webkit-scrollbar {
-  @apply w-[2px]
+  @apply w-[2px];
 }
 
 .article pre::-webkit-scrollbar {

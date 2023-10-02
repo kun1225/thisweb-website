@@ -4,22 +4,24 @@ import Newsletter from '@/app/(root)/components/Newsletter';
 import { convertKitFormId } from '@/lib/convertKitFormId';
 
 describe('Newsletter component', () => {
-
   const { heroFormId } = convertKitFormId;
-  const subscribeEmail = vi.fn(e => e.preventDefault())
+  const subscribeEmail = vi.fn((e) => e.preventDefault());
 
   it('should be render without errors', () => {
-    const { getByTestId } = render(<Newsletter formId={heroFormId} onSubscribe={subscribeEmail}/>);
+    const { getByTestId } = render(
+      <Newsletter formId={heroFormId} onSubscribe={subscribeEmail} />,
+    );
 
     expect(getByTestId('newsletterForm')).toBeInTheDocument();
     expect(getByTestId('newsletterInput')).toBeInTheDocument();
     expect(getByTestId('newsletterButton')).toBeInTheDocument();
     expect(getByTestId('correctMessage')).toHaveClass('invisible');
-
-  })
+  });
 
   it('should not submitting form with empty email', () => {
-    const { getByTestId } = render(<Newsletter formId={heroFormId} onSubscribe={subscribeEmail}/>);
+    const { getByTestId } = render(
+      <Newsletter formId={heroFormId} onSubscribe={subscribeEmail} />,
+    );
 
     const submitButton = getByTestId('newsletterButton');
 
@@ -27,10 +29,12 @@ describe('Newsletter component', () => {
     fireEvent.click(submitButton);
 
     expect(subscribeEmail).not.toHaveBeenCalled();
-  })
+  });
 
   it('should not submitting form with wrong formatted email', () => {
-    const { getByTestId } = render(<Newsletter formId={heroFormId} onSubscribe={subscribeEmail}/>);
+    const { getByTestId } = render(
+      <Newsletter formId={heroFormId} onSubscribe={subscribeEmail} />,
+    );
 
     const emailInput = getByTestId('newsletterInput');
     const submitButton = getByTestId('newsletterButton');
@@ -38,16 +42,18 @@ describe('Newsletter component', () => {
     // Simulate user input
     fireEvent.change(emailInput, {
       target: {
-        value: 'test@'
-      }
-    })
+        value: 'test@',
+      },
+    });
     fireEvent.click(submitButton);
 
     expect(subscribeEmail).not.toHaveBeenCalled();
-  })
+  });
 
   it('should display success message with correctly formatted email', async () => {
-    const { getByTestId } = render(<Newsletter formId={heroFormId} onSubscribe={subscribeEmail}/>);
+    const { getByTestId } = render(
+      <Newsletter formId={heroFormId} onSubscribe={subscribeEmail} />,
+    );
 
     const emailInput = getByTestId('newsletterInput');
     const submitButton = getByTestId('newsletterButton');
@@ -55,13 +61,13 @@ describe('Newsletter component', () => {
     // Simulate user input
     fireEvent.change(emailInput, {
       target: {
-        value: 'test@example.com'
-      }
-    })
+        value: 'test@example.com',
+      },
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(subscribeEmail).toHaveBeenCalledOnce()
-    })
+      expect(subscribeEmail).toHaveBeenCalledOnce();
+    });
   });
-})
+});
