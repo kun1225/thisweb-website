@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && next-sitemap --config next-sitemap.config.js",
     "dev": "next dev",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
@@ -48,6 +48,7 @@
     "@vercel/style-guide": "^5.0.1",
     "@vitejs/plugin-react": "^4.0.4",
     "jsdom": "^22.1.0",
+    "next-sitemap": "^4.2.3",
     "prettier": "3.0.3",
     "vitest": "^0.34.4"
   }
