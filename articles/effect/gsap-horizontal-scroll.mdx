@@ -3,12 +3,16 @@ title: '如何實現水平滾動 - gsap scrollTrigger'
 desc: '相信你多少聽過或用過 npm 這個 js 包管理工具，它提供了一個方便的方式來安裝、更新和管理 JavaScript 套件，不過 npm 也有一些缺點，例如依賴衝突、磁碟空間浪費的問題，所以後來有了 yarn，他解決了依賴衝突的問題，而最近有個包管理工具也蠻紅的，正是 pnpm，今天就讓我們看看 pnpm 有那些優點以及如何使用吧！'
 topic: 'others'
 date: '2023-09-29'
-isActive: false
+isActive: true
 ---
+
+import Codepen from '../../app/components/Codepen.tsx';
 
 ## 你知道國外網站的水平滾動怎麼做的嗎？
 
-很多國外網站為了打造獨特的官網或吸引用戶的目光，都會使用水平滾動來加強體驗。
+<Codepen penId="ZEVjPzj" />
+
+很多國外網站為了打造獨特的官網或吸引用戶的目光，都會使用向上面這樣的水平滾動來加強體驗。
 
 今天就來看看是怎麼做出來的吧！
 
@@ -106,6 +110,20 @@ const scrollLength = galleryWidth - window.innerWidth;
 我們先獲得整個 gallery 的寬度，並將整個 gallery 的寬度，減去螢幕的寬度，就會是需要滾動的長度 `scrollLength`。
 
 接著用 gsap 來製作水平滾動：
+
+```js
+gsap.to(".gallery", {
+  x: -scrollLength,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".galleryWrapper",
+    start: "top top",
+    end: scrollLength,
+    pin: true,
+    scrub: 3
+  }
+});
+```
 
 * gsap.to('.gallery', ...) 的意思是將 .gallery 依照 ... 的內容執行動畫
   所以 x: -scrollLength 就是向左位移，距離是 scrollLength
