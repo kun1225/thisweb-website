@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://thisweb.vercel.app',
+  siteUrl: 'https://www.thisweb.tech',
   generateRobotsTxt: true, // (optional)
 };
