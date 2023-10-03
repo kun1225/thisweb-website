@@ -2,18 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@200;300;400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+TC:wght@200;300;400;500;600;700;800&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap');
 
 body,
 html {
   @apply min-h-full;
 }
 
+body {
+  @apply bg-gray-50 text-neutral-900 text-base font-medium font-tw-sans overflow-x-hidden tracking-[0.6px];
+}
+
 h1,
 h2,
 h3,
 h4 {
-  /* font-family: 'Noto Serif TC'; */
   @apply text-primary;
 }
 
@@ -22,11 +25,11 @@ h4 {
 }
 
 ::-webkit-scrollbar {
-  @apply w-[8px];
+  @apply w-[10px];
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary;
+  @apply bg-secondary rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {

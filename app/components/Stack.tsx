@@ -2,7 +2,7 @@ import type { HTMLProps } from 'react';
 
 function Stack({
   as: Component = 'div',
-  gap = 4,
+  gap = 0,
   direction = 'row',
   wrap = false,
   className,

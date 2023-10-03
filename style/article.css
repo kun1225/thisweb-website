@@ -1,6 +1,6 @@
 .article code,
 .article pre {
-  @apply font-tw-code text-sm leading-6;
+  @apply font-tw-code text-xs leading-5 font-normal;
 }
 
 .article {
@@ -10,7 +10,7 @@
 .article h2,
 .article h3,
 .article h4 {
-  @apply border-b-2 mt-8 pb-2 mb-2;
+  @apply mt-16 pb-2 mb-2;
 }
 
 .article h2 {
@@ -47,7 +47,7 @@
 }
 
 .article strong {
-  @apply text-orange-600 font-bold;
+  @apply font-bold;
 }
 
 .article ul,
@@ -80,5 +80,10 @@
 }
 
 .article pre::-webkit-scrollbar {
-  @apply h-[8px];
+  @apply h-[4px];
+}
+
+.title-deco {
+  background: radial-gradient(rgb(148 163 184) 1px, rgb(248 250 252) 1px)
+    center/ 24px 24px;
 }

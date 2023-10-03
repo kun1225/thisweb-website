@@ -3,7 +3,9 @@ import Image from 'next/image';
 function SiteOwnerSection() {
   return (
     <section className="md:px-8 pt-8 mb-32 text-sm">
-      <h2 className="text-2xl text-center md:mb-8">別擔心，讓我來幫助你</h2>
+      <h2 className="text-2xl text-center md:mb-8 drop-shadow-md">
+        別擔心，讓我來幫助你
+      </h2>
 
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8">
         <div className="flex-1 basis-1/3 grid place-content-center p-10">
@@ -35,7 +37,7 @@ function SiteOwnerSection() {
         <div className="border-b-2 border-gray-500 border-dotted w-[100px]" />
       </div>
 
-      <div className="flex flex-col gap-2 items-center">
+      <div className="flex flex-col gap-2 items-center text-center">
         <p>
           我會提供一系列的前端教學文章，並用初學者的角度，帶你能打好基礎，完善學習。
         </p>
