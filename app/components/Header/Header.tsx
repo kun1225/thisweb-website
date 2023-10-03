@@ -22,11 +22,11 @@ function Header() {
         </Magnetic>
       </Link>
       <nav>
-        <Stack as="ul" className="text-xs" gap={2}>
+        <Stack as="ul" className="text-xs">
           {navContent.map(({ title, url }) => (
             <li key={title}>
               <Link href={url}>
-                <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-2">
+                <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap">
                   {title}
                 </Magnetic>
               </Link>

@@ -42,16 +42,19 @@ function ArticlesPage({ params }: { params: { page: string } }) {
       <h2 className="text-3xl mb-10 pb-2 border-b-2 border-gray-200">
         文章列表
       </h2>
-      <ul className="flex flex-col gap-10 mb-16">
+      <ul className="flex flex-col gap-12 mb-20">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map(({ title, desc, date, url }) => (
-            <li key={title}>
+            <li
+              key={title}
+              className="focus-within:scale-[102%] hover:scale-[102%] transition"
+            >
               <Link href={url}>
                 <h3 className="mb-1 font-bold text-xl">{title}</h3>
                 <p className="mb-2 text-xs text-gray-500 italic font-normal">
                   {format(parseISO(date), 'LLLL d, yyyy')}
                 </p>
-                <p className="text-sm">{desc}</p>
+                <p className="text-sm">{`${desc.slice(0, 100)}...`}</p>
               </Link>
             </li>
           ))

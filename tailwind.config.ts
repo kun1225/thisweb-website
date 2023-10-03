@@ -10,11 +10,7 @@ const config: Config = {
   theme: {
     screens: theme.screens,
     extend: {
-      colors: {
-        primary: '#00334E',
-        secondary: '#477086',
-        secondary2: '#2577a3',
-      },
+      colors: theme.colors,
       fontFamily: {
         'tw-sans':
           'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial',
