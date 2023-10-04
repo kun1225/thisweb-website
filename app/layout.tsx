@@ -27,7 +27,7 @@ export default function RootLayout({
       <body>
         <ProgressBar />
         <Header />
-        <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-40">
+        <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
           {children}
         </PageTransitionLayout>
         <Footer />
