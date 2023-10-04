@@ -32,7 +32,9 @@ const problemCardContent = [
 const ProblemSection: React.FC = () => {
   return (
     <Stack as="section" className="text-center mb-32" direction="col" gap={8}>
-      <h2 className="text-2xl md:mb-8">自學程式的你也遇過這些問題嗎?</h2>
+      <h2 className="text-2xl md:mb-8 drop-shadow-md">
+        自學程式的你也遇過這些問題嗎?
+      </h2>
 
       <Stack gap={8} wrap>
         {problemCardContent.map(({ icon, title, desc }) => (

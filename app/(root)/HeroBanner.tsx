@@ -29,7 +29,7 @@ function HeroBanner() {
         <p className="text-xs font-normal tracking-widest text-gray-500">
           請網這邊走 ThisWeb | 前端 x 轉職 x 提升競爭力
         </p>
-        <h2 className="font-semibold text-3xl md:text-4xl leading-tight">
+        <h2 className="font-semibold text-3xl md:text-4xl leading-tight drop-shadow-md">
           幫助你從零開始學習網頁程式
         </h2>
         <p className="text-gray-500 text-xs md:text-base">

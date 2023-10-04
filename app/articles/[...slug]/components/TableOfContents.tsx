@@ -85,7 +85,7 @@ function TableOfContents({ source }: PropsType) {
 
   return (
     <>
-      <p className="!mb-2 text-lg">目錄</p>
+      <p className="!mb-2 text-lg text-primary">目錄</p>
       <div className="flex flex-col text-xs">
         {headings.map((heading) => (
           <button
@@ -94,7 +94,7 @@ function TableOfContents({ source }: PropsType) {
                 ? 'font-medium text-primary-500 hover:text-primary-600'
                 : 'font-normal text-gray-500 hover:text-gray-800',
               heading.level === 3 && 'pl-4',
-              'mb-2 text-left',
+              'mb-2 text-left font-light',
             )}
             key={heading.id}
             onClick={(e) => {
