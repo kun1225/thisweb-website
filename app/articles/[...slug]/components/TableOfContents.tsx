@@ -93,7 +93,7 @@ function TableOfContents({ source }: PropsType) {
               heading.id === activeId
                 ? 'hover:text-primary-600'
                 : 'text-gray-500 hover:text-neutral-900',
-              heading.level === 3 && 'pl-4'
+              heading.level === 3 && 'pl-4',
               'mb-2 text-left transition',
             )}
             key={heading.id}
