@@ -30,10 +30,9 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #f8f8f2;
-  background: none;
-  font-size: 16px;
-  font-weight: 500;
+  background: hsl(230, 1%, 98%);
+  color: hsl(230, 8%, 24%);
+  direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -70,12 +69,6 @@ pre[class*='language-'] {
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
-  background: hsl(220, 16%, 26%);
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: hsl(220, 16%, 26%);
 }
 
 /* Inline code */

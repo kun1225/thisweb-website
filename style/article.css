@@ -1,5 +1,6 @@
-.article code,
-.article pre {
+
+.article pre,
+.article code {
   @apply font-tw-code text-xs leading-5 font-normal;
 }
 
@@ -10,15 +11,15 @@
 .article h2,
 .article h3,
 .article h4 {
-  @apply mt-16 pb-2 mb-2;
+  @apply mt-10 mb-2;
 }
 
 .article h2 {
-  @apply text-2xl font-bold;
+  @apply text-2xl font-bold border-b-2 border-gray-200 pb-2;
 }
 
 .article h3 {
-  @apply text-xl font-semibold;
+  @apply text-lg font-bold;
 }
 
 .article h4 {
@@ -36,6 +37,18 @@
 .article pre,
 .article .codepen {
   @apply mb-4;
+}
+
+.article ul ul {
+  @apply mb-0 list-circle;
+}
+
+.article ul ul ul {
+  @apply mb-0 list-square;
+}
+
+.article ol ol {
+  @apply mb-0 list-lower-alpha;
 }
 
 .article .rehype-code-title {
@@ -64,7 +77,14 @@
 }
 
 .article li:has(> p) p:first-of-type {
-  display: inline;
+  @apply inline;
+}
+.article li p,
+.article p:has(+ ol),
+.article p:has(+ ul),
+.article ol:has(+ ul),
+.article ul:has(+ ol) {
+  @apply mb-0;
 }
 
 .article li {
@@ -84,6 +104,6 @@
 }
 
 .title-deco {
-  background: radial-gradient(rgb(148 163 184) 1px, rgb(248 250 252) 1px)
+  background: radial-gradient(rgb(148 163 184) 1px, rgb(249, 250, 251) 1px)
     center/ 24px 24px;
 }

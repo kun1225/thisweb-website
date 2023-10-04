@@ -9,6 +9,15 @@ const config: Config = {
   ],
   theme: {
     screens: theme.screens,
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      circle: 'circle',
+      square: 'square',
+      roman: 'upper-roman',
+      'lower-alpha': 'lower-alpha',
+    },
     extend: {
       colors: theme.colors,
       fontFamily: {
