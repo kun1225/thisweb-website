@@ -12,6 +12,10 @@ const theme = {
     secondary: '#477086',
     secondary2: '#2577a3',
   },
+  fonts: {
+    GenSenRounded: 'GenSenRounded',
+    FiraCode: 'FiraCode'
+  },
 };
 
 export default theme;

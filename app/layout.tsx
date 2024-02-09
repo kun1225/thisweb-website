@@ -1,6 +1,5 @@
 // Next
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Noto_Sans_TC, Inter } from 'next/font/google';
 
 // Style
 import '../style/globals.css';
@@ -9,25 +8,12 @@ import '../style/globals.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
-import PageTransitionLayout from './components/effect/PageTransitionLayout';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-});
-const notoSansTC = Noto_Sans_TC({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '700', '900'],
-  display: 'swap',
-});
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
+// Metadata
 export const metadata: Metadata = {
   title: '請網這邊走 ThisWeb - 幫助你自學前端 ',
-  description: '',
+  description: '提供完整入門教學、JS 核心觀念，讓你快速上手網頁程式，學會核心技能，轉職更順利。',
   creator: 'thisweb',
   keywords: ['thisweb', '請網這邊走', 'js 教學'],
 };
@@ -38,16 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="zh-TW"
-      className={`${inter.className} ${jetBrainsMono.className} ${notoSansTC.className}`}
-    >
-      <body>
+    <html lang="zh-TW">
+      <body
+        className="bg-gray-50 text-neutral-900 text-base antialiased font-medium font-[GenSenRounded] overflow-x-hidden tracking-[0.6px]"
+      >
         <ProgressBar />
         <Header />
-        <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
+        {/* <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
           {children}
-        </PageTransitionLayout>
+        </PageTransitionLayout> */}
+        <main className="px-4 md:px-8 lg:px-20 xl:px-32">{children}</main>
         <Footer />
       </body>
     </html>

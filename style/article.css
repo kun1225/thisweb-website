@@ -1,7 +1,6 @@
-
 .article pre,
 .article code {
-  @apply font-tw-code text-xs leading-5 font-normal;
+  @apply font-[FiraCode] text-xs leading-5 font-normal;
 }
 
 .article {
@@ -52,7 +51,7 @@
 }
 
 .article .rehype-code-title {
-  @apply -mb-3 rounded-tl rounded-tr bg-slate-600 px-4 pt-1 pb-2 font-mono text-sm text-gray-200;
+  @apply -mb-3 rounded-tl rounded-tr bg-slate-600 px-4 pt-1 pb-2 font-[FiraCode] text-sm text-gray-200;
 }
 
 .article div.rehype-code-title + pre {

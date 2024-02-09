@@ -3,11 +3,8 @@ import Link from 'next/link';
 
 // Lib
 import { format, parseISO } from 'date-fns';
-import {
-  sortArticleByDate,
-  filterActiveArticles,
-  composeWithInitialValue,
-} from '@/lib/lib';
+import { composeWithInitialValue } from '@/lib/lib';
+import { sortArticleByDate, filterActiveArticles } from '@/lib/articleLib';
 
 // ContentLayer
 import { allArticles } from 'contentlayer/generated';

@@ -1,9 +1,6 @@
 import { allArticles } from 'contentlayer/generated';
-import {
-  sortArticleByDate,
-  filterActiveArticles,
-  composeWithInitialValue,
-} from '@/lib/lib';
+import { composeWithInitialValue } from '@/lib/lib';
+import { sortArticleByDate, filterActiveArticles } from '@/lib/articleLib';
 import HeroBanner from './(root)/HeroBanner';
 import ProblemSection from './(root)/ProblemSection';
 import SiteOwnerSection from './(root)/SiteOwnerSection';
