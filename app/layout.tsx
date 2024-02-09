@@ -8,11 +8,12 @@ import '../style/globals.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
-import PageTransitionLayout from './components/effect/PageTransitionLayout';
 
+
+// Metadata
 export const metadata: Metadata = {
   title: '請網這邊走 ThisWeb - 幫助你自學前端 ',
-  description: '',
+  description: '提供完整入門教學、JS 核心觀念，讓你快速上手網頁程式，學會核心技能，轉職更順利。',
   creator: 'thisweb',
   keywords: ['thisweb', '請網這邊走', 'js 教學'],
 };
@@ -24,12 +25,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <body>
+      <body
+        className="bg-gray-50 text-neutral-900 overflow-x-hidden"
+      >
         <ProgressBar />
         <Header />
-        <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-40">
+        {/* <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
           {children}
-        </PageTransitionLayout>
+        </PageTransitionLayout> */}
+        <main className="px-4 md:px-8 lg:px-20 xl:px-32">{children}</main>
         <Footer />
       </body>
     </html>
