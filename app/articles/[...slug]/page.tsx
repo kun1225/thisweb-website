@@ -5,11 +5,8 @@ import '../../../style/article.css';
 // lib
 import { useMDXComponent as callMDXComponent } from 'next-contentlayer/hooks'; // avoid the error of react-hook-rule
 import { allArticles } from 'contentlayer/generated';
-import {
-  sortArticleByDate,
-  filterActiveArticles,
-  composeWithInitialValue,
-} from '@/lib/lib';
+import { composeWithInitialValue } from '@/lib/lib';
+import { sortArticleByDate, filterActiveArticles } from '@/lib/articleLib';
 
 // Components
 import NotFoundPage from '@/app/not-found';
