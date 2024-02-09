@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <body
-        className="bg-gray-50 text-neutral-900 text-base antialiased font-medium font-[GenSenRounded] overflow-x-hidden tracking-[0.6px]"
+        className="bg-gray-50 text-neutral-900 overflow-x-hidden"
       >
         <ProgressBar />
         <Header />

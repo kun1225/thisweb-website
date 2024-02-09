@@ -16,7 +16,7 @@
   font-family: 'GenSenRounded';
   src: url('./fonts/GenSenRounded-M.ttc') format('ttc');
   font-display: swap;
-  font-weight: 600;
+  font-weight: 500;
 }
 @font-face {
   font-family: 'GenSenRounded';
@@ -41,7 +41,7 @@
   font-family: 'FiraCode';
   src: url('./fonts/FiraCode-Medium.woff2') format('woff2');
   font-display: swap;
-  font-weight: 600;
+  font-weight: 500;
 }
 @font-face {
   font-family: 'FiraCode';
@@ -63,11 +63,7 @@
 
 body,
 html {
-  @apply min-h-full;
-}
-
-body {
-  @apply bg-gray-50 text-neutral-900 text-base font-medium font-tw-sans overflow-x-hidden tracking-[0.6px];
+  @apply min-h-full overflow-x-hidden bg-gray-50 text-neutral-900 font-[GenSenRounded] text-base antialiased font-medium;
 }
 
 h1,
