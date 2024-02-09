@@ -60,6 +60,7 @@
 
 .article strong {
   @apply font-bold;
+  @apply font-bold;
 }
 
 .article ul,

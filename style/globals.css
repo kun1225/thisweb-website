@@ -66,6 +66,10 @@ html {
   @apply min-h-full;
 }
 
+body {
+  @apply bg-gray-50 text-neutral-900 text-base font-medium font-tw-sans overflow-x-hidden tracking-[0.6px];
+}
+
 h1,
 h2,
 h3,
@@ -79,9 +83,11 @@ h4 {
 
 ::-webkit-scrollbar {
   @apply w-[10px];
+  @apply w-[10px];
 }
 
 ::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
   @apply bg-secondary rounded-full;
 }
 
