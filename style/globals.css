@@ -8,25 +8,25 @@
 /* Gen Sen Rounded */
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-B.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-B.woff2') format('woff2');
   font-display: swap;
   font-weight: 700;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-M.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-M.woff2') format('woff2');
   font-display: swap;
   font-weight: 600;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-R.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-R.woff2') format('woff2');
   font-display: swap;
   font-weight: 400;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-L.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-L.woff2') format('woff2');
   font-display: swap;
   font-weight: 300;
 }
