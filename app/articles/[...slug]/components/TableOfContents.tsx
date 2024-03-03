@@ -58,18 +58,16 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
   }, [setActiveId]);
 };
 
-interface PropsType {
-  source: string;
+interface TableOfContentsPropsType {
+  source: any[];
 }
 
-function TableOfContents({ source }: PropsType) {
-  const headingLines = source
-    .split('\n')
-    .filter((line) => /^###?\s/.exec(line));
+const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
+  const headingLines = source.filter((block) => ['h2', 'h3'].includes(block.style))
 
   const headings = headingLines.map((raw) => {
-    const text = raw.replace(/^###*\s/, '');
-    const level = raw.startsWith('###') ? 3 : 2;
+    const text = raw.children[0].text.replace(/\s+/g, '');
+    const level = raw.style === 'h2' ? 2 : 3;
     const slugger = new GithubSlugger();
 
     return {
@@ -86,7 +84,7 @@ function TableOfContents({ source }: PropsType) {
   return (
     <>
       <p className="!mb-2 text-primary">目錄</p>
-      <div className="flex flex-col text-xs">
+      <div className="flex flex-col text-sm font-medium">
         {headings.map((heading) => (
           <button
             className={clsx(

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function ArticleCard({
+function PostCard({
   title,
   desc,
   url,
@@ -22,4 +22,4 @@ function ArticleCard({
   );
 }
 
-export default ArticleCard;
+export default PostCard;

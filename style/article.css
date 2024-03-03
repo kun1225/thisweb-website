@@ -4,7 +4,7 @@
 }
 
 .article {
-  @apply text-[18px] leading-6;
+  @apply text-[18px] leading-[1.6rem];
 }
 
 .article h2,
