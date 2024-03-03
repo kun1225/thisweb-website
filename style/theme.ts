@@ -1,7 +1,6 @@
 const theme = {
   screens: {
     xs: '320px',
-    xs: '320px',
     sm: '640px',
     md: '768px',
     lg: '1024px',
