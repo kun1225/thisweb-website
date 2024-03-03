@@ -18,6 +18,8 @@ import CustomPortableText from '@/app/components/CustomPortableText';
 // Type
 import { PostType } from '@/lib/sanity/type';
 
+import { notFound } from 'next/navigation';
+
 export const generateStaticParams = async () => {
   const allPostsSlug = await client.fetch<string[]>(POSTS_SLUG_QUERY);
   return allPostsSlug.map((slug) => `articles/${slug}`);
@@ -32,6 +34,10 @@ export const generateMetadata = async ({
     slug: params.slug[0],
   });
 
+  if(!currentPost) return {
+    title: '404 | 請網這邊走 ThisWeb',
+  }
+
   return {
     title: `${currentPost.title} | ThisWeb`,
     description: toPlainText(currentPost.body).slice(0, 300),
@@ -44,7 +50,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
     slug: params.slug[0],
   });
 
-  if (!currentPost) return <NotFoundPage />;
+  if (!currentPost) notFound()
 
   const nextPost = await client.fetch(NEXT_POSTS_QUERY, {
     publishedAt: currentPost.publishedAt,
