@@ -8,6 +8,7 @@ import '../style/globals.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
+import { Suspense } from 'react';
 
 // Metadata
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <body>
-        <ProgressBar />
+        <Suspense>
+          <ProgressBar />
+        </Suspense>
         <Header />
         {/* <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
           {children}
