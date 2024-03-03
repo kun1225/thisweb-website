@@ -4,6 +4,7 @@ import Refractor from 'react-refractor';
 import js from 'refractor/lang/javascript';
 import css from 'refractor/lang/css';
 import go from 'refractor/lang/go';
+import bash from 'refractor/lang/bash'
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -12,6 +13,7 @@ import GithubSlugger from 'github-slugger';
 Refractor.registerLanguage(js);
 Refractor.registerLanguage(css);
 Refractor.registerLanguage(go);
+Refractor.registerLanguage(bash);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
@@ -20,15 +22,15 @@ const slugger = new GithubSlugger();
 
 const myPortableTextComponents = {
   block: {
-    h2: ({children}: {children: string[]}) => {
+    h2: ({ children }: { children: string[] }) => {
       const text = children[0]!.replace(/\s+/g, '');
       const id = slugger.slug(text);
-      return <h2 id={id}>{children}</h2>
+      return <h2 id={id}>{children}</h2>;
     },
-    h3: ({children}: {children: string[]}) => {
+    h3: ({ children }: { children: string[] }) => {
       const text = children[0]!.replace(/\s+/g, '');
       const id = slugger.slug(text);
-      return <h3 id={id}>{children}</h3>
+      return <h3 id={id}>{children}</h3>;
     },
   },
 
@@ -40,8 +42,15 @@ const myPortableTextComponents = {
     },
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {
+      const language = source.value.language || 'javascript';
 
-      return <div></div>;
+      return (
+        <Refractor
+          language={language}
+          value={source.value.code}
+          // markers={source.highlightedLines}
+        />
+      );
     },
   },
 };

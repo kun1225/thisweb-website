@@ -9,7 +9,7 @@ export const navContent = [
   },
   {
     title: '文章',
-    url: '/articles/page/0',
+    url: '/posts/page/0',
   },
 ];
 

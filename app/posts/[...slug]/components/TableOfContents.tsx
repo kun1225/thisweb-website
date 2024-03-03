@@ -84,7 +84,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
   return (
     <>
       <p className="!mb-2 text-primary">目錄</p>
-      <div className="flex flex-col text-sm font-medium">
+      <div className="flex flex-col text-sm leading-6">
         {headings.map((heading) => (
           <button
             className={clsx(
@@ -92,7 +92,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
                 ? 'hover:text-primary-600'
                 : 'text-gray-500 hover:text-neutral-900',
               heading.level === 3 && 'pl-4',
-              'mb-2 text-left transition',
+              'text-left transition',
             )}
             key={heading.id}
             onClick={(e) => {

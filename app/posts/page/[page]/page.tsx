@@ -62,7 +62,7 @@ const PostsPage: React.FC<PostsPageProps> = async ({
               key={title}
               className="focus-within:scale-[102%] hover:scale-[102%] transition"
             >
-              <Link href={`/articles/${slug.current}`}>
+              <Link href={`/posts/${slug.current}`}>
                 <h3 className="mb-1 font-bold text-xl">{title}</h3>
                 <p className="mb-2 text-xs text-gray-500 italic font-normal">
                   {format(parseISO(publishedAt), 'LLLL d, yyyy')}

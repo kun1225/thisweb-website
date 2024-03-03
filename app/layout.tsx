@@ -30,12 +30,12 @@ export default function RootLayout({
         <Suspense>
           <ProgressBar />
         </Suspense>
-        <Header />
-        {/* <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
+          <Header />
+          {/* <PageTransitionLayout className="px-4 md:px-8 lg:px-20 xl:px-32">
           {children}
         </PageTransitionLayout> */}
-        <main className="px-4 md:px-8 lg:px-20 xl:px-32">{children}</main>
-        <Footer />
+          <main className="px-4 md:px-8 lg:px-16 xl:px-20">{children}</main>
+          <Footer />
       </body>
     </html>
   );

@@ -102,6 +102,7 @@ export default defineType({
             {title: 'Typescript', value: 'typescript'},
             {title: 'HTML', value: 'html'},
             {title: 'CSS', value: 'css'},
+            {title: 'Bash', value: 'bash'}
           ],
           withFilename: true,
         }
