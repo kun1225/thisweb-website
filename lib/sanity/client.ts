@@ -5,7 +5,7 @@ import imageUrlBuilder from '@sanity/image-url'
 export const client = createClient({
   projectId: 'y2uwkfdt',
   dataset: 'production',
-  useCdn: true, // set to `false` to bypass the edge cache
+  useCdn: false, // set to `false` to bypass the edge cache
   apiVersion: '2023-05-03',
   token: process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN
 })

@@ -6,8 +6,8 @@ import { Metadata } from 'next';
 import { format, parseISO } from 'date-fns';
 
 // Components
-import EmptyPage from './components/EmptyPage';
-import PaginatedNav from './components/PaginatedNav';
+import EmptyPage from './_components/EmptyPage';
+import PaginatedNav from './_components/PaginatedNav';
 
 // Sanity
 import { LIMITED_POSTS_QUERY, POSTS_NUMBER_QUERY } from '@/lib/sanity/queries';
@@ -29,11 +29,7 @@ interface PostsPageProps {
   };
 }
 
-const PostsPage: React.FC<PostsPageProps> = async ({
-  params,
-}: {
-  params: { page: string };
-}) => {
+const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   // filter article by page
   // start with 1, and there are ten articles per page
   // page = 1, article = 0 ~ 9 ; page = 2, article = 10 ~ 19 ...
@@ -42,12 +38,28 @@ const PostsPage: React.FC<PostsPageProps> = async ({
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
-    start: startIndex,
-    end: endIndex,
-  });
+  const posts = await client.fetch<PostsType>(
+    LIMITED_POSTS_QUERY,
+    {
+      start: startIndex,
+      end: endIndex,
+    },
+    {
+      next: {
+        revalidate: 1800,
+      },
+    },
+  );
 
-  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
+  const postsNumber = await client.fetch<number>(
+    POSTS_NUMBER_QUERY,
+    {},
+    {
+      next: {
+        revalidate: 1800,
+      },
+    },
+  );
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
@@ -67,7 +79,10 @@ const PostsPage: React.FC<PostsPageProps> = async ({
                 <p className="mb-2 text-xs text-gray-500 italic font-normal">
                   {format(parseISO(publishedAt), 'LLLL d, yyyy')}
                 </p>
-                <p className="text-sm">{`${toPlainText(body).slice(0, 100)}...`}</p>
+                <p className="text-sm">{`${toPlainText(body).slice(
+                  0,
+                  100,
+                )}...`}</p>
               </Link>
             </li>
           ))
