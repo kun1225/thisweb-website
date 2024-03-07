@@ -61,6 +61,7 @@ export default defineType({
             name: 'internalLink',
             type: 'object',
             title: 'Internal link',
+            icon: () => 'A',
             fields: [
               {
                 name: 'reference',
