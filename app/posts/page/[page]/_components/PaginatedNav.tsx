@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-const BASE_URL = '/articles/page/';
+const BASE_URL = '/posts/page/';
 
 function PaginatedNav({
   currentPage,
@@ -30,7 +30,7 @@ function PaginatedNav({
   return (
     <div className="flex gap-3 md:gap-6 justify-center text-base">
       {currentPage > 1 && (
-        <Link href={`${BASE_URL}${currentPage - 1}`}>
+        <Link href={`${BASE_URL}${currentPage - 2}`}>
           <p className=" hover:text-secondary duration-200">
             <span>← </span> <span className="hidden md:inline">上一頁</span>
           </p>
@@ -40,7 +40,7 @@ function PaginatedNav({
       {currentPage > articlesPerPage + 2 && <span>...</span>}
 
       {getPageNumbers().map((pageNumber) => (
-        <Link href={`${BASE_URL}${pageNumber}`} key={pageNumber}>
+        <Link href={`${BASE_URL}${pageNumber - 1}`} key={pageNumber}>
           <p
             className={`
           w-6 h-6 rounded-[50%] text-center
@@ -59,7 +59,7 @@ function PaginatedNav({
       {currentPage < totalPages - articlesPerPage - 1 && <span>...</span>}
 
       {currentPage < totalPages && (
-        <Link href={`${BASE_URL}${currentPage + 1}`}>
+        <Link href={`${BASE_URL}${currentPage}`}>
           <p className=" hover:text-secondary duration-200">
             <span className="hidden md:inline">下一頁</span> <span> →</span>
           </p>

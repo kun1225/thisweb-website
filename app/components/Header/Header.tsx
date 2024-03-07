@@ -22,7 +22,7 @@ function Header() {
         </Magnetic>
       </Link>
       <nav>
-        <Stack as="ul" className="text-xs">
+        <Stack as="ul" className="text-sm">
           {navContent.map(({ title, url }) => (
             <li key={title}>
               <Link href={url}>

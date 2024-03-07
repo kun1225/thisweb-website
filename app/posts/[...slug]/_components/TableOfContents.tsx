@@ -84,7 +84,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
   return (
     <>
       <p className="!mb-2 text-primary">目錄</p>
-      <div className="flex flex-col text-sm leading-6">
+      <div className="flex flex-col gap-1">
         {headings.map((heading) => (
           <button
             className={clsx(
