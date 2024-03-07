@@ -23,7 +23,7 @@ const RecommendedPosts: React.FC<RecommendedPostsProps> = ({ limitedPosts }) => 
           <PostCard desc={toPlainText(body)} key={_id} title={title} url={slug.current} />
         ))}
       </div>
-      <Link href="/articles/page/1">
+      <Link href="/posts/page/0">
         <Button className="w-40">觀看更多文章</Button>
       </Link>
     </section>
