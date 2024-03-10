@@ -21,7 +21,7 @@ const PostTitle: React.FC<PostTitleProp> = ({ date, title, topic }) => {
                 <>
                   <span className="hidden md:block">-</span>
                   <time className="text-gray-600" dateTime={date}>
-                    {format(parseISO(date), 'LLLL d, yyyy')}
+                    {format(parseISO(date), 'yyyy / LL / dd')}
                   </time>
                 </>
               )}

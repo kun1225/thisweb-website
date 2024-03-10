@@ -38,28 +38,12 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(
-    LIMITED_POSTS_QUERY,
-    {
-      start: startIndex,
-      end: endIndex,
-    },
-    {
-      next: {
-        revalidate: 1800,
-      },
-    },
-  );
+  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
+    start: startIndex,
+    end: endIndex,
+  });
 
-  const postsNumber = await client.fetch<number>(
-    POSTS_NUMBER_QUERY,
-    {},
-    {
-      next: {
-        revalidate: 1800,
-      },
-    },
-  );
+  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
@@ -75,10 +59,15 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
               className="focus-within:scale-[102%] hover:scale-[102%] transition"
             >
               <Link href={`/posts/${slug.current}`}>
-                <h3 className="mb-1 font-bold text-xl">{title}</h3>
-                <p className="mb-2 text-xs text-gray-500 italic font-normal">
-                  {format(parseISO(publishedAt), 'LLLL d, yyyy')}
-                </p>
+                <h3 className="font-bold text-xl">{title}</h3>
+                {publishedAt && (
+                  <time
+                    className="block my-1 text-xs text-gray-500 italic font-normal"
+                    dateTime={publishedAt}
+                  >
+                    {format(parseISO(publishedAt), 'yyyy / LL / dd')}
+                  </time>
+                )}
                 <p className="text-sm">{`${toPlainText(body).slice(
                   0,
                   100,
