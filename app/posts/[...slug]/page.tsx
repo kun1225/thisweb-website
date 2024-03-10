@@ -16,7 +16,7 @@ import { toPlainText } from '@portabletext/react';
 import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
 import TableOfContents from './_components/TableOfContents';
-import CustomPortableText from '@/app/components/CustomPortableText';
+import CustomPortableText from '@/app/_components/CustomPortableText';
 
 // Type
 import { PostType } from '@/lib/sanity/type';

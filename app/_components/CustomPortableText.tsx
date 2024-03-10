@@ -4,7 +4,7 @@ import Refractor from 'react-refractor';
 import js from 'refractor/lang/javascript';
 import css from 'refractor/lang/css';
 import go from 'refractor/lang/go';
-import bash from 'refractor/lang/bash'
+import bash from 'refractor/lang/bash';
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -43,13 +43,30 @@ const myPortableTextComponents = {
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {
       const language = source.value.language || 'javascript';
+      const title = source.value.filename;
 
       return (
-        <Refractor
-          language={language}
-          value={source.value.code}
-          // markers={source.highlightedLines}
-        />
+        <>
+          {title ? (
+            <>
+              <span className="block pl-3 py-1 rounded-t-md border-b-2 text-white text-xs bg-[#2E3440] ">
+                {title}
+              </span>
+              <Refractor
+                className="!mt-0 !rounded-t-none"
+                language={language}
+                value={source.value.code}
+                // markers={source.highlightedLines}
+              />
+            </>
+          ) : (
+            <Refractor
+              language={language}
+              value={source.value.code}
+              // markers={source.highlightedLines}
+            />
+          )}
+        </>
       );
     },
   },
