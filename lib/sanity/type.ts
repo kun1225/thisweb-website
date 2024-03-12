@@ -1,4 +1,4 @@
-import { SanityDocument } from "@sanity/client";
+import { SanityDocument } from '@sanity/client';
 
 export type PostType = SanityDocument & {
   publishedAt: string;
@@ -14,3 +14,10 @@ export type PostType = SanityDocument & {
 };
 
 export type PostsType = PostType[];
+
+export type categoryType = {
+  title: string;
+  description?: string;
+};
+
+export type categoriesType = categoryType[];
