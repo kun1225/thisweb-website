@@ -26,7 +26,7 @@ import { notFound } from 'next/navigation';
 
 export const generateStaticParams = async () => {
   const allPostsSlug = await client.fetch<string[]>(POSTS_SLUG_QUERY);
-  return allPostsSlug.map((slug) => `articles/${slug}`);
+  return allPostsSlug.map((slug) => `post/${slug}`);
 };
 
 export const generateMetadata = async ({

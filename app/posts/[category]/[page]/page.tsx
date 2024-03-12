@@ -1,3 +1,4 @@
+// Next
 import { Metadata } from 'next';
 
 // Components
@@ -6,7 +7,10 @@ import PaginatedNav from '../../_components/PaginatedNav';
 import PostsList from '../../_components/PostsList';
 
 // Sanity
-import { LIMITED_POSTS_QUERY, POSTS_NUMBER_QUERY } from '@/lib/sanity/queries';
+import {
+  POSTS_NUMBER_QUERY,
+  POSTS_BY_CATEGORY_TITLE_QUERY,
+} from '@/lib/sanity/queries';
 import { client } from '@/lib/sanity/client';
 
 // Types
@@ -20,20 +24,23 @@ const POSTS_PER_PAGE = 9;
 
 interface PostsPageProps {
   params: {
+    category: string;
     page: string;
   };
 }
 
 const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
-  // filter article by page
-  // start with 1, and there are ten articles per page
-  // page = 1, article = 0 ~ 9 ; page = 2, article = 10 ~ 19 ...
   const numPage = parseInt(params.page);
+  const decodedCategory = (() => {
+    if (params.category) return decodeURI(params.category as string);
+    else return '';
+  })();
 
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
+  const posts = await client.fetch<PostsType>(POSTS_BY_CATEGORY_TITLE_QUERY, {
+    categoryTitle: decodedCategory,
     start: startIndex,
     end: endIndex,
   });
@@ -47,7 +54,7 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
 
   return (
     <>
-      <p className="text-sm text-gray-500 my-8">全部文章</p>
+      <p className='text-sm text-gray-500 my-8'>{decodedCategory}</p>
       <PostsList posts={posts} />
       <PaginatedNav
         articlesPerPage={POSTS_PER_PAGE}
