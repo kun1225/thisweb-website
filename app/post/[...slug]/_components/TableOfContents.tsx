@@ -1,7 +1,7 @@
 'use client';
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 type UseIntersectionObserverType = (setActiveId: (id: string) => void) => void;
 
@@ -45,7 +45,7 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
     });
 
     const headingElements = Array.from(
-      document.querySelectorAll('.article h2,h3'),
+      document.querySelectorAll('.article h2'),
     );
 
     headingElements.forEach((element) => {
@@ -63,19 +63,21 @@ interface TableOfContentsPropsType {
 }
 
 const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
-  const headingLines = source.filter((block) => ['h2', 'h3'].includes(block.style))
+  const headingLines = source.filter((block) => ['h2'].includes(block.style))
 
-  const headings = headingLines.map((raw) => {
-    const text = raw.children[0].text.replace(/\s+/g, '');
-    const level = raw.style === 'h2' ? 2 : 3;
-    const slugger = new GithubSlugger();
-
-    return {
-      text,
-      level,
-      id: slugger.slug(text),
-    };
-  });
+  const headings = useMemo(( ) => {
+    return headingLines.map((raw) => {
+      const text = raw.children[0].text;
+      const level = raw.style === 'h2' ? 2 : 3;
+      const slugger = new GithubSlugger();
+  
+      return {
+        text,
+        level,
+        id: slugger.slug(text.replace(/\s+/g, '')),
+      };
+    });
+  }, [source])
 
   const [activeId, setActiveId] = useState<string>();
 
@@ -84,7 +86,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
   return (
     <>
       <p className="!mb-2 text-primary">目錄</p>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 text-sm">
         {headings.map((heading) => (
           <button
             className={clsx(
@@ -92,7 +94,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
                 ? 'hover:text-primary-600'
                 : 'text-gray-500 hover:text-neutral-900',
               heading.level === 3 && 'pl-4',
-              'text-left transition',
+              'text-left transition select-none',
             )}
             key={heading.id}
             onClick={(e) => {

@@ -51,17 +51,9 @@ export const generateMetadata = async ({
 };
 
 const PostPage = async ({ params }: { params: { slug: string[] } }) => {
-  const currentPost = await client.fetch<PostType>(
-    POST_QUERY,
-    {
-      slug: params.slug[0],
-    },
-    {
-      next: {
-        revalidate: 1800,
-      },
-    },
-  );
+  const currentPost = await client.fetch<PostType>(POST_QUERY, {
+    slug: params.slug[0],
+  });
 
   if (!currentPost) notFound();
 
@@ -84,7 +76,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
           <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
             <CustomPortableText value={currentPost.body} />
           </div>
-          <aside className="block mb-8 border-2 p-4 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:p-0 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
+          <aside className="block mb-8 border-2 p-4 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
             <TableOfContents source={currentPost.body} />
           </aside>
         </section>
