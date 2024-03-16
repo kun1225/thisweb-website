@@ -18,9 +18,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Create contentlayer
-        run: npx contentlayer build
-
       - name: Code Linting
         run: npm run lint:fix
 
