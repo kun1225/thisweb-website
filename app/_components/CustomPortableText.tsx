@@ -1,13 +1,16 @@
+'use client'
+
 // Components
 import { PortableText } from '@portabletext/react';
 import Refractor from 'react-refractor';
+import Modal from './Modal';
+
+// Utils
+import GithubSlugger from 'github-slugger';
 import js from 'refractor/lang/javascript';
 import css from 'refractor/lang/css';
 import go from 'refractor/lang/go';
 import bash from 'refractor/lang/bash';
-
-// Utils
-import GithubSlugger from 'github-slugger';
 
 // Language
 Refractor.registerLanguage(js);
@@ -17,6 +20,7 @@ Refractor.registerLanguage(bash);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
+import { useState } from 'react';
 
 const slugger = new GithubSlugger();
 
@@ -55,9 +59,9 @@ const calloutComponents = {
           )}
         </>
       );
-    }
+    },
   },
-}
+};
 
 const myPortableTextComponents = {
   block: {
@@ -75,9 +79,17 @@ const myPortableTextComponents = {
 
   types: {
     image: ({ value }: { value: any }) => {
+      const [isOpen, setIsOpen] = useState(false)
       const imageSrc = urlFor(value).width(1080).url();
 
-      return <img src={imageSrc} />;
+      return (
+        <>
+          <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <img src={imageSrc} className='max-w-full' />
+          </Modal>
+          <img src={imageSrc} onClick={() => setIsOpen(true)} className="max-h-[70svh] max-w-full cursor-zoom-in" />
+        </>
+      );
     },
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {
@@ -110,11 +122,16 @@ const myPortableTextComponents = {
     },
 
     Callout: (source: any) => {
-      return <div className="callout bg-gray-100 p-2 border-2 border-gray-300 rounded-md shadow-md">
-        <p>{source.value.title}</p>
-        <PortableText value={source.value.text} components={calloutComponents}/>
-      </div>;
-    }
+      return (
+        <div className="callout bg-gray-100 p-2 border-2 border-gray-300 rounded-md shadow-md">
+          <p>{source.value.title}</p>
+          <PortableText
+            value={source.value.text}
+            components={calloutComponents}
+          />
+        </div>
+      );
+    },
   },
 };
 
