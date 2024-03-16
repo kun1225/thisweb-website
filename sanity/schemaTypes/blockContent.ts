@@ -1,5 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
-
+import {defineType, defineArrayMember, defineField} from 'sanity'
 /**
  * This is the schema type for block content used in the post document type
  * Importing this type into the studio configuration's `schema` property
@@ -23,6 +22,7 @@ export default defineType({
       // set corresponds with HTML tags, but you can set any title or value
       // you want, and decide how you want to deal with it where you want to
       // use your content.
+      //@ts-ignore
       styles: [
         {title: 'Normal', value: 'normal'},
         {title: 'H2', value: 'h2'},
@@ -32,7 +32,7 @@ export default defineType({
       ],
       lists: [
         {title: 'Bullet', value: 'bullet'},
-        {title: 'Numbered', value: 'number'}
+        {title: 'Numbered', value: 'number'},
       ],
       // Marks let you mark up inline text in the Portable Text Editor
       marks: {
@@ -41,7 +41,9 @@ export default defineType({
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'}
+          {title: 'Code', value: 'code'},
+          {title: 'Underline', value: 'underline'},
+          {title: 'Strike', value: 'strike-through'},
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -67,13 +69,10 @@ export default defineType({
                 name: 'reference',
                 type: 'reference',
                 title: 'Reference',
-                to: [
-                  { type: 'post' },
-                ]
-              }
-            ]
+                to: [{type: 'post'}],
+              },
+            ],
           },
-
         ],
       },
     }),
@@ -83,30 +82,46 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+      //@ts-ignore
       fields: [
         {
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-        }
-      ]
+        },
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+          hidden: ({parent}: {parent: any}) => !parent?.asset,
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     }),
 
     defineArrayMember({
-        name: 'CodeField',
-        type: 'code',
-        title: 'Code Field',
-        options: {
-          language: 'javascript',
-          languageAlternatives: [
-            {title: 'Javascript', value: 'javascript'},
-            {title: 'Typescript', value: 'typescript'},
-            {title: 'HTML', value: 'html'},
-            {title: 'CSS', value: 'css'},
-            {title: 'Bash', value: 'bash'}
-          ],
-          withFilename: true,
-        }
-    })
+      name: 'CodeField',
+      type: 'code',
+      title: 'Code Field',
+      options: {
+        language: 'javascript',
+        languageAlternatives: [
+          {title: 'Javascript', value: 'javascript'},
+          {title: 'Typescript', value: 'typescript'},
+          {title: 'HTML', value: 'html'},
+          {title: 'CSS', value: 'css'},
+          {title: 'Bash', value: 'bash'},
+        ],
+        withFilename: true,
+      },
+    }),
+    defineArrayMember({
+      name: 'Callout',
+      type: 'callout',
+      title: 'Callout',
+      icon: () => 'C',
+    }),
   ],
 })

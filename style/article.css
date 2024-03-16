@@ -107,3 +107,7 @@
   background: radial-gradient(rgb(148 163 184) 1px, rgb(249, 250, 251) 1px)
     center/ 24px 24px;
 }
+
+.callout ul {
+  @apply mb-0
+}
