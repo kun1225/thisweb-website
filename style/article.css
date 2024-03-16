@@ -4,7 +4,7 @@
 }
 
 .article {
-  @apply text-[18px] leading-6;
+  @apply text-[18px] leading-[1.6rem];
 }
 
 .article h2,
@@ -106,4 +106,8 @@
 .title-deco {
   background: radial-gradient(rgb(148 163 184) 1px, rgb(249, 250, 251) 1px)
     center/ 24px 24px;
+}
+
+.callout ul {
+  @apply mb-0
 }

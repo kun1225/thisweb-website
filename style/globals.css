@@ -8,25 +8,25 @@
 /* Gen Sen Rounded */
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-B.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-B.woff2') format('woff2');
   font-display: swap;
   font-weight: 700;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-M.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-M.woff2') format('woff2');
   font-display: swap;
   font-weight: 500;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-R.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-R.woff2') format('woff2');
   font-display: swap;
   font-weight: 400;
 }
 @font-face {
   font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-L.ttc') format('ttc');
+  src: url('./fonts/GenSenRounded-L.woff2') format('woff2');
   font-display: swap;
   font-weight: 300;
 }
@@ -57,13 +57,13 @@
 }
 
 :root {
-  --font-GenSenRounded: 'GenSenRounded';
-  --font-FiraCode: 'FiraCode';
+  --font-GenSenRounded: 'GenSenRounded', sans-serif;
+  --font-FiraCode: 'FiraCode', monospace;
 }
 
 body,
 html {
-  @apply min-h-full overflow-x-hidden bg-gray-50 text-neutral-900 font-[GenSenRounded] text-base antialiased font-medium;
+  @apply min-h-full bg-gray-50 text-neutral-950 font-[GenSenRounded] font-normal;
 }
 
 h1,
@@ -78,15 +78,13 @@ h4 {
 }
 
 ::-webkit-scrollbar {
-  @apply w-[10px];
-  @apply w-[10px];
+  @apply w-[8px] h-[8px];
 }
 
 ::-webkit-scrollbar-thumb {
   @apply bg-secondary rounded-full;
-  @apply bg-secondary rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary2;
+  @apply bg-secondary-2;
 }

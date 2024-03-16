@@ -1,7 +1,6 @@
 const theme = {
   screens: {
     xs: '320px',
-    xs: '320px',
     sm: '640px',
     md: '768px',
     lg: '1024px',
@@ -11,7 +10,7 @@ const theme = {
   colors: {
     primary: '#00334E',
     secondary: '#477086',
-    secondary2: '#2577a3',
+    'secondary-2': '#2577a3',
   },
   fonts: {
     GenSenRounded: 'GenSenRounded',

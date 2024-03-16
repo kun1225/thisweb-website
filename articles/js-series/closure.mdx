@@ -133,27 +133,7 @@ document.addEventListener('scroll', betterScroll);
 和防抖相反，有時候我們只想觸發**第一次**，這稱為**節流(Throttle)**。實際應用如下：
 
 ```js
-function throttle(fm, interval) {
-  // last 為上一次觸發的時間
-  let last = 0;
 
-  // 返回匿名函數
-  return function () {
-    // 紀錄現在時間
-    let now = new Date();
-    if (now - last >= interval) {
-      last = now;
-      fn();
-    }
-  };
-}
-
-function scrollEvent() {
-  console.log('觸發滾動事件');
-}
-
-const betterScroll = throttle(scrollEvent, 500);
-document.addEventListener('scroll', betterScroll);
 ```
 
 ## 閉包應用 3 - 封裝函式庫
