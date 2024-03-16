@@ -1,13 +1,12 @@
 'use client';
-
 // Core
 import { createPortal } from 'react-dom';
 
 // Utils
-import { motion, AnimatePresence, useDomEvent, EventInfo } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Hook
-import { useEffect, useState, useRef, Children } from 'react';
+import { useEffect, useState } from 'react';
 
 // Component
 import { IoClose } from 'react-icons/io5';
@@ -30,10 +29,6 @@ const Modal: React.FC<ModalPropsType> = ({
   children,
   ...rest
 }) => {
-  useDomEvent(useRef(window), 'keydown', (e: any) => {
-    if (isOpen && e.key === 'Escape') onClose();
-  });
-
   useEffect(() => {
     if (isOpen) {
       if (isBodyScrollLock) document.body.style.overflow = 'hidden';
@@ -41,6 +36,16 @@ const Modal: React.FC<ModalPropsType> = ({
       document.body.style.overflow = 'auto';
     }
   }, [isOpen, isBodyScrollLock]);
+
+  useEffect(() => {
+    const handleKeydown = (e: any) => {
+      if (isOpen && e.key === 'Escape') onClose();
+    }
+
+    window.addEventListener('keydown', handleKeydown);
+
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [])
 
   return (
     <Portal>
