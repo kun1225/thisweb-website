@@ -8,8 +8,8 @@ import PostsList from '../../_components/PostsList';
 
 // Sanity
 import {
-  POSTS_NUMBER_QUERY,
   POSTS_BY_CATEGORY_TITLE_QUERY,
+  POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
 } from '@/lib/sanity/queries';
 import { client } from '@/lib/sanity/client';
 
@@ -49,12 +49,17 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
     return <EmptyPage />;
   }
 
-  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
+  const postsNumber = await client.fetch<number>(
+    POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
+    {
+      categoryTitle: decodedCategory,
+    },
+  );
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
     <>
-      <p className='text-sm text-gray-500 my-8'>{decodedCategory}</p>
+      <p className="text-sm text-gray-500 my-8">{decodedCategory}</p>
       <PostsList posts={posts} />
       <PaginatedNav
         articlesPerPage={POSTS_PER_PAGE}

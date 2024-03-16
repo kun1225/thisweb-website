@@ -3,7 +3,7 @@
 // Components
 import { PortableText } from '@portabletext/react';
 import Refractor from 'react-refractor';
-import Modal from './Modal';
+import ImageEnlarger from './ImageEnlarger';
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -84,10 +84,7 @@ const myPortableTextComponents = {
 
       return (
         <>
-          <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-            <img src={imageSrc} className='max-w-full' />
-          </Modal>
-          <img src={imageSrc} onClick={() => setIsOpen(true)} className="max-h-[70svh] max-w-full cursor-zoom-in" />
+          <ImageEnlarger src={imageSrc} alt='img' className='mb-4' />
         </>
       );
     },
