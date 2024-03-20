@@ -88,3 +88,17 @@ h4 {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-secondary-2;
 }
+
+.c {
+  @apply px-4 md:px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
+}
+
+.hero__bg {
+  background-color: transparent;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsla(200, 62%, 39%, 0.2) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 120% 50%, hsla(200, 100%, 15%, 0.2) 0px, transparent 50%);
+}
