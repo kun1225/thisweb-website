@@ -42,7 +42,7 @@ export default function RootLayout({
           <ProgressBar />
         </Suspense>
           <Header />
-          <main className="px-4 md:px-8 lg:px-16 xl:px-20">{children}</main>
+          <main className="px-4 md:px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto">{children}</main>
           <Footer />
       </body>
     </html>
