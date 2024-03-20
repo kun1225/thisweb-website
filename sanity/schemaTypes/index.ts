@@ -4,5 +4,6 @@ import category from './category'
 import post from './post'
 import author from './author'
 import subCategory from './subCategory'
+import codepen from './codepen'
 
-export const schemaTypes = [post, author, category, blockContent, subCategory, callout]
+export const schemaTypes = [post, author, category, blockContent, subCategory, callout, codepen]
