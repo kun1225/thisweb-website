@@ -1,9 +1,12 @@
-'use client'
+'use client';
 
 // Components
 import { PortableText } from '@portabletext/react';
+import { RiExternalLinkLine } from 'react-icons/ri';
+import Link from 'next/link';
 import Refractor from 'react-refractor';
 import ImageEnlarger from './ImageEnlarger';
+import CodePen from './Codepen';
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -23,6 +26,9 @@ import { urlFor } from '@/lib/sanity/client';
 import { useState } from 'react';
 
 const slugger = new GithubSlugger();
+
+const linkClassName =
+  'inline-block relative z-10 text-secondary duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-secondary after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
 
 const calloutComponents = {
   types: {
@@ -75,16 +81,19 @@ const myPortableTextComponents = {
       const id = slugger.slug(text);
       return <h3 id={id}>{children}</h3>;
     },
+    blockquote: ({ children }: { children: string[] }) => {
+      return <p className='px-3 py-1 border-l-4 border-gray-400 bg-slate-100'>{children}</p>
+    }
   },
 
   types: {
     image: ({ value }: { value: any }) => {
-      const [isOpen, setIsOpen] = useState(false)
+      const [isOpen, setIsOpen] = useState(false);
       const imageSrc = urlFor(value).width(1080).url();
 
       return (
         <>
-          <ImageEnlarger src={imageSrc} alt='img' className='mb-4' />
+          <ImageEnlarger src={imageSrc} alt="img" className="mb-4" />
         </>
       );
     },
@@ -127,6 +136,37 @@ const myPortableTextComponents = {
             components={calloutComponents}
           />
         </div>
+      );
+    },
+    Codepen: (source: any) => {
+      const url = source.value.url;
+      const themeId = source.value.themeId;
+
+      return (
+        <div className='mb-4'>
+          <CodePen url={url} themeId={themeId} />
+        </div>
+      );
+    },
+  },
+  marks: {
+    internalLink: ({ value, children }: { value: any; children: any }) => {
+      const { slug = {} } = value;
+      const href = `posts/${slug.current}`;
+
+      return (
+        <Link className={linkClassName} href={href} target="_blank">
+          {children}
+        </Link>
+      );
+    },
+    link: ({ value, children }: { value: any; children: any }) => {
+      const { href } = value;
+      return (
+        <a href={href} target="_blank" rel="noopener" className={linkClassName}>
+          <RiExternalLinkLine className="inline-block mr-1 mb-1" />
+          {children}
+        </a>
       );
     },
   },

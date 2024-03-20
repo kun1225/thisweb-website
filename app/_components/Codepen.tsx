@@ -1,33 +1,26 @@
-function Codepen({
-  author = 'thisWeb1225',
-  penId,
-  showResult = true,
-  editable = true,
-  clickToLoad = false,
-  defaultTab = 'html',
-}: {
-  author?: string;
-  penId: string;
-  showResult?: boolean;
-  editable?: boolean;
-  clickToLoad?: boolean;
-  defaultTab?: 'html' | 'css' | 'js';
-}) {
-  const preview = clickToLoad ? '/preveiw' : '';
-  const editableContent = editable ? '&editable=true' : '';
-  const showResultContent = showResult ? '%2Cresult' : '';
-
-  return (
-    <div className="codepen">
-      <iframe
-        title={penId}
-        height="500"
-        loading="lazy"
-        src={`https://codepen.io/${author}/embed${preview}/${penId}?default-tab=${defaultTab}${showResultContent}${editableContent}`}
-        style={{ width: '100%' }}
-      />
-    </div>
-  );
+interface CodepenPropsType {
+  url: string;
+  themeId: 'dark' | 'light';
 }
 
-export default Codepen;
+const CodePen: React.FC<CodepenPropsType> = ({ url, themeId }) => {
+  const splitURL = url.split('/');
+  // [ 'https:', '', 'codepen.io', 'thisWeb', 'pen', 'gWWQgb' ]
+  const [, , , user, , hash] = splitURL;
+  const embedUrl = `https://codepen.io/${user}/embed/${hash}?height=370&theme-id=${themeId}&default-tab=result`;
+  
+  return (
+    <iframe
+      height="500"
+      style={{ width: '100%' }}
+      scrolling="no"
+      title="CodePen Embed"
+      src={embedUrl}
+      frameBorder="no"
+      allowTransparency
+      allowFullScreen
+    />
+  );
+};
+
+export default CodePen;
