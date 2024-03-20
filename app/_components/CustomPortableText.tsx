@@ -97,11 +97,11 @@ const myPortableTextComponents = {
         <>
           {title ? (
             <>
-              <span className="block pl-3 py-1 rounded-t-md border-b-2 text-white text-xs bg-[#2E3440] ">
+              <span className="block -mb-3 rounded-t px-4 pt-1 pb-2 font-[FiraCode] text-sm text-gray-50 bg-slate-600">
                 {title}
               </span>
               <Refractor
-                className="!mt-0 !rounded-t-none"
+                className=""
                 language={language}
                 value={source.value.code}
                 // markers={source.highlightedLines}
