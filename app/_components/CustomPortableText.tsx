@@ -23,11 +23,11 @@ Refractor.registerLanguage(bash);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
-import { useState } from 'react';
+import { HTMLAttributes } from 'react';
 
 const slugger = new GithubSlugger();
 
-const linkClassName =
+const linkClassName: HTMLAttributes<HTMLDivElement>['className'] =
   'inline-block relative z-10 text-secondary duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-secondary after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
 
 const calloutComponents = {
@@ -53,14 +53,14 @@ const calloutComponents = {
                 className="!mt-0 !rounded-t-none"
                 language={language}
                 value={source.value.code}
-                // markers={source.highlightedLines}
+                markers={source.highlightedLines}
               />
             </>
           ) : (
             <Refractor
               language={language}
               value={source.value.code}
-              // markers={source.highlightedLines}
+              markers={source.highlightedLines}
             />
           )}
         </>
@@ -74,26 +74,43 @@ const myPortableTextComponents = {
     h2: ({ children }: { children: string[] }) => {
       const text = children[0]!.replace(/\s+/g, '');
       const id = slugger.slug(text);
-      return <h2 id={id}>{children}</h2>;
+      return (
+        <h2
+          id={id}
+          className="mt-10 mb-2 text-2xl font-bold border-b-2 border-gray-200 pb-2"
+        >
+          {children}
+        </h2>
+      );
     },
     h3: ({ children }: { children: string[] }) => {
       const text = children[0]!.replace(/\s+/g, '');
       const id = slugger.slug(text);
-      return <h3 id={id}>{children}</h3>;
+      return (
+        <h3 id={id} className="mt-6 text-lg font-bold">
+          {children}
+        </h3>
+      );
+    },
+    h4: ({ children }: { children: string[] }) => {
+      return <h4 className="text-lg">{children}</h4>;
     },
     blockquote: ({ children }: { children: string[] }) => {
-      return <p className='px-3 py-1 border-l-4 border-gray-400 bg-slate-100'>{children}</p>
-    }
+      return (
+        <p className="px-3 py-1 border-l-4 border-gray-400 bg-slate-100">
+          {children}
+        </p>
+      );
+    },
   },
 
   types: {
     image: ({ value }: { value: any }) => {
-      const [isOpen, setIsOpen] = useState(false);
       const imageSrc = urlFor(value).width(1080).url();
 
       return (
         <>
-          <ImageEnlarger src={imageSrc} alt="img" className="mb-4" />
+          <ImageEnlarger src={imageSrc} alt="img" />
         </>
       );
     },
@@ -113,14 +130,14 @@ const myPortableTextComponents = {
                 className=""
                 language={language}
                 value={source.value.code}
-                // markers={source.highlightedLines}
+                markers={source.highlightedLines}
               />
             </>
           ) : (
             <Refractor
               language={language}
               value={source.value.code}
-              // markers={source.highlightedLines}
+              markers={source.highlightedLines}
             />
           )}
         </>
@@ -129,7 +146,7 @@ const myPortableTextComponents = {
 
     Callout: (source: any) => {
       return (
-        <div className="callout bg-gray-100 p-2 border-2 border-gray-300 rounded-md shadow-md">
+        <div className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md">
           <p>{source.value.title}</p>
           <PortableText
             value={source.value.text}
@@ -143,7 +160,7 @@ const myPortableTextComponents = {
       const themeId = source.value.themeId;
 
       return (
-        <div className='mb-4'>
+        <div className="mb-4">
           <CodePen url={url} themeId={themeId} />
         </div>
       );
