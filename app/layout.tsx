@@ -5,9 +5,9 @@ import type { Metadata } from 'next';
 import '../style/globals.css';
 
 // Components
-import Header from './components/Header/Header';
-import Footer from './components/Footer';
-import ProgressBar from './components/ProgressBar';
+import Header from './_components/Header/Header';
+import Footer from './_components/Footer';
+import ProgressBar from './_components/ProgressBar';
 import { Suspense } from 'react';
 
 // Vercel Analytics
