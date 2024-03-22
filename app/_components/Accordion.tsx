@@ -7,7 +7,7 @@ import React, {
   HtmlHTMLAttributes,
 } from 'react';
 import clsx from 'clsx';
-import { FaCaretUp } from 'react-icons/fa6';
+import { FaCaretDown } from 'react-icons/fa6';
 
 // Context to share the Accordion state and functionality across the compound components
 interface AccordionContextType {
@@ -52,7 +52,7 @@ const Accordion: React.FC<AccordionProps> = ({
 /**
  * * Title component
  */
-interface TitlePropsType {
+interface TitlePropsType extends HtmlHTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   as?: React.ElementType;
   className?: HtmlHTMLAttributes<HTMLElement>['className'];
@@ -74,18 +74,18 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
       onClick={stretch ? toggle : undefined}
     >
       {iconPosition === 'left' && (
-        <FaCaretUp
-          className={`transition text-inherit cursor-pointer ${clsx(
-            isExpanded && 'rotate-180 -translate-y-[0.5px]',
+        <FaCaretDown
+          className={`transition text-inherit cursor-pointer -translate-y-[0.5px] ${clsx(
+            isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
         />
       )}
       {children}
       {iconPosition === 'right' && (
-        <FaCaretUp
-          className={`transition text-inherit cursor-pointer ${clsx(
-            isExpanded && 'rotate-180 -translate-y-[0.5px]',
+        <FaCaretDown
+          className={`transition text-inherit cursor-pointer -translate-y-[0.5px] ${clsx(
+            isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
         />
@@ -97,13 +97,14 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 /**
  * * Content component
  */
-interface ContentPropsType {
+interface ContentPropsType extends HtmlHTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: HtmlHTMLAttributes<HTMLElement>['className'];
 }
 const AccordionContent: React.FC<ContentPropsType> = ({
   children,
   className = '',
+  ...props
 }) => {
   const accordionContext = useContext(AccordionContext);
   if (!accordionContext)
@@ -117,12 +118,12 @@ const AccordionContent: React.FC<ContentPropsType> = ({
     <div
       className={`grid transition-all grid-rows-[0fr] duration-[${duration}s] ${clsx(
         isExpanded && 'grid-rows-[1fr]',
-      )} ${className}`}
+      )}`}
       style={{
         transitionDuration: `${duration}s`,
       }}
     >
-      <div className="overflow-hidden">{children}</div>
+      <div className={`overflow-hidden ${className}`} {...props}>{children}</div>
     </div>
   );
 };
