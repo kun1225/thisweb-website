@@ -1,12 +1,13 @@
 'use client';
 
 // Components
-import { PortableText } from '@portabletext/react';
+import { PortableText, toPlainText } from '@portabletext/react';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import Link from 'next/link';
 import Refractor from 'react-refractor';
 import ImageEnlarger from './ImageEnlarger';
 import CodePen from './Codepen';
+import { Accordion, AccordionContent, AccordionTitle } from './Accordion';
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -31,6 +32,27 @@ const linkClassName =
   'inline-block relative z-10 text-secondary duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-secondary after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
 
 const calloutComponents = {
+  marks: {
+    internalLink: ({ value, children }: { value: any; children: any }) => {
+      const { slug = {} } = value;
+      const href = `posts/${slug.current}`;
+
+      return (
+        <Link className={linkClassName} href={href} target="_blank">
+          {children}
+        </Link>
+      );
+    },
+    link: ({ value, children }: { value: any; children: any }) => {
+      const { href } = value;
+      return (
+        <a href={href} target="_blank" rel="noopener" className={linkClassName}>
+          <RiExternalLinkLine className="inline-block mr-1 mb-1" />
+          {children}
+        </a>
+      );
+    },
+  },
   types: {
     image: ({ value }: { value: any }) => {
       const imageSrc = urlFor(value).width(1080).url();
@@ -145,11 +167,32 @@ const myPortableTextComponents = {
     },
 
     Callout: (source: any) => {
-      return (
+      const isExpanded = source.value.isExpanded;
+      const bodyLength = toPlainText(source.value.text).length;
+
+      const duration = bodyLength > 500 ? 1.2 : 0.6;
+
+      return isExpanded ? (
+        <Accordion
+          className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md"
+          duration={duration}
+          stretch
+        >
+          <AccordionTitle>{source.value.title}</AccordionTitle>
+          <AccordionContent>
+            <PortableText
+              value={source.value.text}
+              //@ts-ignore
+              components={calloutComponents}
+            />
+          </AccordionContent>
+        </Accordion>
+      ) : (
         <div className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md">
           <p>{source.value.title}</p>
           <PortableText
             value={source.value.text}
+            //@ts-ignore
             components={calloutComponents}
           />
         </div>

@@ -1,15 +1,21 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 
 export default defineType({
   title: 'Callout',
   name: 'callout',
   type: 'object',
   fields: [
-    {
+    defineField({
       title: 'Title',
       name: 'title',
       type: 'string',
-    },
+    }),
+    defineField({
+      title: 'Can Expanded',
+      name: 'isExpanded',
+      type: 'boolean',
+      initialValue: false,
+    }),
     {
       title: 'Text',
       name: 'text',

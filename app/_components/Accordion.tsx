@@ -70,13 +70,13 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 
   return (
     <Tag
-      className={`flex gap-1 items-center select-none ${className}`}
+      className={`flex gap-2 items-center select-none ${clsx(stretch && 'cursor-pointer')} ${className}`}
       onClick={stretch ? toggle : undefined}
     >
       {iconPosition === 'left' && (
         <FaCaretUp
-          className={`transition text-inherit ${clsx(
-            isExpanded && 'rotate-180',
+          className={`transition text-inherit cursor-pointer ${clsx(
+            isExpanded && 'rotate-180 -translate-y-[0.5px]',
           )}`}
           onClick={toggle}
         />
@@ -84,8 +84,8 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
       {children}
       {iconPosition === 'right' && (
         <FaCaretUp
-          className={`transition text-inherit ${clsx(
-            isExpanded && 'rotate-180',
+          className={`transition text-inherit cursor-pointer ${clsx(
+            isExpanded && 'rotate-180 -translate-y-[0.5px]',
           )}`}
           onClick={toggle}
         />
@@ -106,19 +106,21 @@ const AccordionContent: React.FC<ContentPropsType> = ({
   className = '',
 }) => {
   const accordionContext = useContext(AccordionContext);
-  if (!accordionContext) {
+  if (!accordionContext)
     throw new Error(
       'AccordionList.Content must be used within a AccordionList',
     );
-  }
 
-  const {isExpanded, duration} = accordionContext
+  const { isExpanded, duration } = accordionContext;
 
   return (
     <div
-      className={`grid transition-[${duration}s] ${clsx(
-        isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+      className={`grid transition-all grid-rows-[0fr] duration-[${duration}s] ${clsx(
+        isExpanded && 'grid-rows-[1fr]',
       )} ${className}`}
+      style={{
+        transitionDuration: `${duration}s`,
+      }}
     >
       <div className="overflow-hidden">{children}</div>
     </div>
