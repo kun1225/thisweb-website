@@ -125,7 +125,6 @@ const myPortableTextComponents = {
       );
     },
   },
-
   types: {
     image: ({ value }: { value: any }) => {
       const imageSrc = urlFor(value).width(1080).url();
@@ -178,7 +177,7 @@ const myPortableTextComponents = {
           duration={duration}
           stretch
         >
-          <AccordionTitle>{source.value.title}</AccordionTitle>
+          <AccordionTitle className='font-bold'>{source.value.title}</AccordionTitle>
           <AccordionContent>
             <PortableText
               value={source.value.text}
@@ -189,7 +188,7 @@ const myPortableTextComponents = {
         </Accordion>
       ) : (
         <div className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md">
-          <p>{source.value.title}</p>
+          <p className='font-bold'>{source.value.title}</p>
           <PortableText
             value={source.value.text}
             //@ts-ignore

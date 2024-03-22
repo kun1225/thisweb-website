@@ -88,3 +88,7 @@
 .callout .codepen {
   @apply mb-0;
 }
+
+.toc p {
+  @apply mb-0;
+}
