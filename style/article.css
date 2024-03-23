@@ -7,24 +7,6 @@
   @apply text-base leading-7;
 }
 
-.article h2,
-.article h3,
-.article h4 {
-  @apply mt-10 mb-2;
-}
-
-.article h2 {
-  @apply text-2xl font-bold border-b-2 border-gray-200 pb-2;
-}
-
-.article h3 {
-  @apply text-lg font-bold;
-}
-
-.article h4 {
-  @apply text-lg;
-}
-
 .article em {
   @apply border-l-4 py-1 pl-4 border-gray-200;
 }
@@ -104,5 +86,9 @@
 .callout ol,
 .callout pre,
 .callout .codepen {
+  @apply mb-0;
+}
+
+.toc p {
   @apply mb-0;
 }

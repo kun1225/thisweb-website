@@ -1,7 +1,7 @@
 'use client';
 
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useWillChange } from 'framer-motion';
 
 const transition = {
@@ -19,15 +19,15 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   className,
 }) => {
   const [isEnlarged, setIsEnlarged] = useState(false);
+  const [wrapperHeight, setWrapperHeight] = useState(300);
   const willChange = useWillChange();
-
-  // if (typeof window !== 'undefined') return;
+  const imgRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     const handleKeydown = (e: any) => {
       if (isEnlarged && e.key === 'Escape') setIsEnlarged(false);
     };
-    const handleScroll = (e: any) => {
+    const handleScroll = () => {
       isEnlarged && setIsEnlarged(false);
     }
 
@@ -40,8 +40,12 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
     }
   });
 
+  useEffect(() => {
+    setWrapperHeight(imgRef.current?.clientHeight || 300);
+  }, [imgRef])
+
   return (
-    <motion.div className={`relative w-full pt-[66.6%] ${className}`}>
+    <motion.div className={`relative w-full ${className}`} style={{ minHeight: `${wrapperHeight}px` }}>
       <motion.div
         onClick={() => setIsEnlarged(false)}
         animate={{ opacity: isEnlarged ? 1 : 0 }}
@@ -53,6 +57,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
         }`}
       />
       <motion.img
+        ref={imgRef}
         layout
         src={src}
         alt={alt}

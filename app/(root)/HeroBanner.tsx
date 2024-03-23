@@ -5,6 +5,10 @@ import { subscribeConvertKitEmail } from '@/lib/subscribeConvertKitEmail';
 import { convertKitFormId } from '@/lib/convertKitFormId';
 import Newsletter from './components/Newsletter';
 
+// Components
+import Button from '../_components/Button';
+import Link from 'next/link';
+
 const { heroFormId } = convertKitFormId;
 
 function HeroBanner() {
@@ -26,6 +30,9 @@ function HeroBanner() {
           前端入門教學、JS
           核心觀念，快速上手網頁程式，學會核心技能，轉職更順利。
         </p>
+        <Link href="/posts/page/0" className='mt-10'>
+          <Button>開始學習</Button>
+        </Link>
         {/* <p className="mt-2 border-t-2 pt-4">
           加入<span className="text-secondary">電子報</span>，每週三準時收到 1
           篇前端的技術文章。

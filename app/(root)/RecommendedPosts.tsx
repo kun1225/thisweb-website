@@ -1,6 +1,6 @@
 // Components
 import Link from 'next/link';
-import Button from '../components/Button';
+import Button from '../_components/Button';
 import PostCard from './components/PostCard';
 
 // Utils
@@ -24,7 +24,7 @@ const RecommendedPosts: React.FC<RecommendedPostsProps> = ({ limitedPosts }) => 
         ))}
       </div>
       <Link href="/posts/page/0">
-        <Button className="w-40">觀看更多文章</Button>
+        <Button className="w-40" buttonType='outline'>觀看更多文章</Button>
       </Link>
     </section>
   );

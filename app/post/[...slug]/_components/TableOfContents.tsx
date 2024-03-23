@@ -1,7 +1,12 @@
 'use client';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import clsx from 'clsx';
 import GithubSlugger from 'github-slugger';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionTitle,
+} from '@/app/_components/Accordion';
 
 type UseIntersectionObserverType = (setActiveId: (id: string) => void) => void;
 
@@ -45,7 +50,7 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
     });
 
     const headingElements = Array.from(
-      document.querySelectorAll('.article h2'),
+      document.querySelectorAll('.article h2, .article h3'),
     );
 
     headingElements.forEach((element) => {
@@ -58,26 +63,79 @@ const useIntersectionObserver: UseIntersectionObserverType = (setActiveId) => {
   }, [setActiveId]);
 };
 
+interface HeadingType {
+  text: string;
+  level: number;
+  id: string;
+  children: any[];
+}
+
+const HeadingButton: React.FC<{
+  heading: HeadingType;
+  activeId: string | undefined;
+  className?: string;
+  children: React.ReactNode;
+}> = ({ heading, activeId, className, children }) => {
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    document.querySelector(`#${heading.id}`)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest',
+    });
+  };
+
+  return (
+    <button
+      className={clsx(
+        heading.id === activeId
+          ? 'hover:text-primary-600'
+          : 'text-gray-500 hover:text-neutral-900',
+        heading.level === 3 && 'pl-4',
+        'text-left transition select-none',
+        className,
+      )}
+      key={heading.id}
+      onClick={(e) => {
+        handleClick(e);
+      }}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+};
+
 interface TableOfContentsPropsType {
   source: any[];
 }
 
 const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
-  const headingLines = source.filter((block) => ['h2'].includes(block.style))
+  const rawHeadings = source.filter((block) =>
+    ['h2', 'h3'].includes(block.style),
+  );
 
-  const headings = useMemo(( ) => {
-    return headingLines.map((raw) => {
-      const text = raw.children[0].text;
-      const level = raw.style === 'h2' ? 2 : 3;
+  const modifiedHeadings = useMemo(() => {
+    const headings: HeadingType[] = [];
+    let currentH2: HeadingType | null = null;
+
+    rawHeadings.forEach((rawHeading) => {
+      const { style, children } = rawHeading;
+      const text = children[0].text;
+      const level = style === 'h2' ? 2 : 3;
       const slugger = new GithubSlugger();
-  
-      return {
-        text,
-        level,
-        id: slugger.slug(text.replace(/\s+/g, '')),
-      };
+      const id = slugger.slug(text.replace(/\s+/g, ''));
+
+      if (style === 'h2') {
+        currentH2 = { text, level, id, children: [] };
+        headings.push(currentH2);
+      } else if (style === 'h3' && currentH2) {
+        currentH2.children.push({ text, level, id });
+      }
     });
-  }, [source])
+
+    return headings;
+  }, [source]);
 
   const [activeId, setActiveId] = useState<string>();
 
@@ -86,33 +144,53 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
   return (
     <>
       <p className="!mb-2 text-primary">目錄</p>
-      <div className="flex flex-col gap-1 text-sm">
-        {headings.map((heading) => (
-          <button
-            className={clsx(
-              heading.id === activeId
-                ? 'hover:text-primary-600'
-                : 'text-gray-500 hover:text-neutral-900',
-              heading.level === 3 && 'pl-4',
-              'text-left transition select-none',
-            )}
-            key={heading.id}
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector(`#${heading.id}`)?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-                inline: 'nearest',
-              });
-            }}
-            type="button"
-          >
-            {heading.text}
-          </button>
-        ))}
+      <div className="toc flex flex-col gap-1 text-sm">
+        {modifiedHeadings.map((heading: HeadingType) => {
+          return heading.children.length === 0 ? (
+            <HeadingButton
+              heading={heading}
+              activeId={activeId}
+              className={`mb-2 ${clsx(
+                heading.id === activeId
+                  ? 'hover:text-primary-600'
+                  : 'text-gray-500 hover:text-neutral-900',
+                heading.level === 3 && 'pl-4',
+                'text-left transition select-none',
+              )}`}
+            >
+              {heading.text}
+            </HeadingButton>
+          ) : (
+            <Accordion iconPosition="right" key={heading.id} className="mb-2">
+              <AccordionTitle
+                className={`${clsx(
+                  heading.id === activeId
+                    ? 'hover:text-primary-600'
+                    : 'text-gray-500 hover:text-neutral-900',
+                )}`}
+              >
+                <HeadingButton heading={heading} activeId={activeId}>
+                  {heading.text}
+                </HeadingButton>
+              </AccordionTitle>
+              <AccordionContent className='flex flex-col'>
+                {heading.children.map((h3: HeadingType) => (
+                  <HeadingButton
+                    heading={h3}
+                    activeId={activeId}
+                    key={h3.id}
+                    className="mt-2"
+                  >
+                    {h3.text}
+                  </HeadingButton>
+                ))}
+              </AccordionContent>
+            </Accordion>
+          );
+        })}
       </div>
     </>
   );
-}
+};
 
 export default TableOfContents;
