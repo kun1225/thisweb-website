@@ -163,7 +163,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
           ) : (
             <Accordion iconPosition="right" key={heading.id} className="mb-2">
               <AccordionTitle
-                className={`${clsx(
+                className={`toc__title ${clsx(
                   heading.id === activeId
                     ? 'hover:text-primary-600'
                     : 'text-gray-500 hover:text-neutral-900',

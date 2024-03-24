@@ -109,13 +109,13 @@ const myPortableTextComponents = {
       const text = children[0]!.replace(/\s+/g, '');
       const id = slugger.slug(text);
       return (
-        <h3 id={id} className="mt-6 text-lg font-bold">
+        <h3 id={id} className="mt-6 mb-1 text-xl font-bold">
           {children}
         </h3>
       );
     },
     h4: ({ children }: { children: string[] }) => {
-      return <h4 className="text-lg">{children}</h4>;
+      return <h4 className="my-1 text-lg font-bold">{children}</h4>;
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (

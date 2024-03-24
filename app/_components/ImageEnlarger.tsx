@@ -19,7 +19,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   className,
 }) => {
   const [isEnlarged, setIsEnlarged] = useState(false);
-  const [wrapperHeight, setWrapperHeight] = useState(300);
+  const [wrapperHeight, setWrapperHeight] = useState(500);
   const willChange = useWillChange();
   const imgRef = useRef<HTMLImageElement | null>(null);
 
@@ -41,11 +41,11 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   });
 
   useEffect(() => {
-    setWrapperHeight(imgRef.current?.clientHeight || 300);
+    setWrapperHeight(imgRef.current?.clientHeight || 500);
   }, [imgRef])
 
   return (
-    <motion.div className={`relative w-full ${className}`} style={{ minHeight: `${wrapperHeight}px` }}>
+    <motion.div className={`relative w-full mb-4 ${className}`} style={{ minHeight: `${wrapperHeight}px` }}>
       <motion.div
         onClick={() => setIsEnlarged(false)}
         animate={{ opacity: isEnlarged ? 1 : 0 }}
@@ -63,10 +63,10 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
         alt={alt}
         onClick={() => setIsEnlarged(!isEnlarged)}
         style={{ willChange }}
-        className={`inset-0 ${
+        className={`inset-0 rounded-md shadow-lg ${
           isEnlarged
-            ? 'fixed z-modal w-auto h-auto max-w-[100vw] max-h-[100svh] m-auto p-4 cursor-zoom-out'
-            : 'absolute max-w-full max-h-full cursor-zoom-in'
+            ? 'fixed z-modal w-auto h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
+            : 'absolute max-w-full cursor-zoom-in rounded-md'
         }`}
         transition={transition}
       ></motion.img>

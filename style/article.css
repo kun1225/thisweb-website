@@ -46,7 +46,11 @@
 }
 
 .article ul {
-  @apply list-inside list-disc;
+  @apply list-inside list-disc mt-2;
+}
+
+.article > :not(aside) > ul > li {
+  @apply mb-2
 }
 
 .article li:has(> p) p:first-of-type {
@@ -91,4 +95,12 @@
 
 .toc p {
   @apply mb-0;
+}
+
+.toc__title:hover svg {
+  @apply text-gray-500
+}
+
+.toc__title svg:hover {
+  @apply text-gray-950
 }
