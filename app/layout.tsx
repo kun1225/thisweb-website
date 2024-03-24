@@ -10,8 +10,9 @@ import Footer from './_components/Footer';
 import ProgressBar from './_components/ProgressBar';
 import { Suspense } from 'react';
 
-// Vercel Analytics
+// Vercel
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Metadata
 // TODO : Create generate open graph image file
@@ -58,6 +59,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

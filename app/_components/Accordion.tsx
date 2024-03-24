@@ -70,12 +70,12 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 
   return (
     <Tag
-      className={`flex gap-2 items-center select-none ${clsx(stretch && 'cursor-pointer')} ${className}`}
+      className={`flex gap-2 select-none ${clsx(stretch && 'cursor-pointer')} ${className}`}
       onClick={stretch ? toggle : undefined}
     >
       {iconPosition === 'left' && (
         <FaCaretDown
-          className={`transition text-inherit cursor-pointer -translate-y-[0.5px] ${clsx(
+          className={`transition text-inherit cursor-pointer translate-y-[0.5px] ${clsx(
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
@@ -84,7 +84,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
       {children}
       {iconPosition === 'right' && (
         <FaCaretDown
-          className={`transition text-inherit cursor-pointer -translate-y-[0.5px] ${clsx(
+          className={`transition text-inherit cursor-pointer translate-y-[2.5px] ${clsx(
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
