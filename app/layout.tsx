@@ -14,6 +14,14 @@ import { Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+// Utils
+import { cn } from '@/lib/utils';
+
+// Fonts
+import { Noto_Sans_TC } from 'next/font/google';
+
+const notoSans = Noto_Sans_TC({ subsets: ['latin'], weight: ['200', '400', '500', '800'] });
+
 // Metadata
 // TODO : Create generate open graph image file
 export const metadata: Metadata = {
@@ -49,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <body>
+      <body className={`${cn(notoSans.className)}`}>
         <Suspense>
           <ProgressBar />
         </Suspense>

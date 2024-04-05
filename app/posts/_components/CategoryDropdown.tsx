@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // Libs
 import { motion, AnimatePresence } from 'framer-motion';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 // Hooks
 import { useState, useEffect } from 'react';
@@ -56,7 +56,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
         >
           <p className="inline-block pr-2">{decodedCategory}</p>
           <FaCaretDown
-            className={`inline-block text-inherit transition ${clsx(
+            className={`inline-block text-inherit transition ${cn(
               isDropdownOpen && 'rotate-180',
             )}`}
           />
@@ -66,7 +66,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
           {isDropdownOpen && (
             <motion.ul
               key="dropdown"
-              className="absolute -left-2 z-20 overflow-hidden w-max flex flex-col mt-2 text-gray-500 shadow-md bg-gray-50 border-2 border-gray-200"
+              className="absolute -left-2 sm:left-auto sm:right-0 z-20 overflow-hidden w-max flex flex-col mt-2 text-gray-500 shadow-md bg-gray-50 border-2 border-gray-200"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -78,7 +78,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                 <Link
                   href={`/posts/page/0`}
                   onClick={() => setIsDropdownOpen(false)}
-                  className={`block px-4 pb-1 pt-2 transition hover:text-primary ${clsx(
+                  className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                     decodedCategory == '文章分類' &&
                       'font-semibold pointer-events-none text-neutral-950',
                   )}`}
@@ -97,7 +97,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                   <Link
                     href={`/posts/${title}/0`}
                     onClick={() => setIsDropdownOpen(false)}
-                    className={`block px-4 pb-1 pt-2 transition hover:text-primary ${clsx(
+                    className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                       decodedCategory == title &&
                         'font-semibold pointer-events-none text-neutral-950',
                     )}`}

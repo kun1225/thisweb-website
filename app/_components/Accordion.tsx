@@ -6,7 +6,7 @@ import React, {
   useContext,
   HtmlHTMLAttributes,
 } from 'react';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import { FaCaretDown } from 'react-icons/fa6';
 
 // Context to share the Accordion state and functionality across the compound components
@@ -24,20 +24,22 @@ const AccordionContext = createContext<AccordionContextType | undefined>(
  * * Main AccordionList component
  */
 interface AccordionProps {
-  iconPosition?: 'left' | 'right';
   stretch?: boolean;
-  children: React.ReactNode;
+  initExpanded?: boolean;
+  iconPosition?: 'left' | 'right';
   duration?: number;
   className?: HtmlHTMLAttributes<HTMLElement>['className'];
+  children: React.ReactNode;
 }
 const Accordion: React.FC<AccordionProps> = ({
-  children,
-  iconPosition = 'left',
   stretch = false,
+  initExpanded = true,
+  iconPosition = 'left',
   duration = 0.6,
   className,
+  children,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(initExpanded);
   const toggle = () => setIsExpanded(!isExpanded);
 
   return (
@@ -70,12 +72,12 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 
   return (
     <Tag
-      className={`flex gap-2 select-none ${clsx(stretch && 'cursor-pointer')} ${className}`}
+      className={`flex gap-2 select-none ${cn(stretch && 'cursor-pointer')} ${className}`}
       onClick={stretch ? toggle : undefined}
     >
       {iconPosition === 'left' && (
         <FaCaretDown
-          className={`transition text-inherit cursor-pointer translate-y-[0.5px] ${clsx(
+          className={`transition text-inherit cursor-pointer translate-y-[8px] ${cn(
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
@@ -84,7 +86,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
       {children}
       {iconPosition === 'right' && (
         <FaCaretDown
-          className={`transition text-inherit cursor-pointer translate-y-[2.5px] ${clsx(
+          className={`transition text-inherit cursor-pointer translate-y-[2.5px] ${cn(
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
@@ -116,7 +118,7 @@ const AccordionContent: React.FC<ContentPropsType> = ({
 
   return (
     <div
-      className={`grid transition-all grid-rows-[0fr] duration-[${duration}s] ${clsx(
+      className={`grid transition-all grid-rows-[0fr] duration-[${duration}s] ${cn(
         isExpanded && 'grid-rows-[1fr]',
       )}`}
       style={{
