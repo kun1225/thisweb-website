@@ -211,7 +211,7 @@ const myPortableTextComponents = {
   marks: {
     internalLink: ({ value, children }: { value: any; children: any }) => {
       const { slug = {} } = value;
-      const href = `posts/${slug.current}`;
+      const href = `/post/${slug.current}`;
 
       return (
         <Link className={linkClassName} href={href} target="_blank">
