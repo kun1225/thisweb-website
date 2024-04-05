@@ -6,7 +6,7 @@
   Local Fonts
 */
 /* Gen Sen Rounded */
-@font-face {
+/* @font-face {
   font-family: 'GenSenRounded';
   src: url('./fonts/GenSenRounded-B.woff2') format('woff2');
   font-display: swap;
@@ -29,41 +29,41 @@
   src: url('./fonts/GenSenRounded-L.woff2') format('woff2');
   font-display: swap;
   font-weight: 300;
-}
+} */
 /* Fira Code */
 @font-face {
   font-family: 'FiraCode';
-  src: url('./fonts/FiraCode-Bold.woff2') format('woff2');
+  src: url('../public/fonts/FiraCode-SemiBold.woff2') format('woff2');
   font-display: swap;
-  font-weight: 700;
+  font-weight: 600;
 }
 @font-face {
   font-family: 'FiraCode';
-  src: url('./fonts/FiraCode-Medium.woff2') format('woff2');
+  src: url('../public/fonts/FiraCode-Medium.woff2') format('woff2');
   font-display: swap;
   font-weight: 500;
 }
 @font-face {
   font-family: 'FiraCode';
-  src: url('./fonts/FiraCode-Regular.woff2') format('woff2');
+  src: url('../public/fonts/FiraCode-Regular.woff2') format('woff2');
   font-display: swap;
   font-weight: 400;
 }
 @font-face {
   font-family: 'FiraCode';
-  src: url('./fonts/FiraCode-Light.woff2') format('woff2');
+  src: url('../public/fonts/FiraCode-Light.woff2') format('woff2');
   font-display: swap;
   font-weight: 300;
 }
 
 :root {
-  --font-GenSenRounded: 'GenSenRounded', sans-serif;
+  /* --font-GenSenRounded: 'GenSenRounded', sans-serif; */
   --font-FiraCode: 'FiraCode', monospace;
 }
 
 body,
 html {
-  @apply min-h-full bg-gray-50 text-neutral-950 font-[GenSenRounded] font-normal;
+  @apply min-h-full bg-gray-50 text-neutral-950 font-normal tracking-wide;
 }
 
 h1,
