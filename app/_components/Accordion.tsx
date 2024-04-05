@@ -24,20 +24,22 @@ const AccordionContext = createContext<AccordionContextType | undefined>(
  * * Main AccordionList component
  */
 interface AccordionProps {
-  iconPosition?: 'left' | 'right';
   stretch?: boolean;
-  children: React.ReactNode;
+  initExpanded?: boolean;
+  iconPosition?: 'left' | 'right';
   duration?: number;
   className?: HtmlHTMLAttributes<HTMLElement>['className'];
+  children: React.ReactNode;
 }
 const Accordion: React.FC<AccordionProps> = ({
-  children,
-  iconPosition = 'left',
   stretch = false,
+  initExpanded = true,
+  iconPosition = 'left',
   duration = 0.6,
   className,
+  children,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(initExpanded);
   const toggle = () => setIsExpanded(!isExpanded);
 
   return (
@@ -75,7 +77,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
     >
       {iconPosition === 'left' && (
         <FaCaretDown
-          className={`transition text-inherit cursor-pointer translate-y-[0.5px] ${clsx(
+          className={`transition text-inherit cursor-pointer translate-y-[8px] ${clsx(
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
