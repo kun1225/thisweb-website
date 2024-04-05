@@ -15,7 +15,6 @@ const CodePenPreview = ({value}: {value: any}) => {
       title="CodePen Embed"
       src={embedUrl}
       frameBorder="no"
-      allowTransparency
       allowFullScreen
     />
   );

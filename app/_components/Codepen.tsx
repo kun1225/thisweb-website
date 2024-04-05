@@ -17,7 +17,6 @@ const CodePen: React.FC<CodepenPropsType> = ({ url, themeId }) => {
       title="CodePen Embed"
       src={embedUrl}
       frameBorder="no"
-      allowTransparency
       allowFullScreen
     />
   );

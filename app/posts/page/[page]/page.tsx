@@ -33,21 +33,36 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
-    start: startIndex,
-    end: endIndex,
-  });
+  const posts = await client.fetch<PostsType>(
+    LIMITED_POSTS_QUERY,
+    {
+      start: startIndex,
+      end: endIndex,
+    },
+    {
+      next: {
+        revalidate: 0,
+      },
+    },
+  );
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
   }
 
-  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
+  const postsNumber = await client.fetch<number>(
+    POSTS_NUMBER_QUERY,
+    {},
+    {
+      next: {
+        revalidate: 0,
+      },
+    },
+  );
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
     <>
-      <p className="text-sm text-gray-500 my-8">全部文章</p>
       <PostsList posts={posts} />
       <PaginatedNav
         articlesPerPage={POSTS_PER_PAGE}

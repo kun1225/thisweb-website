@@ -39,11 +39,21 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(POSTS_BY_CATEGORY_TITLE_QUERY, {
-    categoryTitle: decodedCategory,
-    start: startIndex,
-    end: endIndex,
-  });
+  const posts = await client.fetch<PostsType>(
+    POSTS_BY_CATEGORY_TITLE_QUERY,
+    {
+      categoryTitle: decodedCategory,
+      start: startIndex,
+      end: endIndex,
+    },
+    {
+      next: {
+        revalidate: 0,
+      },
+    },
+  );
+
+  console.log('🚀 ~ constPostsPage:React.FC<PostsPageProps>= ~ posts:', posts);
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
@@ -59,7 +69,6 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
 
   return (
     <>
-      <p className="text-sm text-gray-500 my-8">{decodedCategory}</p>
       <PostsList posts={posts} />
       <PaginatedNav
         articlesPerPage={POSTS_PER_PAGE}
