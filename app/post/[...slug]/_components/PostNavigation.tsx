@@ -18,29 +18,33 @@ const PostNavigation: React.FC<PostNavigationProps> = ({
           className="basis-1/2 hover:scale-[102%] transition"
           href={prevPost.slug.current}
         >
-          <h2 className="mb-1 text-lg tracking-wide text-secondary transition-colors">
+          <p className="mb-1 text-lg font-bold text-secondary transition-colors">
             上一篇
-          </h2>
-          <span className="hidden md:inline">← </span>
-          <span className="font-bold text-sm">{prevPost.title}</span>
+          </p>
+          <div className="flex gap-2">
+            <span className="hidden md:inline mr-2">←</span>
+            <span className="text-sm">{prevPost.title}</span>
+          </div>
         </Link>
       ) : (
         <div className="basis-1/2" />
       )}
       {nextPost ? (
         <Link
-          className="basis-1/2 block md:text-right hover:scale-[102%] transition"
+          className="basis-1/2 block text-right hover:scale-[102%] transition"
           href={nextPost.slug.current}
         >
-          <h2 className="mb-1 text-left text-lg uppercase tracking-wide text-secondary transition-colors md:text-right">
+          <p className="mb-1 text-lg font-bold text-secondary transition-colors ">
             下一篇
-          </h2>
-          <span className="font-bold text-sm">{nextPost.title} </span>
-          <span className="hidden md:inline">→</span>
+          </p>
+          <div className="flex gap-2">
+            <span className="text-sm">{nextPost.title}</span>
+            <span className="hidden md:inline">→</span>
+          </div>
         </Link>
       ) : null}
     </div>
   );
-}
+};
 
 export default PostNavigation;
