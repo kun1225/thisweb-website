@@ -157,6 +157,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
                 heading.level === 3 && 'pl-4',
                 'text-left transition select-none',
               )}`}
+              key={heading.text}
             >
               {heading.text}
             </HeadingButton>
@@ -178,7 +179,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
                   <HeadingButton
                     heading={h3}
                     activeId={activeId}
-                    key={h3.id}
+                    key={h3.text}
                     className="mt-2"
                   >
                     {h3.text}
