@@ -66,7 +66,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
           {isDropdownOpen && (
             <motion.ul
               key="dropdown"
-              className="absolute -left-2 z-20 overflow-hidden w-max flex flex-col mt-2 text-gray-500 shadow-md bg-gray-50 border-2 border-gray-200"
+              className="absolute -left-2 sm:left-auto sm:right-0 z-20 overflow-hidden w-max flex flex-col mt-2 text-gray-500 shadow-md bg-gray-50 border-2 border-gray-200"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
