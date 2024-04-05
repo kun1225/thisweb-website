@@ -18,7 +18,7 @@ function Header() {
     <header className="flex justify-between items-center px-4 md:px-8 py-2 shadow-sm shadow-gray-200 sticky top-0 backdrop-blur-md z-header">
       <Link href="/">
         <Magnetic className="p-2">
-          <h1 className="font-[FiraCode]">ThisWeb.</h1>
+          <h1 className="font-[FiraCode] font-semibold">ThisWeb.</h1>
         </Magnetic>
       </Link>
       <nav>
