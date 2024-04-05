@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, useMemo } from 'react';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 import GithubSlugger from 'github-slugger';
 import {
   Accordion,
@@ -87,7 +87,7 @@ const HeadingButton: React.FC<{
 
   return (
     <button
-      className={clsx(
+      className={cn(
         heading.id === activeId
           ? 'hover:text-primary-600'
           : 'text-gray-500 hover:text-neutral-900',
@@ -150,7 +150,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
             <HeadingButton
               heading={heading}
               activeId={activeId}
-              className={`mb-2 ${clsx(
+              className={`mb-2 ${cn(
                 heading.id === activeId
                   ? 'hover:text-primary-600'
                   : 'text-gray-500 hover:text-neutral-900',
@@ -163,7 +163,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
           ) : (
             <Accordion iconPosition="right" key={heading.id} className="mb-2">
               <AccordionTitle
-                className={`toc__title ${clsx(
+                className={`toc__title ${cn(
                   heading.id === activeId
                     ? 'hover:text-primary-600'
                     : 'text-gray-500 hover:text-neutral-900',
@@ -173,7 +173,7 @@ const TableOfContents: React.FC<TableOfContentsPropsType> = ({ source }) => {
                   {heading.text}
                 </HeadingButton>
               </AccordionTitle>
-              <AccordionContent className='flex flex-col'>
+              <AccordionContent className="flex flex-col">
                 {heading.children.map((h3: HeadingType) => (
                   <HeadingButton
                     heading={h3}

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // Libs
 import { motion, AnimatePresence } from 'framer-motion';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 // Hooks
 import { useState, useEffect } from 'react';
@@ -56,7 +56,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
         >
           <p className="inline-block pr-2">{decodedCategory}</p>
           <FaCaretDown
-            className={`inline-block text-inherit transition ${clsx(
+            className={`inline-block text-inherit transition ${cn(
               isDropdownOpen && 'rotate-180',
             )}`}
           />
@@ -78,7 +78,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                 <Link
                   href={`/posts/page/0`}
                   onClick={() => setIsDropdownOpen(false)}
-                  className={`block px-4 pb-1 pt-2 transition hover:text-primary ${clsx(
+                  className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                     decodedCategory == '文章分類' &&
                       'font-semibold pointer-events-none text-neutral-950',
                   )}`}
@@ -97,7 +97,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                   <Link
                     href={`/posts/${title}/0`}
                     onClick={() => setIsDropdownOpen(false)}
-                    className={`block px-4 pb-1 pt-2 transition hover:text-primary ${clsx(
+                    className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                       decodedCategory == title &&
                         'font-semibold pointer-events-none text-neutral-950',
                     )}`}

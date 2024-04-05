@@ -1,6 +1,6 @@
 // Next
 import Link from 'next/link';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 const BASE_URL = '/posts/page/';
 
@@ -44,7 +44,7 @@ function PaginatedNav({
           <p
             className={`
           w-6 h-6 rounded-[50%] text-center
-          ${clsx(
+          ${cn(
             currentPage === pageNumber && 'text-white bg-primary',
             currentPage !== pageNumber &&
               'hover:bg-secondary hover:text-white duration-100',
