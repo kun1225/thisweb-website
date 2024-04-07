@@ -18,6 +18,7 @@ export type PostsType = PostType[];
 export type categoryType = {
   title: string;
   description?: string;
+  orderNumber?: number;
 };
 
 export type categoriesType = categoryType[];
