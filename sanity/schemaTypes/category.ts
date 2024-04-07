@@ -11,9 +11,20 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'orderNumber',
+      title: 'Order Number',
+      type: 'number',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'orderNumber',
+    },
+  }
 })

@@ -53,8 +53,6 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
     },
   );
 
-  console.log('🚀 ~ constPostsPage:React.FC<PostsPageProps>= ~ posts:', posts);
-
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
   }
