@@ -21,4 +21,4 @@ export type categoryType = {
   orderNumber?: number;
 };
 
-export type categoriesType = categoryType[];
+export type CategoriesType = categoryType[];
