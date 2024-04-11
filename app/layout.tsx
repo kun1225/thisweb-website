@@ -27,7 +27,7 @@ const notoSans = Noto_Sans_TC({ subsets: ['latin'], weight: ['200', '400', '500'
 export const metadata: Metadata = {
   title: 'ThisWeb 請網這邊走 - 幫助你自學前端 ',
   description:
-    '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
+    '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長、目標管理等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
   creator: 'ThisWeb 請網這邊走',
   keywords: [
     '工程師自我成長',
@@ -37,14 +37,16 @@ export const metadata: Metadata = {
     'CSS 教學',
     'HTML教學',
     '前端教學',
+    '前端目標管理'
   ],
   openGraph: {
     type: 'website',
     title: 'ThisWeb 請網這邊走 - 幫助你自學前端 ',
     description:
-      '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
+      '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長、目標管理等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
     locale: 'zh-TW',
     siteName: 'ThisWeb 請網這邊走',
+    images: '/siteOwner.jpg'
   },
 };
 
@@ -57,11 +59,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
+      <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />      
+      </head>
       <body className={`${cn(notoSans.className)}`}>
         <Suspense>
-          <ProgressBar />
+          <ProgressBar />   
         </Suspense>
-        <Header />
+        <Header />  
         <main className="px-4 md:px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto">
           {children}
         </main>
