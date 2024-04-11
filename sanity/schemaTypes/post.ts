@@ -28,9 +28,9 @@ export default defineType({
           {title: 'Done', value: 'done'},
           {title: 'Doing', value: 'doing'},
           {title: 'VIP', value: 'VIP'},
-        ]
+        ],
       },
-      initialValue: 'doing'
+      initialValue: 'doing',
     }),
     defineField({
       name: 'author',
@@ -50,8 +50,8 @@ export default defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-        }
-      ]
+        },
+      ],
     }),
     defineField({
       name: 'category',
@@ -69,7 +69,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      initialValue: (new Date()).toISOString()
+      initialValue: new Date().toISOString(),
     }),
     defineField({
       name: 'body',
@@ -81,12 +81,15 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
+      date: 'publishedAt',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      const {date} = selection;
+      let day = new Date(date).getDate();
+      let month = new Date(date).getMonth() + 1;
+      let year = new Date(date).getFullYear();
+
+      return {...selection, subtitle: date && `${year}-${month}-${day}`};
     },
   },
 })

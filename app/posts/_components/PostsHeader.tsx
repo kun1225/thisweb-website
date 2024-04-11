@@ -7,10 +7,10 @@ import { useParams } from 'next/navigation';
 import CategoryDropdown from './CategoryDropdown';
 
 // Types
-import { categoriesType } from '@/lib/sanity/type';
+import { CategoriesType } from '@/lib/sanity/type';
 
 interface PostsHeaderPropsType {
-  categories: categoriesType;
+  categories: CategoriesType;
 }
 
 const PostsHeader: React.FC<PostsHeaderPropsType> = ({ categories }) => {

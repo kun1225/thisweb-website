@@ -12,10 +12,10 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
 // Types
-import { categoriesType } from '@/lib/sanity/type';
+import { CategoriesType } from '@/lib/sanity/type';
 
 interface CategoryDropdownPropsType {
-  categories: categoriesType;
+  categories: CategoriesType;
 }
 
 const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
