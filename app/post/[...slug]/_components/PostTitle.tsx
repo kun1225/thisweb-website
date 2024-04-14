@@ -16,7 +16,7 @@ const PostTitle: React.FC<PostTitleProp> = ({ date, title, topic }) => {
           {/* title and date */}
           <div className="mb-16 text-sm">
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-8">
-              <p className="uppercase">{topic}</p>
+              <p className="uppercase mb-0">{topic}</p>
               {date && (
                 <>
                   <span className="hidden md:block">-</span>

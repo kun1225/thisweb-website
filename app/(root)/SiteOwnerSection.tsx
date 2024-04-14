@@ -17,7 +17,7 @@ function SiteOwnerSection() {
             width={360}
           />
         </div>
-        <div className="flex-1 basis-1/2 lg:base-2/3 flex flex-col gap-4 leading-6 text-center md:text-left">
+        <div className="flex-1 basis-1/2 lg:base-2/3 flex flex-col gap-4 text-center md:text-left">
           <p className="text-sm tracking-widest">
             “做網站應該是件有趣且超酷的事情”
           </p>
