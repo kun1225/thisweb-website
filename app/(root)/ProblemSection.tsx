@@ -35,7 +35,6 @@ const ProblemSection: React.FC = () => {
       <h2 className="text-2xl md:mb-8 drop-shadow-md">
         自學程式的你也遇過這些問題嗎?
       </h2>
-
       <Stack gap={8} wrap>
         {problemCardContent.map(({ icon, title, desc }) => (
           <ProblemCard desc={desc} icon={icon} key={title} title={title} />

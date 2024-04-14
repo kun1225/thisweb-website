@@ -1,10 +1,10 @@
+.article p {
+  @apply mb-[1rem]
+}
+
 .article pre,
 .article code {
   @apply font-[FiraCode] text-xs leading-5 font-normal;
-}
-
-.article {
-  @apply text-base leading-7;
 }
 
 .article em {
@@ -68,6 +68,7 @@
     center/ 24px 24px;
 }
 
+/* callout */
 .callout p,
 .callout ul,
 .callout ol,

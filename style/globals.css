@@ -63,7 +63,11 @@
 
 body,
 html {
-  @apply min-h-full bg-gray-50 text-neutral-950 font-normal tracking-wide;
+  @apply min-h-full bg-gray-50 text-body text-neutral-900 font-normal tracking-wide;
+}
+
+p {
+  @apply mb-[1rem];
 }
 
 h1,

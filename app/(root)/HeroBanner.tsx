@@ -20,7 +20,7 @@ function HeroBanner() {
       <section
         className="relative min-h-[80svh] flex flex-col justify-center items-center gap-7 text-center"
       >
-        <p className="text-xs tracking-widest">
+        <p className="text-sm tracking-widest">
           請網這邊走 ThisWeb | 前端 x 轉職 x 提升競爭力
         </p>
         <h2 className="font-semibold text-4xl lg:text-6xl leading-tight drop-shadow-lg">

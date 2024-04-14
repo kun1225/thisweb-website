@@ -13,11 +13,11 @@ function PostCard({
 
   return (
     <Link
-      className="flex-1 p-8 shadow-sm shadow-gray-500 rounded-md duration-200 hover:shadow-gray-800"
+      className="flex-1 p-8 shadow-md shadow-gray-400 rounded-md duration-200  hover:-translate-y-2 hover:shadow-lg hover:shadow-gray-600"
       href={`post/${url}`}
     >
-      <h3 className="mb-2">{title}</h3>
-      <p className="text-xs">{truncateDesc}...</p>
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <p>{truncateDesc}...</p>
     </Link>
   );
 }

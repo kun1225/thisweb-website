@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 function SiteOwnerSection() {
   return (
-    <section className="md:px-8 pt-8 mb-32 text-sm">
-      <h2 className="text-2xl text-center md:mb-8 drop-shadow-md">
+    <section className="md:px-8 pt-8 mb-32">
+      <h2 className="text-2xl text-center mb-16 drop-shadow-md">
         別擔心，讓我來幫助你
       </h2>
 
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8">
-        <div className="flex-1 basis-1/3 grid place-content-center p-10">
+        <div className="flex-1 basis-1/2 lg:basis-1/3 grid place-content-center">
           <Image
             alt="site owner"
             className="shadow-md shadow-gray-500 rounded-md"
@@ -17,8 +17,8 @@ function SiteOwnerSection() {
             width={360}
           />
         </div>
-        <div className="flex-1 basis-2/3 flex flex-col gap-4 leading-6 text-center md:text-left">
-          <p className="text-xs tracking-widest">
+        <div className="flex-1 basis-1/2 lg:base-2/3 flex flex-col gap-4 leading-6 text-center md:text-left">
+          <p className="text-sm tracking-widest">
             “做網站應該是件有趣且超酷的事情”
           </p>
           <p>
