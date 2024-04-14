@@ -3,6 +3,7 @@
 // Hooks
 import { useState, useEffect, useRef } from 'react';
 import { motion, useWillChange } from 'framer-motion';
+import useWindowWidth from '../_hook/useWindowWidth';
 
 import { cn } from '@/lib/utils';
 
@@ -20,6 +21,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   alt,
   className,
 }) => {
+  const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
   const [wrapperHeight, setWrapperHeight] = useState(500);
   const willChange = useWillChange();
@@ -44,7 +46,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
 
   useEffect(() => {
     setWrapperHeight(imgRef.current?.clientHeight || 500);
-  }, [imgRef]);
+  }, [imgRef, windowWidth]);
 
   return (
     <motion.div
