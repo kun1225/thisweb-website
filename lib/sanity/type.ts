@@ -15,6 +15,9 @@ export type PostType = SanityDocument & {
 
 export type PostsType = PostType[];
 
+export type SlugAndTitleType = Pick<PostType, 'slug' | 'title'>;
+
+
 export type categoryType = {
   title: string;
   description?: string;

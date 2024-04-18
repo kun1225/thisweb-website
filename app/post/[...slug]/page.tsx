@@ -7,6 +7,7 @@ import { client } from '@/lib/sanity/client';
 import {
   POSTS_SLUG_QUERY,
   POST_QUERY,
+  RELATED_POSTS_QUERY,
   NEXT_POSTS_QUERY,
   PREV_POSTS_QUERY,
 } from '@/lib/sanity/queries';
@@ -17,6 +18,7 @@ import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
 import TableOfContents from './_components/TableOfContents';
 import CustomPortableText from '@/app/_components/CustomPortableText';
+import RelatedPosts from './_components/RelatedPosts';
 
 // Type
 import { PostType } from '@/lib/sanity/type';
@@ -57,6 +59,11 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
   if (!currentPost) notFound();
 
+  const relatedPosts = await client.fetch(RELATED_POSTS_QUERY, {
+    categoryTitle: currentPost.category,
+    subCategoryTitle: currentPost.subCategory,
+  });
+
   const nextPost = await client.fetch(NEXT_POSTS_QUERY, {
     publishedAt: currentPost.publishedAt,
   });
@@ -75,8 +82,18 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
         <section className="flex flex-col-reverse xl:flex-row justify-center article">
           <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
             <CustomPortableText value={currentPost.body} />
+            <div className="mt-4">
+              {relatedPosts && relatedPosts.length > 1 && (
+                <div className="mt-16">
+                  <RelatedPosts
+                    relatedPosts={relatedPosts}
+                    currentPostId={currentPost._id}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-          <aside className="block mb-8 border-2 p-4 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
+          <aside className="block border-2 p-4 mb-8 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
             <TableOfContents source={currentPost.body} />
           </aside>
         </section>

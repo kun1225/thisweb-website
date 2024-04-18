@@ -19,6 +19,7 @@ const config: Config = {
       roman: 'upper-roman',
       'lower-alpha': 'lower-alpha',
     },
+
     extend: {
       colors: theme.colors,
       zIndex: {
@@ -27,6 +28,9 @@ const config: Config = {
         'overlay': '150',
         'modal': '200',
         'mouse': '1000',
+      },
+      fontSize: {
+        'body': ['1.1rem', '1.7'],
       }
     },
   },

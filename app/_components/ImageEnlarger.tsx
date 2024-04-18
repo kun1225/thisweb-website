@@ -3,6 +3,9 @@
 // Hooks
 import { useState, useEffect, useRef } from 'react';
 import { motion, useWillChange } from 'framer-motion';
+import useWindowWidth from '../_hook/useWindowWidth';
+
+import { cn } from '@/lib/utils';
 
 const transition = {
   type: 'spring',
@@ -18,6 +21,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   alt,
   className,
 }) => {
+  const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
   const [wrapperHeight, setWrapperHeight] = useState(500);
   const willChange = useWillChange();
@@ -29,7 +33,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
     };
     const handleScroll = () => {
       isEnlarged && setIsEnlarged(false);
-    }
+    };
 
     window.addEventListener('keydown', handleKeydown);
     window.addEventListener('scroll', handleScroll);
@@ -37,24 +41,27 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
     return () => {
       window.removeEventListener('keydown', handleKeydown);
       window.removeEventListener('scroll', handleScroll);
-    }
+    };
   });
 
   useEffect(() => {
     setWrapperHeight(imgRef.current?.clientHeight || 500);
-  }, [imgRef])
+  }, [imgRef, windowWidth]);
 
   return (
-    <motion.div className={`relative w-full mb-4 ${className}`} style={{ minHeight: `${wrapperHeight}px` }}>
+    <motion.div
+      className={`relative w-full mb-4 ${className}`}
+      style={{ minHeight: `${wrapperHeight}px` }}
+    >
       <motion.div
         onClick={() => setIsEnlarged(false)}
         animate={{ opacity: isEnlarged ? 1 : 0 }}
         transition={transition}
-        className={`z-overlay fixed inset-0 bg-black/70 backdrop-blur-sm opacity-0 ${
+        className={`z-overlay fixed inset-0 bg-black/70 backdrop-blur-sm opacity-0 ${cn(
           isEnlarged
             ? 'pointer-events-auto cursor-zoom-out'
-            : 'pointer-events-none'
-        }`}
+            : 'pointer-events-none',
+        )}`}
       />
       <motion.img
         ref={imgRef}
@@ -63,11 +70,11 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
         alt={alt}
         onClick={() => setIsEnlarged(!isEnlarged)}
         style={{ willChange }}
-        className={`inset-0 rounded-md shadow-lg ${
+        className={`inset-0 rounded-md shadow-lg ${cn(
           isEnlarged
             ? 'fixed z-modal w-auto h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
-            : 'absolute max-w-full cursor-zoom-in rounded-md'
-        }`}
+            : 'absolute max-w-full cursor-zoom-in rounded-md',
+        )}`}
         transition={transition}
       ></motion.img>
     </motion.div>

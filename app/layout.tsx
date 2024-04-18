@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 
 // Style
-import '../style/globals.css';
+import '../style/globals.min.css';
 
 // Components
 import Header from './_components/Header/Header';
@@ -12,7 +12,7 @@ import { Suspense } from 'react';
 
 // Vercel
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Utils
 import { cn } from '@/lib/utils';
@@ -20,7 +20,10 @@ import { cn } from '@/lib/utils';
 // Fonts
 import { Noto_Sans_TC } from 'next/font/google';
 
-const notoSans = Noto_Sans_TC({ subsets: ['latin'], weight: ['200', '400', '500', '800'] });
+const notoSans = Noto_Sans_TC({
+  subsets: ['latin'],
+  weight: ['200', '400', '500', '700', '800'],
+});
 
 // Metadata
 // TODO : Create generate open graph image file
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     'CSS 教學',
     'HTML教學',
     '前端教學',
-    '前端目標管理'
+    '前端目標管理',
   ],
   openGraph: {
     type: 'website',
@@ -60,16 +63,30 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />      
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${cn(notoSans.className)}`}>
         <Suspense>
-          <ProgressBar />   
+          <ProgressBar />
         </Suspense>
-        <Header />  
+        <Header />
         <main className="px-4 md:px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto">
           {children}
         </main>

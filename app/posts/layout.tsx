@@ -7,14 +7,14 @@ import { client } from '@/lib/sanity/client';
 import { CATEGORIES_QUERY } from '@/lib/sanity/queries';
 
 // Type
-import { categoriesType } from '@/lib/sanity/type';
+import { CategoriesType } from '@/lib/sanity/type';
 
 interface PostsLayoutPropsType {
   children: React.ReactNode;
 }
 
 const PostsLayout: React.FC<PostsLayoutPropsType> = async ({ children }) => {
-  const categories = await client.fetch<categoriesType>(CATEGORIES_QUERY);
+  const categories = await client.fetch<CategoriesType>(CATEGORIES_QUERY);
   const orderedCategories = categories.sort((a, b) => {
     if (a.orderNumber && b.orderNumber) return a.orderNumber - b.orderNumber;
     if (!a.orderNumber && b.orderNumber) return 1;

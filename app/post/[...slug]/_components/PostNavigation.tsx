@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 // Types
-import { PostType } from '@/lib/sanity/type';
+import { PostType, SlugAndTitleType } from '@/lib/sanity/type';
 
 interface PostNavigationProps {
-  prevPost: PostType | undefined;
-  nextPost: PostType | undefined;
+  prevPost: SlugAndTitleType | undefined;
+  nextPost: SlugAndTitleType | undefined;
 }
 const PostNavigation: React.FC<PostNavigationProps> = ({
   prevPost,

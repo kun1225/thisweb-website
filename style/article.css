@@ -1,26 +1,41 @@
+.article p {
+  @apply mb-[1rem]
+}
+
 .article pre,
 .article code {
   @apply font-[FiraCode] text-xs leading-5 font-normal;
-}
-
-.article {
-  @apply text-base leading-7;
 }
 
 .article em {
   @apply border-l-4 py-1 pl-4 border-gray-200;
 }
 
-.article p,
+.article strong,
+.article strong code {
+  @apply font-bold;
+}
+
+/* list */
+.article li::marker {
+  @apply inline;
+}
+
+.article ol {
+  @apply list-decimal list-inside;
+}
+
+.article ul {
+  @apply list-inside list-disc;
+}
+
 .article ul,
-.article ol,
-.article pre,
-.article .codepen {
-  @apply mb-4;
+.article ol {
+  @apply ml-6;
 }
 
 .article ul ul {
-  @apply mb-0 list-circle;
+  @apply list-circle;
 }
 
 .article ul ul ul {
@@ -31,45 +46,13 @@
   @apply mb-0 list-lower-alpha;
 }
 
-
-.article strong {
-  @apply font-bold;
-}
-
-.article ul,
-.article ol {
-  @apply ml-4;
-}
-
-.article ol {
-  @apply list-decimal list-inside;
-}
-
-.article ul {
-  @apply list-inside list-disc mt-2;
-}
-
-.article > :not(aside) > ul > li {
-  @apply mb-2
-}
-
 .article li:has(> p) p:first-of-type {
   @apply inline;
 }
 .article li p,
-.article p:has(+ ol),
-.article p:has(+ ul),
 .article ol:has(+ ul),
 .article ul:has(+ ol) {
   @apply mb-0;
-}
-
-.article li {
-  @apply mb-[2px];
-}
-
-.article li::marker {
-  @apply inline;
 }
 
 .article aside::-webkit-scrollbar {
@@ -85,6 +68,7 @@
     center/ 24px 24px;
 }
 
+/* callout */
 .callout p,
 .callout ul,
 .callout ol,
@@ -98,9 +82,9 @@
 }
 
 .toc__title:hover svg {
-  @apply text-gray-500
+  @apply text-gray-500;
 }
 
 .toc__title svg:hover {
-  @apply text-gray-950
+  @apply text-gray-950;
 }

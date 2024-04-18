@@ -72,7 +72,7 @@ const calloutComponents = {
                 {title}
               </span>
               <Refractor
-                className="!mt-0 !rounded-t-none"
+                className="!rounded-t-none"
                 language={language}
                 value={source.value.code}
                 markers={source.highlightedLines}
@@ -119,21 +119,20 @@ const myPortableTextComponents = {
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (
-        <p className="px-3 py-1 border-l-4 border-gray-400 bg-slate-100">
+        <p className="px-3 py-1 my-2 border-l-4 border-gray-400 bg-slate-100">
           {children}
         </p>
       );
+    },
+    normal: ({ children }: { children: string[] }) => {
+      return <p className="my-2.5">{children}</p>;
     },
   },
   types: {
     image: ({ value }: { value: any }) => {
       const imageSrc = urlFor(value).width(1080).url();
 
-      return (
-        <>
-          <ImageEnlarger src={imageSrc} alt="img" />
-        </>
-      );
+      return <ImageEnlarger src={imageSrc} alt="img" />;
     },
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {
@@ -177,7 +176,9 @@ const myPortableTextComponents = {
           duration={duration}
           stretch
         >
-          <AccordionTitle className='font-bold'>{source.value.title}</AccordionTitle>
+          <AccordionTitle className="font-bold">
+            {source.value.title}
+          </AccordionTitle>
           <AccordionContent>
             <PortableText
               value={source.value.text}
@@ -188,7 +189,7 @@ const myPortableTextComponents = {
         </Accordion>
       ) : (
         <div className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md">
-          <p className='font-bold'>{source.value.title}</p>
+          <p className="font-bold">{source.value.title}</p>
           <PortableText
             value={source.value.text}
             //@ts-ignore
