@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const categoriesPageSitemap: MetadataRoute.Sitemap = categories.flatMap((category, i) =>
     Array.from({ length: categoryPagesCounts[i] || 1 }, (_, j) => ({
-      url: `https://thisweb.dev/posts/${category.title}/${j}`,
+      url: `https://www.thisweb.dev/posts/${category.title}/${j}`,
       lastModified: NOW,
       changeFrequency: 'weekly',
       priority: 0.6,
@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postsPageSitemap: MetadataRoute.Sitemap = Array.from(
     { length: totalPageNumber },
     (_, i) => ({
-      url: `https://thisweb.dev/posts/page/${i}`,
+      url: `https://www.thisweb.dev/posts/page/${i}`,
       lastModified: NOW,
       changeFrequency: 'weekly',
       priority: 0.6,
@@ -76,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   );
   const postSitemap: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `https://thisweb.dev/post/${post.slug.current}`,
+    url: `https://www.thisweb.dev/post/${post.slug.current}`,
     lastModified: NOW,
     changeFrequency: 'monthly',
     priority: 1,
@@ -84,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: 'https://thisweb.dev',
+      url: 'https://www.thisweb.dev',
       lastModified: NOW,
       changeFrequency: 'monthly',
       priority: 1,
