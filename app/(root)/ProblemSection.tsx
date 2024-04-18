@@ -4,7 +4,7 @@ import { BsCodeSlash } from 'react-icons/bs';
 import { IoLanguageOutline } from 'react-icons/io5';
 import { GiBrokenWall } from 'react-icons/gi';
 import Stack from '@/app/components/Stack';
-import ProblemCard from './components/ProblemCard';
+import ProblemCard from './_components/ProblemCard';
 
 const problemCardContent = [
   {

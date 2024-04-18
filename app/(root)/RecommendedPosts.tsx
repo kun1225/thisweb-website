@@ -1,7 +1,7 @@
 // Components
 import Link from 'next/link';
 import Button from '../_components/Button';
-import PostCard from './components/PostCard';
+import PostCard from './_components/PostCard';
 
 // Utils
 import {toPlainText} from '@portabletext/react';

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import Newsletter from '@/app/(root)/components/Newsletter';
+import Newsletter from '@/app/(root)/_components/Newsletter';
 import { convertKitFormId } from '@/lib/convertKitFormId';
 
 describe('Newsletter component', () => {
