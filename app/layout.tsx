@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 
 // Style
-import '../style/globals.css';
+import '../style/globals.min.css';
 
 // Components
 import Header from './_components/Header/Header';
