@@ -28,3 +28,6 @@ export const POSTS_BY_CATEGORY_TITLE_QUERY = groq`
 `
 export const POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && category->title == $categoryTitle])`;
 export const CATEGORIES_QUERY = groq`*[_type == "category"]`;
+
+// * Service Queries
+export const SERVICE_QUERY = groq`*[_type == "service"]`;

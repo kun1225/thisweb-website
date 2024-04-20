@@ -49,7 +49,6 @@ export const metadata: Metadata = {
       '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長、目標管理等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
     locale: 'zh-TW',
     siteName: 'ThisWeb 請網這邊走',
-    // images: '/siteOwner.jpg'
   },
 };
 

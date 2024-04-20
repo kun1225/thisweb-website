@@ -25,3 +25,9 @@ export type categoryType = {
 };
 
 export type CategoriesType = categoryType[];
+
+export type ServiceType = SanityDocument& {
+  title: string;
+  body: any[];
+  priority: number;
+}
