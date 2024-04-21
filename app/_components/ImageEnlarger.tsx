@@ -2,8 +2,10 @@
 
 // Hooks
 import { useState, useEffect, useRef } from 'react';
-import { motion, useWillChange } from 'framer-motion';
 import useWindowWidth from '../_hook/useWindowWidth';
+import useIsMounted from '../_hook/useIsMounted';
+
+import { motion, useWillChange } from 'framer-motion';
 
 import { cn } from '@/lib/utils';
 
@@ -19,11 +21,14 @@ interface ImageEnlargerPropsType
 const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   src,
   alt,
-  className,
+  className = '',
 }) => {
   const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
-  const [wrapperHeight, setWrapperHeight] = useState(500);
+  const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(
+    undefined,
+  );
+  const isMounted = useIsMounted();
   const willChange = useWillChange();
   const imgRef = useRef<HTMLImageElement | null>(null);
 
@@ -45,13 +50,13 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   });
 
   useEffect(() => {
-    setWrapperHeight(imgRef.current?.clientHeight || 500);
-  }, [imgRef, windowWidth]);
+    setWrapperHeight(imgRef.current?.clientHeight);
+  }, [windowWidth]);
 
   return (
     <motion.div
       className={`relative w-full mb-4 ${className}`}
-      style={{ minHeight: `${wrapperHeight}px` }}
+      style={{ minHeight: `${`${wrapperHeight}px` || 'auto'}` }}
     >
       <motion.div
         onClick={() => setIsEnlarged(false)}
@@ -69,9 +74,12 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
         src={src}
         alt={alt}
         onClick={() => setIsEnlarged(!isEnlarged)}
+        onLoad={() => setWrapperHeight(imgRef.current?.clientHeight)}
         style={{ willChange }}
         className={`inset-0 rounded-md shadow-lg ${cn(
-          isEnlarged
+          isMounted == false
+            ? 'relative'
+            : isEnlarged
             ? 'fixed z-modal w-auto h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
             : 'absolute max-w-full cursor-zoom-in rounded-md',
         )}`}
