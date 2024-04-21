@@ -125,7 +125,15 @@ const myPortableTextComponents = {
       );
     },
     normal: ({ children }: { children: string[] }) => {
-      return <p className="my-2.5">{children}</p>;
+      return <p>{children}</p>;
+    },
+  },
+  list: {
+    bullet: ({ children }: { children: string[] }) => {
+      return <ul>{children}</ul>;
+    },
+    number: ({ children }: { children: string[] }) => {
+      return <ol>{children}</ol>;
     },
   },
   types: {
@@ -234,8 +242,10 @@ const myPortableTextComponents = {
 
 const CustomPortableText = (props: any) => {
   return (
-    // @ts-ignore
-    <PortableText value={props.value} components={myPortableTextComponents} />
+    <div className='custom-portable-text'>
+      {/* @ts-ignore */}
+      <PortableText value={props.value} components={myPortableTextComponents} />
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 // style
 import '../../../style/prism.css';
-import '../../../style/article.css';
+import '../../../style/custom-portable-text.min.css';
 
 // Sanity
 import { client } from '@/lib/sanity/client';

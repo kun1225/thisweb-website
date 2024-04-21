@@ -1,4 +1,5 @@
-import type { HtmlHTMLAttributes, HTMLProps } from 'react';
+import type {  HTMLProps } from 'react';
+import { cn } from '@/lib/utils';
 
 function Button({
   className,
@@ -30,7 +31,7 @@ function Button({
   })();
   return (
     <button
-      className={`w-full md:w-80 text-sm px-6 py-2 shadow-md rounded-sm duration-200 ${typeClass} ${className}`}
+      className={cn(`w-full md:w-80 text-sm px-6 py-2 shadow-md rounded-sm duration-200 ${typeClass} ${className}`)}
       type={type}
       disabled={disabled}
       {...props}
