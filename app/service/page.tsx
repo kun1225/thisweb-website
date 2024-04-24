@@ -21,31 +21,6 @@ import Link from 'next/link';
 import Button from '../_components/Button';
 import Cal from './_components/Cal';
 
-// Next
-import Script from 'next/script';
-
-const problemCardContent = [
-  {
-    icon: AiOutlineFrown,
-    title: '知識焦慮',
-    desc: '網路上太多教學，不知道從何學起',
-  },
-  {
-    icon: BsCodeSlash,
-    title: '不知道如何實作',
-    desc: '掌握基礎知識後，不知道如何應用在實際專案中',
-  },
-  {
-    icon: IoLanguageOutline,
-    title: '語言障礙',
-    desc: '中文資訊不夠完整，英文又看不是很懂',
-  },
-  {
-    icon: GiBrokenWall,
-    title: '學習遇到瓶頸',
-    desc: '擔心自己跟不上周遭同儕，覺得沒自信',
-  },
-];
 
 export const metadata = {
   title: 'ThisWeb 請網這邊走 - 服務',
@@ -72,20 +47,25 @@ const servicePage = async () => {
     <>
       <div className="hero__bg absolute inset-0 min-h-screen"></div>
       <section className="service-page relative">
-        <div className="min-h-[90vh] flex justify-between items-center">
-          <div>
-            <p className="text-3xl text-primary">嗨！我是請網這邊走 ThisWeb</p>
-            <p>
-              我在自學前端轉職的路上，遇到很多挫折，也多次迷茫過，
-              <br />
-              不知道放棄研究所走前端到底正不正確，也不知道該從哪裡學起，要學什麼。
+        <div className="min-h-[60vh] mt-8 mb-32 flex gap-[2vw] flex-col md:flex-row justify-center md:justify-between items-center">
+          <div className="text-center md:text-left max-w-2xl">
+            <p className="text-3xl font-semibold text-primary mb-8">
+              你也在轉職前端路上奮鬥嗎？
             </p>
-            <p>每次卡關時，我都很希望能有人引導我前進，讓學習更順利。</p>
+            <p>
+              嗨！我是請網這邊走 ThisWeb
+              <br />
+              <br />
+              身為從零開始自學前端的非本科生，我在轉職路上吃了不少苦頭。除了學習技術、實作專案、準備面試等累積硬實力的挫折外，<strong>更多的是獨自奮鬥時的壓力、焦慮和自我懷疑，讓我經常對未來感到迷茫</strong>。
+              <br />
+              <br />
+              回顧一路上，除了有家人、朋友和書本陪伴我度過難關，我也很慶幸自己在最困難的時刻，有前輩的提點，幫助我釐清自己的問題，找回繼續前進的動力。
+            </p>
           </div>
-          <div>
+          <div className='min-w-[240px]'>
             <Image
               alt="site owner"
-              className="shadow-md shadow-gray-500 rounded-md"
+              className="shadow-md shadow-gray-500 rounded-md flex-shrink-0"
               height={360}
               src="/images/siteOwner.jpg"
               width={360}
@@ -93,22 +73,22 @@ const servicePage = async () => {
           </div>
         </div>
 
-        <div className="grid-paper-bg min-h-[80vh] grid place-content-center bg-gray-100 rounded-2xl shadow-lg shadow-gray-400">
-          <p className="service-page__bridge__title text-3xl max-w-xl text-center bg-clip-text text-transparent leading-10">
-            現在，我自學轉職成功了，
-            我希望我也能盡我一份力量，幫助在前端的迷茫者。
+        <div className="grid-paper-bg p-6 min-h-[40vh] grid place-content-center bg-gray-100 rounded-2xl shadow-lg shadow-gray-400">
+          <p className="service-page__bridge__title text-2xl max-w-xl text-center bg-clip-text text-transparent leading-10">
+            現在，我已經轉職成功，也希望可以用過去幾年的經驗，
+            <br />
+            <br />
+            幫助你在前端路上走的更順利！
           </p>
         </div>
 
-        <ProblemSection
-          problemTitle="如果你遇到這些問題"
-          problemCardContent={problemCardContent}
-          className="my-24"
-        />
 
-        <div className="grid place-content-center mb-32">
-          <p className="text-2xl text-primary text-center">
-            我提供這些服務，希望能夠幫助你在前端走的更順利
+        <div className="grid place-content-center my-48">
+          <p className="text-2xl text-primary font-semibold text-center mb-4">服務方案說明</p>
+          <p className="text-center max-w-2xl">
+            目前提供三種一對一服務方案，<strong>都會從「前端職涯諮詢」開始</strong>。
+            <br/>
+            諮詢結束後，會再根據你的狀況評估是否需要進一步的客製化教學或是長期陪跑計畫。
           </p>
         </div>
 
@@ -117,29 +97,32 @@ const servicePage = async () => {
             (
               { _id, title, icon: Icon, price, body, ctaLabel, ctaUrl },
               index,
-            ) => (
-              <Stack
-                className="justify-between p-4 md:p-16 bg-gray-100 rounded-xl shadow-lg shadow-gray-400"
-                key={_id}
-              >
-                <Stack className="gap-16 flex-col md:flex-row">
-                  <Stack
-                    direction="col"
-                    className="gap-4 justify-start whitespace-nowrap"
-                  >
-                    <Icon className="text-4xl text-primary rounded-full shadow-md p-4 w-16 h-16" />
-                    <h3 className="text-4xl font-semibold">
-                      {index + 1}. {title}
-                    </h3>
-                    <span className="text-base">{price}</span>
-                    <Link href={ctaUrl} target="_blank">
-                      <Button className="md:w-full">{ctaLabel}</Button>
-                    </Link>
+            ) => {
+              const direction = index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse';
+              return (
+                <Stack
+                  className="justify-between p-6 md:p-16 bg-gray-100 rounded-xl shadow-lg shadow-gray-400"
+                  key={_id}
+                >
+                  <Stack className={`gap-[4vw] flex-col ${direction}`}>
+                    <Stack
+                      direction="col"
+                      className="gap-4 justify-start whitespace-nowrap"
+                    >
+                      <Icon className="text-4xl text-primary rounded-full shadow-gray-400 shadow-lg p-4 w-16 h-16" />
+                      <h3 className="text-4xl font-semibold">
+                        {index + 1}. {title}
+                      </h3>
+                      <span className="text-base">{price}</span>
+                      <Link href={ctaUrl} target="_blank">
+                        <Button className="md:w-full text-lg">{ctaLabel}</Button>
+                      </Link>
+                    </Stack>
+                    <CustomPortableText value={body} />
                   </Stack>
-                  <CustomPortableText value={body} />
                 </Stack>
-              </Stack>
-            ),
+              )
+            },
           )}
         </Stack>
       </section>
