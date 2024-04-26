@@ -2,6 +2,8 @@ import HeroBanner from './(root)/HeroBanner';
 import ProblemSection from './_components/ProblemSection';
 import SiteOwnerSection from './(root)/SiteOwnerSection';
 import RecommendedPosts from './(root)/RecommendedPosts';
+import IndexLoading from './_components/loadings/IndexLoading';
+import { Suspense } from 'react';
 
 import { AiOutlineFrown } from 'react-icons/ai';
 import { BsCodeSlash } from 'react-icons/bs';
@@ -45,7 +47,7 @@ export default async function Home() {
   })
 
   return (
-    <>
+    <Suspense fallback={<IndexLoading />}>
       <HeroBanner />
       <ProblemSection
           problemTitle="如果你遇到這些問題"
@@ -54,6 +56,6 @@ export default async function Home() {
         />
       <SiteOwnerSection />
       <RecommendedPosts limitedPosts={posts} />
-    </>
+    </Suspense>
   );
 }

@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function LoadingCircle() {
   return (
     <div className="flex justify-center items-center min-h-[80svh]">
       <div role="status">

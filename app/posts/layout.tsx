@@ -1,5 +1,4 @@
 // Components
-import CategoryDropdown from './_components/CategoryDropdown';
 import PostsHeader from './_components/PostsHeader';
 
 // Sanity Libs

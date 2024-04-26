@@ -47,7 +47,7 @@ const servicePage = async () => {
     <>
       <div className="hero__bg absolute inset-0 min-h-screen"></div>
       <section className="service-page relative">
-        <div className="min-h-[60vh] mt-8 mb-32 flex gap-[2vw] flex-col md:flex-row justify-center md:justify-between items-center">
+        <div className="min-h-[60vh] mt-20 mb-32 flex gap-[2vw] flex-col md:flex-row justify-center md:justify-between items-center">
           <div className="text-center md:text-left max-w-2xl">
             <p className="text-3xl font-semibold text-primary mb-8">
               你也在轉職前端路上奮鬥嗎？
@@ -73,7 +73,7 @@ const servicePage = async () => {
           </div>
         </div>
 
-        <div className="grid-paper-bg p-6 min-h-[40vh] grid place-content-center bg-gray-100 rounded-2xl shadow-lg shadow-gray-400">
+        <div className="grid-paper-bg p-6 min-h-[60vh] grid place-content-center bg-gray-100 rounded-2xl shadow-lg shadow-gray-400">
           <p className="service-page__bridge__title text-2xl max-w-xl text-center bg-clip-text text-transparent leading-10">
             現在，我已經轉職成功，也希望可以用過去幾年的經驗，
             <br />
@@ -83,7 +83,7 @@ const servicePage = async () => {
         </div>
 
 
-        <div className="grid place-content-center my-48">
+        <div className="grid place-content-center mt-48 my-24">
           <p className="text-2xl text-primary font-semibold text-center mb-4">服務方案說明</p>
           <p className="text-center max-w-2xl">
             目前提供三種一對一服務方案，<strong>都會從「前端職涯諮詢」開始</strong>。
