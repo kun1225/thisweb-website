@@ -1,4 +1,5 @@
 'use client';
+import Image, { ImageProps } from 'next/image';
 
 // Hooks
 import { useState, useEffect, useRef } from 'react';
@@ -15,14 +16,10 @@ const transition = {
   stiffness: 120,
 };
 
-interface ImageEnlargerPropsType
-  extends React.ImgHTMLAttributes<HTMLImageElement> {}
+// interface ImageEnlargerPropsType
+//   extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
-const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
-  src,
-  alt,
-  className = '',
-}) => {
+const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
   const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
   const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(
@@ -32,20 +29,20 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
   const willChange = useWillChange();
   const imgRef = useRef<HTMLImageElement | null>(null);
 
+  const handleImageEnlarge = (boolean: boolean) => {
+    setIsEnlarged(boolean);
+    document.body.style.overflowY = boolean ? 'hidden' : 'auto';
+  }
+
   useEffect(() => {
     const handleKeydown = (e: any) => {
       if (isEnlarged && e.key === 'Escape') setIsEnlarged(false);
     };
-    const handleScroll = () => {
-      isEnlarged && setIsEnlarged(false);
-    };
 
     window.addEventListener('keydown', handleKeydown);
-    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('keydown', handleKeydown);
-      window.removeEventListener('scroll', handleScroll);
     };
   });
 
@@ -59,7 +56,7 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
       style={{ minHeight: `${`${wrapperHeight}px` || 'auto'}` }}
     >
       <motion.div
-        onClick={() => setIsEnlarged(false)}
+        onClick={() => handleImageEnlarge(false)}
         animate={{ opacity: isEnlarged ? 1 : 0 }}
         transition={transition}
         className={`z-overlay fixed inset-0 bg-black/70 backdrop-blur-sm opacity-0 ${cn(
@@ -68,23 +65,23 @@ const ImageEnlarger: React.FC<ImageEnlargerPropsType> = ({
             : 'pointer-events-none',
         )}`}
       />
-      <motion.img
+      <motion.div
         ref={imgRef}
         layout
-        src={src}
-        alt={alt}
-        onClick={() => setIsEnlarged(!isEnlarged)}
+        onClick={() => handleImageEnlarge(!isEnlarged)}
         onLoad={() => setWrapperHeight(imgRef.current?.clientHeight)}
         style={{ willChange }}
-        className={`inset-0 rounded-md shadow-lg ${cn(
+        className={`inset-0 w-full aspect-video rounded-md shadow-lg ${cn(
           isMounted == false
             ? 'relative'
             : isEnlarged
-            ? 'fixed z-modal w-auto h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
+            ? 'fixed z-modal !w-auto !h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
             : 'absolute max-w-full cursor-zoom-in rounded-md',
         )}`}
         transition={transition}
-      ></motion.img>
+      >
+        <Image src={src} alt={alt} fill className='object-cover'></Image>
+      </motion.div>
     </motion.div>
   );
 };
