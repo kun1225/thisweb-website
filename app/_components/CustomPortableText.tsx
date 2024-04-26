@@ -24,7 +24,6 @@ Refractor.registerLanguage(bash);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
-import { HTMLAttributes } from 'react';
 
 const slugger = new GithubSlugger();
 
@@ -241,6 +240,7 @@ const myPortableTextComponents = {
 };
 
 const CustomPortableText = (props: any) => {
+  slugger.reset();
   return (
     <div className='custom-portable-text'>
       {/* @ts-ignore */}
