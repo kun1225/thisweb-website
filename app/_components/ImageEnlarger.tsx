@@ -16,9 +16,6 @@ const transition = {
   stiffness: 120,
 };
 
-// interface ImageEnlargerPropsType
-//   extends React.ImgHTMLAttributes<HTMLImageElement> {}
-
 const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
   const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
