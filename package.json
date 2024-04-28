@@ -14,6 +14,7 @@
   },
   "prettier": "@vercel/style-guide/prettier",
   "dependencies": {
+    "@calcom/embed-react": "^1.4.0",
     "@portabletext/react": "^3.0.11",
     "@sanity/image-url": "^1.0.2",
     "@types/node": "20.5.7",

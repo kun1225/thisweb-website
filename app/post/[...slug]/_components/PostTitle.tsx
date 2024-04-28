@@ -1,4 +1,6 @@
 import { format, parseISO } from 'date-fns';
+import Skeleton from '@/app/_components/Skeleton';
+import Stack from '@/app/_components/Stack';
 
 interface PostTitleProp {
   date?: string;

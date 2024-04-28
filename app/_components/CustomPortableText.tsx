@@ -24,7 +24,6 @@ Refractor.registerLanguage(bash);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
-import { HTMLAttributes } from 'react';
 
 const slugger = new GithubSlugger();
 
@@ -91,31 +90,76 @@ const calloutComponents = {
   },
 };
 
+export type CustomPortableTextHeadingType =
+  | string[]
+  | {
+      props: {
+        text: string;
+        markType: string;
+        markKey: string;
+      };
+    }[];
+
 const myPortableTextComponents = {
   block: {
-    h2: ({ children }: { children: string[] }) => {
-      const text = children[0]!.replace(/\s+/g, '');
-      const id = slugger.slug(text);
-      return (
-        <h2
-          id={id}
-          className="mt-10 mb-2 text-2xl font-bold border-b-2 border-gray-200 pb-2"
-        >
-          {children}
-        </h2>
-      );
+    h2: ({ children }: { children: CustomPortableTextHeadingType }) => {
+      if (children.length > 0 && children[0]) {
+        let text = '';
+        if (typeof children[0] === 'string') {
+          text = children[0];
+        } else if (typeof children[0] === 'object' && children[0].props.text) {
+          text = children[0].props.text;
+        }
+      
+        if (text) {
+          const cleanText = text.replace(/\s+/g, '');
+          const id = slugger.slug(cleanText);
+          return (
+            <h2
+              id={id}
+              className="mt-10 mb-2 text-2xl font-bold border-b-2 border-gray-200 pb-2"
+            >
+              {text}
+            </h2>
+          )
+        }
+      }
     },
-    h3: ({ children }: { children: string[] }) => {
-      const text = children[0]!.replace(/\s+/g, '');
-      const id = slugger.slug(text);
-      return (
-        <h3 id={id} className="mt-6 mb-1 text-xl font-bold">
-          {children}
-        </h3>
-      );
+    h3: ({ children }: { children: CustomPortableTextHeadingType }) => {
+      if (children.length > 0 && children[0]) {
+        let text = '';
+        if (typeof children[0] === 'string') {
+          text = children[0];
+        } else if (typeof children[0] === 'object' && children[0].props.text) {
+          text = children[0].props.text;
+        }
+      
+        if (text) {
+          const cleanText = text.replace(/\s+/g, '');
+          const id = slugger.slug(cleanText);
+          return (
+            <h3 id={id} className="mt-6 mb-1 text-xl font-bold">
+              {text}
+            </h3>
+          );
+        }
+      }
+      
     },
-    h4: ({ children }: { children: string[] }) => {
-      return <h4 className="my-1 text-lg font-bold">{children}</h4>;
+    h4: ({ children }: { children: CustomPortableTextHeadingType }) => {
+      if (children.length > 0 && children[0]) {
+        let text = '';
+        if (typeof children[0] === 'string') {
+          text = children[0];
+        } else if (typeof children[0] === 'object' && children[0].props.text) {
+          text = children[0].props.text;
+        }
+      
+        if (text) {
+          return <h4 className="my-1 text-lg font-bold">{text}</h4>;
+        }
+      }
+      
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (
@@ -125,12 +169,20 @@ const myPortableTextComponents = {
       );
     },
     normal: ({ children }: { children: string[] }) => {
-      return <p className="my-2.5">{children}</p>;
+      return <p>{children}</p>;
+    },
+  },
+  list: {
+    bullet: ({ children }: { children: string[] }) => {
+      return <ul>{children}</ul>;
+    },
+    number: ({ children }: { children: string[] }) => {
+      return <ol>{children}</ol>;
     },
   },
   types: {
     image: ({ value }: { value: any }) => {
-      const imageSrc = urlFor(value).width(1080).url();
+      const imageSrc = urlFor(value).width(1200).url();
 
       return <ImageEnlarger src={imageSrc} alt="img" />;
     },
@@ -233,9 +285,12 @@ const myPortableTextComponents = {
 };
 
 const CustomPortableText = (props: any) => {
+  slugger.reset();
   return (
-    // @ts-ignore
-    <PortableText value={props.value} components={myPortableTextComponents} />
+    <div className="custom-portable-text">
+      {/* @ts-ignore */}
+      <PortableText value={props.value} components={myPortableTextComponents} />
+    </div>
   );
 };
 

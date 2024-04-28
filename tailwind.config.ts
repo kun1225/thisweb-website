@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 import theme from './style/theme';
-import { headers } from 'next/headers';
 
 const config: Config = {
   content: [
@@ -23,15 +22,17 @@ const config: Config = {
     extend: {
       colors: theme.colors,
       zIndex: {
-        'toast': '50',
-        'header': '100',
-        'overlay': '150',
-        'modal': '200',
-        'mouse': '1000',
+        toast: '50',
+        header: '100',
+        overlay: '150',
+        modal: '200',
+        mouse: '1000',
       },
       fontSize: {
-        'body': ['1.1rem', '1.7'],
-      }
+        'body': ['1.05rem', '1.65'],
+        'body-large': ['1.1rem', '1.7'],
+        'body-small': ['1rem', '1.6'],
+      },
     },
   },
   plugins: [],

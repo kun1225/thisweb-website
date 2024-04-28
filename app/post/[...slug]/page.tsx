@@ -1,6 +1,6 @@
 // style
 import '../../../style/prism.css';
-import '../../../style/article.css';
+import '../../../style/custom-portable-text.min.css';
 
 // Sanity
 import { client } from '@/lib/sanity/client';
@@ -19,6 +19,8 @@ import PostNavigation from './_components/PostNavigation';
 import TableOfContents from './_components/TableOfContents';
 import CustomPortableText from '@/app/_components/CustomPortableText';
 import RelatedPosts from './_components/RelatedPosts';
+import { Suspense } from 'react';
+import PostPageLoading from './loading';
 
 // Type
 import { PostType } from '@/lib/sanity/type';
@@ -73,33 +75,35 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
   return (
     <>
-      <article className="mx-auto my-8">
-        <PostTitle
-          date={currentPost.publishedAt}
-          title={currentPost.title}
-          topic={currentPost.category}
-        />
-        <section className="flex flex-col-reverse xl:flex-row justify-center article">
-          <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
-            <CustomPortableText value={currentPost.body} />
-            <div className="mt-4">
-              {relatedPosts && relatedPosts.length > 1 && (
-                <div className="mt-16">
-                  <RelatedPosts
-                    relatedPosts={relatedPosts}
-                    currentPostId={currentPost._id}
-                  />
-                </div>
-              )}
+      <Suspense fallback={<PostPageLoading/>}>
+        <article className="mx-auto my-8">
+          <PostTitle
+            date={currentPost.publishedAt}
+            title={currentPost.title}
+            topic={currentPost.category}
+          />
+          <section className="flex flex-col-reverse xl:flex-row justify-center article">
+            <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
+              <CustomPortableText value={currentPost.body} />
+              <div className="mt-4">
+                {relatedPosts && relatedPosts.length > 1 && (
+                  <div className="mt-16">
+                    <RelatedPosts
+                      relatedPosts={relatedPosts}
+                      currentPostId={currentPost._id}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <aside className="block border-2 p-4 mb-8 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
-            <TableOfContents source={currentPost.body} />
-          </aside>
-        </section>
-      </article>
+            <aside className="block border-2 p-4 mb-8 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
+              <TableOfContents source={currentPost.body} />
+            </aside>
+          </section>
+        </article>
 
-      <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+        <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+      </Suspense>
     </>
   );
 };

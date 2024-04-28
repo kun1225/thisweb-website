@@ -63,12 +63,9 @@
 
 body,
 html {
-  @apply min-h-full bg-gray-50 text-body text-neutral-900 font-normal tracking-wide;
+  @apply min-h-full bg-gray-50 text-body-small md:text-body xl:text-body-large text-neutral-950 font-normal tracking-wide;
 }
 
-p {
-  @apply mb-[1rem];
-}
 
 h1,
 h2,
@@ -94,7 +91,25 @@ h4 {
 }
 
 .c {
-  @apply px-4 md:px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
+  @apply px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
+}
+
+.grid-paper-bg {
+  --black: rgb(229 231 235);
+  background-image: repeating-linear-gradient(
+      to left,
+      var(--black) 0px,
+      var(--black) 1px,
+      transparent 2px,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--black) 0px,
+      var(--black) 1px,
+      transparent 2px,
+      transparent 50px
+    );
 }
 
 .hero__bg {
@@ -105,4 +120,15 @@ h4 {
       transparent 50%
     ),
     radial-gradient(at 120% 50%, hsla(200, 100%, 15%, 0.2) 0px, transparent 50%);
+}
+
+.service-page__bridge__title {
+  background-image: linear-gradient(20deg, #00334e 0%, #477086 50%);
+}
+
+@supports (background-attachment: fixed) {
+  .service-page__bridge__title {
+    background-image: linear-gradient(0deg, transparent, #00334e 80%);
+    background-attachment: fixed;
+  }
 }
