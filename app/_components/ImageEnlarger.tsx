@@ -29,7 +29,7 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
   const handleImageEnlarge = (boolean: boolean) => {
     setIsEnlarged(boolean);
     document.body.style.overflowY = boolean ? 'hidden' : 'auto';
-  }
+  };
 
   useEffect(() => {
     const handleKeydown = (e: any) => {
@@ -68,7 +68,7 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
         onClick={() => handleImageEnlarge(!isEnlarged)}
         onLoad={() => setWrapperHeight(imgRef.current?.clientHeight)}
         style={{ willChange }}
-        className={`inset-0 w-full aspect-video rounded-md shadow-lg ${cn(
+        className={`inset-0 w-full aspect-video rounded-md ${cn(
           isMounted == false
             ? 'relative'
             : isEnlarged
@@ -77,7 +77,12 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
         )}`}
         transition={transition}
       >
-        <Image src={src} alt={alt} fill className='object-cover'></Image>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={cn('drop-shadow-lg rounded-md', isEnlarged ? 'object-contain' : 'object-cover')}
+        ></Image>
       </motion.div>
     </motion.div>
   );
