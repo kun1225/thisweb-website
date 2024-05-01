@@ -11,7 +11,8 @@ const theme = {
     primary: '#00334E',
     secondary: '#477086',
     'secondary-2': '#2577a3',
-    white: '#f9fafb'
+    white: '#f9fafb',
+    "pure-white": '#ffffff',
   },
   fonts: {
     GenSenRounded: 'GenSenRounded',

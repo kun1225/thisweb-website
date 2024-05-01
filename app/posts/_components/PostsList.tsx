@@ -18,9 +18,9 @@ const PostsList: React.FC<PostsListPropsType> = ({ posts }) => {
   return (
     <ul className="flex flex-col gap-12 mb-20">
       {posts.length > 0 &&
-        posts.map(({ title, body, publishedAt, slug, category }, index) => (
+        posts.map(({ _id, title, body, publishedAt, slug, category }, index) => (
           <motion.li
-            key={title}
+            key={_id}
             className="relative z-10"
             initial={{ opacity: 0, translateY: '50%' }}
             animate={{ opacity: 1, translateY: 0 }}
