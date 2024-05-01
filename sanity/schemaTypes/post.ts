@@ -1,3 +1,4 @@
+import {filter} from 'rxjs'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
@@ -60,10 +61,38 @@ export default defineType({
       to: {type: 'category'},
     }),
     defineField({
-      name: 'subCategory',
-      title: 'SubCategory',
+      name: 'secondLevelCategory',
+      title: 'Second Level Category',
       type: 'reference',
-      to: {type: 'subCategory'},
+      to: {type: 'secondLevelCategory'},
+      options: {
+        filter: ({document}) => {
+          if (!document.category) return {}
+          return {
+            filter: 'title in $category->secondLevelCategory[]->title',
+            params: {
+              category: document.category,
+            },
+          }
+        },
+      },
+    }),
+    defineField({
+      name: 'thirdLevelCategory',
+      title: 'Third Level Category',
+      type: 'reference',
+      to: {type: 'thirdLevelCategory'},
+      options: {
+        filter: ({document}) => {
+          if (!document.secondLevelCategory) return {}
+          return {
+            filter: 'title in $secondLevelCategory->thirdLevelCategory[]->title',
+            params: {
+              category: document.secondLevelCategory,
+            },
+          }
+        },
+      },
     }),
     defineField({
       name: 'publishedAt',
@@ -84,12 +113,12 @@ export default defineType({
       date: 'publishedAt',
     },
     prepare(selection) {
-      const {date} = selection;
-      let day = new Date(date).getDate();
-      let month = new Date(date).getMonth() + 1;
-      let year = new Date(date).getFullYear();
+      const {date} = selection
+      let day = new Date(date).getDate()
+      let month = new Date(date).getMonth() + 1
+      let year = new Date(date).getFullYear()
 
-      return {...selection, subtitle: date && `${year}-${month}-${day}`};
+      return {...selection, subtitle: date && `${year}-${month}-${day}`}
     },
   },
 })

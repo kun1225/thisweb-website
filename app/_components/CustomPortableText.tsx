@@ -12,15 +12,25 @@ import { Accordion, AccordionContent, AccordionTitle } from './Accordion';
 // Utils
 import GithubSlugger from 'github-slugger';
 import js from 'refractor/lang/javascript';
+import ts from 'refractor/lang/typescript';
 import css from 'refractor/lang/css';
+import scss from 'refractor/lang/scss';
 import go from 'refractor/lang/go';
 import bash from 'refractor/lang/bash';
+import jsx from 'refractor/lang/jsx';
+import tsx from 'refractor/lang/tsx';
+import template from 'refractor/lang/js-templates';
 
 // Language
 Refractor.registerLanguage(js);
+Refractor.registerLanguage(ts);
 Refractor.registerLanguage(css);
+Refractor.registerLanguage(scss);
 Refractor.registerLanguage(go);
 Refractor.registerLanguage(bash);
+Refractor.registerLanguage(jsx);
+Refractor.registerLanguage(tsx);
+Refractor.registerLanguage(template);
 
 // Utils
 import { urlFor } from '@/lib/sanity/client';
