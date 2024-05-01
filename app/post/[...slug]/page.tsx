@@ -51,6 +51,10 @@ export const generateMetadata = async ({
     title: `${currentPost.title} | ThisWeb`,
     description: toPlainText(currentPost.body).slice(0, 75),
     author: currentPost.author,
+    openGraph: {
+      title: `${currentPost.title} | ThisWeb`,
+      description: toPlainText(currentPost.body).slice(0, 75),
+    },
   };
 };
 
@@ -63,7 +67,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
   const relatedPosts = await client.fetch(RELATED_POSTS_QUERY, {
     categoryTitle: currentPost.category,
-    subCategoryTitle: currentPost.subCategory,
+    secondLevelCategory: currentPost.secondLevelCategory,
   });
 
   const nextPost = await client.fetch(NEXT_POSTS_QUERY, {
@@ -75,7 +79,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
 
   return (
     <>
-      <Suspense fallback={<PostPageLoading/>}>
+      <Suspense fallback={<PostPageLoading />}>
         <article className="mx-auto my-8">
           <PostTitle
             date={currentPost.publishedAt}
