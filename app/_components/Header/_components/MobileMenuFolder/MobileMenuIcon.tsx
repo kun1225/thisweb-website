@@ -1,0 +1,32 @@
+'use client';
+
+// Hooks
+import { useState } from 'react';
+
+// Libs
+import { cn } from '@/lib/utils';
+
+interface MobileMenuPropsType {
+  mobileMenuOpen: boolean;
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
+  mobileMenuOpen,
+  setMobileMenuOpen,
+}) => {
+  const [isInitialRender, setIsInitialRender] = useState(true);
+
+  const toggleMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+    setIsInitialRender(false);
+  }
+  return (
+    <div
+      className={`mobile-menu-icon ${cn(mobileMenuOpen && 'is-open', isInitialRender && 'is-initial')}`}
+      onClick={toggleMenu}
+    ></div>
+  );
+};
+
+export default MobileMenuIcon;

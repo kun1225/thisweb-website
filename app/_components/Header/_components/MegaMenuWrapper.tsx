@@ -17,7 +17,7 @@ const MegaMenuWrapper: React.FC<MageMenuWrapperPropsType> = ({
     <>
       <div
         className={cn(
-          'fixed top-0 left-0 w-[100%] h-screen ',
+          'fixed top-0 left-0 w-[100%] h-screen z-10',
           index === currentIndex
             ? 'pointer-events-auto'
             : 'pointer-events-none',
@@ -25,8 +25,9 @@ const MegaMenuWrapper: React.FC<MageMenuWrapperPropsType> = ({
         onClick={closeMegaMenu}
       ></div>
       <div
-        className={`header__mega-menu fixed top-[120%] right-8 left-8 p-4 rounded-xl shadow-2xl bg-pure-white transition duration-200 ${cn(
-          index === currentIndex
+        className={`${cn(
+          'header__mega-menu fixed top-[120%] right-8 left-8 p-4 rounded-xl bg-pure-white shadow-2xl transition duration-200 z-10'
+          ,index === currentIndex
             ? 'translate-y-0 opacity-100 pointer-events-auto'
             : 'translate-y-10 opacity-0 pointer-events-none',
         )}`}

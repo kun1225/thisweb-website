@@ -1,7 +1,7 @@
 'use client';
 
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Components
 import Link from 'next/link';
@@ -14,33 +14,15 @@ import PostsMegaMenu from './PostsMegaMenu';
 // Libs
 import { cn } from '@/lib/utils';
 
-type navContentType = {
-  title: string;
-  url: string;
-  isMegaMenu: boolean;
-  MegaMenuTag?: React.FC<any>;
-};
+// Data
+import { navContent } from '../navContent';
 
-export const navContent: navContentType[] = [
-  {
-    title: '主頁',
-    url: '/',
-    isMegaMenu: false,
-  },
-  {
-    title: '全部文章',
-    url: '/posts/page/0',
-    isMegaMenu: false,
-  },
-  {
-    title: '文章分類',
-    url: '/posts/page/0',
-    isMegaMenu: true,
-    MegaMenuTag: PostsMegaMenu,
-  },
-];
 
-const NavContent = () => {
+interface NavContentPropsType {
+  className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
+}
+
+const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   const switchMegaMenu = (index: number) => {
@@ -56,17 +38,17 @@ const NavContent = () => {
   };
 
   return (
-    <Stack as="ul" className="text-sm">
+    <Stack as="ul" className={`text-sm ${className}`}>
       {navContent.map(({ title, url, isMegaMenu, MegaMenuTag }, index) => (
         <li key={url} className="relative">
           {isMegaMenu && MegaMenuTag ? (
             <>
-              <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap">
+              <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap relative z-20">
                 <button
                   className="flex gap-2 items-center"
                   onClick={() => switchMegaMenu(index)}
                 >
-                  {title}{' '}
+                  {title}
                   <FaCaretDown
                     className={` ${cn(
                       'transition',
@@ -85,7 +67,7 @@ const NavContent = () => {
             </>
           ) : (
             <Link href={url}>
-              <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap">
+              <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap relative z-20">
                 {title}
               </Magnetic>
             </Link>

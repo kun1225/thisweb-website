@@ -36,7 +36,7 @@ const Accordion: React.FC<AccordionProps> = ({
   initExpanded = true,
   iconPosition = 'left',
   duration = 0.6,
-  className,
+  className = "",
   children,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initExpanded);

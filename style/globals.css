@@ -59,6 +59,14 @@
 :root {
   /* --font-GenSenRounded: 'GenSenRounded', sans-serif; */
   --font-FiraCode: 'FiraCode', monospace;
+
+  --cr-primary: #00334E;
+  --cr-secondary: #477086;
+  --cr-secondary-2: #2577a3;
+  --cr-white: #f9fafb;
+  --cr-pure-white: #ffffff;
+
+  --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 body,
@@ -103,6 +111,10 @@ h4 {
 
 .c {
   @apply px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
+}
+
+#main.is-blur {
+  filter: blur(12px);
 }
 
 .grid-paper-bg {

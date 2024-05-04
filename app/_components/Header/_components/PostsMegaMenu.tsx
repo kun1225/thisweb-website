@@ -1,10 +1,16 @@
 'use client';
-import Link from 'next/link';
+// Hooks
 import { useEffect, useState } from 'react';
+import useWindowWidth from '@/app/_hook/useWindowWidth';
+
+// Components
+import Link from 'next/link';
 import Skeleton from '../../Skeleton';
 
+// Type
 import { CategoriesType } from '@/lib/sanity/type';
 
+// Libs
 import postClassificationAction from '../_action/postClassificationAction';
 
 interface PostsMegaMenuPropsType {
@@ -14,21 +20,24 @@ interface PostsMegaMenuPropsType {
 const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
   const [megaMenuContent, setMegaMenuContent] = useState<CategoriesType>();
   const [isLoading, setIsLoading] = useState(true);
+  const { isMobile } = useWindowWidth();
 
   useEffect(() => {
-    postClassificationAction().then((data) => {
-      setMegaMenuContent(data);
-      setIsLoading(false);
-    });
-  }, []);
+    if (!isMobile && !megaMenuContent) {
+      postClassificationAction().then((data) => {
+        setMegaMenuContent(data);
+        setIsLoading(false);
+      });
+    }
+  }, [isMobile]);
 
   return (
     <ul className="grid grid-cols-3 grid-flow-row gap-[1vw]">
       {isLoading ? (
         <>
-        {Array.from({ length: 6 }).map((_, index) => (
-          <Skeleton className="col-span-1 h-[30vh]" />
-        ))}
+          {Array.from({ length: 6 }).map((_, index) => (
+            <Skeleton key={index} className="col-span-1 h-[30vh]" />
+          ))}
         </>
       ) : (
         <>
