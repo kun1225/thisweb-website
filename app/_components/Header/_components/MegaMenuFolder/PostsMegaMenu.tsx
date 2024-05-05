@@ -5,13 +5,14 @@ import useWindowWidth from '@/app/_hook/useWindowWidth';
 
 // Components
 import Link from 'next/link';
-import Skeleton from '../../Skeleton';
+import Skeleton from '../../../Skeleton';
+import SecondLevelCategories from './SecondLevelCategories';
 
 // Type
 import { CategoriesType } from '@/lib/sanity/type';
 
 // Libs
-import postClassificationAction from '../_action/postClassificationAction';
+import postClassificationAction from '../../_action/postClassificationAction';
 
 interface PostsMegaMenuPropsType {
   closeMegaMenu: () => void;
@@ -46,7 +47,7 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
               {category.description && (
                 <li
                   key={category._id}
-                  className="transition rounded-md hover:bg-gray-100"
+                  className="posts-mega-menu-item transition rounded-md hover:bg-gray-100"
                 >
                   <Link
                     href={`/posts/${category.title}/0`}
@@ -56,27 +57,9 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
                     <h3 className="text-xl font-bold mb-1">{category.title}</h3>
                     <p className="text-sm mb-2">{category.description}</p>
                     {category.secondLevelCategory && (
-                      <ul className="scrollbar-hidden flex overflow-y-auto text-gray-600">
-                        {category.secondLevelCategory.map(
-                          (secondLevelCategory, index) => (
-                            <li
-                              key={secondLevelCategory.title}
-                              className="flex-shrink-0"
-                            >
-                              {index !== 0 && (
-                                <span className="text-gray-500">·</span>
-                              )}
-                              <Link
-                                href={`/posts/${secondLevelCategory.title}/0`}
-                                className="inline-block py-1 px-2 text-xs rounded-full transition bg-gray-200 hover:bg-secondary hover:text-white"
-                                onClick={closeMegaMenu}
-                              >
-                                {secondLevelCategory.title}
-                              </Link>
-                            </li>
-                          ),
-                        )}
-                      </ul>
+                      <SecondLevelCategories
+                        content={category.secondLevelCategory}
+                      />
                     )}
                   </Link>
                 </li>

@@ -5,18 +5,19 @@ import { useState } from 'react';
 
 // Components
 import Link from 'next/link';
-import Magnetic from '../../effect/Magnetic';
-import Stack from '../../Stack';
+import Magnetic from '../../../effect/Magnetic';
+import Stack from '../../../Stack';
 import { FaCaretDown } from 'react-icons/fa6';
 import MegaMenuWrapper from './MegaMenuWrapper';
-import PostsMegaMenu from './PostsMegaMenu';
 
 // Libs
 import { cn } from '@/lib/utils';
 
 // Data
-import { navContent } from '../navContent';
+import { navContent } from '../../navContent';
 
+// Style
+import './mega-menu-style.min.css';
 
 interface NavContentPropsType {
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];

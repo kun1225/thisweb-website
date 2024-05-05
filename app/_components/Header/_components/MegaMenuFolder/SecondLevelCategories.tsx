@@ -7,7 +7,7 @@ const SecondLevelCategories = ({
   content: SecondLevelCategoriesType;
 }) => {
   return (
-    <ul className="scrollbar-hidden flex overflow-y-auto text-gray-600">
+    <ul className="second-level-categories pb-2 flex overflow-y-auto text-gray-600">
       {content.map((secondLevelCategory, index) => (
         <li key={secondLevelCategory._id} className="flex-shrink-0">
           {index !== 0 && <span className="text-gray-500">·</span>}

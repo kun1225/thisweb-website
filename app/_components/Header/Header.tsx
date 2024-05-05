@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Magnetic from '../effect/Magnetic';
 import Image from 'next/image';
-import NavContent from './_components/NavContent';
+import NavContent from './_components/MegaMenuFolder/NavContent';
 import MobileMenu from './_components/MobileMenuFolder/MobileMenu';
 
 async function Header() {
