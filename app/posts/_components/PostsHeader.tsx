@@ -24,7 +24,7 @@ const PostsHeader: React.FC<PostsHeaderPropsType> = ({ categories }) => {
   return (
     <div className="flex flex-col gap-4 sm:flex-row justify-between items-baseline pb-4 mb-8 border-b-2 border-gray-200">
       <h2 className="text-3xl font-bold">{decodeURIComponent(postsListTitle)}</h2>
-      <CategoryDropdown categories={categories} />
+      {/* <CategoryDropdown categories={categories} /> */}
     </div>
   );
 };

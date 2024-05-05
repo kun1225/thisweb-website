@@ -31,13 +31,16 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
   const [megaMenuContent, setMegaMenuContent] = useState<CategoriesType | null>(
     null,
   );
-  const [isLoading, setIsLoading] = useState(true);
 
   const main = useRef<null | HTMLElement>(null);
+  const footer = useRef<null | HTMLElement>(null);
 
   if (typeof window != 'undefined') {
-    main.current = document.getElementById('main');
+    footer.current = document.getElementById('g-footer');
+    main.current = document.getElementById('g-main');
     main.current?.classList.toggle('is-blur', isMobileMenuOpen);
+    footer.current?.classList.toggle('is-blur', isMobileMenuOpen);
+    
     document?.body &&
       (isMobileMenuOpen
         ? (document.body.style.overflow = 'hidden')
@@ -48,7 +51,6 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
     if (!megaMenuContent) {
       postClassificationAction().then((data) => {
         setMegaMenuContent(data);
-        setIsLoading(false);
       });
     }
   }, []);
@@ -62,7 +64,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
               <li key={nav.title} className="py-2 border-b-[1.5px] border-primary">
                 <Link
                   href={nav.url}
-                  className="block p-[2vw]"
+                  className="font-semibold block p-[2vw]"
                   onClick={closeMobileMenu}
                 >
                   {nav.title}
@@ -79,7 +81,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                 <AccordionTitle className="items-center">
                   <Link
                     href={`/posts/${category.title}/0`}
-                    className="block p-[2vw]"
+                    className="font-semibold block p-[2vw]"
                     onClick={closeMobileMenu}
                   >
                     {category.title}
@@ -109,7 +111,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
             <li className="py-2 border-b-[1.5px] border-primary">
               <Link
                 href={`/posts/${category.title}/0`}
-                className="block p-[2vw]"
+                className="font-semibold block p-[2vw]"
                 onClick={closeMobileMenu}
               >
                 {category.title}

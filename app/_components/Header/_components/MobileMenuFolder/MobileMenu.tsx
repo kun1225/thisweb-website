@@ -11,12 +11,11 @@ import MobileMenuIcon from './MobileMenuIcon';
 import MobileMenuContent from './MobileMenuContent';
 
 // Style
-import './mobile-menu-style.min.css'
+import './mobile-menu-style.min.css';
 
 interface MobileMenuPropsType {
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
 }
-
 
 const MobileMenu: React.FC<MobileMenuPropsType> = ({ className = '' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,7 +29,8 @@ const MobileMenu: React.FC<MobileMenuPropsType> = ({ className = '' }) => {
       />
       <div
         className={cn(
-          'mobile-menu fixed  left-0 w-[100%] bg-[rgba(255,255,255,0.5)] backdrop-blur-sm ',isMobileMenuOpen && 'is-open'
+          'mobile-menu fixed left-0 w-[100%] bg-[rgba(249,250,251,0.8)]',
+          isMobileMenuOpen && 'is-open',
         )}
         style={{
           top: headerHeight ? `${headerHeight}px` : '68px',
@@ -39,7 +39,10 @@ const MobileMenu: React.FC<MobileMenuPropsType> = ({ className = '' }) => {
             : 'calc(100dvh - 68px)',
         }}
       >
-        <MobileMenuContent closeMobileMenu={() => setIsMobileMenuOpen(false)} isMobileMenuOpen={isMobileMenuOpen} />
+        <MobileMenuContent
+          closeMobileMenu={() => setIsMobileMenuOpen(false)}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
       </div>
     </div>
   );

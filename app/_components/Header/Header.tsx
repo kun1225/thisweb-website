@@ -7,7 +7,7 @@ import MobileMenu from './_components/MobileMenuFolder/MobileMenu';
 
 async function Header() {
   return (
-    <header className="flex justify-between items-center px-4 md:px-8 py-2 shadow-sm shadow-gray-200 sticky top-0 backdrop-blur-md z-header" id='g-header'>
+    <header className="sticky top-0 flex justify-between items-center px-4 md:px-8 py-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header" id='g-header'>
       <Link href="/">
         <Magnetic className="p-2 flex items-center gap-2 md:gap-4">
           <Image

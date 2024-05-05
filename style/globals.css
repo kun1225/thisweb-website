@@ -113,7 +113,7 @@ h4 {
   @apply px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
 }
 
-#main.is-blur {
+.is-blur {
   filter: blur(12px);
 }
 

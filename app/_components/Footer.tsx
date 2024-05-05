@@ -3,7 +3,10 @@ import { navContent } from './Header/navContent';
 
 function Footer() {
   return (
-    <footer className="bg-primary text-white text-xs flex flex-col gap-8 md:flex-row justify-between mt-32 p-16">
+    <footer
+      className="flex flex-col md:flex-row justify-between gap-8 mt-32 p-16 bg-primary text-white text-xs transition duration-[0.6s]"
+      id="g-footer"
+    >
       <div>
         <h4 className="text-secondary text-sm">頁面導覽</h4>
         <ul className="mt-2 flex flex-col gap-2">
