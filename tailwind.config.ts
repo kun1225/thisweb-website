@@ -29,9 +29,9 @@ const config: Config = {
         mouse: '1000',
       },
       fontSize: {
-        'body': ['1.05rem', '1.65'],
-        'body-large': ['1.1rem', '1.7'],
-        'body-small': ['1rem', '1.6'],
+        'body': ['1.05rem', '1.55'],
+        'body-large': ['1.1rem', '1.6'],
+        'body-small': ['1rem', '1.5'],
       },
     },
   },

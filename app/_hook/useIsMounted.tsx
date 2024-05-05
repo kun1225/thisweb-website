@@ -5,8 +5,7 @@ const useIsMounted = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return false;
-  else return true;
+  return mounted;
 }
 
 export default useIsMounted

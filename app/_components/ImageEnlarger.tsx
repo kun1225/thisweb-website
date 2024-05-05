@@ -68,12 +68,12 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
         onClick={() => handleImageEnlarge(!isEnlarged)}
         onLoad={() => setWrapperHeight(imgRef.current?.clientHeight)}
         style={{ willChange }}
-        className={`inset-0 w-full aspect-video rounded-md ${cn(
+        className={`inset-0 w-full aspect-video rounded-md  ${cn(
           isMounted == false
             ? 'relative'
             : isEnlarged
             ? 'fixed z-modal !w-auto !h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
-            : 'absolute max-w-full cursor-zoom-in rounded-md',
+            : 'absolute max-w-full cursor-zoom-in rounded-md bg-gray-100 shadow-lg',
         )}`}
         transition={transition}
       >
@@ -81,7 +81,7 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
           src={src}
           alt={alt}
           fill
-          className={cn('drop-shadow-lg rounded-md', isEnlarged ? 'object-contain' : 'object-cover')}
+          className={cn('drop-shadow-lg rounded-md object-contain')}
         ></Image>
       </motion.div>
     </motion.div>

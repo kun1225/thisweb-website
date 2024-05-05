@@ -36,7 +36,7 @@ const Accordion: React.FC<AccordionProps> = ({
   initExpanded = true,
   iconPosition = 'left',
   duration = 0.6,
-  className,
+  className = "",
   children,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initExpanded);
@@ -74,6 +74,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
     <Tag
       className={`flex gap-2 select-none ${cn(stretch && 'cursor-pointer')} ${className}`}
       onClick={stretch ? toggle : undefined}
+      role="accordionTitle"
     >
       {iconPosition === 'left' && (
         <FaCaretDown
@@ -81,6 +82,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
+          role='accordionIcon-left'
         />
       )}
       {children}
@@ -90,6 +92,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
             isExpanded && 'rotate-180 -translate-y-[0px]',
           )}`}
           onClick={toggle}
+          role='accordionIcon-right'
         />
       )}
     </Tag>
@@ -124,8 +127,9 @@ const AccordionContent: React.FC<ContentPropsType> = ({
       style={{
         transitionDuration: `${duration}s`,
       }}
+      role='accordionContent'
     >
-      <div className={`overflow-hidden ${className}`} {...props}>{children}</div>
+      <div className={`overflow-hidden ${className}`} {...props} role='accordionContentText'>{children}</div>
     </div>
   );
 };

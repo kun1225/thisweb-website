@@ -9,7 +9,7 @@ export type PostType = SanityDocument & {
   author: string;
   status: string;
   category: string;
-  subCategory: string;
+  secondLevelCategory: string;
   title: string;
 };
 
@@ -17,14 +17,23 @@ export type PostsType = PostType[];
 
 export type SlugAndTitleType = Pick<PostType, 'slug' | 'title'>;
 
-
-export type categoryType = {
+export type CategoryType = SanityDocument & {
   title: string;
   description?: string;
-  orderNumber?: number;
+  priority?: number;
+  secondLevelCategory?: (SanityDocument & { title: string; priority: number })[];
 };
 
-export type CategoriesType = categoryType[];
+export type CategoriesType = CategoryType[];
+
+export type SecondLevelCategoryType = SanityDocument & {
+  title: string;
+  description?: string;
+  priority?: number;
+  ThirdLevelCategory?: (SanityDocument & { title: string; priority: number })[];
+};
+
+export type SecondLevelCategoriesType = SecondLevelCategoryType[];
 
 export type ServiceType = SanityDocument & {
   title: string;
@@ -33,4 +42,4 @@ export type ServiceType = SanityDocument & {
   priority: number;
   ctaLabel: string;
   ctaUrl: string;
-}
+};

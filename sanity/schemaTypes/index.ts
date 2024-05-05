@@ -3,8 +3,9 @@ import callout from './calloutContent'
 import category from './category'
 import post from './post'
 import author from './author'
-import subCategory from './subCategory'
+import secondLevelCategory from './secondLevelCategory'
+import thirdLevelCategory from './thirdLevelCategory'
 import codepen from './codepen'
 import service from './service'
 
-export const schemaTypes = [post, author, category, blockContent, subCategory, callout, codepen, service]
+export const schemaTypes = [post, author, category, blockContent, secondLevelCategory, thirdLevelCategory, callout, codepen, service]

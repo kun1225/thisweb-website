@@ -15,14 +15,14 @@ interface PostsLayoutPropsType {
 const PostsLayout: React.FC<PostsLayoutPropsType> = async ({ children }) => {
   const categories = await client.fetch<CategoriesType>(CATEGORIES_QUERY);
   const orderedCategories = categories.sort((a, b) => {
-    if (a.orderNumber && b.orderNumber) return a.orderNumber - b.orderNumber;
-    if (!a.orderNumber && b.orderNumber) return 1;
-    if (a.orderNumber && !b.orderNumber) return -1;
+    if (a.priority && b.priority) return a.priority - b.priority;
+    if (!a.priority && b.priority) return 1;
+    if (a.priority && !b.priority) return -1;
     return 0;
   });
 
   return (
-    <div className="my-16">
+    <div className="my-16 min-h-[80vh]">
       <PostsHeader categories={orderedCategories} />
       {children}
     </div>

@@ -1,22 +1,13 @@
+// Components
 import Link from 'next/link';
 import Magnetic from '../effect/Magnetic';
-import Stack from '../Stack';
 import Image from 'next/image';
+import NavContent from './_components/MegaMenuFolder/NavContent';
+import MobileMenu from './_components/MobileMenuFolder/MobileMenu';
 
-export const navContent = [
-  {
-    title: '主頁',
-    url: '/',
-  },
-  {
-    title: '文章',
-    url: '/posts/page/0',
-  },
-];
-
-function Header() {
+async function Header() {
   return (
-    <header className="flex justify-between items-center px-4 md:px-8 py-2 shadow-sm shadow-gray-200 sticky top-0 backdrop-blur-md z-header">
+    <header className="sticky top-0 flex justify-between items-center px-4 md:px-8 py-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header" id='g-header'>
       <Link href="/">
         <Magnetic className="p-2 flex items-center gap-2 md:gap-4">
           <Image
@@ -30,19 +21,8 @@ function Header() {
           <h1 className="font-[FiraCode] font-semibold">This.Web</h1>
         </Magnetic>
       </Link>
-      <nav>
-        <Stack as="ul" className="text-xs">
-          {navContent.map(({ title, url }) => (
-            <li key={title}>
-              <Link href={url}>
-                <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap">
-                  {title}
-                </Magnetic>
-              </Link>
-            </li>
-          ))}
-        </Stack>
-      </nav>
+      <NavContent className="hidden md:flex"/>
+      <MobileMenu className="block md:hidden" />
     </header>
   );
 }
