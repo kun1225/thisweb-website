@@ -21,12 +21,14 @@ import CustomPortableText from '@/app/_components/CustomPortableText';
 import RelatedPosts from './_components/RelatedPosts';
 import { Suspense } from 'react';
 import PostPageLoading from './loading';
+import Image from 'next/image';
 
 // Type
 import { PostType } from '@/lib/sanity/type';
 
 // Libs
 import { notFound } from 'next/navigation';
+import { urlFor } from '@/lib/sanity/client';
 
 export const generateStaticParams = async () => {
   const allPostsSlug = await client.fetch<string[]>(POSTS_SLUG_QUERY);
@@ -62,8 +64,10 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   const currentPost = await client.fetch<PostType>(POST_QUERY, {
     slug: params.slug[0],
   });
-
+  
   if (!currentPost) notFound();
+
+  const mainImageUrl = currentPost.mainImage && urlFor(currentPost.mainImage).width(1080).url();
 
   const relatedPosts = await client.fetch(RELATED_POSTS_QUERY, {
     categoryTitle: currentPost.category,
@@ -88,6 +92,9 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
           />
           <section className="flex flex-col-reverse xl:flex-row justify-center article">
             <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
+              {mainImageUrl && (
+                <Image src={mainImageUrl} alt={currentPost.title} width={1080} height={1080} className="rounded-md aspect-video object-cover" />
+              )}
               <CustomPortableText value={currentPost.body} />
               <div className="mt-4">
                 {relatedPosts && relatedPosts.length > 1 && (
