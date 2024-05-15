@@ -4,7 +4,18 @@
 
 .custom-portable-text pre,
 .custom-portable-text code {
-  @apply font-[FiraCode] text-xs leading-5 font-normal;
+  @apply font-[FiraCode] font-normal;
+}
+
+@media screen and (max-width: 768px) {
+  .custom-portable-text pre,
+  .custom-portable-text code {
+    text-wrap: wrap;
+  }
+}
+
+.custom-portable-text pre[class*='language-'] {
+  @apply mb-[1rem];
 }
 
 .custom-portable-text em {
@@ -32,6 +43,10 @@
 .custom-portable-text ul,
 .custom-portable-text ol {
   @apply ml-6 mb-[1rem];
+}
+.custom-portable-text ul li,
+.custom-portable-text ol li {
+  @apply mb-[0.5rem];
 }
 
 .custom-portable-text ul:last-child,
@@ -81,7 +96,7 @@
 .callout ol,
 .callout pre,
 .callout .codepen {
-  @apply mb-0;
+  @apply mb-[1rem];
 }
 
 .toc p {

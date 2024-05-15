@@ -9,7 +9,10 @@ export const POST_QUERY = groq`*[_type == "post" && defined(slug) && defined(tit
     ...,
     _type == "internalLink" => {
       "slug": @.reference->slug
-    }
+    },
+  },
+  _type == "Video" => {
+      "videoUrl": @.asset->url
   }
 }}`;
 

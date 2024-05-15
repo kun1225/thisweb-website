@@ -22,7 +22,7 @@ const PostsLayout: React.FC<PostsLayoutPropsType> = async ({ children }) => {
   });
 
   return (
-    <div className="my-16 min-h-[80vh]">
+    <div className="c my-16 min-h-[80vh]">
       <PostsHeader categories={orderedCategories} />
       {children}
     </div>

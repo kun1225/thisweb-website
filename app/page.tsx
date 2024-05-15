@@ -52,7 +52,7 @@ export default async function Home() {
       <ProblemSection
           problemTitle="如果你遇到這些問題"
           problemCardContent={problemCardContent}
-          className="my-24"
+          className="c my-24"
         />
       <SiteOwnerSection />
       <RecommendedPosts limitedPosts={posts} />
