@@ -88,7 +88,7 @@ export default function RootLayout({
           <ProgressBar />
         </Suspense>
         <Header />
-        <main className="c transition duration-[0.6s]" id="g-main">
+        <main className="transition duration-[0.6s]" id="g-main">
           {children}
         </main>
         <Footer />

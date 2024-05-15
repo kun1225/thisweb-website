@@ -20,6 +20,7 @@ import bash from 'refractor/lang/bash';
 import jsx from 'refractor/lang/jsx';
 import tsx from 'refractor/lang/tsx';
 import template from 'refractor/lang/js-templates';
+import assertUrlBuilder from '@sanity/client';
 
 // Language
 Refractor.registerLanguage(js);
@@ -64,10 +65,11 @@ const calloutComponents = {
   },
   types: {
     image: ({ value }: { value: any }) => {
-      const imageSrc = urlFor(value).width(1080).url();
+      const imageSrc = urlFor(value).width(1200).url();
 
-      return <img src={imageSrc} />;
+      return <ImageEnlarger src={imageSrc} alt="img" />;
     },
+
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {
       const language = source.value.language || 'javascript';
@@ -120,7 +122,7 @@ const myPortableTextComponents = {
         } else if (typeof children[0] === 'object' && children[0].props.text) {
           text = children[0].props.text;
         }
-      
+
         if (text) {
           const cleanText = text.replace(/\s+/g, '');
           const id = slugger.slug(cleanText);
@@ -131,7 +133,7 @@ const myPortableTextComponents = {
             >
               {text}
             </h2>
-          )
+          );
         }
       }
     },
@@ -143,7 +145,7 @@ const myPortableTextComponents = {
         } else if (typeof children[0] === 'object' && children[0].props.text) {
           text = children[0].props.text;
         }
-      
+
         if (text) {
           const cleanText = text.replace(/\s+/g, '');
           const id = slugger.slug(cleanText);
@@ -154,7 +156,6 @@ const myPortableTextComponents = {
           );
         }
       }
-      
     },
     h4: ({ children }: { children: CustomPortableTextHeadingType }) => {
       if (children.length > 0 && children[0]) {
@@ -164,12 +165,11 @@ const myPortableTextComponents = {
         } else if (typeof children[0] === 'object' && children[0].props.text) {
           text = children[0].props.text;
         }
-      
+
         if (text) {
           return <h4 className="my-1 text-lg font-bold">{text}</h4>;
         }
       }
-      
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (
@@ -195,6 +195,18 @@ const myPortableTextComponents = {
       const imageSrc = urlFor(value).width(1200).url();
 
       return <ImageEnlarger src={imageSrc} alt="img" />;
+    },
+    Video: ({ value }: { value: any }) => {
+      return (
+        <video
+          preload="metadata"
+          controls
+          muted
+          className="w-full aspect-video mb-[1rem] bg-neutral-900"
+        >
+          <source src={value.videoUrl} type="video/mp4" />
+        </video>
+      );
     },
     // {value}: {value: {code: any}}
     CodeField: (source: any) => {

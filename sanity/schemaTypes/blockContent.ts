@@ -80,6 +80,32 @@ export default defineType({
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     defineArrayMember({
+      name: 'CodeField',
+      type: 'code',
+      title: 'Code Field',
+      options: {
+        language: 'javascript',
+        languageAlternatives: [
+          {title: 'Javascript', value: 'javascript'},
+          {title: 'Typescript', value: 'typescript'},
+          {title: 'HTML', value: 'html'},
+          {title: 'CSS', value: 'css'},
+          {title: 'Bash', value: 'bash'},
+          {title: 'Bash', value: 'bash'},
+          {title: 'jsx', value: 'jsx'},
+          {title: 'tsx', value: 'tsx'},
+          {title: 'template', value: 'template'},
+        ],
+        withFilename: true,
+      },
+    }),
+    defineArrayMember({
+      name: 'Video',
+      type: 'file',
+      options: {hotspot: true},
+      //@ts-ignore
+    }),
+    defineArrayMember({
       type: 'image',
       options: {hotspot: true},
       //@ts-ignore
@@ -101,26 +127,6 @@ export default defineType({
       ],
     }),
 
-    defineArrayMember({
-      name: 'CodeField',
-      type: 'code',
-      title: 'Code Field',
-      options: {
-        language: 'javascript',
-        languageAlternatives: [
-          {title: 'Javascript', value: 'javascript'},
-          {title: 'Typescript', value: 'typescript'},
-          {title: 'HTML', value: 'html'},
-          {title: 'CSS', value: 'css'},
-          {title: 'Bash', value: 'bash'},
-          {title: 'Bash', value: 'bash'},
-          {title: 'jsx', value: 'jsx'},
-          {title: 'tsx', value: 'tsx'},
-          {title: 'template', value: 'template'},
-        ],
-        withFilename: true,
-      },
-    }),
     defineArrayMember({
       name: 'Callout',
       type: 'callout',

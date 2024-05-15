@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 function SiteOwnerSection() {
   return (
-    <section className="md:px-8 pt-8 mb-32">
+    <section className="c md:px-8 pt-8 mb-32">
       <h2 className="text-2xl text-center mb-16 drop-shadow-md">
         別擔心，讓我來幫助你
       </h2>

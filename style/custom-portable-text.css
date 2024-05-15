@@ -7,6 +7,10 @@
   @apply font-[FiraCode] text-xs leading-5 font-normal;
 }
 
+.custom-portable-text pre[class*='language-'] {
+  @apply mb-[1rem];
+}
+
 .custom-portable-text em {
   @apply border-l-4 py-1 pl-4 border-gray-200;
 }
@@ -32,6 +36,10 @@
 .custom-portable-text ul,
 .custom-portable-text ol {
   @apply ml-6 mb-[1rem];
+}
+.custom-portable-text ul li,
+.custom-portable-text ol li {
+  @apply mb-[0.5rem];
 }
 
 .custom-portable-text ul:last-child,
@@ -81,7 +89,7 @@
 .callout ol,
 .callout pre,
 .callout .codepen {
-  @apply mb-0;
+  @apply mb-[1rem];
 }
 
 .toc p {

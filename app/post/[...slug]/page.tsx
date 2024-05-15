@@ -84,7 +84,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   return (
     <>
       <Suspense fallback={<PostPageLoading />}>
-        <article className="mx-auto my-8">
+        <article className="c mx-auto my-8">
           <PostTitle
             date={currentPost.publishedAt}
             title={currentPost.title}

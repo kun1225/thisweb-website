@@ -5,7 +5,7 @@ export default function PostPageLoading() {
   // You can add any UI inside Loading, including a Skeleton.
   return (
     <>
-      <section className="max-w-6xl mx-auto">
+      <section className="c max-w-6xl mx-auto">
         <div className="flex gap-16 justify-center mb-32">
           <div className="hidden md:block w-40 title-deco"></div>
 

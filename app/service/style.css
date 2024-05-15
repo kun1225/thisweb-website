@@ -1,0 +1,34 @@
+.service-page__bridge__title {
+  background-image: linear-gradient(20deg, #00334e 0%, #477086 50%);
+}
+
+.service-page__title {
+  background: linear-gradient(
+      -40deg,
+      #00334e 0%,
+      #00334e 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      #00334e 60%,
+      #00334e 100%
+    )
+    no-repeat;
+  background-size: 300%;
+  color: transparent;
+  background-clip: text;
+  animation-name: shine;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  50% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
