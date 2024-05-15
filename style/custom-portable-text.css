@@ -10,7 +10,7 @@
 @media screen and (max-width: 768px) {
   .custom-portable-text pre,
   .custom-portable-text code {
-    text-wrap: wrap;
+    text-wrap: wrap !important;
   }
 }
 
