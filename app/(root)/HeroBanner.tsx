@@ -17,7 +17,7 @@ function HeroBanner() {
     <>
       <div className="hero__bg absolute top-0 left-0 w-full h-[100svh]" />
       <div className="overflow-hidden">
-        <section className="relative min-h-[80svh] flex flex-col justify-center items-center gap-10 text-center">
+        <section className="c relative min-h-[80svh] flex flex-col justify-center items-center gap-10 text-center">
           <p className="tracking-widest text-gray-500">
             請網這邊走 ThisWeb | 前端 x 轉職 x 提升競爭力
           </p>

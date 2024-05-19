@@ -34,17 +34,13 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
 
   return (
     <ul className="grid grid-cols-3 grid-flow-row gap-[1vw]">
-      {isLoading ? (
-        <>
-          {Array.from({ length: 6 }).map((_, index) => (
+      {isLoading
+        ? Array.from({ length: 6 }).map((_, index) => (
             <Skeleton key={index} className="col-span-1 h-[30vh]" />
-          ))}
-        </>
-      ) : (
-        <>
-          {megaMenuContent?.map((category) => (
-            <>
-              {category.description && (
+          ))
+        : megaMenuContent?.map(
+            (category) =>
+              category.description && (
                 <li
                   key={category._id}
                   className="posts-mega-menu-item transition rounded-md hover:bg-gray-100"
@@ -63,11 +59,8 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
                     )}
                   </Link>
                 </li>
-              )}
-            </>
-          ))}
-        </>
-      )}
+              ),
+          )}
     </ul>
   );
 };

@@ -61,7 +61,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
         navContent.map((nav) => {
           return (
             !nav.isMegaMenu && (
-              <li key={nav.title} className="py-2 border-b-[1.5px] border-primary">
+              <li key={nav.id} className="py-2 border-b-[1.5px] border-primary">
                 <Link
                   href={nav.url}
                   className="font-semibold block p-[2vw]"
@@ -108,7 +108,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
               </Accordion>
             </li>
           ) : (
-            <li className="py-2 border-b-[1.5px] border-primary">
+            <li key={category._id} className="py-2 border-b-[1.5px] border-primary">
               <Link
                 href={`/posts/${category.title}/0`}
                 className="font-semibold block p-[2vw]"

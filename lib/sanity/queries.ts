@@ -27,7 +27,10 @@ export const POSTS_BY_CATEGORY_TITLE_QUERY = groq`
   *[_type == "post" && defined(slug) && defined(title) && category->title == $categoryTitle] {
     ...,
     "category": category->title,
-    "secondLevelCategory": secondLevelCategory->title
+    "secondLevelCategory": {
+      "title": secondLevelCategory->title,
+      "_id": secondLevelCategory->_id
+    }
   }
   | order(publishedAt desc)
   [$start...$end]
@@ -46,10 +49,16 @@ export const POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY = groq`
   [$start...$end]
 `;
 export const POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && secondLevelCategory->title == $secondLevelCategory])`;
-export const CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY = groq`*[_type == "category"]{...,"secondLevelCategory": secondLevelCategory[]->{
-  title,
-  priority
-}}`;
+export const CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY = groq`
+  *[_type == "category"] {
+    ...,
+    "secondLevelCategory": secondLevelCategory[]->{
+      title,
+      priority,
+      _id
+    }
+  }
+`;
 
 // * Service Queries
 export const SERVICE_QUERY = groq`*[_type == "service"]`;

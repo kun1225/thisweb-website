@@ -35,6 +35,7 @@ const useWindowWidth = () => {
   };
 
   useEffect(() => {
+    modifyWidth();
     window.addEventListener('resize', modifyWidth);
     return () => {
       window.removeEventListener('resize', modifyWidth);

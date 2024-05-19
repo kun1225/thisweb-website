@@ -51,15 +51,20 @@ const servicePage = async () => {
       <section className="service-page relative">
         <div className="c min-h-[70vh] mt-16 mb-32 flex gap-[10vw] items-center justify-center">
           <div className="flex flex-col gap-8 items-center text-center md:text-left max-w-2xl">
-            <h3 className="text-body-large text-neutral-950 font-semibold text-center">
+            <h3 className="text-body md:text-body-large text-neutral-950 font-semibold text-center">
               ThisWeb 前端職涯諮詢＆轉職陪跑教練服務
             </h3>
-            <h2 className="service-page__title text-5xl leading-[1.4] font-semibold text-primary text-center mb-4">
+            <h2 className="service-page__title text-4xl md:text-5xl leading-[1.4] font-semibold text-primary text-center mb-4">
               打造高效學習與目標管理系統
               <br />
-              讓轉職前端更順利
+              轉職前端更順利
             </h2>
-            <Button>預約諮詢</Button>
+            <Link
+              href="https://cal.com/thisweb/career-counseling?user=thisweb&date=2024-05-23&month=2024-05"
+              target="_blank"
+            >
+              <Button>預約諮詢</Button>
+            </Link>
           </div>
         </div>
 
@@ -68,7 +73,7 @@ const servicePage = async () => {
             👋 我是 ThisWeb，我在轉職路上也迷茫過
           </p>
 
-          <div className="flex gap-[4w] justify-between items-center mt-4">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-[4w] justify-between items-center mt-4">
             <Rotate3dEffect amplitude={0.1} className="text-primary">
               <div className="min-w-[320px]">
                 <Image
@@ -80,7 +85,7 @@ const servicePage = async () => {
                 />
               </div>
             </Rotate3dEffect>
-            <p className="text-left max-w-2xl">
+            <p className="max-w-2xl text-center md:text-left">
               在即將從機械系畢業前，我發現我很討厭自己的科系，毅然放棄研究所，決定培養其它專長，另找出路。
               <br />
               <br />
@@ -99,34 +104,39 @@ const servicePage = async () => {
           </div>
 
           <div className="flex flex-wrap gap-[4vw] mt-8">
-            <div className="flex items-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg">
-              <div className="flex gap-1 text-4xl font-semibold text-secondary items-center ">
-                <NumberCounter value={5000} />
+            <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
+              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
+                <NumberCounter value={5800} />
                 <span>+</span>
               </div>
               <p className="text-sm">IG 追蹤數</p>
             </div>
-            <div className="flex items-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg">
-              <div className="flex gap-1 text-4xl font-semibold text-secondary items-center ">
+            <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
+              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
                 <NumberCounter value={100} />
                 <span>+</span>
               </div>
               <p className="text-sm">累積前端教學文章</p>
             </div>
-            <div className="flex items-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg">
-              <div className="flex gap-1 text-4xl font-semibold text-secondary items-center ">
+            <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
+              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
                 <NumberCounter value={50} />
                 <span>+</span>
               </div>
               <p className="text-sm">累積諮詢人數</p>
             </div>
           </div>
-
           <strong className="mt-16">
             我也希望我也能透過這套系統，幫助你轉職成功。
           </strong>
 
-          <Button className="mt-16">預約諮詢</Button>
+          <Link
+            href="https://cal.com/thisweb/career-counseling?user=thisweb&date=2024-05-23&month=2024-05"
+            target="_blank"
+            className="mt-16"
+          >
+            <Button>預約諮詢</Button>
+          </Link>
         </div>
 
         <div className="relative py-16 mt-32">
@@ -149,8 +159,8 @@ const servicePage = async () => {
               <br />
               我會分成三個步驟 👇
             </p>
-            <div className="flex justify-between items-stretch gap-[2vw]">
-              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg">
+            <div className="flex flex-col md:flex-row justify-between items-stretch gap-[2vw]">
+              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
                 <h3 className="text-2xl font-semibold text-secondary">
                   01. 一對一諮詢
                 </h3>
@@ -158,7 +168,7 @@ const servicePage = async () => {
                   轉職過程中最怕的就是遇到問題找不到解答，我會根據自身轉職經驗幫助你定位問題，從根本解決你的困難。
                 </p>
               </div>
-              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg">
+              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
                 <h3 className="text-2xl font-semibold text-secondary">
                   02. 客製化教學
                 </h3>
@@ -166,7 +176,7 @@ const servicePage = async () => {
                   我會根據你的軟硬實力，提供客製化的教學和學習資源，幫助你掌握前端知識與求職的關鍵技能。
                 </p>
               </div>
-              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg">
+              <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
                 <h3 className="text-2xl font-semibold text-secondary">
                   03. Notion 目標管理模板
                 </h3>
@@ -178,8 +188,8 @@ const servicePage = async () => {
           </div>
         </div>
 
-        <div className="c grid place-content-center mt-48 my-24">
-          <p className="text-2xl text-primary font-semibold text-center mb-4">
+        <div className="c grid place-content-center my-24">
+          <p className="text-3xl text-primary font-semibold text-center mb-12">
             如果你已經下定決心轉職，可以參考以下服務：
           </p>
           <Stack direction="col" className="gap-32">
@@ -192,7 +202,7 @@ const servicePage = async () => {
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse';
                 return (
                   <Stack
-                    className="justify-between p-6 md:p-16 bg-gray-100 rounded-xl shadow-lg shadow-gray-400"
+                    className="justify-between p-6 md:p-16 bg-pure-white rounded-xl shadow-lg shadow-gray-400"
                     key={_id}
                   >
                     <Stack className={`gap-[4vw] flex-col ${direction}`}>
