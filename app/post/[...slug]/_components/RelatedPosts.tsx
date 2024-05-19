@@ -16,7 +16,7 @@ const RelatedPosts: React.FC<RelatedPostsPropsType> = ({
         <>
           <p className="!mb-4 text-2xl text-primary font-bold">相關系列文章</p>
           <div className="flex flex-col gap-1 text-base">
-            {relatedPosts.map((post) => {
+            {relatedPosts.slice(0, 3).map((post) => {
               if (post._id === currentPostId)
                 return (
                   <p key={post._id} className="my-0.5">

@@ -12,7 +12,7 @@ const PostNavigation: React.FC<PostNavigationProps> = ({
   nextPost,
 }) => {
   return (
-    <div className="flex flex-col gap-4 mt-24 md:flex-row md:justify-between xl:gap-8">
+    <div className="c flex flex-col gap-4 mt-24 md:flex-row md:justify-between xl:gap-8">
       {prevPost ? (
         <Link
           className="basis-1/2 hover:scale-[102%] transition"
@@ -38,7 +38,7 @@ const PostNavigation: React.FC<PostNavigationProps> = ({
             下一篇
           </p>
           <div className="flex gap-2">
-            <span className="text-sm">{nextPost.title}</span>
+            <span className="text-sm float-right">{nextPost.title}</span>
             <span className="hidden md:inline">→</span>
           </div>
         </Link>
