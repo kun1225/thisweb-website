@@ -49,16 +49,19 @@ const servicePage = async () => {
     <>
       <div className="hero__bg absolute inset-0 min-h-screen"></div>
       <section className="service-page relative">
-        <div className="c min-h-[70vh] mt-16 mb-32 flex gap-[10vw] items-center justify-center">
-          <div className="flex flex-col gap-8 items-center text-center md:text-left max-w-2xl">
+        <div className="c min-h-[70vh] mt-16 mb-28 flex gap-[10vw] items-center justify-center">
+          <div className="flex flex-col gap-8 items-center text-center md:text-left">
             <h3 className="text-body md:text-body-large text-neutral-950 font-semibold text-center">
               ThisWeb 前端職涯諮詢＆轉職陪跑教練服務
             </h3>
-            <h2 className="service-page__title text-4xl md:text-5xl leading-[1.4] font-semibold text-primary text-center mb-4">
-              打造高效學習與目標管理系統
-              <br />
-              轉職前端更順利
-            </h2>
+            <Rotate3dEffect amplitude={{ x: 0.05, y: 0.2 }}>
+              <h2 className="service-page__title text-4xl md:text-5xl !leading-[1.5] font-semibold text-primary text-center mb-4">
+                打造高效學習與目標管理系統
+                <br />
+                轉職前端更順利
+              </h2>
+            </Rotate3dEffect>
+
             <Link
               href="https://cal.com/thisweb/career-counseling?user=thisweb&date=2024-05-23&month=2024-05"
               target="_blank"
@@ -68,12 +71,23 @@ const servicePage = async () => {
           </div>
         </div>
 
-        <div className="c flex flex-col text-center items-center">
+        <div className="c text-center md:max-w-3xl">
+          <p>
+            轉職前端是一條漫長又煎熬的路，很多時候我們會停滯不前，並不是因為缺乏學習資源，而是不清楚如何有效的管理自己的學習和目標，
+            <br />
+            <br />
+            <strong>
+              這也是為什麼許多人花了昂貴的學費買課程，卻還是無法順利轉職。
+            </strong>
+          </p>
+        </div>
+
+        <div className="c flex flex-col text-center items-center mt-32">
           <p className="text-3xl font-semibold text-primary">
             👋 我是 ThisWeb，我在轉職路上也迷茫過
           </p>
 
-          <div className="flex flex-col md:flex-row gap-4 md:gap-[4w] justify-between items-center mt-4">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-[4w] justify-between items-center mt-8">
             <Rotate3dEffect amplitude={0.1} className="text-primary">
               <div className="min-w-[320px]">
                 <Image
@@ -85,7 +99,7 @@ const servicePage = async () => {
                 />
               </div>
             </Rotate3dEffect>
-            <p className="max-w-2xl text-center md:text-left">
+            <p className="md:max-w-2xl text-center md:text-left">
               在即將從機械系畢業前，我發現我很討厭自己的科系，毅然放棄研究所，決定培養其它專長，另找出路。
               <br />
               <br />
@@ -148,14 +162,7 @@ const servicePage = async () => {
               從前端小白到前端工程師：三個步驟帶你成功轉職
             </p>
             <p>
-              轉職前端是一條漫長又煎熬的路，很多時候我們會停滯不前，並不是因為缺乏學習資源，而是不清楚如何有效的管理自己的學習和目標，
-              <br />
-              <strong>
-                這也是為什麼許多人花了昂貴的學費買課程，卻還是無法順利轉職。
-              </strong>
-              <br />
-              <br />
-              所以我會根據我自身轉職成功的經驗，幫助你也打造最適合自己的學習和目標管理系統。
+              我會根據我自身轉職成功的經驗，幫助你也打造最適合自己的學習和目標管理系統。
               <br />
               我會分成三個步驟 👇
             </p>
