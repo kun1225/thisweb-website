@@ -22,6 +22,7 @@ import RelatedPosts from './_components/RelatedPosts';
 import { Suspense } from 'react';
 import PostPageLoading from './loading';
 import Image from 'next/image';
+import ImageEnlarger from '../../_components/ImageEnlarger';
 
 // Type
 import { PostType } from '@/lib/sanity/type';
@@ -93,7 +94,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
           <section className="flex flex-col-reverse xl:flex-row justify-center article">
             <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
               {mainImageUrl && (
-                <Image src={mainImageUrl} alt={currentPost.title} width={1080} height={1080} className="rounded-md aspect-video object-cover" />
+                <ImageEnlarger src={mainImageUrl} alt="img" />
               )}
               <CustomPortableText value={currentPost.body} />
               <div className="mt-4">
