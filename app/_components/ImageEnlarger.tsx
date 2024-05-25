@@ -33,7 +33,10 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
 
   useEffect(() => {
     const handleKeydown = (e: any) => {
-      if (isEnlarged && e.key === 'Escape') setIsEnlarged(false);
+      if (isEnlarged && e.key === 'Escape') {
+        setIsEnlarged(false);
+        document.body.style.overflowY = 'auto';
+      }
     };
 
     window.addEventListener('keydown', handleKeydown);
