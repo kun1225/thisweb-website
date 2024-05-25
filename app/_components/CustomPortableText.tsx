@@ -240,7 +240,7 @@ const myPortableTextComponents = {
 
     Callout: (source: any) => {
       const isExpanded = source.value.isExpanded;
-      const bodyLength = toPlainText(source.value.text).length;
+      const bodyLength = source.value.text && toPlainText(source.value.text).length || 0;
 
       const duration = bodyLength > 500 ? 1.2 : 0.6;
 
