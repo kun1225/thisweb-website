@@ -16,7 +16,7 @@ import { toPlainText } from '@portabletext/react';
 // Components
 import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
-import TableOfContents from './_components/TableOfContents';
+import TableOfContents from './_components/tableOfContents';
 import CustomPortableText from '@/app/_components/CustomPortableText';
 import RelatedPosts from './_components/RelatedPosts';
 import { Suspense } from 'react';
@@ -65,10 +65,11 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   const currentPost = await client.fetch<PostType>(POST_QUERY, {
     slug: params.slug[0],
   });
-  
+
   if (!currentPost) notFound();
 
-  const mainImageUrl = currentPost.mainImage && urlFor(currentPost.mainImage).width(1080).url();
+  const mainImageUrl =
+    currentPost.mainImage && urlFor(currentPost.mainImage).width(1080).url();
 
   const relatedPosts = await client.fetch(RELATED_POSTS_QUERY, {
     categoryTitle: currentPost.category,
@@ -93,9 +94,7 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
           />
           <section className="flex flex-col-reverse xl:flex-row justify-center article">
             <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
-              {mainImageUrl && (
-                <ImageEnlarger src={mainImageUrl} alt="img" />
-              )}
+              {mainImageUrl && <ImageEnlarger src={mainImageUrl} alt="img" />}
               <CustomPortableText value={currentPost.body} />
               <div className="mt-4">
                 {relatedPosts && relatedPosts.length > 1 && (
