@@ -7,7 +7,7 @@ import React, {
   HtmlHTMLAttributes,
 } from 'react';
 import { cn } from '@/lib/utils';
-import { FaCaretDown } from 'react-icons/fa6';
+import { RxCaretDown } from 'react-icons/rx';
 
 // Context to share the Accordion state and functionality across the compound components
 interface AccordionContextType {
@@ -36,7 +36,7 @@ const Accordion: React.FC<AccordionProps> = ({
   initExpanded = true,
   iconPosition = 'left',
   duration = 0.6,
-  className = "",
+  className = '',
   children,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initExpanded);
@@ -72,28 +72,34 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 
   return (
     <Tag
-      className={`flex gap-2 select-none ${cn(stretch && 'cursor-pointer')} ${className}`}
+      className={`flex gap-2 select-none items-center ${cn(
+        stretch && 'cursor-pointer',
+      )} ${className}`}
       onClick={stretch ? toggle : undefined}
       role="accordionTitle"
     >
       {iconPosition === 'left' && (
-        <FaCaretDown
-          className={`transition text-inherit cursor-pointer translate-y-[8px] ${cn(
-            isExpanded && 'rotate-180 -translate-y-[0px]',
-          )}`}
-          onClick={toggle}
-          role='accordionIcon-left'
-        />
+        <button type="button" aria-label="開合" onClick={toggle}>
+          <RxCaretDown
+            className={`transition text-inherit cursor-pointer ${cn(
+              isExpanded && 'rotate-180',
+            )}`}
+            onClick={toggle}
+            role="accordionIcon-left"
+          />
+        </button>
       )}
       {children}
       {iconPosition === 'right' && (
-        <FaCaretDown
-          className={`transition text-inherit cursor-pointer translate-y-[2.5px] ${cn(
-            isExpanded && 'rotate-180 -translate-y-[0px]',
-          )}`}
-          onClick={toggle}
-          role='accordionIcon-right'
-        />
+        <button type="button" aria-label="開合" onClick={toggle}>
+          <RxCaretDown
+            className={`transition text-inherit cursor-pointer ${cn(
+              isExpanded && 'rotate-180',
+            )}`}
+            onClick={toggle}
+            role="accordionIcon-right"
+          />
+        </button>
       )}
     </Tag>
   );
@@ -127,9 +133,15 @@ const AccordionContent: React.FC<ContentPropsType> = ({
       style={{
         transitionDuration: `${duration}s`,
       }}
-      role='accordionContent'
+      role="accordionContent"
     >
-      <div className={`overflow-hidden ${className}`} {...props} role='accordionContentText'>{children}</div>
+      <div
+        className={`overflow-hidden ${className}`}
+        {...props}
+        role="accordionContentText"
+      >
+        {children}
+      </div>
     </div>
   );
 };
