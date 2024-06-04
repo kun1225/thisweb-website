@@ -90,11 +90,11 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary rounded-full;
+  @apply bg-gray-400 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary-2;
+  @apply bg-secondary;
 }
 
 .scrollbar-small::-webkit-scrollbar {
