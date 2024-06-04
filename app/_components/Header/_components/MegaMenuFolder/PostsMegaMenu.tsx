@@ -36,28 +36,32 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
     <ul className="grid grid-cols-3 grid-flow-row gap-[1vw]">
       {isLoading
         ? Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} className="col-span-1 h-[30vh]" />
+            <Skeleton key={index} className="col-span-1 h-[20vh]" />
           ))
         : megaMenuContent?.map(
             (category) =>
               category.description && (
                 <li
                   key={category._id}
-                  className="posts-mega-menu-item transition rounded-md hover:bg-gray-100"
+                  className="posts-mega-menu-item rounded-md "
                 >
-                  <Link
-                    href={`/posts/${category.title}/0`}
-                    className="block p-[2vw]"
-                    onClick={closeMegaMenu}
-                  >
-                    <h3 className="text-xl font-bold mb-1">{category.title}</h3>
-                    <p className="text-sm mb-2">{category.description}</p>
+                  <div className="block mb-[-2vw]" onClick={closeMegaMenu}>
+                    <Link
+                      href={`/posts/${category.title}/0`}
+                      className="block p-edge-xs pb-[4vw] transition hover:bg-gray-100"
+                    >
+                      <h3 className="text-xl font-bold mb-1">
+                        {category.title}
+                      </h3>
+                      <p className="text-sm mb-2">{category.description}</p>
+                    </Link>
+
                     {category.secondLevelCategory && (
                       <SecondLevelCategories
                         content={category.secondLevelCategory}
                       />
                     )}
-                  </Link>
+                  </div>
                 </li>
               ),
           )}
