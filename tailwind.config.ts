@@ -28,8 +28,20 @@ const config: Config = {
         modal: '200',
         mouse: '1000',
       },
+      margin: {
+        'edge-xs': '2vw',
+        'edge-sm': '4vw',
+        edge: '6vw',
+        'edge-lg': '8vw',
+      },
+      padding: {
+        'edge-xs': '2vw',
+        'edge-sm': '4vw',
+        edge: '6vw',
+        'edge-lg': '8vw',
+      },
       fontSize: {
-        'body': ['1.05rem', '1.55'],
+        body: ['1.05rem', '1.55'],
         'body-large': ['1.1rem', '1.6'],
         'body-small': ['1rem', '1.5'],
       },
