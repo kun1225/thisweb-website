@@ -4,6 +4,9 @@ import type { Metadata } from 'next';
 // Style
 import '../style/globals.min.css';
 
+// Context
+import { GlobalSettingsProvider } from './_context/globalSettings';
+
 // Components
 import Header from './_components/Header/Header';
 import Footer from './_components/Footer';
@@ -33,6 +36,7 @@ export const metadata: Metadata = {
   description:
     '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長、目標管理等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
   creator: 'ThisWeb 請網這邊走',
+  publisher: 'ThisWeb 請網這邊走',
   keywords: [
     '工程師自我成長',
     '工程師職涯競爭力',
@@ -50,7 +54,7 @@ export const metadata: Metadata = {
       '提供完整的前端入門教學，從 HTML、CSS、JS 核心觀念開始，進階到網頁動畫、前端框架以及前端工程師自我成長、目標管理等內容，讓你快速上手網頁程式，奠定基礎知識，轉職升職更順利。',
     locale: 'zh-TW',
     siteName: 'ThisWeb 請網這邊走',
-    images: '/siteOwner.jpg'
+    images: '/siteOwner.jpg',
   },
 };
 
@@ -81,17 +85,19 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        {/* <link rel="manifest" href="/site.webmanifest" /> */}
       </head>
       <body className={`${cn(notoSans.className)}`}>
-        <Suspense>
-          <ProgressBar />
-        </Suspense>
-        <Header />
-        <main className="transition duration-[0.6s]" id="g-main">
-          {children}
-        </main>
-        <Footer />
+        <GlobalSettingsProvider>
+          <Suspense>
+            <ProgressBar />
+          </Suspense>
+          <Header />
+          <main className="transition duration-[0.6s]" id="g-main">
+            {children}
+          </main>
+          <Footer />
+        </GlobalSettingsProvider>
+
         <Analytics />
         <SpeedInsights />
       </body>

@@ -21,7 +21,7 @@ const TableOfContentsBody: React.FC<TableOfContentsBodyProps> = ({
   activeId,
 }) => {
   return (
-    <>
+    <div className="toc flex flex-col gap-1 text-sm">
       {structuredHeadings.map((heading: HeadingType) => {
         return heading.children.length === 0 ? (
           <HeadingButton
@@ -66,7 +66,7 @@ const TableOfContentsBody: React.FC<TableOfContentsBodyProps> = ({
           </Accordion>
         );
       })}
-    </>
+    </div>
   );
 };
 

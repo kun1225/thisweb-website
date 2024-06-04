@@ -1,25 +1,34 @@
 'use client';
 
 // Hooks
-import { useEffect, useState, useMemo } from 'react';
-
+import { useEffect } from 'react';
+import useGlobalSettings from '@/app/_hook/useGlobalSettings';
 // Utils
-import { observeHeading, extractHeadings, transformRawHeadings } from './utils';
-
+import { observeHeading } from './utils';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 // Components
 import TableOfContentsBody from './_components/TableOfContentsBody';
-import TableOfContentsIndicator from './_components/TableOfContentsIndicator';
-import useIsMounted from '@/app/_hook/useIsMounted';
-import { PiCaretDoubleRight } from 'react-icons/pi';
+import TableOfContentHeader from './_components/TableOfContentHeader';
+// Types
+import { HeadingType } from './type';
 
-const TableOfContents: React.FC<{ source: any[] }> = ({ source }) => {
-  const [activeId, setActiveId] = useState<string>();
-
-  const rawHeadings = extractHeadings(source);
-  const structuredHeadings = useMemo(
-    () => transformRawHeadings(rawHeadings),
-    [source],
-  );
+const TableOfContents: React.FC<{
+  structuredHeadings: HeadingType[];
+  activeId: string | undefined;
+  setActiveId: React.Dispatch<React.SetStateAction<string | undefined>>;
+  isTocOpen: boolean;
+  setIsTocOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: React.HTMLProps<HTMLElement>['className'];
+}> = ({
+  structuredHeadings,
+  activeId,
+  setActiveId,
+  isTocOpen,
+  setIsTocOpen,
+  className,
+}) => {
+  const { isTocCollapsed, toggleToc } = useGlobalSettings();
 
   useEffect(() => {
     const headingElements = Array.from(
@@ -34,30 +43,26 @@ const TableOfContents: React.FC<{ source: any[] }> = ({ source }) => {
   }, []);
 
   return (
-    <>
-      <div className="flex justify-between items-baseline gap-2">
-        <p className="!mb-2 text-primary">目錄</p>
-        <button
-          className="text-neutral-500 hover:text-neutral-950 transition"
-          type="button"
-          aria-label="隱藏目錄"
-          title="隱藏目錄"
-        >
-          <PiCaretDoubleRight />
-        </button>
-      </div>
-      <div className="toc flex flex-col gap-1 text-sm">
-        <TableOfContentsBody
-          structuredHeadings={structuredHeadings}
-          activeId={activeId}
-        />
-      </div>
-      <TableOfContentsIndicator
-        className="fixed right-4 top-24 hidden md:flex flex-col gap-2 items-end"
+    <motion.div
+      layout
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
+      animate={{
+        opacity: isTocOpen || !isTocCollapsed ? 1 : 0,
+        y: isTocOpen || !isTocCollapsed ? 0 : '32px',
+        pointerEvents: isTocOpen || !isTocCollapsed ? 'auto' : 'none',
+      }}
+      className={cn(className)}
+    >
+      <TableOfContentHeader
+        toggleToc={toggleToc}
+        setIsTocOpen={setIsTocOpen}
+        isTocCollapsed={isTocCollapsed}
+      />
+      <TableOfContentsBody
         structuredHeadings={structuredHeadings}
         activeId={activeId}
       />
-    </>
+    </motion.div>
   );
 };
 

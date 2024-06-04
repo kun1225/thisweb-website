@@ -16,13 +16,10 @@ import { toPlainText } from '@portabletext/react';
 // Components
 import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
-import TableOfContents from './_components/tableOfContents';
-import CustomPortableText from '@/app/_components/CustomPortableText';
-import RelatedPosts from './_components/RelatedPosts';
 import { Suspense } from 'react';
 import PostPageLoading from './loading';
-import Image from 'next/image';
-import ImageEnlarger from '../../_components/ImageEnlarger';
+import PostBody from './_components/PostBody';
+import PostSidebar from './_components/PostSidebar';
 
 // Type
 import { PostType } from '@/lib/sanity/type';
@@ -86,30 +83,19 @@ const PostPage = async ({ params }: { params: { slug: string[] } }) => {
   return (
     <>
       <Suspense fallback={<PostPageLoading />}>
-        <article className="c mx-auto my-8">
+        <article className="my-8 mx-edge xl:mx-auto">
           <PostTitle
             date={currentPost.publishedAt}
             title={currentPost.title}
             topic={currentPost.category}
           />
-          <section className="flex flex-col-reverse xl:flex-row justify-center article">
-            <div className="max-w-2xl border-gray-200 xl:border-r-2 xl:px-8">
-              {mainImageUrl && <ImageEnlarger src={mainImageUrl} alt="img" />}
-              <CustomPortableText value={currentPost.body} />
-              <div className="mt-4">
-                {relatedPosts && relatedPosts.length > 1 && (
-                  <div className="mt-16">
-                    <RelatedPosts
-                      relatedPosts={relatedPosts}
-                      currentPostId={currentPost._id}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-            <aside className="block border-2 p-4 mb-8 rounded-md xl:sticky xl:top-20 xl:mb-0 xl:border-0 xl:pr-4 xl:pl-8 xl:self-start xl:max-h-[80vh] xl:overflow-y-scroll">
-              <TableOfContents source={currentPost.body} />
-            </aside>
+          <section className="article flex flex-col-reverse items-center xl:justify-center transition xl:flex-row ">
+            <PostBody
+              mainImageUrl={mainImageUrl}
+              currentPost={currentPost}
+              relatedPosts={relatedPosts}
+            />
+            <PostSidebar source={currentPost.body} />
           </section>
         </article>
 
