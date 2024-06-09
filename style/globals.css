@@ -71,7 +71,7 @@
 
 body,
 html {
-  @apply min-h-full bg-gray-50 text-body-small xl:text-body 2xl:xl:text-body-large text-neutral-950 font-normal tracking-wide scroll-smooth;
+  @apply min-h-full bg-gray-50 text-body-small xl:text-body 2xl:xl:text-body-large text-neutral-950 font-normal tracking-wide scroll-smooth scroll-p-[120px];
 }
 
 h1,
