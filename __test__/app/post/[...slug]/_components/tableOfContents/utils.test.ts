@@ -1,4 +1,4 @@
-import { it, expect, describe, vitest, beforeEach } from 'vitest';
+import { it, expect, describe, vi, beforeEach } from 'vitest';
 import {
   getIndexFromId,
   findLastVisibleHeadingEntry,
@@ -63,19 +63,20 @@ describe('findLastVisibleHeadingEntry', () => {
 
 describe('observeHeading', () => {
   beforeEach(() => {
-    const mockIntersectionObserver = vitest.fn();
+    const mockIntersectionObserver = vi.fn();
     mockIntersectionObserver.mockReturnValue({
       observe: () => null,
       unobserve: () => null,
       disconnect: () => null,
     });
-    window.IntersectionObserver = mockIntersectionObserver;
+
+    vi.stubGlobal('IntersectionObserver', mockIntersectionObserver);
   });
 
   it('should call IntersectionObserver one time', () => {
     document.body.innerHTML = '<h1 id="heading1">Heading 1</h1>';
     const headingElements = Array.from(document.querySelectorAll('h2'));
-    const setActiveId = vitest.fn();
+    const setActiveId = vi.fn();
 
     const observer = observeHeading(headingElements, setActiveId);
 
