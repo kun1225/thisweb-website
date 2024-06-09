@@ -1,6 +1,6 @@
 export type HeadingType = {
   text: string;
-  level: number;
+  level: 2 | 3;
   id: string;
   children: any[];
 };
