@@ -76,7 +76,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
         stretch && 'cursor-pointer',
       )} ${className}`}
       onClick={stretch ? toggle : undefined}
-      role="accordionTitle"
+      data-testid="accordionTitle"
     >
       {iconPosition === 'left' && (
         <button type="button" aria-label="開合" onClick={toggle}>
@@ -85,7 +85,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
               isExpanded && 'rotate-180',
             )}`}
             onClick={toggle}
-            role="accordionIcon-left"
+            data-testid="accordionIcon-left"
           />
         </button>
       )}
@@ -97,7 +97,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
               isExpanded && 'rotate-180',
             )}`}
             onClick={toggle}
-            role="accordionIcon-right"
+            data-testid="accordionIcon-right"
           />
         </button>
       )}
@@ -133,12 +133,12 @@ const AccordionContent: React.FC<ContentPropsType> = ({
       style={{
         transitionDuration: `${duration}s`,
       }}
-      role="accordionContent"
+      data-testid="accordionContent"
     >
       <div
         className={`overflow-hidden ${className}`}
         {...props}
-        role="accordionContentText"
+        data-testid="accordionContentText"
       >
         {children}
       </div>

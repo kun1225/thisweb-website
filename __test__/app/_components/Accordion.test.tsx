@@ -21,14 +21,14 @@ describe('Accordion', () => {
       expect(screen.getByText('Test Content')).toBeInTheDocument();
     });
     it('should show content when initExpanded is true', () => {
-      render(
+      const { getByTestId } = render(
         <Accordion initExpanded={true}>
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
         </Accordion>,
       );
 
-      const accordionContent = screen.getByRole('accordionContent');
+      const accordionContent = getByTestId('accordionContent');
       expect(accordionContent).toHaveClass('grid-rows-[1fr]');
     });
 
@@ -40,7 +40,7 @@ describe('Accordion', () => {
         </Accordion>,
       );
 
-      const accordionContent = screen.getByRole('accordionContent');
+      const accordionContent = screen.getByTestId('accordionContent');
       expect(accordionContent).not.toHaveClass('grid-rows-[1fr]');
     });
   });
@@ -53,7 +53,7 @@ describe('Accordion', () => {
           <AccordionContent>Content</AccordionContent>
         </Accordion>,
       );
-      const accordionIcon = screen.getByRole('accordionIcon-left');
+      const accordionIcon = screen.getByTestId('accordionIcon-left');
       expect(accordionIcon).toBeInTheDocument();
     });
 
@@ -64,7 +64,7 @@ describe('Accordion', () => {
           <AccordionContent>Content</AccordionContent>
         </Accordion>,
       );
-      const accordionIcon = screen.getByRole('accordionIcon-right');
+      const accordionIcon = screen.getByTestId('accordionIcon-right');
       expect(accordionIcon).toBeInTheDocument();
     });
   });
@@ -78,8 +78,8 @@ describe('Accordion', () => {
         </Accordion>,
       );
 
-      const accordionTitle = screen.getByRole('accordionTitle');
-      const accordionContent = screen.getByRole('accordionContent');
+      const accordionTitle = screen.getByTestId('accordionTitle');
+      const accordionContent = screen.getByTestId('accordionContent');
 
       // Check initial render
       expect(accordionTitle).toBeInTheDocument();
@@ -104,9 +104,9 @@ describe('Accordion', () => {
         </Accordion>,
       );
 
-      const accordionIcon = screen.getByRole('accordionIcon-left');
-      const accordionTitle = screen.getByRole('accordionTitle');
-      const accordionContent = screen.getByRole('accordionContent');
+      const accordionIcon = screen.getByTestId('accordionIcon-left');
+      const accordionTitle = screen.getByTestId('accordionTitle');
+      const accordionContent = screen.getByTestId('accordionContent');
 
       // Click to show
       fireEvent.click(accordionIcon);

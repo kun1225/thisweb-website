@@ -21,6 +21,7 @@ const HeadingButton: React.FC<{
       href={`#${heading.id}`}
       aria-label={`跳轉至${heading.text}`}
       title={`跳轉至${heading.text}`}
+      data-testid="headingButton"
     >
       {children}
     </a>

@@ -53,10 +53,11 @@ export function transformRawHeadings(rawHeadings: any[]) {
 
   rawHeadings.forEach((rawHeading) => {
     const { style, children } = rawHeading;
-    const text = children[0].text;
+    const text = children[0]?.text;
     const level = style === 'h2' ? 2 : 3;
+
     const slugger = new GithubSlugger();
-    const id = slugger.slug(text.replace(/\s+/g, ''));
+    const id = text && slugger.slug(text.replace(/\s+/g, ''));
 
     if (style === 'h2') {
       currentH2 = { text, level, id, children: [] };
