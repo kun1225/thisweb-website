@@ -4,6 +4,7 @@ import {
   findLastVisibleHeadingEntry,
   observeHeading,
   transformRawHeadings,
+  extractHeadings,
 } from '@/app/post/[...slug]/_components/tableOfContents/utils';
 import { HeadingType } from '@/app/post/[...slug]/_components/tableOfContents/type';
 
@@ -120,11 +121,51 @@ describe('transformRawHeadings', () => {
       },
     ]);
   });
-
-  // returns an empty list when given an empty input
   it('should return an empty list when given an empty input', () => {
     const rawHeadings: HeadingType[] = [];
     const result = transformRawHeadings(rawHeadings);
     expect(result).toEqual([]);
+  });
+});
+
+describe('extractHeadings', () => {
+  it('should correctly filter out elements that are not "h2" or "h3" from the source array', () => {
+    const source = [
+      { style: 'h2', content: 'Heading 2' },
+      { style: 'h3', content: 'Heading 3' },
+      { style: 'p', content: 'Paragraph' },
+      { style: 'h1', content: 'Heading 1' },
+    ];
+    const result = extractHeadings(source);
+    expect(result).toEqual([
+      { style: 'h2', content: 'Heading 2' },
+      { style: 'h3', content: 'Heading 3' },
+    ]);
+  });
+
+  it('should return an empty array when the source array contains no "h2" or "h3" elements', () => {
+    const source = [
+      { style: 'p', content: 'Paragraph' },
+      { style: 'h1', content: 'Heading 1' },
+      { style: 'div', content: 'Division' },
+    ];
+    const result = extractHeadings(source);
+    expect(result).toEqual([]);
+  });
+
+  it('should handle a source array with mixed valid and invalid heading styles', () => {
+    const source = [
+      { style: 'h2', content: 'Heading 2' },
+      { style: 'p', content: 'Paragraph' },
+      { style: 'h3', content: 'Heading 3' },
+      { style: 'div', content: 'Division' },
+      { style: 'h2', content: 'Another Heading 2' },
+    ];
+    const result = extractHeadings(source);
+    expect(result).toEqual([
+      { style: 'h2', content: 'Heading 2' },
+      { style: 'h3', content: 'Heading 3' },
+      { style: 'h2', content: 'Another Heading 2' },
+    ]);
   });
 });
