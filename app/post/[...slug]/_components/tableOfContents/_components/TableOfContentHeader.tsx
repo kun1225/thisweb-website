@@ -8,7 +8,9 @@ const TableOfContentHeader: React.FC<{
 }> = ({ toggleToc, setIsTocOpen, isTocCollapsed }) => {
   return (
     <div className="flex justify-between items-center gap-2 mb-2">
-      <p className="text-primary">目錄</p>
+      <p className="text-primary" data-testid="toc-header-title">
+        目錄
+      </p>
       <button
         className="hidden xl:block text-neutral-500 hover:text-neutral-950 transition"
         type="button"
@@ -18,9 +20,11 @@ const TableOfContentHeader: React.FC<{
           toggleToc();
           setIsTocOpen(false);
         }}
+        data-testid="toc-header-button"
       >
         <FaCaretRight
           className={cn('transition', isTocCollapsed && 'opacity-0')}
+          data-testid="toc-header-icon"
         />
       </button>
     </div>
