@@ -40,8 +40,8 @@ const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
 
   return (
     <Stack as="ul" className={`text-sm ${className}`}>
-      {navContent.map(({ title, url, isMegaMenu, MegaMenuTag }, index) => (
-        <li key={url} className="relative">
+      {navContent.map(({ title, url, isMegaMenu, MegaMenuTag, id }, index) => (
+        <li key={id} className="relative">
           {isMegaMenu && MegaMenuTag ? (
             <>
               <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap relative z-20">

@@ -10,7 +10,7 @@ interface PostTitleProp {
 
 const PostTitle: React.FC<PostTitleProp> = ({ date, title, topic }) => {
   return (
-    <section className="max-w-6xl mx-auto">
+    <section className="c max-w-6xl mx-auto">
       <div className="flex gap-16 justify-center mb-32">
         <div className="hidden md:block w-40 title-deco"></div>
 

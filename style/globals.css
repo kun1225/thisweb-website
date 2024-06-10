@@ -60,7 +60,7 @@
   /* --font-GenSenRounded: 'GenSenRounded', sans-serif; */
   --font-FiraCode: 'FiraCode', monospace;
 
-  --cr-primary: #00334E;
+  --cr-primary: #00334e;
   --cr-secondary: #477086;
   --cr-secondary-2: #2577a3;
   --cr-white: #f9fafb;
@@ -71,9 +71,8 @@
 
 body,
 html {
-  @apply min-h-full bg-gray-50 text-body-small xl:text-body 2xl:xl:text-body-large text-neutral-950 font-normal tracking-wide;
+  @apply min-h-full bg-gray-50 text-body-small xl:text-body 2xl:xl:text-body-large text-neutral-950 font-normal tracking-wide scroll-smooth scroll-p-[120px];
 }
-
 
 h1,
 h2,
@@ -91,22 +90,23 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary rounded-full;
+  @apply bg-gray-400 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary-2;
+  @apply bg-secondary;
 }
 
 .scrollbar-small::-webkit-scrollbar {
   @apply w-[4px] h-[4px];
 }
 .scrollbar-hidden::-webkit-scrollbar {
-  @apply hidden
+  @apply hidden;
 }
 
 .c {
-  @apply px-8 lg:px-16 xl:px-20 max-w-7xl mx-auto;
+  @apply max-w-7xl mx-auto;
+  width: calc(100vw - 12vw);
 }
 
 .is-blur {
