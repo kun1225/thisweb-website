@@ -29,7 +29,6 @@ const TableOfContents: React.FC<{
   className,
 }) => {
   const { isTocCollapsed, toggleToc } = useGlobalSettings();
-
   useEffect(() => {
     const headingElements = Array.from(
       document.querySelectorAll('.article h2, .article h3'),
