@@ -1,5 +1,5 @@
 // style
-import '../../../style/prism.css';
+import '../../../style/prism.min.css';
 import '../../../style/custom-portable-text.min.css';
 
 // Sanity

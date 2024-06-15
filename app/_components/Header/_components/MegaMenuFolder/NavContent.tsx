@@ -2,6 +2,7 @@
 
 // Hooks
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Components
 import Link from 'next/link';
@@ -25,6 +26,7 @@ interface NavContentPropsType {
 
 const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
+  const pathname = usePathname();
 
   const switchMegaMenu = (index: number) => {
     if (index === currentIndex) {
@@ -68,7 +70,14 @@ const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
             </>
           ) : (
             <Link href={url}>
-              <Magnetic className="text-gray-500 hover:text-secondary duration-200 p-1 xs:p-4 whitespace-nowrap relative z-20">
+              <Magnetic
+                className={cn(
+                  pathname === url
+                    ? 'text-secondary font-semibold drop-shadow-lg'
+                    : 'text-gray-500 hover:text-secondary ',
+                  'duration-200 p-1 xs:p-4 whitespace-nowrap relative z-20',
+                )}
+              >
                 {title}
               </Magnetic>
             </Link>

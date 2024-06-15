@@ -9,11 +9,7 @@ import { ServiceType } from '@/lib/sanity/type';
 // Component
 import Image from 'next/image';
 import CustomPortableText from '../_components/CustomPortableText';
-import ProblemSection from '../_components/ProblemSection';
-import { AiOutlineFrown } from 'react-icons/ai';
-import { BsCodeSlash } from 'react-icons/bs';
-import { IoLanguageOutline } from 'react-icons/io5';
-import { GiBrokenWall } from 'react-icons/gi';
+
 import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 import { FaLaptopCode } from 'react-icons/fa6';
 import { FaRunning } from 'react-icons/fa';
@@ -47,7 +43,7 @@ const servicePage = async () => {
 
   return (
     <>
-      <div className="hero__bg absolute inset-0 min-h-screen"></div>
+      <div className="service-page hero__bg absolute inset-0 min-h-screen"></div>
       <section className="service-page relative">
         <div className="c min-h-[70vh] mt-16 mb-28 flex gap-[10vw] items-center justify-center">
           <div className="flex flex-col gap-8 items-center text-center md:text-left">

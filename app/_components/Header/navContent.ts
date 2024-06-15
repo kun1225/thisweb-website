@@ -28,4 +28,10 @@ export const navContent: navContentType[] = [
     MegaMenuTag: PostsMegaMenu,
     id: '2',
   },
+  {
+    title: '服務與合作',
+    url: '/service',
+    isMegaMenu: false,
+    id: '3',
+  },
 ];

@@ -4,7 +4,7 @@
 
 .custom-portable-text pre,
 .custom-portable-text code {
-  @apply font-[FiraCode] font-normal;
+  @apply font-[FiraCode] font-normal text-body-small tracking-normal;
 }
 
 @media screen and (max-width: 768px) {
@@ -105,4 +105,9 @@
 
 .toc__title svg:hover {
   @apply text-gray-950;
+}
+
+/* Service Page */
+.service-page .custom-portable-text ul {
+  list-style-type: none;
 }
