@@ -14,7 +14,7 @@ import ProgressBar from './_components/ProgressBar';
 import { Suspense } from 'react';
 
 // Vercel
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Utils
@@ -98,7 +98,7 @@ export default function RootLayout({
           <Footer />
         </GlobalSettingsProvider>
 
-        <Analytics />
+        {/* <Analytics /> */}
         <SpeedInsights />
       </body>
     </html>
