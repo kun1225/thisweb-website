@@ -25,9 +25,11 @@ export const generateStaticParams = async () => {
 
   const pagesByCategories = await Promise.all(
     categories.map(async (category) => {
-      const pageNumber = await client.fetch<number>(
+      const postCount = await client.fetch<number>(
         POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
+        { categoryUrl: category.url },
       );
+      const pageNumber = Math.ceil(postCount / POSTS_PER_PAGE);
       return { category, pageNumber };
     }),
   );
