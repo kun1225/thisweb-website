@@ -30,7 +30,7 @@ import { urlFor } from '@/lib/sanity/client';
 
 export const generateStaticParams = async () => {
   const allPostsSlug = await client.fetch<string[]>(POSTS_SLUG_QUERY);
-  return allPostsSlug.map((slug) => `post/${slug}`);
+  return allPostsSlug.map((slug) => ({ slug }));
 };
 
 export const generateMetadata = async ({
