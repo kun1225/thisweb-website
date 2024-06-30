@@ -47,7 +47,7 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
                 >
                   <div className="block mb-[-2vw]" onClick={closeMegaMenu}>
                     <Link
-                      href={`/posts/${category.title}/0`}
+                      href={`/posts/${category.url}/0`}
                       className="block p-edge-xs pb-[4vw] transition hover:bg-gray-100"
                     >
                       <h3 className="text-xl font-bold mb-1">

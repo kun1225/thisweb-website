@@ -1,38 +1,20 @@
-'use client';
-
 // Components
 import Link from 'next/link';
-
 // Libs
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
 import { toPlainText } from '@portabletext/react';
-import { motion } from 'framer-motion';
-
 // Types
 import { PostsType } from '@/lib/sanity/type';
-interface PostsListPropsType {
-  posts: PostsType;
-}
-const PostsList: React.FC<PostsListPropsType> = ({ posts }) => {
+
+const PostsList: React.FC<{ posts: PostsType }> = ({ posts }) => {
   return (
     <ul className="flex flex-col gap-12 mb-20">
       {posts.length > 0 &&
-        posts.map(({ _id, title, body, publishedAt, slug, category }, index) => (
-          <motion.li
+        posts.map(({ _id, title, body, publishedAt, slug, category }) => (
+          <li
             key={_id}
-            className="relative z-10"
-            initial={{ opacity: 0, translateY: '50%' }}
-            animate={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.2, delay: index * 0.1, ease: 'linear' }}
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.2, ease: 'backInOut' },
-            }}
-            whileFocus={{
-              scale: 1.02,
-              transition: { duration: 0.2, ease: 'backInOut' },
-            }}
+            className="relative z-10 hover:scale-105 transition-transform"
           >
             <Link className="block" href={`/post/${slug.current}`}>
               <h3 className="font-bold text-xl">{title}</h3>
@@ -51,7 +33,7 @@ const PostsList: React.FC<PostsListPropsType> = ({ posts }) => {
                 100,
               )}...`}</p>
             </Link>
-          </motion.li>
+          </li>
         ))}
     </ul>
   );
