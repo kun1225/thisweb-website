@@ -38,24 +38,22 @@ const problemCardContent = [
   },
 ];
 
-
 export default async function Home() {
-
   const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
     start: 0,
-    end: 3
-  })
+    end: 3,
+  });
 
   return (
-    <Suspense fallback={<IndexLoading />}>
+    <>
       <HeroBanner />
       <ProblemSection
-          problemTitle="如果你遇到這些問題"
-          problemCardContent={problemCardContent}
-          className="c my-24"
-        />
+        problemTitle="如果你遇到這些問題"
+        problemCardContent={problemCardContent}
+        className="c my-24"
+      />
       <SiteOwnerSection />
       <RecommendedPosts limitedPosts={posts} />
-    </Suspense>
+    </>
   );
 }

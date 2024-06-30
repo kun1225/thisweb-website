@@ -18,6 +18,14 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 9;
 
+export const generateStaticParams = async () => {
+  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
+  const numPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
+  return Array.from({ length: numPages }, (_, i) => ({
+    page: i.toString(),
+  }));
+};
+
 interface PostsPageProps {
   params: {
     page: string;
@@ -33,32 +41,16 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(
-    LIMITED_POSTS_QUERY,
-    {
-      start: startIndex,
-      end: endIndex,
-    },
-    {
-      next: {
-        revalidate: 0,
-      },
-    },
-  );
+  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
+    start: startIndex,
+    end: endIndex,
+  });
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
   }
 
-  const postsNumber = await client.fetch<number>(
-    POSTS_NUMBER_QUERY,
-    {},
-    {
-      next: {
-        revalidate: 0,
-      },
-    },
-  );
+  const postsNumber = await client.fetch<number>(POSTS_NUMBER_QUERY);
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (

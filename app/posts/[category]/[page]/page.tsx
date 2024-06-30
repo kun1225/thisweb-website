@@ -12,7 +12,7 @@ import {
   POSTS_BY_CATEGORY_TITLE_QUERY,
   POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
   POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
-  POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY
+  POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
 } from '@/lib/sanity/queries';
 import { client } from '@/lib/sanity/client';
 
@@ -43,24 +43,18 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
   const categories = await client.fetch<CategoriesType>(CATEGORIES_QUERY);
-  const isFirstLevelCategory = categories.map((category) => category.title).includes(decodedCategory);
+  const isFirstLevelCategory = categories
+    .map((category) => category.title)
+    .includes(decodedCategory);
 
-  let posts : PostsType = [];
+  let posts: PostsType = [];
 
   if (isFirstLevelCategory) {
-    posts = await client.fetch<PostsType>(
-      POSTS_BY_CATEGORY_TITLE_QUERY,
-      {
-        categoryTitle: decodedCategory,
-        start: startIndex,
-        end: endIndex,
-      },
-      {
-        next: {
-          revalidate: 0,
-        },
-      },
-    );
+    posts = await client.fetch<PostsType>(POSTS_BY_CATEGORY_TITLE_QUERY, {
+      categoryTitle: decodedCategory,
+      start: startIndex,
+      end: endIndex,
+    });
   } else {
     posts = await client.fetch<PostsType>(
       POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
@@ -69,14 +63,8 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
         start: startIndex,
         end: endIndex,
       },
-      {
-        next: {
-          revalidate: 0,
-        },
-      },
     );
   }
-
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;

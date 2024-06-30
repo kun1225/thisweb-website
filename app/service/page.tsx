@@ -25,11 +25,7 @@ export const metadata = {
 };
 
 const servicePage = async () => {
-  const services = await client.fetch<ServiceType[]>(
-    SERVICE_QUERY,
-    {},
-    { next: { revalidate: 0 } },
-  );
+  const services = await client.fetch<ServiceType[]>(SERVICE_QUERY);
 
   const servicesIcons: any[] = [
     IoChatboxEllipsesOutline,

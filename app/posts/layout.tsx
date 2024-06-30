@@ -1,18 +1,17 @@
 // Components
 import PostsHeader from './_components/PostsHeader';
-
 // Sanity Libs
 import { client } from '@/lib/sanity/client';
 import { CATEGORIES_QUERY } from '@/lib/sanity/queries';
-
 // Type
 import { CategoriesType } from '@/lib/sanity/type';
 
-interface PostsLayoutPropsType {
-  children: React.ReactNode;
-}
+// Config Segment
+export const revalidate = 0;
 
-const PostsLayout: React.FC<PostsLayoutPropsType> = async ({ children }) => {
+const PostsLayout: React.FC<{ children: React.ReactNode }> = async ({
+  children,
+}) => {
   const categories = await client.fetch<CategoriesType>(CATEGORIES_QUERY);
   const orderedCategories = categories.sort((a, b) => {
     if (a.priority && b.priority) return a.priority - b.priority;
