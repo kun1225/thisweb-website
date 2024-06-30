@@ -36,10 +36,10 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({
   params,
 }: {
-  params: { slug: string[] };
+  params: { slug: string };
 }) => {
   const currentPost = await client.fetch<PostType>(POST_QUERY, {
-    slug: params.slug[0],
+    slug: params.slug,
   });
 
   if (!currentPost)
@@ -58,9 +58,9 @@ export const generateMetadata = async ({
   };
 };
 
-const PostPage = async ({ params }: { params: { slug: string[] } }) => {
+const PostPage = async ({ params }: { params: { slug: string } }) => {
   const currentPost = await client.fetch<PostType>(POST_QUERY, {
-    slug: params.slug[0],
+    slug: params.slug,
   });
 
   if (!currentPost) notFound();
