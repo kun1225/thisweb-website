@@ -3,7 +3,7 @@ import '../../../style/prism.min.css';
 import '../../../style/custom-portable-text.min.css';
 
 // Sanity
-import { sanityFetch } from '@/lib/sanity/client';
+import { sanityFetch, urlFor } from '@/lib/sanity/client';
 import {
   POSTS_SLUG_QUERY,
   POST_QUERY,
@@ -16,8 +16,6 @@ import { toPlainText } from '@portabletext/react';
 // Components
 import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
-import { Suspense } from 'react';
-import PostPageLoading from './loading';
 import PostBody from './_components/PostBody';
 import PostSidebar from './_components/PostSidebar';
 
@@ -26,7 +24,6 @@ import { PostType } from '@/lib/sanity/type';
 
 // Libs
 import { notFound } from 'next/navigation';
-import { urlFor } from '@/lib/sanity/client';
 
 export const generateStaticParams = async () => {
   const allPostsSlug = await sanityFetch<string[]>({
@@ -96,25 +93,23 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <Suspense fallback={<PostPageLoading />}>
-        <article className="my-8 mx-edge xl:mx-auto">
-          <PostTitle
-            date={currentPost.publishedAt}
-            title={currentPost.title}
-            topic={currentPost.category}
+      <article className="my-8 mx-edge xl:mx-auto">
+        <PostTitle
+          date={currentPost.publishedAt}
+          title={currentPost.title}
+          topic={currentPost.category}
+        />
+        <section className="article flex flex-col-reverse items-center xl:justify-center transition xl:flex-row ">
+          <PostBody
+            mainImageUrl={mainImageUrl}
+            currentPost={currentPost}
+            relatedPosts={relatedPosts}
           />
-          <section className="article flex flex-col-reverse items-center xl:justify-center transition xl:flex-row ">
-            <PostBody
-              mainImageUrl={mainImageUrl}
-              currentPost={currentPost}
-              relatedPosts={relatedPosts}
-            />
-            <PostSidebar source={currentPost.body} />
-          </section>
-        </article>
+          <PostSidebar source={currentPost.body} />
+        </section>
+      </article>
 
-        <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-      </Suspense>
+      <PostNavigation nextPost={nextPost} prevPost={prevPost} />
     </>
   );
 };

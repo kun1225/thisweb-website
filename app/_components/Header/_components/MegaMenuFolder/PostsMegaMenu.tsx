@@ -45,22 +45,24 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
                   key={category._id}
                   className="posts-mega-menu-item rounded-md "
                 >
-                  <div className="block mb-[-2vw]" onClick={closeMegaMenu}>
+                  <div className="block relative h-full">
                     <Link
                       href={`/posts/${category.url}/0`}
-                      className="block p-edge-xs pb-[4vw] transition hover:bg-gray-100"
+                      className="block h-full p-edge-xs pb-8 transition hover:bg-gray-100"
+                      title={category.title}
+                      onClick={closeMegaMenu}
                     >
                       <h3 className="text-xl font-bold mb-1">
                         {category.title}
                       </h3>
-                      <p className="text-sm mb-2">{category.description}</p>
+                      <p className="text-sm mb-4">{category.description}</p>
                     </Link>
 
-                    {category.secondLevelCategory && (
+                    {category.secondLevelCategory ? (
                       <SecondLevelCategories
                         content={category.secondLevelCategory}
                       />
-                    )}
+                    ) : null}
                   </div>
                 </li>
               ),
