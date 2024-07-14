@@ -6,7 +6,7 @@ export const AUTHOR_QUERY = groq`*[_type == "author"][0].name`;
 // * Post Queries
 export const POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(publishedAt desc)`;
 export const LIMITED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done']{..., "category": category->title,} | order(publishedAt desc) [$start...$end]`;
-export const POSTS_NUMBER_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done'])`;
+export const POSTS_FOR_GET_NUMBER_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done']{_type}`;
 export const POST_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && slug.current == $slug && status == 'done'][0]{..., "category": category->title, "secondLevelCategory": secondLevelCategory->title,"author": author->name, body[]{
   ...,
   markDefs[]{
@@ -69,13 +69,14 @@ export const POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY = groq`
 `;
 
 // * Post Count Queries
+export const POSTS_COUNTS_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done'])`;
 export const POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && category->title == $categoryTitle])`;
 export const POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && secondLevelCategory->title == $secondLevelCategoryTitle])`;
-export const POSTS_COUNTS_BY_CATEGORY_URL_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && category->url == $categoryUrl])`;
-export const POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && secondLevelCategory->url == $secondLevelCategoryUrl])`;
+export const POSTS_COUNTS_BY_CATEGORY_URL_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && defined(category) && category->url == $categoryUrl])`;
+export const POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY = groq`count(*[_type == "post" && defined(slug) && defined(title) && status == 'done' && defined(secondLevelCategory) && secondLevelCategory->url == $secondLevelCategoryUrl])`;
 
 // * Category Queries
-export const CATEGORIES_QUERY = groq`*[_type == 'category' && defined(title) && defined(url)]`;
+export const CATEGORIES_QUERY = groq`*[_type == 'category' && defined(title) && defined(url)]{_id, priority, title, url, _type, description}`;
 export const CATEGORIES_TITLE_BY_URL_QUERY = groq`*[_type == 'category' && defined(title) && defined(url) && url == $url]{title}[0]`;
 export const CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY = groq`
   *[_type == "category" && defined(title) && defined(url)] {

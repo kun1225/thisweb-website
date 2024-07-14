@@ -4,7 +4,7 @@
 import { PortableText, toPlainText } from '@portabletext/react';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import Link from 'next/link';
-import Refractor from 'react-refractor';
+import { Refractor, registerLanguage } from 'react-refractor';
 import ImageEnlarger from './ImageEnlarger';
 import CodePen from './Codepen';
 import { Accordion, AccordionContent, AccordionTitle } from './Accordion';
@@ -20,21 +20,20 @@ import bash from 'refractor/lang/bash';
 import jsx from 'refractor/lang/jsx';
 import tsx from 'refractor/lang/tsx';
 import template from 'refractor/lang/js-templates';
-import assertUrlBuilder from '@sanity/client';
+import { urlFor } from '@/lib/sanity/client';
 
 // Language
-Refractor.registerLanguage(js);
-Refractor.registerLanguage(ts);
-Refractor.registerLanguage(css);
-Refractor.registerLanguage(scss);
-Refractor.registerLanguage(go);
-Refractor.registerLanguage(bash);
-Refractor.registerLanguage(jsx);
-Refractor.registerLanguage(tsx);
-Refractor.registerLanguage(template);
+registerLanguage(js);
+registerLanguage(ts);
+registerLanguage(css);
+registerLanguage(scss);
+registerLanguage(go);
+registerLanguage(bash);
+registerLanguage(jsx);
+registerLanguage(tsx);
+registerLanguage(template);
 
 // Utils
-import { urlFor } from '@/lib/sanity/client';
 
 const slugger = new GithubSlugger();
 
@@ -240,7 +239,8 @@ const myPortableTextComponents = {
 
     Callout: (source: any) => {
       const isExpanded = source.value.isExpanded;
-      const bodyLength = source.value.text && toPlainText(source.value.text).length || 0;
+      const bodyLength =
+        (source.value.text && toPlainText(source.value.text).length) || 0;
 
       const duration = bodyLength > 500 ? 1.2 : 0.6;
 

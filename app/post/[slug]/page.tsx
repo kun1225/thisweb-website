@@ -3,7 +3,7 @@ import '../../../style/prism.min.css';
 import '../../../style/custom-portable-text.min.css';
 
 // Sanity
-import { client } from '@/lib/sanity/client';
+import { sanityFetch } from '@/lib/sanity/client';
 import {
   POSTS_SLUG_QUERY,
   POST_QUERY,
@@ -29,7 +29,10 @@ import { notFound } from 'next/navigation';
 import { urlFor } from '@/lib/sanity/client';
 
 export const generateStaticParams = async () => {
-  const allPostsSlug = await client.fetch<string[]>(POSTS_SLUG_QUERY);
+  const allPostsSlug = await sanityFetch<string[]>({
+    query: POSTS_SLUG_QUERY,
+    tags: ['post'],
+  });
   return allPostsSlug.map((slug) => ({ slug }));
 };
 
@@ -38,8 +41,10 @@ export const generateMetadata = async ({
 }: {
   params: { slug: string };
 }) => {
-  const currentPost = await client.fetch<PostType>(POST_QUERY, {
-    slug: params.slug,
+  const currentPost = await sanityFetch<PostType>({
+    query: POST_QUERY,
+    queryParams: { slug: params.slug },
+    tags: ['post'],
   });
 
   if (!currentPost)
@@ -59,25 +64,34 @@ export const generateMetadata = async ({
 };
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const currentPost = await client.fetch<PostType>(POST_QUERY, {
-    slug: params.slug,
+  const currentPost = await sanityFetch<PostType>({
+    query: POST_QUERY,
+    queryParams: { slug: params.slug },
+    tags: ['post'],
   });
-
   if (!currentPost) notFound();
 
   const mainImageUrl =
     currentPost.mainImage && urlFor(currentPost.mainImage).width(1080).url();
 
-  const relatedPosts = await client.fetch(RELATED_POSTS_QUERY, {
-    categoryTitle: currentPost.category,
-    secondLevelCategory: currentPost.secondLevelCategory,
+  const relatedPosts = await sanityFetch<PostType[]>({
+    query: RELATED_POSTS_QUERY,
+    queryParams: {
+      categoryTitle: currentPost.category,
+      secondLevelCategory: currentPost.secondLevelCategory,
+    },
+    tags: ['post'],
   });
 
-  const nextPost = await client.fetch(NEXT_POSTS_QUERY, {
-    publishedAt: currentPost.publishedAt,
+  const nextPost = await sanityFetch<PostType>({
+    query: NEXT_POSTS_QUERY,
+    queryParams: { publishedAt: currentPost.publishedAt },
+    tags: ['post'],
   });
-  const prevPost = await client.fetch(PREV_POSTS_QUERY, {
-    publishedAt: currentPost.publishedAt,
+  const prevPost = await sanityFetch<PostType>({
+    query: PREV_POSTS_QUERY,
+    queryParams: { publishedAt: currentPost.publishedAt },
+    tags: ['post'],
   });
 
   return (
