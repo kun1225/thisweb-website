@@ -1,25 +1,19 @@
 // Next
 import type { Metadata } from 'next';
-
 // Style
 import '../style/globals.min.css';
-
 // Context
 import { GlobalSettingsProvider } from './_context/globalSettings';
-
 // Components
 import Header from './_components/Header/Header';
 import Footer from './_components/Footer';
 import ProgressBar from './_components/ProgressBar';
 import { Suspense } from 'react';
-
 // Vercel
 // import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
 // Utils
 import { cn } from '@/lib/utils';
-
 // Fonts
 import { Noto_Sans_TC } from 'next/font/google';
 

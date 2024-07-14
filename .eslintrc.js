@@ -34,5 +34,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-unused-vars': 'warn',
+    camelcase: ['warn', { ignoreImports: true }],
   },
 };
