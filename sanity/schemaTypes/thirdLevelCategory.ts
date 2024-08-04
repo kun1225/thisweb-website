@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'url',
+      title: 'Url',
+      type: 'string',
+    }),
+    defineField({
       name: 'priority',
       title: 'Priority',
       type: 'number',
@@ -21,5 +26,5 @@ export default defineType({
       title: 'title',
       subtitle: 'priority',
     },
-  }
+  },
 })

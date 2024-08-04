@@ -32,7 +32,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-sort-props': 'off',
     'react/function-component-definition': 'off',
-    'no-console': 'warn',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-unused-vars': 'warn',
+    camelcase: ['warn', { ignoreImports: true }],
   },
 };

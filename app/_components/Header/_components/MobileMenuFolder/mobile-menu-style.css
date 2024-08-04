@@ -26,6 +26,11 @@
   transform: translateY(0px) scale(1) rotate(0);
 }
 
+.mobile-menu-icon:after {
+  top: 0;
+  left: 0;
+}
+
 .mobile-menu-icon::before {
   width: 80%;
   bottom: 0;

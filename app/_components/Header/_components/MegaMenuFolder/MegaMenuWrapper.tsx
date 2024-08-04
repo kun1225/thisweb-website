@@ -15,7 +15,9 @@ const MegaMenuWrapper: React.FC<MageMenuWrapperPropsType> = ({
 }) => {
   return (
     <>
-      <div
+      <button
+        type="button"
+        aria-label="Close the mega menu"
         className={cn(
           'fixed top-0 left-0 w-[100%] h-screen z-10',
           index === currentIndex
@@ -23,7 +25,7 @@ const MegaMenuWrapper: React.FC<MageMenuWrapperPropsType> = ({
             : 'pointer-events-none',
         )}
         onClick={closeMegaMenu}
-      ></div>
+      />
       <div
         className={cn(
           'c header__mega-menu fixed top-[120%] right-8 left-8 p-4 rounded-xl bg-pure-white shadow-2xl transition duration-200 z-10',

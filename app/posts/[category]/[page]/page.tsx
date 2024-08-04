@@ -1,21 +1,18 @@
 // Next
 import { Metadata } from 'next';
-
 // Components
 import EmptyPage from '../../_components/EmptyPage';
 import PaginatedNav from '../../_components/PaginatedNav';
 import PostsList from '../../_components/PostsList';
-
 // Sanity
 import {
   CATEGORIES_QUERY,
-  POSTS_BY_CATEGORY_TITLE_QUERY,
-  POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
-  POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
-  POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY
+  POSTS_BY_CATEGORY_URL_QUERY,
+  POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
+  POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
+  POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
 } from '@/lib/sanity/queries';
-import { client } from '@/lib/sanity/client';
-
+import { sanityFetch } from '@/lib/sanity/client';
 // Types
 import { PostsType, CategoriesType } from '@/lib/sanity/type';
 
@@ -25,58 +22,87 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 9;
 
-interface PostsPageProps {
+export const generateStaticParams = async () => {
+  const categories = await sanityFetch<CategoriesType>({
+    query: CATEGORIES_QUERY,
+    tags: ['category'],
+  });
+
+  const pagesByCategories = await Promise.all(
+    categories.map(async (category) => {
+      try {
+        const postCount = await sanityFetch<number>({
+          query: POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
+          queryParams: { categoryUrl: category.url },
+          tags: ['post'],
+        });
+
+        const pageNumber = Math.ceil(postCount / POSTS_PER_PAGE);
+
+        return { category, pageNumber };
+      } catch (error) {
+        console.error(
+          `Failed to fetch post count for category ${category.url}:`,
+          error,
+        );
+        return { category, pageNumber: 50 };
+      }
+    }),
+  );
+
+  const result: { category: string; page: string }[] = [];
+  pagesByCategories.forEach(({ category, pageNumber }) => {
+    for (let i = 0; i < pageNumber; i++) {
+      result.push({ category: category.url, page: i.toFixed() });
+    }
+  });
+
+  return result;
+};
+
+const PostsPage: React.FC<{
   params: {
     category: string;
     page: string;
   };
-}
-
-const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
+}> = async ({ params }) => {
   const numPage = parseInt(params.page);
-  const decodedCategory = (() => {
-    if (params.category) return decodeURI(params.category as string);
-    else return '';
-  })();
 
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const categories = await client.fetch<CategoriesType>(CATEGORIES_QUERY);
-  const isFirstLevelCategory = categories.map((category) => category.title).includes(decodedCategory);
+  const categories = await sanityFetch<CategoriesType>({
+    query: CATEGORIES_QUERY,
+    tags: ['category'],
+  });
 
-  let posts : PostsType = [];
+  const isFirstLevelCategory = categories
+    .map((category) => category.url)
+    .includes(params.category);
+
+  let posts: PostsType = [];
 
   if (isFirstLevelCategory) {
-    posts = await client.fetch<PostsType>(
-      POSTS_BY_CATEGORY_TITLE_QUERY,
-      {
-        categoryTitle: decodedCategory,
+    posts = await sanityFetch<PostsType>({
+      query: POSTS_BY_CATEGORY_URL_QUERY,
+      queryParams: {
+        categoryUrl: params.category,
         start: startIndex,
         end: endIndex,
       },
-      {
-        next: {
-          revalidate: 0,
-        },
-      },
-    );
+      tags: ['post'],
+    });
   } else {
-    posts = await client.fetch<PostsType>(
-      POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
-      {
-        secondLevelCategory: decodedCategory,
+    posts = await sanityFetch<PostsType>({
+      query: POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
+      queryParams: {
+        secondLevelCategoryUrl: params.category,
         start: startIndex,
         end: endIndex,
       },
-      {
-        next: {
-          revalidate: 0,
-        },
-      },
-    );
+      tags: ['post'],
+    });
   }
-
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
@@ -85,19 +111,21 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   let postsNumber: number = 0;
 
   if (isFirstLevelCategory) {
-    postsNumber = await client.fetch<number>(
-      POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
-      {
-        categoryTitle: decodedCategory,
+    postsNumber = await sanityFetch<number>({
+      query: POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
+      queryParams: {
+        categoryUrl: params.category,
       },
-    );
+      tags: ['post'],
+    });
   } else {
-    postsNumber = await client.fetch<number>(
-      POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY,
-      {
-        secondLevelCategory: decodedCategory,
+    postsNumber = await sanityFetch<number>({
+      query: POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
+      queryParams: {
+        secondLevelCategoryUrl: params.category,
       },
-    );
+      tags: ['post'],
+    });
   }
 
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);

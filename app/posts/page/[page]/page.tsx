@@ -6,8 +6,13 @@ import PaginatedNav from '../../_components/PaginatedNav';
 import PostsList from '../../_components/PostsList';
 
 // Sanity
-import { LIMITED_POSTS_QUERY, POSTS_NUMBER_QUERY } from '@/lib/sanity/queries';
-import { client } from '@/lib/sanity/client';
+import {
+  LIMITED_POSTS_QUERY,
+  POSTS_COUNTS_QUERY,
+  POSTS_FOR_GET_NUMBER_QUERY,
+  POSTS_SLUG_QUERY,
+} from '@/lib/sanity/queries';
+import { sanityFetch } from '@/lib/sanity/client';
 
 // Types
 import { PostsType } from '@/lib/sanity/type';
@@ -17,6 +22,28 @@ export const metadata: Metadata = {
 };
 
 const POSTS_PER_PAGE = 9;
+
+export const generateStaticParams = async () => {
+  try {
+    const postsNumber = await sanityFetch<number>({
+      query: POSTS_COUNTS_QUERY,
+      tags: ['post'],
+    });
+
+    const numPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
+
+    return Array.from({ length: numPages }, (_, i) => ({
+      page: i.toString(),
+    }));
+  } catch (error) {
+    console.error('Failed to fetch post count:', error);
+
+    const numPages = 100;
+    return Array.from({ length: numPages }, (_, i) => ({
+      page: i.toString(),
+    }));
+  }
+};
 
 interface PostsPageProps {
   params: {
@@ -33,32 +60,23 @@ const PostsPage: React.FC<PostsPageProps> = async ({ params }) => {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const posts = await client.fetch<PostsType>(
-    LIMITED_POSTS_QUERY,
-    {
+  const posts = await sanityFetch<PostsType>({
+    query: LIMITED_POSTS_QUERY,
+    queryParams: {
       start: startIndex,
       end: endIndex,
     },
-    {
-      next: {
-        revalidate: 0,
-      },
-    },
-  );
+    tags: ['post'],
+  });
 
   if (!posts || posts.length === 0) {
     return <EmptyPage />;
   }
 
-  const postsNumber = await client.fetch<number>(
-    POSTS_NUMBER_QUERY,
-    {},
-    {
-      next: {
-        revalidate: 0,
-      },
-    },
-  );
+  const postsNumber = await sanityFetch<number>({
+    query: POSTS_COUNTS_QUERY,
+    tags: ['post'],
+  });
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (

@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'url',
+      title: 'Url',
+      type: 'string',
+    }),
+    defineField({
       name: 'priority',
       title: 'Priority',
       type: 'number',
@@ -19,7 +24,7 @@ export default defineType({
       name: 'thirdLevelCategory',
       title: 'Third Level Category',
       type: 'array',
-      of: [{type: 'reference', to:[{type: 'thirdLevelCategory'}]}],
+      of: [{type: 'reference', to: [{type: 'thirdLevelCategory'}]}],
     }),
   ],
   preview: {
@@ -27,5 +32,5 @@ export default defineType({
       title: 'title',
       subtitle: 'priority',
     },
-  }
+  },
 })

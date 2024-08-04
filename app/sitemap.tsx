@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import {
   CATEGORIES_QUERY,
   POSTS_QUERY,
-  POSTS_NUMBER_QUERY,
+  POSTS_COUNTS_QUERY,
   POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
 } from '@/lib/sanity/queries';
 import { CategoriesType, PostsType } from '@/lib/sanity/type';
@@ -37,17 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  const categoriesPageSitemap: MetadataRoute.Sitemap = categories.flatMap((category, i) =>
-    Array.from({ length: categoryPagesCounts[i] || 1 }, (_, j) => ({
-      url: `https://www.thisweb.dev/posts/${category.title}/${j}`,
-      lastModified: NOW,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    }))
+  const categoriesPageSitemap: MetadataRoute.Sitemap = categories.flatMap(
+    (category, i) =>
+      Array.from({ length: categoryPagesCounts[i] || 1 }, (_, j) => ({
+        url: `https://www.thisweb.dev/posts/${category.title}/${j}`,
+        lastModified: NOW,
+        changeFrequency: 'weekly',
+        priority: 0.6,
+      })),
   );
 
   const postsNumber = await client.fetch<number>(
-    POSTS_NUMBER_QUERY,
+    POSTS_COUNTS_QUERY,
     {},
     {
       next: {
