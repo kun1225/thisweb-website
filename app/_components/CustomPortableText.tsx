@@ -33,8 +33,6 @@ registerLanguage(jsx);
 registerLanguage(tsx);
 registerLanguage(template);
 
-// Utils
-
 const slugger = new GithubSlugger();
 
 const linkClassName =
