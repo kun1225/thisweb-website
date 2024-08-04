@@ -18,14 +18,19 @@ const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
   const [isInitialRender, setIsInitialRender] = useState(true);
 
   const toggleMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
+    setMobileMenuOpen(!mobileMenuOpen);
     setIsInitialRender(false);
-  }
+  };
   return (
-    <div
-      className={`mobile-menu-icon ${cn(mobileMenuOpen && 'is-open', isInitialRender && 'is-initial')}`}
+    <button
+      type="button"
+      aria-label="Toggle Menu"
+      className={`mobile-menu-icon ${cn(
+        mobileMenuOpen && 'is-open',
+        isInitialRender && 'is-initial',
+      )}`}
       onClick={toggleMenu}
-    ></div>
+    />
   );
 };
 

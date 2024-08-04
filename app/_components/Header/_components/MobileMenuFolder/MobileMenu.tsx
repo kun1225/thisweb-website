@@ -11,7 +11,7 @@ import MobileMenuIcon from './MobileMenuIcon';
 import MobileMenuContent from './MobileMenuContent';
 
 // Style
-import './mobile-menu-style.min.css';
+import './mobile-menu-style.css';
 
 interface MobileMenuPropsType {
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];

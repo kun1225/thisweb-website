@@ -83,7 +83,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                 <Accordion iconPosition="right" initExpanded={false}>
                   <AccordionTitle className="items-center">
                     <Link
-                      href={`/posts/${category.title}/0`}
+                      href={`/posts/${category.url}/0`}
                       className="font-semibold block p-[2vw]"
                       onClick={closeMobileMenu}
                     >
@@ -97,7 +97,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                             (secondLevelCategory) => (
                               <li key={secondLevelCategory._id}>
                                 <Link
-                                  href={`/posts/${secondLevelCategory.title}/0`}
+                                  href={`/posts/${secondLevelCategory.url}/0`}
                                   className="block"
                                   onClick={closeMobileMenu}
                                 >
@@ -117,7 +117,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                 className="py-2 border-b-[1.5px] border-primary"
               >
                 <Link
-                  href={`/posts/${category.url}/0`}
+                  href={`/post/${category.url}/0`}
                   className="font-semibold block p-[2vw]"
                   onClick={closeMobileMenu}
                 >
