@@ -29,7 +29,7 @@ export const navContent: navContentType[] = [
     id: '2',
   },
   {
-    title: '服務與合作',
+    title: '服務項目',
     url: '/service',
     isMegaMenu: false,
     id: '3',
