@@ -30,7 +30,7 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
         setIsLoading(false);
       });
     }
-  }, [isMobile]);
+  }, [isMobile, megaMenuContent]);
 
   return (
     <ul className="grid grid-cols-3 grid-flow-row gap-[1vw]">
@@ -61,6 +61,7 @@ const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
                     {category.secondLevelCategory ? (
                       <SecondLevelCategories
                         content={category.secondLevelCategory}
+                        closeMegaMenu={closeMegaMenu}
                       />
                     ) : null}
                   </div>

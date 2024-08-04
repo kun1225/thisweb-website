@@ -25,11 +25,8 @@ const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
   const pathname = usePathname();
 
   const switchMegaMenu = (index: number) => {
-    if (index === currentIndex) {
-      setCurrentIndex(-1);
-    } else {
-      setCurrentIndex(index);
-    }
+    if (index === currentIndex) setCurrentIndex(-1);
+    else setCurrentIndex(index);
   };
 
   const closeMegaMenu = () => {
