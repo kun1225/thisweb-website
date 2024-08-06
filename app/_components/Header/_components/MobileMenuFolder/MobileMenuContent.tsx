@@ -51,6 +51,8 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
     }
   });
 
+  const getPostsUrl = (url: string) => `/posts/${url}/0`;
+
   return (
     <ul className="c flex flex-col h-full py-4 text-body text-primary overflow-y-auto">
       {navContent
@@ -83,7 +85,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                 <Accordion iconPosition="right" initExpanded={false}>
                   <AccordionTitle className="items-center">
                     <Link
-                      href={`/posts/${category.url}/0`}
+                      href={getPostsUrl(category.url)}
                       className="font-semibold block p-[2vw]"
                       onClick={closeMobileMenu}
                     >
@@ -97,7 +99,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                             (secondLevelCategory) => (
                               <li key={secondLevelCategory._id}>
                                 <Link
-                                  href={`/posts/${secondLevelCategory.url}/0`}
+                                  href={getPostsUrl(secondLevelCategory.url)}
                                   className="block"
                                   onClick={closeMobileMenu}
                                 >
@@ -117,7 +119,7 @@ const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
                 className="py-2 border-b-[1.5px] border-primary"
               >
                 <Link
-                  href={`/post/${category.url}/0`}
+                  href={getPostsUrl(category.url)}
                   className="font-semibold block p-[2vw]"
                   onClick={closeMobileMenu}
                 >
