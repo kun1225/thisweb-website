@@ -2,11 +2,10 @@ import { createClient, type QueryParams } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 
 export const client = createClient({
-  projectId: 'y2uwkfdt',
-  dataset: 'production',
-  useCdn: process.env.NODE_ENV === 'development' ? true : false, // set to `false` to bypass the edge cache
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  useCdn: false,
   apiVersion: '2023-05-03',
-  // token: process.env.NEXT_PUBLIC_SANITY_API,
 });
 
 const builder = imageUrlBuilder(client);
