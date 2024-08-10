@@ -23,7 +23,7 @@ export async function sanityFetch<QueryResponse>({
   tags: string[];
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, queryParams, {
-    cache: process.env.NODE_ENV === 'development' ? 'no-store' : 'force-cache',
+    cache: 'no-store',
     next: { tags },
   });
 }
