@@ -5,14 +5,14 @@ import useWindowWidth from '@/app/_hook/useWindowWidth';
 
 // Components
 import Link from 'next/link';
-import Skeleton from '../../../Skeleton';
+import Skeleton from '../../../../Skeleton';
 import SecondLevelCategories from './SecondLevelCategories';
 
 // Type
 import { CategoriesType } from '@/lib/sanity/type';
 
 // Libs
-import postClassificationAction from '../../_action/postClassificationAction';
+import postClassificationAction from '../../../_action/postClassificationAction';
 
 interface PostsMegaMenuPropsType {
   closeMegaMenu: () => void;

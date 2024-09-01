@@ -8,19 +8,19 @@ import Link from 'next/link';
 import Magnetic from '../../../effect/Magnetic';
 import Stack from '../../../Stack';
 import { FaCaretDown } from 'react-icons/fa6';
-import MegaMenuWrapper from './MegaMenuWrapper';
+import MegaMenuWrapper from './_components/MegaMenuWrapper';
 // Libs
 import { cn } from '@/lib/utils';
 // Data
 import { navContent } from '../../navContent';
 // Style
-import './mega-menu-style.min.css';
+import './style.css';
 
-interface NavContentPropsType {
+interface DesktopMenuPropsType {
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
 }
 
-const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
+const DesktopMenu: React.FC<DesktopMenuPropsType> = ({ className = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const pathname = usePathname();
 
@@ -96,4 +96,4 @@ const NavContent: React.FC<NavContentPropsType> = ({ className = '' }) => {
   );
 };
 
-export default NavContent;
+export default DesktopMenu;

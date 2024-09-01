@@ -7,11 +7,11 @@ import useHeight from '@/app/_hook/useHeight';
 import { cn } from '@/lib/utils';
 
 // Components
-import MobileMenuIcon from './MobileMenuIcon';
-import MobileMenuContent from './MobileMenuContent';
+import MobileMenuIcon from './_components/MobileMenuIcon';
+import MobileMenuContent from './_components/MobileMenuContent';
 
 // Style
-import './mobile-menu-style.css';
+import './style.css';
 
 interface MobileMenuPropsType {
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];

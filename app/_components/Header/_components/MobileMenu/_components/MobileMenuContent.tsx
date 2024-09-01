@@ -7,13 +7,13 @@ import {
   Accordion,
   AccordionTitle,
   AccordionContent,
-} from '../../../Accordion';
+} from '../../../../Accordion';
 // Type
 import { CategoriesType } from '@/lib/sanity/type';
 // Libs
-import postClassificationAction from '../../_action/postClassificationAction';
+import postClassificationAction from '../../../_action/postClassificationAction';
 // Data
-import { navContent } from '../../navContent';
+import { navContent } from '../../../navContent';
 
 interface MobileMenuContentPropsType {
   closeMobileMenu: () => void;

@@ -2,10 +2,10 @@
 import Link from 'next/link';
 import Magnetic from '../effect/Magnetic';
 import Image from 'next/image';
-import NavContent from './_components/MegaMenuFolder/NavContent';
-import MobileMenu from './_components/MobileMenuFolder/MobileMenu';
+import DesktopMenu from './_components/DesktopMenu';
+import MobileMenu from './_components/MobileMenu';
 
-async function Header() {
+export default function Header() {
   return (
     <header
       className="sticky top-0 p-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header"
@@ -25,11 +25,9 @@ async function Header() {
             <p className="font-[FiraCode] font-semibold">This.Web</p>
           </Magnetic>
         </Link>
-        <NavContent className="hidden md:flex" />
+        <DesktopMenu className="hidden md:flex" />
         <MobileMenu className="block md:hidden" />
       </div>
     </header>
   );
 }
-
-export default Header;

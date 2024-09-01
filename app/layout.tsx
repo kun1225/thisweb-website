@@ -5,7 +5,7 @@ import '../style/globals.min.css';
 // Context
 import { GlobalSettingsProvider } from './_context/globalSettings';
 // Components
-import Header from './_components/Header/Header';
+import Header from './_components/Header';
 import Footer from './_components/Footer';
 import ProgressBar from './_components/ProgressBar';
 import { Suspense } from 'react';
@@ -52,8 +52,6 @@ export const metadata: Metadata = {
   },
 };
 
-// export const revalidate = 0;
-
 export default function RootLayout({
   children,
 }: {
@@ -92,7 +90,6 @@ export default function RootLayout({
           <Footer />
         </GlobalSettingsProvider>
 
-        {/* <Analytics /> */}
         <SpeedInsights />
       </body>
     </html>
