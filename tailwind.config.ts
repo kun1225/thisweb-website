@@ -1,12 +1,8 @@
 import type { Config } from 'tailwindcss';
-import theme from './style/theme';
+import theme from './src/style/theme';
 
 const config: Config = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     screens: theme.screens,
     listStyleType: {

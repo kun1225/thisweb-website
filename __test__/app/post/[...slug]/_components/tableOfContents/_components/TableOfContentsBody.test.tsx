@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import TableOfContentsBody from '@/app/post/[slug]/_components/tableOfContents/_components/TableOfContentsBody';
-import { HeadingType } from '@/app/post/[slug]/_components/tableOfContents/type';
+import TableOfContentsBody from '@/src/app/(site)/post/[slug]/_components/tableOfContents/_components/TableOfContentsBody';
+import { HeadingType } from '@/src/app/(site)/post/[slug]/_components/tableOfContents/type';
 
 describe('TableOfContentsBody', () => {
   const mockHeadingsWithoutChildren: HeadingType[] = [
