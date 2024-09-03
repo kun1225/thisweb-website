@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 // Libs
 import { cn } from '@/src/libs/utils';
+import { headerFetch } from '../sanity/fetch';
 // Vercel
 import { SpeedInsights } from '@vercel/speed-insights/next';
 // Components
@@ -46,11 +47,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headerContent = await headerFetch();
+
   return (
     <html lang="zh-TW">
       <head>
@@ -73,7 +76,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${cn(notoSans.className)}`}>
-        <SiteLayout>{children}</SiteLayout>
+        <SiteLayout headerContent={headerContent}>{children}</SiteLayout>
         <SpeedInsights />
       </body>
     </html>

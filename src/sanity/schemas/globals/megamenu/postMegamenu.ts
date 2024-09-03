@@ -23,6 +23,8 @@ export default defineType({
           title: 'Category',
           name: 'category',
           type: 'object',
+          //@ts-ignore
+          icon: SquareIcon,
           fields: [
             defineField({
               title: 'Title',
@@ -35,12 +37,21 @@ export default defineType({
               type: 'text',
             }),
             defineField({
-              title: 'Category Item',
-              name: 'categoryItem',
+              title: 'Category Reference',
+              name: 'categoryRef',
               type: 'reference',
               to: [{ type: 'category' }],
             }),
           ],
+          preview: {
+            select: {
+              title: 'title',
+              description: 'description',
+            },
+            prepare({ title, description }) {
+              return { title, subtitle: description };
+            },
+          },
         },
       ],
     }),

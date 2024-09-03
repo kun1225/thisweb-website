@@ -65,7 +65,6 @@ export default defineType({
               content: 'megamenuContent.title',
             },
             prepare({ title, content }) {
-              console.log(content);
               return { title, subtitle: `Content : " ${content} "` };
             },
           },

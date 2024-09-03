@@ -8,12 +8,13 @@ import Footer from '../Footer';
 import ProgressBar from '../ProgressBar';
 
 export default function SiteLayout({
+  headerContent,
   children,
 }: {
+  headerContent: any;
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-
   if (pathname.startsWith('/studio')) return children;
 
   return (
@@ -21,7 +22,7 @@ export default function SiteLayout({
       <Suspense>
         <ProgressBar />
       </Suspense>
-      <Header />
+      <Header headerContent={headerContent} />
       <main className="transition duration-[0.6s]" id="g-main">
         {children}
       </main>

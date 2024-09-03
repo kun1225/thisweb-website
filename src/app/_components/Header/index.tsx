@@ -5,7 +5,7 @@ import Image from 'next/image';
 import DesktopMenu from './_components/DesktopMenu';
 import MobileMenu from './_components/MobileMenu';
 
-export default function Header() {
+export default function Header({ headerContent }: { headerContent: any }) {
   return (
     <header
       className="sticky top-0 p-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header"
