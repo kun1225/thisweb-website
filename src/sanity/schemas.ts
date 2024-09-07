@@ -10,7 +10,8 @@ import secondLevelCategory from './schemas/posts/secondLevelCategory';
 import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 
 // Page
-import service from './schemas/pages/service';
+import pageHome from './schemas/pages/home';
+import pageService from './schemas/pages/service';
 
 // Block
 import blockContent from './schemas/block/blockContent';
@@ -27,7 +28,8 @@ export const schemas = [
   secondLevelCategory,
   thirdLevelCategory,
 
-  service,
+  pageHome,
+  pageService,
 
   blockContent,
   callout,

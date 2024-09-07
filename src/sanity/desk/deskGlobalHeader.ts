@@ -1,8 +1,8 @@
-import { ComponentIcon, SquareIcon } from '@sanity/icons';
+import { MenuIcon, SquareIcon } from '@sanity/icons';
 
-export const deskGHeader = (S: any) => {
+export const deskGlobalHeader = (S: any) => {
   return S.listItem()
-    .title('Header')
+    .title('Header & Megamenu')
     .child(
       S.list()
         .title('Header & Megamenu')
@@ -15,7 +15,7 @@ export const deskGHeader = (S: any) => {
                 .schemaType('gHeader')
                 .documentId('gHeader'),
             )
-            .icon(ComponentIcon),
+            .icon(MenuIcon),
           S.divider(),
           S.listItem()
             .title('Posts Megamenu')
@@ -28,5 +28,5 @@ export const deskGHeader = (S: any) => {
             .icon(SquareIcon),
         ]),
     )
-    .icon(ComponentIcon);
+    .icon(MenuIcon);
 };

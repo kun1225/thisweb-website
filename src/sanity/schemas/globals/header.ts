@@ -74,7 +74,7 @@ export default defineType({
   ],
   preview: {
     prepare() {
-      return { title: 'Nav Content' };
+      return { title: 'Nav Contents' };
     },
   },
 });

@@ -1,15 +1,15 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  title: 'Service Page',
-  name: 'pageService',
+  title: 'Home Page',
+  name: 'pageHome',
   type: 'document',
   fields: [
     defineField({
       title: 'Title',
       name: 'title',
       type: 'string',
-      initialValue: 'Service page',
+      initialValue: 'Home page',
       readOnly: true,
       hidden: true,
     }),
@@ -17,18 +17,14 @@ export default defineType({
       title: 'Slug',
       name: 'slug',
       type: 'string',
-      initialValue: '/service',
+      initialValue: '/',
       readOnly: true,
     }),
   ],
   preview: {
-    select: {
-      slug: 'slug',
-    },
-    prepare({ slug }) {
+    prepare() {
       return {
-        title: 'Service Page',
-        subtitle: `Slug : " ${slug} "`,
+        title: 'Home Page',
       };
     },
   },

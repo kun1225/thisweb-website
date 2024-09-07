@@ -1,4 +1,4 @@
-import '../../style/custom-portable-text.css';
+import '@/src/style/custom-portable-text.css';
 import './style.css';
 
 // Sanity
