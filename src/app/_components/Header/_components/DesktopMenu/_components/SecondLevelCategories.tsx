@@ -1,19 +1,22 @@
 import Link from 'next/link';
-import { SecondLevelCategoriesType } from '@/src/libs/sanity/type';
+import { TypeSecondLevelCategory } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-const SecondLevelCategories = ({
+export default function SecondLevelCategories({
   content,
+  isCanBeTabIndex,
   closeMegaMenu,
 }: {
-  content: SecondLevelCategoriesType;
+  content: TypeSecondLevelCategory[];
+  isCanBeTabIndex: boolean;
   closeMegaMenu: () => void;
-}) => {
+}) {
   return (
     <ul className="second-level-categories absolute bottom-0 left-0 mx-edge-xs py-2 flex overflow-y-auto text-gray-600">
       {content.map((secondLevelCategory, index) => (
-        <li key={secondLevelCategory._id} className="flex-shrink-0">
+        <li key={secondLevelCategory.url} className="flex-shrink-0">
           {index !== 0 && <span className="text-gray-500">·</span>}
           <Link
+            tabIndex={isCanBeTabIndex ? 0 : -1}
             href={`/posts/${secondLevelCategory.url}/0`}
             className="inline-block py-1 px-2 text-xs rounded-full transition bg-gray-200 hover:bg-secondary hover:text-white"
             title={secondLevelCategory.title}
@@ -25,6 +28,4 @@ const SecondLevelCategories = ({
       ))}
     </ul>
   );
-};
-
-export default SecondLevelCategories;
+}

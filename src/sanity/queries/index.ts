@@ -1,1 +1,0 @@
-export { headerQuery } from './headerQuery';

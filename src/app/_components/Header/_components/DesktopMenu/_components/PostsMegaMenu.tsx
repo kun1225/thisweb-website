@@ -1,75 +1,56 @@
-'use client';
-// Hooks
-import { useEffect, useState } from 'react';
-import useWindowWidth from '@/src/app/_hooks/useWindowWidth';
-
+import { cn } from '@/src/libs/utils';
 // Components
 import Link from 'next/link';
-import Skeleton from '../../../../Skeleton';
 import SecondLevelCategories from './SecondLevelCategories';
+// Types
+import { TypePostsMegamenu } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-// Type
-import { CategoriesType } from '@/src/libs/sanity/type';
-
-// Libs
-import postClassificationAction from '../../../_action/postClassificationAction';
-
-interface PostsMegaMenuPropsType {
+export default function PostsMegaMenu({
+  content,
+  index,
+  currentIndex,
+  closeMegaMenu,
+}: {
+  content: TypePostsMegamenu;
+  index: number;
+  currentIndex: number;
   closeMegaMenu: () => void;
-}
-
-const PostsMegaMenu: React.FC<PostsMegaMenuPropsType> = ({ closeMegaMenu }) => {
-  const [megaMenuContent, setMegaMenuContent] = useState<CategoriesType>();
-  const [isLoading, setIsLoading] = useState(true);
-  const { isMobile } = useWindowWidth();
-
-  useEffect(() => {
-    if (!isMobile && !megaMenuContent) {
-      postClassificationAction().then((data) => {
-        setMegaMenuContent(data);
-        setIsLoading(false);
-      });
-    }
-  }, [isMobile, megaMenuContent]);
+}) {
+  const isCanBeTabIndex = index === currentIndex;
 
   return (
-    <ul className="grid grid-cols-3 grid-flow-row gap-[1vw]">
-      {isLoading
-        ? Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} className="col-span-1 h-[20vh]" />
-          ))
-        : megaMenuContent?.map(
-            (category) =>
-              category.description && (
-                <li
-                  key={category._id}
-                  className="posts-mega-menu-item rounded-md "
-                >
-                  <div className="block relative h-full">
-                    <Link
-                      href={`/posts/${category.url}/0`}
-                      className="block h-full p-edge-xs pb-8 transition hover:bg-gray-100"
-                      title={category.title}
-                      onClick={closeMegaMenu}
-                    >
-                      <h3 className="text-xl font-bold mb-1">
-                        {category.title}
-                      </h3>
-                      <p className="text-sm mb-4">{category.description}</p>
-                    </Link>
+    <div
+      className={cn(
+        'c grid grid-cols-3 fixed top-[120%] right-8 left-8 p-4 rounded-xl bg-pure-white shadow-2xl transition duration-300 z-10',
+        index === currentIndex
+          ? 'translate-y-0 opacity-100 pointer-events-auto blur-0'
+          : 'translate-y-10 opacity-0 pointer-events-none blur-md',
+      )}
+    >
+      {content.categories.map((category) => (
+        <li key={category.url} className="posts-mega-menu-item rounded-md ">
+          <div className="block relative h-full">
+            <Link
+              tabIndex={isCanBeTabIndex ? 0 : -1}
+              href={`/posts/${category.url}/0`}
+              className="block h-full p-edge-xs pb-8 transition hover:bg-gray-100"
+              title={category.title}
+              onClick={closeMegaMenu}
+            >
+              <h3 className="text-xl font-bold mb-1">{category.title}</h3>
+              <p className="text-sm mb-4">{category.description}</p>
+            </Link>
 
-                    {category.secondLevelCategory ? (
-                      <SecondLevelCategories
-                        content={category.secondLevelCategory}
-                        closeMegaMenu={closeMegaMenu}
-                      />
-                    ) : null}
-                  </div>
-                </li>
-              ),
-          )}
-    </ul>
+            {category.secondLevelCategories ? (
+              <SecondLevelCategories
+                isCanBeTabIndex={isCanBeTabIndex}
+                content={category.secondLevelCategories}
+                closeMegaMenu={closeMegaMenu}
+              />
+            ) : null}
+          </div>
+        </li>
+      ))}
+    </div>
   );
-};
-
-export default PostsMegaMenu;
+}

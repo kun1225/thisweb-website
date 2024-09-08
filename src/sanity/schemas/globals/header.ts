@@ -41,8 +41,8 @@ export default defineType({
           },
         },
         {
-          title: 'Megamenu Button',
-          name: 'megamenuButton',
+          title: 'Megamenu',
+          name: 'megamenu',
           type: 'object',
           //@ts-ignore
           icon: StackCompactIcon,

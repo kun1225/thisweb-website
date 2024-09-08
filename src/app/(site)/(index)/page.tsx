@@ -9,7 +9,7 @@ import { IoLanguageOutline } from 'react-icons/io5';
 import { GiBrokenWall } from 'react-icons/gi';
 
 // Sanity Utils
-import { client } from '@/src/libs/sanity/client';
+import { sanityFetch } from '@/src/libs/sanity/client';
 import { LIMITED_POSTS_QUERY } from '@/src/libs/sanity/queries';
 import { PostsType } from '@/src/libs/sanity/type';
 
@@ -37,9 +37,13 @@ const problemCardContent = [
 ];
 
 export default async function Home() {
-  const posts = await client.fetch<PostsType>(LIMITED_POSTS_QUERY, {
-    start: 0,
-    end: 3,
+  const posts = await sanityFetch<PostsType>({
+    query: LIMITED_POSTS_QUERY,
+    queryParams: {
+      start: 0,
+      end: 3,
+    },
+    tags: ['post'],
   });
 
   return (

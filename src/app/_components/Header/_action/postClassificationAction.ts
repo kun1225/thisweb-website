@@ -1,13 +1,14 @@
 'use server';
 
 import { CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY } from '@/src/libs/sanity/queries';
-import { client } from '@/src/libs/sanity/client';
+import { sanityFetch } from '@/src/libs/sanity/client';
 import { CategoriesType, CategoryType } from '@/src/libs/sanity/type';
 
 const postClassificationAction = async (): Promise<CategoryType[]> => {
-  const categories = await client.fetch<CategoriesType>(
-    CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY,
-  );
+  const categories = await sanityFetch<CategoriesType>({
+    query: CATEGORIES_WITH_SECOND_LEVEL_CATEGORIES_QUERY,
+    tags: ['category'],
+  });
 
   return categories.sort(sortByPriority).map(sortCategoryWithSubcategories);
 };

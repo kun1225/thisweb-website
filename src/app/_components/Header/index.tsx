@@ -4,8 +4,14 @@ import Magnetic from '../effect/Magnetic';
 import Image from 'next/image';
 import DesktopMenu from './_components/DesktopMenu';
 import MobileMenu from './_components/MobileMenu';
+// Type
+import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-export default function Header({ headerContent }: { headerContent: any }) {
+export default function Header({
+  headerContent,
+}: {
+  headerContent: TypeGlobalHeaderContent;
+}) {
   return (
     <header
       className="sticky top-0 p-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header"
@@ -25,7 +31,7 @@ export default function Header({ headerContent }: { headerContent: any }) {
             <p className="font-[FiraCode] font-semibold">This.Web</p>
           </Magnetic>
         </Link>
-        <DesktopMenu className="hidden md:flex" />
+        <DesktopMenu className="hidden md:flex" headerContent={headerContent} />
         <MobileMenu className="block md:hidden" />
       </div>
     </header>

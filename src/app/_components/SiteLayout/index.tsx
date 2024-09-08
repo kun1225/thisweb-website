@@ -1,17 +1,21 @@
 'use client';
 
+// Hooks & Libs
 import { usePathname } from 'next/navigation';
-import { Suspense } from 'react';
 import { GlobalSettingsProvider } from '../../_context/globalSettings';
+// Components
+import { Suspense } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import ProgressBar from '../ProgressBar';
+// Type
+import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
 export default function SiteLayout({
   headerContent,
   children,
 }: {
-  headerContent: any;
+  headerContent: TypeGlobalHeaderContent;
   children: React.ReactNode;
 }) {
   const pathname = usePathname();

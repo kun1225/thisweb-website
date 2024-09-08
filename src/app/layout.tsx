@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 // Libs
 import { cn } from '@/src/libs/utils';
-import { headerFetch } from '../sanity/fetch';
+import { headerFetch } from '../libs/sanity/fetch';
 // Vercel
 import { SpeedInsights } from '@vercel/speed-insights/next';
 // Components
