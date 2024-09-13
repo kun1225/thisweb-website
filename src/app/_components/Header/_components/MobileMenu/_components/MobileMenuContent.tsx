@@ -1,136 +1,84 @@
 'use client';
 // Hooks
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 // Components
-import Link from 'next/link';
-import {
-  Accordion,
-  AccordionTitle,
-  AccordionContent,
-} from '../../../../Accordion';
+import MobileMenuAccordion from './MobileMenuAccordion';
+import MobileMenuNormalLink from './MobileMenuNormalLink';
+import MobileMenuCategoryLink from './MobileMenuCategoryLink';
 // Type
-import { CategoriesType } from '@/src/libs/sanity/type';
-// Libs
-import postClassificationAction from '../../../_action/postClassificationAction';
-// Data
-import { navContent } from '../../../navContent';
+import {
+  TypeGlobalHeaderContent,
+  TypeMegamenu,
+} from '@/src/libs/sanity/type/typeGlobalHeader';
 
-interface MobileMenuContentPropsType {
-  closeMobileMenu: () => void;
-  isMobileMenuOpen: boolean;
-}
-
-const MobileMenuContent: React.FC<MobileMenuContentPropsType> = ({
+export default function MobileMenuContent({
+  headerContent,
   closeMobileMenu,
   isMobileMenuOpen,
-}) => {
-  const [megaMenuContent, setMegaMenuContent] = useState<CategoriesType | null>(
-    null,
+}: {
+  headerContent: TypeGlobalHeaderContent;
+  closeMobileMenu: () => void;
+  isMobileMenuOpen: boolean;
+}) {
+  const normalLinksContent = headerContent?.navContents.filter(
+    (item) => item._type === 'normalLink',
   );
+  const categoriesContent = headerContent?.navContents.filter(
+    (item): item is TypeMegamenu =>
+      item._type === 'megamenu' && item.content?._type === 'postsMegamenu',
+  )[0]?.content.categories;
 
   const main = useRef<null | HTMLElement>(null);
   const footer = useRef<null | HTMLElement>(null);
 
-  if (typeof window !== 'undefined') {
-    footer.current = document.getElementById('g-footer');
-    main.current = document.getElementById('g-main');
-    main.current?.classList.toggle('is-blur', isMobileMenuOpen);
-    footer.current?.classList.toggle('is-blur', isMobileMenuOpen);
-
-    document?.body &&
-      (isMobileMenuOpen
-        ? (document.body.style.overflow = 'hidden')
-        : (document.body.style.overflow = ''));
-  }
-
   useEffect(() => {
-    if (!megaMenuContent) {
-      postClassificationAction().then((data) => {
-        setMegaMenuContent(data);
-      });
-    }
-  });
+    if (typeof window !== 'undefined') {
+      footer.current = document.getElementById('g-footer');
+      main.current = document.getElementById('g-main');
+      main.current?.classList.toggle('is-blur', isMobileMenuOpen);
+      footer.current?.classList.toggle('is-blur', isMobileMenuOpen);
 
-  const getPostsUrl = (url: string) => `/posts/${url}/0`;
+      document?.body &&
+        (isMobileMenuOpen
+          ? (document.body.style.overflow = 'hidden')
+          : (document.body.style.overflow = ''));
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <ul className="c flex flex-col h-full py-4 text-body text-primary overflow-y-auto">
-      {navContent
-        ? navContent.map((nav) => {
-            return (
-              !nav.isMegaMenu && (
-                <li
-                  key={nav.id}
-                  className="py-2 border-b-[1.5px] border-primary"
-                >
-                  <Link
-                    href={nav.url}
-                    className="font-semibold block p-[2vw]"
-                    onClick={closeMobileMenu}
-                  >
-                    {nav.title}
-                  </Link>
-                </li>
-              )
-            );
-          })
+      {normalLinksContent
+        ? normalLinksContent.map((link) => (
+            <MobileMenuNormalLink
+              key={link._key}
+              link={link}
+              closeMobileMenu={closeMobileMenu}
+            />
+          ))
         : null}
-      {megaMenuContent
-        ? megaMenuContent.map((category) => {
-            return category.secondLevelCategory ? (
-              <li
-                key={category._id}
-                className="py-2 border-b-[1.5px] border-primary"
-              >
-                <Accordion iconPosition="right" initExpanded={false}>
-                  <AccordionTitle className="items-center">
-                    <Link
-                      href={getPostsUrl(category.url)}
-                      className="font-semibold block p-[2vw]"
-                      onClick={closeMobileMenu}
-                    >
-                      {category.title}
-                    </Link>
-                  </AccordionTitle>
-                  <AccordionContent>
-                    <ul className="flex flex-col pl-6 mt-2 pb-2 gap-2">
-                      {category.secondLevelCategory
-                        ? category.secondLevelCategory.map(
-                            (secondLevelCategory) => (
-                              <li key={secondLevelCategory._id}>
-                                <Link
-                                  href={getPostsUrl(secondLevelCategory.url)}
-                                  className="block"
-                                  onClick={closeMobileMenu}
-                                >
-                                  {secondLevelCategory.title}
-                                </Link>
-                              </li>
-                            ),
-                          )
-                        : null}
-                    </ul>
-                  </AccordionContent>
-                </Accordion>
-              </li>
-            ) : (
-              <li
-                key={category._id}
-                className="py-2 border-b-[1.5px] border-primary"
-              >
-                <Link
-                  href={getPostsUrl(category.url)}
-                  className="font-semibold block p-[2vw]"
-                  onClick={closeMobileMenu}
-                >
-                  {category.title}
-                </Link>
-              </li>
-            );
-          })
-        : null}
+
+      {categoriesContent?.map((item) => {
+        if (item.secondLevelCategories)
+          return (
+            <MobileMenuAccordion
+              key={item.title}
+              category={item}
+              closeMobileMenu={closeMobileMenu}
+            />
+          );
+
+        if (!item.secondLevelCategories) {
+          return (
+            <MobileMenuCategoryLink
+              key={item.title}
+              category={item}
+              closeMobileMenu={closeMobileMenu}
+            />
+          );
+        }
+
+        return null;
+      })}
     </ul>
   );
-};
-
-export default MobileMenuContent;
+}

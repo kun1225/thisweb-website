@@ -6,11 +6,13 @@ export type TypeNormalLink = {
 };
 
 export type TypeSecondLevelCategory = {
+  _type: 'secondLevelCategory';
   title: string;
   url: string;
 };
 
 export type TypeCategory = {
+  _type: 'category';
   title: string;
   url: string;
   description: string;

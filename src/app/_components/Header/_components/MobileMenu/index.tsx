@@ -2,27 +2,28 @@
 // Hooks
 import { useState } from 'react';
 import useHeight from '@/src/app/_hooks/useHeight';
-
 // Libs
 import { cn } from '@/src/libs/utils';
-
 // Components
 import MobileMenuIcon from './_components/MobileMenuIcon';
 import MobileMenuContent from './_components/MobileMenuContent';
-
 // Style
 import './style.css';
+// Type
+import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-interface MobileMenuPropsType {
+export default function MobileMenu({
+  headerContent,
+  className = '',
+}: {
+  headerContent: TypeGlobalHeaderContent;
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
-}
-
-const MobileMenu: React.FC<MobileMenuPropsType> = ({ className = '' }) => {
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { headerHeight } = useHeight();
 
   return (
-    <div className={`${className}`}>
+    <div className={className}>
       <MobileMenuIcon
         mobileMenuOpen={isMobileMenuOpen}
         setMobileMenuOpen={setIsMobileMenuOpen}
@@ -33,19 +34,16 @@ const MobileMenu: React.FC<MobileMenuPropsType> = ({ className = '' }) => {
           isMobileMenuOpen && 'is-open',
         )}
         style={{
-          top: headerHeight ? `${headerHeight}px` : '68px',
-          height: headerHeight
-            ? `calc(100dvh - ${headerHeight}px)`
-            : 'calc(100dvh - 68px)',
+          top: `${headerHeight || 68}px`,
+          height: `calc(100dvh - ${headerHeight || 68}px)`,
         }}
       >
         <MobileMenuContent
-          closeMobileMenu={() => setIsMobileMenuOpen(false)}
+          headerContent={headerContent}
           isMobileMenuOpen={isMobileMenuOpen}
+          closeMobileMenu={() => setIsMobileMenuOpen(false)}
         />
       </div>
     </div>
   );
-};
-
-export default MobileMenu;
+}

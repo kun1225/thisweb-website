@@ -2,11 +2,10 @@
 
 // Hooks & Libs
 import { useState, useEffect } from 'react';
-import { cn } from '@/src/libs/utils';
 // Components
-import NormalLink from './_components/NormalLink';
-import MegaMenu from './_components/MegaMenu';
 import Stack from '../../../Stack';
+import CloseMenuOverlay from './_components/CloseMenuOverlay';
+import NavContents from './_components/NavContents';
 // Style
 import './style.css';
 // Types
@@ -20,6 +19,9 @@ export default function DesktopMenu({
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
 }) {
   const [currentIndex, setCurrentIndex] = useState(-1);
+  const isHasMegaMenu = headerContent.navContents.some(
+    (item) => item._type === 'megamenu',
+  );
 
   const switchMegaMenu = (index: number) => {
     if (index === currentIndex) setCurrentIndex(-1);
@@ -45,47 +47,19 @@ export default function DesktopMenu({
 
   return (
     <Stack as="ul" className={`text-sm ${className}`}>
-      {headerContent.navContents.some((item) => item._type === 'megamenu') && (
-        <button
-          tabIndex={-1}
-          type="button"
-          aria-label="Close the mega menu"
-          className={cn(
-            'fixed top-0 left-0 w-[100%] h-screen z-10',
-            currentIndex !== -1 ? 'pointer-events-auto' : 'pointer-events-none',
-          )}
-          onClick={closeMegaMenu}
+      {isHasMegaMenu ? (
+        <CloseMenuOverlay
+          closeMegaMenu={closeMegaMenu}
+          currentIndex={currentIndex}
         />
-      )}
-      {headerContent.navContents.map((item, index) => {
-        switch (item._type) {
-          case 'normalLink':
-            return (
-              <NormalLink
-                key={item._key}
-                linkText={item.linkText}
-                linkUrl={item.linkUrl}
-                onClick={closeMegaMenu}
-              />
-            );
+      ) : null}
 
-          case 'megamenu':
-            return (
-              <MegaMenu
-                key={item._key}
-                megamenu={item}
-                title={item.buttonText}
-                index={index}
-                currentIndex={currentIndex}
-                switchMegaMenu={switchMegaMenu}
-                closeMegaMenu={closeMegaMenu}
-              />
-            );
-
-          default:
-            return null;
-        }
-      })}
+      <NavContents
+        headerContent={headerContent}
+        currentIndex={currentIndex}
+        switchMegaMenu={switchMegaMenu}
+        closeMegaMenu={closeMegaMenu}
+      />
     </Stack>
   );
 }

@@ -32,7 +32,7 @@ export default function Header({
           </Magnetic>
         </Link>
         <DesktopMenu className="hidden md:flex" headerContent={headerContent} />
-        <MobileMenu className="block md:hidden" />
+        <MobileMenu className="block md:hidden" headerContent={headerContent} />
       </div>
     </header>
   );
