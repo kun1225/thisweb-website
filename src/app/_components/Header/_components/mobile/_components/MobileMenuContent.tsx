@@ -35,8 +35,8 @@ export default function MobileMenuContent({
     if (typeof window !== 'undefined') {
       footer.current = document.getElementById('g-footer');
       main.current = document.getElementById('g-main');
-      main.current?.classList.toggle('is-blur', isMobileMenuOpen);
-      footer.current?.classList.toggle('is-blur', isMobileMenuOpen);
+      main.current?.classList.toggle('blur-md', isMobileMenuOpen);
+      footer.current?.classList.toggle('blur-md', isMobileMenuOpen);
 
       document?.body &&
         (isMobileMenuOpen

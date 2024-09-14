@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import Magnetic from '../effect/Magnetic';
 import Image from 'next/image';
-import DesktopMenu from './_components/DesktopMenu';
-import MobileMenu from './_components/MobileMenu';
+import DesktopMenu from './_components/desktop';
+import MobileMenu from './_components/mobile';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 

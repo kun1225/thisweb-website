@@ -36,6 +36,12 @@ const config: Config = {
         edge: '6vw',
         'edge-lg': '8vw',
       },
+      spacing: {
+        'edge-xs': '2vw',
+        'edge-sm': '4vw',
+        edge: '6vw',
+        'edge-lg': '8vw',
+      },
       fontSize: {
         body: ['1.05rem', '1.55'],
         'body-large': ['1.1rem', '1.6'],

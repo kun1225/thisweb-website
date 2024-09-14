@@ -1,4 +1,4 @@
-import PostsMegaMenu from './_components/DesktopMenu/_components/PostsMegaMenu';
+import PostsMegaMenu from './_components/desktop/_components/PostsMegaMenu';
 
 export type navContentType = {
   title: string;

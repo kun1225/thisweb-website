@@ -33,12 +33,12 @@ export default function PostsMegaMenu({
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}
               href={`/posts/${category.url}/0`}
-              className="block h-full p-edge-xs pb-8 transition hover:bg-gray-100"
+              className="block h-full p-4 transition hover:bg-gray-100"
               title={category.title}
               onClick={closeMegaMenu}
             >
               <h3 className="text-xl font-bold mb-1">{category.title}</h3>
-              <p className="text-sm mb-4">{category.description}</p>
+              <p className="text-sm mb-14">{category.description}</p>
             </Link>
 
             {category.secondLevelCategories ? (

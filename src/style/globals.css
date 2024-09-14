@@ -109,10 +109,6 @@ h4 {
   width: calc(100vw - 12vw);
 }
 
-.is-blur {
-  filter: blur(12px);
-}
-
 .grid-paper-bg {
   --black: rgb(229 231 235);
   background-image: repeating-linear-gradient(
