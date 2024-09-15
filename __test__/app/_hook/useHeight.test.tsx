@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import useHeight from '@/app/_hook/useHeight';
+import useHeight from '@/src/app/_hooks/useHeight';
 import React from 'react';
 
 const TestComponent = () => {

@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 
-import HeadingButton from '@/app/post/[slug]/_components/tableOfContents/_components/HeadingButton';
-import { HeadingType } from '@/app/post/[slug]/_components/tableOfContents/type';
+import HeadingButton from '@/src/app/(site)/post/[slug]/_components/tableOfContents/_components/HeadingButton';
+import { HeadingType } from '@/src/app/(site)/post/[slug]/_components/tableOfContents/type';
 
 describe('HeadingButton Component', () => {
   const heading: HeadingType = {
