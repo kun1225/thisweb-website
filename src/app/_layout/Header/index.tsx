@@ -1,6 +1,6 @@
 // Components
 import Link from 'next/link';
-import Magnetic from '../effect/Magnetic';
+import Magnetic from '../../_components/effect/Magnetic';
 import Image from 'next/image';
 import DesktopMenu from './_components/desktop';
 import MobileMenu from './_components/mobile';

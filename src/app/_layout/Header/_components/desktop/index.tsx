@@ -3,7 +3,7 @@
 // Hooks & Libs
 import { useState, useEffect } from 'react';
 // Components
-import Stack from '../../../Stack';
+import Stack from '../../../../_components/Stack';
 import CloseMenuOverlay from './_components/CloseMenuOverlay';
 import NavContents from './_components/NavContents';
 // Style

@@ -6,7 +6,7 @@ import { headerFetch } from '../libs/sanity/fetch';
 // Vercel
 import { SpeedInsights } from '@vercel/speed-insights/next';
 // Components
-import SiteLayout from './_components/SiteLayout';
+import SiteLayout from './_layout/SiteLayout';
 // Style
 import '../styles/globals.scss';
 // Fonts
