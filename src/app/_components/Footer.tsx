@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { navContent } from './header/navContent';
+import { navContent } from './Header/navContent';
 
 function Footer() {
   return (

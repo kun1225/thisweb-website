@@ -1,5 +1,3 @@
-import PostsMegaMenu from './_components/desktop/_components/PostsMegaMenu';
-
 export type navContentType = {
   title: string;
   url: string;
@@ -24,8 +22,7 @@ export const navContent: navContentType[] = [
   {
     title: '文章分類',
     url: '/posts/page/0',
-    isMegaMenu: true,
-    MegaMenuTag: PostsMegaMenu,
+    isMegaMenu: false,
     id: '2',
   },
   {

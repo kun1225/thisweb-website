@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { GlobalSettingsProvider } from '../../_context/globalSettings';
 // Components
 import { Suspense } from 'react';
-import GHeader from '../header';
+import GHeader from '../Header';
 import Footer from '../Footer';
 import ProgressBar from '../ProgressBar';
 // Type
