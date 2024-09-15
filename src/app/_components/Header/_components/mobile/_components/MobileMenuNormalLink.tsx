@@ -11,10 +11,10 @@ export default function MobileMenuNormalLink({
   closeMobileMenu: () => void;
 }) {
   return (
-    <li className="py-2 border-b-[1.5px] border-primary">
+    <li>
       <Link
         href={link.linkUrl}
-        className="block p-[2vw] font-semibold"
+        className="g-header__mobile-menu__link  "
         onClick={closeMobileMenu}
         aria-label={`前往${link.linkText}頁面`}
       >

@@ -13,10 +13,10 @@ export default function MobileMenuCategoryLink({
   closeMobileMenu: () => void;
 }) {
   return (
-    <li className="py-2 border-b-[1.5px] border-primary">
+    <li>
       <Link
         href={getPostsUrl(category.url)}
-        className="block p-[2vw] font-semibold"
+        className="g-header__mobile-menu__link"
         onClick={closeMobileMenu}
         aria-label={`前往${category.title}頁面`}
       >

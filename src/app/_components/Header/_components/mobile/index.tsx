@@ -7,8 +7,6 @@ import { cn } from '@/src/libs/utils';
 // Components
 import MobileMenuIcon from './_components/MobileMenuIcon';
 import MobileMenuContent from './_components/MobileMenuContent';
-// Style
-import './style.css';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
@@ -29,10 +27,7 @@ export default function MobileMenu({
         setMobileMenuOpen={setIsMobileMenuOpen}
       />
       <div
-        className={cn(
-          'mobile-menu fixed left-0 w-[100%] bg-[rgba(249,250,251,0.8)]',
-          isMobileMenuOpen && 'is-open',
-        )}
+        className={cn('g-header__mobile-menu', isMobileMenuOpen && 'is-open')}
         style={{
           top: `${headerHeight || 68}px`,
           height: `calc(100dvh - ${headerHeight || 68}px)`,

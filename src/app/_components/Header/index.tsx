@@ -7,17 +7,14 @@ import MobileMenu from './_components/mobile';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-export default function Header({
+export default function GHeader({
   headerContent,
 }: {
   headerContent: TypeGlobalHeaderContent;
 }) {
   return (
-    <header
-      className="sticky top-0 p-2 bg-[rgba(249,250,251,0.8)] backdrop-blur-md z-header"
-      id="g-header"
-    >
-      <div className="c flex justify-between items-center">
+    <header className="g-header" id="g-header">
+      <div className="g-header__container">
         <Link href="/" title="This.Web Logo">
           <Magnetic className="p-2 flex items-center gap-2 md:gap-4">
             <Image
@@ -31,8 +28,14 @@ export default function Header({
             <p className="font-[FiraCode] font-semibold">This.Web</p>
           </Magnetic>
         </Link>
-        <DesktopMenu className="hidden md:flex" headerContent={headerContent} />
-        <MobileMenu className="block md:hidden" headerContent={headerContent} />
+        <DesktopMenu
+          className="g-header__desktop"
+          headerContent={headerContent}
+        />
+        <MobileMenu
+          className="g-header__mobile"
+          headerContent={headerContent}
+        />
       </div>
     </header>
   );

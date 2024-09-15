@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { GlobalSettingsProvider } from '../../_context/globalSettings';
 // Components
 import { Suspense } from 'react';
-import Header from '../header';
+import GHeader from '../header';
 import Footer from '../Footer';
 import ProgressBar from '../ProgressBar';
 // Type
@@ -26,7 +26,7 @@ export default function SiteLayout({
       <Suspense>
         <ProgressBar />
       </Suspense>
-      <Header headerContent={headerContent} />
+      <GHeader headerContent={headerContent} />
       <main className="transition duration-[0.6s]" id="g-main">
         {children}
       </main>

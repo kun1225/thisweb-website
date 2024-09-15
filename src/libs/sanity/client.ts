@@ -2,7 +2,7 @@ import { createClient, type QueryParams } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 import { projectId, dataset, apiVersion } from '@/src/sanity/env';
 
-const client = createClient({
+export const client = createClient({
   projectId,
   dataset,
   apiVersion,

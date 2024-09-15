@@ -1,4 +1,4 @@
-import '@/src/style/custom-portable-text.css';
+import '@/src/styles/custom-portable-text.css';
 import './style.css';
 
 // Sanity
@@ -16,7 +16,7 @@ import { FaRunning } from 'react-icons/fa';
 import Stack from '../../_components/Stack';
 import Link from 'next/link';
 import Button from '../../_components/Button';
-import Cal from './_components/Cal';
+// import Cal from './_components/Cal';
 import NumberCounter from '../../_components/effect/NumberCounter';
 import Rotate3dEffect from '../../_components/effect/Rotate3dEffect';
 
@@ -39,7 +39,7 @@ const servicePage = async () => {
 
   return (
     <>
-      <div className="service-page hero__bg absolute inset-0 min-h-screen"></div>
+      <div className="service-page hero__bg absolute inset-0 min-h-screen" />
       <section className="service-page relative">
         <div className="c min-h-[70vh] mt-16 mb-28 flex gap-[10vw] items-center justify-center">
           <div className="flex flex-col gap-8 items-center text-center md:text-left">

@@ -21,19 +21,19 @@ export default function PostsMegaMenu({
   return (
     <div
       className={cn(
-        'c grid grid-cols-3 fixed top-[120%] right-8 left-8 p-4 rounded-xl bg-pure-white shadow-2xl transition duration-300 z-10',
+        'g-header__posts-megamenu',
         index === currentIndex
           ? 'translate-y-0 opacity-100 pointer-events-auto blur-0'
           : 'translate-y-10 opacity-0 pointer-events-none blur-md',
       )}
     >
       {content.categories.map((category) => (
-        <li key={category.url} className="posts-mega-menu-item rounded-md ">
+        <li key={category.url} className="rounded-md">
           <div className="block relative h-full">
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}
               href={`/posts/${category.url}/0`}
-              className="block h-full p-4 transition hover:bg-gray-100"
+              className="g-header__posts-megamenu__link "
               title={category.title}
               onClick={closeMegaMenu}
             >

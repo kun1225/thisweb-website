@@ -8,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 // Components
 import SiteLayout from './_components/SiteLayout';
 // Style
-import '../style/globals.css';
+import '../styles/globals.scss';
 // Fonts
 import { Noto_Sans_TC } from 'next/font/google';
 

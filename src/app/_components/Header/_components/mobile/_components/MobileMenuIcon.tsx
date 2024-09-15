@@ -25,7 +25,7 @@ const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
     <button
       type="button"
       aria-label="Toggle Menu"
-      className={`mobile-menu-icon ${cn(
+      className={`g-header__mobile-menu__trigger ${cn(
         mobileMenuOpen && 'is-open',
         isInitialRender && 'is-initial',
       )}`}

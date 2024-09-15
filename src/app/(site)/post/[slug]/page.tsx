@@ -1,6 +1,6 @@
 // style
-import '@/src/style/prism.css';
-import '@/src/style/custom-portable-text.css';
+import '@/src/styles/prism.css';
+import '@/src/styles/custom-portable-text.css';
 // Sanity
 import { sanityFetch, urlFor } from '@/src/libs/sanity/client';
 import {

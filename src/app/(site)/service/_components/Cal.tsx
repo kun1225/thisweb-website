@@ -2,7 +2,7 @@
 
 import Cal, { getCalApi } from '@calcom/embed-react';
 import { useEffect, useState } from 'react';
-import theme from '@/src/style/theme';
+import theme from '@/src/styles/theme';
 
 export default function MyApp() {
   useEffect(() => {

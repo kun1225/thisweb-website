@@ -18,11 +18,11 @@ export default function MobileMenuAccordion({
   closeMobileMenu: () => void;
 }) {
   return (
-    <li className="py-2 border-b-[1.5px] border-primary">
+    <li className="g-header__mobile-menu__accordion">
       <Accordion iconPosition="right" initExpanded={false}>
         <AccordionTitle className="items-center">
           <Link
-            className="block p-[2vw] font-semibold "
+            className="g-header__mobile-menu__accordion__link"
             href={getPostsUrl(category.url)}
             aria-label={`前往${category.title}頁面`}
             onClick={closeMobileMenu}
@@ -32,7 +32,7 @@ export default function MobileMenuAccordion({
           </Link>
         </AccordionTitle>
         <AccordionContent>
-          <ul className="flex flex-col pl-6 mt-2 pb-2 gap-2">
+          <ul className="g-header__mobile-menu__accordion__list">
             {category.secondLevelCategories
               ? category.secondLevelCategories.map((secondLevelCategory) => (
                   <li key={secondLevelCategory.title}>

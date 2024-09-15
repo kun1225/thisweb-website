@@ -46,7 +46,7 @@ export default function DesktopMenu({
   }, []);
 
   return (
-    <Stack as="ul" className={`text-sm ${className}`}>
+    <ul className={className}>
       {isHasMegaMenu ? (
         <CloseMenuOverlay
           closeMegaMenu={closeMegaMenu}
@@ -60,6 +60,6 @@ export default function DesktopMenu({
         switchMegaMenu={switchMegaMenu}
         closeMegaMenu={closeMegaMenu}
       />
-    </Stack>
+    </ul>
   );
 }

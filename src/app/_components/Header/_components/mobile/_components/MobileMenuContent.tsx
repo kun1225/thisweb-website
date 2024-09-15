@@ -46,7 +46,7 @@ export default function MobileMenuContent({
   }, [isMobileMenuOpen]);
 
   return (
-    <ul className="c flex flex-col h-full py-4 text-body text-primary overflow-y-auto">
+    <ul className="g-header__mobile-menu__content">
       {normalLinksContent
         ? normalLinksContent.map((link) => (
             <MobileMenuNormalLink
