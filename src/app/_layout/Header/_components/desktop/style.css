@@ -1,7 +1,0 @@
-.second-level-categories::-webkit-scrollbar {
-  height: 6px;
-}
-
-.second-level-categories::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-}

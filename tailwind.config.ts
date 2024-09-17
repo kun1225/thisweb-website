@@ -33,24 +33,24 @@ const config: Config = {
         mouse: '1000',
       },
       margin: {
-        'edge-xs': '2vw',
-        'edge-sm': '4vw',
-        edge: '6vw',
-        'edge-lg': '8vw',
+        'edge-xs': 'var(--s-edge-xs)',
+        'edge-sm': 'var(--s-edge-sm)',
+        edge: 'var(--s-edge)',
+        'edge-lg': 'var(--s-edge-lg)',
         'edge-dynamic': 'var(--s-edge-dynamic)',
       },
       padding: {
-        'edge-xs': '2vw',
-        'edge-sm': '4vw',
-        edge: '6vw',
-        'edge-lg': '8vw',
+        'edge-xs': 'var(--s-edge-xs)',
+        'edge-sm': 'var(--s-edge-sm)',
+        edge: 'var(--s-edge)',
+        'edge-lg': 'var(--s-edge-lg)',
         'edge-dynamic': 'var(--s-edge-dynamic)',
       },
       spacing: {
-        'edge-xs': '2vw',
-        'edge-sm': '4vw',
-        edge: '6vw',
-        'edge-lg': '8vw',
+        'edge-xs': 'var(--s-edge-xs)',
+        'edge-sm': 'var(--s-edge-sm)',
+        edge: 'var(--s-edge)',
+        'edge-lg': 'var(--s-edge-lg)',
         'edge-dynamic': 'var(--s-edge-dynamic)',
       },
       fontSize: {
@@ -66,17 +66,15 @@ const config: Config = {
   plugins: [
     plugin(function tailwindcss({ addUtilities }) {
       addUtilities({
-        '.c-padding': {
+        '.c': {
           'padding-left': 'var(--s-edge-dynamic)',
           'padding-right': 'var(--s-edge-dynamic)',
         },
-        '.c-margin': {
-          width: 'calc(100vw - var(--s-contain) * 2)',
-          'max-width': 'var(--s-contain-max)',
-          'margin-left': 'auto',
-          'margin-right': 'auto',
-        },
       });
+    }),
+    require('tailwind-scrollbar')({
+      nocompatible: true,
+      preferredStrategy: 'pseudoelements',
     }),
   ],
 };
