@@ -7,7 +7,7 @@ import { GlobalSettingsProvider } from '../../_context/globalSettings';
 import { Suspense } from 'react';
 import GHeader from '../Header';
 import Footer from '../Footer';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../../_components/ProgressBar';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 

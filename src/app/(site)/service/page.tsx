@@ -63,8 +63,8 @@ const servicePage = async () => {
           </div>
         </div>
 
-        <div className="c text-center md:max-w-3xl">
-          <p>
+        <div className="c text-center ">
+          <p className="md:max-w-3xl mx-auto">
             轉職前端是一條漫長又煎熬的路，很多時候我們會停滯不前，並不是因為缺乏學習資源，而是不清楚如何有效的管理自己的學習和目標，
             <br />
             <br />

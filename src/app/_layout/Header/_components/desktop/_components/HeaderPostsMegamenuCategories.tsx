@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { TypeSecondLevelCategory } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-export default function SecondLevelCategories({
+export default function HeaderPostsMegamenuCategories({
   content,
   isCanBeTabIndex,
   closeMegaMenu,
@@ -11,7 +11,7 @@ export default function SecondLevelCategories({
   closeMegaMenu: () => void;
 }) {
   return (
-    <ul className="g-header__second-level-categories">
+    <ul className="g-header__posts-megamenu__categories">
       {content.map((secondLevelCategory, index) => (
         <li key={secondLevelCategory.url} className="flex-shrink-0">
           {index !== 0 && <span className="text-gray-500">·</span>}
