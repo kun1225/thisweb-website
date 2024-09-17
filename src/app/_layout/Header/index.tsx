@@ -28,10 +28,7 @@ export default function GHeader({
             <p className="font-[FiraCode] font-semibold">This.Web</p>
           </Magnetic>
         </Link>
-        <DesktopMenu
-          className="g-header__desktop"
-          headerContent={headerContent}
-        />
+        <DesktopMenu headerContent={headerContent} />
         <MobileMenu
           className="g-header__mobile"
           headerContent={headerContent}

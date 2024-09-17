@@ -1,6 +1,6 @@
 import { cn } from '@/src/libs/utils';
 
-export default function CloseMenuOverlay({
+export default function HeaderOverlay({
   currentIndex,
   closeMegaMenu,
 }: {
@@ -13,7 +13,7 @@ export default function CloseMenuOverlay({
       type="button"
       aria-label="Close the mega menu"
       className={cn(
-        'g-header__close-overlay',
+        'g-header__overlay',
         currentIndex !== -1 ? 'pointer-events-auto' : 'pointer-events-none',
       )}
       onClick={closeMegaMenu}

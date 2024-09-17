@@ -3,20 +3,15 @@
 // Hooks & Libs
 import { useState, useEffect } from 'react';
 // Components
-import Stack from '../../../../_components/Stack';
-import CloseMenuOverlay from './_components/CloseMenuOverlay';
-import NavContents from './_components/NavContents';
-// Style
-import './style.css';
+import HeaderOverlay from './_components/HeaderOverlay';
+import HeaderNavContents from './_components/HeaderNavContents';
 // Types
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
 export default function DesktopMenu({
   headerContent,
-  className = '',
 }: {
   headerContent: TypeGlobalHeaderContent;
-  className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
 }) {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const isHasMegaMenu = headerContent.navContents.some(
@@ -46,15 +41,15 @@ export default function DesktopMenu({
   }, []);
 
   return (
-    <ul className={className}>
+    <ul className="g-header__desktop">
       {isHasMegaMenu ? (
-        <CloseMenuOverlay
+        <HeaderOverlay
           closeMegaMenu={closeMegaMenu}
           currentIndex={currentIndex}
         />
       ) : null}
 
-      <NavContents
+      <HeaderNavContents
         headerContent={headerContent}
         currentIndex={currentIndex}
         switchMegaMenu={switchMegaMenu}

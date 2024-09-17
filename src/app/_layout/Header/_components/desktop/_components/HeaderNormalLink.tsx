@@ -7,7 +7,7 @@ import { cn } from '@/src/libs/utils';
 import Link from 'next/link';
 import Magnetic from '@/src/app/_components/effect/Magnetic';
 
-export default function NormalLink({
+export default function HeaderNormalLink({
   linkText,
   linkUrl,
   onClick,

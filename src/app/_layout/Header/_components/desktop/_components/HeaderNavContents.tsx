@@ -1,8 +1,8 @@
-import NormalLink from './NormalLink';
-import MegaMenu from './MegaMenu';
+import HeaderNormalLink from './HeaderNormalLink';
+import HeaderMegaMenu from './HeaderMegaMenu';
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-export default function NavContents({
+export default function HeaderNavContents({
   headerContent,
   currentIndex,
   switchMegaMenu,
@@ -17,7 +17,7 @@ export default function NavContents({
     switch (item._type) {
       case 'normalLink':
         return (
-          <NormalLink
+          <HeaderNormalLink
             key={item._key}
             linkText={item.linkText}
             linkUrl={item.linkUrl}
@@ -27,7 +27,7 @@ export default function NavContents({
 
       case 'megamenu':
         return (
-          <MegaMenu
+          <HeaderMegaMenu
             key={item._key}
             megamenu={item}
             title={item.buttonText}

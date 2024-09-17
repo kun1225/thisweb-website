@@ -1,11 +1,11 @@
 import { cn } from '@/src/libs/utils';
 // Components
 import Link from 'next/link';
-import SecondLevelCategories from './SecondLevelCategories';
+import HeaderPostsMegamenuCategories from './HeaderPostsMegamenuCategories';
 // Types
 import { TypePostsMegamenu } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-export default function PostsMegaMenu({
+export default function HeaderPostsMegaMenu({
   content,
   index,
   currentIndex,
@@ -42,7 +42,7 @@ export default function PostsMegaMenu({
             </Link>
 
             {category.secondLevelCategories ? (
-              <SecondLevelCategories
+              <HeaderPostsMegamenuCategories
                 isCanBeTabIndex={isCanBeTabIndex}
                 content={category.secondLevelCategories}
                 closeMegaMenu={closeMegaMenu}
