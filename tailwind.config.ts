@@ -53,13 +53,17 @@ const config: Config = {
         'edge-lg': 'var(--s-edge-lg)',
         'edge-dynamic': 'var(--s-edge-dynamic)',
       },
+      fontFamily: {
+        sans: ['var(--font-GenSenRounded), sans-serif'],
+        mono: ['var(--font-FiraCode), monospace'],
+      },
       fontSize: {
         body: ['1.05rem', '1.55'],
         'body-large': ['1.1rem', '1.6'],
         'body-small': ['1rem', '1.5'],
       },
-      borderWidth: {
-        '1': '1px',
+      transitionDuration: {
+        '400': '400ms',
       },
     },
   },

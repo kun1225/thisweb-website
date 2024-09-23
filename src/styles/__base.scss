@@ -1,161 +1,103 @@
-/* 
-  Local Fonts
-*/
-/* Gen Sen Rounded */
-/* @font-face {
-  font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-B.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 700;
-}
-@font-face {
-  font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-M.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 500;
-}
-@font-face {
-  font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-R.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 400;
-}
-@font-face {
-  font-family: 'GenSenRounded';
-  src: url('./fonts/GenSenRounded-L.woff2') format('woff2');
-  font-display: swap;
-  font-weight: 300;
-} */
-/* Fira Code */
-@font-face {
-	font-family: 'FiraCode';
-	src: url('../../public/fonts/FiraCode-SemiBold.woff2') format('woff2');
-	font-display: swap;
-	font-weight: 600;
-}
-
-@font-face {
-	font-family: 'FiraCode';
-	src: url('../../public/fonts/FiraCode-Medium.woff2') format('woff2');
-	font-display: swap;
-	font-weight: 500;
-}
-
-@font-face {
-	font-family: 'FiraCode';
-	src: url('../../public/fonts/FiraCode-Regular.woff2') format('woff2');
-	font-display: swap;
-	font-weight: 400;
-}
-
-@font-face {
-	font-family: 'FiraCode';
-	src: url('../../public/fonts/FiraCode-Light.woff2') format('woff2');
-	font-display: swap;
-	font-weight: 300;
-}
-
 :root {
-	/* --font-GenSenRounded: 'GenSenRounded', sans-serif; */
-	--font-FiraCode: 'FiraCode', monospace;
+  --cr-primary: #00334e;
+  --cr-secondary: #477086;
+  --cr-secondary-2: #2577a3;
+  --cr-white: #f9fafb;
+  --cr-pure-white: #ffffff;
 
-	--cr-primary: #00334e;
-	--cr-secondary: #477086;
-	--cr-secondary-2: #2577a3;
-	--cr-white: #f9fafb;
-	--cr-pure-white: #ffffff;
+  --bg-header: rgba(249, 250, 251, 0.8);
 
-	--bg-header: rgba(249, 250, 251, 0.8);
+  --s-edge-xs: 2vw;
+  --s-edge-sm: 3vw;
+  --s-edge: 4vw;
+  --s-edge-lg: 5vw;
 
-	--s-edge-xs: 2vw;
-	--s-edge-sm: 4vw;
-	--s-edge: 6vw;
-	--s-edge-lg: 8vw;
+  --s-contain: max(var(--s-edge), 8px);
+  --s-contain-max: 1960px;
 
-	--s-contain: max(var(--s-edge-xs), 8px);
-	--s-contain-max: 1960px;
+  --s-edge-dynamic: max(
+    var(--s-contain),
+    calc((100vw - var(--s-contain-max)) / 2)
+  );
 
-	--s-edge-dynamic: max(var(--s-contain),
-			calc((100vw - var(--s-contain-max)) / 2));
-
-	--t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-body,
-html {
-	@apply min-h-full bg-gray-50 text-body-small xl:text-body 2xl:text-body-large text-neutral-950 font-normal tracking-wide scroll-smooth scroll-p-[120px] selection:bg-primary selection:text-white;
+html,
+body {
+  @apply min-h-full;
+}
+
+body {
+  @apply bg-gray-50 text-body-small xl:text-body 2xl:text-body-large font-sans text-neutral-950 font-normal tracking-wide scroll-smooth scroll-p-[120px] selection:bg-primary selection:text-white;
 }
 
 h1,
 h2,
 h3,
-h4 {
-	@apply text-primary;
+h4,
+h5,
+h6 {
+  @apply text-primary text-balance;
+}
+
+p {
+  @apply text-pretty;
 }
 
 ::selection {
-	@apply bg-primary text-white;
+  @apply bg-primary text-white;
 }
 
 ::-webkit-scrollbar {
-	@apply w-[8px] h-[8px];
+  @apply w-[8px] h-[8px];
 }
 
 ::-webkit-scrollbar-thumb {
-	@apply bg-gray-400 rounded-full;
+  @apply bg-gray-400 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	@apply bg-secondary;
+  @apply bg-secondary;
 }
 
 .scrollbar-small::-webkit-scrollbar {
-	@apply w-[4px] h-[4px];
+  @apply w-[4px] h-[4px];
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-	@apply hidden;
-}
-
-.c {
-	@apply max-w-7xl mx-auto;
-	width: calc(100vw - 12vw);
-}
-
-.hero__bg {
-	background-color: transparent;
-	background-image: radial-gradient(at 0% 0%,
-			hsla(200, 62%, 39%, 0.2) 0px,
-			transparent 50%),
-		radial-gradient(at 120% 50%, hsla(200, 100%, 15%, 0.2) 0px, transparent 50%);
+  @apply hidden;
 }
 
 .shine-text {
-	background: linear-gradient(-40deg,
-			#00334e 0%,
-			#00334e 40%,
-			rgba(255, 255, 255, 0.1) 50%,
-			#00334e 60%,
-			#00334e 100%) no-repeat;
-	background-size: 300%;
-	color: transparent;
-	background-clip: text;
-	animation-name: shine;
-	animation-duration: 6s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
+  background: linear-gradient(
+      -40deg,
+      #00334e 0%,
+      #00334e 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      #00334e 60%,
+      #00334e 100%
+    )
+    no-repeat;
+  background-size: 300%;
+  color: transparent;
+  background-clip: text;
+  animation-name: shine;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes shine {
-	0% {
-		background-position: 100%;
-	}
+  0% {
+    background-position: 100%;
+  }
 
-	25% {
-		background-position: 0%;
-	}
+  25% {
+    background-position: 0%;
+  }
 
-	100% {
-		background-position: 0%;
-	}
+  100% {
+    background-position: 0%;
+  }
 }
