@@ -1,6 +1,6 @@
 // *** Header ***
 .g-header {
-	@apply c sticky top-0 py-2 bg-header backdrop-blur-md z-header;
+	@apply c sticky top-0 py-2 backdrop-blur-lg z-header;
 
 	&__container {
 		@apply flex justify-between items-center
@@ -63,7 +63,7 @@
 	}
 
 	&__accordion {
-		@apply border-b-1 border-primary;
+		@apply border-b border-primary;
 
 		&__link {
 			@apply block p-4 font-semibold;
@@ -75,7 +75,7 @@
 	}
 
 	&__link {
-		@apply block p-4 font-semibold border-b-1 border-primary;
+		@apply block p-4 font-semibold border-b border-primary;
 	}
 }
 

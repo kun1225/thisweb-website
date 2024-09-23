@@ -1,4 +1,4 @@
-import HeroBanner from './_components/HeroBanner';
+import HomeHero from './_components/HomeHero';
 import ProblemSection from '../../_components/ProblemSection';
 import SiteOwnerSection from './_components/SiteOwnerSection';
 import RecommendedPosts from './_components/RecommendedPosts';
@@ -48,7 +48,7 @@ export default async function Home() {
 
   return (
     <>
-      <HeroBanner />
+      <HomeHero />
       <ProblemSection
         problemTitle="如果你遇到這些問題"
         problemCardContent={problemCardContent}

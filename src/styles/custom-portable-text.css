@@ -4,7 +4,7 @@
 
 .custom-portable-text pre,
 .custom-portable-text code {
-  @apply font-[FiraCode] font-normal text-body-small tracking-normal;
+  @apply font-mono font-normal text-body-small tracking-normal;
 }
 
 @media screen and (max-width: 768px) {

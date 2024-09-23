@@ -1,0 +1,20 @@
+.p-home {
+	&__hero {
+		@apply c relative min-h-[80vh] flex flex-col justify-center items-center gap-10 text-center;
+
+
+		&__bg {
+			@apply absolute top-0 left-0 w-full h-screen;
+
+			background-color: transparent;
+			background-image: radial-gradient(at 0% 0%,
+					hsla(200, 62%, 39%, 0.2) 0px,
+					transparent 50%),
+				radial-gradient(at 120% 50%, hsla(200, 100%, 15%, 0.2) 0px, transparent 50%);
+		}
+
+		&__heading {
+			@apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2]
+		}
+	}
+}
