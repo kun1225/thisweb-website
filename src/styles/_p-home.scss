@@ -1,20 +1,53 @@
-.p-home {
-	&__hero {
-		@apply c relative min-h-[80vh] flex flex-col justify-center items-center gap-10 text-center;
+// *** Hero ***
+.p-home__hero {
+  @apply c relative min-h-[80vh] flex flex-col justify-center items-center gap-10 text-center;
 
+  &__bg {
+    @apply absolute top-0 left-0 w-full h-screen;
 
-		&__bg {
-			@apply absolute top-0 left-0 w-full h-screen;
+    background-color: transparent;
+    background-image: radial-gradient(
+        at 0% 0%,
+        hsla(200, 62%, 39%, 0.2) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 120% 50%,
+        hsla(200, 100%, 15%, 0.2) 0px,
+        transparent 50%
+      );
+  }
 
-			background-color: transparent;
-			background-image: radial-gradient(at 0% 0%,
-					hsla(200, 62%, 39%, 0.2) 0px,
-					transparent 50%),
-				radial-gradient(at 120% 50%, hsla(200, 100%, 15%, 0.2) 0px, transparent 50%);
-		}
+  &__heading {
+    @apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2];
+  }
+}
 
-		&__heading {
-			@apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2]
-		}
-	}
+// *** Problems ***
+.p-home__problems {
+  @apply c my-24 flex flex-col gap-8 text-center;
+
+  &__heading {
+    @apply text-2xl md:mb-8 drop-shadow-md;
+  }
+
+  &__content {
+    @apply flex gap-8 flex-wrap;
+  }
+
+  &__item {
+    @apply flex-1 basis-40 p-4 md:p-8 flex flex-col items-center gap-2;
+
+    &__title {
+      @apply text-secondary text-2xl;
+    }
+
+    &__desc {
+      @apply text-balance;
+    }
+  }
+
+  &__icon {
+    @apply w-16 h-16 p-4 mb-4 text-primary bg-gray-100 rounded-2xl shadow-md;
+  }
 }
