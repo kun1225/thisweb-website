@@ -1,0 +1,31 @@
+.p-posts {
+  @apply c max-w-3xl mx-auto my-16 min-h-[80vh];
+
+  &__header {
+    @apply pb-4 mb-8 border-b-2 border-gray-200;
+  }
+
+  &__list {
+    @apply mb-20 flex flex-col gap-12;
+  }
+
+  &__item {
+    @apply relative hover:scale-105 transition-transform;
+
+    &__title {
+      @apply font-bold text-xl;
+    }
+
+    &__info {
+      @apply mt-1 mb-2 flex gap-2 text-xs text-gray-500 italic;
+    }
+
+    &__link {
+      @apply absolute inset-0;
+    }
+  }
+
+  &__pagination {
+    @apply flex gap-3 md:gap-6 justify-center text-base;
+  }
+}

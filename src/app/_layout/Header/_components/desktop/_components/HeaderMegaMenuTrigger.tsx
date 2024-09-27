@@ -13,7 +13,7 @@ export default function MegaMenuTrigger({
   title: string;
   index: number;
   currentIndex: number;
-  switchMegaMenu: (index: number) => void;
+  switchMegaMenu: (_index: number) => void;
 }) {
   return (
     <button

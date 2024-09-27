@@ -10,7 +10,7 @@ export default function HeaderNavContents({
 }: {
   headerContent: TypeGlobalHeaderContent;
   currentIndex: number;
-  switchMegaMenu: (index: number) => void;
+  switchMegaMenu: (_index: number) => void;
   closeMegaMenu: () => void;
 }) {
   return headerContent.navContents.map((item, index) => {

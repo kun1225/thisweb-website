@@ -1,18 +1,15 @@
 // Components
 import PostsHeader from './_components/PostsHeader';
 
-// Route Segment Config
-export const revalidate = 0;
-
-const PostsLayout: React.FC<{ children: React.ReactNode }> = async ({
+export default function PostsLayout({
   children,
-}) => {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="c my-16 min-h-[80vh]">
+    <div className="p-posts">
       <PostsHeader />
       {children}
     </div>
   );
-};
-
-export default PostsLayout;
+}

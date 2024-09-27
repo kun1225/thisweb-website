@@ -45,6 +45,12 @@ p {
   @apply text-pretty;
 }
 
+@media screen and (hover: hover) {
+  :focus-visible {
+    @apply outline-dashed outline-2 outline-offset-4 outline-primary;
+  }
+}
+
 ::selection {
   @apply bg-primary text-white;
 }

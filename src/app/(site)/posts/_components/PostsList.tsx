@@ -1,42 +1,59 @@
+// Libs
+import { format, parseISO } from 'date-fns';
+import { toPlainText } from '@portabletext/react';
 // Components
 import Link from 'next/link';
-// Libs
-import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
-import { toPlainText } from '@portabletext/react';
 // Types
-import { PostsType } from '@/src/libs/sanity/type';
+import { TypePosts, TypePost } from '@/src/libs/sanity/type/typePosts';
 
-const PostsList: React.FC<{ posts: PostsType }> = ({ posts }) => {
+export default function PostsList({ posts }: { posts: TypePosts }) {
   return (
-    <ul className="flex flex-col gap-12 mb-20">
-      {posts.length > 0 &&
-        posts.map(({ _id, title, body, publishedAt, slug, category }) => (
-          <li
-            key={_id}
-            className="relative z-10 hover:scale-105 transition-transform"
-          >
-            <Link className="block" href={`/post/${slug.current}`}>
-              <h3 className="font-bold text-xl">{title}</h3>
-              <div className="flex gap-2 mt-1 mb-2 text-xs text-gray-500 italic">
-                {category && <span>{category}</span>}
-                {category && publishedAt && <span>-</span>}
-                {publishedAt && (
-                  <time dateTime={publishedAt}>
-                    {format(parseISO(publishedAt), 'yyyy / LL / dd')}
-                  </time>
-                )}
-              </div>
-
-              <p className="text-sm">{`${toPlainText(body).slice(
-                0,
-                100,
-              )}...`}</p>
-            </Link>
-          </li>
+    posts.length > 0 && (
+      <ul className="p-posts__list">
+        {posts.map((post) => (
+          <PostsListItem key={post._id} item={post} />
         ))}
-    </ul>
+      </ul>
+    )
   );
-};
+}
 
-export default PostsList;
+function PostsListItem({ item }: { item: TypePost }) {
+  const { _id, title, body, publishedAt, slug, category } = item;
+
+  return (
+    <li key={_id} className="p-posts__item">
+      <h3 className="p-posts__item__title">{title}</h3>
+      <PostsListInfo category={category} publishedAt={publishedAt} />
+      <p className="text-sm">{`${toPlainText(body).slice(0, 100)}...`}</p>
+
+      <Link
+        className="p-posts__item__link"
+        href={`/post/${slug.current}`}
+        aria-label={`前往${title}文章`}
+      >
+        <span className="sr-only">{`前往${title}文章`}</span>
+      </Link>
+    </li>
+  );
+}
+
+function PostsListInfo({
+  category,
+  publishedAt,
+}: {
+  category?: TypePost['category'];
+  publishedAt?: TypePost['publishedAt'];
+}) {
+  return (
+    <div className="p-posts__item__info">
+      {category ? <span>{category}</span> : null}
+      {category && publishedAt ? <span>-</span> : null}
+      {publishedAt ? (
+        <time dateTime={publishedAt}>
+          {format(parseISO(publishedAt), 'yyyy / LL / dd')}
+        </time>
+      ) : null}
+    </div>
+  );
+}
