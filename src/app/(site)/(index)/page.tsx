@@ -1,7 +1,7 @@
 import HomeHero from './_components/HomeHero';
 import HomeProblems from './_components/HomeProblems';
-import SiteOwnerSection from './_components/SiteOwnerSection';
-import RecommendedPosts from './_components/RecommendedPosts';
+import HomeSiteOwner from './_components/HomeSiteOwner';
+import HomeRecommendedPosts from './_components/HomeRecommendedPosts';
 // Sanity Utils
 import { sanityFetch } from '@/src/libs/sanity/client';
 import { LIMITED_POSTS_QUERY } from '@/src/libs/sanity/queries';
@@ -21,8 +21,8 @@ export default async function Home() {
     <>
       <HomeHero />
       <HomeProblems />
-      <SiteOwnerSection />
-      <RecommendedPosts limitedPosts={posts} />
+      <HomeSiteOwner />
+      <HomeRecommendedPosts limitedPosts={posts} />
     </>
   );
 }
