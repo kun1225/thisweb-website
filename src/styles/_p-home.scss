@@ -19,7 +19,7 @@
   }
 
   &__heading {
-    @apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2];
+    @apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2] drop-shadow-md;
   }
 }
 
@@ -86,6 +86,6 @@
   }
 
   &__post {
-    @apply p-8 flex-1 rounded-md shadow-md shadow-gray-400  duration-200  hover:-translate-y-2 hover:shadow-lg hover:shadow-gray-600;
+    @apply p-8 flex-1 rounded-md shadow-md shadow-gray-300 duration-200 hover:-translate-y-2 hover:shadow-lg hover:shadow-gray-400;
   }
 }

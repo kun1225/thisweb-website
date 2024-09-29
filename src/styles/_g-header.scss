@@ -1,3 +1,5 @@
+@import '__mixins.scss';
+
 // *** Header ***
 .g-header {
   @apply c fixed top-0 w-full py-4 transition-all duration-400 isolate z-header;
@@ -58,19 +60,31 @@
 
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
-  @apply grid grid-cols-3 fixed top-[calc(var(--header-height)_+_16px)] p-4 rounded-xl bg-pure-white shadow-2xl transition duration-300 z-10;
+  @apply max-h-[80vh] overflow-auto p-4 grid grid-cols-3 fixed top-[calc(var(--header-height)_+_16px)] rounded-md bg-pure-white shadow-2xl transition duration-300 z-10;
 
-  inset-inline: min(calc(4 * var(--s-edge-dynamic)), 15vw);
+  @include breakpoint('sm') {
+    left: var(--s-edge-dynamic);
+    right: var(--s-edge-dynamic);
+  }
+
+  @include breakpoint('md') {
+    left: min(calc(3 * var(--s-edge-dynamic)), 15vw);
+    right: min(calc(3 * var(--s-edge-dynamic)), 15vw);
+  }
 
   &__link {
-    @apply block h-full p-4 transition hover:bg-gray-100;
+    @apply block h-full p-4 rounded-md transition hover:bg-gray-100;
   }
 
   &__categories {
-    @apply absolute bottom-2 left-0 mx-4 py-2 flex overflow-y-auto text-gray-600 select-none scrollbar-thumb-[#00000033] active:scrollbar-thumb-primary scrollbar-thumb-rounded-full scrollbar-h-1;
+    @apply absolute bottom-2 left-0 mx-4 py-2 flex gap-1 overflow-y-auto text-gray-600 select-none scrollbar-thumb-[#00000033] active:scrollbar-thumb-primary scrollbar-thumb-rounded-full scrollbar-h-1;
 
     &::-webkit-scrollbar {
       height: 0.25em;
+    }
+
+    &__link {
+      @apply inline-block py-1 px-2.5 text-xs rounded-full transition bg-gray-100 hover:bg-secondary hover:text-white;
     }
   }
 }
