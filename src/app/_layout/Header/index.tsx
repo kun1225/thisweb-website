@@ -8,6 +8,8 @@ import MobileMenu from './_components/mobile';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
+const SCROLLED_THRESHOLD = 200;
+
 export default function GHeader({
   headerContent,
 }: {
@@ -24,7 +26,7 @@ export default function GHeader({
     const handleScroll = () => {
       const currentScrollY = window.scrollY; // Get current scroll position
 
-      if (currentScrollY > 100) {
+      if (currentScrollY > SCROLLED_THRESHOLD) {
         gHeader?.classList.add('is-scrolled');
       } else {
         gHeader?.classList.remove('is-scrolled');
@@ -50,16 +52,16 @@ export default function GHeader({
     <header className="g-header" id="g-header">
       <div className="g-header__container">
         <Link href="/" title="This.Web Logo">
-          <div className="flex items-center gap-2">
+          <div className="g-header__logo">
             <Image
               src="/logo.png"
               alt="logo"
               width={24}
               height={24}
-              className="-translate-y-[2px]"
+              className="g-header__logo__img"
               title="This.Web Logo Image"
             />
-            <p className="font-mono font-semibold">This.Web</p>
+            <p className="g-header__logo__text">This.Web</p>
           </div>
         </Link>
         <DesktopMenu headerContent={headerContent} />

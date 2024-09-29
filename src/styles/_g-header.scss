@@ -1,9 +1,18 @@
 // *** Header ***
 .g-header {
-  @apply c sticky top-0 py-4 transition-all duration-400 z-header;
+  @apply c fixed top-0 w-full py-4 transition-all duration-400 isolate z-header;
 
   &.is-scrolled {
-    @apply py-2 bg-white border-b border-gray-200;
+    @apply py-2 bg-white shadow-sm;
+
+    .g-header__logo {
+      &__text {
+        @apply -translate-x-[48px];
+      }
+      &__img {
+        @apply scale-0 opacity-0;
+      }
+    }
   }
 
   &.is-scrolling-down {
@@ -14,8 +23,20 @@
     @apply flex justify-between items-center;
   }
 
+  &__logo {
+    @apply flex items-center gap-4;
+
+    &__img {
+      @apply -translate-y-[1px] scale-100 origin-left transition duration-400;
+    }
+
+    &__text {
+      @apply font-mono font-semibold translate-x-0 transition-transform duration-400;
+    }
+  }
+
   &__desktop {
-    @apply hidden md:flex md:gap-4 text-sm;
+    @apply hidden md:flex md:gap-6 text-sm;
   }
 
   &__mobile {

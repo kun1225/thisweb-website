@@ -55,18 +55,6 @@ p {
   @apply bg-primary text-white;
 }
 
-::-webkit-scrollbar {
-  @apply w-[8px] h-[8px];
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary;
-}
-
 .scrollbar-small::-webkit-scrollbar {
   @apply w-[4px] h-[4px];
 }
