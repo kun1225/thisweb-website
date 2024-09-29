@@ -8,7 +8,7 @@ import MobileMenu from './_components/mobile';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 
-const SCROLLED_THRESHOLD = 200;
+const SCROLLED_THRESHOLD = 0;
 
 export default function GHeader({
   headerContent,
