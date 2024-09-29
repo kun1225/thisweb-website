@@ -27,7 +27,7 @@ export default function SiteLayout({
         <ProgressBar />
       </Suspense>
       <GHeader headerContent={headerContent} />
-      <main className="transition duration-[0.6s]" id="g-main">
+      <main className="transition duration-200 ease-linear" id="main">
         {children}
       </main>
       <Footer />

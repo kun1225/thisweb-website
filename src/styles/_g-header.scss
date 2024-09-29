@@ -1,5 +1,15 @@
 @import '__mixins.scss';
 
+:root.is-megamenu-open {
+  body {
+    @apply overflow-y-hidden;
+  }
+
+  #main {
+    @apply blur-lg;
+  }
+}
+
 // *** Header ***
 .g-header {
   @apply c fixed top-0 w-full py-4 transition-all duration-400 isolate z-header;
@@ -60,7 +70,11 @@
 
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
-  @apply max-h-[80vh] overflow-auto p-4 grid grid-cols-3 fixed top-[calc(var(--header-height)_+_16px)] rounded-md bg-pure-white shadow-2xl transition duration-300 z-10;
+  @apply max-h-[80vh] overflow-auto p-4 grid grid-cols-3 fixed top-[calc(var(--header-height)_+_16px)] rounded-md bg-header shadow-md translate-y-10 opacity-0 pointer-events-none transition duration-200 z-10;
+
+  &.is-active {
+    @apply translate-y-0 opacity-100 pointer-events-auto;
+  }
 
   @include breakpoint('sm') {
     left: var(--s-edge-dynamic);

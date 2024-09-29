@@ -20,12 +20,9 @@ export default function HeaderPostsMegaMenu({
 
   return (
     <div
-      className={cn(
-        'g-header__posts-megamenu',
-        index === currentIndex
-          ? 'translate-y-0 opacity-100 pointer-events-auto blur-0'
-          : 'translate-y-10 opacity-0 pointer-events-none blur-md',
-      )}
+      className={cn('g-header__posts-megamenu', {
+        'is-active': index === currentIndex,
+      })}
     >
       {content.categories.map((category) => (
         <li key={category.url} className="rounded-md">
