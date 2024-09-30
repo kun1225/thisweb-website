@@ -1,8 +1,7 @@
 // style
 import '@/src/styles/prism.css';
-import '@/src/styles/custom-portable-text.css';
 // Sanity
-import { sanityFetch, urlFor } from '@/src/libs/sanity/client';
+import { sanityFetch, urlForImg } from '@/src/libs/sanity/client';
 import {
   POSTS_SLUG_QUERY,
   POST_QUERY,
@@ -15,7 +14,6 @@ import { toPlainText } from '@portabletext/react';
 import PostTitle from './_components/PostTitle';
 import PostNavigation from './_components/PostNavigation';
 import PostBody from './_components/PostBody';
-import PostSidebar from './_components/PostSidebar';
 // Type
 import { PostType } from '@/src/libs/sanity/type';
 // Libs
@@ -64,9 +62,6 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
   });
   if (!currentPost) notFound();
 
-  const mainImageUrl =
-    currentPost.mainImage && urlFor(currentPost.mainImage).width(1080).url();
-
   const relatedPosts = await sanityFetch<PostType[]>({
     query: RELATED_POSTS_QUERY,
     queryParams: {
@@ -89,20 +84,17 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <article className="my-8 mx-edge xl:mx-auto">
+      <article className="p-post">
         <PostTitle
           date={currentPost.publishedAt}
           title={currentPost.title}
           topic={currentPost.category}
         />
-        <section className="article flex flex-col-reverse items-center xl:justify-center transition xl:flex-row ">
-          <PostBody
-            mainImageUrl={mainImageUrl}
-            currentPost={currentPost}
-            relatedPosts={relatedPosts}
-          />
-          <PostSidebar source={currentPost.body} />
-        </section>
+        <PostBody
+          mainImage={currentPost.mainImage}
+          currentPost={currentPost}
+          relatedPosts={relatedPosts}
+        />
       </article>
 
       <PostNavigation nextPost={nextPost} prevPost={prevPost} />

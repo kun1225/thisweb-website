@@ -8,6 +8,7 @@ import { Refractor, registerLanguage } from 'react-refractor';
 import ImageEnlarger from './ImageEnlarger';
 import CodePen from './Codepen';
 import { Accordion, AccordionContent, AccordionTitle } from './Accordion';
+import Img from './Img';
 
 // Utils
 import GithubSlugger from 'github-slugger';
@@ -20,7 +21,7 @@ import bash from 'refractor/lang/bash';
 import jsx from 'refractor/lang/jsx';
 import tsx from 'refractor/lang/tsx';
 import template from 'refractor/lang/js-templates';
-import { urlFor } from '@/src/libs/sanity/client';
+import { urlForImg } from '@/src/libs/sanity/client';
 
 // Language
 registerLanguage(js);
@@ -62,9 +63,7 @@ const calloutComponents = {
   },
   types: {
     image: ({ value }: { value: any }) => {
-      const imageSrc = urlFor(value).width(1200).url();
-
-      return <ImageEnlarger src={imageSrc} alt="img" />;
+      return <Img image={value} />;
     },
 
     // {value}: {value: {code: any}}
@@ -76,7 +75,7 @@ const calloutComponents = {
         <>
           {title ? (
             <>
-              <span className="block pl-3 py-1 rounded-t-md border-b-2 text-white text-xs bg-[#2E3440] ">
+              <span className="not-prose block pl-3 py-1 rounded-t-md border-b-2 text-white text-xs bg-[#2E3440] ">
                 {title}
               </span>
               <Refractor
@@ -124,10 +123,7 @@ const myPortableTextComponents = {
           const cleanText = text.replace(/\s+/g, '');
           const id = slugger.slug(cleanText);
           return (
-            <h2
-              id={id}
-              className="mt-10 mb-2 text-2xl font-bold border-b-2 border-gray-200 pb-2"
-            >
+            <h2 id={id} className=" pb-2 border-b border-slate-300">
               {text}
             </h2>
           );
@@ -146,11 +142,7 @@ const myPortableTextComponents = {
         if (text) {
           const cleanText = text.replace(/\s+/g, '');
           const id = slugger.slug(cleanText);
-          return (
-            <h3 id={id} className="mt-6 mb-1 text-xl font-bold">
-              {text}
-            </h3>
-          );
+          return <h3 id={id}>{text}</h3>;
         }
       }
     },
@@ -164,15 +156,15 @@ const myPortableTextComponents = {
         }
 
         if (text) {
-          return <h4 className="my-1 text-lg font-bold">{text}</h4>;
+          return <h4>{text}</h4>;
         }
       }
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (
-        <p className="px-3 py-1 my-2 border-l-4 border-gray-400 bg-slate-100">
+        <blockquote className="not-prose px-3 py-1 my-2 border-l-4 border-gray-400 bg-slate-100">
           {children}
-        </p>
+        </blockquote>
       );
     },
     normal: ({ children }: { children: string[] }) => {
@@ -189,9 +181,7 @@ const myPortableTextComponents = {
   },
   types: {
     image: ({ value }: { value: any }) => {
-      const imageSrc = urlFor(value).width(1200).url();
-
-      return <ImageEnlarger src={imageSrc} alt="img" />;
+      return <Img image={value} />;
     },
     Video: ({ value }: { value: any }) => {
       return (
@@ -214,11 +204,11 @@ const myPortableTextComponents = {
         <>
           {title ? (
             <>
-              <span className="block -mb-3 rounded-t px-4 pt-1 pb-2 font-[FiraCode] text-sm text-gray-50 bg-slate-600">
+              <span className="block px-4 py-1.5 rounded-t font-mono text-sm text-gray-50 bg-slate-600">
                 {title}
               </span>
               <Refractor
-                className=""
+                className="!mt-0 !rounded-tl-none !rounded-tr-none"
                 language={language}
                 value={source.value.code}
                 markers={source.highlightedLines}
@@ -244,7 +234,7 @@ const myPortableTextComponents = {
 
       return isExpanded ? (
         <Accordion
-          className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md"
+          className="bg-gray-100 px-4 border border-gray-200 rounded shadow"
           duration={duration}
           stretch
         >
@@ -260,7 +250,7 @@ const myPortableTextComponents = {
           </AccordionContent>
         </Accordion>
       ) : (
-        <div className="callout bg-gray-100 p-4 mb-6 border-2 border-gray-300 rounded-md shadow-md">
+        <div className="bg-gray-100 px-4 border border-gray-200 rounded shadow">
           <p className="font-bold">{source.value.title}</p>
           <PortableText
             value={source.value.text}
@@ -275,7 +265,7 @@ const myPortableTextComponents = {
       const themeId = source.value.themeId;
 
       return (
-        <div className="mb-4">
+        <div>
           <CodePen url={url} themeId={themeId} />
         </div>
       );
@@ -307,10 +297,8 @@ const myPortableTextComponents = {
 const CustomPortableText = (props: any) => {
   slugger.reset();
   return (
-    <div className="custom-portable-text">
-      {/* @ts-ignore */}
-      <PortableText value={props.value} components={myPortableTextComponents} />
-    </div>
+    // @ts-ignore
+    <PortableText value={props.value} components={myPortableTextComponents} />
   );
 };
 

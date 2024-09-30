@@ -1,0 +1,51 @@
+@import '__mixins.scss';
+
+// *** Post ***
+.p-post {
+  @apply c mt-header;
+}
+
+// *** Post Header ***
+.p-post__header {
+  @apply flex gap-8 justify-center mb-[5vh];
+
+  &__decoration {
+    @apply hidden md:block w-[15vw];
+
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px) center/
+      32px 32px;
+  }
+
+  &__content {
+    @apply flex-auto min-h-[80vh] grid place-content-center gap-12 text-center;
+  }
+
+  &__info {
+    @apply flex flex-col md:flex-row md:gap-4 justify-center items-center text-xs md:text-sm text-gray-600;
+  }
+
+  &__title {
+    @apply text-3xl md:leading-relaxed md:text-4xl font-bold drop-shadow-md;
+  }
+
+  &__author {
+    @apply flex justify-center md:justify-between items-center gap-4 md:gap-16;
+
+    &__decoration {
+      @apply hidden md:inline-block flex-1 bg-gray-200 h-[1px];
+    }
+
+    &__name {
+      @apply text-xs text-gray-600;
+    }
+  }
+}
+
+// *** Post Body ***
+.p-post__body {
+  @apply flex flex-col-reverse items-center xl:justify-center transition xl:flex-row;
+
+  &__article {
+    @apply prose w-full max-w-3xl xl:px-8;
+  }
+}

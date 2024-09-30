@@ -1,0 +1,9 @@
+.c-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.78;
+
+  &__img {
+    object-fit: contain;
+  }
+}

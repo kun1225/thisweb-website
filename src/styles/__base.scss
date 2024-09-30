@@ -2,10 +2,16 @@
   --cr-primary: #00334e;
   --cr-secondary: #477086;
   --cr-secondary-2: #2577a3;
-  --cr-white: #f9fafb;
+  --cr-secondary-3: rgba(116, 202, 253, 0.2);
+  --cr-white: #f9fafb; // gray-50
   --cr-pure-white: #ffffff;
 
-  --bg-header: rgba(249, 250, 251, 0.9);
+  --cr-body: #1e293b; // slate-800
+  --cr-body-light: #475569; // slate-500
+
+  --bg-header: rgba(249, 250, 251, 0.85);
+
+  --header-height: 67.5px;
 
   --s-edge-xs: 2vw;
   --s-edge-sm: 3vw;
@@ -29,7 +35,7 @@ body {
 }
 
 body {
-  @apply bg-gray-50 text-body-small xl:text-body 2xl:text-body-large font-sans text-neutral-950 font-normal tracking-wide scroll-smooth scroll-p-[120px] selection:bg-primary selection:text-white;
+  @apply bg-gray-50 font-sans text-slate-800 font-normal tracking-wide scroll-smooth scroll-p-[120px] selection:bg-primary selection:text-white;
 }
 
 h1,

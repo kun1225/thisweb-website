@@ -8,7 +8,7 @@ export type PostType = SanityDocument & {
   };
   author: string;
   mainImage: {
-    _type: string;
+    _type: 'image';
     alt: string;
     asset: {
       _type: string;

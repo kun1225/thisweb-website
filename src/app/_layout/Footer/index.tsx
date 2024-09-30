@@ -4,7 +4,7 @@ import { navContent } from '../Header/navContent';
 function Footer() {
   return (
     <footer
-      className="flex flex-col md:flex-row justify-between gap-8 mt-32 p-16 bg-primary text-white text-xs transition duration-[0.6s]"
+      className="flex flex-col md:flex-row justify-between gap-8 mt-32 p-16 bg-primary text-white text-xs transition duration-200"
       id="g-footer"
     >
       <div>

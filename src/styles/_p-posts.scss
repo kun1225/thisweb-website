@@ -10,7 +10,7 @@
   }
 
   &__item {
-    @apply relative hover:scale-105 transition-transform;
+    @apply relative hover:scale-[1.02] transition-transform;
 
     &__title {
       @apply font-bold text-xl;

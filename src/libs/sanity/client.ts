@@ -9,9 +9,14 @@ export const client = createClient({
   useCdn: false,
 });
 
-const builder = imageUrlBuilder(client);
-export const urlFor = (source: any) => {
-  return builder.image(source);
+export const imgBuilder = imageUrlBuilder(client);
+
+export const urlForImg = (source: any) => {
+  // Ensure that source image contains a valid reference
+  if (!source?.asset?._ref) {
+    return undefined;
+  }
+  return imgBuilder.image(source).auto('format').fit('max');
 };
 
 export async function sanityFetch<QueryResponse>({

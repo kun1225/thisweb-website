@@ -42,16 +42,7 @@ const TableOfContents: React.FC<{
   }, []);
 
   return (
-    <motion.div
-      layout
-      transition={{ duration: 0.2, ease: 'easeInOut' }}
-      animate={{
-        opacity: isTocOpen || !isTocCollapsed ? 1 : 0,
-        y: isTocOpen || !isTocCollapsed ? 0 : '32px',
-        pointerEvents: isTocOpen || !isTocCollapsed ? 'auto' : 'none',
-      }}
-      className={cn(className)}
-    >
+    <div className={cn(className)}>
       <TableOfContentHeader
         toggleToc={toggleToc}
         setIsTocOpen={setIsTocOpen}
@@ -61,7 +52,7 @@ const TableOfContents: React.FC<{
         structuredHeadings={structuredHeadings}
         activeId={activeId}
       />
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,12 +1,13 @@
 @import '__mixins.scss';
 
 :root.is-megamenu-open {
-  body {
-    @apply overflow-y-hidden;
+  #main,
+  #g-footer {
+    @apply blur-md;
   }
 
-  #main {
-    @apply blur-lg;
+  .g-header {
+    @apply translate-y-0;
   }
 }
 
@@ -87,7 +88,7 @@
   }
 
   &__link {
-    @apply block h-full p-4 rounded-md transition hover:bg-gray-100;
+    @apply block h-full p-4 rounded-md transition border border-transparent hover:border-secondary;
   }
 
   &__categories {
@@ -98,7 +99,7 @@
     }
 
     &__link {
-      @apply inline-block py-1 px-2.5 text-xs rounded-full transition bg-gray-100 hover:bg-secondary hover:text-white;
+      @apply inline-block py-1 px-2.5 text-xs rounded-full transition bg-gray-200 hover:bg-secondary hover:text-white;
     }
   }
 }
