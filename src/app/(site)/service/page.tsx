@@ -12,9 +12,8 @@ import CustomPortableText from '../../_components/CustomPortableText';
 import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 import { FaLaptopCode } from 'react-icons/fa6';
 import { FaRunning } from 'react-icons/fa';
-import Stack from '../../_components/Stack';
 import Link from 'next/link';
-import Button from '../../_components/Button';
+import { Button } from '../../_components/Button';
 // import Cal from './_components/Cal';
 import NumberCounter from '../../_components/effect/NumberCounter';
 import Rotate3dEffect from '../../_components/effect/Rotate3dEffect';
@@ -45,13 +44,11 @@ const servicePage = async () => {
             <h3 className="text-body md:text-body-large text-neutral-950 font-semibold text-center">
               ThisWeb 前端職涯諮詢＆轉職陪跑教練服務
             </h3>
-            <Rotate3dEffect amplitude={{ x: 0.05, y: 0.2 }}>
-              <h2 className="service-page__title text-4xl md:text-5xl !leading-[1.5] font-semibold text-primary text-center mb-4">
-                打造高效學習與目標管理系統
-                <br />
-                轉職前端更順利
-              </h2>
-            </Rotate3dEffect>
+            <h1 className="service-page__title text-4xl md:text-5xl !leading-[1.5] font-semibold text-primary text-center mb-4">
+              打造高效學習與目標管理系統
+              <br />
+              轉職前端更順利
+            </h1>
 
             <Link
               href="https://cal.com/thisweb/career-counseling?user=thisweb&date=2024-05-23&month=2024-05"
@@ -145,8 +142,8 @@ const servicePage = async () => {
         </div>
 
         <div className="relative py-16 mt-32">
-          <div className="bg-secondary w-[50vw] h-[40vw] absolute -top-52 -left-20 blur-lg opacity-5 rounded-full -skew-x-12 pointer-events-none"></div>
-          <div className="bg-secondary w-[60vw] h-[20vw] absolute -bottom-40 -right-0 blur-lg opacity-5 rounded-full -skew-y-12 pointer-events-none"></div>
+          <div className="bg-secondary w-[50vw] h-[40vw] absolute -top-52 -left-20 blur-lg opacity-5 rounded-full -skew-x-12 pointer-events-none" />
+          <div className="bg-secondary w-[60vw] h-[20vw] absolute -bottom-40 -right-0 blur-lg opacity-5 rounded-full -skew-y-12 pointer-events-none" />
 
           <div className="c flex flex-col gap-8 text-center items-center ">
             <p className="text-3xl font-semibold text-primary">
@@ -190,7 +187,7 @@ const servicePage = async () => {
           <p className="text-3xl text-primary font-semibold text-center mb-12">
             如果你已經下定決心轉職，可以參考以下服務：
           </p>
-          <Stack direction="col" className="gap-32">
+          <ul className="flex flex-col gap-32">
             {servicesContent.map(
               (
                 { _id, title, icon: Icon, price, body, ctaLabel, ctaUrl },
@@ -199,15 +196,12 @@ const servicePage = async () => {
                 const direction =
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse';
                 return (
-                  <Stack
-                    className="justify-between p-6 md:p-16 bg-pure-white rounded-xl shadow-lg shadow-gray-400"
+                  <li
+                    className="flex justify-between p-6 md:p-16 bg-pure-white rounded-xl shadow-lg shadow-gray-400"
                     key={_id}
                   >
-                    <Stack className={`gap-[4vw] flex-col ${direction}`}>
-                      <Stack
-                        direction="col"
-                        className="gap-4 justify-start whitespace-nowrap"
-                      >
+                    <div className={`gap-[4vw] flex flex-col ${direction}`}>
+                      <div className="flex flex-col gap-4 justify-start whitespace-nowrap">
                         <Icon className="text-4xl text-primary rounded-full shadow-gray-400 shadow-lg p-4 w-16 h-16" />
                         <h3 className="text-4xl font-semibold">
                           {index + 1}. {title}
@@ -218,14 +212,16 @@ const servicePage = async () => {
                             {ctaLabel}
                           </Button>
                         </Link>
-                      </Stack>
-                      <CustomPortableText value={body} />
-                    </Stack>
-                  </Stack>
+                      </div>
+                      <div className="prose">
+                        <CustomPortableText value={body} />
+                      </div>
+                    </div>
+                  </li>
                 );
               },
             )}
-          </Stack>
+          </ul>
         </div>
       </section>
     </>

@@ -16,7 +16,7 @@ const NumberText: React.FC<NumberTextPropsType> = ({ value, isInView }) => {
   return (
     <span>
       <motion.span
-        className={`flex flex-col-reverse`}
+        className="flex flex-col-reverse"
         animate={{ y: `${isInView ? '0%' : translatePercent}` }}
         initial={{ y: translatePercent }}
         transition={{
@@ -27,7 +27,7 @@ const NumberText: React.FC<NumberTextPropsType> = ({ value, isInView }) => {
         }}
       >
         {Array.from({ length: value + 1 }).map((_, index) => (
-          <span>{index}</span>
+          <span key={index}>{index}</span>
         ))}
       </motion.span>
     </span>
@@ -36,7 +36,6 @@ const NumberText: React.FC<NumberTextPropsType> = ({ value, isInView }) => {
 
 export default function NumberCounter({
   value,
-  direction = 'up',
   className = '',
 }: {
   value: number;
@@ -57,7 +56,7 @@ export default function NumberCounter({
       className={cn('flex overflow-hidden h-[1em] leading-[1]', className)}
     >
       {valueArr.map((v) => (
-        <NumberText value={v} isInView={isInView} />
+        <NumberText key={v} value={v} isInView={isInView} />
       ))}
     </p>
   );
