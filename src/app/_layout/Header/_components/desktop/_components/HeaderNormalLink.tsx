@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/src/libs/utils';
 // Components
 import Link from 'next/link';
-import Magnetic from '@/src/app/_components/effect/Magnetic';
+// import Magnetic from '@/src/app/_components/effect/Magnetic';
 
 export default function HeaderNormalLink({
   linkText,
@@ -20,16 +20,16 @@ export default function HeaderNormalLink({
 
   return (
     <Link href={linkUrl} onClick={onClick}>
-      <Magnetic
+      <div
         className={cn(
           'g-header__normal-link',
           pathname === linkUrl
-            ? 'text-secondary font-semibold drop-shadow-lg'
+            ? 'text-secondary font-semibold drop-shadow-md'
             : 'text-gray-500 hover:text-secondary ',
         )}
       >
         {linkText}
-      </Magnetic>
+      </div>
     </Link>
   );
 }

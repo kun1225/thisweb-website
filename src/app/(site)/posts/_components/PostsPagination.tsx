@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { cn } from '@/src/libs/utils';
 
-function PaginatedNav({
+export default function PostsPagination({
   currentPage,
   totalPages,
   articlesPerPage,
@@ -11,8 +11,6 @@ function PaginatedNav({
   totalPages: number;
   articlesPerPage: number;
 }) {
-  // const params = useParams<''>()
-
   const getPageNumbers = () => {
     const pageNumbers = [];
     for (
@@ -28,7 +26,7 @@ function PaginatedNav({
   };
 
   return (
-    <div className="flex gap-3 md:gap-6 justify-center text-base">
+    <div className="p-posts__pagination">
       {currentPage > 1 && (
         <Link href={`${currentPage - 2}`}>
           <p className=" hover:text-secondary duration-200">
@@ -68,5 +66,3 @@ function PaginatedNav({
     </div>
   );
 }
-
-export default PaginatedNav;

@@ -21,10 +21,13 @@ export default function DesktopMenu({
   const switchMegaMenu = (index: number) => {
     if (index === currentIndex) setCurrentIndex(-1);
     else setCurrentIndex(index);
+
+    document.documentElement.classList.toggle('is-megamenu-open', index !== -1);
   };
 
   const closeMegaMenu = () => {
     setCurrentIndex(-1);
+    document.documentElement.classList.remove('is-megamenu-open');
   };
 
   useEffect(() => {

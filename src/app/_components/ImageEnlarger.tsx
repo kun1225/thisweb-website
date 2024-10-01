@@ -53,7 +53,7 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
   return (
     <motion.div
       className={`relative w-full mb-4 ${className}`}
-      style={{ minHeight: `${`${wrapperHeight}px` || 'auto'}` }}
+      style={{ minHeight: `${wrapperHeight ? `${wrapperHeight}px` : 'auto'}` }}
     >
       <motion.div
         onClick={() => handleImageEnlarge(false)}

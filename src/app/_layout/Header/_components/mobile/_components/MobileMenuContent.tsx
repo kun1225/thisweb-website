@@ -34,7 +34,7 @@ export default function MobileMenuContent({
   useEffect(() => {
     if (typeof window !== 'undefined') {
       footer.current = document.getElementById('g-footer');
-      main.current = document.getElementById('g-main');
+      main.current = document.getElementById('main');
       main.current?.classList.toggle('blur-md', isMobileMenuOpen);
       footer.current?.classList.toggle('blur-md', isMobileMenuOpen);
 

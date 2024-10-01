@@ -1,8 +1,8 @@
 // Next
 import { Metadata } from 'next';
 // Components
-import EmptyPage from '../../_components/EmptyPage';
-import PaginatedNav from '../../_components/PaginatedNav';
+import EmptyPage from '../../_components/PostsEmptyPage';
+import PaginatedNav from '../../_components/PostsPagination';
 import PostsList from '../../_components/PostsList';
 // Sanity
 import {

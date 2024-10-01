@@ -1,84 +1,124 @@
 'use client';
-// Hooks
+// Hooks & Libs
 import { useState, useMemo, useEffect } from 'react';
-import useGlobalSettings from '@/src/app/_hooks/useGlobalSettings';
-
-// Utils
-import { cn } from '@/src/libs/utils';
-import { extractHeadings, transformRawHeadings } from './tableOfContents/utils';
-
+import GithubSlugger from 'github-slugger';
 // Components
-import TableOfContents from './tableOfContents';
-import TableOfContentsIndicator from './TableOfContentsIndicator';
-import Overlay from '@/src/app/_components/Overlay';
+import PostSidebarBody from './PostSidebarBody';
+//Types
+import { TypePostSidebarHeading } from './type';
 
-// xl:absolute xl:top-20 xl:right-4
-
-const PostSidebar: React.FC<{
-  source: any[];
-  className?: React.HTMLAttributes<HTMLElement>['className'];
-}> = ({ source, className }) => {
-  const { isTocCollapsed } = useGlobalSettings();
-  const [isTocOpen, setIsTocOpen] = useState(!isTocCollapsed);
+export default function PostSidebar({ source }: { source: any[] }) {
   const [activeId, setActiveId] = useState<string>();
 
   const rawHeadings = extractHeadings(source);
+
   const structuredHeadings = useMemo(
     () => transformRawHeadings(rawHeadings),
-    [source],
+    [rawHeadings],
   );
 
   useEffect(() => {
-    const closeToc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsTocOpen(false);
+    const headingElements = Array.from(
+      document.querySelectorAll('#p-post h2, #p-post h3'),
+    );
+
+    const observer = observeHeading(headingElements, setActiveId);
+
+    return () => {
+      observer.disconnect();
     };
-
-    document.addEventListener('keydown', closeToc);
-
-    return () => document.removeEventListener('keydown', closeToc);
-  });
+  }, [setActiveId]);
 
   return (
-    <>
-      {isTocCollapsed && (
-        <Overlay
-          className={cn(isTocCollapsed && isTocOpen && 'pointer-events-auto')}
-          onClick={() => setIsTocOpen(false)}
-        />
-      )}
-
-      <aside
-        className={cn(
-          'block w-full max-w-2xl  mb-8 border-2 rounded-md xl:sticky xl:w-auto xl:max-w-fit xl:self-start xl:top-20 xl:mb-0 xl:border-0',
-          isTocCollapsed && 'xl:overflow-visible xl:top-32 xl:pr-edge xl:pl-8 ',
-          className,
-        )}
-      >
-        <TableOfContentsIndicator
-          className={cn(
-            'hidden pointer-events-none cursor-pointer transition duration-200',
-            isTocCollapsed &&
-              'xl:flex xl:flex-col xl:gap-4 xl:items-end xl:pointer-events-auto',
-          )}
-          structuredHeadings={structuredHeadings}
-          activeId={activeId}
-          onClick={() => setIsTocOpen(!isTocOpen)}
-        />
-        <TableOfContents
-          className={cn(
-            'scrollbar-small w-full xl:w-[320px] p-6 xl:max-h-[80vh] overflow-y-auto bg-transparent rounded-lg',
-            isTocCollapsed &&
-              'xl:absolute xl:right-full xl:top-0 xl:shadow-2xl xl:bg-pure-white xl:pointer-events-none',
-          )}
-          structuredHeadings={structuredHeadings}
-          activeId={activeId}
-          setActiveId={setActiveId}
-          isTocOpen={isTocOpen}
-          setIsTocOpen={setIsTocOpen}
-        />
-      </aside>
-    </>
+    <aside className="p-post__sidebar">
+      <PostSidebarHeader />
+      <PostSidebarBody
+        structuredHeadings={structuredHeadings}
+        activeId={activeId}
+      />
+    </aside>
   );
-};
+}
 
-export default PostSidebar;
+function PostSidebarHeader() {
+  return (
+    <div className="p-post__sidebar__header">
+      <p className="text-primary" data-testid="toc-header-title">
+        目錄
+      </p>
+    </div>
+  );
+}
+
+// *** Helper Functions ***
+export function getIndexFromId(headingElements: Element[], id: string) {
+  return headingElements.findIndex((heading) => heading.id === id);
+}
+
+export function findLastVisibleHeadingEntry(
+  headingsEntry: IntersectionObserverEntry[],
+  headingElements: Element[],
+) {
+  return headingsEntry.sort(
+    (a, b) =>
+      getIndexFromId(headingElements, b.target.id) -
+      getIndexFromId(headingElements, a.target.id),
+  )[0];
+}
+
+export function observeHeading(
+  headingElements: Element[],
+  setActiveId: (_id: string) => void,
+) {
+  const setCurrentActiveId = (headingsEntry: IntersectionObserverEntry[]) => {
+    if (!headingsEntry[0]?.isIntersecting) return;
+
+    if (headingsEntry.length === 1) {
+      setActiveId(headingsEntry[0]!.target.id);
+    } else if (headingsEntry.length > 1) {
+      const lastVisibleHeadingEntry = findLastVisibleHeadingEntry(
+        headingsEntry,
+        headingElements,
+      );
+
+      setActiveId(lastVisibleHeadingEntry!.target.id);
+    }
+  };
+
+  const observer = new IntersectionObserver(setCurrentActiveId, {
+    rootMargin: '0px 0px -60% 0px',
+  });
+
+  headingElements.forEach((element) => {
+    observer.observe(element);
+  });
+
+  return observer;
+}
+
+export function transformRawHeadings(rawHeadings: any[]) {
+  const headings: TypePostSidebarHeading[] = [];
+  let currentH2: TypePostSidebarHeading | null = null;
+
+  rawHeadings.forEach((rawHeading) => {
+    const { style, children } = rawHeading;
+    const text = children[0]?.text;
+    const level = style === 'h2' ? 2 : 3;
+
+    const slugger = new GithubSlugger();
+    const id = text && slugger.slug(text.replace(/\s+/g, ''));
+
+    if (style === 'h2') {
+      currentH2 = { text, level, id, children: [] };
+      headings.push(currentH2);
+    } else if (style === 'h3' && currentH2) {
+      currentH2.children.push({ text, level, id });
+    }
+  });
+
+  return headings;
+}
+
+export function extractHeadings(source: any[]): any[] {
+  return source.filter((block) => ['h2', 'h3'].includes(block.style));
+}

@@ -2,6 +2,13 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import '_base';
+@import '_animation';
+
+// Pages
+@import 'p-home';
+@import 'p-posts';
+@import 'p-post';
 
 // Components
 @import 'g-header';
+@import 'c-img';

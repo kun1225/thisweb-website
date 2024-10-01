@@ -24,6 +24,8 @@ const config: Config = {
         white: 'var(--cr-white)',
         'pure-white': 'var(--cr-pure-white)',
         header: 'var(--bg-header)',
+        body: 'var(--cr-body)',
+        'body-light': 'var(--cr-body-light)',
       },
       zIndex: {
         toast: '50',
@@ -52,14 +54,31 @@ const config: Config = {
         edge: 'var(--s-edge)',
         'edge-lg': 'var(--s-edge-lg)',
         'edge-dynamic': 'var(--s-edge-dynamic)',
+        header: 'var(--header-height)',
+      },
+      fontFamily: {
+        sans: ['var(--font-GenSenRounded), sans-serif'],
+        mono: ['var(--font-FiraCode), monospace'],
       },
       fontSize: {
         body: ['1.05rem', '1.55'],
         'body-large': ['1.1rem', '1.6'],
         'body-small': ['1rem', '1.5'],
       },
-      borderWidth: {
-        '1': '1px',
+      transitionDuration: {
+        '400': '400ms',
+      },
+      scale: {
+        102: '1.02',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'var(--cr-body)',
+            '--tw-prose-headings': 'var(--cr-primary)',
+            '--tw-prose-links': 'var(--cr-secondary)',
+          },
+        },
       },
     },
   },
@@ -76,6 +95,7 @@ const config: Config = {
       nocompatible: true,
       preferredStrategy: 'pseudoelements',
     }),
+    require('@tailwindcss/typography'),
   ],
 };
 export default config;
