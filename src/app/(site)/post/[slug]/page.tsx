@@ -84,7 +84,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <article className="p-post">
+      <article className="p-post" id="p-post">
         <PostTitle
           date={currentPost.publishedAt}
           title={currentPost.title}

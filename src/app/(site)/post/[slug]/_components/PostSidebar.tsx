@@ -1,7 +1,56 @@
+'use client';
+// Hooks & Libs
+import { useState, useMemo, useEffect } from 'react';
 import GithubSlugger from 'github-slugger';
+// Components
+import PostSidebarBody from './PostSidebarBody';
+//Types
+import { TypePostSidebarHeading } from './type';
 
-import { HeadingType } from './type';
+export default function PostSidebar({ source }: { source: any[] }) {
+  const [activeId, setActiveId] = useState<string>();
 
+  const rawHeadings = extractHeadings(source);
+
+  const structuredHeadings = useMemo(
+    () => transformRawHeadings(rawHeadings),
+    [rawHeadings],
+  );
+
+  useEffect(() => {
+    const headingElements = Array.from(
+      document.querySelectorAll('#p-post h2, #p-post h3'),
+    );
+
+    const observer = observeHeading(headingElements, setActiveId);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [setActiveId]);
+
+  return (
+    <aside className="p-post__sidebar">
+      <PostSidebarHeader />
+      <PostSidebarBody
+        structuredHeadings={structuredHeadings}
+        activeId={activeId}
+      />
+    </aside>
+  );
+}
+
+function PostSidebarHeader() {
+  return (
+    <div className="p-post__sidebar__header">
+      <p className="text-primary" data-testid="toc-header-title">
+        目錄
+      </p>
+    </div>
+  );
+}
+
+// *** Helper Functions ***
 export function getIndexFromId(headingElements: Element[], id: string) {
   return headingElements.findIndex((heading) => heading.id === id);
 }
@@ -19,7 +68,7 @@ export function findLastVisibleHeadingEntry(
 
 export function observeHeading(
   headingElements: Element[],
-  setActiveId: (id: string) => void,
+  setActiveId: (_id: string) => void,
 ) {
   const setCurrentActiveId = (headingsEntry: IntersectionObserverEntry[]) => {
     if (!headingsEntry[0]?.isIntersecting) return;
@@ -48,8 +97,8 @@ export function observeHeading(
 }
 
 export function transformRawHeadings(rawHeadings: any[]) {
-  const headings: HeadingType[] = [];
-  let currentH2: HeadingType | null = null;
+  const headings: TypePostSidebarHeading[] = [];
+  let currentH2: TypePostSidebarHeading | null = null;
 
   rawHeadings.forEach((rawHeading) => {
     const { style, children } = rawHeading;

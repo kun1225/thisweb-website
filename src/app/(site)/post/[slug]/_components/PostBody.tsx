@@ -1,6 +1,6 @@
 // Components
-import PostBodyArticle from './PostBodyArticle';
-import PostSidebar from './PostBodySidebar';
+import PostArticle from './PostArticle';
+import PostSidebar from './PostSidebar';
 // Types
 import { PostType } from '@/src/libs/sanity/type';
 import { TypeImage } from '@/src/libs/sanity/type/typeImage';
@@ -16,7 +16,7 @@ export default function PostBody({
 }) {
   return (
     <section className="p-post__body">
-      <PostBodyArticle
+      <PostArticle
         mainImage={mainImage}
         currentPost={currentPost}
         relatedPosts={relatedPosts}

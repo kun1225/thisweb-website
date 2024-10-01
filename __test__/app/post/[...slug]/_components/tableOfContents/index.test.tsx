@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import TableOfContents from '@/src/app/(site)/post/[slug]/_components/tableOfContents';
-import { HeadingType } from '@/src/app/(site)/post/[slug]/_components/tableOfContents/type';
+import TableOfContents from '@/src/app/(site)/post/[slug]/_components/PostTOC';
+import { HeadingType } from '@/src/app/(site)/post/[slug]/_components/PostTOC/type';
 
 const mockUseGlobalSettings = vi.fn().mockReturnValue({
   isTocCollapsed: false,

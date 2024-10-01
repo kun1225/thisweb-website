@@ -1,19 +1,45 @@
+@import '__mixins.scss';
+
 .p-posts {
-  @apply c max-w-3xl mx-auto my-16 min-h-[80vh];
+  @apply c 2xl:px-0 max-w-3xl mx-auto my-16 min-h-[80vh];
 
   &__header {
     @apply pb-4 mb-8 border-b-2 border-gray-200;
   }
 
   &__list {
-    @apply mb-20 flex flex-col gap-12;
+    @apply mb-20 flex flex-col;
+
+    @include breakpoint('lg') {
+      &:hover {
+        .p-posts__item {
+          @apply blur-[2.5px];
+        }
+      }
+    }
   }
 
   &__item {
-    @apply relative hover:scale-[1.02] transition-transform;
+    @apply relative py-4 lg:py-6 transition duration-400;
+
+    @include breakpoint('lg') {
+      &.p-posts__item:hover {
+        @apply scale-[1.12] blur-0;
+      }
+
+      &:has(+ .p-posts__item:hover),
+      &:hover + .p-posts__item {
+        @apply scale-[1.025] blur-[0.5px];
+      }
+
+      &:has(+ .p-posts__item + .p-posts__item:hover),
+      &:hover + .p-posts__item + .p-posts__item {
+        @apply scale-[1.01] blur-[1px];
+      }
+    }
 
     &__title {
-      @apply font-bold text-xl;
+      @apply font-bold text-xl text-secondary;
     }
 
     &__info {

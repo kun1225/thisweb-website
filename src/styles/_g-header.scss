@@ -77,12 +77,12 @@
     @apply translate-y-0 opacity-100 pointer-events-auto;
   }
 
-  @include breakpoint('sm') {
+  @include breakpoint('md') {
     left: var(--s-edge-dynamic);
     right: var(--s-edge-dynamic);
   }
 
-  @include breakpoint('md') {
+  @include breakpoint('lg') {
     left: min(calc(3 * var(--s-edge-dynamic)), 15vw);
     right: min(calc(3 * var(--s-edge-dynamic)), 15vw);
   }

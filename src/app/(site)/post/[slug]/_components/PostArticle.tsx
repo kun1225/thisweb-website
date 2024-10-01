@@ -6,7 +6,7 @@ import CustomPortableText from '@/src/app/_components/CustomPortableText';
 import { PostType } from '@/src/libs/sanity/type';
 import { TypeImage } from '@/src/libs/sanity/type/typeImage';
 
-export default function PostBodyArticle({
+export default function PostArticle({
   mainImage,
   currentPost,
   relatedPosts,
@@ -14,10 +14,9 @@ export default function PostBodyArticle({
   mainImage: TypeImage;
   currentPost: PostType;
   relatedPosts: PostType[];
-  className?: React.HTMLAttributes<HTMLElement>['className'];
 }) {
   return (
-    <div className="p-post__body__article">
+    <div className="p-post__article">
       {mainImage ? <Img image={mainImage} /> : null}
       <CustomPortableText value={currentPost.body} />
 

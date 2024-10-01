@@ -34,8 +34,12 @@ body {
   @apply min-h-full;
 }
 
+html {
+  @apply scroll-smooth scroll-p-[120px];
+}
+
 body {
-  @apply bg-gray-50 font-sans text-slate-800 font-normal tracking-wide scroll-smooth scroll-p-[120px] selection:bg-primary selection:text-white;
+  @apply bg-gray-50 font-sans text-slate-800 font-normal tracking-wide selection:bg-secondary selection:text-white;
 }
 
 h1,
@@ -55,10 +59,6 @@ p {
   :focus-visible {
     @apply outline-dashed outline-2 outline-offset-4 outline-primary;
   }
-}
-
-::selection {
-  @apply bg-primary text-white;
 }
 
 .scrollbar-small::-webkit-scrollbar {
