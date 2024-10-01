@@ -25,7 +25,7 @@ export default function HeaderPostsMegaMenu({
       })}
     >
       {content.categories.map((category) => (
-        <li key={category.url} className="rounded-md">
+        <li key={category.url} className="g-header__posts-megamenu__item">
           <div className="block relative h-full">
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}

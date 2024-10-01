@@ -22,7 +22,6 @@ export default function GHeader({
       `${gHeader?.clientHeight}px`,
     );
 
-    let lastScrollY = 0; // Store the last scroll position
     const handleScroll = () => {
       const currentScrollY = window.scrollY; // Get current scroll position
 
@@ -31,14 +30,6 @@ export default function GHeader({
       } else {
         gHeader?.classList.remove('is-scrolled');
       }
-
-      // Detect scroll direction
-      if (currentScrollY > lastScrollY && currentScrollY > window.innerHeight) {
-        gHeader?.classList.add('is-scrolling-down');
-      } else {
-        gHeader?.classList.remove('is-scrolling-down');
-      }
-      lastScrollY = currentScrollY; // Update last scroll position
     };
 
     document.addEventListener('scroll', handleScroll);

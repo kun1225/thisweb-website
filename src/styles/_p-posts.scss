@@ -1,7 +1,7 @@
 @import '__mixins.scss';
 
 .p-posts {
-  @apply c 2xl:px-0 max-w-3xl mx-auto my-16 min-h-[80vh];
+  @apply c 2xl:px-0 max-w-3xl mx-auto mt-32 mb-16 min-h-[80vh];
 
   &__header {
     @apply pb-4 mb-8 border-b-2 border-gray-200;
@@ -53,5 +53,27 @@
 
   &__pagination {
     @apply flex gap-3 md:gap-6 justify-center text-base;
+  }
+}
+
+// *** Animation ***
+.p-posts {
+  &__header {
+    opacity: 0;
+    animation:
+      fade-in 0.6s linear forwards,
+      slide-up 0.4s ease-in-out;
+  }
+
+  &__item {
+    opacity: 0;
+    animation:
+      fade-in 0.6s linear forwards,
+      slide-up 0.4s ease-in-out;
+    @for $i from 0 through 10 {
+      &:nth-child(#{$i}) {
+        animation-delay: $i * 0.1s;
+      }
+    }
   }
 }

@@ -55,8 +55,8 @@ export default function NumberCounter({
       ref={ref}
       className={cn('flex overflow-hidden h-[1em] leading-[1]', className)}
     >
-      {valueArr.map((v) => (
-        <NumberText key={v} value={v} isInView={isInView} />
+      {valueArr.map((v, index) => (
+        <NumberText key={index} value={v} isInView={isInView} />
       ))}
     </p>
   );
