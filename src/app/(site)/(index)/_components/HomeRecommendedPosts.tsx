@@ -29,11 +29,14 @@ export default function HomeRecommendedPosts({
 }
 
 function PostCard({ post }: { post: PostType }) {
-  const { title, body, url } = post;
+  const { title, body, slug } = post;
   const truncateDesc = toPlainText(body).split('').slice(0, 50).join('');
 
   return (
-    <Link className="p-home__recommended-posts__post" href={`post/${url}`}>
+    <Link
+      className="p-home__recommended-posts__post"
+      href={`post/${slug.current}`}
+    >
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p>{truncateDesc}...</p>
     </Link>
