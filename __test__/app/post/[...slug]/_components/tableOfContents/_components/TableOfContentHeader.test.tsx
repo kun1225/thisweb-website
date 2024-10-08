@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { describe, test, expect, vitest } from 'vitest';
-import TableOfContentHeader from '@/app/post/[slug]/_components/tableOfContents/_components/TableOfContentHeader';
+import TableOfContentHeader from '@/src/app/(site)/post/[slug]/_components/PostTOC/_components/TableOfContentHeader';
 
 describe('TableOfContentHeader Component', () => {
   const toggleToc = vitest.fn();

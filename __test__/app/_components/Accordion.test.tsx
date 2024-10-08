@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionTitle,
   AccordionContent,
-} from '@/app/_components/Accordion';
+} from '@/src/app/_components/Accordion';
 
 describe('Accordion', () => {
   describe('Accordion initial state', () => {

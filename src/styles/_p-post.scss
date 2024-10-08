@@ -1,0 +1,128 @@
+@import '__mixins.scss';
+
+// *** Post ***
+.p-post {
+  @apply c mt-header;
+}
+
+// *** Post Header ***
+.p-post__header {
+  @apply flex gap-8 justify-center mb-[5vh];
+
+  &__decoration {
+    @apply hidden md:block w-[15vw];
+
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px) center/
+      32px 32px;
+  }
+
+  &__content {
+    @apply flex-auto min-h-[80vh] grid place-content-center gap-12 text-center;
+  }
+
+  &__info {
+    @apply flex flex-col md:flex-row md:gap-4 justify-center items-center text-xs md:text-sm text-gray-600;
+  }
+
+  &__title {
+    @apply text-3xl md:leading-relaxed md:text-4xl font-bold drop-shadow-md;
+  }
+
+  &__author {
+    @apply flex justify-center md:justify-between items-center gap-4 md:gap-16;
+
+    &__decoration {
+      @apply inline-block flex-1 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)] h-[1px];
+    }
+
+    &__name {
+      @apply text-xs text-gray-600;
+    }
+  }
+}
+
+// *** Post Body ***
+.p-post {
+  &__body {
+    @apply flex flex-col-reverse items-center xl:justify-center transition xl:flex-row;
+  }
+
+  &__article {
+    @apply prose 3xl:prose-lg w-full max-w-3xl;
+  }
+
+  &__sidebar {
+    --top: calc(16px + var(--header-height));
+
+    @apply max-w-3xl w-full mb-8 p-8 border xl:max-w-xs xl:max-h-[60vh] xl:py-0 xl:pr-4 xl:pl-edge xl:self-start xl:sticky xl:top-[var(--top)] xl:mb-0 xl:border-0 xl:overflow-y-auto xl:scrollbar-w-1;
+
+    &__header {
+      @apply flex justify-between items-center gap-2 mb-2;
+    }
+
+    &__body {
+      @apply flex flex-col gap-1 text-sm;
+    }
+  }
+}
+
+// *** animation ***
+
+.p-post {
+  &__header {
+    &__decoration,
+    &__info,
+    &__title,
+    &__author__name {
+      opacity: 0;
+    }
+
+    &__decoration {
+      animation: fade-in 0.6s linear forwards;
+    }
+
+    &__info {
+      animation: fade-in 0.6s linear forwards;
+    }
+    &__title {
+      animation: fade-in 0.6s 0.2s linear forwards;
+    }
+
+    &__author {
+      &__decoration {
+        &:first-of-type {
+          transform-origin: left;
+        }
+
+        &:last-of-type {
+          transform-origin: right;
+        }
+
+        transform: scale(0);
+        animation: slide-in 1.2s 0.4s ease-in-out forwards;
+        @keyframes slide-in {
+          from {
+            transform: scale(0);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
+      }
+
+      &__name {
+        animation: fade-in 0.6s 0.6s linear forwards;
+      }
+    }
+  }
+
+  &__article {
+    opacity: 0;
+    animation: fade-in 0.6s 0.8s linear forwards;
+  }
+
+  &__sidebar {
+    opacity: 0;
+    animation: fade-in 0.6s 1s linear forwards;
+  }
+}

@@ -1,3 +1,5 @@
+const path = require('node:path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
@@ -15,6 +17,10 @@ const nextConfig = {
         hostname: 'cdn.sanity.io',
       },
     ],
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+    // prependData: `@import "/src/styles/_mixin";`,
   },
 };
 

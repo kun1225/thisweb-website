@@ -5,8 +5,8 @@ import {
   observeHeading,
   transformRawHeadings,
   extractHeadings,
-} from '@/app/post/[slug]/_components/tableOfContents/utils';
-import { HeadingType } from '@/app/post/[slug]/_components/tableOfContents/type';
+} from '@/src/app/(site)/post/[slug]/_components/PostTOC/utils';
+import { HeadingType } from '@/src/app/(site)/post/[slug]/_components/PostTOC/type';
 
 describe('getIndexFromId', () => {
   it('should return correct index when id is present in headingElements', () => {
