@@ -34,7 +34,7 @@ export default function HeaderPostsMegaMenu({
               title={category.title}
               onClick={closeMegaMenu}
             >
-              <h3 className="text-xl font-bold mb-1">{category.title}</h3>
+              <h3 className="text-xl font-semibold mb-1">{category.title}</h3>
               <p className="text-sm mb-14">{category.description}</p>
             </Link>
 
