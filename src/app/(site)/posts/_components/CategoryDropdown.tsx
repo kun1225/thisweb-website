@@ -80,7 +80,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                   onClick={() => setIsDropdownOpen(false)}
                   className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                     decodedCategory == '文章分類' &&
-                      'font-bold pointer-events-none text-neutral-950',
+                      'font-semibold pointer-events-none text-neutral-950',
                   )}`}
                 >
                   全部文章
@@ -99,7 +99,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({
                     onClick={() => setIsDropdownOpen(false)}
                     className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
                       decodedCategory == title &&
-                        'font-bold pointer-events-none text-neutral-950',
+                        'font-semibold pointer-events-none text-neutral-950',
                     )}`}
                   >
                     {title}

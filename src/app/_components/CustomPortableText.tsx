@@ -238,7 +238,7 @@ const myPortableTextComponents = {
           duration={duration}
           stretch
         >
-          <AccordionTitle className="font-bold">
+          <AccordionTitle className="font-semibold">
             {source.value.title}
           </AccordionTitle>
           <AccordionContent>
@@ -251,7 +251,7 @@ const myPortableTextComponents = {
         </Accordion>
       ) : (
         <div className="bg-gray-100 px-4 border border-gray-200 rounded shadow">
-          <p className="font-bold">{source.value.title}</p>
+          <p className="font-semibold">{source.value.title}</p>
           <PortableText
             value={source.value.text}
             //@ts-ignore

@@ -42,7 +42,7 @@ const PostsHeader: React.FC = () => {
 
   return (
     <div className="p-posts__header">
-      <h2 className="text-3xl font-bold">
+      <h2 className="text-3xl font-semibold">
         <span>✏️</span>
         <span className="ml-4">{postListTitle}</span>
       </h2>

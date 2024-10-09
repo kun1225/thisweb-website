@@ -40,12 +40,12 @@ const Modal: React.FC<ModalPropsType> = ({
   useEffect(() => {
     const handleKeydown = (e: any) => {
       if (isOpen && e.key === 'Escape') onClose();
-    }
+    };
 
     window.addEventListener('keydown', handleKeydown);
 
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [])
+  }, []);
 
   return (
     <Portal>
@@ -68,7 +68,7 @@ const Modal: React.FC<ModalPropsType> = ({
             >
               {title ? (
                 <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-bold">{title}</h2>
+                  <h2 className="text-xl font-semibold">{title}</h2>
                   <Button onClose={onClose} />
                 </div>
               ) : (

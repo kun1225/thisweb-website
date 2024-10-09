@@ -3,7 +3,7 @@
   @apply c relative min-h-[95vh] flex flex-col justify-center items-center gap-10 text-center;
 
   &__bg {
-    @apply absolute top-0 left-0 w-full h-screen;
+    @apply absolute top-0 left-0 w-full h-screen font-semibold;
 
     background-color: transparent;
     background-image: radial-gradient(
@@ -19,7 +19,7 @@
   }
 
   &__heading {
-    @apply max-w-4xl font-bold text-4xl lg:text-6xl !leading-[1.2] drop-shadow-md;
+    @apply max-w-4xl font-semibold text-4xl lg:text-6xl !leading-[1.2] drop-shadow-md;
   }
 }
 
