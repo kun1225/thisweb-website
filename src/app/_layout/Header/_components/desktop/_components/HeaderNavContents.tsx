@@ -18,25 +18,29 @@ export default function HeaderNavContents({
         switch (item._type) {
           case 'normalLink':
             return (
-              <HeaderNormalLink
-                key={item._key}
-                linkText={item.linkText}
-                linkUrl={item.linkUrl}
-                onClick={closeMegaMenu}
-              />
+              <li>
+                <HeaderNormalLink
+                  key={item._key}
+                  linkText={item.linkText}
+                  linkUrl={item.linkUrl}
+                  onClick={closeMegaMenu}
+                />
+              </li>
             );
 
           case 'megamenu':
             return (
-              <HeaderMegaMenu
-                key={item._key}
-                megamenu={item}
-                title={item.buttonText}
-                index={index}
-                currentIndex={currentIndex}
-                switchMegaMenu={switchMegaMenu}
-                closeMegaMenu={closeMegaMenu}
-              />
+              <li>
+                <HeaderMegaMenu
+                  key={item._key}
+                  megamenu={item}
+                  title={item.buttonText}
+                  index={index}
+                  currentIndex={currentIndex}
+                  switchMegaMenu={switchMegaMenu}
+                  closeMegaMenu={closeMegaMenu}
+                />
+              </li>
             );
 
           default:
