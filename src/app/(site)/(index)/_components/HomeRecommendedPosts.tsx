@@ -37,7 +37,7 @@ function PostCard({ post }: { post: PostType }) {
       className="p-home__recommended-posts__post"
       href={`post/${slug.current}`}
     >
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <h3 className="text-lg font-bold mb-2">{title}</h3>
       <p>{truncateDesc}...</p>
     </Link>
   );

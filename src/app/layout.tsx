@@ -14,7 +14,7 @@ import localFont from 'next/font/local';
 import { Noto_Sans_TC } from 'next/font/google';
 
 const NotoSansTC = Noto_Sans_TC({
-  weight: ['400', '500', '700'],
+  weight: ['400', '500'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
@@ -31,11 +31,6 @@ const FiraCode = localFont({
     {
       path: './../../public/fonts/FiraCode-Medium.woff2',
       weight: '500',
-      style: 'normal',
-    },
-    {
-      path: './../../public/fonts/FiraCode-SemiBold.woff2',
-      weight: '700',
       style: 'normal',
     },
   ],
