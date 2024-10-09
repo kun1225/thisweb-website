@@ -27,6 +27,12 @@
   );
 
   --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  --z-header-overlay: 99;
+  --z-header: 100;
+  --z-toast: 101;
+  --z-overlay: 150;
+  --z-modal: 200;
 }
 
 html,

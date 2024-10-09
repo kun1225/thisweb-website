@@ -28,11 +28,11 @@ const config: Config = {
         'body-light': 'var(--cr-body-light)',
       },
       zIndex: {
-        toast: '50',
-        header: '100',
-        overlay: '150',
-        modal: '200',
-        mouse: '1000',
+        toast: 'var(--z-toast)',
+        header: 'var(--z-header)',
+        'header-overlay': 'var(--z-header-overlay)',
+        overlay: 'var(--z-overlay)',
+        modal: 'var(--z-modal)',
       },
       margin: {
         'edge-xs': 'var(--s-edge-xs)',
