@@ -41,10 +41,10 @@ const servicePage = async () => {
       <section className="service-page relative">
         <div className="c min-h-[70vh] mt-16 mb-28 flex gap-[10vw] items-center justify-center">
           <div className="flex flex-col gap-8 items-center text-center md:text-left">
-            <h3 className="text-body md:text-body-large text-neutral-950 font-semibold text-center">
+            <h3 className="text-body md:text-body-large text-neutral-950 font-bold text-center">
               ThisWeb 前端職涯諮詢＆轉職陪跑教練服務
             </h3>
-            <h1 className="service-page__title text-4xl md:text-5xl !leading-[1.5] font-semibold text-primary text-center mb-4">
+            <h1 className="service-page__title text-4xl md:text-5xl !leading-[1.5] font-bold text-primary text-center mb-4">
               打造高效學習與目標管理系統
               <br />
               轉職前端更順利
@@ -71,7 +71,7 @@ const servicePage = async () => {
         </div>
 
         <div className="c flex flex-col text-center items-center mt-32">
-          <p className="text-3xl font-semibold text-primary">
+          <p className="text-3xl font-bold text-primary">
             👋 我是 ThisWeb，我在轉職路上也迷茫過
           </p>
 
@@ -107,21 +107,21 @@ const servicePage = async () => {
 
           <div className="flex flex-wrap gap-[4vw] mt-8">
             <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
+              <div className="flex gap-1 text-5xl font-bold text-secondary items-center">
                 <NumberCounter value={5800} />
                 <span>+</span>
               </div>
               <p className="text-sm">IG 追蹤數</p>
             </div>
             <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
+              <div className="flex gap-1 text-5xl font-bold text-secondary items-center">
                 <NumberCounter value={100} />
                 <span>+</span>
               </div>
               <p className="text-sm">累積前端教學文章</p>
             </div>
             <div className="flex items-center justify-center gap-2 grow p-12 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-              <div className="flex gap-1 text-5xl font-semibold text-secondary items-center">
+              <div className="flex gap-1 text-5xl font-bold text-secondary items-center">
                 <NumberCounter value={50} />
                 <span>+</span>
               </div>
@@ -146,7 +146,7 @@ const servicePage = async () => {
           <div className="bg-secondary w-[60vw] h-[20vw] absolute -bottom-40 -right-0 blur-lg opacity-5 rounded-full -skew-y-12 pointer-events-none" />
 
           <div className="c flex flex-col gap-8 text-center items-center ">
-            <p className="text-3xl font-semibold text-primary">
+            <p className="text-3xl font-bold text-primary">
               從前端小白到前端工程師：三個步驟帶你成功轉職
             </p>
             <p>
@@ -156,7 +156,7 @@ const servicePage = async () => {
             </p>
             <div className="flex flex-col md:flex-row justify-between items-stretch gap-[2vw]">
               <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-                <h3 className="text-2xl font-semibold text-secondary">
+                <h3 className="text-2xl font-bold text-secondary">
                   01. 一對一諮詢
                 </h3>
                 <p className="max-w-lg">
@@ -164,7 +164,7 @@ const servicePage = async () => {
                 </p>
               </div>
               <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-                <h3 className="text-2xl font-semibold text-secondary">
+                <h3 className="text-2xl font-bold text-secondary">
                   02. 客製化教學
                 </h3>
                 <p className="max-w-lg">
@@ -172,7 +172,7 @@ const servicePage = async () => {
                 </p>
               </div>
               <div className="flex flex-col gap-4 p-8 border-2 border-gray-300 rounded-md shadow-lg bg-pure-white">
-                <h3 className="text-2xl font-semibold text-secondary">
+                <h3 className="text-2xl font-bold text-secondary">
                   03. Notion 目標管理模板
                 </h3>
                 <p className="max-w-lg">
@@ -184,7 +184,7 @@ const servicePage = async () => {
         </div>
 
         <div className="c grid place-content-center my-24">
-          <p className="text-3xl text-primary font-semibold text-center mb-12">
+          <p className="text-3xl text-primary font-bold text-center mb-12">
             如果你已經下定決心轉職，可以參考以下服務：
           </p>
           <ul className="flex flex-col gap-32">
@@ -203,7 +203,7 @@ const servicePage = async () => {
                     <div className={`gap-[4vw] flex flex-col ${direction}`}>
                       <div className="flex flex-col gap-4 justify-start whitespace-nowrap">
                         <Icon className="text-4xl text-primary rounded-full shadow-gray-400 shadow-lg p-4 w-16 h-16" />
-                        <h3 className="text-4xl font-semibold">
+                        <h3 className="text-4xl font-bold">
                           {index + 1}. {title}
                         </h3>
                         <span className="text-base">{price}</span>
