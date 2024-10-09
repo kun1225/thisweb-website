@@ -35,7 +35,7 @@ export default function HomeProblems() {
         {problemCardContent.map(({ icon: Icon, title, desc }) => (
           <div className="p-home__problems__item" key={title}>
             <Icon className="p-home__problems__item__icon " />
-            <h4 className="p-home__problems__item__title">{title}</h4>
+            <h3 className="p-home__problems__item__title">{title}</h3>
             <p className="p-home__problems__item__desc">{desc}</p>
           </div>
         ))}

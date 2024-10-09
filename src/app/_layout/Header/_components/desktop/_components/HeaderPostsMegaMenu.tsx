@@ -19,7 +19,7 @@ export default function HeaderPostsMegaMenu({
   const isCanBeTabIndex = index === currentIndex;
 
   return (
-    <div
+    <ul
       className={cn('g-header__posts-megamenu', {
         'is-active': index === currentIndex,
       })}
@@ -48,6 +48,6 @@ export default function HeaderPostsMegaMenu({
           </div>
         </li>
       ))}
-    </div>
+    </ul>
   );
 }

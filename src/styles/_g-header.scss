@@ -45,7 +45,7 @@
     }
 
     &__text {
-      @apply font-mono font-semibold translate-x-0 transition-transform duration-400;
+      @apply font-mono font-bold translate-x-0 transition-transform duration-400;
     }
   }
 
@@ -142,7 +142,7 @@
     @apply border-b border-primary;
 
     &__link {
-      @apply block p-4 font-semibold;
+      @apply block p-4 font-bold;
     }
 
     &__list {
@@ -151,7 +151,7 @@
   }
 
   &__link {
-    @apply block p-4 font-semibold border-b border-primary;
+    @apply block p-4 font-bold border-b border-primary;
   }
 }
 

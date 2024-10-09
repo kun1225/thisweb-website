@@ -24,7 +24,7 @@ export default function HeaderNormalLink({
         className={cn(
           'g-header__normal-link',
           pathname === linkUrl
-            ? 'text-secondary font-semibold drop-shadow-md'
+            ? 'text-secondary font-bold drop-shadow-md'
             : 'text-gray-500 hover:text-secondary ',
         )}
       >

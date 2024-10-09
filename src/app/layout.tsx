@@ -11,27 +11,14 @@ import SiteLayout from './_layout/SiteLayout';
 import '../styles/globals.scss';
 // Fonts
 import localFont from 'next/font/local';
+import { Noto_Sans_TC } from 'next/font/google';
 
-const GenSenRounded = localFont({
-  src: [
-    {
-      path: './../../public/fonts/GenSenRounded-R.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './../../public/fonts/GenSenRounded-M.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: './../../public/fonts/GenSenRounded-B.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-  ],
+const NotoSansTC = Noto_Sans_TC({
+  weight: ['400', '500'],
+  style: ['normal'],
+  subsets: ['latin'],
   display: 'swap',
-  variable: '--font-GenSenRounded',
+  variable: '--font-NotoSansTC',
 });
 
 const FiraCode = localFont({
@@ -44,11 +31,6 @@ const FiraCode = localFont({
     {
       path: './../../public/fonts/FiraCode-Medium.woff2',
       weight: '500',
-      style: 'normal',
-    },
-    {
-      path: './../../public/fonts/FiraCode-SemiBold.woff2',
-      weight: '700',
       style: 'normal',
     },
   ],
@@ -114,7 +96,7 @@ export default async function RootLayout({
           href="/favicon/favicon-16x16.png"
         />
       </head>
-      <body className={`${cn(GenSenRounded.variable, FiraCode.variable)}`}>
+      <body className={`${cn(NotoSansTC.variable, FiraCode.variable)}`}>
         <SiteLayout headerContent={headerContent}>{children}</SiteLayout>
         <SpeedInsights />
       </body>
