@@ -57,7 +57,7 @@ const config: Config = {
         header: 'var(--header-height)',
       },
       fontFamily: {
-        sans: ['var(--font-GenSenRounded), sans-serif'],
+        sans: ['var(--font-NotoSansTC), sans-serif'],
         mono: ['var(--font-FiraCode), monospace'],
       },
       fontSize: {

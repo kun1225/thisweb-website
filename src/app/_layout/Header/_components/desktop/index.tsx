@@ -44,20 +44,21 @@ export default function DesktopMenu({
   }, []);
 
   return (
-    <ul className="g-header__desktop">
+    <>
       {isHasMegaMenu ? (
         <HeaderOverlay
           closeMegaMenu={closeMegaMenu}
           currentIndex={currentIndex}
         />
       ) : null}
-
-      <HeaderNavContents
-        headerContent={headerContent}
-        currentIndex={currentIndex}
-        switchMegaMenu={switchMegaMenu}
-        closeMegaMenu={closeMegaMenu}
-      />
-    </ul>
+      <ul className="g-header__desktop">
+        <HeaderNavContents
+          headerContent={headerContent}
+          currentIndex={currentIndex}
+          switchMegaMenu={switchMegaMenu}
+          closeMegaMenu={closeMegaMenu}
+        />
+      </ul>
+    </>
   );
 }
