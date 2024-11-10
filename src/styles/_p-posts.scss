@@ -9,33 +9,13 @@
 
   &__list {
     @apply mb-20 flex flex-col;
-
-    @include breakpoint('lg') {
-      &:hover {
-        .p-posts__item {
-          @apply blur-[2.5px];
-        }
-      }
-    }
   }
 
   &__item {
     @apply relative py-4 lg:py-6 transition duration-400;
 
-    @include breakpoint('lg') {
-      &.p-posts__item:hover {
-        @apply scale-[1.12] blur-0;
-      }
-
-      &:has(+ .p-posts__item:hover),
-      &:hover + .p-posts__item {
-        @apply scale-[1.025] blur-[0.5px];
-      }
-
-      &:has(+ .p-posts__item + .p-posts__item:hover),
-      &:hover + .p-posts__item + .p-posts__item {
-        @apply scale-[1.01] blur-[1px];
-      }
+    @include hover {
+      @apply scale-[1.03];
     }
 
     &__title {
