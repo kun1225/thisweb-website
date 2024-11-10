@@ -3,26 +3,27 @@ import { navContent } from '../Header/navContent';
 
 function Footer() {
   return (
-    <footer
-      className="flex flex-col md:flex-row justify-between gap-8 mt-32 p-16 bg-primary text-white text-xs"
-      id="g-footer"
-    >
-      <div>
-        <h4 className="text-secondary text-sm">頁面導覽</h4>
-        <ul className="mt-2 flex flex-col gap-2">
+    <footer className="g-footer" id="g-footer">
+      <div className="g-footer__nav">
+        <p className="g-footer__nav__title">頁面導覽</p>
+        <ul className="g-footer__nav__list">
           {navContent.map(({ title, url }) => (
-            <Link href={url} key={title}>
-              <li>{title}</li>
-            </Link>
+            <li key={title}>
+              <Link href={url}>{title}</Link>
+            </li>
           ))}
         </ul>
       </div>
 
-      <div>
-        <h4 className="text-secondary text-sm">聯絡資訊</h4>
-        <ul className="mt-2 flex flex-col gap-2">
+      <div className="g-footer__nav">
+        <p className="g-footer__nav__title">聯絡資訊</p>
+        <ul className="g-footer__nav__list">
           <li>Email: thisweb.tech@gmail.com</li>
-          <li>Instagram: this.web</li>
+          <li>
+            <Link href="https://www.instagram.com/this.web" target="_blank">
+              Instagram: this.web
+            </Link>
+          </li>
         </ul>
       </div>
     </footer>
