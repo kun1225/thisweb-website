@@ -1,16 +1,18 @@
 'use client';
 import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
+// Type
+import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 // Components
 import Link from 'next/link';
 import Image from 'next/image';
-import DesktopMenu from './_components/desktop';
-import MobileMenu from './_components/mobile';
-// Type
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+
+const DesktopMenu = dynamic(() => import('./_components/desktop'));
+const MobileMenu = dynamic(() => import('./_components/mobile'));
 
 const SCROLLED_THRESHOLD = 0;
 
-export default function GHeader({
+export default function Header({
   headerContent,
 }: {
   headerContent: TypeGlobalHeaderContent;

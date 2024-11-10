@@ -1,15 +1,17 @@
 'use client';
 
 // Hooks & Libs
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { GlobalSettingsProvider } from '../../_context/globalSettings';
-// Components
-import { Suspense } from 'react';
-import GHeader from '../Header';
-import Footer from '../Footer';
-import ProgressBar from '../../_components/ProgressBar';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+// Components
+import { Suspense } from 'react';
+import Header from '../Header';
+import Footer from '../Footer';
+
+const ProgressBar = dynamic(() => import('../../_components/ProgressBar'));
 
 export default function SiteLayout({
   headerContent,
@@ -26,7 +28,7 @@ export default function SiteLayout({
       <Suspense>
         <ProgressBar />
       </Suspense>
-      <GHeader headerContent={headerContent} />
+      <Header headerContent={headerContent} />
       <main id="main">{children}</main>
       <Footer />
     </GlobalSettingsProvider>
