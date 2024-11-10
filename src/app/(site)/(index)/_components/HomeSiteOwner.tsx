@@ -7,7 +7,7 @@ export default function HomeSiteOwner() {
 
       <div className="p-home__site-owner__content">
         <Image
-          alt="site owner"
+          alt="ThisWeb"
           className="p-home__site-owner__img"
           height={320}
           width={320}
