@@ -1,11 +1,12 @@
 'use client';
+// Hooks & Libs
 import { useEffect } from 'react';
+import useWindowWidth from '../../_hooks/useWindowWidth';
 import dynamic from 'next/dynamic';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
 // Components
-import Link from 'next/link';
-import Image from 'next/image';
+import HeaderLogo from './_components/HeaderLogo';
 
 const DesktopMenu = dynamic(() => import('./_components/desktop'));
 const MobileMenu = dynamic(() => import('./_components/mobile'));
@@ -17,6 +18,8 @@ export default function Header({
 }: {
   headerContent: TypeGlobalHeaderContent;
 }) {
+  const { isMobile } = useWindowWidth();
+
   useEffect(() => {
     const gHeader = document.getElementById('g-header');
     document.documentElement.style.setProperty(
@@ -44,24 +47,16 @@ export default function Header({
   return (
     <header className="g-header" id="g-header">
       <div className="g-header__container">
-        <Link href="/" title="This.Web Logo">
-          <div className="g-header__logo">
-            <Image
-              src="/logo.png"
-              alt="logo"
-              width={24}
-              height={24}
-              className="g-header__logo__img"
-              title="This.Web Logo Image"
-            />
-            <p className="g-header__logo__text">This.Web</p>
-          </div>
-        </Link>
-        <DesktopMenu headerContent={headerContent} />
-        <MobileMenu
-          className="g-header__mobile"
-          headerContent={headerContent}
-        />
+        <HeaderLogo />
+
+        {isMobile ? (
+          <MobileMenu
+            className="g-header__mobile"
+            headerContent={headerContent}
+          />
+        ) : (
+          <DesktopMenu headerContent={headerContent} />
+        )}
       </div>
     </header>
   );
