@@ -11,7 +11,7 @@ describe('Accordion', () => {
   describe('Accordion initial state', () => {
     it('render correct title and content', () => {
       render(
-        <Accordion stretch={true} initExpanded={true}>
+        <Accordion stretch initExpanded>
           <AccordionTitle>Test Title</AccordionTitle>
           <AccordionContent>Test Content</AccordionContent>
         </Accordion>,
@@ -22,7 +22,7 @@ describe('Accordion', () => {
     });
     it('should show content when initExpanded is true', () => {
       const { getByTestId } = render(
-        <Accordion initExpanded={true}>
+        <Accordion initExpanded>
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
         </Accordion>,
@@ -72,7 +72,7 @@ describe('Accordion', () => {
   describe('Accordion toggle functionality', () => {
     it('renders and toggles the content visibility', () => {
       render(
-        <Accordion stretch={true} initExpanded={true}>
+        <Accordion stretch initExpanded>
           <AccordionTitle>Test Title</AccordionTitle>
           <AccordionContent>Test Content</AccordionContent>
         </Accordion>,
