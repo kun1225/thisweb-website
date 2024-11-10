@@ -3,8 +3,6 @@ import type { Metadata } from 'next';
 // Libs
 import { cn } from '@/src/libs/utils';
 import { headerFetch } from '../libs/sanity/fetch';
-// Vercel
-import { SpeedInsights } from '@vercel/speed-insights/next';
 // Components
 import SiteLayout from './_layout/SiteLayout';
 // Style
@@ -98,7 +96,6 @@ export default async function RootLayout({
       </head>
       <body className={`${cn(NotoSansTC.variable, FiraCode.variable)}`}>
         <SiteLayout headerContent={headerContent}>{children}</SiteLayout>
-        <SpeedInsights />
       </body>
     </html>
   );
