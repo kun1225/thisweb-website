@@ -19,7 +19,11 @@ import blockContent from './schemas/block/blockContent';
 import codepen from './schemas/block/codepen';
 import callout from './schemas/block/calloutContent';
 
+// Modules
+import moduleProductHero from './schemas/modules/moduleProductHero';
+
 // objects
+import sharing from './schemas/objects/sharing';
 import video from './schemas/objects/video';
 import media from './schemas/objects/media';
 
@@ -41,6 +45,9 @@ export const schemas = [
   callout,
   codepen,
 
+  moduleProductHero,
+
+  sharing,
   video,
   media,
 ];

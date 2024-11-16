@@ -29,7 +29,9 @@ export default function SiteLayout({
         <ProgressBar />
       </Suspense>
       <Header headerContent={headerContent} />
-      <main id="main">{children}</main>
+      <main id="main" className="mt-header">
+        {children}
+      </main>
       <Footer />
     </GlobalSettingsProvider>
   );

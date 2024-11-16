@@ -1,0 +1,19 @@
+.m-product__hero {
+  @apply c flex w-full flex-col items-center justify-start sm:pt-24 md:pt-48;
+
+  &__heading {
+    @apply text-center text-4xl font-bold leading-tight text-primary sm:text-5xl md:text-6xl;
+  }
+
+  &__paragraph {
+    @apply mx-auto mt-8 max-w-xl text-center text-lg leading-7 text-gray-600 sm:text-xl sm:leading-9 text-balance;
+  }
+
+  &__cta {
+    @apply mt-8 px-10 py-2 flex items-center justify-center whitespace-nowrap rounded-sm transition duration-200 disabled:pointer-events-none bg-secondary text-white shadow hover:bg-secondary-2 hover:shadow-xl hover:scale-102;
+  }
+
+  &__media {
+    @apply mt-16 max-w-4xl;
+  }
+}

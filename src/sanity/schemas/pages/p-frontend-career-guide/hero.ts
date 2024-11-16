@@ -8,8 +8,8 @@ export function hero() {
     group: 'hero',
     fields: [
       defineField({
-        title: 'Title',
-        name: 'title',
+        title: 'Heading',
+        name: 'heading',
         type: 'string',
       }),
       defineField({

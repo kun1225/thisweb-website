@@ -23,6 +23,7 @@ export default defineType({
     { title: 'Bonuses', name: 'bonuses' },
     { title: 'Testimonials', name: 'testimonials' },
     { title: 'Pricing', name: 'pricing' },
+    { title: 'Settings', name: 'settings' },
   ],
   fields: [
     defineField({
@@ -30,8 +31,8 @@ export default defineType({
       name: 'title',
       type: 'string',
       initialValue: 'Frontend Career Guide Page',
-      // readOnly: true,
-      // hidden: true,
+      readOnly: true,
+      hidden: true,
     }),
     defineField({
       title: 'Slug',
@@ -40,6 +41,14 @@ export default defineType({
       initialValue: '/products/frontend-career-guide',
       readOnly: true,
     }),
+
+    defineField({
+      title: 'Modules',
+      name: 'modules',
+      type: 'array',
+      of: [{ type: 'moduleProductHero' }],
+    }),
+
     hero(),
     problems(),
     solutions(),
@@ -49,6 +58,12 @@ export default defineType({
     bonuses(),
     testimonials(),
     prices(),
+    defineField({
+      title: 'SEO + Share Settings',
+      name: 'sharing',
+      type: 'sharing',
+      group: 'settings',
+    }),
   ],
   preview: {
     select: {
