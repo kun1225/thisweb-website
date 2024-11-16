@@ -1,6 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { hero } from './hero';
-import { problems } from './problems';
 import { solutions } from './solutions';
 import { steps } from './steps';
 import { features } from './features';
@@ -14,7 +12,6 @@ export default defineType({
   name: 'pageFrontendCareerGuide',
   type: 'document',
   groups: [
-    { title: 'Hero', name: 'hero' },
     { title: 'Problems', name: 'problems' },
     { title: 'Solutions', name: 'solutions' },
     { title: 'Steps', name: 'steps' },
@@ -46,11 +43,9 @@ export default defineType({
       title: 'Modules',
       name: 'modules',
       type: 'array',
-      of: [{ type: 'moduleProductHero' }],
+      of: [{ type: 'moduleProductHero' }, { type: 'moduleProductProblems' }],
     }),
 
-    hero(),
-    problems(),
     solutions(),
     steps(),
     features(),

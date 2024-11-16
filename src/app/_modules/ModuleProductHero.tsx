@@ -3,9 +3,14 @@ import { hasObjectValue, formatBrNewLine } from '@/src/libs/helpers';
 // Components
 import Link from 'next/link';
 import Media from '../_components/Media';
-import { TypeProductHero } from '@/src/libs/sanity/type/TypeModules';
+// Types
+import { TypeModuleProductHero } from '@/src/libs/sanity/type/TypeModules';
 
-export default function ModuleProductHero({ data }: { data: TypeProductHero }) {
+export default function ModuleProductHero({
+  data,
+}: {
+  data: TypeModuleProductHero;
+}) {
   const { heading, paragraph, media, callToAction } = data || {};
 
   return (

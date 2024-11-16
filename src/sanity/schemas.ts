@@ -21,6 +21,7 @@ import callout from './schemas/block/calloutContent';
 
 // Modules
 import moduleProductHero from './schemas/modules/moduleProductHero';
+import moduleProductProblems from './schemas/modules/moduleProductProblems';
 
 // objects
 import sharing from './schemas/objects/sharing';
@@ -46,6 +47,7 @@ export const schemas = [
   codepen,
 
   moduleProductHero,
+  moduleProductProblems,
 
   sharing,
   video,

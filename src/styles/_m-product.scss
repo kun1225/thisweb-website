@@ -1,3 +1,9 @@
+.m-product {
+  p {
+    @apply text-body-light;
+  }
+}
+
 .m-product__hero {
   @apply c flex w-full flex-col items-center justify-start sm:pt-24 md:pt-48;
 
@@ -6,7 +12,7 @@
   }
 
   &__paragraph {
-    @apply mx-auto mt-8 max-w-xl text-center text-lg leading-7 text-gray-600 sm:text-xl sm:leading-9 text-balance;
+    @apply mx-auto mt-8 max-w-xl text-center text-lg leading-7 sm:text-xl sm:leading-9 text-balance;
   }
 
   &__cta {
@@ -15,5 +21,29 @@
 
   &__media {
     @apply mt-16 max-w-4xl;
+  }
+}
+
+.m-product__problems {
+  @apply c mt-48;
+
+  &__heading {
+    @apply max-w-md mb-6 mx-auto text-3xl font-bold text-center sm:max-w-none sm:text-4xl md:text-5xl;
+  }
+
+  &__list {
+    @apply mt-16 flex flex-col md:flex-row justify-center gap-8;
+  }
+
+  &__problem {
+    @apply max-w-xs p-4 space-y-4;
+
+    &__icon {
+      @apply w-12 h-12 flex items-center justify-center p-2.5 bg-secondary rounded-full text-white;
+    }
+
+    &__heading {
+      @apply text-2xl;
+    }
   }
 }

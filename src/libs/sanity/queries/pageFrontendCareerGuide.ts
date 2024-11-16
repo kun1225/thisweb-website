@@ -12,6 +12,17 @@ export const pageFrontendCareerGuideQuery = groq`*[_type == "pageFrontendCareerG
         url,
         label,
       }
+    },
+    _type == "moduleProductProblems" => {
+      _key,
+      heading,
+      paragraph,
+      problems[] {
+        _key,
+        icon,
+        heading,
+        paragraph
+      }
     }
   },
 }[0]

@@ -1,6 +1,6 @@
 import { TypeMedia } from './typeMedia';
 
-export type TypeProductHero = {
+export type TypeModuleProductHero = {
   _key: string;
   _type: 'moduleProductHero';
   heading: string;
@@ -12,8 +12,26 @@ export type TypeProductHero = {
   };
 };
 
-export type TypeProductProblems = {
+export type TypeModuleProblemIcon = {
+  _type: 'iconPicker';
+  provider: 'string';
+  name: 'string';
+};
+export type TypeModuleProductProblem = {
+  _key: string;
+  icon: TypeModuleProblemIcon;
+  heading: string;
+  paragraph: string;
+};
+export type TypeModuleProductProblems = {
+  _key: string;
   _type: 'moduleProductProblems';
+  heading: string;
+  paragraph: string;
+  problems: TypeModuleProductProblem[];
 };
 
-export type TypeModulesProduct = (TypeProductHero | TypeProductProblems)[];
+export type TypeModulesProduct = (
+  | TypeModuleProductHero
+  | TypeModuleProductProblems
+)[];

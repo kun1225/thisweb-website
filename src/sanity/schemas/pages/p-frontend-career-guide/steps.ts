@@ -26,6 +26,9 @@ export function steps() {
                 title: 'Icon',
                 name: 'icon',
                 type: 'iconPicker',
+                options: {
+                  outputFormat: 'react',
+                },
               }),
               defineField({
                 title: 'Heading',

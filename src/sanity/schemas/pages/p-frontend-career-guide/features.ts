@@ -25,6 +25,9 @@ export function features() {
                 title: 'Icon',
                 name: 'icon',
                 type: 'iconPicker',
+                options: {
+                  outputFormat: 'react',
+                },
               }),
               defineField({
                 title: 'Heading',
