@@ -12,11 +12,16 @@ import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 // Page
 import pageHome from './schemas/pages/home';
 import pageService from './schemas/pages/service';
+import pageFrontendCareerGuide from './schemas/pages/p-frontend-career-guide';
 
 // Block
 import blockContent from './schemas/block/blockContent';
 import codepen from './schemas/block/codepen';
 import callout from './schemas/block/calloutContent';
+
+// objects
+import video from './schemas/objects/video';
+import media from './schemas/objects/media';
 
 export const schemas = [
   header,
@@ -30,8 +35,12 @@ export const schemas = [
 
   pageHome,
   pageService,
+  pageFrontendCareerGuide,
 
   blockContent,
   callout,
   codepen,
+
+  video,
+  media,
 ];

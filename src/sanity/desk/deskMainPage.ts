@@ -17,6 +17,15 @@ export const deskMainPage = (S: any) => {
             )
             .icon(ComponentIcon),
           S.listItem()
+            .title('Frontend Career Guide page')
+            .child(
+              S.editor()
+                .id('pageFrontendCareerGuide')
+                .schemaType('pageFrontendCareerGuide')
+                .documentId('pageFrontendCareerGuide'),
+            )
+            .icon(ComponentIcon),
+          S.listItem()
             .title('Service page')
             .child(
               S.editor()
