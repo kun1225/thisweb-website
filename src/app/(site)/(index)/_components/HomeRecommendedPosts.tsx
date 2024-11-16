@@ -30,7 +30,7 @@ export default function HomeRecommendedPosts({
 
 function PostCard({ post }: { post: PostType }) {
   const { title, body, slug } = post;
-  const truncateDesc = toPlainText(body).split('').slice(0, 50).join('');
+  const truncateDesc = toPlainText(body).split('').slice(0, 120).join('');
 
   return (
     <Link

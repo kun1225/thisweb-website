@@ -16,7 +16,6 @@ const theme = {
     'pure-white': '#ffffff',
   },
   fonts: {
-    GenSenRounded: 'GenSenRounded',
     FiraCode: 'FiraCode',
   },
 };
