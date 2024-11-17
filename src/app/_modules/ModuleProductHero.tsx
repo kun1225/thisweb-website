@@ -4,7 +4,7 @@ import { hasObjectValue, formatBrNewLine } from '@/src/libs/helpers';
 import Link from 'next/link';
 import Media from '../_components/Media';
 // Types
-import { TypeModuleProductHero } from '@/src/libs/sanity/type/typeModules';
+import { TypeModuleProductHero } from '@/src/types/typeModules';
 
 export default function ModuleProductHero({
   data,

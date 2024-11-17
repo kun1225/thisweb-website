@@ -5,7 +5,7 @@ import { cn } from '@/src/libs/utils';
 // Components
 import Image from 'next/image';
 // Type
-import { TypeImage } from '@/src/libs/sanity/type/typeImage';
+import { TypeImage } from '@/src/types/typeImage';
 
 export default function Img({
   image,

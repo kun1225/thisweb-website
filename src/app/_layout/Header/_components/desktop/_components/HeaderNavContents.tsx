@@ -1,6 +1,6 @@
 import HeaderNormalLink from './HeaderNormalLink';
 import HeaderMegaMenu from './HeaderMegaMenu';
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
 export default function HeaderNavContents({
   headerContent,

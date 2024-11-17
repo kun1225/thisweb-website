@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import useWindowWidth from '../../_hooks/useWindowWidth';
 import dynamic from 'next/dynamic';
 // Type
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components
 import HeaderLogo from './_components/HeaderLogo';
 

@@ -10,10 +10,7 @@ export const deskMainPage = (S: any) => {
           S.listItem()
             .title('Home Page')
             .child(
-              S.editor()
-                .id('pageHome')
-                .schemaType('pageHome')
-                .documentId('pageHome'),
+              S.editor().id('pHome').schemaType('pHome').documentId('pHome'),
             )
             .icon(ComponentIcon),
           S.listItem()

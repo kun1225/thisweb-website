@@ -1,29 +1,23 @@
 import { defineField } from 'sanity';
-import { preview } from 'sanity-plugin-icon-picker';
 
 export default defineField({
-  title: 'Module Product Problems',
-  name: 'moduleProductProblems',
+  title: 'Module Product Steps',
+  name: 'moduleProductSteps',
   type: 'object',
   fields: [
     defineField({
-      title: 'Heading',
-      name: 'heading',
+      title: 'Title',
+      name: 'title',
       type: 'string',
     }),
     defineField({
-      title: 'Paragraph',
-      name: 'paragraph',
-      type: 'text',
-    }),
-    defineField({
-      title: 'Problems',
-      name: 'problems',
+      title: 'Steps',
+      name: 'steps',
       type: 'array',
       of: [
         defineField({
-          title: 'Problem',
-          name: 'problem',
+          title: 'Step',
+          name: 'step',
           type: 'object',
           fields: [
             defineField({
@@ -33,21 +27,6 @@ export default defineField({
               options: {
                 providers: ['fa'],
                 outputFormat: 'react',
-              },
-              preview: {
-                select: {
-                  provider: 'icon.provider',
-                  name: 'icon.name',
-                },
-                // @ts-ignore
-                prepare(icon) {
-                  return {
-                    title: icon.provider,
-                    subtitle: icon.name,
-                    // @ts-ignore
-                    media: preview(icon),
-                  };
-                },
               },
             }),
             defineField({
@@ -60,12 +39,16 @@ export default defineField({
               name: 'paragraph',
               type: 'text',
             }),
+            defineField({
+              title: 'Media',
+              name: 'media',
+              type: 'media',
+            }),
           ],
         }),
       ],
     }),
   ],
-
   preview: {
     select: {
       heading: 'heading',
@@ -73,7 +56,7 @@ export default defineField({
 
     prepare({ heading }) {
       return {
-        title: heading ? `Problems - ${heading}` : 'Module Problems',
+        title: heading ? `Steps - ${heading}` : 'Module Steps',
       };
     },
   },

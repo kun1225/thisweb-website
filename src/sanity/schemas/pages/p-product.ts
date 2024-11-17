@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity';
-import moduleProduct from '../../libs/moduleProduct';
+import moduleProduct from '../libs/moduleProduct';
 
 export default defineType({
-  title: 'Frontend Career Guide Page',
-  name: 'pageFrontendCareerGuide',
+  title: 'Product Page',
+  name: 'pProduct',
   type: 'document',
   groups: [{ title: 'Settings', name: 'settings' }],
   fields: [
@@ -11,16 +11,14 @@ export default defineType({
       title: 'Title',
       name: 'title',
       type: 'string',
-      initialValue: 'Frontend Career Guide Page',
-      readOnly: true,
-      hidden: true,
+      initialValue: 'Product Page',
     }),
     defineField({
       title: 'Slug',
       name: 'slug',
       type: 'string',
-      initialValue: '/products/frontend-career-guide',
-      readOnly: true,
+      description: 'Must start with /product/',
+      initialValue: '/product/...',
     }),
 
     moduleProduct(),

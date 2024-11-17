@@ -4,7 +4,7 @@ import { toPlainText } from '@portabletext/react';
 // Components
 import Link from 'next/link';
 // Types
-import { TypePosts, TypePost } from '@/src/libs/sanity/type/typePosts';
+import { TypePosts, TypePost } from '@/src/types/typePosts';
 
 export default function PostsList({ posts }: { posts: TypePosts }) {
   return (

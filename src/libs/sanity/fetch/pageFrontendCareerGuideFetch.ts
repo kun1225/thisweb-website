@@ -3,8 +3,8 @@ import {
   pageFrontendCareerGuideQuery,
   pageFrontendCareerGuideSharingQuery,
 } from '../queries/pageFrontendCareerGuide';
-import { type TypePageFrontendCareerGuide } from '../type/typePageFrontendCareerGuide';
-import { type TypeGlobalSharing } from '../type/typeGlobalSharing';
+import { type TypePageFrontendCareerGuide } from '../../../types/typePageFrontendCareerGuide';
+import { type TypeGlobalSharing } from '../../../types/typeGlobalSharing';
 
 export const getPageFrontendCareerGuideData = async () => {
   return sanityFetch<TypePageFrontendCareerGuide>({

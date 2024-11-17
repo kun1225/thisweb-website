@@ -10,7 +10,7 @@ import {
   TypeModuleProductProblems,
   TypeModuleProductProblem,
   TypeModuleProblemIcon,
-} from '@/src/libs/sanity/type/typeModules';
+} from '@/src/types/typeModules';
 
 export default function ModuleProductProblems({
   data,

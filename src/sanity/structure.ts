@@ -1,6 +1,7 @@
 import type { StructureResolver } from 'sanity/structure';
 import { deskGlobalHeader } from './desk/deskGlobalHeader';
 import { deskMainPage } from './desk/deskMainPage';
+import { deskProductPage } from './desk/deskProductPage';
 import { deskPosts } from './desk/deskPosts';
 import { deskAuthor } from './desk/deskAuthor';
 import { deskCategories } from './desk/deskCategories';
@@ -14,6 +15,7 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
 
       deskMainPage(S),
+      deskProductPage(S),
       S.divider(),
 
       deskPosts(S),

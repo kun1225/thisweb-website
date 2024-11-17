@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import HeaderOverlay from './_components/HeaderOverlay';
 import HeaderNavContents from './_components/HeaderNavContents';
 // Types
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
 export default function DesktopMenu({
   headerContent,

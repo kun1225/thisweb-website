@@ -4,7 +4,7 @@ import PostRelated from './PostRelated';
 import CustomPortableText from '@/src/app/_components/CustomPortableText';
 // Types
 import { PostType } from '@/src/libs/sanity/type';
-import { TypeImage } from '@/src/libs/sanity/type/typeImage';
+import { TypeImage } from '@/src/types/typeImage';
 
 export default function PostArticle({
   mainImage,

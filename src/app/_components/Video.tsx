@@ -3,7 +3,7 @@
 import cx from 'classnames';
 import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { InView } from 'react-intersection-observer';
-import { TypeVideo } from '@/src/libs/sanity/type/typeVideo';
+import { TypeVideo } from '@/src/types/typeVideo';
 
 import { urlForImg, getFile } from '@/src/libs/sanity/client';
 

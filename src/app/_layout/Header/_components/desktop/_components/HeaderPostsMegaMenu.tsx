@@ -3,7 +3,7 @@ import { cn } from '@/src/libs/utils';
 import Link from 'next/link';
 import HeaderPostsMegamenuCategories from './HeaderPostsMegamenuCategories';
 // Types
-import { TypePostsMegamenu } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypePostsMegamenu } from '@/src/types/typeGlobalHeader';
 
 export default function HeaderPostsMegaMenu({
   content,

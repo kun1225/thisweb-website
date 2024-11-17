@@ -3,7 +3,7 @@ import PostArticle from './PostArticle';
 import PostSidebar from './PostSidebar';
 // Types
 import { PostType } from '@/src/libs/sanity/type';
-import { TypeImage } from '@/src/libs/sanity/type/typeImage';
+import { TypeImage } from '@/src/types/typeImage';
 
 export default function PostBody({
   mainImage,

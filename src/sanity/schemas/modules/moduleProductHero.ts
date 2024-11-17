@@ -46,7 +46,7 @@ export default defineField({
 
     prepare({ heading }) {
       return {
-        title: `Module Product Hero - ${heading}`,
+        title: heading ? `Hero - ${heading}` : 'Module Hero',
       };
     },
   },

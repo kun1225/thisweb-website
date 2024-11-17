@@ -8,7 +8,7 @@ import { cn } from '@/src/libs/utils';
 import MobileMenuIcon from './_components/MobileMenuIcon';
 import MobileMenuContent from './_components/MobileMenuContent';
 // Type
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenu({
   headerContent,

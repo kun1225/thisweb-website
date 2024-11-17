@@ -1,6 +1,6 @@
 import Video from './Video';
 import Img from './Img';
-import { TypeMedia } from '@/src/libs/sanity/type/typeMedia';
+import { TypeMedia } from '@/src/types/typeMedia';
 import { HTMLAttributes } from 'react';
 
 export default function Media({

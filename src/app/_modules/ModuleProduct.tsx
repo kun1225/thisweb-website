@@ -1,6 +1,6 @@
 import ModuleProductHero from './ModuleProductHero';
 import ModuleProductProblems from './ModuleProductProblems';
-import { TypeModulesProduct } from '@/src/libs/sanity/type/typeModules';
+import { TypeModulesProduct } from '@/src/types/typeModules';
 
 export default function ModuleProduct({
   modules,

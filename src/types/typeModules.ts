@@ -31,6 +31,8 @@ export type TypeModuleProductProblems = {
   problems: TypeModuleProductProblem[];
 };
 
+export type TypeModuleProductSolutions = {};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
