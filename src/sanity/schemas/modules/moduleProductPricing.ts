@@ -28,7 +28,25 @@ export default defineField({
             defineField({
               title: 'Paragraph',
               name: 'paragraph',
-              type: 'text',
+              type: 'array',
+              of: [
+                {
+                  title: 'Block',
+                  type: 'block',
+                  styles: [{ title: 'Paragraph', value: 'normal' }],
+                  lists: [
+                    { title: 'Bullet', value: 'bullet' },
+                    { title: 'Numbered', value: 'number' },
+                  ],
+                  marks: {
+                    decorators: [
+                      { title: 'Strong', value: 'strong' },
+                      { title: 'Strike', value: 'strike-through' },
+                    ],
+                    annotations: [],
+                  },
+                },
+              ],
             }),
             defineField({
               title: 'Call to Action',

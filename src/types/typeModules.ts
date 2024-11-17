@@ -70,10 +70,25 @@ export type TypeModuleProductFeatures = {
   features: TypeModuleProductFeature[];
 };
 
+export type TypeModuleProductAboutAchievements = {
+  _key: string;
+  value: number;
+  paragraph: string;
+};
+export type TypeModuleProductAbout = {
+  _key: string;
+  _type: 'moduleProductAbout';
+  heading: string;
+  paragraph: string;
+  media: TypeMedia;
+  achievements: TypeModuleProductAboutAchievements[];
+};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
   | TypeModuleProductSolutions
   | TypeModuleProductSteps
   | TypeModuleProductFeatures
+  | TypeModuleProductAbout
 )[];

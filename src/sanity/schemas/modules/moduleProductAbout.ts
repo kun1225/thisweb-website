@@ -26,8 +26,8 @@ export default defineField({
           type: 'object',
           fields: [
             defineField({
-              title: 'Index',
-              name: 'index',
+              title: 'Value',
+              name: 'value',
               type: 'string',
             }),
             defineField({

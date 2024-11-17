@@ -244,7 +244,7 @@
     }
 
     &__contents {
-      @apply mt-16 flex items-center justify-center gap-12;
+      @apply flex items-center justify-center gap-12;
     }
 
     &__item {
@@ -295,6 +295,27 @@
       &.is-active {
         @apply opacity-100 blur-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)];
       }
+    }
+  }
+}
+
+.m-product__about {
+  @apply c mt-48;
+
+  &__achievements {
+    @apply mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-8;
+  }
+
+  &__achievement {
+    @apply max-w-sm mx-auto w-full px-4 py-8 md:py-12 lg:py-16  flex items-center justify-center gap-2 grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
+
+    &__value {
+      @apply flex gap-1  font-semibold text-secondary items-center;
+      font-size: clamp(32px, 3vw, 64px);
+    }
+
+    &__paragraph {
+      @apply text-body-light;
     }
   }
 }
