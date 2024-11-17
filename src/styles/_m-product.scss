@@ -136,10 +136,8 @@
   @apply c mt-48;
 
   &__list {
-    @apply mt-16;
-
     &__item {
-      @apply flex flex-col items-center gap-4;
+      @apply pt-16 flex flex-col items-center gap-8;
     }
 
     &__header {
@@ -157,12 +155,12 @@
     }
 
     &__media {
-      @apply w-[90%] drop-shadow-[0_0_28px_rgba(0,0,0,.1)];
+      @apply w-[90%] drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
     }
 
     // desktop
     @include breakpoint(lg) {
-      @apply flex items-center justify-center gap-12;
+      @apply pt-12 xl:pt-16 flex items-center justify-center gap-12;
 
       &__contents {
         @apply max-w-sm flex flex-col gap-4;
@@ -199,7 +197,7 @@
       }
 
       &__media {
-        @apply opacity-0 blur-sm transition-all duration-[250] delay-[0];
+        @apply opacity-0 blur-sm drop-shadow-[0_0_28px_rgba(0,0,0,.1)] transition-all duration-[250] delay-[0] ease-linear;
 
         grid-area: 1/1/2/2;
 

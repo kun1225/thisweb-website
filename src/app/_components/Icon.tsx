@@ -21,7 +21,7 @@ export default function Icon({
   return (
     <Icon
       className={cn(
-        'c-icon w-12 h-12 p-4 mb-4 text-primary bg-gray-100 rounded-2xl shadow-md',
+        'c-icon w-10 h-10 md:w-12 md:h-12 p-2 md:p-4 text-primary bg-gray-100 rounded-2xl shadow-md',
         className,
       )}
     />
