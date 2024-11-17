@@ -1,4 +1,5 @@
 import { TypeMedia } from './typeMedia';
+import { TypeIcon } from './typeIcon';
 
 export type TypeModuleProductHero = {
   _key: string;
@@ -12,14 +13,9 @@ export type TypeModuleProductHero = {
   };
 };
 
-export type TypeModuleProblemIcon = {
-  _type: 'iconPicker';
-  provider: 'string';
-  name: 'string';
-};
 export type TypeModuleProductProblem = {
   _key: string;
-  icon: TypeModuleProblemIcon;
+  icon: TypeIcon;
   heading: string;
   paragraph: string;
 };
@@ -45,8 +41,23 @@ export type TypeModuleProductSolutions = {
   solutions: TypeModuleProductSolution[];
 };
 
+export type TypeModuleProductStep = {
+  _key: string;
+  icon: TypeIcon;
+  heading: string;
+  paragraph: any[];
+  media: TypeMedia;
+};
+export type TypeModuleProductSteps = {
+  _key: string;
+  _type: 'moduleProductSteps';
+  heading: string;
+  steps: TypeModuleProductStep[];
+};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
   | TypeModuleProductSolutions
+  | TypeModuleProductSteps
 )[];

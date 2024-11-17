@@ -6,23 +6,23 @@
   }
 
   @if $point == xs {
-    @media only screen and (min-width: 320px) {
+    @media only screen and (min-width: 320.1px) {
       @content;
     }
   } @else if $point == sm {
-    @media only screen and (min-width: 640px) {
+    @media only screen and (min-width: 640.1px) {
       @content;
     }
   } @else if $point == md {
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768.1px) {
       @content;
     }
   } @else if $point == lg {
-    @media only screen and (min-width: 1024px) {
+    @media only screen and (min-width: 1024.1px) {
       @content;
     }
   } @else if $point == xl {
-    @media only screen and (min-width: 1280px) {
+    @media only screen and (min-width: 1280.1px) {
       @content;
     }
   }

@@ -6,10 +6,10 @@ import {
 // Components
 import * as Icons from 'react-icons/fa';
 // Types
+import { TypeIcon } from '@/src/types/typeIcon';
 import {
   TypeModuleProductProblems,
   TypeModuleProductProblem,
-  TypeModuleProblemIcon,
 } from '@/src/types/typeModules';
 
 export default function ModuleProductProblems({
@@ -70,7 +70,7 @@ function Problem({ problem }: { problem: TypeModuleProductProblem }) {
 type IconName = keyof typeof Icons;
 // eslint-disable-next-line import/namespace -- Dynamic import of icons by name from react-icons
 const DynamicFontAwesomeIcon = ({ name }: { name: IconName }) => Icons[name];
-function ProblemIcon({ icon }: { icon: TypeModuleProblemIcon }) {
+function ProblemIcon({ icon }: { icon: TypeIcon }) {
   const Icon = DynamicFontAwesomeIcon({ name: icon.name as IconName });
 
   return <Icon className="m-product__problems__problem__icon" />;

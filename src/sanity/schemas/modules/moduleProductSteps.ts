@@ -6,8 +6,8 @@ export default defineField({
   type: 'object',
   fields: [
     defineField({
-      title: 'Title',
-      name: 'title',
+      title: 'Heading',
+      name: 'heading',
       type: 'string',
     }),
     defineField({
@@ -37,7 +37,19 @@ export default defineField({
             defineField({
               title: 'Paragraph',
               name: 'paragraph',
-              type: 'text',
+              type: 'array',
+              of: [
+                {
+                  title: 'Block',
+                  type: 'block',
+                  styles: [{ title: 'Paragraph', value: 'normal' }],
+                  lists: [{ title: 'Bullet', value: 'bullet' }],
+                  marks: {
+                    decorators: [],
+                    annotations: [],
+                  },
+                },
+              ],
             }),
             defineField({
               title: 'Media',

@@ -1,6 +1,7 @@
 .m-product {
   &__heading {
     @apply max-w-md mb-6 mx-auto text-3xl font-bold text-center sm:max-w-none sm:text-4xl md:text-5xl;
+    line-height: 1.5em;
   }
 
   &__paragraph {
@@ -52,7 +53,7 @@
   @apply c py-24 mt-48 bg-neutral-100;
 
   &__solutions {
-    @apply mx-auto mt-16 grid grid-cols-1 gap-6 text-gray-500 md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3;
+    @apply mx-auto mt-16 grid grid-cols-1 gap-6 text-body-light md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3;
   }
 
   &__solution {
@@ -63,20 +64,28 @@
       @apply justify-between;
     }
 
+    &:nth-child(1) {
+      @apply order-1 xl:order-none;
+    }
+
+    &:nth-child(2) {
+      @apply order-3 xl:order-none;
+    }
+
     &:nth-child(3) {
-      @apply md:row-span-2;
+      @apply order-2 xl:order-none md:row-span-2;
 
       .m-product__solutions__solution__media {
         @apply h-full translate-x-6;
 
         img {
-          @apply h-full object-cover object-left;
+          @apply h-full object-cover object-left-top;
         }
       }
     }
 
     &:nth-child(4) {
-      @apply md:col-span-2;
+      @apply order-4 xl:order-none md:col-span-2;
 
       .m-product__solutions__solution__media {
         @apply max-w-md mx-auto;
@@ -119,6 +128,85 @@
 
     &__media {
       @apply -mb-7 mt-8 w-full select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] transition-transform duration-500;
+    }
+  }
+}
+
+.m-product__steps {
+  @apply c mt-48;
+
+  &__list {
+    @apply mt-16;
+
+    &__item {
+      @apply flex flex-col items-center gap-4;
+    }
+
+    &__header {
+      @apply flex items-center gap-8 -translate-x-6;
+    }
+
+    &__content {
+      &__heading {
+        @apply text-xl font-bold;
+      }
+
+      ul {
+        @apply mt-2 text-body-light list-disc list-inside;
+      }
+    }
+
+    &__media {
+      @apply w-[90%] drop-shadow-[0_0_28px_rgba(0,0,0,.1)];
+    }
+
+    // desktop
+    @include breakpoint(lg) {
+      @apply flex items-center justify-center gap-12;
+
+      &__contents {
+        @apply max-w-sm flex flex-col gap-4;
+      }
+
+      &__header {
+        @apply relative pl-12 pr-14 py-2 translate-x-0 rounded-md transition-colors duration-500;
+
+        &::before,
+        &::after {
+          @apply absolute top-0 left-0 w-1 h-full  rounded-md;
+          content: '';
+        }
+
+        &::before {
+          @apply bg-neutral-100;
+        }
+
+        &::after {
+          @apply bg-secondary-2 scale-y-0 transition-transform duration-500 origin-top;
+        }
+
+        &.is-active {
+          @apply bg-neutral-100;
+
+          &::after {
+            @apply scale-y-100;
+          }
+        }
+      }
+
+      &__medias {
+        @apply max-w-2xl flex-1 grid w-full;
+      }
+
+      &__media {
+        @apply opacity-0 blur-sm transition-all duration-[250] delay-[0];
+
+        grid-area: 1/1/2/2;
+
+        &.is-active {
+          @apply opacity-100 blur-none delay-[0.25s];
+        }
+      }
     }
   }
 }
