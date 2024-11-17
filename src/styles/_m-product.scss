@@ -1,6 +1,10 @@
 .m-product {
-  p {
-    @apply text-body-light;
+  &__heading {
+    @apply max-w-md mb-6 mx-auto text-3xl font-bold text-center sm:max-w-none sm:text-4xl md:text-5xl;
+  }
+
+  &__paragraph {
+    @apply max-w-2xl mx-auto mt-6 text-center text-lg leading-8 text-body-light;
   }
 }
 
@@ -27,10 +31,6 @@
 .m-product__problems {
   @apply c mt-48;
 
-  &__heading {
-    @apply max-w-md mb-6 mx-auto text-3xl font-bold text-center sm:max-w-none sm:text-4xl md:text-5xl;
-  }
-
   &__list {
     @apply mt-16 flex flex-col md:flex-row justify-center gap-8;
   }
@@ -44,6 +44,81 @@
 
     &__heading {
       @apply text-2xl;
+    }
+  }
+}
+
+.m-product__solutions {
+  @apply c py-24 mt-48 bg-neutral-100;
+
+  &__solutions {
+    @apply mx-auto mt-16 grid grid-cols-1 gap-6 text-gray-500 md:max-w-3xl md:grid-cols-2 xl:grid-rows-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3;
+  }
+
+  &__solution {
+    @apply relative p-6 flex flex-col overflow-hidden bg-pure-white rounded-2xl transition-all duration-500;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      @apply justify-between;
+    }
+
+    &:nth-child(3) {
+      @apply md:row-span-2;
+
+      .m-product__solutions__solution__media {
+        @apply h-full translate-x-6;
+
+        img {
+          @apply h-full object-cover object-left;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      @apply md:col-span-2;
+
+      .m-product__solutions__solution__media {
+        @apply max-w-md mx-auto;
+      }
+    }
+
+    @include hover {
+      @apply bg-secondary-2;
+
+      .m-product__solutions__solution {
+        &__paragraph,
+        &__heading {
+          @apply text-white;
+        }
+      }
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(4) {
+        .m-product__solutions__solution__media {
+          @apply -translate-y-4;
+        }
+      }
+
+      &:nth-child(3) {
+        .m-product__solutions__solution__media {
+          @apply -translate-x-0;
+        }
+      }
+    }
+
+    &__heading {
+      @apply font-semibold mb-2 text-primary;
+    }
+
+    &__paragraph,
+    &__heading {
+      @apply transition duration-500;
+    }
+
+    &__media {
+      @apply -mb-7 mt-8 w-full select-none drop-shadow-[0_0_28px_rgba(0,0,0,.1)] transition-transform duration-500;
     }
   }
 }

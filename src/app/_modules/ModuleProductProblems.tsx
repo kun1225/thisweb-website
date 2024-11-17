@@ -32,14 +32,14 @@ export default function ModuleProductProblems({
 
 function Heading({ heading }: { heading?: string }) {
   if (!heading) return null;
-  return <h2 className="m-product__problems__heading">{heading}</h2>;
+  return <h2 className="m-product__heading">{heading}</h2>;
 }
 
 function Paragraph({ paragraph }: { paragraph?: string }) {
   if (!paragraph) return null;
   return (
     <p
-      className="m-product__problems__paragraph"
+      className="m-product__paragraph"
       dangerouslySetInnerHTML={{ __html: formatBrNewLine(paragraph) }}
     />
   );

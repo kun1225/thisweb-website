@@ -24,7 +24,7 @@ export function hasObjectValue(obj: { [key: string]: any }) {
   return false;
 }
 
-export function hasArrayValue(array: any[]) {
+export function hasArrayValue(array: any[] | undefined) {
   return Array.isArray(array) && array.length > 0;
 }
 

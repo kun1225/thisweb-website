@@ -16,9 +16,13 @@ export default defineType({
     defineField({
       title: 'Slug',
       name: 'slug',
-      type: 'string',
-      description: 'Must start with /product/',
-      initialValue: '/product/...',
+      type: 'slug',
+      options: {
+        source: 'title',
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, '-').slice(0, 96),
+      },
+      validation: (Rule) => [Rule.required()],
     }),
 
     moduleProduct(),
@@ -35,10 +39,10 @@ export default defineType({
       title: 'title',
       slug: 'slug',
     },
-    prepare({ title, slug }: { title: string; slug: string }) {
+    prepare({ title, slug }: { title: string; slug: { current: string } }) {
       return {
         title,
-        subtitle: slug,
+        subtitle: slug.current,
       };
     },
   },
