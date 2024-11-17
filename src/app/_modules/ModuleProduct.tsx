@@ -2,6 +2,7 @@ import ModuleProductHero from './ModuleProductHero';
 import ModuleProductProblems from './ModuleProductProblems';
 import ModuleProductSolutions from './ModuleProductSolutions';
 import ModuleProductSteps from './ModuleProductSteps';
+import ModuleProductsFeatures from './ModuleProductFeatures';
 import { TypeModulesProduct } from '@/src/types/typeModules';
 
 export default function ModuleProduct({
@@ -19,6 +20,8 @@ export default function ModuleProduct({
         return <ModuleProductSolutions key={module._key} data={module} />;
       case 'moduleProductSteps':
         return <ModuleProductSteps key={module._key} data={module} />;
+      case 'moduleProductFeatures':
+        return <ModuleProductsFeatures key={module._key} data={module} />;
       default:
         return null;
     }

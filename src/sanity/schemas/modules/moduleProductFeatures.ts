@@ -11,6 +11,11 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Paragraph',
+      name: 'paragraph',
+      type: 'text',
+    }),
+    defineField({
       title: 'Features',
       name: 'features',
       type: 'array',
@@ -26,6 +31,7 @@ export default defineField({
               type: 'iconPicker',
               options: {
                 outputFormat: 'react',
+                providers: ['fa'],
               },
             }),
             defineField({

@@ -55,9 +55,25 @@ export type TypeModuleProductSteps = {
   steps: TypeModuleProductStep[];
 };
 
+export type TypeModuleProductFeature = {
+  _key: string;
+  icon: TypeIcon;
+  heading: string;
+  paragraph: string;
+  media: TypeMedia;
+};
+export type TypeModuleProductFeatures = {
+  _key: string;
+  _type: 'moduleProductFeatures';
+  heading: string;
+  paragraph: string;
+  features: TypeModuleProductFeature[];
+};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
   | TypeModuleProductSolutions
   | TypeModuleProductSteps
+  | TypeModuleProductFeatures
 )[];
