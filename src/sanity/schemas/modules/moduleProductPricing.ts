@@ -1,5 +1,7 @@
 import { defineField } from 'sanity';
 
+import Highlight from '../../components/Highlight';
+
 export default defineField({
   title: 'Module Product Pricing',
   name: 'moduleProductPricing',
@@ -11,8 +13,13 @@ export default defineField({
       type: 'string',
     }),
     defineField({
-      title: 'Price',
-      name: 'price',
+      title: 'Paragraph',
+      name: 'paragraph',
+      type: 'text',
+    }),
+    defineField({
+      title: 'Plans',
+      name: 'plans',
       type: 'array',
       of: [
         defineField({
@@ -23,11 +30,28 @@ export default defineField({
             defineField({
               title: 'Heading',
               name: 'heading',
-              type: 'text',
+              type: 'string',
             }),
             defineField({
-              title: 'Paragraph',
-              name: 'paragraph',
+              title: 'Price',
+              name: 'price',
+              type: 'object',
+              fields: [
+                defineField({
+                  title: 'Original Price',
+                  name: 'originalPrice',
+                  type: 'number',
+                }),
+                defineField({
+                  title: 'Discounted Price',
+                  name: 'discountedPrice',
+                  type: 'number',
+                }),
+              ],
+            }),
+            defineField({
+              title: 'Features',
+              name: 'features',
               type: 'array',
               of: [
                 {
@@ -41,6 +65,11 @@ export default defineField({
                   marks: {
                     decorators: [
                       { title: 'Strong', value: 'strong' },
+                      {
+                        title: 'Highlight',
+                        value: 'highlight',
+                        component: Highlight,
+                      },
                       { title: 'Strike', value: 'strike-through' },
                     ],
                     annotations: [],

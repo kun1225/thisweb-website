@@ -79,7 +79,16 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
       _key,
       heading,
       paragraph,
-    }
-
+      plans[] {
+        _key,
+        heading,
+        price,
+        features,
+        cta {
+          url,
+          label,
+        },
+      },
+    },
   },
 }[0]`;

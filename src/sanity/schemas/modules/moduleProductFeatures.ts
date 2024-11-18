@@ -11,6 +11,11 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Subheading',
+      name: 'subheading',
+      type: 'string',
+    }),
+    defineField({
       title: 'Paragraph',
       name: 'paragraph',
       type: 'text',

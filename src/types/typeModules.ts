@@ -66,6 +66,7 @@ export type TypeModuleProductFeatures = {
   _key: string;
   _type: 'moduleProductFeatures';
   heading: string;
+  subheading: string;
   paragraph: string;
   features: TypeModuleProductFeature[];
 };
@@ -84,6 +85,27 @@ export type TypeModuleProductAbout = {
   achievements: TypeModuleProductAboutAchievements[];
 };
 
+export type TypeModuleProductPricingPlan = {
+  _key: string;
+  heading: string;
+  price: {
+    originalPrice: number;
+    discountedPrice: number;
+  };
+  features: any[];
+  cta: {
+    label: string;
+    url: string;
+  };
+};
+export type TypeModuleProductPricing = {
+  _key: string;
+  _type: 'moduleProductPricing';
+  heading: string;
+  paragraph: string;
+  plans: TypeModuleProductPricingPlan[];
+};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
@@ -91,4 +113,5 @@ export type TypeModulesProduct = (
   | TypeModuleProductSteps
   | TypeModuleProductFeatures
   | TypeModuleProductAbout
+  | TypeModuleProductPricing
 )[];

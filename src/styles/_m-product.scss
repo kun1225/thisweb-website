@@ -159,9 +159,11 @@
     &__media {
       @apply w-[90%] drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
     }
+  }
 
-    // desktop
-    @include breakpoint(lg) {
+  // desktop
+  @include breakpoint('lg') {
+    &__list {
       @apply pt-12 xl:pt-16 flex items-center justify-center gap-12;
 
       &__contents {
@@ -238,7 +240,7 @@
     }
   }
 
-  @include breakpoint(lg) {
+  @include breakpoint('lg') {
     &__list {
       @apply mt-24 mx-0;
     }
@@ -310,12 +312,56 @@
     @apply max-w-sm mx-auto w-full px-4 py-8 md:py-12 lg:py-16  flex items-center justify-center gap-2 grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
 
     &__value {
-      @apply flex gap-1  font-semibold text-secondary items-center;
+      @apply flex gap-1 font-semibold text-secondary items-center;
       font-size: clamp(32px, 3vw, 64px);
     }
 
     &__paragraph {
       @apply text-body-light;
+    }
+  }
+}
+
+.m-product__pricing {
+  @apply c mt-48;
+
+  &__plans {
+    @apply mt-12 flex flex-col md:flex-row gap-8 justify-center items-center md:items-stretch;
+  }
+
+  &__item {
+    @apply max-w-sm w-full px-4 py-8 md:py-12 lg:py-16  flex flex-col grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)] transition-transform duration-500;
+
+    @include hover {
+      @apply -translate-y-4;
+    }
+
+    &:first-child {
+      @apply border-2 border-secondary-2;
+    }
+
+    &__heading {
+      @apply mb-4 self-center text-body-light text-lg;
+    }
+
+    &__price {
+      @apply self-center flex gap-2 items-baseline;
+
+      &__discounted {
+        @apply text-5xl font-bold text-primary;
+      }
+
+      &__original {
+        @apply line-through;
+      }
+    }
+
+    &__features {
+      @apply py-8 my-8 border-y border-neutral-200;
+    }
+
+    &__cta {
+      @apply px-10 py-2 flex items-center justify-center whitespace-nowrap rounded-sm transition duration-200 disabled:pointer-events-none bg-secondary text-white shadow hover:bg-secondary-2 hover:shadow-xl hover:scale-102;
     }
   }
 }
