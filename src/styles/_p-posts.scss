@@ -1,7 +1,7 @@
 @import '__mixins.scss';
 
 .p-posts {
-  @apply c 2xl:px-0 max-w-3xl mx-auto pt-32 pb-16 min-h-[80vh];
+  @apply c 2xl:px-0 max-w-3xl mx-auto py-16 min-h-[80vh];
 
   &__header {
     @apply pb-4 mb-8 border-b-2 border-gray-200;

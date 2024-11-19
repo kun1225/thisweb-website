@@ -35,5 +35,6 @@ module.exports = {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-unused-vars': 'warn',
     camelcase: ['warn', { ignoreImports: true }],
+    'jsx-a11y/media-has-caption': 'off',
   },
 };

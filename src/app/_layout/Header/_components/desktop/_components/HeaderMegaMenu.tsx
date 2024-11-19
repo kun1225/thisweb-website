@@ -2,7 +2,7 @@
 import HeaderMegaMenuTrigger from './HeaderMegaMenuTrigger';
 import HeaderPostsMegaMenu from './HeaderPostsMegaMenu';
 // Types
-import { TypeMegamenu } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeMegamenu } from '@/src/types/typeGlobalHeader';
 
 export default function HeaderMegaMenu({
   megamenu,

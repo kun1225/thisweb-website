@@ -9,7 +9,7 @@ import MobileMenuCategoryLink from './MobileMenuCategoryLink';
 import {
   TypeGlobalHeaderContent,
   TypeMegamenu,
-} from '@/src/libs/sanity/type/typeGlobalHeader';
+} from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenuContent({
   headerContent,

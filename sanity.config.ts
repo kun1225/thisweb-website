@@ -15,6 +15,7 @@ import { structure } from './src/sanity/structure';
 
 // Others Plugins
 import { codeInput } from '@sanity/code-input';
+import { iconPicker } from 'sanity-plugin-icon-picker';
 
 export default defineConfig({
   basePath: '/studio',
@@ -29,5 +30,6 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     codeInput(),
+    iconPicker(),
   ],
 });

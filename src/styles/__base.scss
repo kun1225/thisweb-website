@@ -61,6 +61,11 @@ p {
   @apply text-pretty;
 }
 
+mark {
+  --bg: color-mix(in srgb, var(--cr-secondary-2) 20%, transparent);
+  @apply bg-[var(--bg)];
+}
+
 @media screen and (hover: hover) {
   :focus-visible {
     @apply outline-dashed outline-2 outline-offset-4 outline-primary;

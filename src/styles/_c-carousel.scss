@@ -1,0 +1,100 @@
+.c-carousel {
+  --dot-size: 10px;
+  --dot-gap: 5px;
+
+  position: relative;
+  width: 100%;
+
+  &__viewport {
+    padding-bottom: 1px; // avoid to crop the underline
+    overflow: hidden;
+
+    &.is-draggable:not(.disable-draggable) {
+      cursor: grab;
+    }
+
+    &.is-dragging:not(.disable-draggable) {
+      cursor: grabbing;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    -webkit-tap-highlight-color: transparent;
+    backface-visibility: hidden;
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+
+    & > * {
+      min-width: var(--item-min-width, 0);
+      flex: 0 0 var(--item-width);
+      margin-right: var(--item-gap);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__button {
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background-color: transparent;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      touch-action: manipulation;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__dot {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--dot-size) + var(--dot-gap));
+    height: calc(var(--dot-size) + var(--dot-gap));
+    border: none;
+    box-shadow: none;
+    outline: none;
+    user-select: none;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &__icon {
+      display: block;
+      position: relative;
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border-radius: 100%;
+      background-color: var(--cr-primary);
+    }
+
+    &:not(.is-selected) {
+      opacity: 0.3;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}

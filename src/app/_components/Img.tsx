@@ -5,7 +5,7 @@ import { cn } from '@/src/libs/utils';
 // Components
 import Image from 'next/image';
 // Type
-import { TypeImage } from '@/src/libs/sanity/type/typeImage';
+import { TypeImage } from '@/src/types/typeImage';
 
 export default function Img({
   image,
@@ -47,11 +47,7 @@ export default function Img({
   if (!image || !imageId || !src) return null;
 
   return (
-    <picture
-      className={cn('c-img', className, {
-        'border rounded bg-neutral-100': withPlaceholder,
-      })}
-    >
+    <picture className={cn('c-img', className)}>
       {responsiveImageSrc ? (
         <>
           <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={src} />
@@ -65,9 +61,12 @@ export default function Img({
         src={src}
         quality={quality}
         loading={loading}
-        fill
-        alt={alt || image.alt || 'image'}
-        className="c-img__img"
+        width={imageWidth}
+        height={imageHeight}
+        alt={alt || image?.alt || 'image'}
+        className={cn('c-img__img', {
+          'border rounded bg-neutral-100': withPlaceholder,
+        })}
       />
     </picture>
   );

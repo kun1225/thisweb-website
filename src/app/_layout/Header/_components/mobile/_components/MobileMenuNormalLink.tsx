@@ -1,7 +1,7 @@
 // Components
 import Link from 'next/link';
 // Type
-import { TypeNormalLink } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeNormalLink } from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenuNormalLink({
   link,
