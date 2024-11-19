@@ -16,13 +16,13 @@ const useWindowWidth = () => {
   const modifyWidth = () => {
     setWindowWidth(window.innerWidth);
 
-    if (window.innerWidth > parseScreenString(lg)) {
+    if (window.innerWidth >= parseScreenString(lg)) {
       setIsDesktop(true);
       setIsTablet(false);
       setIsMobile(false);
     } else if (
       window.innerWidth < parseScreenString(lg) &&
-      window.innerWidth > parseScreenString(md)
+      window.innerWidth >= parseScreenString(md)
     ) {
       setIsDesktop(false);
       setIsTablet(true);

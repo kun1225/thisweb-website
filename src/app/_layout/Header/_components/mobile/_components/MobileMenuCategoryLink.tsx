@@ -3,7 +3,7 @@ import { getPostsUrl } from '../lib';
 // Components
 import Link from 'next/link';
 // Type
-import { TypeCategory } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeCategory } from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenuCategoryLink({
   category,

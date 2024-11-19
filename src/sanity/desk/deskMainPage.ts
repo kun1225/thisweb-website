@@ -10,10 +10,16 @@ export const deskMainPage = (S: any) => {
           S.listItem()
             .title('Home Page')
             .child(
+              S.editor().id('pHome').schemaType('pHome').documentId('pHome'),
+            )
+            .icon(ComponentIcon),
+          S.listItem()
+            .title('Frontend Career Guide page')
+            .child(
               S.editor()
-                .id('pageHome')
-                .schemaType('pageHome')
-                .documentId('pageHome'),
+                .id('pageFrontendCareerGuide')
+                .schemaType('pageFrontendCareerGuide')
+                .documentId('pageFrontendCareerGuide'),
             )
             .icon(ComponentIcon),
           S.listItem()

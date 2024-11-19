@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import { defineType, defineArrayMember } from 'sanity';
 /**
  * This is the schema type for block content used in the post document type
  * Importing this type into the studio configuration's `schema` property
@@ -24,26 +24,26 @@ export default defineType({
       // use your content.
       //@ts-ignore
       styles: [
-        {title: 'Normal', value: 'normal'},
-        {title: 'H2', value: 'h2'},
-        {title: 'H3', value: 'h3'},
-        {title: 'H4', value: 'h4'},
-        {title: 'Quote', value: 'blockquote'},
+        { title: 'Normal', value: 'normal' },
+        { title: 'H2', value: 'h2' },
+        { title: 'H3', value: 'h3' },
+        { title: 'H4', value: 'h4' },
+        { title: 'Quote', value: 'blockquote' },
       ],
       lists: [
-        {title: 'Bullet', value: 'bullet'},
-        {title: 'Numbered', value: 'number'},
+        { title: 'Bullet', value: 'bullet' },
+        { title: 'Numbered', value: 'number' },
       ],
       // Marks let you mark up inline text in the Portable Text Editor
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
-          {title: 'Code', value: 'code'},
-          {title: 'Underline', value: 'underline'},
-          {title: 'Strike', value: 'strike-through'},
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+          { title: 'Code', value: 'code' },
+          { title: 'Underline', value: 'underline' },
+          { title: 'Strike', value: 'strike-through' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -69,7 +69,7 @@ export default defineType({
                 name: 'reference',
                 type: 'reference',
                 title: 'Reference',
-                to: [{type: 'post'}],
+                to: [{ type: 'post' }],
               },
             ],
           },
@@ -86,15 +86,15 @@ export default defineType({
       options: {
         language: 'javascript',
         languageAlternatives: [
-          {title: 'Javascript', value: 'javascript'},
-          {title: 'Typescript', value: 'typescript'},
-          {title: 'HTML', value: 'html'},
-          {title: 'CSS', value: 'css'},
-          {title: 'Bash', value: 'bash'},
-          {title: 'Bash', value: 'bash'},
-          {title: 'jsx', value: 'jsx'},
-          {title: 'tsx', value: 'tsx'},
-          {title: 'template', value: 'template'},
+          { title: 'Javascript', value: 'javascript' },
+          { title: 'Typescript', value: 'typescript' },
+          { title: 'HTML', value: 'html' },
+          { title: 'CSS', value: 'css' },
+          { title: 'Bash', value: 'bash' },
+          { title: 'Bash', value: 'bash' },
+          { title: 'jsx', value: 'jsx' },
+          { title: 'tsx', value: 'tsx' },
+          { title: 'template', value: 'template' },
         ],
         withFilename: true,
       },
@@ -102,13 +102,13 @@ export default defineType({
     defineArrayMember({
       name: 'Video',
       type: 'file',
-      options: {hotspot: true},
       //@ts-ignore
+      options: { hotspot: true },
     }),
     defineArrayMember({
       type: 'image',
-      options: {hotspot: true},
       //@ts-ignore
+      options: { hotspot: true },
       fields: [
         {
           name: 'alt',
@@ -119,7 +119,7 @@ export default defineType({
           name: 'caption',
           type: 'string',
           title: 'Caption',
-          hidden: ({parent}: {parent: any}) => !parent?.asset,
+          hidden: ({ parent }: { parent: any }) => !parent?.asset,
           options: {
             isHighlighted: true,
           },
@@ -140,4 +140,4 @@ export default defineType({
       icon: () => 'C',
     }),
   ],
-})
+});

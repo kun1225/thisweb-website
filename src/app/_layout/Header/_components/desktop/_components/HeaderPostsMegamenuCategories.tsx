@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TypeSecondLevelCategory } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeSecondLevelCategory } from '@/src/types/typeGlobalHeader';
 
 export default function HeaderPostsMegamenuCategories({
   content,

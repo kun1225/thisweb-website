@@ -1,6 +1,6 @@
 import { postsLimitedQuery, postsCountsQuery } from '../queries/postsQuery';
 import { sanityFetch } from '../client';
-import { type TypePosts } from '../type/typePosts';
+import { type TypePosts } from '../../../types/typePosts';
 
 export const postsLimitedFetch = async ({
   startIndex,

@@ -8,7 +8,7 @@ import {
   AccordionContent,
 } from '@/src/app/_components/Accordion';
 // Types
-import { TypeCategory } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeCategory } from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenuAccordion({
   category,

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { GlobalSettingsProvider } from '../../_context/globalSettings';
 // Type
-import { TypeGlobalHeaderContent } from '@/src/libs/sanity/type/typeGlobalHeader';
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components
 import { Suspense } from 'react';
 import Header from '../Header';
@@ -29,7 +29,9 @@ export default function SiteLayout({
         <ProgressBar />
       </Suspense>
       <Header headerContent={headerContent} />
-      <main id="main">{children}</main>
+      <main id="main" className="mt-header">
+        {children}
+      </main>
       <Footer />
     </GlobalSettingsProvider>
   );
