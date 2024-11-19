@@ -18,9 +18,8 @@ export default function HeaderNavContents({
         switch (item._type) {
           case 'normalLink':
             return (
-              <li>
+              <li key={item._key}>
                 <HeaderNormalLink
-                  key={item._key}
                   linkText={item.linkText}
                   linkUrl={item.linkUrl}
                   onClick={closeMegaMenu}
@@ -30,9 +29,8 @@ export default function HeaderNavContents({
 
           case 'megamenu':
             return (
-              <li>
+              <li key={item._key}>
                 <HeaderMegaMenu
-                  key={item._key}
                   megamenu={item}
                   title={item.buttonText}
                   index={index}
