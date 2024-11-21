@@ -5,6 +5,7 @@ import { deskProductPage } from './desk/deskProductPage';
 import { deskPosts } from './desk/deskPosts';
 import { deskAuthor } from './desk/deskAuthor';
 import { deskCategories } from './desk/deskCategories';
+import { deskSettings } from './desk/deskSettings';
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -21,4 +22,7 @@ export const structure: StructureResolver = (S) =>
       deskPosts(S),
       deskAuthor(S),
       deskCategories(S),
+      S.divider(),
+
+      deskSettings(S),
     ]);
