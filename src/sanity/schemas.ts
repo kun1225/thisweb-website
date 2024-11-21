@@ -1,3 +1,5 @@
+import settingsGeneral from './schemas/globals/settingsGeneral';
+
 // Header
 import header from './schemas/globals/header';
 import postMegamenu from './schemas/globals/megamenu/postMegamenu';
@@ -13,7 +15,6 @@ import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 import pHome from './schemas/pages/p-home';
 import pProduct from './schemas/pages/p-product';
 import pageService from './schemas/pages/service';
-import pageFrontendCareerGuide from './schemas/pages/p-frontend-career-guide';
 
 // Block
 import blockContent from './schemas/block/blockContent';
@@ -37,6 +38,8 @@ import video from './schemas/objects/video';
 import media from './schemas/objects/media';
 
 export const schemas = [
+  settingsGeneral,
+
   header,
   postMegamenu,
 
@@ -49,7 +52,6 @@ export const schemas = [
   pHome,
   pProduct,
   pageService,
-  pageFrontendCareerGuide,
 
   blockContent,
   callout,
