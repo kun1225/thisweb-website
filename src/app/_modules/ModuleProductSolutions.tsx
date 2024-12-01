@@ -22,11 +22,11 @@ export default function ModuleProductSolutions({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, solutions } = data;
+  const { heading, headingId, paragraph, solutions } = data;
 
   return (
     <section className="m-product__solutions">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       <Solutions solutions={solutions} />
     </section>

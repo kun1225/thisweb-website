@@ -12,6 +12,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductHero" => {
       _key,
       heading,
+      headingId,
       paragraph,
       media,
       callToAction {
@@ -22,6 +23,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductProblems" => {
       _key,
       heading,
+      headingId,
       paragraph,
       problems[] {
         _key,
@@ -33,6 +35,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductSolutions" => {
       _key,
       heading,
+      headingId,
       paragraph,
       solutions[] {
         _key,
@@ -44,6 +47,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductSteps" => {
       _key,
       heading,
+      headingId,
       paragraph,
       steps[] {
         _key,
@@ -56,6 +60,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductFeatures" => {
       _key,
       heading,
+      headingId,
       paragraph,
       features[] {
         _key,
@@ -68,6 +73,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductAbout" => {
       _key,
       heading,
+      headingId,
       paragraph,
       achievements[] {
         _key,
@@ -78,6 +84,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
     _type == "moduleProductPricing" => {
       _key,
       heading,
+      headingId,
       paragraph,
       plans[] {
         _key,
@@ -88,6 +95,19 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
           url,
           label,
         },
+      },
+    },
+    _type == "moduleProductTestimonials" => {
+      _key,
+      heading,
+      subheading,
+      paragraph,
+      testimonials[] {
+        _key,
+        name,
+        role,
+        quote,
+        image,
       },
     },
   },

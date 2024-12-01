@@ -216,7 +216,7 @@
 .m-product__features {
   @apply c mt-48;
 
-  &__list {
+  &__body {
     @apply -mx-edge-dynamic;
   }
 
@@ -241,8 +241,8 @@
   }
 
   @include breakpoint('lg') {
-    &__list {
-      @apply mt-24 mx-0;
+    &__body {
+      @apply mx-0;
     }
 
     &__contents {
@@ -362,6 +362,36 @@
 
     &__cta {
       @apply px-10 py-2 flex items-center justify-center whitespace-nowrap rounded-sm transition duration-200 disabled:pointer-events-none bg-secondary text-white shadow hover:bg-secondary-2 hover:shadow-xl hover:scale-102;
+    }
+  }
+}
+
+.m-product__testimonials {
+  @apply c mt-24 py-24 bg-neutral-100;
+
+  &__list {
+    @apply -mx-edge-dynamic mt-8;
+  }
+
+  &__item {
+    @apply max-w-xs self-stretch p-6 rounded-md shadow-[0_0_14px_rgba(0,0,0,.1)] bg-pure-white flex flex-col justify-between;
+  }
+
+  &__author {
+    @apply mt-4 flex flex-col text-body-light text-sm;
+  }
+
+  .c-carousel {
+    &__viewport.disable-draggable {
+      .c-carousel__container {
+        @apply justify-center;
+      }
+    }
+  }
+
+  @include breakpoint('lg') {
+    &__item {
+      @apply max-w-sm;
     }
   }
 }

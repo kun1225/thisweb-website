@@ -1,10 +1,12 @@
 import { TypeMedia } from './typeMedia';
+import { TypeImage } from './typeImage';
 import { TypeIcon } from './typeIcon';
 
 export type TypeModuleProductHero = {
   _key: string;
   _type: 'moduleProductHero';
   heading: string;
+  headingId?: string;
   paragraph: string;
   media: TypeMedia;
   callToAction: {
@@ -23,6 +25,7 @@ export type TypeModuleProductProblems = {
   _key: string;
   _type: 'moduleProductProblems';
   heading: string;
+  headingId?: string;
   paragraph: string;
   problems: TypeModuleProductProblem[];
 };
@@ -37,6 +40,7 @@ export type TypeModuleProductSolutions = {
   _key: string;
   _type: 'moduleProductSolutions';
   heading: string;
+  headingId?: string;
   paragraph: string;
   solutions: TypeModuleProductSolution[];
 };
@@ -52,6 +56,7 @@ export type TypeModuleProductSteps = {
   _key: string;
   _type: 'moduleProductSteps';
   heading: string;
+  headingId?: string;
   steps: TypeModuleProductStep[];
 };
 
@@ -66,6 +71,7 @@ export type TypeModuleProductFeatures = {
   _key: string;
   _type: 'moduleProductFeatures';
   heading: string;
+  headingId?: string;
   subheading: string;
   paragraph: string;
   features: TypeModuleProductFeature[];
@@ -80,14 +86,33 @@ export type TypeModuleProductAbout = {
   _key: string;
   _type: 'moduleProductAbout';
   heading: string;
+  headingId?: string;
   paragraph: string;
   media: TypeMedia;
   achievements: TypeModuleProductAboutAchievements[];
 };
 
+export type TypeModuleProductTestimonial = {
+  _key: string;
+  name?: string;
+  role?: string;
+  image?: TypeImage;
+  quote: any[];
+};
+export type TypeModuleProductTestimonials = {
+  _key: string;
+  _type: 'moduleProductTestimonials';
+  heading: string;
+  headingId?: string;
+  paragraph: string;
+  subHeading: string;
+  testimonials: TypeModuleProductTestimonial[];
+};
+
 export type TypeModuleProductPricingPlan = {
   _key: string;
   heading: string;
+  headingId?: string;
   price: {
     originalPrice: number;
     discountedPrice: number;
@@ -102,6 +127,7 @@ export type TypeModuleProductPricing = {
   _key: string;
   _type: 'moduleProductPricing';
   heading: string;
+  headingId?: string;
   paragraph: string;
   plans: TypeModuleProductPricingPlan[];
 };
@@ -114,4 +140,5 @@ export type TypeModulesProduct = (
   | TypeModuleProductFeatures
   | TypeModuleProductAbout
   | TypeModuleProductPricing
+  | TypeModuleProductTestimonials
 )[];

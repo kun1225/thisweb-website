@@ -28,9 +28,8 @@ import moduleProductSolutions from './schemas/modules/moduleProductSolutions';
 import moduleProductSteps from './schemas/modules/moduleProductSteps';
 import moduleProductFeatures from './schemas/modules/moduleProductFeatures';
 import moduleProductAbout from './schemas/modules/moduleProductAbout';
-import moduleProductBonuses from './schemas/modules/moduleProductBonuses';
-import moduleProductTestimonials from './schemas/modules/moduleProductTestimonials';
 import moduleProductPrices from './schemas/modules/moduleProductPricing';
+import moduleProductTestimonials from './schemas/modules/moduleProductTestimonials';
 
 // objects
 import sharing from './schemas/objects/sharing';
@@ -63,7 +62,6 @@ export const schemas = [
   moduleProductSteps,
   moduleProductFeatures,
   moduleProductAbout,
-  moduleProductBonuses,
   moduleProductTestimonials,
   moduleProductPrices,
 
