@@ -111,7 +111,7 @@ export default function Carousel({
       setIsDraggable(false);
       emblaApi?.reInit({ watchDrag: false });
     }
-  }, [emblaApi, isAutoScroll]);
+  }, [emblaApi]);
 
   const updateScrollSnap = useCallback(() => {
     const scrollSnapListLength = emblaApi?.scrollSnapList().length!;
