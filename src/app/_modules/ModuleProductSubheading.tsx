@@ -5,5 +5,5 @@ export default function ModuleProductSubheading({
 }) {
   if (!subheading) return null;
 
-  return <h2 className="m-product__subheading">{subheading}</h2>;
+  return <p className="m-product__subheading">{subheading}</p>;
 }

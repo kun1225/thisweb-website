@@ -14,6 +14,7 @@ export default function moduleProduct() {
       { type: 'moduleProductAbout' },
       { type: 'moduleProductTestimonials' },
       { type: 'moduleProductPricing' },
+      { type: 'moduleProductFAQs' },
     ],
   });
 }

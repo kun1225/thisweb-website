@@ -30,6 +30,7 @@ import moduleProductFeatures from './schemas/modules/moduleProductFeatures';
 import moduleProductAbout from './schemas/modules/moduleProductAbout';
 import moduleProductPrices from './schemas/modules/moduleProductPricing';
 import moduleProductTestimonials from './schemas/modules/moduleProductTestimonials';
+import moduleProductFAQs from './schemas/modules/moduleProductFAQs';
 
 // objects
 import sharing from './schemas/objects/sharing';
@@ -64,6 +65,7 @@ export const schemas = [
   moduleProductAbout,
   moduleProductTestimonials,
   moduleProductPrices,
+  moduleProductFAQs,
 
   sharing,
   video,

@@ -132,6 +132,21 @@ export type TypeModuleProductPricing = {
   plans: TypeModuleProductPricingPlan[];
 };
 
+export type TypeModuleProductFAQ = {
+  _key: string;
+  heading: string;
+  answer: any[];
+};
+export type TypeModuleProductFAQs = {
+  _key: string;
+  _type: 'moduleProductFAQs';
+  heading: string;
+  headingId?: string;
+  subheading: string;
+  paragraph: string;
+  faqList: TypeModuleProductFAQ[];
+};
+
 export type TypeModulesProduct = (
   | TypeModuleProductHero
   | TypeModuleProductProblems
@@ -141,4 +156,5 @@ export type TypeModulesProduct = (
   | TypeModuleProductAbout
   | TypeModuleProductPricing
   | TypeModuleProductTestimonials
+  | TypeModuleProductFAQs
 )[];

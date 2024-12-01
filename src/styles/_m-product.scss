@@ -4,6 +4,10 @@
     line-height: 1.5em;
   }
 
+  &__subheading {
+    @apply text-center tracking-[0.2em];
+  }
+
   &__paragraph {
     @apply max-w-2xl mx-auto mt-6 text-center text-lg leading-8 text-body-light;
   }
@@ -73,7 +77,7 @@
     }
 
     &:nth-child(3) {
-      @apply order-2 xl:order-none md:row-span-2;
+      @apply order-2 xl:order-none row-span-2;
 
       .m-product__solutions__solution__media {
         @apply h-full translate-x-6;
@@ -266,16 +270,8 @@
         @apply bg-secondary-2 scale-x-0 transition-transform duration-500;
       }
 
-      &:nth-child(1) {
-        &::after {
-          @apply origin-left;
-        }
-      }
-
-      &:nth-child(3) {
-        &::after {
-          @apply origin-right;
-        }
+      &::after {
+        @apply origin-center;
       }
 
       &.is-active {
@@ -330,14 +326,10 @@
   }
 
   &__item {
-    @apply max-w-sm w-full px-4 py-8 md:py-12 lg:py-16  flex flex-col grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)] transition-transform duration-500;
+    @apply max-w-sm w-full px-4 py-8 md:py-12 lg:py-16 flex flex-col grow rounded-md bg-pure-white border-2 border-transparent drop-shadow-[0_0_14px_rgba(0,0,0,.1)] transition-all duration-500;
 
     @include hover {
-      @apply -translate-y-4;
-    }
-
-    &:first-child {
-      @apply border-2 border-secondary-2;
+      @apply -translate-y-4 border-secondary-2;
     }
 
     &__heading {
@@ -348,11 +340,11 @@
       @apply self-center flex gap-2 items-baseline;
 
       &__discounted {
-        @apply text-5xl font-bold text-primary;
+        @apply text-4xl md:text-5xl font-bold text-primary;
       }
 
       &__original {
-        @apply line-through;
+        @apply line-through text-sm md:text-body;
       }
     }
 
@@ -361,7 +353,7 @@
     }
 
     &__cta {
-      @apply px-10 py-2 flex items-center justify-center whitespace-nowrap rounded-sm transition duration-200 disabled:pointer-events-none bg-secondary text-white shadow hover:bg-secondary-2 hover:shadow-xl hover:scale-102;
+      @apply px-10 py-2 flex items-center justify-center whitespace-nowrap rounded-sm transition duration-200 disabled:pointer-events-none bg-secondary text-white shadow hover:bg-secondary-2;
     }
   }
 }
@@ -381,6 +373,10 @@
     @apply mt-4 flex flex-col text-body-light text-sm;
   }
 
+  &__name {
+    @apply font-semibold;
+  }
+
   .c-carousel {
     &__viewport.disable-draggable {
       .c-carousel__container {
@@ -392,6 +388,32 @@
   @include breakpoint('lg') {
     &__item {
       @apply max-w-sm;
+    }
+  }
+}
+
+.m-product__faqs {
+  @apply c mt-48;
+
+  &__list {
+    @apply max-w-2xl mx-auto mt-16 flex flex-col gap-8;
+
+    &__item {
+      @apply pb-4 border-b-2 border-neutral-200;
+
+      &.is-active {
+        .m-product__faqs__list__answer {
+          @apply pt-2;
+        }
+      }
+    }
+
+    &__heading {
+      @apply text-lg md:text-xl text-primary;
+    }
+
+    &__answer {
+      @apply pt-0 transition-all duration-500;
     }
   }
 }

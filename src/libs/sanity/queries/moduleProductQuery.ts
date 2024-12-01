@@ -110,5 +110,16 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
         image,
       },
     },
+    _type == "moduleProductFAQs" => {
+      _key,
+      heading,
+      subheading,
+      paragraph,
+      faqList[] {
+        _key,
+        heading,
+        answer,
+      },
+    },
   },
 }[0]`;
