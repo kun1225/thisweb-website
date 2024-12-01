@@ -10,11 +10,11 @@ export default function ModuleProductSteps({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, steps } = data || {};
+  const { heading, headingId, steps } = data || {};
 
   return (
     <section className="m-product__steps">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductStepsList steps={steps} />
     </section>
   );

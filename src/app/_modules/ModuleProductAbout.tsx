@@ -17,11 +17,11 @@ export default function ModuleProductAbout({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, media, achievements } = data;
+  const { heading, headingId, paragraph, media, achievements } = data;
 
   return (
     <section className="m-product__about">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       <ModuleProductAboutAchievements achievements={achievements} />
     </section>

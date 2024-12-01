@@ -3,8 +3,8 @@ import { defineField } from 'sanity';
 import Highlight from '../../components/Highlight';
 
 export default defineField({
-  title: 'Module Product Pricing',
-  name: 'moduleProductPricing',
+  title: 'Module Product FAQs',
+  name: 'moduleProductFAQs',
   type: 'object',
   fields: [
     defineField({
@@ -18,18 +18,23 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Subheading',
+      name: 'subheading',
+      type: 'string',
+    }),
+    defineField({
       title: 'Paragraph',
       name: 'paragraph',
       type: 'text',
     }),
     defineField({
-      title: 'Plans',
-      name: 'plans',
+      title: 'FAQ List',
+      name: 'faqList',
       type: 'array',
       of: [
         defineField({
-          title: 'Price Item',
-          name: 'priceItem',
+          title: 'FAQ',
+          name: 'faq',
           type: 'object',
           fields: [
             defineField({
@@ -38,35 +43,15 @@ export default defineField({
               type: 'string',
             }),
             defineField({
-              title: 'Price',
-              name: 'price',
-              type: 'object',
-              fields: [
-                defineField({
-                  title: 'Original Price',
-                  name: 'originalPrice',
-                  type: 'number',
-                }),
-                defineField({
-                  title: 'Discounted Price',
-                  name: 'discountedPrice',
-                  type: 'number',
-                }),
-              ],
-            }),
-            defineField({
-              title: 'Features',
-              name: 'features',
+              title: 'Answer',
+              name: 'answer',
               type: 'array',
               of: [
                 {
                   title: 'Block',
                   type: 'block',
                   styles: [{ title: 'Paragraph', value: 'normal' }],
-                  lists: [
-                    { title: 'Bullet', value: 'bullet' },
-                    { title: 'Numbered', value: 'number' },
-                  ],
+                  lists: [],
                   marks: {
                     decorators: [
                       { title: 'Strong', value: 'strong' },
@@ -75,36 +60,28 @@ export default defineField({
                         value: 'highlight',
                         component: Highlight,
                       },
-                      { title: 'Strike', value: 'strike-through' },
                     ],
                     annotations: [],
                   },
                 },
               ],
             }),
-            defineField({
-              title: 'Call to Action',
-              name: 'cta',
-              type: 'object',
-              fields: [
-                defineField({
-                  title: 'Url',
-                  name: 'url',
-                  type: 'string',
-                }),
-                defineField({
-                  title: 'Label',
-                  name: 'label',
-                  type: 'string',
-                }),
-              ],
-            }),
           ],
+          preview: {
+            select: {
+              heading: 'heading',
+            },
+
+            prepare({ heading }) {
+              return {
+                title: heading ? heading : 'Unknown',
+              };
+            },
+          },
         }),
       ],
     }),
   ],
-
   preview: {
     select: {
       heading: 'heading',
@@ -112,7 +89,7 @@ export default defineField({
 
     prepare({ heading }) {
       return {
-        title: heading ? `Prices - ${heading}` : 'Module Prices',
+        title: heading ? `FAQs - ${heading}` : 'Module FAQs',
       };
     },
   },

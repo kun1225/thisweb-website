@@ -12,9 +12,9 @@ export default function moduleProduct() {
       { type: 'moduleProductSteps' },
       { type: 'moduleProductFeatures' },
       { type: 'moduleProductAbout' },
-      { type: 'moduleProductBonuses' },
       { type: 'moduleProductTestimonials' },
       { type: 'moduleProductPricing' },
+      { type: 'moduleProductFAQs' },
     ],
   });
 }

@@ -17,11 +17,11 @@ export default function ModuleProductPricing({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, plans } = data;
+  const { heading, headingId, paragraph, plans } = data;
 
   return (
     <section className="m-product__pricing">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       <ModuleProductPricingPlans plans={plans} />
     </section>

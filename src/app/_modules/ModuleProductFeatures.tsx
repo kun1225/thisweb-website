@@ -13,11 +13,11 @@ export default function ModuleProductFeatures({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, features } = data;
+  const { heading, headingId, paragraph, features } = data;
 
   return (
     <section className="m-product__features">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       <ModuleProductFeaturesBody features={features} />
     </section>

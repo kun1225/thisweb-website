@@ -19,20 +19,30 @@ export default function ModuleProductProblems({
 }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, problems } = data;
+  const { heading, headingId, paragraph, problems } = data;
 
   return (
     <section className="m-product__problems">
-      <Heading heading={heading} />
+      <Heading heading={heading} headingId={headingId} />
       <Paragraph paragraph={paragraph} />
       <Problems problems={problems} />
     </section>
   );
 }
 
-function Heading({ heading }: { heading?: string }) {
+function Heading({
+  heading,
+  headingId,
+}: {
+  heading?: string;
+  headingId?: string;
+}) {
   if (!heading) return null;
-  return <h2 className="m-product__heading">{heading}</h2>;
+  return (
+    <h2 className="m-product__heading" id={headingId || ''}>
+      {heading}
+    </h2>
+  );
 }
 
 function Paragraph({ paragraph }: { paragraph?: string }) {

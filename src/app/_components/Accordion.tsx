@@ -35,7 +35,7 @@ const Accordion: React.FC<AccordionProps> = ({
   stretch = false,
   initExpanded = true,
   iconPosition = 'left',
-  duration = 0.6,
+  duration = 0.5,
   className = '',
   children,
 }) => {
@@ -46,7 +46,9 @@ const Accordion: React.FC<AccordionProps> = ({
     <AccordionContext.Provider
       value={{ isExpanded, toggle, stretch, iconPosition, duration }}
     >
-      <div className={`${className}`}>{children}</div>
+      <div className={cn(isExpanded ? 'is-active' : '', className)}>
+        {children}
+      </div>
     </AccordionContext.Provider>
   );
 };
@@ -72,9 +74,11 @@ const AccordionTitle: React.FC<TitlePropsType> = ({
 
   return (
     <Tag
-      className={`flex gap-2 select-none items-center ${cn(
+      className={cn(
+        'flex gap-2 select-none items-center',
         stretch && 'cursor-pointer',
-      )} ${className}`}
+        className,
+      )}
       onClick={stretch ? toggle : undefined}
       data-testid="accordionTitle"
     >
