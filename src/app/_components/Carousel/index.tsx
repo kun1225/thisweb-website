@@ -132,6 +132,20 @@ export default function Carousel({
     };
   }, [emblaApi, updateDraggable, updateScrollSnap]);
 
+  const handleAutoScrollStop = useCallback(() => {
+    const autoScroll = emblaApi?.plugins()?.autoScroll;
+    if (!autoScroll) return;
+    //@ts-ignore
+    autoScroll?.stop();
+  }, [emblaApi]);
+
+  const handleAutoScrollPlay = useCallback(() => {
+    const autoScroll = emblaApi?.plugins()?.autoScroll;
+    if (!autoScroll) return;
+    //@ts-ignore
+    autoScroll?.play();
+  }, [emblaApi]);
+
   return (
     <div
       className={cx('c-carousel', className)}
@@ -142,18 +156,10 @@ export default function Carousel({
           '--item-gap': gap,
         } as React.CSSProperties
       }
-      onMouseEnter={() => {
-        const autoScroll = emblaApi?.plugins()?.autoScroll;
-        if (!autoScroll) return;
-        //@ts-ignore
-        autoScroll?.stop();
-      }}
-      onMouseLeave={() => {
-        const autoScroll = emblaApi?.plugins()?.autoScroll;
-        if (!autoScroll) return;
-        //@ts-ignore
-        autoScroll?.play();
-      }}
+      onMouseEnter={handleAutoScrollStop}
+      onMouseLeave={handleAutoScrollPlay}
+      onPointerDown={handleAutoScrollStop}
+      onPointerUp={handleAutoScrollPlay}
     >
       <div
         ref={emblaRef}

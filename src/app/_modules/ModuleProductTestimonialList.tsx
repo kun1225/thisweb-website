@@ -3,6 +3,8 @@ import { hasArrayValue } from '@/src/libs/helpers';
 // Components
 import Carousel from '../_components/Carousel';
 import { PortableText } from 'next-sanity';
+import Img from '../_components/Img';
+import { CiUser } from 'react-icons/ci';
 // Types
 import type { TypeModuleProductTestimonial } from '@/src/types/typeModules';
 
@@ -24,10 +26,12 @@ export default function ModuleProductTestimonialList({
 }) {
   if (!hasArrayValue(data)) return null;
 
+  const testimonials = [...data, ...data, ...data];
+
   return (
     <div className="m-product__testimonials__list">
-      <Carousel isAutoScroll isAutoplay={false} gap="32px">
-        {data.map((item) => (
+      <Carousel isAutoplay={false} gap="32px">
+        {testimonials.map((item) => (
           <div className="m-product__testimonials__item" key={item._key}>
             <div className="m-product__testimonials__quote">
               <PortableText
@@ -38,10 +42,17 @@ export default function ModuleProductTestimonialList({
             </div>
             {item.name || item.role ? (
               <div className="m-product__testimonials__author">
-                {item.name ? (
+                {item?.image ? (
+                  <div className="m-product__testimonials__avatar">
+                    <Img image={item?.image} />
+                  </div>
+                ) : (
+                  <CiUser className="m-product__testimonials__avatar" />
+                )}
+                {item?.name ? (
                   <p className="m-product__testimonials__name">{item.name}</p>
                 ) : null}
-                {item.role ? (
+                {item?.role ? (
                   <p className="m-product__testimonials__role">{item.role}</p>
                 ) : null}
               </div>

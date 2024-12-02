@@ -370,11 +370,27 @@
   }
 
   &__author {
-    @apply mt-4 flex flex-col text-body-light text-sm;
+    @apply mt-4 grid text-body-light text-sm;
+
+    grid-template-areas:
+      'avatar name'
+      'avatar role';
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  &__avatar {
+    @apply size-9 p-2 rounded-full self-center mr-2 bg-neutral-100;
+    grid-area: avatar;
   }
 
   &__name {
     @apply font-semibold;
+    grid-area: name;
+  }
+
+  &__role {
+    grid-area: role;
   }
 
   .c-carousel {
