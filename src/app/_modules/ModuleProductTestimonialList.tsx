@@ -30,7 +30,7 @@ export default function ModuleProductTestimonialList({
 
   return (
     <div className="m-product__testimonials__list">
-      <Carousel isAutoplay={false} gap="32px">
+      <Carousel isAutoScroll isAutoplay={false} gap="32px">
         {testimonials.map((item) => (
           <div className="m-product__testimonials__item" key={item._key}>
             <div className="m-product__testimonials__quote">
