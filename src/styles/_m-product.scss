@@ -300,16 +300,30 @@
 .m-product__about {
   @apply c mt-48;
 
+  &__content {
+    @apply mx-auto my-8 md:my-24 max-w-4xl flex flex-col md:flex-row justify-between items-center gap-8 md:gap-16;
+
+    .m-product__paragraph {
+      @apply m-0 md:text-left;
+    }
+  }
+
+  &__media {
+    @apply max-w-xs drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
+
+    aspect-ratio: 1/1 !important;
+  }
+
   &__achievements {
-    @apply mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-8;
+    @apply mt-12 grid grid-cols-[repeat(1,minmax(0,240px))] md:grid-cols-[repeat(2,minmax(0,240px))] lg:grid-cols-[repeat(4,minmax(0,240px))] justify-center gap-8;
   }
 
   &__achievement {
-    @apply max-w-sm mx-auto w-full px-4 py-8 md:py-12 lg:py-16  flex items-center justify-center gap-2 grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
+    @apply w-full px-4 py-8 md:py-12 lg:py-16 flex items-center justify-center gap-2 grow rounded-md bg-pure-white drop-shadow-[0_0_14px_rgba(0,0,0,.1)];
 
     &__value {
       @apply flex gap-1 font-semibold text-secondary items-center;
-      font-size: clamp(32px, 3vw, 64px);
+      font-size: clamp(32px, 2vw, 40px);
     }
 
     &__paragraph {

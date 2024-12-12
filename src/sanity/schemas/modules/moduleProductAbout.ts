@@ -21,6 +21,11 @@ export default defineField({
       type: 'text',
     }),
     defineField({
+      title: 'Media',
+      name: 'media',
+      type: 'media',
+    }),
+    defineField({
       title: 'Achievements',
       name: 'achievements',
       type: 'array',

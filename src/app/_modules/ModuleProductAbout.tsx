@@ -1,6 +1,7 @@
 // Libs
 import { hasArrayValue, hasObjectValue } from '@/src/libs/helpers';
 // Components
+import Media from '../_components/Media';
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
 import NumberCounter from '../_components/effect/NumberCounter';
@@ -22,7 +23,10 @@ export default function ModuleProductAbout({
   return (
     <section className="m-product__about">
       <ModuleProductHeading heading={heading} headingId={headingId} />
-      <ModuleProductParagraph paragraph={paragraph} />
+      <div className="m-product__about__content">
+        <Media data={media} className="m-product__about__media" />
+        <ModuleProductParagraph paragraph={paragraph} />
+      </div>
       <ModuleProductAboutAchievements achievements={achievements} />
     </section>
   );

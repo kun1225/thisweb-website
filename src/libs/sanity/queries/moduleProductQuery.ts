@@ -75,6 +75,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
       heading,
       headingId,
       paragraph,
+      media,
       achievements[] {
         _key,
         value,
