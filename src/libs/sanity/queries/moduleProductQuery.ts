@@ -3,7 +3,11 @@ import { groq } from 'next-sanity';
 export const pProductAllUrlQuery = groq`*[_type == "pProduct" && defined(slug.current)][].slug.current`;
 
 export const pProductSharingQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
-  sharing
+  sharing {
+    metaTitle,
+    metaDescription,
+    shareGraphic,
+  }
 }[0]`;
 
 export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
