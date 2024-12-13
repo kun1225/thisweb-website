@@ -3,6 +3,7 @@ export type TypeNormalLink = {
   _type: 'normalLink';
   linkText: string;
   linkUrl: string;
+  isButton?: boolean;
 };
 
 export type TypeSecondLevelCategory = {
