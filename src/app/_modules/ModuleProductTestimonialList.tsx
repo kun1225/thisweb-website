@@ -31,8 +31,11 @@ export default function ModuleProductTestimonialList({
   return (
     <div className="m-product__testimonials__list">
       <Carousel isAutoScroll isAutoplay={false} gap="32px">
-        {testimonials.map((item) => (
-          <div className="m-product__testimonials__item" key={item._key}>
+        {testimonials.map((item, index) => (
+          <div
+            className="m-product__testimonials__item"
+            key={`${item._key} - ${index}`}
+          >
             <div className="m-product__testimonials__quote">
               <PortableText
                 value={item.quote}

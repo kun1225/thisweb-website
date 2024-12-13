@@ -1,4 +1,8 @@
 .m-product {
+  &__announcement {
+    @apply fixed top-0 left-0 w-full py-1 flex gap-1 justify-center bg-secondary text-white text-sm z-header;
+  }
+
   &__heading {
     @apply max-w-md mb-6 mx-auto text-3xl font-bold text-center sm:max-w-none sm:text-4xl md:text-5xl;
     line-height: 1.5em;

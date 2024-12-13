@@ -5,6 +5,7 @@ import {
   getProductSharing,
   getProductData,
 } from '@/src/libs/sanity/fetch/pProductFetch';
+import PageProductAnnouncement from './_components/PageProductAnnouncement';
 import ModuleProduct from '@/src/app/_modules/ModuleProduct';
 import { notFound } from 'next/navigation';
 
@@ -63,10 +64,16 @@ export async function generateMetadata({
 }
 
 export default async function page({ params }: { params: { slug: string } }) {
-  const { modules } = (await getProductData({ slug: params.slug })) || {};
+  const { modules, announcement } =
+    (await getProductData({ slug: params.slug })) || {};
   if (!hasArrayValue(modules)) {
     return notFound();
   }
 
-  return <ModuleProduct modules={modules} />;
+  return (
+    <>
+      <PageProductAnnouncement data={announcement} />
+      <ModuleProduct modules={modules} />
+    </>
+  );
 }

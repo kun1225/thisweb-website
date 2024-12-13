@@ -18,7 +18,7 @@
 
 // *** Header ***
 .g-header {
-  @apply c fixed top-0 w-full py-4 transition-all duration-400 isolate z-header;
+  @apply c fixed top-[var(--announcement-height,_0px)] w-full py-4 transition-all duration-400 isolate z-header;
 
   &.is-scrolled {
     @apply py-2 bg-white shadow-sm;
@@ -50,7 +50,7 @@
   }
 
   &__desktop {
-    @apply hidden md:flex md:gap-4 text-sm;
+    @apply hidden md:flex md:gap-6 text-sm;
   }
 
   &__mobile {
@@ -69,7 +69,7 @@
     @apply block p-1 transition-colors whitespace-nowrap;
 
     &.is-button {
-      @apply px-6 py-1 hover:shadow-none;
+      @apply px-6 py-1;
     }
   }
 }

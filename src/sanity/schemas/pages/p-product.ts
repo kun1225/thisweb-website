@@ -25,6 +25,38 @@ export default defineType({
       validation: (Rule) => [Rule.required()],
     }),
 
+    defineField({
+      title: 'Announcement',
+      name: 'announcement',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          title: 'Paragraph',
+          name: 'paragraph',
+          fields: [
+            defineField({
+              title: 'Paragraph',
+              name: 'paragraph',
+              type: 'text',
+            }),
+          ],
+        },
+        {
+          type: 'object',
+          title: 'Due Date',
+          name: 'dueDate',
+          fields: [
+            defineField({
+              title: 'Time',
+              name: 'time',
+              type: 'datetime',
+            }),
+          ],
+        },
+      ],
+    }),
+
     moduleProduct(),
 
     defineField({
