@@ -18,9 +18,11 @@ export default function HomeHero() {
               轉職更順利
             </h1>
           </div>
-          <Link href="/posts/page/0" className="">
-            <Button size="hero">開始學習</Button>
-          </Link>
+          <Button size="hero" asChild>
+            <Link href="/posts/page/0" className="">
+              開始學習
+            </Link>
+          </Button>
         </section>
       </div>
     </>

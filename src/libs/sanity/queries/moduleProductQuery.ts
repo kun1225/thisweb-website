@@ -109,6 +109,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
         cta {
           url,
           label,
+          isOpenNewTab,
         },
       },
     },

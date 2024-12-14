@@ -1,6 +1,7 @@
 // Libs
 import { hasObjectValue, formatBrNewLine } from '@/src/libs/utils';
 // Components
+import { Button } from '../_components/Button';
 import Link from 'next/link';
 import Media from '../_components/Media';
 // Types
@@ -19,9 +20,11 @@ export default function ModuleProductHero({ data }: { data: TypeModuleProductHer
         />
       ) : null}
       {hasObjectValue(callToAction) ? (
-        <Link className="m-product__hero__cta" href={callToAction?.url}>
-          {callToAction?.label}
-        </Link>
+        <Button asChild size="hero">
+          <Link className="m-product__hero__cta" href={callToAction?.url}>
+            {callToAction?.label}
+          </Link>
+        </Button>
       ) : null}
       {media ? <Media data={media} className="m-product__hero__media" /> : null}
     </section>

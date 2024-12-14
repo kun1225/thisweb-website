@@ -121,6 +121,7 @@ export type TypeModuleProductPricingPlan = {
   cta: {
     label: string;
     url: string;
+    isOpenNewTab: boolean;
   };
 };
 export type TypeModuleProductPricing = {

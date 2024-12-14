@@ -97,6 +97,11 @@ export default defineField({
                   name: 'label',
                   type: 'string',
                 }),
+                defineField({
+                  title: 'Open New Tab',
+                  name: 'isOpenNewTab',
+                  type: 'boolean',
+                }),
               ],
             }),
           ],

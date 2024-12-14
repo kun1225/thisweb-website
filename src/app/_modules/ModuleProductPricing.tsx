@@ -4,6 +4,8 @@ import { hasArrayValue, hasObjectValue } from '@/src/libs/utils';
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
 import { PortableText } from '@portabletext/react';
+import { Button } from '../_components/Button';
+import Link from 'next/link';
 // Types
 import { TypeModuleProductPricing, TypeModuleProductPricingPlan } from '@/src/types/typeModules';
 
@@ -61,9 +63,15 @@ function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan
         <PortableText value={features} components={customPortableText} />
       </div>
       {cta ? (
-        <a href={cta.url} className="m-product__pricing__item__cta">
-          {cta.label}
-        </a>
+        <Button asChild size="hero" className="hover:scale-100 md:w-full">
+          <Link
+            href={cta.url}
+            className="m-product__pricing__item__cta"
+            target={cta.isOpenNewTab ? '_blank' : '_self'}
+          >
+            {cta.label}
+          </Link>
+        </Button>
       ) : null}
     </div>
   );
