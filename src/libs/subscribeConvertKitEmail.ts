@@ -1,5 +1,9 @@
 const BASEURL = `https://api.convertkit.com/v3/forms`;
 
+export const convertKitFormId = {
+  heroFormId: '5590412',
+};
+
 export async function subscribeConvertKitEmail(
   e: React.FormEvent<HTMLFormElement>,
   formId: string

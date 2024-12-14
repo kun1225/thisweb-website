@@ -9,8 +9,7 @@ import SiteLayout from './_layout/SiteLayout';
 // Style
 import '../styles/globals.scss';
 // Fonts
-import localFont from 'next/font/local';
-import { Noto_Sans_TC } from 'next/font/google';
+import { Noto_Sans_TC, Fira_Code } from 'next/font/google';
 
 const NotoSansTC = Noto_Sans_TC({
   weight: ['400', '600'],
@@ -19,20 +18,10 @@ const NotoSansTC = Noto_Sans_TC({
   display: 'swap',
   variable: '--font-NotoSansTC',
 });
-
-const FiraCode = localFont({
-  src: [
-    {
-      path: './../../public/fonts/FiraCode-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './../../public/fonts/FiraCode-Medium.woff2',
-      weight: '600',
-      style: 'normal',
-    },
-  ],
+const FiraCode = Fira_Code({
+  weight: ['400', '600'],
+  style: ['normal'],
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-FiraCode',
 });

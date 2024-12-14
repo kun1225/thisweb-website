@@ -41,7 +41,6 @@ export default function Header({ headerContent }: { headerContent: TypeGlobalHea
     <header className="g-header" id="g-header">
       <div className="g-header__container">
         <HeaderLogo />
-
         {isMobile ? (
           <MobileMenu className="g-header__mobile" headerContent={headerContent} />
         ) : (
