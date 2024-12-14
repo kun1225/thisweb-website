@@ -2,7 +2,7 @@ import {
   formatBrNewLine,
   hasArrayValue,
   hasObjectValue,
-} from '@/src/libs/helpers';
+} from '@/src/libs/utils';
 // Components
 import * as Icons from 'react-icons/fa';
 // Types

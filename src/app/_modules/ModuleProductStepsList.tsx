@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { cn } from '@/src/libs/utils';
 import useWindowWidth from '../_hooks/useWindowWidth';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 import { PortableText } from '@portabletext/react';
 
 import { TypeModuleProductStep } from '@/src/types/typeModules';

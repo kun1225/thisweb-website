@@ -1,4 +1,4 @@
-import { hasObjectValue } from '@/src/libs/helpers';
+import { hasObjectValue } from '@/src/libs/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';

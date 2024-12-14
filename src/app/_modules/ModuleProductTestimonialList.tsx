@@ -1,5 +1,5 @@
 // Libs
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 // Components
 import Carousel from '../_components/Carousel';
 import { PortableText } from 'next-sanity';

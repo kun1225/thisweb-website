@@ -2,8 +2,8 @@
 // Libs
 import { cn } from '@/src/libs/utils';
 import { headerFetch } from '../libs/sanity/fetch';
+import { imgBuilder } from '../libs/sanity/client';
 import { getSettingsGeneral } from '../libs/sanity/fetch/fetchSettingsGeneral';
-import defineMetadata from '../libs/defineMetadata';
 // Components
 import SiteLayout from './_layout/SiteLayout';
 // Style
@@ -41,7 +41,46 @@ const FiraCode = localFont({
 export async function generateMetadata() {
   const data: any = await getSettingsGeneral();
 
-  return defineMetadata(data);
+  const { siteTitle, siteDescription, shareGraphic } = data;
+
+  const shareGraphicUrl = shareGraphic
+    ? imgBuilder.image(shareGraphic).url()
+    : false;
+
+  return {
+    title: siteTitle,
+    description: siteDescription,
+    creator: siteTitle,
+    publisher: siteTitle,
+    applicationName: siteTitle,
+    openGraph: {
+      title: siteTitle,
+      description: siteDescription,
+      images: [shareGraphicUrl],
+      url: 'https://thisweb.dev',
+      siteName: siteTitle,
+      locale: 'zh-hant',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteTitle,
+      description: siteDescription,
+      creator: siteTitle,
+      images: [shareGraphicUrl],
+    },
+    metadataBase: 'https://thisweb.dev',
+    alternates: {
+      languages: {
+        'zh-hant': '/',
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+    },
+  };
 }
 
 export default async function RootLayout({

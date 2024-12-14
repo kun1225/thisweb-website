@@ -9,7 +9,7 @@ import {
 import { PortableText } from 'next-sanity';
 // Types
 import type { TypeModuleProductFAQs } from '@/src/types/typeModules';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 
 const customPortableText = {
   marks: {

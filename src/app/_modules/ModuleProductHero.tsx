@@ -1,5 +1,5 @@
 // Libs
-import { hasObjectValue, formatBrNewLine } from '@/src/libs/helpers';
+import { hasObjectValue, formatBrNewLine } from '@/src/libs/utils';
 // Components
 import Link from 'next/link';
 import Media from '../_components/Media';

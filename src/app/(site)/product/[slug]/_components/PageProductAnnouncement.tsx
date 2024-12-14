@@ -1,8 +1,7 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useState, useEffect, useRef } from 'react';
-import useIsMounted from '@/src/app/_hooks/useIsMounted';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
 
 export default function PageProductAnnouncement({
@@ -19,7 +18,7 @@ export default function PageProductAnnouncement({
     );
   }, []);
 
-  if (!hasArrayValue(data)) return null;
+  if (!hasArrayValue(data) || typeof window === 'undefined') return null;
 
   return createPortal(
     <div ref={announcementRef} className="m-product__announcement">
@@ -39,7 +38,7 @@ export default function PageProductAnnouncement({
         }
       })}
     </div>,
-    document.body,
+    document?.body,
   );
 }
 
@@ -53,7 +52,7 @@ export function PageProductAnnouncementCountdown({
     hours: number;
     minutes: number;
     seconds: number;
-  }>();
+  }>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const calculateTimeLeft = () => {
     const targetDate = new Date(targetTime);
@@ -79,8 +78,6 @@ export function PageProductAnnouncementCountdown({
 
     return () => clearInterval(timer); // Cleanup on component unmount
   }, []);
-
-  if (!timeLeft) return null;
 
   return (
     <p>

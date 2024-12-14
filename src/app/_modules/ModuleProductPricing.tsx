@@ -1,5 +1,5 @@
 // Libs
-import { hasArrayValue, hasObjectValue } from '@/src/libs/helpers';
+import { hasArrayValue, hasObjectValue } from '@/src/libs/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';

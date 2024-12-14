@@ -1,9 +1,9 @@
 import {
+  cn,
   hasObjectValue,
   hasArrayValue,
   formatBrNewLine,
-} from '@/src/libs/helpers';
-import { cn } from '@/src/libs/utils';
+} from '@/src/libs/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';

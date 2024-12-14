@@ -1,4 +1,4 @@
-import { formatBrNewLine } from '@/src/libs/helpers';
+import { formatBrNewLine } from '@/src/libs/utils';
 
 export default function ModuleProductParagraph({
   paragraph,

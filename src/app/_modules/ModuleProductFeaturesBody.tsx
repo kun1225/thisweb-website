@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import useWindowWidth from '../_hooks/useWindowWidth';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 import { cn } from '@/src/libs/utils';
 // Components
 import Media from '../_components/Media';

@@ -1,13 +1,20 @@
+import dynamic from 'next/dynamic';
 import { imgBuilder } from '@/src/libs/sanity/client';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 import {
   getProductAllUrl,
   getProductSharing,
   getProductData,
 } from '@/src/libs/sanity/fetch/pProductFetch';
-import PageProductAnnouncement from './_components/PageProductAnnouncement';
 import ModuleProduct from '@/src/app/_modules/ModuleProduct';
 import { notFound } from 'next/navigation';
+
+const PageProductAnnouncement = dynamic(
+  () => import('./_components/PageProductAnnouncement'),
+  {
+    ssr: false,
+  },
+);
 
 export async function generateStaticParams() {
   const slugs = await getProductAllUrl();
