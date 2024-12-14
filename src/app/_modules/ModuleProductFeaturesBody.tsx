@@ -30,11 +30,7 @@ export default function ModuleProductFeaturesBody({
   );
 }
 
-function ModuleProductFeaturesBodyDesktop({
-  features,
-}: {
-  features: TypeModuleProductFeature[];
-}) {
+function ModuleProductFeaturesBodyDesktop({ features }: { features: TypeModuleProductFeature[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
@@ -49,20 +45,13 @@ function ModuleProductFeaturesBodyDesktop({
             onMouseEnter={() => setCurrentIndex(index)}
           >
             {feature?.icon ? (
-              <Icon
-                className="m-product__features__item__icon"
-                icon={feature.icon}
-              />
+              <Icon className="m-product__features__item__icon" icon={feature.icon} />
             ) : null}
             {feature?.heading ? (
-              <h3 className="m-product__features__item__heading">
-                {feature.heading}
-              </h3>
+              <h3 className="m-product__features__item__heading">{feature.heading}</h3>
             ) : null}
             {feature?.paragraph ? (
-              <p className="m-product__features__item__paragraph">
-                {feature.paragraph}
-              </p>
+              <p className="m-product__features__item__paragraph">{feature.paragraph}</p>
             ) : null}
           </div>
         ))}
@@ -83,20 +72,13 @@ function ModuleProductFeaturesBodyDesktop({
   );
 }
 
-function ModuleProductFeaturesListMobile({
-  features,
-}: {
-  features: TypeModuleProductFeature[];
-}) {
+function ModuleProductFeaturesListMobile({ features }: { features: TypeModuleProductFeature[] }) {
   return (
     <Carousel autoplayInterval={6000} isShowDots>
       {features.map((feature, index) => (
         <div className="m-product__features__item" key={feature._key}>
           {feature.icon ? (
-            <Icon
-              className="m-product__features__item__icon"
-              icon={feature.icon}
-            />
+            <Icon className="m-product__features__item__icon" icon={feature.icon} />
           ) : null}
           {feature.heading ? (
             <h3 className="m-product__features__item__heading">
@@ -105,9 +87,7 @@ function ModuleProductFeaturesListMobile({
             </h3>
           ) : null}
           {feature.paragraph ? (
-            <p className="m-product__features__item__paragraph">
-              {feature.paragraph}
-            </p>
+            <p className="m-product__features__item__paragraph">{feature.paragraph}</p>
           ) : null}
           <div className={cn('m-product__features__item__media')}>
             <Media data={feature.media} />

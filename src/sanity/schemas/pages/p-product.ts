@@ -19,8 +19,7 @@ export default defineType({
       type: 'slug',
       options: {
         source: 'title',
-        slugify: (input) =>
-          input.toLowerCase().replace(/\s+/g, '-').slice(0, 96),
+        slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 96),
       },
       validation: (Rule) => [Rule.required()],
     }),

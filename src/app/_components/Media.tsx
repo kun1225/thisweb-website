@@ -14,12 +14,8 @@ export default function Media({
 
   return (
     <>
-      {type === 'video' && video ? (
-        <Video data={video} className={className} />
-      ) : null}
-      {type === 'image' && image ? (
-        <Img image={image} className={className} />
-      ) : null}
+      {type === 'video' && video ? <Video data={video} className={className} /> : null}
+      {type === 'image' && image ? <Img image={image} className={className} /> : null}
     </>
   );
 }

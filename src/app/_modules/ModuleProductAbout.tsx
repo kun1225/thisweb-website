@@ -11,11 +11,7 @@ import {
   TypeModuleProductAboutAchievements,
 } from '@/src/types/typeModules';
 
-export default function ModuleProductAbout({
-  data,
-}: {
-  data: TypeModuleProductAbout;
-}) {
+export default function ModuleProductAbout({ data }: { data: TypeModuleProductAbout }) {
   if (!hasObjectValue(data)) return null;
 
   const { heading, headingId, paragraph, media, achievements } = data;
@@ -47,9 +43,7 @@ function ModuleProductAboutAchievements({
             <NumberCounter value={achievement?.value} />
             <span>+</span>
           </div>
-          <p className="m-product__about__achievement__paragraph">
-            {achievement?.paragraph}
-          </p>
+          <p className="m-product__about__achievement__paragraph">{achievement?.paragraph}</p>
         </div>
       ))}
     </div>

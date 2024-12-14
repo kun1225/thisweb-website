@@ -13,10 +13,10 @@ export const deskSettings = (S: any) => {
               S.editor()
                 .id('settingsGeneral')
                 .schemaType('settingsGeneral')
-                .documentId('settingsGeneral'),
+                .documentId('settingsGeneral')
             )
             .icon(EarthGlobeIcon),
-        ]),
+        ])
     )
     .icon(CogIcon);
 };

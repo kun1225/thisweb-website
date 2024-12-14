@@ -4,17 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import { hasArrayValue } from '@/src/libs/utils';
 import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
 
-export default function PageProductAnnouncement({
-  data,
-}: {
-  data: TypePageProductAnnouncement;
-}) {
+export default function PageProductAnnouncement({ data }: { data: TypePageProductAnnouncement }) {
   const announcementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.documentElement.style.setProperty(
       '--announcement-height',
-      `${announcementRef.current?.clientHeight || 0}px`,
+      `${announcementRef.current?.clientHeight || 0}px`
     );
   }, []);
 
@@ -25,12 +21,7 @@ export default function PageProductAnnouncement({
       {data.map((item) => {
         switch (item._type) {
           case 'dueDate':
-            return (
-              <PageProductAnnouncementCountdown
-                key={item._key}
-                targetTime={item.time}
-              />
-            );
+            return <PageProductAnnouncementCountdown key={item._key} targetTime={item.time} />;
           case 'paragraph':
             return <p key={item._key}>{item.paragraph}</p>;
           default:
@@ -38,7 +29,7 @@ export default function PageProductAnnouncement({
         }
       })}
     </div>,
-    document?.body,
+    document?.body
   );
 }
 
@@ -81,8 +72,7 @@ export function PageProductAnnouncementCountdown({
 
   return (
     <p>
-      {timeLeft.days} 天 {timeLeft.hours} 小時 {timeLeft.minutes} 分{' '}
-      {timeLeft.seconds} 秒
+      {timeLeft.days} 天 {timeLeft.hours} 小時 {timeLeft.minutes} 分 {timeLeft.seconds} 秒
     </p>
   );
 }

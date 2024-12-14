@@ -1,11 +1,7 @@
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductSubheading from './ModuleProductSubheading';
 import ModuleProductParagraph from './ModuleProductParagraph';
-import {
-  Accordion,
-  AccordionTitle,
-  AccordionContent,
-} from '../_components/Accordion';
+import { Accordion, AccordionTitle, AccordionContent } from '../_components/Accordion';
 import { PortableText } from 'next-sanity';
 // Types
 import type { TypeModuleProductFAQs } from '@/src/types/typeModules';
@@ -17,11 +13,7 @@ const customPortableText = {
   },
 };
 
-export default function ModuleProductFAQs({
-  data,
-}: {
-  data: TypeModuleProductFAQs;
-}) {
+export default function ModuleProductFAQs({ data }: { data: TypeModuleProductFAQs }) {
   const { heading, headingId, subheading, paragraph, faqList } = data;
 
   return (
@@ -43,10 +35,7 @@ export default function ModuleProductFAQs({
                 {faq.heading}
               </AccordionTitle>
               <AccordionContent className="m-product__faqs__list__answer">
-                <PortableText
-                  value={faq.answer}
-                  components={customPortableText}
-                />
+                <PortableText value={faq.answer} components={customPortableText} />
               </AccordionContent>
             </Accordion>
           ))}

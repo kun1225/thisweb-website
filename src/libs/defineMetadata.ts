@@ -28,9 +28,7 @@ export default function defineMetadata(data: any) {
   //   page?.thumbnail?.asset ||
   //   site?.shareGraphic?.asset ||
   //   '';
-  const shareGraphicUrl = shareGraphic
-    ? imgBuilder.image(shareGraphic).url()
-    : false;
+  const shareGraphicUrl = shareGraphic ? imgBuilder.image(shareGraphic).url() : false;
 
   return {
     title: siteTitle,

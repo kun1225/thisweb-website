@@ -8,15 +8,9 @@ import HeaderNavContents from './_components/HeaderNavContents';
 // Types
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
-export default function DesktopMenu({
-  headerContent,
-}: {
-  headerContent: TypeGlobalHeaderContent;
-}) {
+export default function DesktopMenu({ headerContent }: { headerContent: TypeGlobalHeaderContent }) {
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const isHasMegaMenu = headerContent.navContents.some(
-    (item) => item._type === 'megamenu',
-  );
+  const isHasMegaMenu = headerContent.navContents.some((item) => item._type === 'megamenu');
 
   const switchMegaMenu = (index: number) => {
     if (index === currentIndex) setCurrentIndex(-1);
@@ -46,10 +40,7 @@ export default function DesktopMenu({
   return (
     <>
       {isHasMegaMenu ? (
-        <HeaderOverlay
-          closeMegaMenu={closeMegaMenu}
-          currentIndex={currentIndex}
-        />
+        <HeaderOverlay closeMegaMenu={closeMegaMenu} currentIndex={currentIndex} />
       ) : null}
       <ul className="g-header__desktop">
         <HeaderNavContents

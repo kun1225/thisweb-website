@@ -1,5 +1,5 @@
 .g-footer {
-  @apply flex flex-col md:flex-row justify-between gap-8 mt-32 p-16 bg-primary text-white;
+  @apply mt-32 flex flex-col justify-between gap-8 bg-primary p-16 text-white md:flex-row;
 
   &__nav {
     &__title {

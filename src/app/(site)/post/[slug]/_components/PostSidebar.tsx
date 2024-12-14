@@ -12,15 +12,10 @@ export default function PostSidebar({ source }: { source: any[] }) {
 
   const rawHeadings = extractHeadings(source);
 
-  const structuredHeadings = useMemo(
-    () => transformRawHeadings(rawHeadings),
-    [rawHeadings],
-  );
+  const structuredHeadings = useMemo(() => transformRawHeadings(rawHeadings), [rawHeadings]);
 
   useEffect(() => {
-    const headingElements = Array.from(
-      document.querySelectorAll('#p-post h2, #p-post h3'),
-    );
+    const headingElements = Array.from(document.querySelectorAll('#p-post h2, #p-post h3'));
 
     const observer = observeHeading(headingElements, setActiveId);
 
@@ -32,10 +27,7 @@ export default function PostSidebar({ source }: { source: any[] }) {
   return (
     <aside className="p-post__sidebar">
       <PostSidebarHeader />
-      <PostSidebarBody
-        structuredHeadings={structuredHeadings}
-        activeId={activeId}
-      />
+      <PostSidebarBody structuredHeadings={structuredHeadings} activeId={activeId} />
     </aside>
   );
 }
@@ -57,29 +49,22 @@ export function getIndexFromId(headingElements: Element[], id: string) {
 
 export function findLastVisibleHeadingEntry(
   headingsEntry: IntersectionObserverEntry[],
-  headingElements: Element[],
+  headingElements: Element[]
 ) {
   return headingsEntry.sort(
     (a, b) =>
-      getIndexFromId(headingElements, b.target.id) -
-      getIndexFromId(headingElements, a.target.id),
+      getIndexFromId(headingElements, b.target.id) - getIndexFromId(headingElements, a.target.id)
   )[0];
 }
 
-export function observeHeading(
-  headingElements: Element[],
-  setActiveId: (_id: string) => void,
-) {
+export function observeHeading(headingElements: Element[], setActiveId: (_id: string) => void) {
   const setCurrentActiveId = (headingsEntry: IntersectionObserverEntry[]) => {
     if (!headingsEntry[0]?.isIntersecting) return;
 
     if (headingsEntry.length === 1) {
       setActiveId(headingsEntry[0]!.target.id);
     } else if (headingsEntry.length > 1) {
-      const lastVisibleHeadingEntry = findLastVisibleHeadingEntry(
-        headingsEntry,
-        headingElements,
-      );
+      const lastVisibleHeadingEntry = findLastVisibleHeadingEntry(headingsEntry, headingElements);
 
       setActiveId(lastVisibleHeadingEntry!.target.id);
     }

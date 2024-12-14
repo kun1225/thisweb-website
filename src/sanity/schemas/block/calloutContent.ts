@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember, defineField} from 'sanity'
+import { defineType, defineArrayMember, defineField } from 'sanity';
 
 export default defineType({
   title: 'Callout',
@@ -30,26 +30,26 @@ export default defineType({
           // use your content.
           //@ts-ignore
           styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'H2', value: 'h2'},
-            {title: 'H3', value: 'h3'},
-            {title: 'H4', value: 'h4'},
-            {title: 'Quote', value: 'blockquote'},
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'H4', value: 'h4' },
+            { title: 'Quote', value: 'blockquote' },
           ],
           lists: [
-            {title: 'Bullet', value: 'bullet'},
-            {title: 'Numbered', value: 'number'},
+            { title: 'Bullet', value: 'bullet' },
+            { title: 'Numbered', value: 'number' },
           ],
           // Marks let you mark up inline text in the Portable Text Editor
           marks: {
             // Decorators usually describe a single property – e.g. a typographic
             // preference or highlighting
             decorators: [
-              {title: 'Strong', value: 'strong'},
-              {title: 'Emphasis', value: 'em'},
-              {title: 'Code', value: 'code'},
-              {title: 'Underline', value: 'underline'},
-              {title: 'Strike', value: 'strike-through'},
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+              { title: 'Code', value: 'code' },
+              { title: 'Underline', value: 'underline' },
+              { title: 'Strike', value: 'strike-through' },
             ],
             // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
@@ -75,7 +75,7 @@ export default defineType({
                     name: 'reference',
                     type: 'reference',
                     title: 'Reference',
-                    to: [{type: 'post'}],
+                    to: [{ type: 'post' }],
                   },
                 ],
               },
@@ -84,7 +84,7 @@ export default defineType({
         }),
         defineArrayMember({
           type: 'image',
-          options: {hotspot: true},
+          options: { hotspot: true },
           //@ts-ignore
           fields: [
             {
@@ -96,14 +96,14 @@ export default defineType({
               name: 'caption',
               type: 'string',
               title: 'Caption',
-              hidden: ({parent}: {parent: any}) => !parent?.asset,
+              hidden: ({ parent }: { parent: any }) => !parent?.asset,
               options: {
                 isHighlighted: true,
               },
             },
           ],
         }),
-    
+
         defineArrayMember({
           name: 'CodeField',
           type: 'code',
@@ -111,11 +111,11 @@ export default defineType({
           options: {
             language: 'javascript',
             languageAlternatives: [
-              {title: 'Javascript', value: 'javascript'},
-              {title: 'Typescript', value: 'typescript'},
-              {title: 'HTML', value: 'html'},
-              {title: 'CSS', value: 'css'},
-              {title: 'Bash', value: 'bash'},
+              { title: 'Javascript', value: 'javascript' },
+              { title: 'Typescript', value: 'typescript' },
+              { title: 'HTML', value: 'html' },
+              { title: 'CSS', value: 'css' },
+              { title: 'Bash', value: 'bash' },
             ],
             withFilename: true,
           },
@@ -123,4 +123,4 @@ export default defineType({
       ],
     },
   ],
-})
+});

@@ -16,11 +16,7 @@ function CustomLink({ href, className, children, ...rest }: Props) {
   return (
     <>
       {isInternalLink ? (
-        <Link
-          className={`${cn(customClassName, className)}`}
-          href={href}
-          {...rest}
-        >
+        <Link className={`${cn(customClassName, className)}`} href={href} {...rest}>
           {children}
         </Link>
       ) : null}
@@ -31,10 +27,7 @@ function CustomLink({ href, className, children, ...rest }: Props) {
       ) : null}
       {!isInternalLink && !isAnchorLink && (
         <a
-          className={`${cn(
-            customClassName,
-            className,
-          )} inline-flex items-baseline gap-[1px]`}
+          className={`${cn(customClassName, className)} inline-flex items-baseline gap-[1px]`}
           href={href}
           rel="noopener noreferrer"
           target="_blank"

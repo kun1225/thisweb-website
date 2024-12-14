@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'secondLevelCategory',
@@ -24,7 +24,7 @@ export default defineType({
       name: 'thirdLevelCategory',
       title: 'Third Level Category',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'thirdLevelCategory'}]}],
+      of: [{ type: 'reference', to: [{ type: 'thirdLevelCategory' }] }],
     }),
   ],
   preview: {
@@ -33,4 +33,4 @@ export default defineType({
       subtitle: 'priority',
     },
   },
-})
+});

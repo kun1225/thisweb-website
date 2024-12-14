@@ -32,10 +32,7 @@ export default function ModuleProductTestimonialList({
     <div className="m-product__testimonials__list">
       <Carousel isAutoScroll isAutoplay={false} gap="32px">
         {testimonials.map((item, index) => (
-          <div
-            className="m-product__testimonials__item"
-            key={`${item._key} - ${index}`}
-          >
+          <div className="m-product__testimonials__item" key={`${item._key} - ${index}`}>
             <div className="m-product__testimonials__quote">
               <PortableText
                 value={item.quote}
@@ -52,12 +49,8 @@ export default function ModuleProductTestimonialList({
                 ) : (
                   <CiUser className="m-product__testimonials__avatar" />
                 )}
-                {item?.name ? (
-                  <p className="m-product__testimonials__name">{item.name}</p>
-                ) : null}
-                {item?.role ? (
-                  <p className="m-product__testimonials__role">{item.role}</p>
-                ) : null}
+                {item?.name ? <p className="m-product__testimonials__name">{item.name}</p> : null}
+                {item?.role ? <p className="m-product__testimonials__role">{item.role}</p> : null}
               </div>
             ) : null}
           </div>

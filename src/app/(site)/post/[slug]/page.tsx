@@ -2,11 +2,7 @@
 import '@/src/styles/prism.css';
 // Sanity
 import { sanityFetch, imgBuilder } from '@/src/libs/sanity/client';
-import {
-  POSTS_SLUG_QUERY,
-  POST_QUERY,
-  RELATED_POSTS_QUERY,
-} from '@/src/libs/sanity/queries';
+import { POSTS_SLUG_QUERY, POST_QUERY, RELATED_POSTS_QUERY } from '@/src/libs/sanity/queries';
 import { toPlainText } from '@portabletext/react';
 // Components
 import PostTitle from './_components/PostTitle';
@@ -24,11 +20,7 @@ export const generateStaticParams = async () => {
   return allPostsSlug.map((slug) => ({ slug }));
 };
 
-export const generateMetadata = async ({
-  params,
-}: {
-  params: { slug: string };
-}) => {
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   const currentPost = await sanityFetch<PostType>({
     query: POST_QUERY,
     queryParams: { slug: params.slug },

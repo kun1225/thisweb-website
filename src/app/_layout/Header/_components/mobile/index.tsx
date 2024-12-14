@@ -22,10 +22,7 @@ export default function MobileMenu({
 
   return (
     <div className={className}>
-      <MobileMenuIcon
-        mobileMenuOpen={isMobileMenuOpen}
-        setMobileMenuOpen={setIsMobileMenuOpen}
-      />
+      <MobileMenuIcon mobileMenuOpen={isMobileMenuOpen} setMobileMenuOpen={setIsMobileMenuOpen} />
       <div
         className={cn('g-header__mobile-menu', isMobileMenuOpen && 'is-open')}
         style={{

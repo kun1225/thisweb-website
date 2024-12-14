@@ -15,10 +15,7 @@ const Skeleton = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={transition}
-      className={cn(
-        'animate-pulse rounded-md bg-muted bg-gray-200 origin-left',
-        className,
-      )}
+      className={cn('bg-muted origin-left animate-pulse rounded-md bg-gray-200', className)}
     />
   );
 };

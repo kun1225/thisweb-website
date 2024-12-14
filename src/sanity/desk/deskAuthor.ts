@@ -10,7 +10,7 @@ export const deskAuthor = (S: any) => {
         .schemaType('author')
         .title('Authors')
         .apiVersion(apiVersion)
-        .filter(`_type == 'author'`),
+        .filter(`_type == 'author'`)
     )
     .icon(UserIcon);
 };

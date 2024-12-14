@@ -15,7 +15,7 @@ export const deskCategories = (S: any) => {
                 .schemaType('category')
                 .title('First Level Category')
                 .apiVersion(apiVersion)
-                .filter(`_type == 'category'`),
+                .filter(`_type == 'category'`)
             )
             .icon(TagIcon),
           S.listItem()
@@ -25,7 +25,7 @@ export const deskCategories = (S: any) => {
                 .schemaType('secondLevelCategory')
                 .title('Second Level Category')
                 .apiVersion(apiVersion)
-                .filter(`_type == 'secondLevelCategory'`),
+                .filter(`_type == 'secondLevelCategory'`)
             )
             .icon(TagIcon),
           S.listItem()
@@ -35,10 +35,10 @@ export const deskCategories = (S: any) => {
                 .schemaType('thirdLevelCategory')
                 .title('Third Level Category')
                 .apiVersion(apiVersion)
-                .filter(`_type == 'thirdLevelCategory'`),
+                .filter(`_type == 'thirdLevelCategory'`)
             )
             .icon(TagIcon),
-        ]),
+        ])
     )
     .icon(TagsIcon);
 };

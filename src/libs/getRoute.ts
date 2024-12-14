@@ -1,10 +1,4 @@
-export default function getRoute({
-  documentType,
-  slug,
-}: {
-  documentType: string;
-  slug: string;
-}) {
+export default function getRoute({ documentType, slug }: { documentType: string; slug: string }) {
   if (!documentType) return undefined;
 
   switch (documentType) {

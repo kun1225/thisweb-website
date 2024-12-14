@@ -9,9 +9,7 @@ export const deskMainPage = (S: any) => {
         .items([
           S.listItem()
             .title('Home Page')
-            .child(
-              S.editor().id('pHome').schemaType('pHome').documentId('pHome'),
-            )
+            .child(S.editor().id('pHome').schemaType('pHome').documentId('pHome'))
             .icon(ComponentIcon),
           S.listItem()
             .title('Frontend Career Guide page')
@@ -19,19 +17,14 @@ export const deskMainPage = (S: any) => {
               S.editor()
                 .id('pageFrontendCareerGuide')
                 .schemaType('pageFrontendCareerGuide')
-                .documentId('pageFrontendCareerGuide'),
+                .documentId('pageFrontendCareerGuide')
             )
             .icon(ComponentIcon),
           S.listItem()
             .title('Service page')
-            .child(
-              S.editor()
-                .id('pageService')
-                .schemaType('pageService')
-                .documentId('pageService'),
-            )
+            .child(S.editor().id('pageService').schemaType('pageService').documentId('pageService'))
             .icon(ComponentIcon),
-        ]),
+        ])
     )
     .icon(ComponentIcon);
 };

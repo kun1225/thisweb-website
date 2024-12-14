@@ -13,11 +13,7 @@ export default function PostsPagination({
 }) {
   const getPageNumbers = () => {
     const pageNumbers = [];
-    for (
-      let i = currentPage - articlesPerPage - 1;
-      i <= currentPage + articlesPerPage + 1;
-      i++
-    ) {
+    for (let i = currentPage - articlesPerPage - 1; i <= currentPage + articlesPerPage + 1; i++) {
       if (i > 0 && i <= totalPages) {
         pageNumbers.push(i);
       }
@@ -29,7 +25,7 @@ export default function PostsPagination({
     <div className="p-posts__pagination">
       {currentPage > 1 && (
         <Link href={`${currentPage - 2}`}>
-          <p className=" hover:text-secondary duration-200">
+          <p className="duration-200 hover:text-secondary">
             <span>← </span> <span className="hidden md:inline">上一頁</span>
           </p>
         </Link>
@@ -40,14 +36,10 @@ export default function PostsPagination({
       {getPageNumbers().map((pageNumber) => (
         <Link href={`${pageNumber - 1}`} key={pageNumber}>
           <p
-            className={`
-          w-6 h-6 rounded-[50%] text-center
-          ${cn(
-            currentPage === pageNumber && 'text-white bg-primary',
-            currentPage !== pageNumber &&
-              'hover:bg-secondary hover:text-white duration-100',
-          )}
-        `}
+            className={`h-6 w-6 rounded-[50%] text-center ${cn(
+              currentPage === pageNumber && 'bg-primary text-white',
+              currentPage !== pageNumber && 'duration-100 hover:bg-secondary hover:text-white'
+            )} `}
           >
             {pageNumber}
           </p>
@@ -58,7 +50,7 @@ export default function PostsPagination({
 
       {currentPage < totalPages && (
         <Link href={`${currentPage}`}>
-          <p className=" hover:text-secondary duration-200">
+          <p className="duration-200 hover:text-secondary">
             <span className="hidden md:inline">下一頁</span> <span> →</span>
           </p>
         </Link>

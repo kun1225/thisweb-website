@@ -1,10 +1,10 @@
 export default function LoadingCircle() {
   return (
-    <div className="flex justify-center items-center min-h-[80svh]">
+    <div className="flex min-h-[80svh] items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          className="w-16 h-16 text-gray-300 animate-[spin_1.8s_linear_infinite] animate- fill-secondary drop-shadow-md"
+          className="animate- h-16 w-16 animate-[spin_1.8s_linear_infinite] fill-secondary text-gray-300 drop-shadow-md"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

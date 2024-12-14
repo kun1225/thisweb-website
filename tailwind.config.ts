@@ -91,7 +91,6 @@ const config: Config = {
     },
   },
   plugins: [
-    'prettier-plugin-tailwindcss',
     plugin(function tailwindcss({ addUtilities }) {
       addUtilities({
         '.c': {

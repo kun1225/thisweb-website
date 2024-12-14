@@ -33,11 +33,7 @@ export default function HeaderNormalLink({
       <Link
         href={linkUrl}
         onClick={onClick}
-        className={cn(
-          'g-header__normal-link',
-          className,
-          isButton && 'is-button',
-        )}
+        className={cn('g-header__normal-link', className, isButton && 'is-button')}
       >
         {linkText}
       </Link>
@@ -45,13 +41,7 @@ export default function HeaderNormalLink({
   );
 }
 
-function Comp({
-  isButton,
-  children,
-}: {
-  isButton?: boolean;
-  children: React.ReactNode;
-}) {
+function Comp({ isButton, children }: { isButton?: boolean; children: React.ReactNode }) {
   return isButton ? (
     <Button asChild size="sm" variant="dark">
       {children}

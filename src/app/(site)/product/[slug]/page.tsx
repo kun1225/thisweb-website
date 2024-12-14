@@ -9,12 +9,9 @@ import {
 import ModuleProduct from '@/src/app/_modules/ModuleProduct';
 import { notFound } from 'next/navigation';
 
-const PageProductAnnouncement = dynamic(
-  () => import('./_components/PageProductAnnouncement'),
-  {
-    ssr: false,
-  },
-);
+const PageProductAnnouncement = dynamic(() => import('./_components/PageProductAnnouncement'), {
+  ssr: false,
+});
 
 export async function generateStaticParams() {
   const slugs = await getProductAllUrl();
@@ -22,11 +19,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const {
     sharing: { metaTitle, metaDesc, shareGraphic },
   } =
@@ -34,9 +27,7 @@ export async function generateMetadata({
       slug: params.slug,
     })) || {};
 
-  const shareGraphicUrl = shareGraphic
-    ? imgBuilder.image(shareGraphic).url()
-    : false;
+  const shareGraphicUrl = shareGraphic ? imgBuilder.image(shareGraphic).url() : false;
 
   return {
     title: metaTitle ? `${metaTitle} | ThisWeb` : `ThisWeb`,
@@ -71,8 +62,7 @@ export async function generateMetadata({
 }
 
 export default async function page({ params }: { params: { slug: string } }) {
-  const { modules, announcement } =
-    (await getProductData({ slug: params.slug })) || {};
+  const { modules, announcement } = (await getProductData({ slug: params.slug })) || {};
   if (!hasArrayValue(modules)) {
     return notFound();
   }

@@ -10,7 +10,7 @@ export const deskPosts = (S: any) => {
         .schemaType('post')
         .title('Posts')
         .apiVersion(apiVersion)
-        .filter(`_type == 'post'`),
+        .filter(`_type == 'post'`)
     )
     .icon(BookIcon);
 };

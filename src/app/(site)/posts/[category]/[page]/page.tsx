@@ -41,13 +41,10 @@ export const generateStaticParams = async () => {
 
         return { category, pageNumber };
       } catch (error) {
-        console.error(
-          `Failed to fetch post count for category ${category.url}:`,
-          error,
-        );
+        console.error(`Failed to fetch post count for category ${category.url}:`, error);
         return { category, pageNumber: 50 };
       }
-    }),
+    })
   );
 
   const result: { category: string; page: string }[] = [];
@@ -76,9 +73,7 @@ const PostsPage: React.FC<{
     tags: ['category'],
   });
 
-  const isFirstLevelCategory = categories
-    .map((category) => category.url)
-    .includes(params.category);
+  const isFirstLevelCategory = categories.map((category) => category.url).includes(params.category);
 
   let posts: PostsType = [];
 

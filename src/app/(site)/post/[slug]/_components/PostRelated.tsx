@@ -13,7 +13,7 @@ export default function PostRelated({
     relatedPosts.length > 0 && (
       <section className="p-post__related">
         <h2>相關系列文章</h2>
-        <div className="flex flex-col gap-3 items-start">
+        <div className="flex flex-col items-start gap-3">
           {relatedPosts.slice(0, 3).map((post) => {
             if (post._id === currentPostId)
               return (

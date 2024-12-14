@@ -2,7 +2,7 @@ const BASEURL = `https://api.convertkit.com/v3/forms`;
 
 export async function subscribeConvertKitEmail(
   e: React.FormEvent<HTMLFormElement>,
-  formId: string,
+  formId: string
 ) {
   e.preventDefault();
 
@@ -26,13 +26,9 @@ export async function subscribeConvertKitEmail(
     });
 
     if (!response.ok) {
-      throw new Error(
-        `status: ${response.status}, message: ${response.statusText} `,
-      );
+      throw new Error(`status: ${response.status}, message: ${response.statusText} `);
     }
   } catch (err: any) {
-    console.log(
-      `There was a problem with fetch operation in Newsletter.tsx: ${err}`,
-    );
+    console.log(`There was a problem with fetch operation in Newsletter.tsx: ${err}`);
   }
 }

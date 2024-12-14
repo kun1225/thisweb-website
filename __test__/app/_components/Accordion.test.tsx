@@ -1,11 +1,7 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import {
-  Accordion,
-  AccordionTitle,
-  AccordionContent,
-} from '@/src/app/_components/Accordion';
+import { Accordion, AccordionTitle, AccordionContent } from '@/src/app/_components/Accordion';
 
 describe('Accordion', () => {
   describe('Accordion initial state', () => {
@@ -14,7 +10,7 @@ describe('Accordion', () => {
         <Accordion stretch initExpanded>
           <AccordionTitle>Test Title</AccordionTitle>
           <AccordionContent>Test Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
 
       expect(screen.getByText('Test Title')).toBeInTheDocument();
@@ -25,7 +21,7 @@ describe('Accordion', () => {
         <Accordion initExpanded>
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
 
       const accordionContent = getByTestId('accordionContent');
@@ -37,7 +33,7 @@ describe('Accordion', () => {
         <Accordion initExpanded={false}>
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
 
       const accordionContent = screen.getByTestId('accordionContent');
@@ -51,7 +47,7 @@ describe('Accordion', () => {
         <Accordion iconPosition="left">
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
       const accordionIcon = screen.getByTestId('accordionIcon-left');
       expect(accordionIcon).toBeInTheDocument();
@@ -62,7 +58,7 @@ describe('Accordion', () => {
         <Accordion iconPosition="right">
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
       const accordionIcon = screen.getByTestId('accordionIcon-right');
       expect(accordionIcon).toBeInTheDocument();
@@ -75,7 +71,7 @@ describe('Accordion', () => {
         <Accordion stretch initExpanded>
           <AccordionTitle>Test Title</AccordionTitle>
           <AccordionContent>Test Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
 
       const accordionTitle = screen.getByTestId('accordionTitle');
@@ -101,7 +97,7 @@ describe('Accordion', () => {
         <Accordion initExpanded={false} iconPosition="left">
           <AccordionTitle>Title</AccordionTitle>
           <AccordionContent>Content</AccordionContent>
-        </Accordion>,
+        </Accordion>
       );
 
       const accordionIcon = screen.getByTestId('accordionIcon-left');

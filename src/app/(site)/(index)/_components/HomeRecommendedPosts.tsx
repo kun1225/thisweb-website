@@ -6,11 +6,7 @@ import { toPlainText } from '@portabletext/react';
 // Types
 import { PostsType, PostType } from '@/src/libs/sanity/type';
 
-export default function HomeRecommendedPosts({
-  limitedPosts,
-}: {
-  limitedPosts: PostsType;
-}) {
+export default function HomeRecommendedPosts({ limitedPosts }: { limitedPosts: PostsType }) {
   return (
     <section className="p-home__recommended-posts">
       <h2 className="p-home__recommended-posts__heading">推薦文章</h2>
@@ -33,11 +29,8 @@ function PostCard({ post }: { post: PostType }) {
   const truncateDesc = toPlainText(body).split('').slice(0, 120).join('');
 
   return (
-    <Link
-      className="p-home__recommended-posts__post"
-      href={`post/${slug.current}`}
-    >
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <Link className="p-home__recommended-posts__post" href={`post/${slug.current}`}>
+      <h3 className="mb-2 text-lg font-semibold">{title}</h3>
       <p>{truncateDesc}...</p>
     </Link>
   );

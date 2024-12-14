@@ -13,19 +13,12 @@ const MobileMenu = dynamic(() => import('./_components/mobile'));
 
 const SCROLLED_THRESHOLD = 0;
 
-export default function Header({
-  headerContent,
-}: {
-  headerContent: TypeGlobalHeaderContent;
-}) {
+export default function Header({ headerContent }: { headerContent: TypeGlobalHeaderContent }) {
   const { isMobile } = useWindowWidth();
 
   useEffect(() => {
     const gHeader = document.getElementById('g-header');
-    document.documentElement.style.setProperty(
-      '--header-height',
-      `${gHeader?.clientHeight}px`,
-    );
+    document.documentElement.style.setProperty('--header-height', `${gHeader?.clientHeight}px`);
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY; // Get current scroll position
@@ -50,10 +43,7 @@ export default function Header({
         <HeaderLogo />
 
         {isMobile ? (
-          <MobileMenu
-            className="g-header__mobile"
-            headerContent={headerContent}
-          />
+          <MobileMenu className="g-header__mobile" headerContent={headerContent} />
         ) : (
           <DesktopMenu headerContent={headerContent} />
         )}

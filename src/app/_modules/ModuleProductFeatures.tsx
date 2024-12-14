@@ -6,11 +6,7 @@ import ModuleProductFeaturesBody from './ModuleProductFeaturesBody';
 // Types
 import { TypeModuleProductFeatures } from '@/src/types/typeModules';
 
-export default function ModuleProductFeatures({
-  data,
-}: {
-  data: TypeModuleProductFeatures;
-}) {
+export default function ModuleProductFeatures({ data }: { data: TypeModuleProductFeatures }) {
   if (!hasObjectValue(data)) return null;
 
   const { heading, headingId, paragraph, features } = data;

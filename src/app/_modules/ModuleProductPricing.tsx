@@ -5,16 +5,9 @@ import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
 import { PortableText } from '@portabletext/react';
 // Types
-import {
-  TypeModuleProductPricing,
-  TypeModuleProductPricingPlan,
-} from '@/src/types/typeModules';
+import { TypeModuleProductPricing, TypeModuleProductPricingPlan } from '@/src/types/typeModules';
 
-export default function ModuleProductPricing({
-  data,
-}: {
-  data: TypeModuleProductPricing;
-}) {
+export default function ModuleProductPricing({ data }: { data: TypeModuleProductPricing }) {
   if (!hasObjectValue(data)) return null;
 
   const { heading, headingId, paragraph, plans } = data;
@@ -28,11 +21,7 @@ export default function ModuleProductPricing({
   );
 }
 
-function ModuleProductPricingPlans({
-  plans,
-}: {
-  plans: TypeModuleProductPricingPlan[];
-}) {
+function ModuleProductPricingPlans({ plans }: { plans: TypeModuleProductPricingPlan[] }) {
   if (!hasArrayValue(plans)) return null;
 
   return (
@@ -49,11 +38,7 @@ const customPortableText = {
     highlight: (props: any) => <mark>{props.children}</mark>,
   },
 };
-function ModuleProductPricingItem({
-  item,
-}: {
-  item: TypeModuleProductPricingPlan;
-}) {
+function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan }) {
   if (!hasObjectValue(item)) return null;
 
   const {
@@ -70,9 +55,7 @@ function ModuleProductPricingItem({
         <span className="m-product__pricing__item__price__discounted">
           {`NT$${discountedPrice}`}
         </span>
-        <span className="m-product__pricing__item__price__original">
-          {`NT$${originalPrice}`}
-        </span>
+        <span className="m-product__pricing__item__price__original">{`NT$${originalPrice}`}</span>
       </p>
       <div className="m-product__pricing__item__features prose">
         <PortableText value={features} components={customPortableText} />

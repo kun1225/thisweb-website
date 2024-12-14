@@ -2,37 +2,36 @@
 
 // *** Post ***
 .p-post {
-  @apply c pt-4;
+  @apply pt-4 c;
 }
 
 // *** Post Header ***
 .p-post__header {
-  @apply flex gap-8 justify-center mb-[5vh];
+  @apply mb-[5vh] flex justify-center gap-8;
 
   &__decoration {
-    @apply hidden md:block w-[15vw];
+    @apply hidden w-[15vw] md:block;
 
-    background: radial-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px) center/
-      32px 32px;
+    background: radial-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px) center/ 32px 32px;
   }
 
   &__content {
-    @apply flex-auto min-h-[80vh] grid place-content-center gap-12 text-center;
+    @apply grid min-h-[80vh] flex-auto place-content-center gap-12 text-center;
   }
 
   &__info {
-    @apply flex flex-col md:flex-row md:gap-4 justify-center items-center text-xs md:text-sm text-gray-600;
+    @apply flex flex-col items-center justify-center text-xs text-gray-600 md:flex-row md:gap-4 md:text-sm;
   }
 
   &__title {
-    @apply text-3xl md:leading-relaxed md:text-4xl font-semibold drop-shadow-md;
+    @apply text-3xl font-semibold drop-shadow-md md:text-4xl md:leading-relaxed;
   }
 
   &__author {
-    @apply flex justify-center md:justify-between items-center gap-4 md:gap-16;
+    @apply flex items-center justify-center gap-4 md:justify-between md:gap-16;
 
     &__decoration {
-      @apply inline-block flex-1 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)] h-[1px];
+      @apply inline-block h-[1px] flex-1 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)];
     }
 
     &__name {
@@ -44,20 +43,20 @@
 // *** Post Body ***
 .p-post {
   &__body {
-    @apply flex flex-col-reverse items-center xl:justify-center transition xl:flex-row;
+    @apply flex flex-col-reverse items-center transition xl:flex-row xl:justify-center;
   }
 
   &__article {
-    @apply prose 3xl:prose-lg w-full max-w-3xl;
+    @apply prose w-full max-w-3xl 3xl:prose-lg;
   }
 
   &__sidebar {
     --top: calc(16px + var(--header-height));
 
-    @apply max-w-3xl w-full mb-8 p-8 border xl:max-w-xs xl:max-h-[60vh] xl:py-0 xl:pr-4 xl:pl-edge xl:self-start xl:sticky xl:top-[var(--top)] xl:mb-0 xl:border-0 xl:overflow-y-auto xl:scrollbar-w-1;
+    @apply mb-8 w-full max-w-3xl border p-8 xl:sticky xl:top-[var(--top)] xl:mb-0 xl:max-h-[60vh] xl:max-w-xs xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pl-edge xl:pr-4 xl:scrollbar-w-1;
 
     &__header {
-      @apply flex justify-between items-center gap-2 mb-2;
+      @apply mb-2 flex items-center justify-between gap-2;
     }
 
     &__body {
