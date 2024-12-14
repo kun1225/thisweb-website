@@ -14,7 +14,7 @@ export default function HeaderOverlay({
       aria-label="Close the mega menu"
       className={cn(
         'g-header__overlay',
-        currentIndex !== -1 ? 'pointer-events-auto' : 'pointer-events-none',
+        currentIndex !== -1 ? 'pointer-events-auto' : 'pointer-events-none'
       )}
       onClick={closeMegaMenu}
     />

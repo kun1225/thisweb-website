@@ -7,10 +7,7 @@ export default function ModuleProductHeading({
 }) {
   if (!heading) return null;
   return (
-    <h2
-      className="m-product__heading"
-      {...(headingId ? { id: headingId } : {})}
-    >
+    <h2 className="m-product__heading" {...(headingId ? { id: headingId } : {})}>
       {heading}
     </h2>
   );

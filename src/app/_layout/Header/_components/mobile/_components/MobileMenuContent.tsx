@@ -6,10 +6,7 @@ import MobileMenuAccordion from './MobileMenuAccordion';
 import MobileMenuNormalLink from './MobileMenuNormalLink';
 import MobileMenuCategoryLink from './MobileMenuCategoryLink';
 // Type
-import {
-  TypeGlobalHeaderContent,
-  TypeMegamenu,
-} from '@/src/types/typeGlobalHeader';
+import { TypeGlobalHeaderContent, TypeMegamenu } from '@/src/types/typeGlobalHeader';
 
 export default function MobileMenuContent({
   headerContent,
@@ -21,11 +18,11 @@ export default function MobileMenuContent({
   isMobileMenuOpen: boolean;
 }) {
   const normalLinksContent = headerContent?.navContents.filter(
-    (item) => item._type === 'normalLink',
+    (item) => item._type === 'normalLink'
   );
   const categoriesContent = headerContent?.navContents.filter(
     (item): item is TypeMegamenu =>
-      item._type === 'megamenu' && item.content?._type === 'postsMegamenu',
+      item._type === 'megamenu' && item.content?._type === 'postsMegamenu'
   )[0]?.content.categories;
 
   const main = useRef<null | HTMLElement>(null);
@@ -49,11 +46,7 @@ export default function MobileMenuContent({
     <ul className="g-header__mobile-menu__content">
       {normalLinksContent
         ? normalLinksContent.map((link) => (
-            <MobileMenuNormalLink
-              key={link._key}
-              link={link}
-              closeMobileMenu={closeMobileMenu}
-            />
+            <MobileMenuNormalLink key={link._key} link={link} closeMobileMenu={closeMobileMenu} />
           ))
         : null}
 

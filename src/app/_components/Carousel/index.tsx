@@ -85,20 +85,15 @@ export default function Carousel({
         speed: 1,
         startDelay: 0,
         stopOnMouseEnter: true,
-      }),
+      })
     );
   }
 
   // @ts-ignore
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick,
-  } = usePrevNextButtons(emblaApi);
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
+    usePrevNextButtons(emblaApi);
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
   const [isSingleSlide, setIsSingleSlide] = useState(true);
   const [isDraggable, setIsDraggable] = useState(true);
@@ -187,14 +182,8 @@ export default function Carousel({
 
           {isShowNav ? (
             <div className="c-carousel__buttons">
-              <PrevButton
-                onClick={onPrevButtonClick}
-                disabled={prevBtnDisabled}
-              />
-              <NextButton
-                onClick={onNextButtonClick}
-                disabled={nextBtnDisabled}
-              />
+              <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+              <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
             </div>
           ) : null}
         </div>

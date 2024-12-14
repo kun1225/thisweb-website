@@ -12,10 +12,11 @@
     "start": "next start",
     "test": "vitest"
   },
-  "prettier": "@vercel/style-guide/prettier",
+  
   "dependencies": {
     "@calcom/embed-react": "^1.4.0",
     "@portabletext/react": "^3.1.0",
+    "@radix-ui/react-slot": "^1.1.1",
     "@sanity/code-input": "^4.1.4",
     "@sanity/icons": "^3.4.0",
     "@sanity/image-url": "^1.0.2",
@@ -76,7 +77,9 @@
     "next-sitemap": "^4.2.3",
     "postcss": "^8.4.39",
     "postcss-import": "^16.1.0",
-    "prettier": "3.0.3",
+    "prettier": "^3.4.2",
+    "prettier-plugin-groq": "^0.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.4",
     "vitest": "^2.0.0"
   }

@@ -1,5 +1,5 @@
 // Libs
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 // Components
 import Carousel from '../_components/Carousel';
 import { PortableText } from 'next-sanity';
@@ -31,8 +31,8 @@ export default function ModuleProductTestimonialList({
   return (
     <div className="m-product__testimonials__list">
       <Carousel isAutoScroll isAutoplay={false} gap="32px">
-        {testimonials.map((item) => (
-          <div className="m-product__testimonials__item" key={item._key}>
+        {testimonials.map((item, index) => (
+          <div className="m-product__testimonials__item" key={`${item._key} - ${index}`}>
             <div className="m-product__testimonials__quote">
               <PortableText
                 value={item.quote}
@@ -49,12 +49,8 @@ export default function ModuleProductTestimonialList({
                 ) : (
                   <CiUser className="m-product__testimonials__avatar" />
                 )}
-                {item?.name ? (
-                  <p className="m-product__testimonials__name">{item.name}</p>
-                ) : null}
-                {item?.role ? (
-                  <p className="m-product__testimonials__role">{item.role}</p>
-                ) : null}
+                {item?.name ? <p className="m-product__testimonials__name">{item.name}</p> : null}
+                {item?.role ? <p className="m-product__testimonials__role">{item.role}</p> : null}
               </div>
             ) : null}
           </div>

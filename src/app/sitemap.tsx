@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       next: {
         revalidate: 0,
       },
-    },
+    }
   );
 
   const categoryPagesCounts = await Promise.all(
@@ -31,20 +31,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           next: {
             revalidate: 0,
           },
-        },
+        }
       );
       return Math.ceil(count / PER_NUMBER_PAGE);
-    }),
+    })
   );
 
-  const categoriesPageSitemap: MetadataRoute.Sitemap = categories.flatMap(
-    (category, i) =>
-      Array.from({ length: categoryPagesCounts[i] || 1 }, (_, j) => ({
-        url: `https://www.thisweb.dev/posts/${category.title}/${j}`,
-        lastModified: NOW,
-        changeFrequency: 'weekly',
-        priority: 0.6,
-      })),
+  const categoriesPageSitemap: MetadataRoute.Sitemap = categories.flatMap((category, i) =>
+    Array.from({ length: categoryPagesCounts[i] || 1 }, (_, j) => ({
+      url: `https://www.thisweb.dev/posts/${category.title}/${j}`,
+      lastModified: NOW,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    }))
   );
 
   const postsNumber = await client.fetch<number>(
@@ -54,7 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       next: {
         revalidate: 0,
       },
-    },
+    }
   );
   const totalPageNumber = Math.ceil(postsNumber / PER_NUMBER_PAGE);
   const postsPageSitemap: MetadataRoute.Sitemap = Array.from(
@@ -64,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: NOW,
       changeFrequency: 'weekly',
       priority: 0.6,
-    }),
+    })
   );
 
   const posts = await client.fetch<PostsType>(
@@ -74,7 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       next: {
         revalidate: 0,
       },
-    },
+    }
   );
   const postSitemap: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `https://www.thisweb.dev/post/${post.slug.current}`,

@@ -47,9 +47,7 @@ function PostHeaderInfo({ date, topic }: { date?: string; topic: string }) {
       {date ? (
         <>
           <span className="block">-</span>
-          <time dateTime={date}>
-            {format(parseISO(date), 'yyyy / LL / dd')}
-          </time>
+          <time dateTime={date}>{format(parseISO(date), 'yyyy / LL / dd')}</time>
         </>
       ) : null}
     </div>

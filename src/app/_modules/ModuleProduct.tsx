@@ -9,11 +9,7 @@ import ModuleProductTestimonials from './ModuleProductTestimonials';
 import ModuleProductFAQs from './ModuleProductFAQs';
 import { TypeModulesProduct } from '@/src/types/typeModules';
 
-export default function ModuleProduct({
-  modules,
-}: {
-  modules: TypeModulesProduct;
-}) {
+export default function ModuleProduct({ modules }: { modules: TypeModulesProduct }) {
   return modules.map((module) => {
     switch (module._type) {
       case 'moduleProductHero':

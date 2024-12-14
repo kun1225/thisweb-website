@@ -85,8 +85,7 @@ export default defineType({
         filter: ({ document }) => {
           if (!document.secondLevelCategory) return {};
           return {
-            filter:
-              'title in $secondLevelCategory->thirdLevelCategory[]->title',
+            filter: 'title in $secondLevelCategory->thirdLevelCategory[]->title',
             params: {
               category: document.secondLevelCategory,
             },

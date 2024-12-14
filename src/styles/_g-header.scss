@@ -18,10 +18,10 @@
 
 // *** Header ***
 .g-header {
-  @apply c fixed top-0 w-full py-4 transition-all duration-400 isolate z-header;
+  @apply fixed top-[var(--announcement-height,_0px)] isolate z-header w-full py-4 transition-all duration-400 c;
 
   &.is-scrolled {
-    @apply py-2 bg-white shadow-sm;
+    @apply bg-white py-2 shadow-sm;
 
     .g-header__logo {
       &__text {
@@ -34,23 +34,23 @@
   }
 
   &__container {
-    @apply flex justify-between items-center;
+    @apply flex items-center justify-between;
   }
 
   &__logo {
     @apply flex items-center gap-4;
 
     &__img {
-      @apply -translate-y-[1px] scale-100 origin-left transition duration-400;
+      @apply origin-left -translate-y-[1px] scale-100 transition duration-400;
     }
 
     &__text {
-      @apply font-mono font-semibold translate-x-0 transition-transform duration-400;
+      @apply translate-x-0 font-mono font-semibold transition-transform duration-400;
     }
   }
 
   &__desktop {
-    @apply hidden md:flex md:gap-6 text-sm;
+    @apply hidden text-sm md:flex md:gap-6;
   }
 
   &__mobile {
@@ -58,24 +58,28 @@
   }
 
   &__overlay {
-    @apply fixed top-0 left-0 w-[100%] h-screen z-10;
+    @apply fixed left-0 top-0 z-10 h-screen w-full;
   }
 
   &__megamenu-trigger {
-    @apply relative text-gray-500 hover:text-secondary transition-colors duration-200 whitespace-nowrap;
+    @apply relative whitespace-nowrap text-gray-500 transition-colors duration-200 hover:text-secondary;
   }
 
   &__normal-link {
-    @apply p-1 transition-colors whitespace-nowrap;
+    @apply block whitespace-nowrap p-1 transition-colors;
+
+    &.is-button {
+      @apply px-6 py-1;
+    }
   }
 }
 
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
-  @apply max-h-[80vh] overflow-auto p-4 grid grid-cols-3 fixed top-[calc(var(--header-height)_+_16px)] rounded-md bg-header shadow opacity-0 scale-50 pointer-events-none transition duration-300 z-10;
+  @apply pointer-events-none fixed top-[calc(var(--header-height)_+_16px)] z-10 grid max-h-[80vh] scale-0 grid-cols-3 overflow-auto rounded-md bg-header p-4 opacity-0 shadow-[0_0_28px_rgba(0,0,0,.1)] transition duration-300;
 
   &.is-active {
-    @apply duration-400 opacity-100 scale-100 pointer-events-auto;
+    @apply pointer-events-auto scale-100 opacity-100 duration-400;
 
     .g-header__posts-megamenu {
       &__item {
@@ -104,21 +108,21 @@
   }
 
   &__link {
-    @apply block h-full p-4 rounded-md transition duration-200 hover:bg-slate-300;
+    @apply block h-full rounded-md p-4 transition duration-200 hover:bg-slate-300;
     &:hover {
       --tw-bg-opacity: 0.2;
     }
   }
 
   &__categories {
-    @apply absolute bottom-2 left-0 mx-4 py-2 flex gap-1 overflow-y-auto text-gray-600 select-none scrollbar-thumb-[#00000033] active:scrollbar-thumb-primary scrollbar-thumb-rounded-full scrollbar-h-1;
+    @apply absolute bottom-2 left-0 mx-4 flex select-none gap-1 overflow-y-auto py-2 text-gray-600 scrollbar-thumb-[#00000033] scrollbar-thumb-rounded-full scrollbar-h-1 active:scrollbar-thumb-primary;
 
     &::-webkit-scrollbar {
       height: 0.25em;
     }
 
     &__link {
-      @apply inline-block py-1 px-2.5 text-xs rounded-full transition bg-gray-200 hover:bg-secondary hover:text-white;
+      @apply inline-block rounded-full bg-gray-200 px-2.5 py-1 text-xs transition hover:bg-secondary hover:text-white;
     }
   }
 }
@@ -135,7 +139,7 @@
   }
 
   &__content {
-    @apply c flex flex-col h-full py-4 text-body text-primary overflow-y-auto;
+    @apply flex h-full flex-col overflow-y-auto py-4 text-body text-primary c;
   }
 
   &__accordion {
@@ -146,34 +150,34 @@
     }
 
     &__list {
-      @apply flex flex-col ml-6 mt-2 mb-8 gap-2;
+      @apply mb-8 ml-6 mt-2 flex flex-col gap-2;
     }
   }
 
   &__link {
-    @apply block p-4 font-semibold border-b border-primary;
+    @apply block border-b border-primary p-4 font-semibold;
   }
 }
 
 // *** Mobile Menu Trigger ***
 .g-header__mobile-menu__trigger {
-  @apply relative w-[24px] h-[16px] cursor-pointer;
+  @apply relative h-[16px] w-[24px] cursor-pointer;
 
   &::before,
   &::after {
-    @apply absolute w-full h-[3px] bg-neutral-900 rounded-[6px];
+    @apply absolute h-[3px] w-full rounded-[6px] bg-neutral-900;
 
     content: '';
     transform: translateY(0px) scale(1) rotate(0);
   }
 
   &::after {
-    @apply top-0 left-0;
+    @apply left-0 top-0;
     animation: reverse-top-line 0.6s ease-in-out forwards;
   }
 
   &::before {
-    @apply w-[80%] bottom-0 right-0;
+    @apply bottom-0 right-0 w-[80%];
     animation: reverse-bottom-line 0.6s ease-in-out forwards;
   }
 

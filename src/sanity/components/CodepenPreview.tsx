@@ -1,9 +1,9 @@
-const CodePenPreview = ({value}: {value: any}) => {
-  const { url, themeId = "dark" } = value; // <= add themeId here, default it to "dark"
+const CodePenPreview = ({ value }: { value: any }) => {
+  const { url, themeId = 'dark' } = value; // <= add themeId here, default it to "dark"
   if (!url) {
-    return (<div>Add a CodePen URL</div>)
+    return <div>Add a CodePen URL</div>;
   }
-  const splitURL = url.split("/");
+  const splitURL = url.split('/');
   // [ 'https:', '', 'codepen.io', 'thisWeb', 'pen', 'gWWQgb' ]
   const [, , , user, , hash] = splitURL;
   const embedUrl = `https://codepen.io/${user}/embed/${hash}?height=370&theme-id=${themeId}&default-tab=result`; // <= add themeId here
@@ -18,6 +18,6 @@ const CodePenPreview = ({value}: {value: any}) => {
       allowFullScreen
     />
   );
-}
+};
 
-export default CodePenPreview
+export default CodePenPreview;

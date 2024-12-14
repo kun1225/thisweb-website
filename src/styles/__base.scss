@@ -21,10 +21,7 @@
   --s-contain: max(var(--s-edge), 8px);
   --s-contain-max: 1960px;
 
-  --s-edge-dynamic: max(
-    var(--s-contain),
-    calc((100vw - var(--s-contain-max)) / 2)
-  );
+  --s-edge-dynamic: max(var(--s-contain), calc((100vw - var(--s-contain-max)) / 2));
 
   --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
@@ -41,11 +38,11 @@ body {
 }
 
 html {
-  @apply scroll-smooth scroll-p-[120px];
+  @apply scroll-p-[120px] scroll-smooth;
 }
 
 body {
-  @apply bg-gray-50 font-sans text-slate-800 font-normal tracking-wide selection:bg-secondary selection:text-white;
+  @apply bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:bg-secondary selection:text-white;
 }
 
 h1,
@@ -54,7 +51,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-primary text-balance;
+  @apply text-balance text-primary;
 }
 
 p {
@@ -73,7 +70,7 @@ mark {
 }
 
 .scrollbar-small::-webkit-scrollbar {
-  @apply w-[4px] h-[4px];
+  @apply h-[4px] w-[4px];
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

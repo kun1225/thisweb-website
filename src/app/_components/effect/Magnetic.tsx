@@ -30,7 +30,7 @@ function Magnetic({
 
       setPosition({ x, y });
     },
-    [isDesktop],
+    [isDesktop]
   );
 
   const mouseLeave = () => {

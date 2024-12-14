@@ -9,13 +9,9 @@ interface GlobalSettings {
   toggleDarkMode: () => void;
 }
 
-export const GlobalSettingsContext = createContext<GlobalSettings | undefined>(
-  undefined,
-);
+export const GlobalSettingsContext = createContext<GlobalSettings | undefined>(undefined);
 
-export const GlobalSettingsProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const GlobalSettingsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isTocCollapsed, setIsTocCollapsed] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 

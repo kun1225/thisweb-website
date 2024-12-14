@@ -3,10 +3,24 @@ import { groq } from 'next-sanity';
 export const pProductAllUrlQuery = groq`*[_type == "pProduct" && defined(slug.current)][].slug.current`;
 
 export const pProductSharingQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
-  sharing
+  sharing {
+    metaTitle,
+    metaDescription,
+    shareGraphic,
+  }
 }[0]`;
 
 export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
+  announcement[] {
+    _type,
+    _key,
+    _type == "dueDate" => {
+    time,
+    },
+    _type == "paragraph" => {
+    paragraph,
+    },
+  },
   modules[] {
     _type,
     _type == "moduleProductHero" => {
@@ -75,6 +89,7 @@ export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.curr
       heading,
       headingId,
       paragraph,
+      media,
       achievements[] {
         _key,
         value,

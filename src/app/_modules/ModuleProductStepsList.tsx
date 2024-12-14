@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { cn } from '@/src/libs/utils';
 import useWindowWidth from '../_hooks/useWindowWidth';
-import { hasArrayValue } from '@/src/libs/helpers';
+import { hasArrayValue } from '@/src/libs/utils';
 import { PortableText } from '@portabletext/react';
 
 import { TypeModuleProductStep } from '@/src/types/typeModules';
@@ -10,11 +10,7 @@ import Icon from '../_components/Icon';
 import Media from '../_components/Media';
 import Carousel from '../_components/Carousel';
 
-export default function ModuleProductStepsList({
-  steps,
-}: {
-  steps: TypeModuleProductStep[];
-}) {
+export default function ModuleProductStepsList({ steps }: { steps: TypeModuleProductStep[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { isDesktop } = useWindowWidth();
 
@@ -84,11 +80,7 @@ function ModuleProductStepsListDesktop({
   );
 }
 
-function ModuleProductStepsListMobile({
-  steps,
-}: {
-  steps: TypeModuleProductStep[];
-}) {
+function ModuleProductStepsListMobile({ steps }: { steps: TypeModuleProductStep[] }) {
   return (
     <Carousel autoplayInterval={6000} isShowDots>
       {steps.map((step, index) => (

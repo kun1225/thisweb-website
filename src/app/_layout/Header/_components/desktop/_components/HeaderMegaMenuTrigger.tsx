@@ -21,11 +21,9 @@ export default function MegaMenuTrigger({
       className="g-header__megamenu-trigger"
       onClick={() => switchMegaMenu(index)}
     >
-      <div className="flex gap-2 items-center p-1">
+      <div className="flex items-center gap-2 p-1">
         {title}
-        <FaCaretDown
-          className={cn('transition', index === currentIndex && 'rotate-180')}
-        />
+        <FaCaretDown className={cn('transition', index === currentIndex && 'rotate-180')} />
       </div>
     </button>
   );

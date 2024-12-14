@@ -16,11 +16,7 @@ export default function PostBody({
 }) {
   return (
     <section className="p-post__body">
-      <PostArticle
-        mainImage={mainImage}
-        currentPost={currentPost}
-        relatedPosts={relatedPosts}
-      />
+      <PostArticle mainImage={mainImage} currentPost={currentPost} relatedPosts={relatedPosts} />
       <PostSidebar source={currentPost.body} />
     </section>
   );

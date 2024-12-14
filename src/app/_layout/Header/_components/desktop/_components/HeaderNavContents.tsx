@@ -19,11 +19,7 @@ export default function HeaderNavContents({
           case 'normalLink':
             return (
               <li key={item._key}>
-                <HeaderNormalLink
-                  linkText={item.linkText}
-                  linkUrl={item.linkUrl}
-                  onClick={closeMegaMenu}
-                />
+                <HeaderNormalLink item={item} onClick={closeMegaMenu} />
               </li>
             );
 

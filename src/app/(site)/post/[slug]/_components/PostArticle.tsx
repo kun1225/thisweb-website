@@ -21,10 +21,7 @@ export default function PostArticle({
       <CustomPortableText value={currentPost.body} />
 
       {relatedPosts && relatedPosts.length > 1 ? (
-        <PostRelated
-          relatedPosts={relatedPosts}
-          currentPostId={currentPost._id}
-        />
+        <PostRelated relatedPosts={relatedPosts} currentPostId={currentPost._id} />
       ) : null}
     </div>
   );

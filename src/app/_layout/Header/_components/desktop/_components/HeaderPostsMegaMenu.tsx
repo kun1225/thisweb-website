@@ -26,16 +26,16 @@ export default function HeaderPostsMegaMenu({
     >
       {content.categories.map((category) => (
         <li key={category.url} className="g-header__posts-megamenu__item">
-          <div className="block relative h-full">
+          <div className="relative block h-full">
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}
               href={`/posts/${category.url}/0`}
-              className="g-header__posts-megamenu__link "
+              className="g-header__posts-megamenu__link"
               title={category.title}
               onClick={closeMegaMenu}
             >
-              <h3 className="text-xl font-semibold mb-1">{category.title}</h3>
-              <p className="text-sm mb-14">{category.description}</p>
+              <h3 className="mb-1 text-xl font-semibold">{category.title}</h3>
+              <p className="mb-24 text-sm">{category.description}</p>
             </Link>
 
             {category.secondLevelCategories ? (

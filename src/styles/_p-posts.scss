@@ -1,10 +1,10 @@
 @import '__mixins.scss';
 
 .p-posts {
-  @apply c 2xl:px-0 max-w-3xl mx-auto py-16 min-h-[80vh];
+  @apply mx-auto min-h-[80vh] max-w-3xl py-16 c 2xl:px-0;
 
   &__header {
-    @apply pb-4 mb-8 border-b-2 border-gray-200;
+    @apply mb-8 border-b-2 border-gray-200 pb-4;
   }
 
   &__list {
@@ -12,18 +12,18 @@
   }
 
   &__item {
-    @apply relative py-4 lg:py-6 transition duration-400;
+    @apply relative py-4 transition duration-400 lg:py-6;
 
     @include hover {
       @apply scale-[1.03];
     }
 
     &__title {
-      @apply font-semibold text-xl text-secondary;
+      @apply text-xl font-semibold text-secondary;
     }
 
     &__info {
-      @apply mt-1 mb-2 flex gap-2 text-xs text-gray-500 italic;
+      @apply mb-2 mt-1 flex gap-2 text-xs italic text-gray-500;
     }
 
     &__link {
@@ -32,7 +32,7 @@
   }
 
   &__pagination {
-    @apply flex gap-3 md:gap-6 justify-center text-base;
+    @apply flex justify-center gap-3 text-base md:gap-6;
   }
 }
 

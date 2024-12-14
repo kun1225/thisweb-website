@@ -1,22 +1,11 @@
-import {
-  formatBrNewLine,
-  hasArrayValue,
-  hasObjectValue,
-} from '@/src/libs/helpers';
+import { formatBrNewLine, hasArrayValue, hasObjectValue } from '@/src/libs/utils';
 // Components
 import * as Icons from 'react-icons/fa';
 // Types
 import { TypeIcon } from '@/src/types/typeIcon';
-import {
-  TypeModuleProductProblems,
-  TypeModuleProductProblem,
-} from '@/src/types/typeModules';
+import { TypeModuleProductProblems, TypeModuleProductProblem } from '@/src/types/typeModules';
 
-export default function ModuleProductProblems({
-  data,
-}: {
-  data: TypeModuleProductProblems;
-}) {
+export default function ModuleProductProblems({ data }: { data: TypeModuleProductProblems }) {
   if (!hasObjectValue(data)) return null;
 
   const { heading, headingId, paragraph, problems } = data;
@@ -30,13 +19,7 @@ export default function ModuleProductProblems({
   );
 }
 
-function Heading({
-  heading,
-  headingId,
-}: {
-  heading?: string;
-  headingId?: string;
-}) {
+function Heading({ heading, headingId }: { heading?: string; headingId?: string }) {
   if (!heading) return null;
   return (
     <h2 className="m-product__heading" id={headingId || ''}>

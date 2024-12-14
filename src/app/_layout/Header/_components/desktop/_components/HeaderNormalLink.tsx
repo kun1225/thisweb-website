@@ -5,31 +5,48 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/src/libs/utils';
 // Components
 import Link from 'next/link';
-// import Magnetic from '@/src/app/_components/effect/Magnetic';
+import { Button } from '@/src/app/_components/Button';
+// Types
+import type { TypeNormalLink } from '@/src/types/typeGlobalHeader';
 
 export default function HeaderNormalLink({
-  linkText,
-  linkUrl,
+  item,
   onClick,
 }: {
-  linkText: string;
-  linkUrl: string;
+  item: TypeNormalLink;
   onClick: () => void;
 }) {
   const pathname = usePathname();
+  const { linkText, linkUrl, isButton } = item;
+
+  let className;
+  if (pathname === linkUrl) {
+    className = 'text-secondary font-semibold drop-shadow-md';
+  } else if (isButton) {
+    className = '';
+  } else {
+    className = 'text-gray-500 hover:text-secondary';
+  }
 
   return (
-    <Link href={linkUrl} onClick={onClick}>
-      <div
-        className={cn(
-          'g-header__normal-link',
-          pathname === linkUrl
-            ? 'text-secondary font-semibold drop-shadow-md'
-            : 'text-gray-500 hover:text-secondary ',
-        )}
+    <Comp isButton={isButton}>
+      <Link
+        href={linkUrl}
+        onClick={onClick}
+        className={cn('g-header__normal-link', className, isButton && 'is-button')}
       >
         {linkText}
-      </div>
-    </Link>
+      </Link>
+    </Comp>
+  );
+}
+
+function Comp({ isButton, children }: { isButton?: boolean; children: React.ReactNode }) {
+  return isButton ? (
+    <Button asChild size="sm" variant="dark">
+      {children}
+    </Button>
+  ) : (
+    <>{children}</>
   );
 }

@@ -11,7 +11,7 @@ export default function HomeHero() {
           <h2 className="tracking-widest text-gray-500">
             請網這邊走 ThisWeb | 前端 x 轉職 x 提升競爭力
           </h2>
-          <div className="p-0 mb-2">
+          <div className="mb-2 p-0">
             <h1 className="p-home__hero__heading shine-text">
               幫助你從零開始學習網頁前端
               <br />
