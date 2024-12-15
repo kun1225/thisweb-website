@@ -2,14 +2,12 @@
 // Hooks & Libs
 import { useEffect } from 'react';
 import useWindowWidth from '../../_hooks/useWindowWidth';
-import dynamic from 'next/dynamic';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components
 import HeaderLogo from './_components/HeaderLogo';
-
-const DesktopMenu = dynamic(() => import('./_components/desktop'));
-const MobileMenu = dynamic(() => import('./_components/mobile'));
+import DesktopMenu from './_components/desktop';
+import MobileMenu from './_components/mobile';
 
 const SCROLLED_THRESHOLD = 0;
 

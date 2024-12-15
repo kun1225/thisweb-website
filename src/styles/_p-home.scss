@@ -1,6 +1,6 @@
 // *** Hero ***
 .p-home__hero {
-  @apply relative flex min-h-[90vh] flex-col items-center justify-center gap-10 text-center c;
+  @apply relative flex min-h-[80vh] flex-col items-center justify-center gap-10 text-center c md:min-h-[90vh];
 
   &__bg {
     @apply absolute left-0 top-0 h-screen w-full font-semibold;
