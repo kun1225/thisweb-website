@@ -5,7 +5,7 @@ export const pProductAllUrlQuery = groq`*[_type == "pProduct" && defined(slug.cu
 export const pProductSharingQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
   sharing {
     metaTitle,
-    metaDescription,
+    metaDesc,
     shareGraphic,
   }
 }[0]`;
