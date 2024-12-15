@@ -12,6 +12,10 @@ export default function PageProductAnnouncement({ data }: { data: TypePageProduc
       '--announcement-height',
       `${announcementRef.current?.clientHeight || 0}px`
     );
+
+    return () => {
+      document.documentElement.style.setProperty('--announcement-height', '0px');
+    };
   }, []);
 
   if (!hasArrayValue(data) || typeof window === 'undefined') return null;
