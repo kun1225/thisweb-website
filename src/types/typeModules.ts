@@ -122,6 +122,7 @@ export type TypeModuleProductPricingPlan = {
     label: string;
     url: string;
     isOpenNewTab: boolean;
+    isDisabled: boolean;
   };
 };
 export type TypeModuleProductPricing = {

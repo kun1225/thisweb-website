@@ -102,6 +102,12 @@ export default defineField({
                   name: 'isOpenNewTab',
                   type: 'boolean',
                 }),
+                defineField({
+                  title: 'Disabled',
+                  name: 'isDisabled',
+                  type: 'boolean',
+                  initialValue: false,
+                }),
               ],
             }),
           ],
