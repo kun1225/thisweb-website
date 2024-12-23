@@ -63,14 +63,23 @@ function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan
         <PortableText value={features} components={customPortableText} />
       </div>
       {cta ? (
-        <Button asChild size="hero" className="hover:scale-100 md:w-full">
-          <Link
-            href={cta.url}
-            className="m-product__pricing__item__cta"
-            target={cta.isOpenNewTab ? '_blank' : '_self'}
-          >
-            {cta.label}
-          </Link>
+        <Button
+          asChild={!cta.isDisabled}
+          size="hero"
+          className="hover:scale-100 md:w-full"
+          disabled={cta.isDisabled}
+        >
+          {cta.isDisabled ? (
+            <>{cta.label}</>
+          ) : (
+            <Link
+              href={cta.url}
+              className="m-product__pricing__item__cta"
+              target={cta.isOpenNewTab ? '_blank' : '_self'}
+            >
+              {cta.label}
+            </Link>
+          )}
         </Button>
       ) : null}
     </div>
