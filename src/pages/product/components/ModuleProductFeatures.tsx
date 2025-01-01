@@ -2,7 +2,7 @@ import { hasObjectValue } from '@/src/shared/lib/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
-import ModuleProductFeaturesBody from '../app/_modules/ModuleProductFeaturesBody';
+import ModuleProductFeaturesBody from './ModuleProductFeaturesBody';
 // Types
 import { TypeModuleProductFeatures } from '@/src/types/typeModules';
 

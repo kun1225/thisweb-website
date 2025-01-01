@@ -14,7 +14,8 @@ import {
 } from '@/src/libs/sanity/queries';
 import { sanityFetch } from '@/src/shared/lib/sanity';
 // Types
-import { PostsType, CategoriesType } from '@/src/libs/sanity/type';
+import { CategoriesType } from '@/src/libs/sanity/type';
+import type { TypePosts } from '@/src/types/typePosts';
 
 export const metadata: Metadata = {
   title: '文章列表 | 請網這邊走 ThisWeb',
@@ -75,10 +76,10 @@ const PostsPage: React.FC<{
 
   const isFirstLevelCategory = categories.map((category) => category.url).includes(params.category);
 
-  let posts: PostsType = [];
+  let posts: TypePosts = [];
 
   if (isFirstLevelCategory) {
-    posts = await sanityFetch<PostsType>({
+    posts = await sanityFetch<TypePosts>({
       query: POSTS_BY_CATEGORY_URL_QUERY,
       queryParams: {
         categoryUrl: params.category,
@@ -88,7 +89,7 @@ const PostsPage: React.FC<{
       tags: ['post'],
     });
   } else {
-    posts = await sanityFetch<PostsType>({
+    posts = await sanityFetch<TypePosts>({
       query: POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
       queryParams: {
         secondLevelCategoryUrl: params.category,

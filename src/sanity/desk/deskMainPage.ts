@@ -12,15 +12,6 @@ export const deskMainPage = (S: any) => {
             .child(S.editor().id('pHome').schemaType('pHome').documentId('pHome'))
             .icon(ComponentIcon),
           S.listItem()
-            .title('Frontend Career Guide page')
-            .child(
-              S.editor()
-                .id('pageFrontendCareerGuide')
-                .schemaType('pageFrontendCareerGuide')
-                .documentId('pageFrontendCareerGuide')
-            )
-            .icon(ComponentIcon),
-          S.listItem()
             .title('Service page')
             .child(S.editor().id('pageService').schemaType('pageService').documentId('pageService'))
             .icon(ComponentIcon),

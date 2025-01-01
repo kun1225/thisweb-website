@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { GlobalSettingsContext } from '../provider/globalSettings';
+import { GlobalSettingsContext } from '../provider/GlobalSettings';
 
 const useGlobalSettings = () => {
   const context = useContext(GlobalSettingsContext);

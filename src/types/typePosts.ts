@@ -10,6 +10,9 @@ export type TypePost = {
   category: string;
   secondLevelCategory: string;
   title: string;
+  sharing: {
+    shareGraphic: any;
+  };
 };
 
 export type TypePosts = TypePost[];
