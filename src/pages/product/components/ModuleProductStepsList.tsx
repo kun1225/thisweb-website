@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { cn } from '@/src/shared/lib/utils';
-import useWindowWidth from '../_hooks/useWindowWidth';
+import useWindowWidth from '../../../shared/hooks/useWindowWidth';
 import { hasArrayValue } from '@/src/shared/lib/utils';
 import { PortableText } from '@portabletext/react';
 

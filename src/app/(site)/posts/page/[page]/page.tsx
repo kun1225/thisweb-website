@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 // Sanity
 import { getPostsLimited, getPostsCounts } from '@/src/shared/api';
 // Components
-import PostsEmptyPage from '@/src/shared/ui/PostsEmptyPage';
-import PostsList from '@/src/shared/ui/PostsList';
-import PostsPagination from '@/src/shared/ui/PostsPagination';
+import PostsEmptyPage from '../../_components/PostsEmptyPage';
+import PostsList from '../../_components/PostsList';
+import PostsPagination from '../../_components/PostsPagination';
 
 export const metadata: Metadata = {
   title: '文章列表 | 請網這邊走 ThisWeb',

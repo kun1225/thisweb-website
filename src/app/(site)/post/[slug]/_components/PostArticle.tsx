@@ -2,14 +2,14 @@
 import PostRelated from './PostRelated';
 import CustomPortableText from '@/src/shared/ui/CustomPortableText';
 // Types
-import { PostType } from '@/src/libs/sanity/type';
+import { TypePost } from '@/src/types/typePosts';
 
 export default function PostArticle({
   currentPost,
   relatedPosts,
 }: {
-  currentPost: PostType;
-  relatedPosts: PostType[];
+  currentPost: TypePost;
+  relatedPosts: TypePost[];
 }) {
   return (
     <div className="p-post__article">

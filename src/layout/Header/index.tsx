@@ -1,7 +1,7 @@
 'use client';
 // Hooks & Libs
 import { useEffect } from 'react';
-import useWindowWidth from '../../_hooks/useWindowWidth';
+import useWindowWidth from '../../shared/hooks/useWindowWidth';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components

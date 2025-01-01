@@ -2,14 +2,14 @@
 import PostArticle from './PostArticle';
 import PostSidebar from './PostSidebar';
 // Types
-import { PostType } from '@/src/libs/sanity/type';
+import { TypePost } from '@/src/types/typePosts';
 
 export default function PostBody({
   currentPost,
   relatedPosts,
 }: {
-  currentPost: PostType;
-  relatedPosts: PostType[];
+  currentPost: TypePost;
+  relatedPosts: TypePost[];
 }) {
   return (
     <section className="p-post__body">

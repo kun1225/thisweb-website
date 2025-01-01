@@ -3,7 +3,7 @@ import {
   pProductAllUrlQuery,
   pProductSharingQuery,
   pProductDataQuery,
-} from '../../libs/sanity/queries/moduleProductQuery';
+} from '../query/queryModuleProduct';
 import { type TypeGlobalSharing } from '../../types/typeGlobalSharing';
 import { type TypePageProduct } from '@/src/types/typePageProduct';
 

@@ -4,7 +4,7 @@ import { getSettingsGeneral, getHeaderData } from '../shared/api';
 import { imgBuilder } from '../shared/lib/sanity';
 
 // Components
-import SiteLayout from './_layout/SiteLayout';
+import SiteLayout from '../layout/SiteLayout';
 // Style
 import '../styles/globals.scss';
 // Fonts

@@ -3,7 +3,7 @@
 // Hooks & Libs
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { GlobalSettingsProvider } from '../../_context/globalSettings';
+import { GlobalSettingsProvider } from '../../shared/provider/globalSettings';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components

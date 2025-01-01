@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import type { HTMLProps, MouseEvent } from 'react';
 import { useCallback, useRef, useState } from 'react';
-import useWindowWidth from '@/src/app/_hooks/useWindowWidth';
+import useWindowWidth from '@/src/shared/hooks/useWindowWidth';
 
 function Magnetic({
   disableInMobile = true,

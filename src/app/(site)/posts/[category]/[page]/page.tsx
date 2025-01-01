@@ -1,9 +1,9 @@
 // Next
 import { Metadata } from 'next';
 // Components
-import EmptyPage from '@/src/shared/ui/PostsEmptyPage';
-import PaginatedNav from '@/src/shared/ui/PostsPagination';
-import PostsList from '@/src/shared/ui/PostsList';
+import EmptyPage from '../../_components/PostsEmptyPage';
+import PaginatedNav from '../../_components/PostsPagination';
+import PostsList from '../../_components/PostsList';
 // Sanity
 import {
   CATEGORIES_QUERY,
