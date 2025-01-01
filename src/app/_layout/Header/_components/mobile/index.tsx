@@ -1,7 +1,6 @@
 'use client';
 // Hooks
 import { useState } from 'react';
-import useHeight from '@/src/app/_hooks/useHeight';
 // Libs
 import { cn } from '@/src/libs/utils';
 // Components
@@ -18,21 +17,11 @@ export default function MobileMenu({
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { headerHeight } = useHeight();
 
   return (
     <div className={className}>
-      <MobileMenuIcon
-        mobileMenuOpen={isMobileMenuOpen}
-        setMobileMenuOpen={setIsMobileMenuOpen}
-      />
-      <div
-        className={cn('g-header__mobile-menu', isMobileMenuOpen && 'is-open')}
-        style={{
-          top: `${headerHeight || 68}px`,
-          height: `calc(100dvh - ${headerHeight || 68}px)`,
-        }}
-      >
+      <MobileMenuIcon mobileMenuOpen={isMobileMenuOpen} setMobileMenuOpen={setIsMobileMenuOpen} />
+      <div className={cn('g-header__mobile-menu', isMobileMenuOpen && 'is-open')}>
         <MobileMenuContent
           headerContent={headerContent}
           isMobileMenuOpen={isMobileMenuOpen}

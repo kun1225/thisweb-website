@@ -2,11 +2,7 @@
 import { getPostsUrl } from '../lib';
 // Components
 import Link from 'next/link';
-import {
-  Accordion,
-  AccordionTitle,
-  AccordionContent,
-} from '@/src/app/_components/Accordion';
+import { Accordion, AccordionTitle, AccordionContent } from '@/src/app/_components/Accordion';
 // Types
 import { TypeCategory } from '@/src/types/typeGlobalHeader';
 

@@ -9,7 +9,7 @@ export const deskProductPage = (S: any) => {
         .schemaType('pProduct')
         .title('Page Product')
         .apiVersion(apiVersion)
-        .filter(`_type == 'pProduct'`),
+        .filter(`_type == 'pProduct'`)
     )
     .icon(CubeIcon);
 };

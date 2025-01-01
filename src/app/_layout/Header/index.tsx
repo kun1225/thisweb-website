@@ -2,30 +2,21 @@
 // Hooks & Libs
 import { useEffect } from 'react';
 import useWindowWidth from '../../_hooks/useWindowWidth';
-import dynamic from 'next/dynamic';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 // Components
 import HeaderLogo from './_components/HeaderLogo';
-
-const DesktopMenu = dynamic(() => import('./_components/desktop'));
-const MobileMenu = dynamic(() => import('./_components/mobile'));
+import DesktopMenu from './_components/desktop';
+import MobileMenu from './_components/mobile';
 
 const SCROLLED_THRESHOLD = 0;
 
-export default function Header({
-  headerContent,
-}: {
-  headerContent: TypeGlobalHeaderContent;
-}) {
+export default function Header({ headerContent }: { headerContent: TypeGlobalHeaderContent }) {
   const { isMobile } = useWindowWidth();
 
   useEffect(() => {
     const gHeader = document.getElementById('g-header');
-    document.documentElement.style.setProperty(
-      '--header-height',
-      `${gHeader?.clientHeight}px`,
-    );
+    document.documentElement.style.setProperty('--header-height', `${gHeader?.clientHeight}px`);
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY; // Get current scroll position
@@ -48,12 +39,8 @@ export default function Header({
     <header className="g-header" id="g-header">
       <div className="g-header__container">
         <HeaderLogo />
-
         {isMobile ? (
-          <MobileMenu
-            className="g-header__mobile"
-            headerContent={headerContent}
-          />
+          <MobileMenu className="g-header__mobile" headerContent={headerContent} />
         ) : (
           <DesktopMenu headerContent={headerContent} />
         )}

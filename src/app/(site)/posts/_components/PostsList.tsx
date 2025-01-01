@@ -50,9 +50,7 @@ function PostsListInfo({
       {category ? <span>{category}</span> : null}
       {category && publishedAt ? <span>-</span> : null}
       {publishedAt ? (
-        <time dateTime={publishedAt}>
-          {format(parseISO(publishedAt), 'yyyy / LL / dd')}
-        </time>
+        <time dateTime={publishedAt}>{format(parseISO(publishedAt), 'yyyy / LL / dd')}</time>
       ) : null}
     </div>
   );

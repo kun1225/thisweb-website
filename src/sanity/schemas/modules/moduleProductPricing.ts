@@ -13,6 +13,11 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Heading ID',
+      name: 'headingId',
+      type: 'string',
+    }),
+    defineField({
       title: 'Paragraph',
       name: 'paragraph',
       type: 'text',
@@ -91,6 +96,17 @@ export default defineField({
                   title: 'Label',
                   name: 'label',
                   type: 'string',
+                }),
+                defineField({
+                  title: 'Open New Tab',
+                  name: 'isOpenNewTab',
+                  type: 'boolean',
+                }),
+                defineField({
+                  title: 'Disabled',
+                  name: 'isDisabled',
+                  type: 'boolean',
+                  initialValue: false,
                 }),
               ],
             }),

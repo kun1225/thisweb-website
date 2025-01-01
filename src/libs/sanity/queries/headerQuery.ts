@@ -6,7 +6,8 @@ export const headerQuery = groq`*[_type == "gHeader"] {
     _type,
     _type == "normalLink" => {
       linkText,
-      linkUrl
+      linkUrl,
+      isButton,
     },
     _type == "megamenu" => {
       buttonText,

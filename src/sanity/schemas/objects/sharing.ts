@@ -22,21 +22,16 @@ export default defineType({
       description:
         'Displayed on search engine result pages and browser tabs to indicate the topic of a webpage',
       validation: (Rule) =>
-        Rule.max(50).warning(
-          'Longer titles may be truncated by search engines',
-        ),
+        Rule.max(50).warning('Longer titles may be truncated by search engines'),
     }),
     defineField({
       title: 'Description',
       name: 'metaDesc',
       type: 'text',
       rows: 3,
-      description:
-        "A summary of the page's content. Use no more than 160 characters",
+      description: "A summary of the page's content. Use no more than 160 characters",
       validation: (Rule) =>
-        Rule.max(160).warning(
-          'Longer descriptions may be truncated by search engines',
-        ),
+        Rule.max(160).warning('Longer descriptions may be truncated by search engines'),
     }),
     defineField({
       title: 'Share Graphic',

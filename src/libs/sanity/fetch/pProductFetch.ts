@@ -7,14 +7,14 @@ import {
 import { type TypeGlobalSharing } from '../../../types/typeGlobalSharing';
 import { type TypePageProduct } from '@/src/types/typePageProduct';
 
-export const getPProductAllUrl = async () => {
+export const getProductAllUrl = async () => {
   return sanityFetch<string[]>({
     query: pProductAllUrlQuery,
     tags: ['pProduct'],
   });
 };
 
-export const getPProductSharing = async ({ slug }: { slug: string }) => {
+export const getProductSharing = async ({ slug }: { slug: string }) => {
   return sanityFetch<TypeGlobalSharing>({
     query: pProductSharingQuery,
     queryParams: { slug },
@@ -22,7 +22,7 @@ export const getPProductSharing = async ({ slug }: { slug: string }) => {
   });
 };
 
-export const getPProductData = async ({ slug }: { slug: string }) => {
+export const getProductData = async ({ slug }: { slug: string }) => {
   return sanityFetch<TypePageProduct>({
     query: pProductDataQuery,
     queryParams: { slug },

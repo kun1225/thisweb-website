@@ -14,7 +14,7 @@ export default function MobileMenuNormalLink({
     <li>
       <Link
         href={link.linkUrl}
-        className="g-header__mobile-menu__link  "
+        className="g-header__mobile-menu__link"
         onClick={closeMobileMenu}
         aria-label={`前往${link.linkText}頁面`}
       >

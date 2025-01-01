@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const MobileMenuFooter = () => {
-  return (
-    <div>MobileMenuFooter</div>
-  )
-}
+  return <div>MobileMenuFooter</div>;
+};
 
-export default MobileMenuFooter
+export default MobileMenuFooter;

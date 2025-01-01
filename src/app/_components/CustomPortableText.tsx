@@ -21,7 +21,6 @@ import bash from 'refractor/lang/bash';
 import jsx from 'refractor/lang/jsx';
 import tsx from 'refractor/lang/tsx';
 import template from 'refractor/lang/js-templates';
-import { urlForImg } from '@/src/libs/sanity/client';
 
 // Language
 registerLanguage(js);
@@ -55,7 +54,7 @@ const calloutComponents = {
       const { href } = value;
       return (
         <a href={href} target="_blank" rel="noopener" className={linkClassName}>
-          <RiExternalLinkLine className="inline-block mr-1 mb-1" />
+          <RiExternalLinkLine className="mb-1 mr-1 inline-block" />
           {children}
         </a>
       );
@@ -75,7 +74,7 @@ const calloutComponents = {
         <>
           {title ? (
             <>
-              <span className="not-prose block pl-3 py-1 rounded-t-md border-b-2 text-white text-xs bg-[#2E3440] ">
+              <span className="not-prose block rounded-t-md border-b-2 bg-[#2E3440] py-1 pl-3 text-xs text-white">
                 {title}
               </span>
               <Refractor
@@ -123,7 +122,7 @@ const myPortableTextComponents = {
           const cleanText = text.replace(/\s+/g, '');
           const id = slugger.slug(cleanText);
           return (
-            <h2 id={id} className=" pb-2 border-b border-slate-300">
+            <h2 id={id} className="border-b border-slate-300 pb-2">
               {text}
             </h2>
           );
@@ -162,7 +161,7 @@ const myPortableTextComponents = {
     },
     blockquote: ({ children }: { children: string[] }) => {
       return (
-        <blockquote className="not-prose px-3 py-1 my-2 border-l-4 border-gray-400 bg-slate-100">
+        <blockquote className="not-prose my-2 border-l-4 border-gray-400 bg-slate-100 px-3 py-1">
           {children}
         </blockquote>
       );
@@ -189,7 +188,7 @@ const myPortableTextComponents = {
           preload="metadata"
           controls
           muted
-          className="w-full aspect-video mb-[1rem] bg-neutral-900"
+          className="mb-[1rem] aspect-video w-full bg-neutral-900"
         >
           <source src={value.videoUrl} type="video/mp4" />
         </video>
@@ -204,7 +203,7 @@ const myPortableTextComponents = {
         <>
           {title ? (
             <>
-              <span className="block px-4 py-1.5 rounded-t font-mono text-sm text-gray-50 bg-slate-600">
+              <span className="block rounded-t bg-slate-600 px-4 py-1.5 font-mono text-sm text-gray-50">
                 {title}
               </span>
               <Refractor
@@ -227,20 +226,17 @@ const myPortableTextComponents = {
 
     Callout: (source: any) => {
       const isExpanded = source.value.isExpanded;
-      const bodyLength =
-        (source.value.text && toPlainText(source.value.text).length) || 0;
+      const bodyLength = (source.value.text && toPlainText(source.value.text).length) || 0;
 
       const duration = bodyLength > 500 ? 1.2 : 0.6;
 
       return isExpanded ? (
         <Accordion
-          className="bg-gray-100 px-4 border border-gray-200 rounded shadow"
+          className="rounded border border-gray-200 bg-gray-100 px-4 shadow"
           duration={duration}
           stretch
         >
-          <AccordionTitle className="font-semibold">
-            {source.value.title}
-          </AccordionTitle>
+          <AccordionTitle className="font-semibold">{source.value.title}</AccordionTitle>
           <AccordionContent>
             <PortableText
               value={source.value.text}
@@ -250,7 +246,7 @@ const myPortableTextComponents = {
           </AccordionContent>
         </Accordion>
       ) : (
-        <div className="bg-gray-100 px-4 border border-gray-200 rounded shadow">
+        <div className="rounded border border-gray-200 bg-gray-100 px-4 shadow">
           <p className="font-semibold">{source.value.title}</p>
           <PortableText
             value={source.value.text}
@@ -286,7 +282,7 @@ const myPortableTextComponents = {
       const { href } = value;
       return (
         <a href={href} target="_blank" rel="noopener" className={linkClassName}>
-          <RiExternalLinkLine className="inline-block mr-1 mb-1" />
+          <RiExternalLinkLine className="mb-1 mr-1 inline-block" />
           {children}
         </a>
       );

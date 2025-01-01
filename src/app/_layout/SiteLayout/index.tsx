@@ -29,7 +29,7 @@ export default function SiteLayout({
         <ProgressBar />
       </Suspense>
       <Header headerContent={headerContent} />
-      <main id="main" className="mt-header">
+      <main id="main" className="pt-header">
         {children}
       </main>
       <Footer />

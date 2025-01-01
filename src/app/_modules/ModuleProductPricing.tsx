@@ -1,38 +1,29 @@
 // Libs
-import { hasArrayValue, hasObjectValue } from '@/src/libs/helpers';
+import { hasArrayValue, hasObjectValue } from '@/src/libs/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
 import { PortableText } from '@portabletext/react';
+import { Button } from '../_components/Button';
+import Link from 'next/link';
 // Types
-import {
-  TypeModuleProductPricing,
-  TypeModuleProductPricingPlan,
-} from '@/src/types/typeModules';
+import { TypeModuleProductPricing, TypeModuleProductPricingPlan } from '@/src/types/typeModules';
 
-export default function ModuleProductPricing({
-  data,
-}: {
-  data: TypeModuleProductPricing;
-}) {
+export default function ModuleProductPricing({ data }: { data: TypeModuleProductPricing }) {
   if (!hasObjectValue(data)) return null;
 
-  const { heading, paragraph, plans } = data;
+  const { heading, headingId, paragraph, plans } = data;
 
   return (
     <section className="m-product__pricing">
-      <ModuleProductHeading heading={heading} />
+      <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       <ModuleProductPricingPlans plans={plans} />
     </section>
   );
 }
 
-function ModuleProductPricingPlans({
-  plans,
-}: {
-  plans: TypeModuleProductPricingPlan[];
-}) {
+function ModuleProductPricingPlans({ plans }: { plans: TypeModuleProductPricingPlan[] }) {
   if (!hasArrayValue(plans)) return null;
 
   return (
@@ -49,11 +40,7 @@ const customPortableText = {
     highlight: (props: any) => <mark>{props.children}</mark>,
   },
 };
-function ModuleProductPricingItem({
-  item,
-}: {
-  item: TypeModuleProductPricingPlan;
-}) {
+function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan }) {
   if (!hasObjectValue(item)) return null;
 
   const {
@@ -70,17 +57,30 @@ function ModuleProductPricingItem({
         <span className="m-product__pricing__item__price__discounted">
           {`NT$${discountedPrice}`}
         </span>
-        <span className="m-product__pricing__item__price__original">
-          {`NT$${originalPrice}`}
-        </span>
+        <span className="m-product__pricing__item__price__original">{`NT$${originalPrice}`}</span>
       </p>
       <div className="m-product__pricing__item__features prose">
         <PortableText value={features} components={customPortableText} />
       </div>
       {cta ? (
-        <a href={cta.url} className="m-product__pricing__item__cta">
-          {cta.label}
-        </a>
+        <Button
+          asChild={!cta.isDisabled}
+          size="hero"
+          className="hover:scale-100 md:w-full"
+          disabled={cta.isDisabled}
+        >
+          {cta.isDisabled ? (
+            <>{cta.label}</>
+          ) : (
+            <Link
+              href={cta.url}
+              className="m-product__pricing__item__cta"
+              target={cta.isOpenNewTab ? '_blank' : '_self'}
+            >
+              {cta.label}
+            </Link>
+          )}
+        </Button>
       ) : null}
     </div>
   );

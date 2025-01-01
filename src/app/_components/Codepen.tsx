@@ -8,7 +8,7 @@ const CodePen: React.FC<CodepenPropsType> = ({ url, themeId }) => {
   // [ 'https:', '', 'codepen.io', 'thisWeb', 'pen', 'gWWQgb' ]
   const [, , , user, , hash] = splitURL;
   const embedUrl = `https://codepen.io/${user}/embed/${hash}?height=370&theme-id=${themeId}&default-tab=result`;
-  
+
   return (
     <iframe
       height="500"

@@ -53,21 +53,21 @@ const Modal: React.FC<ModalPropsType> = ({
         {isOpen && (
           <>
             <motion.div
-              className="z-overlay fixed inset-0 bg-black/70 backdrop-blur-sm"
+              className="fixed inset-0 z-overlay bg-black/70 backdrop-blur-sm"
               onClick={onClose}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className={`z-modal fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[20vw] min-h-[20svh] max-w-[90vw] max-h-[90svh] overflow-auto flex flex-col gap-4 bg-slate-50 p-4 rounded-md ${className}`}
+              className={`fixed left-1/2 top-1/2 z-modal flex max-h-[90svh] min-h-[20svh] min-w-[20vw] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 flex-col gap-4 overflow-auto rounded-md bg-slate-50 p-4 ${className}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               {...rest}
             >
               {title ? (
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <h2 className="text-xl font-semibold">{title}</h2>
                   <Button onClose={onClose} />
                 </div>
@@ -103,12 +103,7 @@ function Button({
   className?: React.HTMLProps<HTMLElement>['className'];
 }) {
   return (
-    <button
-      type="button"
-      aria-label="關閉"
-      onClick={onClose}
-      className={className}
-    >
+    <button type="button" aria-label="關閉" onClick={onClose} className={className}>
       <p className="sr-only">關閉 close</p>
       <IoClose className="transition-colors hover:text-secondary-2" />
     </button>

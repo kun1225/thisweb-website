@@ -29,6 +29,12 @@ export default defineType({
               name: 'linkUrl',
               type: 'string',
             }),
+            defineField({
+              title: 'Is Button',
+              name: 'isButton',
+              type: 'boolean',
+              initialValue: false,
+            }),
           ],
           preview: {
             select: {

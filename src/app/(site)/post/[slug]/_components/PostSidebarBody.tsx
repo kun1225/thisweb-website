@@ -1,11 +1,7 @@
 // Utils
 import { cn } from '@/src/libs/utils';
 // Components
-import {
-  Accordion,
-  AccordionContent,
-  AccordionTitle,
-} from '@/src/app/_components/Accordion';
+import { Accordion, AccordionContent, AccordionTitle } from '@/src/app/_components/Accordion';
 // Types
 import { TypePostSidebarHeading } from './type';
 
@@ -28,7 +24,7 @@ export default function PostSidebarBody({
                 ? 'hover:text-primary'
                 : 'text-gray-500 hover:text-neutral-900',
               heading.level === 3 && 'pl-4',
-              'text-left transition select-none',
+              'select-none text-left transition'
             )}`}
             key={heading.text}
           >
@@ -40,7 +36,7 @@ export default function PostSidebarBody({
               className={`toc__title ${cn(
                 heading.id === activeId
                   ? 'hover:text-primary'
-                  : 'text-gray-500 hover:text-neutral-900',
+                  : 'text-gray-500 hover:text-neutral-900'
               )}`}
             >
               <HeadingButton heading={heading} activeId={activeId}>
@@ -49,12 +45,7 @@ export default function PostSidebarBody({
             </AccordionTitle>
             <AccordionContent className="flex flex-col">
               {heading.children.map((h3: TypePostSidebarHeading) => (
-                <HeadingButton
-                  heading={h3}
-                  activeId={activeId}
-                  key={h3.text}
-                  className="mt-2"
-                >
+                <HeadingButton heading={h3} activeId={activeId} key={h3.text} className="mt-2">
                   {h3.text}
                 </HeadingButton>
               ))}
@@ -80,12 +71,10 @@ function HeadingButton({
   return (
     <a
       className={cn(
-        'text-left transition select-none',
-        heading.id === activeId
-          ? 'hover:text-primary'
-          : 'text-gray-500 hover:text-neutral-900',
+        'select-none text-left transition',
+        heading.id === activeId ? 'hover:text-primary' : 'text-gray-500 hover:text-neutral-900',
         heading.level === 3 && 'pl-4',
-        className,
+        className
       )}
       key={heading.id}
       href={`#${heading.id}`}

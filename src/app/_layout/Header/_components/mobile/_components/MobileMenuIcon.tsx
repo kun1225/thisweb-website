@@ -11,10 +11,7 @@ interface MobileMenuPropsType {
   setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
-  mobileMenuOpen,
-  setMobileMenuOpen,
-}) => {
+const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const [isInitialRender, setIsInitialRender] = useState(true);
 
   const toggleMenu = () => {
@@ -27,7 +24,7 @@ const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
       aria-label="Toggle Menu"
       className={`g-header__mobile-menu__trigger ${cn(
         mobileMenuOpen && 'is-open',
-        isInitialRender && 'is-initial',
+        isInitialRender && 'is-initial'
       )}`}
       onClick={toggleMenu}
     />

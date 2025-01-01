@@ -11,6 +11,11 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Heading ID',
+      name: 'headingId',
+      type: 'string',
+    }),
+    defineField({
       title: 'Steps',
       name: 'steps',
       type: 'array',

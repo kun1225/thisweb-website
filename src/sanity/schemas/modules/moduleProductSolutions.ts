@@ -11,6 +11,11 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Heading ID',
+      name: 'headingId',
+      type: 'string',
+    }),
+    defineField({
       title: 'Paragraph',
       name: 'paragraph',
       type: 'text',
@@ -19,6 +24,7 @@ export default defineField({
       title: 'Solutions',
       name: 'solutions',
       type: 'array',
+      validation: (Rule) => Rule.required().max(4),
       of: [
         defineField({
           title: 'Solution',

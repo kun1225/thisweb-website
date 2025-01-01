@@ -7,7 +7,7 @@ const InputComponent: React.FC<
   return (
     <input
       {...restProps}
-      className={`p-2 border-2 rounded-md w-full outline-none focus:border-secondary duration-200 text-sm font-light ${className}`}
+      className={`w-full rounded-md border-2 p-2 text-sm font-light outline-none duration-200 focus:border-secondary ${className}`}
     />
   );
 };
@@ -16,11 +16,7 @@ type InputFieldProps = {
   label?: React.ReactNode;
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
-const InputField: React.FC<InputFieldProps> = ({
-  label,
-  className,
-  ...restProp
-}) => {
+const InputField: React.FC<InputFieldProps> = ({ label, className, ...restProp }) => {
   return (
     <label className={className}>
       {label}

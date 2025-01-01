@@ -31,9 +31,7 @@ export default function Img({
   const imageDimension = getImageDimensions(imageId);
   const aspectRatio = imageDimension?.aspectRatio;
   const imageWidth = imageDimension?.width;
-  const imageHeight = aspectRatio
-    ? Math.round(imageWidth / aspectRatio)
-    : imageDimension?.height;
+  const imageHeight = aspectRatio ? Math.round(imageWidth / aspectRatio) : imageDimension?.height;
   const src = buildImageSrc(image, {
     width: imageWidth,
     height: imageHeight,
@@ -51,10 +49,7 @@ export default function Img({
       {responsiveImageSrc ? (
         <>
           <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={src} />
-          <source
-            media={`(max-width: ${breakpoint}px)`}
-            srcSet={responsiveImageSrc}
-          />
+          <source media={`(max-width: ${breakpoint}px)`} srcSet={responsiveImageSrc} />
         </>
       ) : null}
       <Image
@@ -65,7 +60,7 @@ export default function Img({
         height={imageHeight}
         alt={alt || image?.alt || 'image'}
         className={cn('c-img__img', {
-          'border rounded bg-neutral-100': withPlaceholder,
+          'rounded border bg-neutral-100': withPlaceholder,
         })}
       />
     </picture>
@@ -89,18 +84,13 @@ function getImageDimensions(id: any) {
   if (!id) return null;
 
   const dimensions = id.split('-')[2];
-  const [width, height] = dimensions
-    .split('x')
-    .map((num: any) => parseInt(num, 10));
+  const [width, height] = dimensions.split('x').map((num: any) => parseInt(num, 10));
   const aspectRatio = width / height;
 
   return { width, height, aspectRatio };
 }
 
-export function buildImageSrc(
-  image: any,
-  { width, height, format, quality = 80 }: any,
-) {
+export function buildImageSrc(image: any, { width, height, format, quality = 80 }: any) {
   if (!image) return null;
 
   let imgSrc = imgBuilder.image(image);

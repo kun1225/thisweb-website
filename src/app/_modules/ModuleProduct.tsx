@@ -5,13 +5,11 @@ import ModuleProductSteps from './ModuleProductSteps';
 import ModuleProductsFeatures from './ModuleProductFeatures';
 import ModuleProductAbout from './ModuleProductAbout';
 import ModuleProductPricing from './ModuleProductPricing';
+import ModuleProductTestimonials from './ModuleProductTestimonials';
+import ModuleProductFAQs from './ModuleProductFAQs';
 import { TypeModulesProduct } from '@/src/types/typeModules';
 
-export default function ModuleProduct({
-  modules,
-}: {
-  modules: TypeModulesProduct;
-}) {
+export default function ModuleProduct({ modules }: { modules: TypeModulesProduct }) {
   return modules.map((module) => {
     switch (module._type) {
       case 'moduleProductHero':
@@ -28,6 +26,10 @@ export default function ModuleProduct({
         return <ModuleProductAbout key={module._key} data={module} />;
       case 'moduleProductPricing':
         return <ModuleProductPricing key={module._key} data={module} />;
+      case 'moduleProductTestimonials':
+        return <ModuleProductTestimonials key={module._key} data={module} />;
+      case 'moduleProductFAQs':
+        return <ModuleProductFAQs key={module._key} data={module} />;
       default:
         return null;
     }

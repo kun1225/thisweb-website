@@ -19,9 +19,7 @@ const transition = {
 const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
   const { windowWidth } = useWindowWidth();
   const [isEnlarged, setIsEnlarged] = useState(false);
-  const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(
-    undefined,
-  );
+  const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(undefined);
   const isMounted = useIsMounted();
   const willChange = useWillChange();
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -52,17 +50,15 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
 
   return (
     <motion.div
-      className={`relative w-full mb-4 ${className}`}
+      className={`relative mb-4 w-full ${className}`}
       style={{ minHeight: `${wrapperHeight ? `${wrapperHeight}px` : 'auto'}` }}
     >
       <motion.div
         onClick={() => handleImageEnlarge(false)}
         animate={{ opacity: isEnlarged ? 1 : 0 }}
         transition={transition}
-        className={`z-overlay fixed inset-0 bg-black/70 backdrop-blur-sm opacity-0 ${cn(
-          isEnlarged
-            ? 'pointer-events-auto cursor-zoom-out'
-            : 'pointer-events-none',
+        className={`fixed inset-0 z-overlay bg-black/70 opacity-0 backdrop-blur-sm ${cn(
+          isEnlarged ? 'pointer-events-auto cursor-zoom-out' : 'pointer-events-none'
         )}`}
       />
       <motion.div
@@ -71,12 +67,12 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
         onClick={() => handleImageEnlarge(!isEnlarged)}
         onLoad={() => setWrapperHeight(imgRef.current?.clientHeight)}
         style={{ willChange }}
-        className={`inset-0 w-full aspect-video rounded-md  ${cn(
+        className={`inset-0 aspect-video w-full rounded-md ${cn(
           isMounted == false
             ? 'relative'
             : isEnlarged
-            ? 'fixed z-modal !w-auto !h-auto max-w-[92vw] max-h-[92svh] m-auto cursor-zoom-out'
-            : 'absolute max-w-full cursor-zoom-in rounded-md bg-gray-100 shadow-lg',
+              ? 'fixed z-modal m-auto !h-auto max-h-[92svh] !w-auto max-w-[92vw] cursor-zoom-out'
+              : 'absolute max-w-full cursor-zoom-in rounded-md bg-gray-100 shadow-lg'
         )}`}
         transition={transition}
       >
@@ -84,8 +80,8 @@ const ImageEnlarger: React.FC<ImageProps> = ({ src, alt, className = '' }) => {
           src={src}
           alt={alt}
           fill
-          className={cn('drop-shadow-lg rounded-md object-contain')}
-        ></Image>
+          className={cn('rounded-md object-contain drop-shadow-lg')}
+        />
       </motion.div>
     </motion.div>
   );

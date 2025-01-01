@@ -53,7 +53,7 @@ const Rotate3dEffect: React.FC<Rotate3dEffectProps> = ({
       ref={preRef}
       onMouseMove={rotateElement}
       onMouseLeave={initRotate}
-      className={cn('p-[2rem] group', className)}
+      className={cn('group p-[2rem]', className)}
     >
       <motion.div
         transition={{
@@ -69,11 +69,11 @@ const Rotate3dEffect: React.FC<Rotate3dEffectProps> = ({
         }}
         animate={{ rotateX: rotate.x, rotateY: rotate.y }}
       >
-        <div className="col-[1/2] row-[1/2] group-hover:scale-105 transition duration-500">
+        <div className="col-[1/2] row-[1/2] transition duration-500 group-hover:scale-105">
           {children}
         </div>
         <div
-          className="col-[1/2] row-[1/2] blur-lg opacity-20 group-hover:opacity-50 transition duration-500"
+          className="col-[1/2] row-[1/2] opacity-20 blur-lg transition duration-500 group-hover:opacity-50"
           style={{ transform: 'translateZ(-150px)' }}
         >
           {children}

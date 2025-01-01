@@ -5,13 +5,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import ClassNames from 'embla-carousel-class-names';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+import AutoScroll from 'embla-carousel-auto-scroll';
 import cx from 'classnames';
 // import Fade from 'embla-carousel-fade';
 // Components
 import { PrevButton, NextButton, usePrevNextButtons } from './NavButtons';
 import { DotButton, useDotButton } from './DotButton';
 // Types
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
+import { EmblaCarouselType } from 'embla-carousel';
 
 export default function Carousel({
   align = 'center',
@@ -29,12 +30,12 @@ export default function Carousel({
   // isFade = false,
   isAutoplay = false,
   autoplayInterval = 4000,
+
+  isAutoScroll = false,
+  isPlayOnInit = true,
+
   children,
   className,
-
-  isScrollToWhenUpdateIndex = false,
-  currentActiveIndex = 0,
-  onSelect,
 }: {
   align?: string;
   breakpoints?: { [key: string]: number };
@@ -50,12 +51,10 @@ export default function Carousel({
   // isFade?: boolean,
   isAutoplay?: boolean;
   autoplayInterval?: number;
+  isAutoScroll?: boolean;
+  isPlayOnInit?: boolean;
   children?: React.ReactNode;
   className?: HTMLAttributes<HTMLDivElement>['className'];
-
-  isScrollToWhenUpdateIndex?: boolean;
-  currentActiveIndex?: number;
-  onSelect?: (_emblaApi: EmblaCarouselType) => void;
 }) {
   const options = {
     align,
@@ -66,30 +65,35 @@ export default function Carousel({
     slidesToScroll,
     inViewThreshold: 1,
     skipSnaps: true,
+    isAutoScroll,
   };
   const autoplayOptions = {
     delay: autoplayInterval,
     stopOnInteraction: false,
     playOnInit: isAutoplay,
   };
-  const plugins = [
-    Autoplay(autoplayOptions),
-    ClassNames(),
-    WheelGesturesPlugin(),
-  ];
+  const plugins = [ClassNames(), WheelGesturesPlugin()];
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    options as EmblaOptionsType,
-    plugins,
-  );
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick,
-  } = usePrevNextButtons(emblaApi);
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  if (isAutoplay) {
+    plugins.push(Autoplay(autoplayOptions));
+  }
+
+  if (isAutoScroll) {
+    plugins.push(
+      AutoScroll({
+        playOnInit: isPlayOnInit,
+        speed: 1,
+        startDelay: 0,
+        stopOnMouseEnter: true,
+      })
+    );
+  }
+
+  // @ts-ignore
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
+  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
+    usePrevNextButtons(emblaApi);
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
   const [isSingleSlide, setIsSingleSlide] = useState(true);
   const [isDraggable, setIsDraggable] = useState(true);
@@ -116,19 +120,26 @@ export default function Carousel({
     updateScrollSnap();
     emblaApi.on('resize', updateDraggable);
     emblaApi.on('resize', updateScrollSnap);
-    if (onSelect) emblaApi.on('select', onSelect);
 
     return () => {
       emblaApi.off('resize', updateDraggable);
       emblaApi.off('resize', updateScrollSnap);
-      if (onSelect) emblaApi.off('select', onSelect);
     };
-  }, [emblaApi, updateDraggable, updateScrollSnap, onSelect]);
+  }, [emblaApi, updateDraggable, updateScrollSnap]);
 
-  useEffect(() => {
-    if (!emblaApi || !isScrollToWhenUpdateIndex) return;
-    emblaApi?.scrollTo(currentActiveIndex);
-  }, [emblaApi, currentActiveIndex, isScrollToWhenUpdateIndex]);
+  const handleAutoScrollStop = useCallback(() => {
+    const autoScroll = emblaApi?.plugins()?.autoScroll;
+    if (!autoScroll) return;
+    //@ts-ignore
+    autoScroll?.stop();
+  }, [emblaApi]);
+
+  const handleAutoScrollPlay = useCallback(() => {
+    const autoScroll = emblaApi?.plugins()?.autoScroll;
+    if (!autoScroll) return;
+    //@ts-ignore
+    autoScroll?.play();
+  }, [emblaApi]);
 
   return (
     <div
@@ -140,6 +151,10 @@ export default function Carousel({
           '--item-gap': gap,
         } as React.CSSProperties
       }
+      onMouseEnter={handleAutoScrollStop}
+      onMouseLeave={handleAutoScrollPlay}
+      onPointerDown={handleAutoScrollStop}
+      onPointerUp={handleAutoScrollPlay}
     >
       <div
         ref={emblaRef}
@@ -167,14 +182,8 @@ export default function Carousel({
 
           {isShowNav ? (
             <div className="c-carousel__buttons">
-              <PrevButton
-                onClick={onPrevButtonClick}
-                disabled={prevBtnDisabled}
-              />
-              <NextButton
-                onClick={onNextButtonClick}
-                disabled={nextBtnDisabled}
-              />
+              <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+              <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
             </div>
           ) : null}
         </div>

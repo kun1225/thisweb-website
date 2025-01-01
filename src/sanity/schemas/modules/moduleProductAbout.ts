@@ -11,9 +11,19 @@ export default defineField({
       type: 'string',
     }),
     defineField({
+      title: 'Heading ID',
+      name: 'headingId',
+      type: 'string',
+    }),
+    defineField({
       title: 'Paragraph',
       name: 'paragraph',
       type: 'text',
+    }),
+    defineField({
+      title: 'Media',
+      name: 'media',
+      type: 'media',
     }),
     defineField({
       title: 'Achievements',
