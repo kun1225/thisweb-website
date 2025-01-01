@@ -1,9 +1,8 @@
-// Next
 // Libs
-import { cn } from '@/src/libs/utils';
-import { headerFetch } from '../libs/sanity/fetch';
-import { imgBuilder } from '../libs/sanity/client';
-import { getSettingsGeneral } from '../libs/sanity/fetch/fetchSettingsGeneral';
+import { cn } from '@/src/shared/lib/utils';
+import { getSettingsGeneral, getHeaderData } from '../shared/api';
+import { imgBuilder } from '../shared/lib/sanity';
+
 // Components
 import SiteLayout from './_layout/SiteLayout';
 // Style
@@ -71,7 +70,7 @@ export async function generateMetadata() {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const headerContent = await headerFetch();
+  const headerContent = await getHeaderData();
 
   return (
     <html lang="zh-TW">

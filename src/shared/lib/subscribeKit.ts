@@ -4,10 +4,7 @@ export const convertKitFormId = {
   heroFormId: '5590412',
 };
 
-export async function subscribeConvertKitEmail(
-  e: React.FormEvent<HTMLFormElement>,
-  formId: string
-) {
+export async function subscribeKit(e: React.FormEvent<HTMLFormElement>, formId: string) {
   e.preventDefault();
 
   const target = e.currentTarget;

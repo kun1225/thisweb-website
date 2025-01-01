@@ -1,4 +1,4 @@
-import { hasObjectValue } from '@/src/libs/utils';
+import { hasObjectValue } from '@/src/shared/lib/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';

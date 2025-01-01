@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 import { motion } from 'framer-motion';
 
 const transition = {

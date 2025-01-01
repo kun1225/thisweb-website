@@ -11,7 +11,7 @@ import { Suspense } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 
-const ProgressBar = dynamic(() => import('../../_components/ProgressBar'));
+const ProgressBar = dynamic(() => import('@/src/shared/ui/ProgressBar'));
 
 export default function SiteLayout({
   headerContent,

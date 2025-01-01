@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 interface NumberTextPropsType {
   value: number;

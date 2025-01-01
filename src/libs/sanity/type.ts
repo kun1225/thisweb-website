@@ -7,14 +7,6 @@ export type PostType = SanityDocument & {
     current: string;
   };
   author: string;
-  mainImage: {
-    _type: 'image';
-    alt: string;
-    asset: {
-      _type: string;
-      _ref: string;
-    };
-  };
   status: string;
   category: string;
   secondLevelCategory: string;

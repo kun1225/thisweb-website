@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 export function useDotButton(emblaApi: any, onButtonClick?: (_emblaApi: any) => void) {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -41,7 +41,6 @@ export function useDotButton(emblaApi: any, onButtonClick?: (_emblaApi: any) => 
 export const DotButton = ({
   isSelected,
   index,
-  children,
   ...props
 }: {
   isSelected: boolean;

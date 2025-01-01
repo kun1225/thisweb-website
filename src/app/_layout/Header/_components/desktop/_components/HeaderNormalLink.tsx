@@ -2,10 +2,10 @@
 
 // Hooks & Libs
 import { usePathname } from 'next/navigation';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 // Components
 import Link from 'next/link';
-import { Button } from '@/src/app/_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 // Types
 import type { TypeNormalLink } from '@/src/types/typeGlobalHeader';
 

@@ -1,6 +1,6 @@
 // Next
 import Link from 'next/link';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 export default function PostsPagination({
   currentPage,

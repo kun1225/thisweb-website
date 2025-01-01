@@ -4,7 +4,7 @@
 import { useState } from 'react';
 
 // Libs
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 interface MobileMenuPropsType {
   mobileMenuOpen: boolean;

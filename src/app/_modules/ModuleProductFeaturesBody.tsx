@@ -1,12 +1,11 @@
 'use client';
 import { useState } from 'react';
 import useWindowWidth from '../_hooks/useWindowWidth';
-import { hasArrayValue } from '@/src/libs/utils';
-import { cn } from '@/src/libs/utils';
+import { hasArrayValue, cn } from '@/src/shared/lib/utils';
 // Components
-import Media from '../_components/Media';
-import Icon from '../_components/Icon';
-import Carousel from '../_components/Carousel';
+import Media from '@/src/shared/ui/Media';
+import Icon from '@/src/shared/ui/Icon';
+import Carousel from '@/src/shared/ui/Carousel';
 // Types
 import { TypeModuleProductFeature } from '@/src/types/typeModules';
 

@@ -1,7 +1,7 @@
 // style
 import '@/src/styles/prism.css';
 // Sanity
-import { sanityFetch, imgBuilder } from '@/src/libs/sanity/client';
+import { sanityFetch, imgBuilder } from '@/src/shared/lib/sanity';
 import { POSTS_SLUG_QUERY, POST_QUERY, RELATED_POSTS_QUERY } from '@/src/libs/sanity/queries';
 import { toPlainText } from '@portabletext/react';
 // Components
@@ -68,7 +68,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   };
 };
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const currentPost = await sanityFetch<PostType>({
     query: POST_QUERY,
     queryParams: { slug: params.slug },
@@ -92,13 +92,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
         title={currentPost.title}
         topic={currentPost.category}
       />
-      <PostBody
-        mainImage={currentPost.mainImage}
-        currentPost={currentPost}
-        relatedPosts={relatedPosts}
-      />
+      <PostBody currentPost={currentPost} relatedPosts={relatedPosts} />
     </article>
   );
-};
-
-export default PostPage;
+}

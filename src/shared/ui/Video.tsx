@@ -5,7 +5,7 @@ import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 import { TypeVideo } from '@/src/types/typeVideo';
 
-import { urlForImg, getFile } from '@/src/libs/sanity/client';
+import { urlForImg, getFile } from '@/src/shared/lib/sanity';
 
 export default function Video({
   data,

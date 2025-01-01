@@ -1,10 +1,10 @@
 // Libs
-import { hasArrayValue, hasObjectValue } from '@/src/libs/utils';
+import { hasArrayValue, hasObjectValue } from '@/src/shared/lib/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
 import { PortableText } from '@portabletext/react';
-import { Button } from '../_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 import Link from 'next/link';
 // Types
 import { TypeModuleProductPricing, TypeModuleProductPricingPlan } from '@/src/types/typeModules';

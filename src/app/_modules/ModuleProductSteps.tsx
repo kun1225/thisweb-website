@@ -1,4 +1,4 @@
-import { hasObjectValue } from '@/src/libs/utils';
+import { hasObjectValue } from '@/src/shared/lib/utils';
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductStepsList from './ModuleProductStepsList';
 import { TypeModuleProductSteps } from '@/src/types/typeModules';

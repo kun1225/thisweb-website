@@ -1,9 +1,9 @@
 // Libs
-import { hasArrayValue } from '@/src/libs/utils';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 // Components
-import Carousel from '../_components/Carousel';
+import Carousel from '@/src/shared/ui/Carousel';
 import { PortableText } from 'next-sanity';
-import Img from '../_components/Img';
+import Img from '@/src/shared/ui/Img';
 import { CiUser } from 'react-icons/ci';
 // Types
 import type { TypeModuleProductTestimonial } from '@/src/types/typeModules';

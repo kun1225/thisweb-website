@@ -1,4 +1,4 @@
-import { formatBrNewLine, hasArrayValue, hasObjectValue } from '@/src/libs/utils';
+import { formatBrNewLine, hasArrayValue, hasObjectValue } from '@/src/shared/lib/utils';
 // Components
 import * as Icons from 'react-icons/fa';
 // Types

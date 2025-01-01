@@ -6,14 +6,6 @@ export type TypePost = {
     current: string;
   };
   author: string;
-  mainImage: {
-    _type: string;
-    alt: string;
-    asset: {
-      _type: string;
-      _ref: string;
-    };
-  };
   status: string;
   category: string;
   secondLevelCategory: string;

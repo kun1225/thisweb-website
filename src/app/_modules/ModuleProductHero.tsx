@@ -1,9 +1,9 @@
 // Libs
-import { hasObjectValue, formatBrNewLine } from '@/src/libs/utils';
+import { hasObjectValue, formatBrNewLine } from '@/src/shared/lib/utils';
 // Components
-import { Button } from '../_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 import Link from 'next/link';
-import Media from '../_components/Media';
+import Media from '@/src/shared/ui/Media';
 // Types
 import { TypeModuleProductHero } from '@/src/types/typeModules';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, createContext, useContext, HtmlHTMLAttributes } from 'react';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 import { RxCaretDown } from 'react-icons/rx';
 
 // Context to share the Accordion state and functionality across the compound components

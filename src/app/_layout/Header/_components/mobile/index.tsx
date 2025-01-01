@@ -2,7 +2,7 @@
 // Hooks
 import { useState } from 'react';
 // Libs
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 // Components
 import MobileMenuIcon from './_components/MobileMenuIcon';
 import MobileMenuContent from './_components/MobileMenuContent';

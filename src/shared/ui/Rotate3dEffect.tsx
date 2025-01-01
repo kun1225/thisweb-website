@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 interface Rotate3dEffectProps {
   children: React.ReactNode;

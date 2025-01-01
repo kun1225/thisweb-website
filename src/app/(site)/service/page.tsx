@@ -1,22 +1,20 @@
 import './style.css';
 
 // Sanity
-import { client } from '@/src/libs/sanity/client';
+import { client } from '@/src/shared/lib/sanity';
 import { SERVICE_QUERY } from '@/src/libs/sanity/queries';
 import { ServiceType } from '@/src/libs/sanity/type';
 
 // Component
 import Image from 'next/image';
-import CustomPortableText from '../../_components/CustomPortableText';
-
+import CustomPortableText from '@/src/shared/ui/CustomPortableText';
 import { IoChatboxEllipsesOutline } from 'react-icons/io5';
 import { FaLaptopCode } from 'react-icons/fa6';
 import { FaRunning } from 'react-icons/fa';
 import Link from 'next/link';
-import { Button } from '../../_components/Button';
-// import Cal from './_components/Cal';
-import NumberCounter from '../../_components/effect/NumberCounter';
-import Rotate3dEffect from '../../_components/effect/Rotate3dEffect';
+import { Button } from '@/src/shared/ui/Button';
+import NumberCounter from '@/src/shared/ui/NumberCounter';
+import Rotate3dEffect from '@/src/shared/ui/Rotate3dEffect';
 
 export const metadata = {
   title: 'ThisWeb 請網這邊走 - 服務',

@@ -1,4 +1,4 @@
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 export default function HeaderOverlay({
   currentIndex,

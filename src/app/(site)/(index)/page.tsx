@@ -3,7 +3,7 @@ import HomeProblems from './_components/HomeProblems';
 import HomeSiteOwner from './_components/HomeSiteOwner';
 import HomeRecommendedPosts from './_components/HomeRecommendedPosts';
 // Sanity Utils
-import { sanityFetch } from '@/src/libs/sanity/client';
+import { sanityFetch } from '@/src/shared/lib/sanity';
 import { LIMITED_POSTS_QUERY } from '@/src/libs/sanity/queries';
 import { PostsType } from '@/src/libs/sanity/type';
 

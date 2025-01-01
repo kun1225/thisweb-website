@@ -1,8 +1,8 @@
-import { postsLimitedQuery, postsCountsQuery } from '../queries/postsQuery';
-import { sanityFetch } from '../client';
-import { type TypePosts } from '../../../types/typePosts';
+import { postsLimitedQuery, postsCountsQuery } from '../../libs/sanity/queries/postsQuery';
+import { sanityFetch } from '../lib/sanity';
+import { type TypePosts } from '../../types/typePosts';
 
-export const postsLimitedFetch = async ({
+export const getPostsLimited = async ({
   startIndex,
   endIndex,
 }: {
@@ -18,7 +18,7 @@ export const postsLimitedFetch = async ({
     tags: ['post'],
   });
 };
-export const postsCountsFetch = async () => {
+export const getPostsCounts = async () => {
   return sanityFetch<number>({
     query: postsCountsQuery,
     tags: ['post'],

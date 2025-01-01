@@ -8,7 +8,7 @@ import useIsMounted from '../_hooks/useIsMounted';
 
 import { motion, useWillChange } from 'framer-motion';
 
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 const transition = {
   type: 'spring',

@@ -1,7 +1,7 @@
 // Hooks & Libs
 import { HTMLAttributes } from 'react';
-import { imgBuilder } from '@/src/libs/sanity/client';
-import { cn } from '@/src/libs/utils';
+import { imgBuilder } from '@/src/shared/lib/sanity';
+import { cn } from '@/src/shared/lib/utils';
 // Components
 import Image from 'next/image';
 // Type

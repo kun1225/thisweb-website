@@ -1,7 +1,7 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useState, useEffect, useRef } from 'react';
-import { hasArrayValue } from '@/src/libs/utils';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
 
 export default function PageProductAnnouncement({ data }: { data: TypePageProductAnnouncement }) {

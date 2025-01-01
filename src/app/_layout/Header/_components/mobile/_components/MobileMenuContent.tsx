@@ -1,12 +1,12 @@
 'use client';
 // Hooks & Libs
 import { useEffect } from 'react';
-import { hasArrayValue } from '@/src/libs/utils';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 // Components
 import MobileMenuAccordion from './MobileMenuAccordion';
 import MobileMenuNormalLink from './MobileMenuNormalLink';
 import MobileMenuCategoryLink from './MobileMenuCategoryLink';
-import { Button } from '@/src/app/_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 // Type
 import {
   TypeGlobalHeaderContent,

@@ -1,5 +1,5 @@
 // Hooks & Libs
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 // Components
 import { FaCaretDown } from 'react-icons/fa6';
 

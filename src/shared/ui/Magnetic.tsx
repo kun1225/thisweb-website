@@ -52,5 +52,3 @@ function Magnetic({
 }
 
 export default Magnetic;
-
-// const MotionCustom = motion(CustomComponent, { forwardMotionProps: true })

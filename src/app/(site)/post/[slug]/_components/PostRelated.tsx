@@ -1,4 +1,4 @@
-import CustomLink from '@/src/app/_components/CustomLink';
+import CustomLink from '@/src/shared/ui/CustomLink';
 
 import { PostType } from '@/src/libs/sanity/type';
 

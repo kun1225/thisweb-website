@@ -1,11 +1,11 @@
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductSubheading from './ModuleProductSubheading';
 import ModuleProductParagraph from './ModuleProductParagraph';
-import { Accordion, AccordionTitle, AccordionContent } from '../_components/Accordion';
+import { Accordion, AccordionTitle, AccordionContent } from '@/src/shared/ui/Accordion';
 import { PortableText } from 'next-sanity';
 // Types
 import type { TypeModuleProductFAQs } from '@/src/types/typeModules';
-import { hasArrayValue } from '@/src/libs/utils';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 
 const customPortableText = {
   marks: {

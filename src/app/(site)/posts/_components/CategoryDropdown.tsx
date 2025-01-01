@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 // Libs
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 
 // Hooks
 import { useState, useEffect } from 'react';

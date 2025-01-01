@@ -1,7 +1,7 @@
 // Utils
-import { cn } from '@/src/libs/utils';
+import { cn } from '@/src/shared/lib/utils';
 // Components
-import { Accordion, AccordionContent, AccordionTitle } from '@/src/app/_components/Accordion';
+import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
 // Types
 import { TypePostSidebarHeading } from './type';
 

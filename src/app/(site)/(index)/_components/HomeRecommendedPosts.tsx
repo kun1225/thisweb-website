@@ -1,6 +1,6 @@
 // Components
 import Link from 'next/link';
-import { Button } from '@/src/app/_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 // Utils
 import { toPlainText } from '@portabletext/react';
 // Types

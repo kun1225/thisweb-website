@@ -1,5 +1,5 @@
 // Components
-import { Button } from '@/src/app/_components/Button';
+import { Button } from '@/src/shared/ui/Button';
 import Link from 'next/link';
 
 export default function HomeHero() {

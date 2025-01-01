@@ -1,10 +1,10 @@
 // Libs
-import { hasArrayValue, hasObjectValue } from '@/src/libs/utils';
+import { hasArrayValue, hasObjectValue } from '@/src/shared/lib/utils';
 // Components
-import Media from '../_components/Media';
+import Media from '@/src/shared/ui/Media';
+import NumberCounter from '@/src/shared/ui/NumberCounter';
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
-import NumberCounter from '../_components/effect/NumberCounter';
 // Types
 import {
   TypeModuleProductAbout,

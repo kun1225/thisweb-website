@@ -1,4 +1,4 @@
-import { formatBrNewLine } from '@/src/libs/utils';
+import { formatBrNewLine } from '@/src/shared/lib/utils';
 
 export default function ModuleProductParagraph({ paragraph }: { paragraph?: string }) {
   if (!paragraph) return null;

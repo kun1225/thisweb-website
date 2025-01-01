@@ -1,9 +1,9 @@
 // Next
 import { Metadata } from 'next';
 // Components
-import EmptyPage from '../../_components/PostsEmptyPage';
-import PaginatedNav from '../../_components/PostsPagination';
-import PostsList from '../../_components/PostsList';
+import EmptyPage from '@/src/shared/ui/PostsEmptyPage';
+import PaginatedNav from '@/src/shared/ui/PostsPagination';
+import PostsList from '@/src/shared/ui/PostsList';
 // Sanity
 import {
   CATEGORIES_QUERY,
@@ -12,7 +12,7 @@ import {
   POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
   POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
 } from '@/src/libs/sanity/queries';
-import { sanityFetch } from '@/src/libs/sanity/client';
+import { sanityFetch } from '@/src/shared/lib/sanity';
 // Types
 import { PostsType, CategoriesType } from '@/src/libs/sanity/type';
 

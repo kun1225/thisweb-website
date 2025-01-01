@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
-import { imgBuilder } from '@/src/libs/sanity/client';
-import { hasArrayValue } from '@/src/libs/utils';
+import { imgBuilder } from '@/src/shared/lib/sanity';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 import {
   getProductAllUrl,
   getProductSharing,
   getProductData,
-} from '@/src/libs/sanity/fetch/pProductFetch';
+} from '@/src/shared/api/apiPageProduct';
 import ModuleProduct from '@/src/app/_modules/ModuleProduct';
 import { notFound } from 'next/navigation';
 

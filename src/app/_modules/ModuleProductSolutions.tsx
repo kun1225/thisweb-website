@@ -1,8 +1,8 @@
-import { cn, hasObjectValue, hasArrayValue, formatBrNewLine } from '@/src/libs/utils';
+import { cn, hasObjectValue, hasArrayValue, formatBrNewLine } from '@/src/shared/lib/utils';
 // Components
 import ModuleProductHeading from './ModuleProductHeading';
 import ModuleProductParagraph from './ModuleProductParagraph';
-import Media from '../_components/Media';
+import Media from '@/src/shared/ui/Media';
 // Types
 import { TypeModuleProductSolutions, TypeModuleProductSolution } from '@/src/types/typeModules';
 import { HTMLAttributes } from 'react';
