@@ -1,9 +1,7 @@
 // Libs
 import { cn } from '@/src/shared/lib/utils';
-import { getHeaderData } from '../shared/api';
-import { generateLayoutMetadata } from '../layout/lib/generateLayoutMetadata';
-// Components
-import { RootLayout } from '@/src/layout';
+import { getHeaderData } from '@/src/shared/api';
+import { RootLayout, generateLayoutMetadata } from '@/src/layout';
 // Fonts
 import { Noto_Sans_TC, Fira_Code } from 'next/font/google';
 // Style

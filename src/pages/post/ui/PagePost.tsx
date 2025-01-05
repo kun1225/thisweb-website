@@ -10,7 +10,6 @@ export function PagePost({ currentPost }: { currentPost: TypePost }) {
         title={currentPost.title}
         topic={currentPost.category}
       />
-      {/* <PostBody currentPost={currentPost} relatedPosts={relatedPosts} /> */}
       <PostBody currentPost={currentPost} />
     </article>
   );

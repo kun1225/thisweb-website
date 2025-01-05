@@ -7,14 +7,13 @@ import postMegamenu from './schemas/globals/megamenu/postMegamenu';
 // Posts
 import post from './schemas/posts/post';
 import author from './schemas/posts/author';
-import category from './schemas/posts/category';
+import firstLevelCategory from './schemas/posts/firstLevelCategory';
 import secondLevelCategory from './schemas/posts/secondLevelCategory';
 import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 
 // Page
 import pHome from './schemas/pages/p-home';
 import pProduct from './schemas/pages/p-product';
-import pageService from './schemas/pages/service';
 
 // Block
 import blockContent from './schemas/block/blockContent';
@@ -45,13 +44,12 @@ export const schemas = [
 
   post,
   author,
-  category,
+  firstLevelCategory,
   secondLevelCategory,
   thirdLevelCategory,
 
   pHome,
   pProduct,
-  pageService,
 
   blockContent,
   callout,

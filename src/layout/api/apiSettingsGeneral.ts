@@ -1,4 +1,4 @@
-import { sanityFetch } from '../../../shared/lib/sanity';
+import { sanityFetch } from '@/src/shared/lib/sanity';
 import { querySettingsGeneral } from './querySettingsGeneral';
 
 export async function getSettingsGeneral() {

@@ -1,4 +1,4 @@
-import { postQuery } from '../../../shared/query/queryPost';
+import { postQuery } from './queryPost';
 import { sanityFetch } from '../../../shared/lib/sanity';
 import type { TypePost } from '@/src/types/typePosts';
 
