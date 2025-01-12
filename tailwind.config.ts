@@ -18,8 +18,8 @@ const config: Config = {
 
     extend: {
       colors: {
-        primary: 'var(--cr-primary)',
-        secondary: 'var(--cr-secondary)',
+        primary: 'rgba(var(--cr-primary))',
+        secondary: 'rgba(var(--cr-secondary))',
         'secondary-2': 'var(--cr-secondary-2)',
         white: 'var(--cr-white)',
         'pure-white': 'var(--cr-pure-white)',

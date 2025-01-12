@@ -91,7 +91,6 @@ export default defineType({
           { title: 'HTML', value: 'html' },
           { title: 'CSS', value: 'css' },
           { title: 'Bash', value: 'bash' },
-          { title: 'Bash', value: 'bash' },
           { title: 'jsx', value: 'jsx' },
           { title: 'tsx', value: 'tsx' },
           { title: 'template', value: 'template' },
@@ -126,7 +125,6 @@ export default defineType({
         },
       ],
     }),
-
     defineArrayMember({
       name: 'Callout',
       type: 'callout',

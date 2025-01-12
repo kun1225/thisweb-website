@@ -1,8 +1,10 @@
 import settingsGeneral from './schemas/globals/settingsGeneral';
 
-// Header
+// Global
 import header from './schemas/globals/header';
 import postMegamenu from './schemas/globals/megamenu/postMegamenu';
+
+import sidebarRecommendation from './schemas/globals/sidebarRecommendation';
 
 // Posts
 import post from './schemas/posts/post';
@@ -17,8 +19,8 @@ import pProduct from './schemas/pages/p-product';
 
 // Block
 import blockContent from './schemas/block/blockContent';
-import codepen from './schemas/block/codepen';
-import callout from './schemas/block/calloutContent';
+import calloutBlock from './schemas/block/calloutBlock';
+import sidebarRecommendationBlock from './schemas/block/sidebarRecommendationBlock';
 
 // Modules
 import moduleProductHero from './schemas/modules/moduleProductHero';
@@ -35,12 +37,14 @@ import moduleProductFAQs from './schemas/modules/moduleProductFAQs';
 import sharing from './schemas/objects/sharing';
 import video from './schemas/objects/video';
 import media from './schemas/objects/media';
+import codepen from './schemas/objects/codepen';
 
 export const schemas = [
   settingsGeneral,
 
   header,
   postMegamenu,
+  sidebarRecommendation,
 
   post,
   author,
@@ -52,8 +56,8 @@ export const schemas = [
   pProduct,
 
   blockContent,
-  callout,
-  codepen,
+  calloutBlock,
+  sidebarRecommendationBlock,
 
   moduleProductHero,
   moduleProductProblems,
@@ -68,4 +72,5 @@ export const schemas = [
   sharing,
   video,
   media,
+  codepen,
 ];

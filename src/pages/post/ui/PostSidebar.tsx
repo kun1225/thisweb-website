@@ -4,13 +4,14 @@ import { useState, useMemo, useEffect } from 'react';
 import GithubSlugger from 'github-slugger';
 // Components
 import { PostSidebarBody } from './PostSidebarBody';
+import { PostSidebarRecommendations } from './PostSidebarRecommendations';
 //Types
-import { TypePostSidebarHeading } from '../../../app/(site)/post/[slug]/_components/type';
+import { TypePost, TypePostSidebarHeading } from '@/src/types/typePosts';
 
-export function PostSidebar({ source }: { source: any[] }) {
+export function PostSidebar({ data }: { data: TypePost }) {
   const [activeId, setActiveId] = useState<string>();
 
-  const rawHeadings = extractHeadings(source);
+  const rawHeadings = extractHeadings(data.body);
 
   const structuredHeadings = useMemo(() => transformRawHeadings(rawHeadings), [rawHeadings]);
 
@@ -26,8 +27,11 @@ export function PostSidebar({ source }: { source: any[] }) {
 
   return (
     <aside className="p-post__sidebar">
-      <PostSidebarHeader />
-      <PostSidebarBody structuredHeadings={structuredHeadings} activeId={activeId} />
+      <div className="p-post__sidebar__menu">
+        <PostSidebarHeader />
+        <PostSidebarBody structuredHeadings={structuredHeadings} activeId={activeId} />
+      </div>
+      <PostSidebarRecommendations data={data} />
     </aside>
   );
 }

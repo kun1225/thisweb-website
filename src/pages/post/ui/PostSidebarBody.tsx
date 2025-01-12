@@ -3,7 +3,7 @@ import { cn } from '@/src/shared/lib/utils';
 // Components
 import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
 // Types
-import { TypePostSidebarHeading } from '../../../app/(site)/post/[slug]/_components/type';
+import { TypePostSidebarHeading } from '@/src/types/typePosts';
 
 export function PostSidebarBody({
   structuredHeadings,
@@ -19,25 +19,25 @@ export function PostSidebarBody({
           <HeadingButton
             heading={heading}
             activeId={activeId}
-            className={`mb-2 ${cn(
+            className={cn(
               heading.id === activeId
                 ? 'hover:text-primary'
                 : 'text-gray-500 hover:text-neutral-900',
               heading.level === 3 && 'pl-4',
               'select-none text-left transition'
-            )}`}
+            )}
             key={heading.text}
           >
             {heading.text}
           </HeadingButton>
         ) : (
-          <Accordion iconPosition="right" key={heading.id} className="mb-2">
+          <Accordion iconPosition="right" key={heading.id} className="">
             <AccordionTitle
-              className={`toc__title ${cn(
+              className={cn(
                 heading.id === activeId
                   ? 'hover:text-primary'
                   : 'text-gray-500 hover:text-neutral-900'
-              )}`}
+              )}
             >
               <HeadingButton heading={heading} activeId={activeId}>
                 {heading.text}
