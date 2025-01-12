@@ -16,6 +16,11 @@ export function PostSidebarRecommendations({ data }: { data: TypePost }) {
       {sideBarRecommendations.map((item) => {
         const { imageSection, title, _key, contentSection } = item;
 
+        const hasContent =
+          contentSection?.content?.length &&
+          contentSection?.content?.length > 0 &&
+          contentSection?.contentCta?.url;
+
         return (
           <div key={_key} className="p-post__sidebar__recommendation">
             <p className="p-post__sidebar__recommendation__title">{title}</p>
@@ -31,25 +36,27 @@ export function PostSidebarRecommendations({ data }: { data: TypePost }) {
                 </Link>
               ) : null}
             </div>
-            <div className="p-post__sidebar__recommendation__content">
-              <CustomPortableText value={contentSection?.content} />
-              {contentSection?.contentCta?.url ? (
-                <Button
-                  className="mt-2 w-full"
-                  variant="outline"
-                  asChild
-                  size="sm"
-                  disabled={contentSection?.contentCta?.isDisabled}
-                >
-                  <Link
-                    href={contentSection?.contentCta?.url}
-                    target={contentSection?.contentCta?.isOpenNewTab ? '_blank' : '_self'}
+            {hasContent ? (
+              <div className="p-post__sidebar__recommendation__content">
+                <CustomPortableText value={contentSection?.content} />
+                {contentSection?.contentCta?.url ? (
+                  <Button
+                    className="mt-2 w-full"
+                    variant="outline"
+                    asChild
+                    size="sm"
+                    disabled={contentSection?.contentCta?.isDisabled}
                   >
-                    {contentSection?.contentCta?.label || ''}
-                  </Link>
-                </Button>
-              ) : null}
-            </div>
+                    <Link
+                      href={contentSection?.contentCta?.url}
+                      target={contentSection?.contentCta?.isOpenNewTab ? '_blank' : '_self'}
+                    >
+                      {contentSection?.contentCta?.label || ''}
+                    </Link>
+                  </Button>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         );
       })}

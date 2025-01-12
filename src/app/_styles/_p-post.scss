@@ -72,14 +72,14 @@
     }
 
     &__recommendation {
-      @apply rounded-md bg-white p-3 shadow-md;
+      @apply space-y-3 rounded-md bg-white p-3 shadow-md;
 
       &__title {
-        @apply mb-1 px-1 font-bold text-primary;
+        @apply px-1 font-bold text-primary;
       }
 
       &__img {
-        @apply relative mb-3;
+        @apply relative;
 
         &__cta {
           @apply bg-primary/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100;
@@ -87,7 +87,7 @@
       }
 
       &__content {
-        @apply mb-3 px-2 text-sm text-gray-500;
+        @apply px-2 text-sm text-gray-500;
 
         ul,
         ol {
