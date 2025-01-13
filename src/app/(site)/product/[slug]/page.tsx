@@ -1,17 +1,12 @@
-import dynamic from 'next/dynamic';
-import { imgBuilder } from '@/src/libs/sanity/client';
-import { hasArrayValue } from '@/src/libs/utils';
+import { imgBuilder } from '@/src/shared/lib/sanity';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 import {
   getProductAllUrl,
   getProductSharing,
   getProductData,
-} from '@/src/libs/sanity/fetch/pProductFetch';
-import ModuleProduct from '@/src/app/_modules/ModuleProduct';
+} from '@/src/shared/api/apiPageProduct';
+import PageProduct from '@/src/page/product';
 import { notFound } from 'next/navigation';
-
-const PageProductAnnouncement = dynamic(() => import('./_components/PageProductAnnouncement'), {
-  ssr: false,
-});
 
 export async function generateStaticParams() {
   const slugs = await getProductAllUrl();
@@ -63,14 +58,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function page({ params }: { params: { slug: string } }) {
   const { modules, announcement } = (await getProductData({ slug: params.slug })) || {};
+
   if (!hasArrayValue(modules)) {
     return notFound();
   }
 
-  return (
-    <>
-      <PageProductAnnouncement data={announcement} />
-      <ModuleProduct modules={modules} />
-    </>
-  );
+  return <PageProduct modules={modules} announcement={announcement} />;
 }

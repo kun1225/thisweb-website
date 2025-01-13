@@ -1,0 +1,111 @@
+:root {
+  --cr-primary: 0, 51, 78;
+  --cr-secondary: 71, 112, 134;
+  --cr-secondary-2: #2577a3;
+  --cr-white: #f9fafb; // gray-50
+  --cr-pure-white: #ffffff;
+
+  --cr-body: #1e293b; // slate-800
+  --cr-body-light: #475569; // slate-500
+  --cr-inline-code-bg: hsl(220, 13%, 93%);
+
+  --bg-header: rgba(249, 250, 251, 0.9);
+
+  --header-height: 67.5px;
+
+  --s-edge-xs: 2vw;
+  --s-edge-sm: 3vw;
+  --s-edge: 4vw;
+  --s-edge-lg: 5vw;
+
+  --s-contain: max(var(--s-edge), 8px);
+  --s-contain-max: 1960px;
+
+  --s-edge-dynamic: max(var(--s-contain), calc((100vw - var(--s-contain-max)) / 2));
+
+  --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  --z-header-overlay: 99;
+  --z-header: 100;
+  --z-toast: 101;
+  --z-overlay: 150;
+  --z-modal: 200;
+}
+
+html,
+body {
+  @apply min-h-full;
+}
+
+html {
+  @apply scroll-p-[120px] scroll-smooth;
+}
+
+body {
+  @apply bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:bg-secondary selection:text-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-balance text-primary;
+}
+
+p {
+  @apply text-pretty;
+}
+
+mark {
+  --bg: color-mix(in srgb, var(--cr-secondary-2) 20%, transparent);
+  @apply bg-[var(--bg)];
+}
+
+@media screen and (hover: hover) {
+  :focus-visible {
+    @apply outline-dashed outline-2 outline-offset-4 outline-primary;
+  }
+}
+
+.scrollbar-small::-webkit-scrollbar {
+  @apply h-[4px] w-[4px];
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  @apply hidden;
+}
+
+.shine-text {
+  background: linear-gradient(
+      -40deg,
+      #00334e 0%,
+      #00334e 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      #00334e 60%,
+      #00334e 100%
+    )
+    no-repeat;
+  background-size: 300%;
+  color: transparent;
+  background-clip: text;
+  animation-name: shine;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+
+  25% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
