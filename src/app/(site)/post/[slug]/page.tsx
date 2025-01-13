@@ -1,12 +1,7 @@
 import '@/src/app/_styles/prism.css';
 
 import { notFound } from 'next/navigation';
-import {
-  PagePost,
-  generatePostMetadata,
-  generatePostStaticParams,
-  getPost,
-} from '@/src/pages/post';
+import { PagePost, generatePostMetadata, generatePostStaticParams, getPost } from '@/src/page/post';
 
 export const generateStaticParams = async () => {
   return generatePostStaticParams();

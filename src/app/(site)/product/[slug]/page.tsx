@@ -5,7 +5,7 @@ import {
   getProductSharing,
   getProductData,
 } from '@/src/shared/api/apiPageProduct';
-import PageProduct from '@/src/pages/product';
+import PageProduct from '@/src/page/product';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
