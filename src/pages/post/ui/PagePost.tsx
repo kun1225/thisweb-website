@@ -2,7 +2,13 @@ import { PostHeader } from './PostHeader';
 import { PostBody } from './PostBody';
 import type { TypePost } from '@/src/types/typePosts';
 
-export function PagePost({ currentPost }: { currentPost: TypePost }) {
+export function PagePost({
+  currentPost,
+  relatedPosts,
+}: {
+  currentPost: TypePost;
+  relatedPosts?: TypePost[];
+}) {
   return (
     <article className="p-post" id="p-post">
       <PostHeader
@@ -10,7 +16,7 @@ export function PagePost({ currentPost }: { currentPost: TypePost }) {
         title={currentPost.title}
         topic={currentPost.category}
       />
-      <PostBody currentPost={currentPost} />
+      <PostBody currentPost={currentPost} relatedPosts={relatedPosts} />
     </article>
   );
 }

@@ -1,18 +1,19 @@
+import { hasArrayValue, cn } from '@/src/shared/lib/utils';
+
 import Img from '@/src/shared/ui/Img';
 import { Button } from '@/src/shared/ui/Button';
 import CustomPortableText from '@/src/shared/ui/CustomPortableText';
 
-import { hasArrayValue } from '@/src/shared/lib/utils';
 import type { TypePost } from '@/src/types/typePosts';
 import Link from 'next/link';
 
-export function PostSidebarRecommendations({ data }: { data: TypePost }) {
+export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {
   const { sideBarRecommendations } = data;
 
   if (!hasArrayValue(sideBarRecommendations)) return null;
 
   return (
-    <div className="p-post__sidebar__recommendations">
+    <div className={cn('p-post__recommendations', className)}>
       {sideBarRecommendations.map((item) => {
         const { imageSection, title, _key, contentSection } = item;
 
@@ -22,13 +23,13 @@ export function PostSidebarRecommendations({ data }: { data: TypePost }) {
           contentSection?.contentCta?.url;
 
         return (
-          <div key={_key} className="p-post__sidebar__recommendation">
-            <p className="p-post__sidebar__recommendation__title">{title}</p>
-            <div className="p-post__sidebar__recommendation__img">
+          <div key={_key} className="p-post__recommendation">
+            <p className="p-post__recommendation__title">{title}</p>
+            <div className="p-post__recommendation__img">
               <Img image={imageSection?.image} />
               {imageSection?.imageCta?.url ? (
                 <Link
-                  className="p-post__sidebar__recommendation__img__cta"
+                  className="p-post__recommendation__img__cta"
                   href={imageSection?.imageCta?.url}
                   target={imageSection?.imageCta?.isOpenNewTab ? '_blank' : '_self'}
                 >
@@ -37,11 +38,11 @@ export function PostSidebarRecommendations({ data }: { data: TypePost }) {
               ) : null}
             </div>
             {hasContent ? (
-              <div className="p-post__sidebar__recommendation__content">
+              <div className="p-post__recommendation__content">
                 <CustomPortableText value={contentSection?.content} />
                 {contentSection?.contentCta?.url ? (
                   <Button
-                    className="mt-2 w-full"
+                    className="p-post__recommendation__cta"
                     variant="outline"
                     asChild
                     size="sm"

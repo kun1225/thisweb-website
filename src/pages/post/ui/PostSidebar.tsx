@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import GithubSlugger from 'github-slugger';
 // Components
 import { PostSidebarBody } from './PostSidebarBody';
-import { PostSidebarRecommendations } from './PostSidebarRecommendations';
+import { PostRecommendations } from './PostRecommendations';
 //Types
 import { TypePost, TypePostSidebarHeading } from '@/src/types/typePosts';
 
@@ -31,7 +31,7 @@ export function PostSidebar({ data }: { data: TypePost }) {
         <PostSidebarHeader />
         <PostSidebarBody structuredHeadings={structuredHeadings} activeId={activeId} />
       </div>
-      <PostSidebarRecommendations data={data} />
+      <PostRecommendations data={data} className="p-post__sidebar__recommendations" />
     </aside>
   );
 }
