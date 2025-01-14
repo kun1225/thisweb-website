@@ -83,7 +83,7 @@
 
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
-  @apply pointer-events-none fixed top-[calc(var(--header-height)_+_16px)] z-10 grid max-h-[80vh] scale-0 grid-cols-3 overflow-auto rounded-md bg-header p-4 opacity-0 shadow-[0_0_28px_rgba(0,0,0,.1)] transition duration-300;
+  @apply pointer-events-none fixed top-[calc(var(--header-height)_+_16px)] z-10 grid max-h-[80vh] scale-50 grid-cols-3 overflow-auto rounded-md bg-header p-4 opacity-0 shadow-[0_0_28px_rgba(0,0,0,.1)] transition duration-300;
 
   &.is-active {
     @apply pointer-events-auto scale-100 opacity-100 duration-400;

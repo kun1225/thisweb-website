@@ -3,18 +3,18 @@ import { cn } from '@/src/shared/lib/utils';
 // Components
 import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
 // Types
-import { TypePostSidebarHeading } from '@/src/types/typePosts';
+import { TypePostTocHeading } from '@/src/types/typePosts';
 
-export function PostSidebarBody({
+export function PostTocBody({
   structuredHeadings,
   activeId,
 }: {
-  structuredHeadings: TypePostSidebarHeading[];
+  structuredHeadings: TypePostTocHeading[];
   activeId: string | undefined;
 }) {
   return (
-    <div className="p-post__sidebar__body">
-      {structuredHeadings.map((heading: TypePostSidebarHeading) => {
+    <div className="p-post__toc__body">
+      {structuredHeadings.map((heading: TypePostTocHeading) => {
         return heading.children.length === 0 ? (
           <HeadingButton
             heading={heading}
@@ -23,7 +23,7 @@ export function PostSidebarBody({
               heading.id === activeId
                 ? 'hover:text-primary'
                 : 'text-gray-500 hover:text-neutral-900',
-              heading.level === 3 && 'pl-4',
+              heading.level === 3 && 'pl-3',
               'select-none text-left transition'
             )}
             key={heading.text}
@@ -44,8 +44,8 @@ export function PostSidebarBody({
               </HeadingButton>
             </AccordionTitle>
             <AccordionContent className="flex flex-col">
-              {heading.children.map((h3: TypePostSidebarHeading) => (
-                <HeadingButton heading={h3} activeId={activeId} key={h3.text} className="mt-2">
+              {heading.children.map((h3: TypePostTocHeading) => (
+                <HeadingButton heading={h3} activeId={activeId} key={h3.text} className="mt-3">
                   {h3.text}
                 </HeadingButton>
               ))}
@@ -63,7 +63,7 @@ function HeadingButton({
   className,
   children,
 }: {
-  heading: TypePostSidebarHeading;
+  heading: TypePostTocHeading;
   activeId: string | undefined;
   className?: string;
   children: React.ReactNode;
