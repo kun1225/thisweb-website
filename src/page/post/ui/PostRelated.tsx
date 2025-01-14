@@ -1,19 +1,15 @@
 import CustomLink from '@/src/shared/ui/CustomLink';
 
-import { PostType } from '@/src/libs/sanity/type';
+import type { TypeRelatedPost } from '@/src/types/typePosts';
 
-export function PostRelated({
-  relatedPosts,
-}: {
-  relatedPosts: Pick<PostType, '_id' | 'title' | 'slug'>[];
-}) {
+export function PostRelated({ relatedPosts }: { relatedPosts: TypeRelatedPost[] }) {
   return (
     relatedPosts.length > 0 && (
       <section className="p-post__related">
-        <h2>相關系列文章</h2>
+        <h2 className="p-post__related__heading">你可能會感興趣的文章 👇</h2>
         <div className="flex flex-col items-start gap-3">
-          {relatedPosts.slice(0, 3).map((post) => (
-            <CustomLink key={post._id} href={`/post/${post.slug.current}`}>
+          {relatedPosts.map((post) => (
+            <CustomLink key={post._key} href={`/post/${post.slug.current}`}>
               {post.title}
             </CustomLink>
           ))}

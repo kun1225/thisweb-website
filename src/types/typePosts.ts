@@ -16,6 +16,7 @@ export type TypePost = {
   sharing: {
     shareGraphic: any;
   };
+  relatedPosts?: TypeRelatedPost[];
   recommendations: {
     _key: string;
     title: string;
@@ -42,4 +43,12 @@ export type TypePostSidebarHeading = {
   level: 2 | 3;
   id: string;
   children: any[];
+};
+
+export type TypeRelatedPost = {
+  _key: string;
+  title: string;
+  slug: {
+    current: string;
+  };
 };
