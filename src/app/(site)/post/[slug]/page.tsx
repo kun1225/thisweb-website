@@ -12,9 +12,9 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 };
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
-  const currentPost = await getPost({ slug: params.slug });
+  const data = await getPost({ slug: params.slug });
 
-  if (!currentPost) notFound();
+  if (!data) notFound();
 
-  return <PagePost currentPost={currentPost} />;
+  return <PagePost data={data} />;
 }

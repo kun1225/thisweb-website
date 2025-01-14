@@ -1,14 +1,9 @@
 import { format, parseISO } from 'date-fns';
+import type { TypePost } from '@/src/types/typePosts';
 
-export function PostHeader({
-  date,
-  title,
-  topic,
-}: {
-  date?: string;
-  title: string;
-  topic: string;
-}) {
+export function PostHeader({ data }: { data: TypePost }) {
+  const { publishedAt: date, title, category: topic } = data;
+
   return (
     <header className="p-post__header">
       <PostHeaderDecoration />
