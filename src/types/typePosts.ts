@@ -38,7 +38,7 @@ export type TypePost = {
 
 export type TypePosts = TypePost[];
 
-export type TypePostSidebarHeading = {
+export type TypePostTocHeading = {
   text: string;
   level: 2 | 3;
   id: string;
