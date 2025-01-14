@@ -73,7 +73,7 @@
   }
 
   &__recommendations {
-    @apply flex flex-col gap-6;
+    @apply flex-col gap-6;
   }
 
   &__recommendation {
@@ -119,7 +119,7 @@
 
   &__footer {
     &__recommendations {
-      @apply mx-auto mt-10 max-w-3xl border-t border-gray-200 pt-16 md:gap-12 xl:hidden;
+      @apply mx-auto mt-10 flex max-w-3xl pt-16 md:gap-12 xl:hidden;
 
       .p-post__recommendation {
         @apply md:p-8;

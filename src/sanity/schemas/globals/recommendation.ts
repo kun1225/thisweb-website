@@ -2,13 +2,13 @@ import { defineType, defineField } from 'sanity';
 import { customCta } from '../libs/customCta';
 
 export default defineType({
-  title: 'Sidebar Recommendation',
-  name: 'sidebarRecommendation',
+  title: 'Recommendation',
+  name: 'recommendation',
   type: 'document',
   groups: [
     { title: 'Title', name: 'title' },
-    { title: 'Image Section', name: 'imageSection' },
     { title: 'Display Scope Section', name: 'displayScopeSection' },
+    { title: 'Image Section', name: 'imageSection' },
     { title: 'Content Section', name: 'contentSection' },
   ],
   fields: [
@@ -17,20 +17,6 @@ export default defineType({
       type: 'string',
       title: 'Title',
       group: 'title',
-    }),
-    defineField({
-      title: 'Image Section',
-      name: 'imageSection',
-      type: 'object',
-      group: 'imageSection',
-      fields: [
-        defineField({
-          title: 'Image',
-          name: 'image',
-          type: 'image',
-        }),
-        customCta({ title: 'Image CTA', name: 'imageCta' }),
-      ],
     }),
     defineField({
       title: 'Display Scope Section',
@@ -67,7 +53,20 @@ export default defineType({
         }),
       ],
     }),
-
+    defineField({
+      title: 'Image Section',
+      name: 'imageSection',
+      type: 'object',
+      group: 'imageSection',
+      fields: [
+        defineField({
+          title: 'Image',
+          name: 'image',
+          type: 'image',
+        }),
+        customCta({ title: 'Image CTA', name: 'imageCta' }),
+      ],
+    }),
     defineField({
       title: 'Content Section',
       name: 'contentSection',
@@ -77,7 +76,7 @@ export default defineType({
         defineField({
           title: 'Content',
           name: 'content',
-          type: 'sidebarRecommendationBlock',
+          type: 'recommendationBlock',
         }),
         customCta({ title: 'Content CTA', name: 'contentCta' }),
       ],
