@@ -1,12 +1,12 @@
 import { groq } from 'next-sanity';
 
 export const postQuery = groq`*[_type == "post" && defined(slug) && defined(title) && slug.current == $slug && status == 'done'][0]{
-  ${getPostBasicInfo()},
-  ${getPostBody()},
-  "sideBarRecommendations": ${getSideBarRecommendation()},
+  ${postBasicInfo()},
+  ${postBody()},
+  "recommendations": ${recommendation()},
 }`;
 
-function getPostBasicInfo() {
+function postBasicInfo() {
   return groq`
     title,
     publishedAt,
@@ -22,7 +22,7 @@ function getPostBasicInfo() {
   `;
 }
 
-function getPostBody() {
+function postBody() {
   return groq`body[]{
     ...,
     markDefs[]{
@@ -37,8 +37,8 @@ function getPostBody() {
   }`;
 }
 
-function getSideBarRecommendation() {
-  return groq`*[_type == "sidebarRecommendation" && (
+function recommendation() {
+  return groq`*[_type == "recommendation" && (
     displayScopeSection.displayScope == "all"
     || (displayScopeSection.displayScope == "firstLevelCategory" && displayScopeSection.firstLevelCategory._ref == ^.category._ref)
     || (displayScopeSection.displayScope == "secondLevelCategory" && displayScopeSection.secondLevelCategory._ref == ^.secondLevelCategory._ref)

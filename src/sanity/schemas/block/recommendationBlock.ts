@@ -2,8 +2,8 @@ import { defineType, defineArrayMember } from 'sanity';
 import Highlight from '../../components/Highlight';
 
 export default defineType({
-  title: 'SideBar Recommendation Block',
-  name: 'sidebarRecommendationBlock',
+  title: 'Recommendation Block',
+  name: 'recommendationBlock',
   type: 'array',
   of: [
     defineArrayMember({
@@ -21,6 +21,7 @@ export default defineType({
             title: 'Highlight',
             value: 'highlight',
             component: Highlight,
+            icon: () => 'H',
           },
           { title: 'Underline', value: 'underline' },
           { title: 'Strike', value: 'strike-through' },

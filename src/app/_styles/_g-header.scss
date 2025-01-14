@@ -8,7 +8,7 @@
 :root.is-megamenu-open {
   #main,
   #g-footer {
-    @apply blur-md delay-0;
+    @apply blur-lg delay-0;
   }
 
   .g-header {
@@ -19,7 +19,7 @@
 :root.is-mobile-menu-open {
   #main,
   #g-footer {
-    @apply blur-md delay-0;
+    @apply blur-lg delay-0;
   }
 }
 

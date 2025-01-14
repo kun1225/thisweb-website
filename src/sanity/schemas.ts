@@ -4,7 +4,7 @@ import settingsGeneral from './schemas/globals/settingsGeneral';
 import header from './schemas/globals/header';
 import postMegamenu from './schemas/globals/megamenu/postMegamenu';
 
-import sidebarRecommendation from './schemas/globals/sidebarRecommendation';
+import recommendation from './schemas/globals/recommendation';
 
 // Posts
 import post from './schemas/posts/post';
@@ -20,7 +20,7 @@ import pProduct from './schemas/pages/p-product';
 // Block
 import blockContent from './schemas/block/blockContent';
 import calloutBlock from './schemas/block/calloutBlock';
-import sidebarRecommendationBlock from './schemas/block/sidebarRecommendationBlock';
+import recommendationBlock from './schemas/block/recommendationBlock';
 
 // Modules
 import moduleProductHero from './schemas/modules/moduleProductHero';
@@ -44,7 +44,7 @@ export const schemas = [
 
   header,
   postMegamenu,
-  sidebarRecommendation,
+  recommendation,
 
   post,
   author,
@@ -57,7 +57,7 @@ export const schemas = [
 
   blockContent,
   calloutBlock,
-  sidebarRecommendationBlock,
+  recommendationBlock,
 
   moduleProductHero,
   moduleProductProblems,

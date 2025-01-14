@@ -59,6 +59,7 @@ const calloutComponents = {
         </a>
       );
     },
+    highlight: (props: any) => <mark>{props.children}</mark>,
   },
   types: {
     image: ({ value }: { value: any }) => {

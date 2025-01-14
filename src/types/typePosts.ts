@@ -16,7 +16,7 @@ export type TypePost = {
   sharing: {
     shareGraphic: any;
   };
-  sideBarRecommendations: {
+  recommendations: {
     _key: string;
     title: string;
     imageSection: {

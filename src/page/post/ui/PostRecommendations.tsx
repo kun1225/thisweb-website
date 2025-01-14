@@ -8,13 +8,13 @@ import type { TypePost } from '@/src/types/typePosts';
 import Link from 'next/link';
 
 export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {
-  const { sideBarRecommendations } = data;
+  const { recommendations } = data;
 
-  if (!hasArrayValue(sideBarRecommendations)) return null;
+  if (!hasArrayValue(recommendations)) return null;
 
   return (
     <div className={cn('p-post__recommendations', className)}>
-      {sideBarRecommendations.map((item) => {
+      {recommendations.map((item) => {
         const { imageSection, title, _key, contentSection } = item;
 
         const hasContent =
