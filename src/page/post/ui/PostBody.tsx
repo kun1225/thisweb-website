@@ -5,20 +5,14 @@ import { PostFooter } from './PostFooter';
 // Types
 import { TypePost } from '@/src/types/typePosts';
 
-export function PostBody({
-  currentPost,
-  relatedPosts,
-}: {
-  currentPost: TypePost;
-  relatedPosts?: TypePost[];
-}) {
+export function PostBody({ data }: { data: TypePost }) {
   return (
     <>
       <section className="p-post__body">
-        <PostArticle currentPost={currentPost} />
-        <PostSidebar data={currentPost} />
+        <PostArticle data={data} />
+        <PostSidebar data={data} />
       </section>
-      <PostFooter data={currentPost} relatedPosts={relatedPosts} />
+      <PostFooter data={data} />
     </>
   );
 }

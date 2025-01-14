@@ -85,6 +85,10 @@ const config: Config = {
               borderRadius: '4px',
               fontWeight: 500,
             },
+            a: {
+              textUnderlineOffset: '3px',
+              textDecorationThickness: '1px',
+            },
           },
         },
       },
