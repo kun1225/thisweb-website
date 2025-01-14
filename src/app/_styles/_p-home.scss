@@ -1,6 +1,14 @@
 // *** Hero ***
 .p-home__hero {
-  @apply relative flex min-h-[80vh] flex-col items-center justify-center gap-10 text-center c md:min-h-[90vh];
+  @apply relative flex flex-col items-center justify-center gap-10 text-center c;
+
+  min-height: 80vh;
+  min-height: 80svh;
+
+  @include breakpoint('md') {
+    min-height: 90vh;
+    min-height: 90svh;
+  }
 
   &__bg {
     @apply absolute left-0 top-0 h-screen w-full font-semibold;

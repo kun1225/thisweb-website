@@ -1,7 +1,10 @@
 @import '__mixins.scss';
 
 .p-posts {
-  @apply mx-auto min-h-[80vh] max-w-3xl py-16 c 2xl:px-0;
+  @apply mx-auto max-w-3xl py-16 c 2xl:px-0;
+
+  min-height: 80vh;
+  min-height: 80svh;
 
   &__header {
     @apply mb-8 border-b-2 border-gray-200 pb-4;

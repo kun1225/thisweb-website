@@ -7,7 +7,7 @@
 
 // *** Post Header ***
 .p-post__header {
-  @apply mb-[5vh] flex justify-center gap-8;
+  @apply mb-12 flex justify-center gap-8;
 
   &__decoration {
     @apply hidden w-[15vw] md:block;
@@ -16,7 +16,10 @@
   }
 
   &__content {
-    @apply grid min-h-[80vh] flex-auto place-content-center gap-12 text-center;
+    @apply grid flex-auto place-content-center gap-12 text-center;
+
+    min-height: 80vh;
+    min-height: 80svh;
   }
 
   &__info {
@@ -61,7 +64,7 @@
   &__sidebar {
     --top: calc(16px + var(--header-height));
 
-    @apply mb-8 w-full max-w-3xl border p-8 xl:sticky xl:top-[var(--top)] xl:mb-0 xl:max-w-md xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pl-edge xl:pr-4;
+    @apply mb-8 w-full max-w-3xl border p-8 xl:sticky xl:top-[var(--top)] xl:mb-0 xl:max-w-md xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pl-edge-sm xl:pr-4;
 
     &__menu {
       @apply xl:max-h-[50vh] xl:scrollbar-w-1;
