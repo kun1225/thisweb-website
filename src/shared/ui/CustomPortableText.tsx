@@ -5,7 +5,6 @@ import { PortableText, toPlainText } from '@portabletext/react';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import Link from 'next/link';
 import { Refractor, registerLanguage } from 'react-refractor';
-import ImageEnlarger from './ImageEnlarger';
 import CodePen from './Codepen';
 import { Accordion, AccordionContent, AccordionTitle } from './Accordion';
 import Img from './Img';
