@@ -116,7 +116,7 @@
 
       ul,
       ol {
-        @apply mb-1 list-inside md:mb-2 xl:mb-1;
+        @apply my-1 list-inside md:mb-2 xl:mb-1;
       }
 
       li {
@@ -139,7 +139,6 @@
 }
 
 // *** animation ***
-
 .p-post {
   &__header {
     &__decoration,
