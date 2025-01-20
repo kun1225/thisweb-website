@@ -5,10 +5,9 @@ import {
   POSTS_COUNTS_QUERY,
   POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
 } from '@/src/libs/sanity/queries';
-import { pProductAllUrlQuery } from '../libs/sanity/queries/moduleProductQuery';
-import { getProductAllUrl } from '../libs/sanity/fetch/pProductFetch';
+import { getProductAllUrl } from '../shared/api/apiPageProduct';
 import { CategoriesType, PostsType } from '@/src/libs/sanity/type';
-import { client } from '@/src/libs/sanity/client';
+import { client } from '@/src/shared/lib/sanity';
 
 const PRIORITY_TABLE = {
   home: 1,

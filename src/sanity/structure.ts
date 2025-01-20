@@ -1,5 +1,6 @@
 import type { StructureResolver } from 'sanity/structure';
 import { deskGlobalHeader } from './desk/deskGlobalHeader';
+import { deskRecommendation } from './desk/deskRecommendation';
 import { deskMainPage } from './desk/deskMainPage';
 import { deskProductPage } from './desk/deskProductPage';
 import { deskPosts } from './desk/deskPosts';
@@ -13,6 +14,7 @@ export const structure: StructureResolver = (S) =>
     .title('Studio')
     .items([
       deskGlobalHeader(S),
+      deskRecommendation(S),
       S.divider(),
 
       deskMainPage(S),

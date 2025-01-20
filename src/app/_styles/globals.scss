@@ -1,0 +1,23 @@
+// Tailwind
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+// Base
+@import '_base';
+@import '_mixins';
+@import '_animation';
+
+// Pages
+@import 'p-home';
+@import 'p-posts';
+@import 'p-post';
+
+// Modules
+@import 'm-product';
+
+// Components
+@import 'g-header';
+@import 'g-footer';
+@import 'c-img';
+@import 'c-carousel';

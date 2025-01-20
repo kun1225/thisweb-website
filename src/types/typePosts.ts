@@ -1,3 +1,6 @@
+import type { TypeImage } from './typeImage';
+import type { TypeCta } from './typeCta';
+
 export type TypePost = {
   _id: string;
   publishedAt: string;
@@ -6,18 +9,46 @@ export type TypePost = {
     current: string;
   };
   author: string;
-  mainImage: {
-    _type: string;
-    alt: string;
-    asset: {
-      _type: string;
-      _ref: string;
-    };
-  };
   status: string;
   category: string;
   secondLevelCategory: string;
   title: string;
+  sharing: {
+    shareGraphic: any;
+  };
+  relatedPosts?: TypeRelatedPost[];
+  recommendations: {
+    _key: string;
+    title: string;
+    imageSection: {
+      image: TypeImage;
+      imageCta?: TypeCta;
+    };
+    displayScopeSection: {
+      displayScope: string;
+      firstLevelCategory?: any;
+      secondLevelCategory?: any;
+    };
+    contentSection: {
+      content?: any[];
+      contentCta?: TypeCta;
+    };
+  }[];
 };
 
 export type TypePosts = TypePost[];
+
+export type TypePostTocHeading = {
+  text: string;
+  level: 2 | 3;
+  id: string;
+  children: any[];
+};
+
+export type TypeRelatedPost = {
+  _key: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+};

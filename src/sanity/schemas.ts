@@ -1,25 +1,26 @@
 import settingsGeneral from './schemas/globals/settingsGeneral';
 
-// Header
+// Global
 import header from './schemas/globals/header';
 import postMegamenu from './schemas/globals/megamenu/postMegamenu';
+
+import recommendation from './schemas/globals/recommendation';
 
 // Posts
 import post from './schemas/posts/post';
 import author from './schemas/posts/author';
-import category from './schemas/posts/category';
+import firstLevelCategory from './schemas/posts/firstLevelCategory';
 import secondLevelCategory from './schemas/posts/secondLevelCategory';
 import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 
 // Page
 import pHome from './schemas/pages/p-home';
 import pProduct from './schemas/pages/p-product';
-import pageService from './schemas/pages/service';
 
 // Block
 import blockContent from './schemas/block/blockContent';
-import codepen from './schemas/block/codepen';
-import callout from './schemas/block/calloutContent';
+import calloutBlock from './schemas/block/calloutBlock';
+import recommendationBlock from './schemas/block/recommendationBlock';
 
 // Modules
 import moduleProductHero from './schemas/modules/moduleProductHero';
@@ -36,26 +37,27 @@ import moduleProductFAQs from './schemas/modules/moduleProductFAQs';
 import sharing from './schemas/objects/sharing';
 import video from './schemas/objects/video';
 import media from './schemas/objects/media';
+import codepen from './schemas/objects/codepen';
 
 export const schemas = [
   settingsGeneral,
 
   header,
   postMegamenu,
+  recommendation,
 
   post,
   author,
-  category,
+  firstLevelCategory,
   secondLevelCategory,
   thirdLevelCategory,
 
   pHome,
   pProduct,
-  pageService,
 
   blockContent,
-  callout,
-  codepen,
+  calloutBlock,
+  recommendationBlock,
 
   moduleProductHero,
   moduleProductProblems,
@@ -70,4 +72,5 @@ export const schemas = [
   sharing,
   video,
   media,
+  codepen,
 ];

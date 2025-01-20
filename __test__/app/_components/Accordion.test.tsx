@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Accordion, AccordionTitle, AccordionContent } from '@/src/app/_components/Accordion';
+import { Accordion, AccordionTitle, AccordionContent } from '@/src/shared/ui/Accordion';
 
 describe('Accordion', () => {
   describe('Accordion initial state', () => {

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 // Sanity
-import { postsLimitedFetch, postsCountsFetch } from '@/src/libs/sanity/fetch';
+import { getPostsLimited, getPostsCounts } from '@/src/shared/api';
 // Components
 import PostsEmptyPage from '../../_components/PostsEmptyPage';
 import PostsList from '../../_components/PostsList';
@@ -14,7 +14,7 @@ const POSTS_PER_PAGE = 10;
 
 export const generateStaticParams = async () => {
   try {
-    const postsNumber = await postsCountsFetch();
+    const postsNumber = await getPostsCounts();
     const numPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
     return Array.from({ length: numPages }, (_, i) => ({
@@ -46,7 +46,7 @@ export default async function PostsPage({
 
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
-  const posts = await postsLimitedFetch({
+  const posts = await getPostsLimited({
     startIndex,
     endIndex,
   });
@@ -55,7 +55,7 @@ export default async function PostsPage({
     return <PostsEmptyPage />;
   }
 
-  const postsNumber = await postsCountsFetch();
+  const postsNumber = await getPostsCounts();
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (

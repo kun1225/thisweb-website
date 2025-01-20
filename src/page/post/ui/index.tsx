@@ -1,0 +1,1 @@
+export { PagePost } from './PagePost';

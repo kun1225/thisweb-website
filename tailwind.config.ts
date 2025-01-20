@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
-import theme from './src/styles/theme';
+import theme from './src/app/_styles/theme';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -18,8 +18,8 @@ const config: Config = {
 
     extend: {
       colors: {
-        primary: 'var(--cr-primary)',
-        secondary: 'var(--cr-secondary)',
+        primary: 'rgba(var(--cr-primary))',
+        secondary: 'rgba(var(--cr-secondary))',
         'secondary-2': 'var(--cr-secondary-2)',
         white: 'var(--cr-white)',
         'pure-white': 'var(--cr-pure-white)',
@@ -84,6 +84,10 @@ const config: Config = {
               padding: '4px',
               borderRadius: '4px',
               fontWeight: 500,
+            },
+            a: {
+              textUnderlineOffset: '3px',
+              textDecorationThickness: '1px',
             },
           },
         },
