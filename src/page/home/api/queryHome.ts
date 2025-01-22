@@ -1,0 +1,70 @@
+import { groq } from 'next-sanity';
+
+export const queryHome = groq`*[_type == "pHome"][0]{
+  hero {
+    heading,
+    headingId,
+    subheading,
+    paragraph,
+    media,
+    cta,
+  },
+
+  leadMagnet {
+    heading,
+    headingId,
+    subheading,
+    paragraph,
+    media,
+    formId,
+  },
+
+  categoriesNav {
+    heading,
+    headingId,
+    subheading,
+    categories {
+      _key,
+      title,
+      description,
+      categoryRef-> {
+        url,
+      }
+    }[]
+  },
+
+  latestPosts {
+    heading,
+    headingId,
+    subheading,
+    postsCount,
+    "posts": *[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(_createdAt desc) [0...4] {
+      title,
+      slug {
+        current,
+      },
+    },
+  },
+
+  siteOwner {
+    heading,
+    headingId,
+    subheading,
+    paragraph,
+    media,
+    achievements {
+      value,
+      paragraph,
+    }[],
+  },
+  
+  recommendation {
+    heading,
+    headingId,
+    subheading,
+    paragraph,
+    media,
+    cta,
+  }
+
+}`;

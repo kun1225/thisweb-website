@@ -1,28 +1,8 @@
-import HomeHero from './_components/HomeHero';
-import HomeProblems from './_components/HomeProblems';
-import HomeSiteOwner from './_components/HomeSiteOwner';
-import HomeRecommendedPosts from './_components/HomeRecommendedPosts';
-// Sanity Utils
-import { sanityFetch } from '@/src/shared/lib/sanity';
-import { LIMITED_POSTS_QUERY } from '@/src/libs/sanity/queries';
-import { PostsType } from '@/src/libs/sanity/type';
+import { PageHome } from '@/src/page/home/ui/PageHome';
+import { getHome } from '@/src/page/home/api/apiHome';
 
 export default async function Home() {
-  const posts = await sanityFetch<PostsType>({
-    query: LIMITED_POSTS_QUERY,
-    queryParams: {
-      start: 0,
-      end: 3,
-    },
-    tags: ['post'],
-  });
+  const data = await getHome();
 
-  return (
-    <>
-      <HomeHero />
-      <HomeProblems />
-      <HomeSiteOwner />
-      <HomeRecommendedPosts limitedPosts={posts} />
-    </>
-  );
+  return <PageHome data={data} />;
 }
