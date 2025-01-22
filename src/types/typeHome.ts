@@ -1,12 +1,13 @@
 import type { TypeCta } from './typeCta';
+import type { TypeMedia } from './typeMedia';
 
 export type TypeHome = {
   hero: {
-    subheading: string;
     heading: string;
     headingId: string;
+    subheading: string;
     paragraph: string;
-    media: {};
+    media: TypeMedia;
     cta: TypeCta;
   };
   leadMagnet: {

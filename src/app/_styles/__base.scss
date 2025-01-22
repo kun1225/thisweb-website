@@ -5,8 +5,10 @@
   --cr-white: #f9fafb; // gray-50
   --cr-pure-white: #ffffff;
 
-  --cr-body: #1e293b; // slate-800
-  --cr-body-light: #475569; // slate-500
+  --cr-pure-black: 0, 0, 0;
+  --cr-black: 30, 41, 59; // slate-800
+  --cr-black-light: 71, 85, 105; // slate-500
+
   --cr-inline-code-bg: hsl(220, 13%, 93%);
 
   --bg-header: rgba(249, 250, 251, 0.93);

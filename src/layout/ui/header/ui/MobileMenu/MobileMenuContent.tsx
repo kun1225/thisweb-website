@@ -76,18 +76,19 @@ export function MobileMenuContent({
 
       {hasArrayValue(buttonLinksContent) &&
         buttonLinksContent?.map((link) => (
-          <Button asChild key={link._key} variant="dark">
-            <li className="g-header__mobile-menu__button">
+          <li className="g-header__mobile-menu__button" key={link._key}>
+            <Button asChild variant="dark">
               <Link
                 href={link.linkUrl}
                 onClick={closeMobileMenu}
                 aria-label={`前往${link.linkText}頁面`}
+                className="w-full"
               >
                 {link.linkText}
                 <span className="sr-only">前往{link.linkText}頁面</span>
               </Link>
-            </li>
-          </Button>
+            </Button>
+          </li>
         ))}
     </ul>
   );

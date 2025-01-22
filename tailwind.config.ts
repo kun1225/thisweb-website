@@ -15,17 +15,21 @@ const config: Config = {
       roman: 'upper-roman',
       'lower-alpha': 'lower-alpha',
     },
-
     extend: {
       colors: {
+        // brand
         primary: 'rgba(var(--cr-primary))',
         secondary: 'rgba(var(--cr-secondary))',
         'secondary-2': 'var(--cr-secondary-2)',
-        white: 'var(--cr-white)',
+        // white
         'pure-white': 'var(--cr-pure-white)',
+        white: 'var(--cr-white)',
+        // black
+        'pure-black': 'rgba(var(--cr-pure-black))',
+        black: 'rgba(var(--cr-black))',
+        'black-light': 'rgba(var(--cr-black-light))',
+        // other
         header: 'var(--bg-header)',
-        body: 'var(--cr-body)',
-        'body-light': 'var(--cr-body-light)',
       },
       zIndex: {
         toast: 'var(--z-toast)',
@@ -95,8 +99,8 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function tailwindcss({ addUtilities }) {
-      addUtilities({
+    plugin(function tailwindcss({ addComponents }) {
+      addComponents({
         '.c': {
           'padding-left': 'var(--s-edge-dynamic)',
           'padding-right': 'var(--s-edge-dynamic)',

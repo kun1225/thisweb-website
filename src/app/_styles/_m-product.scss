@@ -13,7 +13,7 @@
   }
 
   &__paragraph {
-    @apply mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-body-light;
+    @apply text-black-light mx-auto mt-6 max-w-2xl text-center text-lg leading-8;
   }
 }
 
@@ -61,7 +61,7 @@
   @apply mt-48 bg-neutral-100 py-24 c;
 
   &__solutions {
-    @apply mx-auto mt-16 grid grid-cols-1 gap-6 text-body-light md:max-w-3xl md:grid-cols-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3 xl:grid-rows-2;
+    @apply text-black-light mx-auto mt-16 grid grid-cols-1 gap-6 md:max-w-3xl md:grid-cols-2 md:grid-rows-3 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3 xl:grid-rows-2;
   }
 
   &__solution {
@@ -160,7 +160,7 @@
       }
 
       ul {
-        @apply mt-2 list-inside list-disc text-body-light;
+        @apply text-black-light mt-2 list-inside list-disc;
       }
     }
 
@@ -240,7 +240,7 @@
     }
 
     &__paragraph {
-      @apply mt-2 text-body-light;
+      @apply text-black-light mt-2;
     }
 
     &__media {
@@ -331,7 +331,7 @@
     }
 
     &__paragraph {
-      @apply text-body-light;
+      @apply text-black-light;
     }
   }
 }
@@ -351,7 +351,7 @@
     }
 
     &__heading {
-      @apply mb-4 self-center text-lg text-body-light;
+      @apply text-black-light mb-4 self-center text-lg;
     }
 
     &__price {
@@ -362,7 +362,7 @@
       }
 
       &__original {
-        @apply text-sm line-through md:text-body;
+        @apply text-sm line-through md:text-black;
       }
     }
 
@@ -384,7 +384,7 @@
   }
 
   &__author {
-    @apply mt-4 grid text-sm text-body-light;
+    @apply text-black-light mt-4 grid text-sm;
 
     grid-template-areas:
       'avatar name'

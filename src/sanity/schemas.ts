@@ -21,6 +21,7 @@ import pProduct from './schemas/pages/p-product';
 import blockContent from './schemas/block/blockContent';
 import calloutBlock from './schemas/block/calloutBlock';
 import recommendationBlock from './schemas/block/recommendationBlock';
+import simpleBlock from './schemas/block/simpleBlock';
 
 // Modules
 import moduleProductHero from './schemas/modules/moduleProductHero';
@@ -38,6 +39,7 @@ import sharing from './schemas/objects/sharing';
 import video from './schemas/objects/video';
 import media from './schemas/objects/media';
 import codepen from './schemas/objects/codepen';
+import achievements from './schemas/objects/achievements';
 
 export const schemas = [
   settingsGeneral,
@@ -58,6 +60,7 @@ export const schemas = [
   blockContent,
   calloutBlock,
   recommendationBlock,
+  simpleBlock,
 
   moduleProductHero,
   moduleProductProblems,
@@ -73,4 +76,5 @@ export const schemas = [
   video,
   media,
   codepen,
+  achievements,
 ];
