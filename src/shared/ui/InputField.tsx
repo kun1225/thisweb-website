@@ -7,7 +7,7 @@ const InputComponent: React.FC<
   return (
     <input
       {...restProps}
-      className={`w-full rounded-md border-2 p-2 text-sm font-light outline-none duration-200 focus:border-secondary ${className}`}
+      className={`focus:border-blue-1 w-full rounded-md border-2 p-2 text-sm font-light outline-none duration-200 ${className}`}
     />
   );
 };

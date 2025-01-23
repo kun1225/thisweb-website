@@ -105,7 +105,7 @@ function Button({
   return (
     <button type="button" aria-label="關閉" onClick={onClose} className={className}>
       <p className="sr-only">關閉 close</p>
-      <IoClose className="transition-colors hover:text-secondary-2" />
+      <IoClose className="hover:text-blue-2 transition-colors" />
     </button>
   );
 }

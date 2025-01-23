@@ -4,7 +4,7 @@ export default function LoadingCircle() {
       <div role="status">
         <svg
           aria-hidden="true"
-          className="animate- h-16 w-16 animate-[spin_1.8s_linear_infinite] fill-secondary text-gray-300 drop-shadow-md"
+          className="animate- fill-blue-1 h-16 w-16 animate-[spin_1.8s_linear_infinite] text-gray-300 drop-shadow-md"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

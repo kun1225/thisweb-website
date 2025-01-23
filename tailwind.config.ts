@@ -18,15 +18,17 @@ const config: Config = {
     extend: {
       colors: {
         // brand
-        primary: 'rgba(var(--cr-primary))',
-        secondary: 'rgba(var(--cr-secondary))',
-        'secondary-2': 'var(--cr-secondary-2)',
+        blue: 'rgba(var(--cr-blue))',
+        'blue-1': 'rgba(var(--cr-blue-1))',
+        'blue-2': 'rgba(var(--cr-blue-2))',
+        'blue-3': 'rgba(var(--cr-blue-3))',
+        'blue-4': 'rgba(var(--cr-blue-4))',
         // white
-        'pure-white': 'var(--cr-pure-white)',
-        white: 'var(--cr-white)',
+        white: 'rgba(var(--cr-white))',
+        'white-pure': 'rgba(var(--cr-white-pure))',
         // black
-        'pure-black': 'rgba(var(--cr-pure-black))',
         black: 'rgba(var(--cr-black))',
+        'black-pure': 'rgba(var(--cr-black-pure))',
         'black-light': 'rgba(var(--cr-black-light))',
         // other
         header: 'var(--bg-header)',
@@ -79,8 +81,8 @@ const config: Config = {
         DEFAULT: {
           css: {
             '--tw-prose-body': 'var(--cr-body)',
-            '--tw-prose-headings': 'var(--cr-primary)',
-            '--tw-prose-links': 'var(--cr-secondary)',
+            '--tw-prose-headings': 'var(--cr-blue)',
+            '--tw-prose-links': 'var(--cr-blue-1)',
             code: {
               '&::before': { display: 'none' },
               '&::after': { display: 'none' },

@@ -1,6 +1,6 @@
 // *** Hero ***
 .p-home__hero {
-  @apply relative flex flex-col items-center justify-center gap-10 text-center c;
+  @apply c relative flex flex-col items-center justify-center gap-10 text-center;
 
   min-height: 80vh;
   min-height: 80svh;
@@ -25,7 +25,7 @@
 
 // *** Problems ***
 .p-home__problems {
-  @apply mb-52 flex flex-col gap-8 text-center c;
+  @apply c mb-52 flex flex-col gap-8 text-center;
 
   &__heading {
     @apply text-2xl drop-shadow-md md:mb-8;
@@ -39,11 +39,11 @@
     @apply flex flex-1 basis-40 flex-col items-center gap-2 p-4 md:p-8;
 
     &__icon {
-      @apply mb-4 h-16 w-16 rounded-2xl bg-gray-100 p-4 text-primary shadow-md;
+      @apply mb-4 h-16 w-16 rounded-2xl bg-gray-100 p-4 text-blue shadow-md;
     }
 
     &__title {
-      @apply text-2xl text-secondary;
+      @apply text-blue-1 text-2xl;
     }
 
     &__desc {
@@ -54,7 +54,7 @@
 
 // *** Site Owner ***
 .p-home__site-owner {
-  @apply mb-52 c;
+  @apply c mb-52;
 
   &__heading {
     @apply mb-16 text-center text-2xl drop-shadow-md;
@@ -75,7 +75,7 @@
 
 // *** Recommended Posts ***
 .p-home__recommended-posts {
-  @apply mb-32 flex flex-col items-center gap-8 c;
+  @apply c mb-32 flex flex-col items-center gap-8;
 
   &__heading {
     @apply text-center text-2xl drop-shadow-md;

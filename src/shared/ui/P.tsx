@@ -7,8 +7,8 @@ const pVariants = cva('transition duration-200', {
   variants: {
     variant: {
       default: 'text-black',
-      blue: 'text-secondary',
-      'blue-light': 'text-secondary-2',
+      blue: 'text-blue-1',
+      'blue-light': 'text-blue-2',
       gray: 'text-black-light',
       ghost: '',
     },

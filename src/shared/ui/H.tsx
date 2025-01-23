@@ -6,8 +6,8 @@ import { cn } from '@/src/shared/lib/utils';
 const hVariants = cva('font-bold transition duration-200', {
   variants: {
     variant: {
-      default: 'text-primary',
-      secondary: 'text-secondary',
+      default: 'text-blue',
+      secondary: 'text-blue-1',
       gray: 'text-gray',
       'gray-light': 'text-gray-light',
     },

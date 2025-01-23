@@ -17,6 +17,8 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     paragraph,
     media,
     formId,
+    btnLabel,
+    successMessage,
   },
 
   categoriesNav {

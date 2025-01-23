@@ -12,20 +12,20 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
   const { heading, headingId, paragraph, subheading, cta, media } = data;
 
   return (
-    <section className="relative flex flex-col items-center justify-center gap-10 text-pretty px-edge-lg py-24 md:max-h-[92vh] md:flex-row md:gap-edge md:py-56">
+    <section className="relative z-10 flex flex-col items-center justify-center gap-10 text-pretty px-edge-dynamic py-24 md:max-h-[92vh] md:flex-row md:gap-edge md:py-56">
       <HomeHeroFloating />
 
       <div className="max-w-2xl text-center md:text-left">
         {subheading ? (
           <p
-            className="text-black-light mb-3 text-sm leading-normal"
+            className="mb-3 text-sm leading-normal text-black-light"
             dangerouslySetInnerHTML={{ __html: formatBrNewLine(subheading) }}
           />
         ) : null}
 
         {heading ? (
           <h1
-            className="text-5xl font-bold leading-snug shadow-primary drop-shadow-lg md:text-6xl md:leading-tight"
+            className="text-5xl font-bold leading-snug shadow-blue drop-shadow-lg md:text-6xl md:leading-tight"
             id={headingId || undefined}
             dangerouslySetInnerHTML={{ __html: formatBrNewLine(heading) }}
           />

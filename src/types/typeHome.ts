@@ -1,5 +1,6 @@
 import type { TypeCta } from './typeCta';
 import type { TypeMedia } from './typeMedia';
+import type { PortableTextBlock } from 'next-sanity';
 
 export type TypeHome = {
   hero: {
@@ -14,9 +15,11 @@ export type TypeHome = {
     subheading: string;
     heading: string;
     headingId: string;
-    paragraph: string;
-    media: {};
+    paragraph: PortableTextBlock;
+    media: TypeMedia;
     formId: string;
+    btnLabel: string;
+    successMessage: string;
   };
   categoriesNav: {
     subheading: string;
@@ -35,7 +38,7 @@ export type TypeHome = {
     heading: string;
     headingId: string;
     paragraph: any[];
-    media: {};
+    media: TypeMedia;
     achievements: {}[];
   };
   recommendation: {
@@ -43,7 +46,7 @@ export type TypeHome = {
     heading: string;
     headingId: string;
     paragraph: string;
-    media: {};
+    media: TypeMedia;
     cta: TypeCta;
   };
 };

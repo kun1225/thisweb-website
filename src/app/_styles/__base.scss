@@ -1,11 +1,16 @@
 :root {
-  --cr-primary: 0, 51, 78;
-  --cr-secondary: 71, 112, 134;
-  --cr-secondary-2: #2577a3;
-  --cr-white: #f9fafb; // gray-50
-  --cr-pure-white: #ffffff;
+  --cr-blue: 0, 51, 78;
+  --cr-blue-1: 71, 112, 134;
+  --cr-blue-2: 16, 101, 147;
+  --cr-blue-3: 50, 147, 200;
+  --cr-blue-4: 134, 179, 203;
 
-  --cr-pure-black: 0, 0, 0;
+  --cr-white: 249, 250, 251; // gray-50
+  --cr-white-pure: 255, 255, 255;
+
+  --cr-red: #931026;
+
+  --cr-black-pure: 0, 0, 0;
   --cr-black: 30, 41, 59; // slate-800
   --cr-black-light: 71, 85, 105; // slate-500
 
@@ -44,7 +49,7 @@ html {
 }
 
 body {
-  @apply bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:bg-secondary selection:text-white;
+  @apply selection:bg-blue-1 bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white;
 }
 
 h1,
@@ -53,17 +58,17 @@ h3,
 h4,
 h5,
 h6 {
-  @apply text-primary;
+  @apply text-blue;
 }
 
 mark {
-  --bg: color-mix(in srgb, var(--cr-secondary-2) 20%, transparent);
+  --bg: color-mix(in srgb, var(--cr-blue-2) 20%, transparent);
   @apply bg-[var(--bg)];
 }
 
 @media screen and (hover: hover) {
   :focus-visible {
-    @apply outline-dashed outline-2 outline-offset-4 outline-primary;
+    @apply outline-dashed outline-2 outline-offset-2 outline-blue;
   }
 }
 

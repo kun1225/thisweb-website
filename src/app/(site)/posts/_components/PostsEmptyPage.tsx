@@ -11,7 +11,7 @@ export default function PostsEmptyPage() {
       <button
         type="button"
         aria-label="回上一頁"
-        className="flex items-center gap-2 text-sm transition hover:text-primary"
+        className="hover:text-blue flex items-center gap-2 text-sm transition"
         onClick={() => router.back()}
       >
         <IoIosArrowRoundBack />

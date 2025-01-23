@@ -25,7 +25,7 @@
 
 // *** Header ***
 .g-header {
-  @apply fixed top-[var(--announcement-height,_0px)] isolate z-header w-full py-4 transition-all duration-400 c;
+  @apply c fixed top-[var(--announcement-height,_0px)] isolate z-header w-full py-4 transition-all duration-400;
 
   &.is-scrolled {
     @apply bg-white py-2 shadow-sm;
@@ -69,11 +69,11 @@
   }
 
   &__megamenu-trigger {
-    @apply relative whitespace-nowrap text-gray-500 transition-colors duration-200 hover:text-secondary;
+    @apply hover:text-blue-1 relative whitespace-nowrap text-gray-500 transition-colors duration-200;
   }
 
   &__normal-link {
-    @apply block whitespace-nowrap p-1 transition-colors;
+    @apply block whitespace-nowrap p-1;
 
     &.is-button {
       @apply px-6 py-1;
@@ -122,14 +122,14 @@
   }
 
   &__categories {
-    @apply absolute bottom-2 left-0 mx-4 flex select-none gap-1 overflow-y-auto py-2 text-gray-600 scrollbar-thumb-[#00000033] scrollbar-thumb-rounded-full scrollbar-h-1 active:scrollbar-thumb-primary;
+    @apply absolute bottom-2 left-0 mx-4 flex select-none gap-1 overflow-y-auto py-2 text-gray-600 scrollbar-thumb-[#00000033] scrollbar-thumb-rounded-full scrollbar-h-1 active:scrollbar-thumb-blue;
 
     &::-webkit-scrollbar {
       height: 0.25em;
     }
 
     &__link {
-      @apply inline-block rounded-full bg-gray-200 px-2.5 py-1 text-xs transition hover:bg-secondary hover:text-white;
+      @apply hover:bg-blue-1 inline-block rounded-full bg-gray-200 px-2.5 py-1 text-xs transition hover:text-white;
     }
   }
 }
@@ -146,11 +146,11 @@
   }
 
   &__content {
-    @apply mt-6 flex h-full flex-col overflow-y-auto pb-4 pt-header text-black text-primary c;
+    @apply c mt-6 flex h-full flex-col overflow-y-auto pb-4 pt-header text-black text-blue;
   }
 
   &__accordion {
-    @apply border-b border-primary;
+    @apply border-b border-blue;
 
     &__link {
       @apply block p-4 font-semibold;
@@ -162,7 +162,7 @@
   }
 
   &__link {
-    @apply block border-b border-primary p-4 font-semibold;
+    @apply block border-b border-blue p-4 font-semibold;
   }
 
   &__button {

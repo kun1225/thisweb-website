@@ -126,6 +126,22 @@ function leadMagnetSection() {
         name: 'formId',
         type: 'string',
       }),
+      // defineField({
+      //   title: 'Show Name Field',
+      //   name: 'isShowNameField',
+      //   type: 'boolean',
+      //   initialValue: true,
+      // }),
+      defineField({
+        title: 'Button Label',
+        name: 'btnLabel',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Success Message',
+        name: 'successMessage',
+        type: 'string',
+      }),
     ],
   });
 }

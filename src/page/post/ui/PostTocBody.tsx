@@ -20,9 +20,7 @@ export function PostTocBody({
             heading={heading}
             activeId={activeId}
             className={cn(
-              heading.id === activeId
-                ? 'hover:text-primary'
-                : 'text-gray-500 hover:text-neutral-900',
+              heading.id === activeId ? 'hover:text-blue' : 'text-gray-500 hover:text-neutral-900',
               heading.level === 3 && 'pl-3',
               'select-none text-left transition'
             )}
@@ -34,9 +32,7 @@ export function PostTocBody({
           <Accordion iconPosition="right" key={heading.id} className="">
             <AccordionTitle
               className={cn(
-                heading.id === activeId
-                  ? 'hover:text-primary'
-                  : 'text-gray-500 hover:text-neutral-900'
+                heading.id === activeId ? 'hover:text-blue' : 'text-gray-500 hover:text-neutral-900'
               )}
             >
               <HeadingButton heading={heading} activeId={activeId}>
@@ -72,7 +68,7 @@ function HeadingButton({
     <a
       className={cn(
         'select-none text-left transition',
-        heading.id === activeId ? 'hover:text-primary' : 'text-gray-500 hover:text-neutral-900',
+        heading.id === activeId ? 'hover:text-blue' : 'text-gray-500 hover:text-neutral-900',
         heading.level === 3 && 'pl-4',
         className
       )}

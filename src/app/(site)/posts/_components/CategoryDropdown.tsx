@@ -49,7 +49,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({ categories }) =
       )}
       <div className="relative text-sm">
         <button
-          className="select-none transition hover:text-primary"
+          className="hover:text-blue select-none transition"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
           <p className="inline-block pr-2">{decodedCategory}</p>
@@ -74,7 +74,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({ categories }) =
                 <Link
                   href={`/posts/page/0`}
                   onClick={() => setIsDropdownOpen(false)}
-                  className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
+                  className={`hover:text-blue block px-4 pb-1 pt-2 transition ${cn(
                     decodedCategory == '文章分類' &&
                       'pointer-events-none font-semibold text-neutral-950'
                   )}`}
@@ -93,7 +93,7 @@ const CategoryDropdown: React.FC<CategoryDropdownPropsType> = ({ categories }) =
                   <Link
                     href={`/posts/${title}/0`}
                     onClick={() => setIsDropdownOpen(false)}
-                    className={`block px-4 pb-1 pt-2 transition hover:text-primary ${cn(
+                    className={`hover:text-blue block px-4 pb-1 pt-2 transition ${cn(
                       decodedCategory == title &&
                         'pointer-events-none font-semibold text-neutral-950'
                     )}`}

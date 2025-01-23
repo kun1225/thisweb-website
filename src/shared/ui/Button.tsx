@@ -2,24 +2,24 @@ import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/src/shared/lib/utils';
 import { Slot } from '@radix-ui/react-slot';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-sm text-base transition duration-200 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap text-base transition duration-200 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default:
-          'bg-secondary text-white shadow hover:bg-secondary-2 hover:shadow-xl hover:scale-102',
+        default: 'bg-blue-1 text-white shadow hover:bg-blue-2 hover:shadow-xl hover:scale-102',
         outline:
-          'border-2 border-secondary shadow text-secondary hover:shadow-xl hover:scale-102 hover:bg-secondary-2 hover:text-white',
-        dark: 'bg-primary text-white shadow hover:shadow-xl hover:scale-102',
+          'border-2 border-blue-1 shadow text-blue-1 hover:shadow-xl hover:scale-102 hover:bg-blue-2 hover:text-white',
+        dark: 'bg-blue text-white shadow hover:shadow-xl hover:scale-102',
         link: 'underline',
       },
       size: {
         xs: 'px-0 text-sm',
-        sm: 'px-8 py-1 text-sm',
-        default: 'px-10 py-2',
-        hero: 'w-full md:w-80 px-6 py-2',
+        sm: 'px-8 py-1 text-sm rounded-sm',
+        default: 'px-10 py-2 rounded-md',
+        hero: 'w-full md:w-80 px-6 py-2 rounded-md',
       },
     },
     defaultVariants: {
@@ -33,20 +33,29 @@ export interface TypeButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  isLoading?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, TypeButtonProps>(
-  ({ className, variant, size, children, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button';
-    return (
-      <Comp
+  (
+    { className, variant, size, children, asChild = false, isLoading = false, disabled, ...props },
+    ref
+  ) => {
+    return asChild ? (
+      <Slot className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        {children}
+      </Slot>
+    ) : (
+      <button
         type="button"
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        disabled={disabled || isLoading}
         {...props}
       >
         {children}
-      </Comp>
+        {isLoading && <AiOutlineLoading className="ml-3 size-3 animate-spin" />}
+      </button>
     );
   }
 );

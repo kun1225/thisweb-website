@@ -76,7 +76,7 @@
     }
 
     &__header {
-      @apply mb-4 flex items-center justify-between gap-2 font-bold text-primary;
+      @apply text-blue mb-4 flex items-center justify-between gap-2 font-bold;
     }
 
     &__body {
@@ -100,14 +100,14 @@
     @apply rounded-md border border-gray-200 p-4 shadow md:p-8 xl:p-3.5;
 
     &__title {
-      @apply mb-2 px-1 font-bold text-primary md:mb-6 md:text-2xl xl:mb-2 xl:text-base;
+      @apply text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base;
     }
 
     &__img {
       @apply relative;
 
       &__cta {
-        @apply absolute inset-0 z-10 flex items-center justify-center bg-primary/80 text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm;
+        @apply bg-blue/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm;
       }
     }
 

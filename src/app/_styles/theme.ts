@@ -13,7 +13,7 @@ const theme = {
     secondary: '#477086',
     'secondary-2': '#2577a3',
     white: '#f9fafb',
-    'pure-white': '#ffffff',
+    'white-pure': '#ffffff',
   },
   fonts: {
     FiraCode: 'FiraCode',

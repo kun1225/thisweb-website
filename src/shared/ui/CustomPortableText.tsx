@@ -35,7 +35,7 @@ registerLanguage(template);
 const slugger = new GithubSlugger();
 
 const linkClassName =
-  'inline-block relative z-10 text-secondary duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-secondary after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
+  'inline-block relative z-10 text-blue-1 duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-blue-1 after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
 
 const calloutComponents = {
   marks: {
