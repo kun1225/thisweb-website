@@ -22,7 +22,6 @@ export async function POST(request: Request) {
       headers,
       body,
     });
-    console.log('🚀 ~ POST ~ response:', response);
 
     if (!response.ok) {
       throw new Error(`status: ${response.status}, message: ${response.statusText}`);

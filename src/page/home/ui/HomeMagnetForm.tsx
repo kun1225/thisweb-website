@@ -90,11 +90,13 @@ export function HomeMagnetForm({
 
       <div
         className={cn(
-          'invisible col-[1/2] row-[1/2] grid place-content-center rounded-lg bg-sky-100 font-bold opacity-0 transition delay-100',
+          'invisible col-[1/2] row-[1/2] flex items-center justify-center opacity-0 transition delay-100',
           isSubmitSuccessful && 'visible opacity-100'
         )}
       >
-        <p className="text-blue">{successMessage || '🎉 訂閱成功！記得檢查你的 Email 喔！'}</p>
+        <p className="px4 w-full text-pretty rounded-lg bg-sky-100 py-2 font-bold text-blue">
+          {successMessage || '🎉 訂閱成功！記得檢查你的 Email 喔！'}
+        </p>
       </div>
     </div>
   );
