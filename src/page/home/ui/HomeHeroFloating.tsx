@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useMouseParallax } from '../hooks/useMouseParallax';
+import { randomInt } from '@/src/shared/lib/utils';
 // Components
 import { ImHtmlFive2, ImCss3, ImCodepen } from 'react-icons/im';
 import { FaSquareJs, FaReact, FaCode, FaRegFileCode } from 'react-icons/fa6';
@@ -13,7 +14,7 @@ interface FloatingIconProps {
   Icon: IconType;
   x: number;
   y: number;
-  delay?: number;
+  scale?: number;
   style?: React.CSSProperties;
 }
 
@@ -21,51 +22,51 @@ interface IconConfig {
   Icon: IconType;
   left: number;
   top: number;
-  delay: number;
+  scale: number;
 }
 
 const ICONS_CONFIG: IconConfig[] = [
   {
     Icon: ImHtmlFive2,
-    left: 10,
-    top: 15,
-    delay: Math.random(),
+    left: 12,
+    top: 20,
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: ImCss3,
     left: 75,
-    top: 20,
-    delay: Math.random(),
+    top: 5,
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: FaSquareJs,
     left: 45,
-    top: 35,
-    delay: Math.random(),
+    top: 15,
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: FaReact,
-    left: 85,
+    left: 88,
     top: 55,
-    delay: Math.random(),
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: FaCode,
     left: 15,
     top: 85,
-    delay: Math.random(),
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: ImCodepen,
-    left: 75,
-    top: 76,
-    delay: Math.random(),
+    left: 76,
+    top: 88,
+    scale: randomInt(6, 10) / 10,
   },
   {
     Icon: FaRegFileCode,
     left: 45,
-    top: 80,
-    delay: Math.random(),
+    top: 95,
+    scale: randomInt(6, 10) / 10,
   },
 ];
 
@@ -83,7 +84,7 @@ export function HomeHeroFloating() {
             Icon={config.Icon}
             x={x}
             y={y}
-            delay={config.delay}
+            scale={config.scale}
             style={{ left: `${left}%`, top: `${top}%` }}
           />
         );
@@ -92,17 +93,16 @@ export function HomeHeroFloating() {
   );
 }
 
-function HomeHeroIcon({ Icon, x, y, delay = 0, style = {} }: FloatingIconProps) {
+function HomeHeroIcon({ Icon, x, y, scale = 0, style = {} }: FloatingIconProps) {
   const randomMometun = useRef<number>((Math.random() > 0.5 ? 1 : -1) * (Math.random() * 5));
 
   return (
     <motion.div
       className="absolute"
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 0.07, scale: 1 }}
+      animate={{ opacity: 0.08, scale }}
       transition={{
         duration: 0.5,
-        delay,
       }}
       style={{
         ...style,
