@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useMouseParallax } from '../hooks/useMouseParallax';
+import { useMouse } from '../../../shared/hooks/useMouse';
 import { randomInt } from '@/src/shared/lib/utils';
 // Components
 import { ImHtmlFive2, ImCss3, ImCodepen } from 'react-icons/im';
@@ -71,7 +71,8 @@ const ICONS_CONFIG: IconConfig[] = [
 ];
 
 export function HomeHeroFloating() {
-  const { x, y } = useMouseParallax();
+  const [mousePosition] = useMouse();
+  const { x, y } = mousePosition;
 
   return (
     <div className="absolute inset-0 -z-10">
@@ -82,8 +83,8 @@ export function HomeHeroFloating() {
           <HomeHeroIcon
             key={index}
             Icon={config.Icon}
-            x={x}
-            y={y}
+            x={x * 0.02}
+            y={y * 0.02}
             scale={config.scale}
             style={{ left: `${left}%`, top: `${top}%` }}
           />

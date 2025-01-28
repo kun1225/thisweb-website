@@ -28,10 +28,9 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     categories {
       _key,
       title,
-      description,
-      categoryRef-> {
-        url,
-      }
+      paragraph,
+      "defaultTitle": category->title,
+      "url": category->url,
     }[]
   },
 

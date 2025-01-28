@@ -25,7 +25,13 @@ export type TypeHome = {
     subheading: string;
     heading: string;
     headingId: string;
-    categories: {}[];
+    categories: {
+      _key: string;
+      title: string;
+      paragraph: string;
+      defaultTitle: string;
+      url: string;
+    }[];
   };
   latestPosts: {
     subheading: string;

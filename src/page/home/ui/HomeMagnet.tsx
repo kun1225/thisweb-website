@@ -1,5 +1,6 @@
 import Media from '@/src/shared/ui/Media';
 import { PortableText } from 'next-sanity';
+import { HomeHeading, HomeSubheading } from './HomeHeading';
 import { HomeMagnetForm } from './HomeMagnetForm';
 import type { TypeHome } from '@/src/types/typeHome';
 
@@ -8,21 +9,9 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
     data;
 
   return (
-    <section className="p-home__magnet bg-sky-50 px-edge-dynamic py-32 text-center">
-      {subheading ? (
-        <p className="text-blue-1 mb-2 text-xl font-bold leading-normal tracking-wide">
-          {subheading}
-        </p>
-      ) : null}
-
-      {heading ? (
-        <h2
-          id={headingId || undefined}
-          className="mb-12 text-4xl font-bold leading-snug shadow-black drop-shadow-lg md:text-5xl md:leading-tight"
-        >
-          {heading}
-        </h2>
-      ) : null}
+    <section className="bg-sky-50 px-edge-dynamic py-32 text-center">
+      <HomeSubheading subheading={subheading} />
+      <HomeHeading heading={heading} headingId={headingId} />
 
       <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:gap-edge">
         <div>
