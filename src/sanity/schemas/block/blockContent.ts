@@ -1,14 +1,6 @@
 import { defineType, defineArrayMember } from 'sanity';
-/**
- * This is the schema type for block content used in the post document type
- * Importing this type into the studio configuration's `schema` property
- * lets you reuse it in other document types with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
- */
+import { ArrowTopRightIcon, LinkIcon, ImageIcon, PlayIcon } from '@sanity/icons';
+import { FaCodepen, FaRegLightbulb } from 'react-icons/fa6';
 
 export default defineType({
   title: 'Block Content',
@@ -18,11 +10,6 @@ export default defineType({
     defineArrayMember({
       title: 'Block',
       type: 'block',
-      // Styles let you define what blocks can be marked up as. The default
-      // set corresponds with HTML tags, but you can set any title or value
-      // you want, and decide how you want to deal with it where you want to
-      // use your content.
-      //@ts-ignore
       styles: [
         { title: 'Normal', value: 'normal' },
         { title: 'H2', value: 'h2' },
@@ -34,10 +21,7 @@ export default defineType({
         { title: 'Bullet', value: 'bullet' },
         { title: 'Numbered', value: 'number' },
       ],
-      // Marks let you mark up inline text in the Portable Text Editor
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting
         decorators: [
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
@@ -51,6 +35,8 @@ export default defineType({
             name: 'link',
             type: 'object',
             title: 'URL',
+            // @ts-ignore
+            icon: ArrowTopRightIcon,
             fields: [
               {
                 title: 'URL',
@@ -63,7 +49,8 @@ export default defineType({
             name: 'internalLink',
             type: 'object',
             title: 'Internal link',
-            icon: () => 'A',
+            // @ts-ignore
+            icon: LinkIcon,
             fields: [
               {
                 name: 'reference',
@@ -76,9 +63,6 @@ export default defineType({
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
     defineArrayMember({
       name: 'CodeField',
       type: 'code',
@@ -101,13 +85,28 @@ export default defineType({
     defineArrayMember({
       name: 'Video',
       type: 'file',
-      //@ts-ignore
+      // @ts-ignore
+      icon: PlayIcon,
+      // @ts-ignore
       options: { hotspot: true },
+      preview: {
+        select: {
+          media: 'asset',
+        },
+        prepare({ media }) {
+          return {
+            title: 'Video',
+            media,
+          };
+        },
+      },
     }),
     defineArrayMember({
       type: 'image',
       //@ts-ignore
       options: { hotspot: true },
+      //@ts-ignore
+      icon: ImageIcon,
       fields: [
         {
           name: 'alt',
@@ -118,24 +117,35 @@ export default defineType({
           name: 'caption',
           type: 'string',
           title: 'Caption',
-          hidden: ({ parent }: { parent: any }) => !parent?.asset,
-          options: {
-            isHighlighted: true,
-          },
         },
       ],
+      preview: {
+        select: {
+          media: 'asset',
+          alt: 'alt',
+        },
+
+        prepare({ media, alt }) {
+          return {
+            title: alt || 'Image',
+            media,
+          };
+        },
+      },
     }),
     defineArrayMember({
       name: 'Callout',
       type: 'callout',
       title: 'Callout',
-      icon: () => '💡',
+      //@ts-ignore
+      icon: FaRegLightbulb,
     }),
     defineArrayMember({
       name: 'Codepen',
       type: 'codepen',
       title: 'Codepen',
-      icon: () => 'C',
+      //@ts-ignore
+      icon: FaCodepen,
     }),
   ],
 });

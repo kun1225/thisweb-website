@@ -1,9 +1,12 @@
 import { defineField, defineType } from 'sanity';
+import { BookIcon } from '@sanity/icons';
 
 export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+  // @ts-ignore
+  icon: BookIcon,
   fields: [
     defineField({
       name: 'title',
@@ -27,7 +30,6 @@ export default defineType({
         list: [
           { title: 'Done', value: 'done' },
           { title: 'Doing', value: 'doing' },
-          { title: 'VIP', value: 'VIP' },
         ],
       },
       initialValue: 'doing',

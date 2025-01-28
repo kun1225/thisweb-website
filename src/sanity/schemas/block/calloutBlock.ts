@@ -1,4 +1,5 @@
 import { defineType, defineArrayMember, defineField } from 'sanity';
+import { toPlainText } from 'next-sanity';
 
 export default defineType({
   title: 'Callout',
@@ -16,7 +17,7 @@ export default defineType({
       type: 'boolean',
       initialValue: false,
     }),
-    {
+    defineField({
       title: 'Text',
       name: 'text',
       type: 'array',
@@ -24,11 +25,6 @@ export default defineType({
         defineArrayMember({
           title: 'Block',
           type: 'block',
-          // Styles let you define what blocks can be marked up as. The default
-          // set corresponds with HTML tags, but you can set any title or value
-          // you want, and decide how you want to deal with it where you want to
-          // use your content.
-          //@ts-ignore
           styles: [
             { title: 'Normal', value: 'normal' },
             { title: 'H2', value: 'h2' },
@@ -40,10 +36,7 @@ export default defineType({
             { title: 'Bullet', value: 'bullet' },
             { title: 'Numbered', value: 'number' },
           ],
-          // Marks let you mark up inline text in the Portable Text Editor
           marks: {
-            // Decorators usually describe a single property – e.g. a typographic
-            // preference or highlighting
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
@@ -51,7 +44,6 @@ export default defineType({
               { title: 'Underline', value: 'underline' },
               { title: 'Strike', value: 'strike-through' },
             ],
-            // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
               {
                 title: 'URL',
@@ -96,14 +88,23 @@ export default defineType({
               name: 'caption',
               type: 'string',
               title: 'Caption',
-              hidden: ({ parent }: { parent: any }) => !parent?.asset,
-              options: {
-                isHighlighted: true,
-              },
             },
           ],
+          preview: {
+            select: {
+              image: 'asset',
+              alt: 'alt',
+              caption: 'caption',
+            },
+            prepare({ image, alt, caption }) {
+              return {
+                title: alt || 'Image',
+                media: image,
+                subtitle: caption,
+              };
+            },
+          },
         }),
-
         defineArrayMember({
           name: 'CodeField',
           type: 'code',
@@ -121,6 +122,18 @@ export default defineType({
           },
         }),
       ],
-    },
+    }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      text: 'text',
+    },
+    prepare(value) {
+      return {
+        title: value.title || 'No title',
+        subtitle: toPlainText(value.text)?.slice(0, 50) || 'No Content',
+      };
+    },
+  },
 });
