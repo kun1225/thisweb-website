@@ -5,16 +5,18 @@ import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 import { TypeVideo } from '@/src/types/typeVideo';
 
-import { urlForImg, getFile } from '@/src/shared/lib/sanity';
+import { getFile } from '@/src/shared/lib/sanity';
 
 export default function Video({
   data,
   className,
   autoPlay = true,
+  ...props
 }: {
   data: TypeVideo;
   className?: HTMLAttributes<HTMLDivElement>['className'];
   autoPlay?: boolean;
+  [key: string]: any;
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -60,6 +62,7 @@ export default function Video({
           }
         }
       }}
+      {...props}
     >
       <video
         ref={videoRef}

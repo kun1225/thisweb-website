@@ -8,14 +8,14 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
   const { heading, headingId, subheading, postsCount, posts } = data;
 
   return (
-    <section className="flex flex-col gap-edge-sm px-edge-dynamic py-32 md:flex-row">
-      <div className="basis-1/4 text-nowrap">
+    <section className="flex flex-col gap-20 px-edge-dynamic py-32 md:flex-row">
+      <div className="text-nowrap">
         <div className="relative md:sticky md:top-[calc(var(--header-height)_+_16px)]">
           <HomeSubheading subheading={subheading} />
           <HomeHeading heading={heading} headingId={headingId} />
         </div>
       </div>
-      <div className="flex basis-3/4 flex-col text-blue-1">
+      <div className="flex grow flex-col text-blue-1">
         {hasArrayValue(posts) &&
           posts.slice(0, postsCount).map((post) => (
             <article

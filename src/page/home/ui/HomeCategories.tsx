@@ -21,11 +21,11 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
       <HomeSubheading subheading={subheading} />
       <HomeHeading heading={heading} headingId={headingId} />
 
-      <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => (
           <HomeCategory key={category._key} category={category} />
         ))}
-      </div>
+      </ul>
 
       <Button asChild variant="link">
         <Link
@@ -58,7 +58,7 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
   const { elementX: x, elementY: y } = mousePosition;
 
   return (
-    <div className="group/cateogry-card relative">
+    <li className="group/cateogry-card relative">
       <article
         ref={ref}
         className="border-black-5 relative z-10 h-full rounded-lg border bg-white-pure/90 p-edge transition group-hover/cateogry-card:-translate-y-2"
@@ -86,6 +86,6 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
             `,
         }}
       />
-    </div>
+    </li>
   );
 }

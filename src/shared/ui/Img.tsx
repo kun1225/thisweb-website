@@ -16,6 +16,7 @@ export default function Img({
   quality = 80,
   loading = 'lazy',
   withPlaceholder = true,
+  ...props
 }: {
   image: TypeImage;
   alt?: string;
@@ -26,6 +27,7 @@ export default function Img({
   loading?: 'lazy' | 'eager';
   sizes?: string;
   withPlaceholder?: boolean;
+  [key: string]: any;
 }) {
   const imageId = getSanityRefId(image);
   const imageDimension = getImageDimensions(imageId);
@@ -45,7 +47,7 @@ export default function Img({
   if (!image || !imageId || !src) return null;
 
   return (
-    <picture className={cn('c-img', className)}>
+    <picture className={cn('relative block h-full w-full', className)} {...props}>
       {responsiveImageSrc ? (
         <>
           <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={src} />
@@ -59,7 +61,7 @@ export default function Img({
         width={imageWidth}
         height={imageHeight}
         alt={alt || image?.alt || 'image'}
-        className={cn('c-img__img', {
+        className={cn('h-full w-full object-contain', {
           'rounded border bg-neutral-100': withPlaceholder,
         })}
       />
