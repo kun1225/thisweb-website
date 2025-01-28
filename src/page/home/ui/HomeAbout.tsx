@@ -18,7 +18,7 @@ export function HomeAbout({ data }: { data: TypeHome['siteOwner'] }) {
         <div className="aspect-square max-w-sm">
           <Media data={media} withPlaceholder={false} className="object-fit h-full w-full" />
         </div>
-        <div className="prose">
+        <div className="prose max-w-xl lg:prose-lg">
           <PortableText value={paragraph} />
         </div>
       </div>

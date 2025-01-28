@@ -21,7 +21,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
       <HomeSubheading subheading={subheading} />
       <HomeHeading heading={heading} headingId={headingId} />
 
-      <ul className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
         {categories.map((category) => (
           <HomeCategory key={category._key} category={category} />
         ))}
@@ -61,7 +61,7 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
     <li className="group/cateogry-card relative">
       <article
         ref={ref}
-        className="border-black-5 relative z-10 h-full rounded-lg border bg-white-pure/90 p-edge transition group-hover/cateogry-card:-translate-y-2"
+        className="border-black-5 relative z-10 h-full rounded-lg border bg-white-pure/90 p-10 transition group-hover/cateogry-card:-translate-y-2 md:p-edge"
       >
         <h3 className="mb-4 text-2xl font-bold">{category.title || category.defaultTitle}</h3>
         <p className="text-pretty">{category.paragraph}</p>

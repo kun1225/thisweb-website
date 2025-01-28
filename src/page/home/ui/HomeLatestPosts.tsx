@@ -8,7 +8,7 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
   const { heading, headingId, subheading, postsCount, posts } = data;
 
   return (
-    <section className="flex flex-col gap-20 px-edge-dynamic py-32 md:flex-row">
+    <section className="flex flex-col px-edge-dynamic py-32 md:flex-row md:gap-20">
       <div className="text-nowrap">
         <div className="relative md:sticky md:top-[calc(var(--header-height)_+_16px)]">
           <HomeSubheading subheading={subheading} />
@@ -23,8 +23,8 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
               className="group relative flex items-center justify-between gap-4 border-y border-gray-200 py-6"
             >
               <div className="flex items-center gap-2">
-                <span className="block size-2 scale-0 rounded-full bg-blue-2 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100" />
-                <h3 className="-translate-x-3 transition duration-300 group-hover:translate-x-0">
+                <span className="hidden size-2 shrink-0 scale-0 rounded-full bg-blue-2 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 md:block" />
+                <h3 className="transition duration-300 md:-translate-x-3 md:group-hover:translate-x-0">
                   {post.title}
                 </h3>
               </div>
