@@ -287,6 +287,7 @@ const myPortableTextComponents = {
         </a>
       );
     },
+    highlight: (props: any) => <mark>{props.children}</mark>,
   },
 };
 

@@ -292,7 +292,7 @@ function recommendationSection() {
       defineField({
         title: 'Paragraph',
         name: 'paragraph',
-        type: 'text',
+        type: 'simpleBlock',
       }),
       defineField({
         title: 'Media',

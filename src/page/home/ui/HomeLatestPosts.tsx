@@ -28,7 +28,7 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
                   {post.title}
                 </h3>
               </div>
-              <div className="flex gap-2 text-nowrap text-xs text-gray-500">
+              <div className="flex flex-col gap-2 text-nowrap text-xs text-gray-500 md:flex-row">
                 <span>{`#${post.category.title}`}</span>
                 <time dateTime={post.publishedAt}>
                   {format(parseISO(post.publishedAt), 'yyyy / LL / dd')}

@@ -64,7 +64,7 @@ export type TypeHome = {
     subheading: string;
     heading: string;
     headingId: string;
-    paragraph: string;
+    paragraph: PortableTextBlock;
     media: TypeMedia;
     cta: TypeCta;
   };

@@ -1,5 +1,5 @@
 import Media from '@/src/shared/ui/Media';
-import { PortableText } from 'next-sanity';
+import CustomPortableText from '@/src/shared/ui/CustomPortableText';
 import { HomeHeading, HomeSubheading } from './HomeHeading';
 import { HomeMagnetForm } from './HomeMagnetForm';
 import type { TypeHome } from '@/src/types/typeHome';
@@ -17,7 +17,7 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
         <div>
           {paragraph ? (
             <div className="max-w-xl text-pretty text-left prose-p:mb-1 prose-ol:mt-4 prose-ol:list-inside prose-ol:list-decimal">
-              <PortableText value={paragraph} />
+              <CustomPortableText value={paragraph} />
             </div>
           ) : null}
           <HomeMagnetForm formId={formId} successMessage={successMessage} btnLabel={btnLabel} />
