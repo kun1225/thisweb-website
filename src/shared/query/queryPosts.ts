@@ -14,7 +14,6 @@ export const POST_QUERY = groq`*[_type == "post" && defined(slug) && defined(tit
   ...,
   "category": category->title,
   "secondLevelCategory": secondLevelCategory->title,
-  "author": author->name,
   sharing {
     shareGraphic,
   },

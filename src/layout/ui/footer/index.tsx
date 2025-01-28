@@ -8,10 +8,13 @@ const footerNav = [
 
 export function Footer() {
   return (
-    <footer className="g-footer" id="g-footer">
-      <div className="g-footer__nav">
-        <p className="g-footer__nav__title">頁面導覽</p>
-        <ul className="g-footer__nav__list">
+    <footer
+      className="flex flex-col justify-between gap-8 bg-blue p-16 text-white md:flex-row"
+      id="g-footer"
+    >
+      <div>
+        <p className="text-base">頁面導覽</p>
+        <ul className="mt-4 flex flex-col gap-2 text-sm">
           {footerNav.map(({ title, url }) => (
             <li key={title}>
               <Link href={url}>{title}</Link>
@@ -20,10 +23,12 @@ export function Footer() {
         </ul>
       </div>
 
-      <div className="g-footer__nav">
-        <p className="g-footer__nav__title">聯絡資訊</p>
-        <ul className="g-footer__nav__list">
-          <li>Email: thisweb.tech@gmail.com</li>
+      <div>
+        <p className="text-base">聯絡資訊</p>
+        <ul className="mt-4 flex flex-col gap-2 text-sm">
+          <li>
+            <Link href="mailto:thisweb.tech@gmail.com">Email: thisweb.tech@gmail.com</Link>
+          </li>
           <li>
             <Link href="https://www.instagram.com/this.web" target="_blank">
               Instagram: this.web

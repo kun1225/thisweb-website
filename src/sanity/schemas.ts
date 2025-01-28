@@ -8,7 +8,6 @@ import recommendation from './schemas/globals/recommendation';
 
 // Posts
 import post from './schemas/posts/post';
-import author from './schemas/posts/author';
 import firstLevelCategory from './schemas/posts/firstLevelCategory';
 import secondLevelCategory from './schemas/posts/secondLevelCategory';
 import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
@@ -49,7 +48,6 @@ export const schemas = [
   recommendation,
 
   post,
-  author,
   firstLevelCategory,
   secondLevelCategory,
   thirdLevelCategory,

@@ -8,7 +8,6 @@ export type TypePost = {
   slug: {
     current: string;
   };
-  author: string;
   status: string;
   category: string;
   secondLevelCategory: string;

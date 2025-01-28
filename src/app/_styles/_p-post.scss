@@ -2,7 +2,7 @@
 
 // *** Post ***
 .p-post {
-  @apply pt-4 c;
+  @apply c pb-32 pt-4;
 }
 
 // *** Post Header ***
@@ -16,10 +16,7 @@
   }
 
   &__content {
-    @apply grid flex-auto place-content-center gap-12 text-center;
-
-    min-height: 80vh;
-    min-height: 80svh;
+    @apply grid flex-auto place-content-center gap-12 py-32 text-center md:py-80;
   }
 
   &__info {
@@ -76,7 +73,7 @@
     }
 
     &__header {
-      @apply text-blue mb-4 flex items-center justify-between gap-2 font-bold;
+      @apply mb-4 flex items-center justify-between gap-2 font-bold text-blue;
     }
 
     &__body {
@@ -100,14 +97,14 @@
     @apply rounded-md border border-gray-200 p-4 shadow md:p-8 xl:p-3.5;
 
     &__title {
-      @apply text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base;
+      @apply mb-2 px-1 font-bold text-blue md:mb-6 md:text-2xl xl:mb-2 xl:text-base;
     }
 
     &__img {
       @apply relative;
 
       &__cta {
-        @apply bg-blue/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm;
+        @apply absolute inset-0 z-10 flex items-center justify-center bg-blue/80 text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm;
       }
     }
 
