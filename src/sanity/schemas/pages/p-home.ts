@@ -219,6 +219,8 @@ function latestPostsSection() {
         title: 'Posts Count',
         name: 'postsCount',
         type: 'number',
+        validation: (Rule) => Rule.required().min(6).max(20),
+        description: 'Minimum 6, maximum 20',
       }),
     ],
   });

@@ -1,6 +1,7 @@
 import { HomeHero } from './HomeHero';
 import { HomeMagnet } from './HomeMagnet';
 import { HomeCategories } from './HomeCategories';
+import { HomeLatestPosts } from './HomeLatestPosts';
 
 import { TypeHome } from '@/src/types/typeHome';
 
@@ -12,6 +13,7 @@ export function PageHome({ data }: { data: TypeHome }) {
       <HomeHero data={hero} />
       <HomeMagnet data={leadMagnet} />
       <HomeCategories data={categoriesNav} />
+      <HomeLatestPosts data={latestPosts} />
     </>
   );
 }

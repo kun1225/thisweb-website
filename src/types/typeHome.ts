@@ -37,7 +37,20 @@ export type TypeHome = {
     subheading: string;
     heading: string;
     headingId: string;
-    posts: {}[];
+    postsCount: number;
+    posts: {
+      _key: string;
+      title: string;
+      description: string;
+      slug: {
+        current: string;
+      };
+      publishedAt: string;
+      category: {
+        title: string;
+        url: string;
+      };
+    }[];
   };
   siteOwner: {
     subheading: string;
