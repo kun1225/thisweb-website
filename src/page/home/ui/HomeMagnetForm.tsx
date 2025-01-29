@@ -70,7 +70,7 @@ export function HomeMagnetForm({
         <div className="relative grow-[4]">
           <p
             className={cn(
-              'absolute -top-1 -translate-y-full text-xs text-red-400 transition',
+              'absolute -top-1 -translate-y-full text-xs text-red-400 transition duration-300',
               errors?.name?.message ? 'visible opacity-100' : 'invisible opacity-0'
             )}
           >{`*${errors?.name?.message || ''}`}</p>
@@ -83,18 +83,20 @@ export function HomeMagnetForm({
           />
         </div>
 
-        <Button type="submit" isLoading={isSubmitting} className="grow-[1]">
-          {btnLabel || '免費訂閱'}
-        </Button>
+        <div className="grow-[1]">
+          <Button type="submit" isLoading={isSubmitting}>
+            {btnLabel || '免費訂閱'}
+          </Button>
+        </div>
       </form>
 
       <div
         className={cn(
-          'invisible col-[1/2] row-[1/2] flex items-center justify-center opacity-0 transition delay-100',
+          'invisible col-[1/2] row-[1/2] flex items-center justify-center opacity-0 transition delay-300 duration-300',
           isSubmitSuccessful && 'visible opacity-100'
         )}
       >
-        <p className="px4 w-full text-pretty rounded-lg bg-sky-100 py-2 font-bold text-blue">
+        <p className="w-full text-pretty rounded-lg border border-gray-200 bg-white p-4 font-bold text-blue shadow-lg">
           {successMessage || '🎉 訂閱成功！記得檢查你的 Email 喔！'}
         </p>
       </div>
