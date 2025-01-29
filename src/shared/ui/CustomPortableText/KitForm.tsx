@@ -18,7 +18,7 @@ const subscribeSchema = z.object({
 type SubscribeFormData = z.infer<typeof subscribeSchema>;
 
 export function KitForm(source: any) {
-  const { title, paragraph, media, formId, btnLabel, successMessage } = source.value;
+  const { title, subtitle, paragraph, media, formId, btnLabel, successMessage } = source.value;
 
   const hasMedia = media?.video?.file || media?.image?.asset;
 
@@ -53,11 +53,16 @@ export function KitForm(source: any) {
           hasMedia ? 'basis-1/2 md:text-left' : ''
         )}
       >
-        <p
-          className="text-4xl font-bold leading-normal drop-shadow"
-          dangerouslySetInnerHTML={{ __html: formatBrNewLine(title) }}
-        />
-        <p dangerouslySetInnerHTML={{ __html: formatBrNewLine(paragraph) }} />
+        {subtitle ? <p className="font-bold text-blue-1">{subtitle}</p> : null}
+
+        {title ? (
+          <p
+            className="text-4xl font-bold leading-normal drop-shadow"
+            dangerouslySetInnerHTML={{ __html: formatBrNewLine(title) }}
+          />
+        ) : null}
+
+        {paragraph ? <p dangerouslySetInnerHTML={{ __html: formatBrNewLine(paragraph) }} /> : null}
 
         <div className="grid grow">
           <form

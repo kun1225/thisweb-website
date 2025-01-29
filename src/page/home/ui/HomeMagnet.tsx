@@ -9,7 +9,7 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
     data;
 
   return (
-    <section className="bg-sky-50 px-edge-dynamic py-32 text-center">
+    <section className="bg-blue-5 px-edge-dynamic py-32 text-center">
       <HomeSubheading subheading={subheading} />
       <HomeHeading heading={heading} headingId={headingId} />
 

@@ -135,6 +135,11 @@ export default defineType({
           rows: 2,
         }),
         defineField({
+          title: 'Subtitle',
+          name: 'subtitle',
+          type: 'string',
+        }),
+        defineField({
           title: 'Paragraph',
           name: 'paragraph',
           type: 'text',
