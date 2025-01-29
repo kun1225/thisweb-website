@@ -24,7 +24,7 @@
   }
 
   &__title {
-    @apply text-3xl font-semibold drop-shadow-md md:text-4xl md:leading-relaxed;
+    @apply text-pretty text-3xl font-semibold drop-shadow-md md:text-4xl md:leading-relaxed;
   }
 
   &__author {
