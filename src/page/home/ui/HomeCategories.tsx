@@ -29,7 +29,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
 
       <Button asChild variant="link">
         <Link
-          href="/posts/0"
+          href="/posts/page/0"
           aria-label="閱讀全部文章"
           title="閱讀全部文章"
           className="mt-16 text-black-light"

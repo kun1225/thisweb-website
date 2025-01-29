@@ -1,9 +1,12 @@
 import { defineField, defineType } from 'sanity';
+import { TagIcon } from '@sanity/icons';
 
 export default defineType({
   name: 'category',
   title: 'Category',
   type: 'document',
+  //@ts-ignore
+  icon: TagIcon,
   fields: [
     defineField({
       name: 'title',

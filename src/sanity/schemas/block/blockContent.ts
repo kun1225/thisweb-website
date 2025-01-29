@@ -1,5 +1,5 @@
-import { defineType, defineArrayMember } from 'sanity';
-import { ArrowTopRightIcon, LinkIcon, ImageIcon, PlayIcon } from '@sanity/icons';
+import { defineType, defineArrayMember, defineField } from 'sanity';
+import { ArrowTopRightIcon, LinkIcon, ImageIcon, PlayIcon, EnvelopeIcon } from '@sanity/icons';
 import { FaCodepen, FaRegLightbulb } from 'react-icons/fa6';
 
 export default defineType({
@@ -64,44 +64,6 @@ export default defineType({
       },
     }),
     defineArrayMember({
-      name: 'CodeField',
-      type: 'code',
-      title: 'Code Field',
-      options: {
-        language: 'javascript',
-        languageAlternatives: [
-          { title: 'Javascript', value: 'javascript' },
-          { title: 'Typescript', value: 'typescript' },
-          { title: 'HTML', value: 'html' },
-          { title: 'CSS', value: 'css' },
-          { title: 'Bash', value: 'bash' },
-          { title: 'jsx', value: 'jsx' },
-          { title: 'tsx', value: 'tsx' },
-          { title: 'template', value: 'template' },
-        ],
-        withFilename: true,
-      },
-    }),
-    defineArrayMember({
-      name: 'Video',
-      type: 'file',
-      // @ts-ignore
-      icon: PlayIcon,
-      // @ts-ignore
-      options: { hotspot: true },
-      preview: {
-        select: {
-          media: 'asset',
-        },
-        prepare({ media }) {
-          return {
-            title: 'Video',
-            media,
-          };
-        },
-      },
-    }),
-    defineArrayMember({
       type: 'image',
       //@ts-ignore
       options: { hotspot: true },
@@ -134,11 +96,98 @@ export default defineType({
       },
     }),
     defineArrayMember({
+      name: 'Video',
+      type: 'file',
+      // @ts-ignore
+      icon: PlayIcon,
+      // @ts-ignore
+      options: { hotspot: true },
+      preview: {
+        select: {
+          media: 'asset',
+        },
+        prepare({ media }) {
+          return {
+            title: 'Video',
+            media,
+          };
+        },
+      },
+    }),
+    defineArrayMember({
       name: 'Callout',
       type: 'callout',
       title: 'Callout',
       //@ts-ignore
       icon: FaRegLightbulb,
+    }),
+    defineArrayMember({
+      title: 'Kit Form',
+      name: 'Kit Form',
+      type: 'object',
+      // @ts-ignore
+      icon: EnvelopeIcon,
+      fields: [
+        defineField({
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          title: 'Paragraph',
+          name: 'paragraph',
+          type: 'text',
+        }),
+        defineField({
+          title: 'Form Id',
+          name: 'formId',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          title: 'Button Label',
+          name: 'btnLabel',
+          type: 'string',
+          description: 'Default: 免費領取',
+        }),
+        defineField({
+          title: 'Success Message',
+          name: 'successMessage',
+          type: 'string',
+          description: 'Default: 已送出！記得檢查你的 Email 喔！',
+        }),
+      ],
+      preview: {
+        select: {
+          title: 'title',
+          formId: 'formId',
+        },
+        prepare({ title, formId }) {
+          return {
+            title: title || 'Kit Form - No Title',
+            subtitle: formId,
+          };
+        },
+      },
+    }),
+    defineArrayMember({
+      name: 'CodeField',
+      type: 'code',
+      title: 'Code Field',
+      options: {
+        language: 'javascript',
+        languageAlternatives: [
+          { title: 'Javascript', value: 'javascript' },
+          { title: 'Typescript', value: 'typescript' },
+          { title: 'HTML', value: 'html' },
+          { title: 'CSS', value: 'css' },
+          { title: 'Bash', value: 'bash' },
+          { title: 'jsx', value: 'jsx' },
+          { title: 'tsx', value: 'tsx' },
+          { title: 'template', value: 'template' },
+        ],
+        withFilename: true,
+      },
     }),
     defineArrayMember({
       name: 'Codepen',
