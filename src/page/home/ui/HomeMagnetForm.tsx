@@ -8,12 +8,12 @@ import { subscribeKit } from '@/src/shared/api/subscribeKit';
 // Components
 import { Button } from '@/src/shared/ui/Button';
 
-const subscribeSchema = z.object({
-  name: z.string().min(2, '名字至少需要 2 個字').max(50, '名字不能超過 50 個字'),
-  email: z.string().min(1, 'Email 是必填的').email('請輸入有效的 Email 地址'),
+export const subscribeSchema = z.object({
+  name: z.string().min(1, '請填入名稱').max(50, '名字不能超過 50 個字'),
+  email: z.string().min(1, '請填入 Email').email('請輸入有效的 Email 地址'),
 });
 
-type SubscribeFormData = z.infer<typeof subscribeSchema>;
+export type SubscribeFormData = z.infer<typeof subscribeSchema>;
 
 export function HomeMagnetForm({
   formId,

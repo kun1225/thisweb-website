@@ -123,7 +123,7 @@ export default defineType({
     }),
     defineArrayMember({
       title: 'Kit Form',
-      name: 'Kit Form',
+      name: 'kitForm',
       type: 'object',
       // @ts-ignore
       icon: EnvelopeIcon,
@@ -131,12 +131,18 @@ export default defineType({
         defineField({
           title: 'Title',
           name: 'title',
-          type: 'string',
+          type: 'text',
+          rows: 2,
         }),
         defineField({
           title: 'Paragraph',
           name: 'paragraph',
           type: 'text',
+        }),
+        defineField({
+          title: 'Media',
+          name: 'media',
+          type: 'media',
         }),
         defineField({
           title: 'Form Id',
@@ -165,7 +171,7 @@ export default defineType({
         prepare({ title, formId }) {
           return {
             title: title || 'Kit Form - No Title',
-            subtitle: formId,
+            subtitle: `Form Id: ${formId}`,
           };
         },
       },

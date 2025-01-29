@@ -23,6 +23,7 @@ const config: Config = {
         'blue-2': 'rgba(var(--cr-blue-2))',
         'blue-3': 'rgba(var(--cr-blue-3))',
         'blue-4': 'rgba(var(--cr-blue-4))',
+        'blue-5': 'rgba(var(--cr-blue-5))',
         // white
         white: 'rgba(var(--cr-white))',
         'white-pure': 'rgba(var(--cr-white-pure))',

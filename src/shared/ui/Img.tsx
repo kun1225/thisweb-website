@@ -47,7 +47,7 @@ export default function Img({
   if (!image || !imageId || !src) return null;
 
   return (
-    <picture className={cn('relative block h-full w-full', className)} {...props}>
+    <picture className={cn('relative block w-full', className)} {...props}>
       {responsiveImageSrc ? (
         <>
           <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={src} />

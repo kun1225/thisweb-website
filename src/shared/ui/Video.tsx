@@ -67,7 +67,7 @@ export default function Video({
       <video
         ref={videoRef}
         preload="auto"
-        controls={false}
+        controls={!autoPlay}
         loop
         muted={autoPlay}
         playsInline
