@@ -1,11 +1,11 @@
 // Hooks & Libs
 import { HTMLAttributes } from 'react';
-import { imgBuilder } from '@/src/shared/lib/sanity';
-import { cn } from '@/src/shared/lib/utils';
 // Components
 import Image from 'next/image';
 // Type
 import { TypeImage } from '@/src/types/typeImage';
+import { imgBuilder } from '@/src/shared/lib/sanity';
+import { cn } from '@/src/shared/lib/utils';
 
 export default function Img({
   image,
@@ -62,7 +62,7 @@ export default function Img({
         height={imageHeight}
         alt={alt || image?.alt || 'image'}
         className={cn('h-full w-full object-contain', {
-          'rounded border bg-neutral-100': withPlaceholder,
+          'rounded bg-neutral-100': withPlaceholder,
         })}
       />
     </picture>

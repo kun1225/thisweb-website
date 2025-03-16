@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import type { TypeHome } from '@/src/types/typeHome';
 import { type TypeMouseState, useMouse } from '@/src/shared/hooks/useMouse';
 import { Button } from '@/src/shared/ui/Button';
-import type { TypeHome } from '@/src/types/typeHome';
 import { HomeHeading, HomeSubheading } from './HomeHeading';
 import { motion } from 'motion/react';
 
@@ -13,7 +13,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const [mousePosition, ref] = useMouse();
 
   return (
-    <section className="group relative px-edge-dynamic py-32 text-center" ref={ref}>
+    <section className="c group px-edge-dynamic relative py-32 text-center" ref={ref}>
       <HomeCategoriesBg mousePosition={mousePosition} />
 
       <HomeSubheading subheading={subheading} />
@@ -30,7 +30,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
           href="/posts/page/0"
           aria-label="閱讀全部文章"
           title="閱讀全部文章"
-          className="mt-16 text-black-light"
+          className="text-black-light mt-16"
         >
           或是，閱讀全部文章
         </Link>
@@ -44,7 +44,7 @@ function HomeCategoriesBg({ mousePosition }: { mousePosition: TypeMouseState }) 
 
   return (
     <motion.div
-      className="absolute -left-48 -top-48 -z-10 size-96 rounded-full bg-sky-50 opacity-0 blur-xl transition ease-linear group-hover:opacity-100"
+      className="absolute -top-48 -left-48 -z-10 size-96 rounded-full bg-sky-50 opacity-0 blur-xl transition ease-linear group-hover:opacity-100"
       style={{ x, y }}
     />
   );
@@ -59,7 +59,7 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
     <li className="group/cateogry-card relative">
       <article
         ref={ref}
-        className="border-black-5 relative z-10 h-full rounded-lg border bg-white-pure/90 p-10 transition group-hover/cateogry-card:-translate-y-2 md:p-edge"
+        className="border-black-5 bg-white-pure/90 md:p-edge relative z-10 h-full rounded-lg border p-10 transition group-hover/cateogry-card:-translate-y-2"
       >
         <h3 className="mb-4 text-2xl font-bold">{category.title || category.defaultTitle}</h3>
         <p className="text-pretty">{category.paragraph}</p>

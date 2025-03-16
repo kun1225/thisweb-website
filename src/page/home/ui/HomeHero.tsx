@@ -1,31 +1,31 @@
 // Components
-import { Button } from '@/src/shared/ui/Button';
-import Media from '@/src/shared/ui/Media';
 import Link from 'next/link';
-import { HomeHeroFloating } from './HomeHeroFloating';
-// Utils
-import { formatBrNewLine } from '@/src/shared/lib/utils';
 // Types
 import type { TypeHome } from '@/src/types/typeHome';
+// Utils
+import { formatBrNewLine } from '@/src/shared/lib/utils';
+import { Button } from '@/src/shared/ui/Button';
+import Media from '@/src/shared/ui/Media';
+import { HomeHeroFloating } from './HomeHeroFloating';
 
 export function HomeHero({ data }: { data: TypeHome['hero'] }) {
   const { heading, headingId, paragraph, subheading, cta, media } = data;
 
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center gap-10 text-pretty px-edge-dynamic py-24 md:max-h-[92vh] md:flex-row md:gap-edge md:py-56">
+    <section className="c md:gap-edge relative z-10 flex flex-col items-center justify-center gap-10 py-24 text-pretty md:max-h-[92vh] md:flex-row md:py-56">
       <HomeHeroFloating />
 
       <div className="max-w-2xl text-center md:text-left">
         {subheading ? (
           <p
-            className="mb-3 text-sm leading-normal text-black-light"
+            className="text-black-light mb-3 text-sm leading-normal"
             dangerouslySetInnerHTML={{ __html: formatBrNewLine(subheading) }}
           />
         ) : null}
 
         {heading ? (
           <h1
-            className="text-5xl font-bold leading-snug shadow-blue drop-shadow-lg md:text-6xl md:leading-tight"
+            className="shadow-blue text-5xl leading-snug font-bold drop-shadow-lg md:text-6xl md:leading-tight"
             id={headingId || undefined}
             dangerouslySetInnerHTML={{ __html: formatBrNewLine(heading) }}
           />
@@ -45,7 +45,7 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
         ) : null}
       </div>
 
-      <Media data={media} className="max-w-xs" />
+      <Media data={media} className="max-w-xs drop-shadow-sm" />
     </section>
   );
 }
