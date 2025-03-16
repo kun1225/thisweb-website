@@ -1,13 +1,13 @@
 'use client';
 
 // Hooks & Libs
-import { usePathname } from 'next/navigation';
-import { cn } from '@/src/shared/lib/utils';
 // Components
 import Link from 'next/link';
-import { Button } from '@/src/shared/ui/Button';
+import { usePathname } from 'next/navigation';
 // Types
 import type { TypeNormalLink } from '@/src/types/typeGlobalHeader';
+import { cn } from '@/src/shared/lib/utils';
+import { Button } from '@/src/shared/ui/Button';
 
 export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onClick: () => void }) {
   const pathname = usePathname();
@@ -27,7 +27,11 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
       <Link
         href={linkUrl}
         onClick={onClick}
-        className={cn('g-header__normal-link', className, isButton && 'is-button')}
+        className={cn(
+          'g-header__normal-link block p-1 whitespace-nowrap',
+          className,
+          isButton && 'is-button'
+        )}
       >
         {linkText}
       </Link>

@@ -1,8 +1,8 @@
-import { hasArrayValue } from '@/src/shared/lib/utils';
-import { HomeHeading, HomeSubheading } from './HomeHeading';
 import Link from 'next/link';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 import type { TypeHome } from '@/src/types/typeHome';
 import { format, parseISO } from 'date-fns';
+import { HomeHeading, HomeSubheading } from './HomeHeading';
 
 export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
   const { heading, headingId, subheading, postsCount, posts } = data;
@@ -17,9 +17,9 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
       </div>
       <div className="flex grow flex-col text-blue-1">
         {hasArrayValue(posts) &&
-          posts.slice(0, postsCount).map((post) => (
+          posts.slice(0, postsCount).map((post, i) => (
             <article
-              key={post._key}
+              key={i}
               className="group relative flex items-center justify-between gap-4 border-y border-gray-200 py-6"
             >
               <div className="flex items-center gap-2">

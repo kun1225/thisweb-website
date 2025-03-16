@@ -1,8 +1,7 @@
-import type { Config } from 'tailwindcss';
-import plugin from 'tailwindcss/plugin';
 import theme from './src/app/_styles/theme';
+import type { Config } from 'tailwindcss';
 
-const config: Config = {
+const config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     screens: theme.screens,
@@ -16,24 +15,6 @@ const config: Config = {
       'lower-alpha': 'lower-alpha',
     },
     extend: {
-      colors: {
-        // brand
-        blue: 'rgba(var(--cr-blue))',
-        'blue-1': 'rgba(var(--cr-blue-1))',
-        'blue-2': 'rgba(var(--cr-blue-2))',
-        'blue-3': 'rgba(var(--cr-blue-3))',
-        'blue-4': 'rgba(var(--cr-blue-4))',
-        'blue-5': 'rgba(var(--cr-blue-5))',
-        // white
-        white: 'rgba(var(--cr-white))',
-        'white-pure': 'rgba(var(--cr-white-pure))',
-        // black
-        black: 'rgba(var(--cr-black))',
-        'black-pure': 'rgba(var(--cr-black-pure))',
-        'black-light': 'rgba(var(--cr-black-light))',
-        // other
-        header: 'var(--bg-header)',
-      },
       zIndex: {
         toast: 'var(--z-toast)',
         header: 'var(--z-header)',
@@ -64,8 +45,8 @@ const config: Config = {
         header: 'var(--header-height)',
       },
       fontFamily: {
-        sans: ['var(--font-NotoSansTC), sans-serif'],
-        mono: ['var(--font-FiraCode), monospace'],
+        sans: ['var(--font-NotoSansTC)', 'sans-serif'],
+        mono: ['var(--font-FiraCode)', 'monospace'],
       },
       fontSize: {
         body: ['1.05rem', '1.55'],
@@ -102,21 +83,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    plugin(function tailwindcss({ addComponents }) {
-      addComponents({
-        '.c': {
-          'padding-left': 'var(--s-edge-dynamic)',
-          'padding-right': 'var(--s-edge-dynamic)',
-        },
-      });
-    }),
-    require('tailwind-scrollbar')({
-      nocompatible: true,
-      preferredStrategy: 'pseudoelements',
-    }),
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animate'),
-  ],
-};
+} satisfies Config;
+
 export default config;

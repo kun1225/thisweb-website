@@ -1,11 +1,9 @@
-// Libs
-import { cn } from '@/src/shared/lib/utils';
+import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
 import { getHeaderData } from '@/src/shared/api';
+import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
-// Fonts
-import { Noto_Sans_TC, Fira_Code } from 'next/font/google';
-// Style
-import './_styles/globals.scss';
+import './_styles/globals-scss.scss';
+import './globals.css';
 
 const NotoSansTC = Noto_Sans_TC({
   weight: ['400', '600'],
@@ -31,13 +29,19 @@ export default async function Layout({ children }: { children: React.ReactNode }
   const headerContent = await getHeaderData();
 
   return (
-    <html lang="zh-TW">
+    <html lang="zh-TW" className="group-html min-h-full scroll-p-[120px] scroll-smooth">
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
       </head>
-      <body className={`${cn(NotoSansTC.variable, FiraCode.variable)}`}>
+      <body
+        className={cn(
+          'selection:bg-blue-1 min-h-full bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white',
+          NotoSansTC.variable,
+          FiraCode.variable
+        )}
+      >
         <RootLayout headerContent={headerContent}>{children}</RootLayout>
       </body>
     </html>

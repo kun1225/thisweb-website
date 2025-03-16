@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 import { cn } from '@/src/shared/lib/utils';
+import { motion } from 'motion/react';
 
 interface Rotate3dEffectProps {
   children: React.ReactNode;

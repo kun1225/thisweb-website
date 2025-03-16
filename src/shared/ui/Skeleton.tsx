@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/src/shared/lib/utils';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const transition = {
   type: 'spring',

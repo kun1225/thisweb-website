@@ -1,19 +1,20 @@
 'use client';
+
 // Hooks & Libs
 import { useEffect } from 'react';
-import { hasArrayValue } from '@/src/shared/lib/utils';
-// Components
-import { MobileMenuAccordion } from './MobileMenuAccordion';
-import { MobileMenuNormalLink } from './MobileMenuNormalLink';
-import { MobileMenuCategoryLink } from './MobileMenuCategoryLink';
-import { Button } from '@/src/shared/ui/Button';
+import Link from 'next/link';
 // Type
 import {
   TypeGlobalHeaderContent,
   TypeMegamenu,
   TypeNormalLink,
 } from '@/src/types/typeGlobalHeader';
-import Link from 'next/link';
+import { hasArrayValue } from '@/src/shared/lib/utils';
+import { Button } from '@/src/shared/ui/Button';
+// Components
+import { MobileMenuAccordion } from './MobileMenuAccordion';
+import { MobileMenuCategoryLink } from './MobileMenuCategoryLink';
+import { MobileMenuNormalLink } from './MobileMenuNormalLink';
 
 export function MobileMenuContent({
   headerContent,
@@ -43,7 +44,7 @@ export function MobileMenuContent({
   }, [isMobileMenuOpen]);
 
   return (
-    <ul className="g-header__mobile-menu__content">
+    <ul className="mt-6 flex h-full flex-col overflow-y-auto px-4 pt-[var(--header-height)] pb-4 text-blue-600">
       {hasArrayValue(normalLinksContent)
         ? normalLinksContent?.map((link) => (
             <MobileMenuNormalLink key={link._key} link={link} closeMobileMenu={closeMobileMenu} />
@@ -76,7 +77,7 @@ export function MobileMenuContent({
 
       {hasArrayValue(buttonLinksContent) &&
         buttonLinksContent?.map((link) => (
-          <li className="g-header__mobile-menu__button" key={link._key}>
+          <li className="mt-4" key={link._key}>
             <Button asChild variant="dark">
               <Link
                 href={link.linkUrl}

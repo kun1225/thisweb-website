@@ -1,14 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useMouse } from '../../../shared/hooks/useMouse';
 import { randomInt } from '@/src/shared/lib/utils';
-// Components
-import { ImHtmlFive2, ImCss3, ImCodepen } from 'react-icons/im';
-import { FaSquareJs, FaReact, FaCode, FaRegFileCode } from 'react-icons/fa6';
-
 import type { IconType } from 'react-icons';
+import { FaCode, FaReact, FaRegFileCode, FaSquareJs } from 'react-icons/fa6';
+// Components
+import { ImCodepen, ImCss3, ImHtmlFive2 } from 'react-icons/im';
+import { useMouse } from '../../../shared/hooks/useMouse';
+import { motion } from 'motion/react';
 
 interface FloatingIconProps {
   Icon: IconType;

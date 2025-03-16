@@ -1,4 +1,4 @@
-@import '__mixins.scss';
+@use '__mixins.scss';
 
 #main,
 #g-footer {
@@ -25,8 +25,6 @@
 
 // *** Header ***
 .g-header {
-  @apply c fixed top-[var(--announcement-height,_0px)] isolate z-header w-full py-4 transition-all duration-400;
-
   &.is-scrolled {
     @apply bg-white py-2 shadow-sm;
 
@@ -40,41 +38,7 @@
     }
   }
 
-  &__container {
-    @apply flex items-center justify-between;
-  }
-
-  &__logo {
-    @apply flex items-center gap-4;
-
-    &__img {
-      @apply origin-left -translate-y-[1px] scale-100 transition duration-400;
-    }
-
-    &__text {
-      @apply translate-x-0 font-mono font-semibold transition-transform duration-400;
-    }
-  }
-
-  &__desktop {
-    @apply hidden text-sm md:flex md:gap-6;
-  }
-
-  &__mobile {
-    @apply grid place-content-center md:hidden;
-  }
-
-  &__overlay {
-    @apply fixed left-0 top-0 z-10 h-screen w-full;
-  }
-
-  &__megamenu-trigger {
-    @apply hover:text-blue-1 relative whitespace-nowrap text-gray-500 transition-colors duration-200;
-  }
-
   &__normal-link {
-    @apply block whitespace-nowrap p-1;
-
     &.is-button {
       @apply px-6 py-1;
     }
@@ -83,8 +47,6 @@
 
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
-  @apply pointer-events-none fixed top-[calc(var(--header-height)_+_16px)] z-10 grid max-h-[80vh] scale-50 grid-cols-3 overflow-auto rounded-md bg-header p-4 opacity-0 shadow-[0_0_28px_rgba(0,0,0,.1)] transition duration-300;
-
   &.is-active {
     @apply pointer-events-auto scale-100 opacity-100 duration-400;
 
@@ -110,34 +72,21 @@
     right: min(calc(3 * var(--s-edge-dynamic)), 15vw);
   }
 
-  &__item {
-    @apply opacity-0 transition-opacity delay-0 duration-400;
-  }
-
   &__link {
-    @apply block h-full rounded-md p-4 transition duration-200 hover:bg-slate-300;
     &:hover {
       --tw-bg-opacity: 0.2;
     }
   }
 
   &__categories {
-    @apply absolute bottom-2 left-0 mx-4 flex select-none gap-1 overflow-y-auto py-2 text-gray-600 scrollbar-thumb-[#00000033] scrollbar-thumb-rounded-full scrollbar-h-1 active:scrollbar-thumb-blue;
-
     &::-webkit-scrollbar {
       height: 0.25em;
-    }
-
-    &__link {
-      @apply hover:bg-blue-1 inline-block rounded-full bg-gray-200 px-2.5 py-1 text-xs transition hover:text-white;
     }
   }
 }
 
 // *** Mobile Menu ***
 .g-header__mobile-menu {
-  @apply fixed left-0 top-0 -z-10 h-svh w-full bg-header;
-
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   transition: 0.6s var(--t-circ-ease-in-out);
 
@@ -146,23 +95,23 @@
   }
 
   &__content {
-    @apply c mt-6 flex h-full flex-col overflow-y-auto pb-4 pt-header text-black text-blue;
+    @apply pt-header text-blue mt-6 flex h-full flex-col overflow-y-auto pb-4;
   }
 
   &__accordion {
-    @apply border-b border-blue;
+    @apply border-blue border-b;
 
     &__link {
       @apply block p-4 font-semibold;
     }
 
     &__list {
-      @apply mb-8 ml-6 mt-2 flex flex-col gap-2;
+      @apply mt-2 mb-8 ml-6 flex flex-col gap-2;
     }
   }
 
   &__link {
-    @apply block border-b border-blue p-4 font-semibold;
+    @apply border-blue block border-b p-4 font-semibold;
   }
 
   &__button {
@@ -183,12 +132,12 @@
   }
 
   &::after {
-    @apply left-0 top-0;
+    @apply top-0 left-0;
     animation: reverse-top-line 0.6s ease-in-out forwards;
   }
 
   &::before {
-    @apply bottom-0 right-0 w-[80%];
+    @apply right-0 bottom-0 w-[80%];
     animation: reverse-bottom-line 0.6s ease-in-out forwards;
   }
 

@@ -1,10 +1,10 @@
 // Libs
-import { getPostsUrl } from '../../../../lib/getPostsUrl';
 // Components
 import Link from 'next/link';
-import { Accordion, AccordionTitle, AccordionContent } from '@/src/shared/ui/Accordion';
 // Types
 import { TypeCategory } from '@/src/types/typeGlobalHeader';
+import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
+import { getPostsUrl } from '../../../../lib/getPostsUrl';
 
 export function MobileMenuAccordion({
   category,
@@ -14,11 +14,11 @@ export function MobileMenuAccordion({
   closeMobileMenu: () => void;
 }) {
   return (
-    <li className="g-header__mobile-menu__accordion">
+    <li className="mb-2">
       <Accordion iconPosition="right" initExpanded={false}>
         <AccordionTitle className="items-center">
           <Link
-            className="g-header__mobile-menu__accordion__link"
+            className="block py-3 text-lg font-medium transition-colors duration-200 hover:text-blue-800"
             href={getPostsUrl(category.url)}
             aria-label={`前往${category.title}頁面`}
             onClick={closeMobileMenu}
@@ -28,12 +28,12 @@ export function MobileMenuAccordion({
           </Link>
         </AccordionTitle>
         <AccordionContent>
-          <ul className="g-header__mobile-menu__accordion__list">
+          <ul className="mt-1 mb-2 space-y-2 pl-4">
             {category.secondLevelCategories
               ? category.secondLevelCategories.map((secondLevelCategory) => (
                   <li key={secondLevelCategory.title}>
                     <Link
-                      className="block"
+                      className="block py-2 text-base transition-colors duration-200 hover:text-blue-800"
                       href={getPostsUrl(secondLevelCategory.url)}
                       aria-label={`前往${secondLevelCategory.title}頁面`}
                       onClick={closeMobileMenu}

@@ -1,7 +1,7 @@
-@import '__mixins.scss';
+@use '__mixins.scss';
 
 .p-posts {
-  @apply c mx-auto max-w-3xl py-16 2xl:px-0;
+  @apply mx-auto max-w-3xl py-16;
 
   min-height: 80vh;
   min-height: 80svh;
@@ -26,7 +26,7 @@
     }
 
     &__info {
-      @apply mb-2 mt-1 flex gap-2 text-xs italic text-gray-500;
+      @apply mt-1 mb-2 flex gap-2 text-xs text-gray-500 italic;
     }
 
     &__link {

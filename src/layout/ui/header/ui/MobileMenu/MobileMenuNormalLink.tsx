@@ -14,7 +14,7 @@ export function MobileMenuNormalLink({
     <li>
       <Link
         href={link.linkUrl}
-        className="g-header__mobile-menu__link"
+        className="block py-3 text-lg font-medium transition-colors duration-200 hover:text-blue-800"
         onClick={closeMobileMenu}
         aria-label={`前往${link.linkText}頁面`}
       >

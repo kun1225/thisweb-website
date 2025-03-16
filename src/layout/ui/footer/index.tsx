@@ -8,7 +8,10 @@ const footerNav = [
 
 export function Footer() {
   return (
-    <footer className="bg-blue px-edge-dynamic pb-4 pt-16 text-white" id="g-footer">
+    <footer
+      className="bg-blue px-edge-dynamic pt-16 pb-4 text-white transition-all duration-400"
+      id="g-footer"
+    >
       <div className="flex flex-col justify-between gap-8 md:flex-row">
         <div>
           <p className="text-base">頁面導覽</p>

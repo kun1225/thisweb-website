@@ -1,13 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useMouse, type TypeMouseState } from '@/src/shared/hooks/useMouse';
-
-import { HomeHeading, HomeSubheading } from './HomeHeading';
 import Link from 'next/link';
+import { type TypeMouseState, useMouse } from '@/src/shared/hooks/useMouse';
 import { Button } from '@/src/shared/ui/Button';
-
 import type { TypeHome } from '@/src/types/typeHome';
+import { HomeHeading, HomeSubheading } from './HomeHeading';
+import { motion } from 'motion/react';
 
 export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const { heading, headingId, subheading, categories } = data;

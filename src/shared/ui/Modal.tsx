@@ -1,15 +1,13 @@
 'use client';
+
 // Core
-import { createPortal } from 'react-dom';
-
-// Utils
-import { motion, AnimatePresence } from 'framer-motion';
-
 // Hook
 import { useEffect, useState } from 'react';
-
+import { createPortal } from 'react-dom';
 // Component
 import { IoClose } from 'react-icons/io5';
+// Utils
+import { AnimatePresence, motion } from 'motion/react';
 
 interface ModalPropsType {
   isOpen: boolean;
@@ -105,7 +103,7 @@ function Button({
   return (
     <button type="button" aria-label="關閉" onClick={onClose} className={className}>
       <p className="sr-only">關閉 close</p>
-      <IoClose className="hover:text-blue-2 transition-colors" />
+      <IoClose className="transition-colors hover:text-blue-2" />
     </button>
   );
 }

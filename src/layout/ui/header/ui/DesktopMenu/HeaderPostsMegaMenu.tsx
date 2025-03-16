@@ -1,9 +1,9 @@
-import { cn } from '@/src/shared/lib/utils';
 // Components
 import Link from 'next/link';
-import { HeaderPostsMegamenuCategories } from './HeaderPostsMegamenuCategories';
 // Types
 import { TypePostsMegamenu } from '@/src/types/typeGlobalHeader';
+import { cn } from '@/src/shared/lib/utils';
+import { HeaderPostsMegamenuCategories } from './HeaderPostsMegamenuCategories';
 
 export function HeaderPostsMegaMenu({
   content,
@@ -20,17 +20,29 @@ export function HeaderPostsMegaMenu({
 
   return (
     <ul
-      className={cn('g-header__posts-megamenu', {
-        'is-active': index === currentIndex,
-      })}
+      className={cn(
+        'bg-header pointer-events-none fixed top-[calc(var(--header-height)_+_16px)] left-1/2 z-10 grid max-h-[80vh] w-4/5 -translate-x-1/2 grid-cols-3 overflow-auto rounded-md p-4 shadow-[0_0_28px_rgba(0,0,0,.1)] transition duration-300',
+        index === currentIndex
+          ? 'pointer-events-auto scale-100 opacity-100'
+          : 'pointer-events-none scale-50 opacity-0'
+      )}
     >
-      {content.categories.map((category) => (
-        <li key={category.url} className="g-header__posts-megamenu__item">
+      {content.categories.map((category, i) => (
+        <li
+          key={category.url}
+          className={cn(
+            'transition-opacity duration-400',
+            index === currentIndex ? 'opacity-100' : 'opacity-0 !delay-0'
+          )}
+          style={{
+            transitionDelay: `${(i - 1) * 100 + 200}ms`,
+          }}
+        >
           <div className="relative block h-full">
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}
               href={`/posts/${category.url}/0`}
-              className="g-header__posts-megamenu__link"
+              className="block h-full rounded-md p-4 transition duration-200 hover:bg-slate-100"
               title={category.title}
               onClick={closeMegaMenu}
             >
