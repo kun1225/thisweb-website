@@ -59,7 +59,8 @@ const PostsPage: React.FC<{
     category: string;
     page: string;
   };
-}> = async ({ params }) => {
+}> = async props => {
+  const params = await props.params;
   const numPage = parseInt(params.page);
 
   const startIndex = numPage * POSTS_PER_PAGE;

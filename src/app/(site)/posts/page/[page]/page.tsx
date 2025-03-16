@@ -29,13 +29,14 @@ export const generateStaticParams = async () => {
   }
 };
 
-export default async function Page({
-  params,
-}: {
-  params: {
-    page: string;
-  };
-}) {
+export default async function Page(
+  props: {
+    params: Promise<{
+      page: string;
+    }>;
+  }
+) {
+  const params = await props.params;
   /**
    * filter article by page
    * start with 0, and there are 10 articles per page
