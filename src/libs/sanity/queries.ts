@@ -28,7 +28,6 @@ export const POST_QUERY = groq`*[_type == "post" && defined(slug) && defined(tit
     },
   }
 }`;
-export const RELATED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && category->title == $categoryTitle && secondLevelCategory->title == $secondLevelCategory]{title, _id, slug} | order(publishedAt asc)`;
 export const POSTS_SLUG_QUERY = groq`*[_type == "post" && defined(slug.current) && defined(slug) && defined(title) && status == 'done'][].slug.current`;
 export const NEXT_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && publishedAt > $publishedAt]{title, slug} | order(publishedAt asc)[0]`;
 export const PREV_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && publishedAt < $publishedAt]{title, slug} | order(publishedAt desc)[0]`;
@@ -46,29 +45,9 @@ export const POSTS_BY_CATEGORY_TITLE_QUERY = groq`
   | order(publishedAt desc)
   [$start...$end]
 `;
-export const POSTS_BY_CATEGORY_URL_QUERY = groq`
-  *[_type == "post" && defined(slug) && defined(title) && category->url == $categoryUrl] {
-    ...,
-    "category": category->title,
-    "secondLevelCategory": {
-      "title": secondLevelCategory->title,
-      "_id": secondLevelCategory->_id
-    }
-  }
-  | order(publishedAt desc)
-  [$start...$end]
-`;
+
 export const POSTS_BY_SECOND_LEVEL_CATEGORY_TITLE_QUERY = groq`
   *[_type == "post" && defined(slug) && defined(title) && secondLevelCategory->title == $secondLevelCategoryTitle] {
-    ...,
-    "category": category->title,
-    "secondLevelCategory": secondLevelCategory->title
-  }
-  | order(publishedAt desc)
-  [$start...$end]
-`;
-export const POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY = groq`
-  *[_type == "post" && defined(slug) && defined(title) && secondLevelCategory->url == $secondLevelCategoryUrl] {
     ...,
     "category": category->title,
     "secondLevelCategory": secondLevelCategory->title

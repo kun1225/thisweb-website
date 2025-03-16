@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { cn } from '@/src/shared/lib/utils';
 
-export default function PostsPagination({
+export function PostsPagination({
   currentPage,
   totalPages,
   articlesPerPage,
@@ -25,7 +25,7 @@ export default function PostsPagination({
     <div className="p-posts__pagination">
       {currentPage > 1 && (
         <Link href={`${currentPage - 2}`}>
-          <p className="hover:text-blue-1 duration-200">
+          <p className="duration-200 hover:text-blue-1">
             <span>← </span> <span className="hidden md:inline">上一頁</span>
           </p>
         </Link>
@@ -38,7 +38,7 @@ export default function PostsPagination({
           <p
             className={`h-6 w-6 rounded-[50%] text-center ${cn(
               currentPage === pageNumber && 'bg-blue text-white',
-              currentPage !== pageNumber && 'hover:bg-blue-1 duration-100 hover:text-white'
+              currentPage !== pageNumber && 'duration-100 hover:bg-blue-1 hover:text-white'
             )} `}
           >
             {pageNumber}
@@ -50,7 +50,7 @@ export default function PostsPagination({
 
       {currentPage < totalPages && (
         <Link href={`${currentPage}`}>
-          <p className="hover:text-blue-1 duration-200">
+          <p className="duration-200 hover:text-blue-1">
             <span className="hidden md:inline">下一頁</span> <span> →</span>
           </p>
         </Link>

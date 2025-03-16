@@ -1,8 +1,8 @@
 'use client';
-// Hooks
+
 import { useParams } from 'next/navigation';
 
-const PostsHeader: React.FC = () => {
+export function PostsHeader() {
   const params = useParams();
   const categoryUrl = params?.category || '';
   const postListTitle = (() => {
@@ -48,6 +48,4 @@ const PostsHeader: React.FC = () => {
       </h2>
     </div>
   );
-};
-
-export default PostsHeader;
+}

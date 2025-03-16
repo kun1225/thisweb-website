@@ -1,16 +1,15 @@
-import { Metadata } from 'next';
-// Sanity
-import { getPostsLimited, getPostsCounts } from '@/src/shared/api';
-// Components
-import PostsEmptyPage from '../../_components/PostsEmptyPage';
-import PostsList from '../../_components/PostsList';
-import PostsPagination from '../../_components/PostsPagination';
+import type { Metadata } from 'next';
+import {
+  PagePosts,
+  PostsEmptyPage,
+  getPostsLimited,
+  getPostsCounts,
+  POSTS_PER_PAGE,
+} from '@/src/page/posts';
 
 export const metadata: Metadata = {
   title: '文章列表 | 請網這邊走 ThisWeb',
 };
-
-const POSTS_PER_PAGE = 10;
 
 export const generateStaticParams = async () => {
   try {
@@ -30,7 +29,7 @@ export const generateStaticParams = async () => {
   }
 };
 
-export default async function PostsPage({
+export default async function Page({
   params,
 }: {
   params: {
@@ -59,13 +58,11 @@ export default async function PostsPage({
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
-    <>
-      <PostsList posts={posts} />
-      <PostsPagination
-        articlesPerPage={POSTS_PER_PAGE}
-        currentPage={numPage + 1}
-        totalPages={totalPages}
-      />
-    </>
+    <PagePosts
+      posts={posts}
+      articlesPerPage={POSTS_PER_PAGE}
+      currentPage={numPage + 1}
+      totalPages={totalPages}
+    />
   );
 }

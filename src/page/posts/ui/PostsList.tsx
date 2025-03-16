@@ -6,7 +6,7 @@ import Link from 'next/link';
 // Types
 import { TypePosts, TypePost } from '@/src/types/typePosts';
 
-export default function PostsList({ posts }: { posts: TypePosts }) {
+export function PostsList({ posts }: { posts: TypePosts }) {
   return (
     posts.length > 0 && (
       <ul className="p-posts__list">

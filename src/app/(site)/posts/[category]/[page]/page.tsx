@@ -1,36 +1,32 @@
-// Next
-import { Metadata } from 'next';
-// Components
-import EmptyPage from '../../_components/PostsEmptyPage';
-import PaginatedNav from '../../_components/PostsPagination';
-import PostsList from '../../_components/PostsList';
-// Sanity
+import type { Metadata } from 'next';
 import {
   CATEGORIES_QUERY,
-  POSTS_BY_CATEGORY_URL_QUERY,
   POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
-  POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
   POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
 } from '@/src/libs/sanity/queries';
+import {
+  POSTS_PER_PAGE,
+  PagePosts,
+  PostsEmptyPage,
+  getPostsByCategoryUrl,
+  getPostsBySecondLevelCategoryUrl,
+} from '@/src/page/posts';
 import { sanityFetch } from '@/src/shared/lib/sanity';
-// Types
-import { CategoriesType } from '@/src/libs/sanity/type';
+import type { TypeCategories, TypeCategory } from '@/src/types/typeCategories';
 import type { TypePosts } from '@/src/types/typePosts';
 
 export const metadata: Metadata = {
   title: '文章列表 | 請網這邊走 ThisWeb',
 };
 
-const POSTS_PER_PAGE = 9;
-
 export const generateStaticParams = async () => {
-  const categories = await sanityFetch<CategoriesType>({
+  const categories = await sanityFetch<TypeCategories>({
     query: CATEGORIES_QUERY,
     tags: ['category'],
   });
 
   const pagesByCategories = await Promise.all(
-    categories.map(async (category) => {
+    categories.map(async (category: TypeCategory) => {
       try {
         const postCount = await sanityFetch<number>({
           query: POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
@@ -69,7 +65,7 @@ const PostsPage: React.FC<{
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const categories = await sanityFetch<CategoriesType>({
+  const categories = await sanityFetch<TypeCategories>({
     query: CATEGORIES_QUERY,
     tags: ['category'],
   });
@@ -77,35 +73,25 @@ const PostsPage: React.FC<{
   const isFirstLevelCategory = categories.map((category) => category.url).includes(params.category);
 
   let posts: TypePosts = [];
-
   if (isFirstLevelCategory) {
-    posts = await sanityFetch<TypePosts>({
-      query: POSTS_BY_CATEGORY_URL_QUERY,
-      queryParams: {
-        categoryUrl: params.category,
-        start: startIndex,
-        end: endIndex,
-      },
-      tags: ['post'],
+    posts = await getPostsByCategoryUrl({
+      categoryUrl: params.category,
+      startIndex,
+      endIndex,
     });
   } else {
-    posts = await sanityFetch<TypePosts>({
-      query: POSTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
-      queryParams: {
-        secondLevelCategoryUrl: params.category,
-        start: startIndex,
-        end: endIndex,
-      },
-      tags: ['post'],
+    posts = await getPostsBySecondLevelCategoryUrl({
+      secondLevelCategoryUrl: params.category,
+      startIndex,
+      endIndex,
     });
   }
 
   if (!posts || posts.length === 0) {
-    return <EmptyPage />;
+    return <PostsEmptyPage />;
   }
 
   let postsNumber: number = 0;
-
   if (isFirstLevelCategory) {
     postsNumber = await sanityFetch<number>({
       query: POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
@@ -127,14 +113,12 @@ const PostsPage: React.FC<{
   const totalPages = Math.ceil(postsNumber / POSTS_PER_PAGE);
 
   return (
-    <>
-      <PostsList posts={posts} />
-      <PaginatedNav
-        articlesPerPage={POSTS_PER_PAGE}
-        currentPage={numPage + 1}
-        totalPages={totalPages}
-      />
-    </>
+    <PagePosts
+      posts={posts}
+      articlesPerPage={POSTS_PER_PAGE}
+      currentPage={numPage + 1}
+      totalPages={totalPages}
+    />
   );
 };
 
