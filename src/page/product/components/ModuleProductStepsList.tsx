@@ -95,7 +95,7 @@ function ModuleProductStepsListMobile({ steps }: { steps: TypeModuleProductStep[
     <Carousel autoplayInterval={6000} isShowDots>
       {steps.map((step, index) => (
         <div className="c flex flex-col items-center gap-8 pt-16" key={step._key}>
-          <div className="w-[90%] drop-shadow-[0_0_14px_rgba(0,0,0,.1)]">
+          <div className="w-[90%] drop-shadow-lg">
             <Media data={step.media} />
           </div>
           <div className="flex -translate-x-6 items-center gap-8">

@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
 @plugin 'tailwindcss-animate';
 
@@ -32,6 +31,10 @@
     var(--spacing-contain),
     calc((100vw - var(--spacing-contain-max)) / 2)
   );
+
+  /* shadow */
+  --shadow-lg: 0 0 14px rgba(0, 0, 0, 0.1);
+  --drop-shadow-lg: drop-shadow(0 0 14px rgba(0, 0, 0, 0.1));
 
   /* transition */
   --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);

@@ -60,7 +60,7 @@ function ModuleProductFeaturesBodyDesktop({ features }: { features: TypeModulePr
         {features?.map((feature, index) => (
           <div
             className={cn(
-              'col-[1/2] row-[1/2] opacity-0 blur-md drop-shadow-[0_0_14px_rgba(0,0,0,.1)]',
+              'col-[1/2] row-[1/2] opacity-0 blur-md drop-shadow-lg',
               currentIndex === index && 'opacity-100 blur-none'
             )}
             style={{

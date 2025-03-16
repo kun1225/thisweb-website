@@ -1,11 +1,11 @@
-import ModuleProductHeading from './ModuleProductHeading';
-import ModuleProductSubheading from './ModuleProductSubheading';
-import ModuleProductParagraph from './ModuleProductParagraph';
-import { Accordion, AccordionTitle, AccordionContent } from '@/src/shared/ui/Accordion';
 import { PortableText } from 'next-sanity';
 // Types
 import type { TypeModuleProductFAQs } from '@/src/types/typeModules';
 import { hasArrayValue } from '@/src/shared/lib/utils';
+import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
+import ModuleProductHeading from './ModuleProductHeading';
+import ModuleProductParagraph from './ModuleProductParagraph';
+import ModuleProductSubheading from './ModuleProductSubheading';
 
 const customPortableText = {
   marks: {
@@ -17,24 +17,24 @@ export default function ModuleProductFAQs({ data }: { data: TypeModuleProductFAQ
   const { heading, headingId, subheading, paragraph, faqList } = data;
 
   return (
-    <section className="m-product__faqs">
+    <section className="c py-32">
       <ModuleProductSubheading subheading={subheading} />
       <ModuleProductHeading heading={heading} headingId={headingId} />
       <ModuleProductParagraph paragraph={paragraph} />
       {hasArrayValue(faqList) && (
-        <div className="m-product__faqs__list">
+        <div className="mx-auto flex max-w-2xl flex-col py-16">
           {faqList.map((faq) => (
             <Accordion
               key={faq._key}
-              className="m-product__faqs__list__item"
+              className="border-b-2 border-neutral-200 transition-all duration-400 data-[active=true]:pb-6"
               stretch
               iconPosition="right"
               initExpanded={false}
             >
-              <AccordionTitle className="m-product__faqs__list__heading">
+              <AccordionTitle className="text-blue py-4 text-lg md:text-xl">
                 {faq.heading}
               </AccordionTitle>
-              <AccordionContent className="m-product__faqs__list__answer">
+              <AccordionContent className="space-y-2 transition-all duration-500">
                 <PortableText value={faq.answer} components={customPortableText} />
               </AccordionContent>
             </Accordion>
