@@ -36,15 +36,15 @@ export default defineField({
           name: 'feature',
           type: 'object',
           fields: [
-            defineField({
-              title: 'Icon',
-              name: 'icon',
-              type: 'iconPicker',
-              options: {
-                outputFormat: 'react',
-                providers: ['fa'],
-              },
-            }),
+            // defineField({
+            //   title: 'Icon',
+            //   name: 'icon',
+            //   type: 'iconPicker',
+            //   options: {
+            //     outputFormat: 'react',
+            //     providers: ['fa'],
+            //   },
+            // }),
             defineField({
               title: 'Heading',
               name: 'heading',

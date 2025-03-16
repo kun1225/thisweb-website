@@ -47,7 +47,7 @@ function ModuleProductStepsListDesktop({
           <div
             key={step._key}
             className={cn(
-              'relative translate-x-0 rounded-md py-2 pr-14 pl-12 transition-colors duration-500',
+              'relative translate-x-0 flex items-center gap-8 rounded-md py-2 px-8 transition-colors duration-500',
               {
                 'after:bg-blue-2 is-active bg-neutral-100 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-md before:bg-neutral-100 after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:origin-top after:scale-y-0 after:scale-y-100 after:rounded-md after:transition-transform after:duration-500':
                   currentIndex === index,
@@ -65,7 +65,9 @@ function ModuleProductStepsListDesktop({
                   <span>{step.heading}</span>
                 </h3>
               ) : null}
-              {step.paragraph ? <PortableText value={step.paragraph} /> : null}
+              {step.paragraph ? <div className='prose prose-ul:leading-5'>
+                <PortableText value={step.paragraph} />
+              </div> : null}
             </div>
           </div>
         ))}

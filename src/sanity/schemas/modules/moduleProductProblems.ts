@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import { preview } from 'sanity-plugin-icon-picker';
+// import { preview } from 'sanity-plugin-icon-picker';
 
 export default defineField({
   title: 'Module Product Problems',
@@ -32,29 +32,29 @@ export default defineField({
           name: 'problem',
           type: 'object',
           fields: [
-            defineField({
-              title: 'Icon',
-              name: 'icon',
-              type: 'iconPicker',
-              options: {
-                providers: ['fa'],
-                outputFormat: 'react',
-              },
-              preview: {
-                select: {
-                  provider: 'icon.provider',
-                  name: 'icon.name',
-                },
-                prepare(icon) {
-                  return {
-                    title: icon.provider,
-                    subtitle: icon.name,
-                    // @ts-ignore
-                    media: preview(icon),
-                  };
-                },
-              },
-            }),
+            // defineField({
+            //   title: 'Icon',
+            //   name: 'icon',
+            //   type: 'iconPicker',
+            //   options: {
+            //     providers: ['fa', 'ai', 'bi', 'bs', 'fi', 'go', 'hi', 'md', 'ri', 'ti'],
+            //     outputFormat: 'react',
+            //   },
+            //   preview: {
+            //     select: {
+            //       provider: 'icon.provider',
+            //       name: 'icon.name',
+            //     },
+            //     prepare(icon) {
+            //       return {
+            //         title: icon.provider,
+            //         subtitle: icon.name,
+            //         // @ts-ignore
+            //         media: preview(icon),
+            //       };
+            //     },
+            //   },
+            // }),
             defineField({
               title: 'Heading',
               name: 'heading',
