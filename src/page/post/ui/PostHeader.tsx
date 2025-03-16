@@ -5,7 +5,7 @@ export function PostHeader({ data }: { data: TypePost }) {
   const { publishedAt: date, title, category: topic } = data;
 
   return (
-    <header className="p-post__header">
+    <header className="mb-12 flex justify-center gap-8">
       <PostHeaderDecoration />
       <PostHeaderContent date={date} title={title} topic={topic} />
       <PostHeaderDecoration />
@@ -14,7 +14,15 @@ export function PostHeader({ data }: { data: TypePost }) {
 }
 
 function PostHeaderDecoration() {
-  return <div className="p-post__header__decoration" />;
+  return (
+    <div
+      className="hidden w-[15vw] opacity-0 md:block"
+      style={{
+        background: 'radial-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px) center/ 32px 32px',
+        animation: 'fade-in 0.6s linear forwards',
+      }}
+    />
+  );
 }
 
 function PostHeaderContent({
@@ -27,7 +35,7 @@ function PostHeaderContent({
   topic: string;
 }) {
   return (
-    <div className="p-post__header__content">
+    <div className="grid flex-auto place-content-center gap-12 py-32 text-center md:py-80">
       <PostHeaderInfo date={date} topic={topic} />
       <PostHeaderTitle title={title} />
       <PostHeaderAuthor />
@@ -37,7 +45,10 @@ function PostHeaderContent({
 
 function PostHeaderInfo({ date, topic }: { date?: string; topic: string }) {
   return (
-    <div className="p-post__header__info">
+    <div
+      className="flex flex-col items-center justify-center text-xs text-gray-600 opacity-0 md:flex-row md:gap-4 md:text-sm"
+      style={{ animation: 'fade-in 0.6s linear forwards' }}
+    >
       {topic ? <p className="uppercase">{topic}</p> : null}
       {date ? (
         <>
@@ -50,15 +61,35 @@ function PostHeaderInfo({ date, topic }: { date?: string; topic: string }) {
 }
 
 function PostHeaderTitle({ title }: { title: string }) {
-  return title ? <h1 className="p-post__header__title">{title}</h1> : null;
+  return title ? (
+    <h1
+      className="text-pretty text-3xl font-semibold opacity-0 drop-shadow-md md:text-4xl md:leading-relaxed"
+      style={{ animation: 'fade-in 0.6s 0.2s linear forwards' }}
+    >
+      {title}
+    </h1>
+  ) : null;
 }
 
 function PostHeaderAuthor() {
   return (
-    <div className="p-post__header__author">
-      <div className="p-post__header__author__decoration" />
-      <p className="p-post__header__author__name">this.web</p>
-      <div className="p-post__header__author__decoration" />
+    <div className="flex items-center justify-center gap-4 md:justify-between md:gap-16">
+      <div
+        className="inline-block h-[1px] flex-1 origin-left scale-0 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
+        style={{ animation: 'scale-in 1.6s 0.4s ease-in-out forwards' }}
+      />
+      <p
+        className="text-xs text-gray-600 opacity-0"
+        style={{
+          animation: 'fade-in 0.6s 0.6s linear forwards',
+        }}
+      >
+        this.web
+      </p>
+      <div
+        className="inline-block h-[1px] flex-1 origin-right scale-0 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
+        style={{ animation: 'scale-in 1.6s 0.4s ease-in-out forwards' }}
+      />
     </div>
   );
 }

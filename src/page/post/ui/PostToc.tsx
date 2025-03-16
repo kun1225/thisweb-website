@@ -25,8 +25,11 @@ export function PostToc({ data }: { data: TypePost }) {
   }, [setActiveId]);
 
   return (
-    <aside className="p-post__toc">
-      <div className="p-post__toc__menu">
+    <aside
+      className="w-full max-w-3xl border border-gray-200 p-8 opacity-0 shadow xl:sticky xl:top-[var(--top)] xl:mb-0 xl:mr-[1.25vw] xl:max-w-64 xl:flex-1 xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pl-0 xl:pr-[0.25vw] xl:shadow-none"
+      style={{ animation: 'fade-in 0.6s 0.8s linear forwards;' }}
+    >
+      <div className="xl:max-h-[60vh] xl:scrollbar-w-1">
         <PostTocHeader />
         <PostTocBody structuredHeadings={structuredHeadings} activeId={activeId} />
       </div>
@@ -36,7 +39,10 @@ export function PostToc({ data }: { data: TypePost }) {
 
 function PostTocHeader() {
   return (
-    <p className="p-post__toc__header" data-testid="toc-header-title">
+    <p
+      className="mb-4 flex items-center justify-between gap-2 font-bold text-blue"
+      data-testid="toc-header-title"
+    >
       文章目錄
     </p>
   );

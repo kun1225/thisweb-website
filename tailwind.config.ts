@@ -74,6 +74,7 @@ const config: Config = {
       },
       transitionDuration: {
         '400': '400ms',
+        '600': '600ms',
       },
       scale: {
         102: '1.02',
@@ -115,6 +116,7 @@ const config: Config = {
       preferredStrategy: 'pseudoelements',
     }),
     require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
   ],
 };
 export default config;

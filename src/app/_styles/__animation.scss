@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @keyframes slide-up {
   from {
     transform: translateY(24px);
