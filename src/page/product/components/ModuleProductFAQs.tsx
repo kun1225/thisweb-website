@@ -26,7 +26,7 @@ export default function ModuleProductFAQs({ data }: { data: TypeModuleProductFAQ
           {faqList.map((faq) => (
             <Accordion
               key={faq._key}
-              className="border-b-2 border-neutral-200 transition-all duration-400 data-[active=true]:pb-6"
+              className="border-b-2 border-neutral-200 transition-all duration-[0.4s] data-[active=true]:pb-6"
               stretch
               iconPosition="right"
               initExpanded={false}

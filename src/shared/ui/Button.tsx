@@ -1,18 +1,18 @@
-import { forwardRef, type ButtonHTMLAttributes } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/src/shared/lib/utils';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { cn } from '@/src/shared/lib/utils';
+import { type VariantProps, cva } from 'class-variance-authority';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap text-base transition duration-200 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default: 'bg-blue-1 text-white shadow hover:bg-blue-2 hover:shadow-xl hover:scale-102',
+        default: 'bg-blue-1 text-white shadow hover:bg-blue-2 hover:shadow-xl hover:scale-[1.02]',
         outline:
-          'border-2 border-blue-1 shadow text-blue-1 hover:shadow-xl hover:scale-102 hover:bg-blue-2 hover:text-white',
-        dark: 'bg-blue text-white shadow hover:shadow-xl hover:scale-102',
+          'border-2 border-blue-1 shadow text-blue-1 hover:shadow-xl hover:scale-[1.02] hover:bg-blue-2 hover:text-white',
+        dark: 'bg-blue text-white shadow hover:shadow-xl hover:scale-[1.02]',
         link: 'underline',
       },
       size: {

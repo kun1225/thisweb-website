@@ -1,9 +1,23 @@
 @import 'tailwindcss';
 
 @plugin '@tailwindcss/typography';
+@config './tailwind.config.js';
+
 @plugin 'tailwindcss-animate';
 
 @theme {
+  /* fonts */
+  --font-sans: 'Noto Sans TC', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  --text-body: '1.05rem';
+  --text-body-line-height: 1.55;
+  --text-body-large: '1.1rem';
+  --text-body-large-line-height: 1.6;
+  --text-body-small: '1rem';
+  --text-body-small-line-height: 1.5;
+
+  /* colors */
   --color-blue: rgb(0, 51, 78);
   --color-blue-1: rgb(71, 112, 134);
   --color-blue-2: rgb(16, 101, 147);

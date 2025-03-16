@@ -45,7 +45,6 @@ export default defineField({
                   provider: 'icon.provider',
                   name: 'icon.name',
                 },
-                // @ts-ignore
                 prepare(icon) {
                   return {
                     title: icon.provider,

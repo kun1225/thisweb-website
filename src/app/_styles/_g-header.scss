@@ -48,7 +48,7 @@
 // *** Posts Megamenu ***
 .g-header__posts-megamenu {
   &.is-active {
-    @apply pointer-events-auto scale-100 opacity-100 duration-400;
+    @apply pointer-events-auto scale-100 opacity-100 duration-[0.4s];
 
     .g-header__posts-megamenu {
       &__item {

@@ -15,7 +15,7 @@
   }
 
   &__item {
-    @apply relative py-4 transition duration-400 lg:py-6;
+    @apply relative py-4 transition duration-[0.4s] lg:py-6;
 
     @include hover {
       @apply scale-[1.03];

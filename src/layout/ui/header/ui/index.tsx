@@ -40,7 +40,7 @@ export function Header({ headerContent }: { headerContent: TypeGlobalHeaderConte
 
   return (
     <header
-      className="c bg-header fixed top-[var(--announcement-height,_0px)] isolate z-(--z-header) w-full py-4 transition-all duration-400"
+      className="c bg-header fixed top-[var(--announcement-height,_0px)] isolate z-(--z-header) w-full py-4 transition-all duration-[0.4s]"
       id="g-header"
     >
       <div className="flex items-center justify-between">

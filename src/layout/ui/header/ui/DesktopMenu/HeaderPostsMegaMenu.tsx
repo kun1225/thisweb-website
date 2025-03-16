@@ -31,11 +31,11 @@ export function HeaderPostsMegaMenu({
         <li
           key={category.url}
           className={cn(
-            'transition-opacity duration-400',
+            'transition-opacity duration-[0.4s]',
             index === currentIndex ? 'opacity-100' : 'opacity-0 !delay-0'
           )}
           style={{
-            transitionDelay: `${(i - 1) * 100 + 200}ms`,
+            transitionDelay: `${(i - 1) * 100 + 150}ms`,
           }}
         >
           <div className="relative block h-full">

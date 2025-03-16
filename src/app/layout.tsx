@@ -2,7 +2,7 @@ import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
 import { getHeaderData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
-import './_styles/globals-scss.scss';
+// import './_styles/globals-scss.scss';
 import './globals.css';
 
 const NotoSansTC = Noto_Sans_TC({

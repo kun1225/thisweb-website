@@ -28,7 +28,7 @@ export function RootLayout({
         <RootLayoutProgressBar />
       </Suspense>
       <Header headerContent={headerContent} />
-      <main id="main" className="pt-(--header-height) transition-all duration-400">
+      <main id="main" className="pt-(--header-height) transition-all duration-[0.4s]">
         {children}
       </main>
       <Footer />
