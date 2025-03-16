@@ -56,10 +56,10 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
   const { elementX: x, elementY: y } = mousePosition;
 
   return (
-    <li className="group/cateogry-card relative">
+    <li className="group/category-card relative">
       <article
         ref={ref}
-        className="border-black-5 bg-white-pure/90 md:p-edge relative z-10 h-full rounded-lg border p-10 transition group-hover/cateogry-card:-translate-y-2"
+        className="bg-white-pure/90 md:p-edge border-blue-5 relative z-10 h-full rounded-lg p-10 transition group-hover/category-card:-translate-y-2"
       >
         <h3 className="mb-4 text-2xl font-bold">{category.title || category.defaultTitle}</h3>
         <p className="text-pretty">{category.paragraph}</p>
@@ -73,12 +73,12 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
       </article>
 
       <div
-        className="pointer-events-none absolute -inset-0.5 -z-10 rounded-lg opacity-0 transition group-hover/cateogry-card:-translate-y-2 group-hover/cateogry-card:opacity-100"
+        className="pointer-events-none absolute -inset-0.5 -z-10 rounded-lg opacity-0 transition group-hover/category-card:-translate-y-2 group-hover/category-card:opacity-100"
         style={{
           background: `
           radial-gradient(
             160px circle at ${x}px ${y}px,
-            rgb(var(--cr-blue-3)),
+            rgb(50, 147, 200),
             transparent 100%
             )
             `,

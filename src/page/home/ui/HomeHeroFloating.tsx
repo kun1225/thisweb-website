@@ -1,11 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { randomInt } from '@/src/shared/lib/utils';
 import type { IconType } from 'react-icons';
 import { FaCode, FaReact, FaRegFileCode, FaSquareJs } from 'react-icons/fa6';
 // Components
 import { ImCodepen, ImCss3, ImHtmlFive2 } from 'react-icons/im';
+import { randomInt } from '@/src/shared/lib/utils';
 import { useMouse } from '../../../shared/hooks/useMouse';
 import { motion } from 'motion/react';
 
@@ -100,7 +100,7 @@ function HomeHeroIcon({ Icon, x, y, scale = 0, style = {} }: FloatingIconProps) 
     <motion.div
       className="absolute"
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 0.08, scale }}
+      animate={{ opacity: 0.06, scale }}
       transition={{
         duration: 0.5,
       }}
