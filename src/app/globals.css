@@ -22,13 +22,16 @@
 
   /* spacing */
   --header-height: 67.5px;
-  --s-edge-xs: 2vw;
-  --s-edge-sm: 3vw;
-  --s-edge: 4.5vw;
-  --s-edge-lg: 5vw;
-  --s-contain: max(var(--s-edge), 8px);
-  --s-contain-max: 1600px;
-  --s-edge-dynamic: max(var(--s-contain), calc((100vw - var(--s-contain-max)) / 2));
+  --spacing-edge-xs: 2vw;
+  --spacing-edge-sm: 3vw;
+  --spacing-edge: 4.5vw;
+  --spacing-edge-lg: 5vw;
+  --spacing-contain: max(var(--spacing-edge), 8px);
+  --spacing-contain-max: 1600px;
+  --spacing-edge-dynamic: max(
+    var(--spacing-contain),
+    calc((100vw - var(--spacing-contain-max)) / 2)
+  );
 
   /* transition */
   --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
@@ -122,7 +125,7 @@
   }
 
   mark {
-    --bg: color-mix(in srgb, var(--cr-blue-2) 20%, transparent);
+    --bg: color-mix(in srgb, var(--color-blue-2) 20%, transparent);
     @apply bg-[var(--bg)];
   }
 
@@ -134,8 +137,8 @@
 }
 
 @utility c {
-  padding-left: var(--s-edge-dynamic);
-  padding-right: var(--s-edge-dynamic);
+  padding-left: var(--spacing-edge-dynamic);
+  padding-right: var(--spacing-edge-dynamic);
 }
 
 /* .dark {
@@ -183,5 +186,91 @@ html[data-megamenu-open='false'] {
   #main,
   #g-footer {
     @apply blur-none;
+  }
+}
+
+.c-carousel {
+  --dot-size: 10px;
+  --dot-gap: 5px;
+  position: relative;
+  width: 100%;
+}
+.c-carousel__viewport {
+  padding-bottom: 1px;
+  overflow: hidden;
+}
+.c-carousel__viewport.is-draggable:not(.disable-draggable) {
+  cursor: grab;
+}
+.c-carousel__viewport.is-dragging:not(.disable-draggable) {
+  cursor: grabbing;
+}
+.c-carousel__container {
+  display: flex;
+  align-items: flex-start;
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+}
+.c-carousel__container > * {
+  min-width: var(--item-min-width, 0);
+  flex: 0 0 var(--item-width);
+  margin-right: var(--item-gap);
+}
+.c-carousel__controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.c-carousel__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  margin-left: auto;
+}
+.c-carousel__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+@media (hover: none) and (pointer: coarse) {
+  .c-carousel__button {
+    touch-action: manipulation;
+  }
+}
+.c-carousel__dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.c-carousel__dot {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--dot-size) + var(--dot-gap));
+  height: calc(var(--dot-size) + var(--dot-gap));
+  border: none;
+  box-shadow: none;
+  outline: none;
+  user-select: none;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.c-carousel__dot__icon {
+  display: block;
+  position: relative;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 100%;
+  background-color: var(--color-blue);
+}
+.c-carousel__dot:not(.is-selected) {
+  opacity: 0.3;
+}
+@media (hover: hover) {
+  .c-carousel__dot:hover {
+    opacity: 0.6;
   }
 }
