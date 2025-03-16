@@ -46,7 +46,7 @@ export function DesktopMenu({ headerContent }: { headerContent: TypeGlobalHeader
       {isHasMegaMenu ? (
         <HeaderOverlay closeMegaMenu={closeMegaMenu} currentIndex={currentIndex} />
       ) : null}
-      <ul className="relative z-10 hidden text-sm md:flex md:gap-6">
+      <ul className="relative z-10 hidden text-sm md:flex md:gap-[1.2vw]">
         <HeaderNavContents
           headerContent={headerContent}
           currentIndex={currentIndex}
