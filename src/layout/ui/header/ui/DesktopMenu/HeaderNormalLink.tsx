@@ -15,11 +15,11 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
 
   let className;
   if (pathname === linkUrl) {
-    className = 'text-blue-1 font-semibold drop-shadow-md';
+    className = 'text-blue-1 font-semibold drop-shadow-md transition-colors';
   } else if (isButton) {
     className = '';
   } else {
-    className = 'text-gray-500 hover:text-blue-1';
+    className = 'text-gray-500 hover:text-blue-1 hover:bg-blue-5 rounded-sm transition-colors';
   }
 
   return (

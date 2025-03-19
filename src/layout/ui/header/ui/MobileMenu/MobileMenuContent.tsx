@@ -44,7 +44,7 @@ export function MobileMenuContent({
   }, [isMobileMenuOpen]);
 
   return (
-    <ul className="mt-6 flex h-full flex-col overflow-y-auto px-4 pt-[var(--header-height)] pb-4 text-blue-600">
+    <ul className="mt-6 flex h-full flex-col overflow-y-auto px-4 pt-[var(--header-height)] pb-4">
       {hasArrayValue(normalLinksContent)
         ? normalLinksContent?.map((link) => (
             <MobileMenuNormalLink key={link._key} link={link} closeMobileMenu={closeMobileMenu} />

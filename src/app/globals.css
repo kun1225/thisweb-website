@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @plugin '@tailwindcss/typography';
-@config './tailwind.config.js';
+@config './../../tailwind.config.js';
 
 @plugin 'tailwindcss-animate';
 
@@ -23,7 +23,7 @@
   --color-blue-2: rgb(16, 101, 147);
   --color-blue-3: rgb(50, 147, 200);
   --color-blue-4: rgb(134, 179, 203);
-  --color-blue-5: rgb(226, 237, 247);
+  --color-blue-5: rgb(243, 247, 251);
   --color-white: rgb(249, 250, 251); /* gray-50 */
   --color-white-pure: rgb(255, 255, 255);
   --color-red: rgb(147, 16, 38);

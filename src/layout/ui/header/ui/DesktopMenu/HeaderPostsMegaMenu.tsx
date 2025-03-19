@@ -42,7 +42,7 @@ export function HeaderPostsMegaMenu({
             <Link
               tabIndex={isCanBeTabIndex ? 0 : -1}
               href={`/posts/${category.url}/0`}
-              className="block h-full rounded-md p-4 transition duration-200 hover:bg-slate-100"
+              className="hover:bg-blue-5 hover:border-blue-4 block h-full rounded-md border border-transparent p-4 transition duration-200"
               title={category.title}
               onClick={closeMegaMenu}
             >

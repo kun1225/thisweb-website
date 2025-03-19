@@ -1,5 +1,4 @@
 {
-  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   "semi": true,
   "tabWidth": 2,
   "printWidth": 100,
@@ -7,6 +6,7 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "endOfLine": "lf",
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   "importOrderSortSpecifiers": true,
   "importOrder": [
     "^react$",
