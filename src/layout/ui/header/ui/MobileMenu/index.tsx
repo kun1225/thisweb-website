@@ -12,7 +12,6 @@ import { MobileMenuIcon } from './MobileMenuIcon';
 
 export function MobileMenu({
   headerContent,
-  className = '',
 }: {
   headerContent: TypeGlobalHeaderContent;
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
@@ -22,18 +21,11 @@ export function MobileMenu({
   return (
     <div className="grid place-content-center md:hidden">
       <MobileMenuIcon mobileMenuOpen={isMobileMenuOpen} setMobileMenuOpen={setIsMobileMenuOpen} />
-      <div
-        className={cn(
-          'fixed top-0 left-0 -z-10 h-screen w-full bg-white transition-all duration-300 ease-in-out dark:bg-gray-900',
-          isMobileMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        )}
-      >
-        <MobileMenuContent
-          headerContent={headerContent}
-          isMobileMenuOpen={isMobileMenuOpen}
-          closeMobileMenu={() => setIsMobileMenuOpen(false)}
-        />
-      </div>
+      <MobileMenuContent
+        headerContent={headerContent}
+        isMobileMenuOpen={isMobileMenuOpen}
+        closeMobileMenu={() => setIsMobileMenuOpen(false)}
+      />
     </div>
   );
 }

@@ -9,37 +9,38 @@ import { getPostsUrl } from '../../../../lib/getPostsUrl';
 export function MobileMenuAccordion({
   category,
   closeMobileMenu,
+  index,
 }: {
   category: TypeCategory;
   closeMobileMenu: () => void;
+  index: number;
 }) {
   return (
-    <li className="mb-2">
+    <li className="border-blue border-b">
       <Accordion iconPosition="right" initExpanded={false}>
         <AccordionTitle className="items-center">
           <Link
-            className="block py-3 text-lg font-medium transition-colors duration-200 hover:text-blue-800"
+            className="text-blue block py-6 font-bold"
             href={getPostsUrl(category.url)}
             aria-label={`前往${category.title}頁面`}
             onClick={closeMobileMenu}
           >
-            {category.title}
-            <span className="sr-only">前往{category.title}頁面</span>
+            <span className="mr-6 font-mono text-sm">{`${index.toString().padStart(2, '0')}`}</span>
+            <span>{category.title}</span>
           </Link>
         </AccordionTitle>
         <AccordionContent>
-          <ul className="mt-1 mb-2 space-y-2 pl-4">
+          <ul className="mb-4 pl-4 text-lg">
             {category.secondLevelCategories
               ? category.secondLevelCategories.map((secondLevelCategory) => (
                   <li key={secondLevelCategory.title}>
                     <Link
-                      className="block py-2 text-base transition-colors duration-200 hover:text-blue-800"
+                      className="block py-4 transition-colors duration-200"
                       href={getPostsUrl(secondLevelCategory.url)}
                       aria-label={`前往${secondLevelCategory.title}頁面`}
                       onClick={closeMobileMenu}
                     >
                       {secondLevelCategory.title}
-                      <span className="sr-only">前往{category.title}頁面</span>
                     </Link>
                   </li>
                 ))

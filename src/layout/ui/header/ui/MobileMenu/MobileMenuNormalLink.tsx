@@ -6,20 +6,22 @@ import { TypeNormalLink } from '@/src/types/typeGlobalHeader';
 export function MobileMenuNormalLink({
   link,
   closeMobileMenu,
+  index,
 }: {
   link: TypeNormalLink;
   closeMobileMenu: () => void;
+  index: number;
 }) {
   return (
-    <li>
+    <li className="border-blue border-b">
       <Link
         href={link.linkUrl}
-        className="block py-3 text-lg font-medium transition-colors duration-200 hover:text-blue-800"
+        className="text-blue block py-6 font-bold"
         onClick={closeMobileMenu}
         aria-label={`前往${link.linkText}頁面`}
       >
-        {link.linkText}
-        <span className="sr-only">前往{link.linkText}頁面</span>
+        <span className="mr-6 font-mono text-sm">{`${index.toString().padStart(2, '0')}`}</span>
+        <span>{link.linkText}</span>
       </Link>
     </li>
   );

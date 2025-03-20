@@ -35,6 +35,7 @@
 
   /* spacing */
   --header-height: 67.5px;
+  --spacing-header: var(--header-height);
   --spacing-edge-xs: 2vw;
   --spacing-edge-sm: 3vw;
   --spacing-edge: 4.5vw;

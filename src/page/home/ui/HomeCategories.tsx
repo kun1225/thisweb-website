@@ -13,7 +13,10 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const [mousePosition, ref] = useMouse();
 
   return (
-    <section className="c group px-edge-dynamic relative py-32 text-center" ref={ref}>
+    <section
+      className="c group px-edge-dynamic relative overflow-x-hidden py-32 text-center"
+      ref={ref}
+    >
       <HomeCategoriesBg mousePosition={mousePosition} />
 
       <HomeSubheading subheading={subheading} />

@@ -10,13 +10,13 @@ export function PageHome({ data }: { data: TypeHome }) {
   const { hero, leadMagnet, categoriesNav, latestPosts, siteOwner, recommendation } = data;
 
   return (
-    <div className="overflow-x-hidden">
+    <>
       <HomeHero data={hero} />
       <HomeMagnet data={leadMagnet} />
       <HomeCategories data={categoriesNav} />
       <HomeLatestPosts data={latestPosts} />
       <HomeAbout data={siteOwner} />
       <HomeRecommendation data={recommendation} />
-    </div>
+    </>
   );
 }
