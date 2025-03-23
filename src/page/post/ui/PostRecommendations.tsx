@@ -1,11 +1,9 @@
-import { hasArrayValue, cn } from '@/src/shared/lib/utils';
-
-import Img from '@/src/shared/ui/Img';
+import Link from 'next/link';
+import type { TypePost } from '@/src/types/typePosts';
+import { cn, hasArrayValue } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
 import CustomPortableText from '@/src/shared/ui/CustomPortableText';
-
-import type { TypePost } from '@/src/types/typePosts';
-import Link from 'next/link';
+import Img from '@/src/shared/ui/Img';
 
 export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {
   const { recommendations } = data;
@@ -23,15 +21,15 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
           contentSection?.contentCta?.url !== undefined;
 
         return (
-          <div key={_key} className="rounded-md border border-gray-200 p-4 shadow md:p-8 xl:p-3.5">
-            <p className="mb-2 px-1 font-bold text-blue md:mb-6 md:text-2xl xl:mb-2 xl:text-base">
+          <div key={_key} className="border-gray rounded-md border p-4 shadow md:p-8 xl:p-3.5">
+            <p className="text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base">
               {title}
             </p>
             <div className="relative">
               <Img image={imageSection?.image} />
               {imageSection?.imageCta?.url ? (
                 <Link
-                  className="absolute inset-0 z-10 flex items-center justify-center bg-blue/80 text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm"
+                  className="bg-blue/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm"
                   href={imageSection?.imageCta?.url}
                   target={imageSection?.imageCta?.isOpenNewTab ? '_blank' : '_self'}
                 >

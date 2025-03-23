@@ -11,7 +11,7 @@ export function HomeRecommendation({ data }: { data: TypeHome['recommendation'] 
 
   return (
     <section className="c py-16 text-center">
-      <div className="border-blue-5 bg-blue-5 flex flex-col items-center rounded-3xl px-4 py-16 shadow-xl">
+      <div className="border-gray bg-blue-5 flex flex-col items-center rounded-3xl border px-4 py-16 shadow-xl">
         <HomeSubheading subheading={subheading} />
         <HomeHeading heading={heading} headingId={headingId} />
 

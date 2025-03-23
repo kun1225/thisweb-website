@@ -8,6 +8,12 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     paragraph,
     media,
     cta,
+    isShowFormOrCta,
+    form {
+      formId,
+      btnLabel,
+      successMessage,
+    },
   },
 
   leadMagnet {

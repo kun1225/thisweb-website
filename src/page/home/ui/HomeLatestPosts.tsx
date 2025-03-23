@@ -20,7 +20,7 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
           posts.slice(0, postsCount).map((post, i) => (
             <article
               key={i}
-              className="group relative flex items-center justify-between gap-4 border-y border-gray-200 py-6"
+              className="group border-gray relative flex items-center justify-between gap-4 border-y py-6"
             >
               <div className="flex items-center gap-2">
                 <span className="bg-blue-2 hidden size-2 shrink-0 scale-0 rounded-full opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 md:block" />

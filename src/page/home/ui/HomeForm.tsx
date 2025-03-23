@@ -1,21 +1,20 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { cn } from '@/src/shared/lib/utils';
 import { subscribeKit } from '@/src/shared/api/subscribeKit';
-// Components
+import { cn } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
 
 export const subscribeSchema = z.object({
-  name: z.string().min(1, '請填入名稱').max(50, '名字不能超過 50 個字'),
+  name: z.string().min(1, '請填入名稱').max(20, '名字不能超過 20 個字'),
   email: z.string().min(1, '請填入 Email').email('請輸入有效的 Email 地址'),
 });
 
 export type SubscribeFormData = z.infer<typeof subscribeSchema>;
 
-export function HomeMagnetForm({
+export function HomeForm({
   formId,
   btnLabel,
   successMessage,
@@ -47,7 +46,7 @@ export function HomeMagnetForm({
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={cn(
-          'p-home__magnet__form col-[1/2] row-[1/2] flex flex-col gap-4 transition lg:flex-row',
+          'col-[1/2] row-[1/2] flex flex-col gap-4 transition lg:flex-row',
           isSubmitSuccessful && 'invisible opacity-0'
         )}
       >
@@ -62,7 +61,7 @@ export function HomeMagnetForm({
             {...register('email')}
             type="email"
             placeholder="你的 Email"
-            className="w-full rounded-md border px-4 py-2"
+            className="border-gray w-full rounded-md border bg-white px-4 py-2"
             disabled={isSubmitting}
           />
         </div>
@@ -78,7 +77,7 @@ export function HomeMagnetForm({
             {...register('name')}
             type="text"
             placeholder="怎麼稱呼你？"
-            className="w-full rounded-md border px-4 py-2"
+            className="border-gray w-full rounded-md border bg-white px-4 py-2"
             disabled={isSubmitting}
           />
         </div>
@@ -96,7 +95,7 @@ export function HomeMagnetForm({
           isSubmitSuccessful && 'visible opacity-100'
         )}
       >
-        <p className="w-full text-pretty rounded-lg border border-gray-200 bg-white p-4 font-bold text-blue shadow-lg">
+        <p className="text-blue border-gray w-full rounded-lg border bg-white p-4 font-bold text-pretty shadow-lg">
           {successMessage || '🎉 訂閱成功！記得檢查你的 Email 喔！'}
         </p>
       </div>

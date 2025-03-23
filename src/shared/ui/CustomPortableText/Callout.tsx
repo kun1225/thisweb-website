@@ -1,9 +1,9 @@
+import { PortableText, toPlainText } from 'next-sanity';
 import Link from 'next/link';
 import { RiExternalLinkLine } from 'react-icons/ri';
-import { PortableImg } from './PortableImg';
+import { Accordion, AccordionContent, AccordionTitle } from '../Accordion';
 import { CodeField } from './CodeField';
-import { Accordion, AccordionTitle, AccordionContent } from '../Accordion';
-import { PortableText, toPlainText } from 'next-sanity';
+import { PortableImg } from './PortableImg';
 
 const linkClassName =
   'inline-block relative z-10 text-blue-1 duration-200 hover:text-white after:absolute after:inset-x-[-4px] after:inset-y-0 after:bg-blue-1 after:duration-200 after:origin-bottom after:scale-y-0 hover:after:scale-y-100 after:-z-10';
@@ -24,7 +24,7 @@ const calloutComponents = {
       const { href } = value;
       return (
         <a href={href} target="_blank" rel="noopener" className={linkClassName}>
-          <RiExternalLinkLine className="mb-1 mr-1 inline-block" />
+          <RiExternalLinkLine className="mr-1 mb-1 inline-block" />
           {children}
         </a>
       );
@@ -45,7 +45,7 @@ export function Callout(source: any) {
 
   return isExpanded ? (
     <Accordion
-      className="my-5 rounded-lg border border-gray-200 bg-gray-100 px-4 shadow"
+      className="border-gray my-5 rounded-lg border bg-gray-100 px-4 shadow"
       duration={duration}
       stretch
     >
@@ -59,7 +59,7 @@ export function Callout(source: any) {
       </AccordionContent>
     </Accordion>
   ) : (
-    <div className="my-5 rounded border border-gray-200 bg-gray-100 px-4 shadow">
+    <div className="border-gray my-5 rounded border bg-gray-100 px-4 shadow">
       <p className="font-semibold">{source.value.title}</p>
       <PortableText
         value={source.value.text}

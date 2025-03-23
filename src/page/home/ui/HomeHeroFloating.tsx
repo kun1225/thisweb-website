@@ -64,7 +64,7 @@ const ICONS_CONFIG: IconConfig[] = [
   {
     Icon: FaRegFileCode,
     left: 45,
-    top: 95,
+    top: 65,
     scale: randomInt(7, 10) / 10,
   },
 ];
@@ -102,13 +102,14 @@ function HomeHeroIcon({ Icon, x, y, scale = 0, style = {} }: FloatingIconProps) 
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 0.06, scale }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
+        ease: 'anticipate',
       }}
       style={{
         ...style,
         x: x * randomMometun.current,
         y: y * randomMometun.current,
-        transition: 'transform 0.3s ease-out',
+        transition: 'transform 0.5s ease-out',
       }}
     >
       <Icon className="h-12 w-12" />

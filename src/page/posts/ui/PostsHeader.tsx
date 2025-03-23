@@ -41,7 +41,7 @@ export function PostsHeader() {
   })();
 
   return (
-    <div className="animate-[fade-in_0.6s_linear_forwards] border-b-2 border-gray-200 pt-16 pb-4 opacity-0">
+    <div className="border-gray animate-[fade-in_0.6s_linear_forwards] border-b-2 pt-16 pb-4 opacity-0">
       <h1 className="text-3xl font-semibold">
         <span>✏️</span>
         <span className="ml-4">{postListTitle}</span>

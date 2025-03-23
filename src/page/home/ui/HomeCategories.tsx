@@ -14,7 +14,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
 
   return (
     <section className="c group relative overflow-x-hidden py-32 text-center" ref={ref}>
-      <HomeCategoriesBg mousePosition={mousePosition} />
+      {/* <HomeCategoriesBg mousePosition={mousePosition} /> */}
 
       <HomeSubheading subheading={subheading} />
       <HomeHeading heading={heading} headingId={headingId} />

@@ -1,8 +1,8 @@
 import type { TypeHome } from '@/src/types/typeHome';
 import CustomPortableText from '@/src/shared/ui/CustomPortableText';
 import Media from '@/src/shared/ui/Media';
+import { HomeForm } from './HomeForm';
 import { HomeHeading, HomeSubheading } from './HomeHeading';
-import { HomeMagnetForm } from './HomeMagnetForm';
 
 export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
   const { heading, headingId, subheading, paragraph, media, formId, btnLabel, successMessage } =
@@ -20,7 +20,7 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
               <CustomPortableText value={paragraph} />
             </div>
           ) : null}
-          <HomeMagnetForm formId={formId} successMessage={successMessage} btnLabel={btnLabel} />
+          <HomeForm formId={formId} successMessage={successMessage} btnLabel={btnLabel} />
         </div>
 
         <Media data={media} className="max-w-md" />

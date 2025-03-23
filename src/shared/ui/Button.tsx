@@ -13,7 +13,7 @@ const buttonVariants = cva(
         outline:
           'border-2 border-blue-1 shadow text-blue-1 hover:shadow-xl hover:scale-[1.02] hover:bg-blue-2 hover:text-white',
         dark: 'bg-blue text-white shadow hover:shadow-xl hover:scale-[1.02]',
-        link: 'underline',
+        link: 'underline before:rounded-sm relative before:absolute before:inset-0 before:bg-blue-5 before:opacity-0 before:transition-opacity before:duration-200 hover:before:opacity-100 before:-z-10',
       },
       size: {
         xs: 'px-0 text-sm',

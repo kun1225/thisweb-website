@@ -18,7 +18,7 @@ export function HeaderPostsMegamenuCategories({
           <Link
             tabIndex={isCanBeTabIndex ? 0 : -1}
             href={`/posts/${secondLevelCategory.url}/0`}
-            className="g-header__posts-megamenu__categories__link hover:bg-blue-1 inline-block rounded-full bg-gray-200 px-2.5 py-1 text-xs transition hover:text-white"
+            className="g-header__posts-megamenu__categories__link hover:bg-blue-1 bg-gray inline-block rounded-full px-2.5 py-1 text-xs transition hover:text-white"
             title={secondLevelCategory.title}
             onClick={closeMegaMenu}
           >
