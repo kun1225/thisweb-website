@@ -15,7 +15,7 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
 
   let className;
   if (pathname === linkUrl) {
-    className = 'text-blue-1 font-semibold drop-shadow-md transition-colors';
+    className = 'text-blue-1 font-semibold  transition-colors';
   } else if (isButton) {
     className = '';
   } else {

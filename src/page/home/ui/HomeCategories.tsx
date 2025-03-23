@@ -13,10 +13,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const [mousePosition, ref] = useMouse();
 
   return (
-    <section
-      className="c group px-edge-dynamic relative overflow-x-hidden py-32 text-center"
-      ref={ref}
-    >
+    <section className="c group relative overflow-x-hidden py-32 text-center" ref={ref}>
       <HomeCategoriesBg mousePosition={mousePosition} />
 
       <HomeSubheading subheading={subheading} />
@@ -68,7 +65,7 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
         <p className="text-pretty">{category.paragraph}</p>
 
         <Link
-          className="absolute inset-0"
+          className="absolute inset-0 cursor-pointer"
           href={`/posts/${category.url}/0`}
           title={`前往${category.title}分類頁面`}
           aria-label={`前往${category.title}分類頁面`}

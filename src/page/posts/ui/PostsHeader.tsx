@@ -41,11 +41,11 @@ export function PostsHeader() {
   })();
 
   return (
-    <div className="p-posts__header">
-      <h2 className="text-3xl font-semibold">
+    <div className="animate-[fade-in_0.6s_linear_forwards] border-b-2 border-gray-200 pt-16 pb-4 opacity-0">
+      <h1 className="text-3xl font-semibold">
         <span>✏️</span>
         <span className="ml-4">{postListTitle}</span>
-      </h2>
+      </h1>
     </div>
   );
 }

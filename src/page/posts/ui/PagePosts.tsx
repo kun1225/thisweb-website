@@ -14,13 +14,13 @@ export function PagePosts({
   totalPages: number;
 }) {
   return (
-    <>
+    <div className="mx-auto min-h-[80vh] pt-4 pb-16">
       <PostsList posts={posts} />
       <PostsPagination
         articlesPerPage={articlesPerPage}
         currentPage={currentPage}
         totalPages={totalPages}
       />
-    </>
+    </div>
   );
 }

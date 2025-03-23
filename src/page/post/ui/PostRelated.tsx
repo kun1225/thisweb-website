@@ -1,6 +1,5 @@
-import CustomLink from '@/src/shared/ui/CustomLink';
-
 import type { TypeRelatedPost } from '@/src/types/typePosts';
+import CustomLink from '@/src/shared/ui/CustomLink';
 
 export function PostRelated({ relatedPosts }: { relatedPosts: TypeRelatedPost[] }) {
   return (

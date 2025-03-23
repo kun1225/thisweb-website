@@ -22,10 +22,10 @@ export function PostsPagination({
   };
 
   return (
-    <div className="p-posts__pagination">
+    <div className="flex justify-center gap-3 text-base md:gap-6">
       {currentPage > 1 && (
         <Link href={`${currentPage - 2}`}>
-          <p className="duration-200 hover:text-blue-1">
+          <p className="hover:text-blue-1 duration-200">
             <span>← </span> <span className="hidden md:inline">上一頁</span>
           </p>
         </Link>
@@ -38,7 +38,7 @@ export function PostsPagination({
           <p
             className={`h-6 w-6 rounded-[50%] text-center ${cn(
               currentPage === pageNumber && 'bg-blue text-white',
-              currentPage !== pageNumber && 'duration-100 hover:bg-blue-1 hover:text-white'
+              currentPage !== pageNumber && 'hover:bg-blue-1 duration-100 hover:text-white'
             )} `}
           >
             {pageNumber}
@@ -50,7 +50,7 @@ export function PostsPagination({
 
       {currentPage < totalPages && (
         <Link href={`${currentPage}`}>
-          <p className="duration-200 hover:text-blue-1">
+          <p className="hover:text-blue-1 duration-200">
             <span className="hidden md:inline">下一頁</span> <span> →</span>
           </p>
         </Link>

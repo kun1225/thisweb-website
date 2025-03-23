@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, type MutableRefObject } from 'react';
+import { type MutableRefObject, useLayoutEffect, useRef, useState } from 'react';
 
 export type TypeMouseState = {
   x: number;

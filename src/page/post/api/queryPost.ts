@@ -42,7 +42,6 @@ function relatedPost() {
   return groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && _id != ^._id && (
     (defined(secondLevelCategory) && secondLevelCategory._ref == ^.secondLevelCategory._ref)
     || (defined(category) && category._ref == ^.category._ref)
-
   )] | order(publishedAt desc) [0...4] {
     _key,
     title,
