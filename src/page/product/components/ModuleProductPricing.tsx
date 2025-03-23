@@ -51,7 +51,7 @@ function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan
   } = item;
 
   return (
-    <div className="hover:border-blue-2 bg-white-pure flex w-full max-w-sm grow flex-col rounded-md border-2 border-transparent px-4 py-8 drop-shadow-[0_0_14px_rgba(0,0,0,.1)] transition-all duration-500 hover:-translate-y-4 md:py-12 lg:py-16">
+    <div className="hover:border-blue-2 bg-white-pure flex w-full max-w-sm grow flex-col rounded-md border-2 border-transparent px-4 py-8 drop-shadow-lg transition-all duration-500 hover:-translate-y-4 md:py-12 lg:py-16">
       <h3 className="text-black-light mb-4 self-center text-lg">{heading}</h3>
       <p className="flex items-baseline gap-2 self-center">
         <span className="text-blue text-4xl font-bold md:text-5xl">{`NT$${discountedPrice}`}</span>
@@ -70,13 +70,11 @@ function ModuleProductPricingItem({ item }: { item: TypeModuleProductPricingPlan
           {cta.isDisabled ? (
             <>{cta.label}</>
           ) : (
-            <Link
-              href={cta.url}
-              className="m-product__pricing__item__cta"
-              target={cta.isOpenNewTab ? '_blank' : '_self'}
-            >
-              {cta.label}
-            </Link>
+            <Button asChild>
+              <Link href={cta.url} target={cta.isOpenNewTab ? '_blank' : '_self'}>
+                {cta.label}
+              </Link>
+            </Button>
           )}
         </Button>
       ) : null}

@@ -36,7 +36,7 @@ export default function ModuleProductTestimonialList({
             className="bg-white-pure flex max-w-xs flex-col justify-between self-stretch rounded-md p-6 shadow-lg lg:max-w-sm"
             key={`${item._key} - ${index}`}
           >
-            <div className="m-product__testimonials__quote">
+            <div className="prose">
               <PortableText
                 value={item.quote}
                 //@ts-ignore

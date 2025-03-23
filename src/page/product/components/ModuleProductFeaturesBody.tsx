@@ -37,11 +37,11 @@ function ModuleProductFeaturesBodyDesktop({ features }: { features: TypeModulePr
         {features?.map((feature, index) => (
           <div
             className={cn(
-              'relative max-w-sm rounded-md px-4 pt-4 pb-8 text-center transition-colors duration-500',
+              'after:bg-blue-2 relative max-w-sm rounded-md px-4 pt-4 pb-8 text-center transition-colors duration-500',
               {
-                'after:bg-blue-2 is-active bg-neutral-100 before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:rounded-md before:bg-neutral-100 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-center after:scale-x-0 after:scale-x-100 after:rounded-md after:transition-transform after:duration-500':
+                'is-active bg-neutral-100 before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:rounded-md before:bg-neutral-100 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-center after:scale-x-100 after:rounded-md after:transition-transform after:duration-500':
                   currentIndex === index,
-                'after:bg-blue-2 before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:rounded-md before:bg-neutral-100 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-center after:scale-x-0 after:rounded-md after:transition-transform after:duration-500':
+                'before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:rounded-md before:bg-neutral-100 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-center after:scale-x-0 after:rounded-md after:transition-transform after:duration-500':
                   currentIndex !== index,
               }
             )}
@@ -56,16 +56,14 @@ function ModuleProductFeaturesBodyDesktop({ features }: { features: TypeModulePr
           </div>
         ))}
       </div>
-      <div className="mx-auto mt-16 grid max-w-4xl">
+
+      <div className="mx-auto mt-16 grid max-w-4xl drop-shadow-xl">
         {features?.map((feature, index) => (
           <div
             className={cn(
-              'col-[1/2] row-[1/2] opacity-0 blur-md drop-shadow-lg',
+              'col-[1/2] row-[1/2] opacity-0 blur-lg duration-400 ease-linear',
               currentIndex === index && 'opacity-100 blur-none'
             )}
-            style={{
-              transition: 'opacity 450ms 50ms linear, blur 500ms linear',
-            }}
             key={feature._key}
           >
             <Media data={feature.media} />

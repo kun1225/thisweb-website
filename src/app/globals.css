@@ -47,8 +47,10 @@
   );
 
   /* shadow */
-  --shadow-lg: 0 0 14px rgba(0, 0, 0, 0.1);
-  --drop-shadow-lg: drop-shadow(0 0 14px rgba(0, 0, 0, 0.1));
+  --shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
+  --drop-shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
+  --drop-shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
 
   /* transition */
   --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);

@@ -47,11 +47,11 @@ function ModuleProductStepsListDesktop({
           <div
             key={step._key}
             className={cn(
-              'relative translate-x-0 flex items-center gap-8 rounded-md py-2 px-8 transition-colors duration-500',
+              'after:bg-blue-2 relative flex translate-x-0 items-center gap-8 rounded-md px-8 py-2 transition-colors duration-500',
               {
-                'after:bg-blue-2 is-active bg-neutral-100 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-md before:bg-neutral-100 after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:origin-top after:scale-y-0 after:scale-y-100 after:rounded-md after:transition-transform after:duration-500':
+                'is-active bg-neutral-100 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-md before:bg-neutral-100 after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:origin-top after:scale-y-100 after:rounded-md after:transition-transform after:duration-500':
                   currentIndex === index,
-                'after:bg-blue-2 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-md before:bg-neutral-100 after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:origin-top after:scale-y-0 after:rounded-md after:transition-transform after:duration-500':
+                'before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-md before:bg-neutral-100 after:absolute after:top-0 after:left-0 after:h-full after:w-1 after:origin-top after:scale-y-0 after:rounded-md after:transition-transform after:duration-500':
                   currentIndex !== index,
               }
             )}
@@ -65,23 +65,23 @@ function ModuleProductStepsListDesktop({
                   <span>{step.heading}</span>
                 </h3>
               ) : null}
-              {step.paragraph ? <div className='prose prose-ul:leading-5'>
-                <PortableText value={step.paragraph} />
-              </div> : null}
+              {step.paragraph ? (
+                <div className="prose prose-ul:leading-5">
+                  <PortableText value={step.paragraph} />
+                </div>
+              ) : null}
             </div>
           </div>
         ))}
       </div>
-      <div className="grid w-full max-w-2xl flex-1">
+
+      <div className="grid w-full max-w-2xl flex-1 drop-shadow-xl">
         {steps.map((step, index) => (
           <div
             key={step._key}
-            className={cn(
-              'opacity-0 blur-md drop-shadow-[0_0_28px_rgba(0,0,0,.1)] transition-all duration-500 ease-linear',
-              {
-                'opacity-100 blur-none': currentIndex === index,
-              }
-            )}
+            className={cn('opacity-0 blur-md transition-all duration-400 ease-linear', {
+              'opacity-100 blur-none': currentIndex === index,
+            })}
             style={{ gridArea: '1/1/2/2' }}
           >
             <Media data={step.media} />
@@ -97,7 +97,7 @@ function ModuleProductStepsListMobile({ steps }: { steps: TypeModuleProductStep[
     <Carousel autoplayInterval={6000} isShowDots>
       {steps.map((step, index) => (
         <div className="c flex flex-col items-center gap-8 pt-16" key={step._key}>
-          <div className="w-[90%] drop-shadow-lg">
+          <div className="w-[90%] drop-shadow-xl">
             <Media data={step.media} />
           </div>
           <div className="flex -translate-x-6 items-center gap-8">

@@ -17,7 +17,7 @@ export default function ModuleProductAbout({ data }: { data: TypeModuleProductAb
     <section className="c py-32">
       <ModuleProductHeading heading={heading} headingId={headingId} />
       <div className="mx-auto my-8 flex max-w-4xl flex-col items-center justify-between gap-8 md:my-24 md:flex-row md:gap-16">
-        <Media data={media} className="aspect-square max-w-xs drop-shadow-lg" />
+        <Media data={media} className="aspect-square max-w-xs drop-shadow-xl" />
         <ModuleProductParagraph paragraph={paragraph} className="m-0 md:text-left" />
       </div>
       {/* <ModuleProductAboutAchievements achievements={achievements} /> */}
