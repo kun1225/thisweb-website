@@ -61,7 +61,7 @@ export function HomeForm({
             {...register('email')}
             type="email"
             placeholder="你的 Email"
-            className="border-gray w-full rounded-md border bg-white px-4 py-2"
+            className="border-gray w-full rounded-md border bg-white px-4 py-2 transition"
             disabled={isSubmitting}
           />
         </div>
@@ -77,7 +77,7 @@ export function HomeForm({
             {...register('name')}
             type="text"
             placeholder="怎麼稱呼你？"
-            className="border-gray w-full rounded-md border bg-white px-4 py-2"
+            className="border-gray w-full rounded-md border bg-white px-4 py-2 transition"
             disabled={isSubmitting}
           />
         </div>
@@ -95,7 +95,7 @@ export function HomeForm({
           isSubmitSuccessful && 'visible opacity-100'
         )}
       >
-        <p className="text-blue border-gray w-full rounded-lg border bg-white p-4 font-bold text-pretty shadow-lg">
+        <p className="text-blue border-gray w-full rounded-lg border bg-white p-4 font-bold text-pretty shadow-md">
           {successMessage || '🎉 訂閱成功！記得檢查你的 Email 喔！'}
         </p>
       </div>

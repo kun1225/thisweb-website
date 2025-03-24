@@ -48,8 +48,10 @@
   );
 
   /* shadow */
+  --shadow-md: 0 0 7px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
+  --drop-shadow-md: 0 0 7px rgba(0, 0, 0, 0.06);
   --drop-shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
   --drop-shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
 
@@ -150,8 +152,12 @@
   }
 
   @media screen and (hover: hover) {
+    * {
+      @apply outline-2 outline-offset-2 outline-transparent outline-dashed;
+    }
+
     :focus-visible {
-      @apply outline-blue outline-2 outline-offset-2 outline-dashed;
+      @apply outline-blue;
     }
   }
 }
