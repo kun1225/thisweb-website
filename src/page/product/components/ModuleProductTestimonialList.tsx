@@ -1,12 +1,12 @@
 // Libs
+import { PortableText } from 'next-sanity';
+// Types
+import type { TypeModuleProductTestimonial } from '@/src/types/typeModules';
+import { CiUser } from 'react-icons/ci';
 import { hasArrayValue } from '@/src/shared/lib/utils';
 // Components
 import Carousel from '@/src/shared/ui/Carousel';
-import { PortableText } from 'next-sanity';
 import Img from '@/src/shared/ui/Img';
-import { CiUser } from 'react-icons/ci';
-// Types
-import type { TypeModuleProductTestimonial } from '@/src/types/typeModules';
 
 const customPortableText = {
   block: {
@@ -29,11 +29,14 @@ export default function ModuleProductTestimonialList({
   const testimonials = [...data, ...data, ...data];
 
   return (
-    <div className="m-product__testimonials__list">
+    <div className="-mx-edge-dynamic mt-8">
       <Carousel isAutoScroll isAutoplay={false} gap="32px">
         {testimonials.map((item, index) => (
-          <div className="m-product__testimonials__item" key={`${item._key} - ${index}`}>
-            <div className="m-product__testimonials__quote">
+          <div
+            className="bg-white-pure flex max-w-xs flex-col justify-between self-stretch rounded-md p-6 shadow-lg lg:max-w-sm"
+            key={`${item._key} - ${index}`}
+          >
+            <div className="prose">
               <PortableText
                 value={item.quote}
                 //@ts-ignore
@@ -41,16 +44,36 @@ export default function ModuleProductTestimonialList({
               />
             </div>
             {item.name || item.role ? (
-              <div className="m-product__testimonials__author">
+              <div
+                className="text-black-light mt-4 grid text-sm"
+                style={{
+                  gridTemplateAreas: `
+                    'avatar name'
+                    'avatar role'
+                  `,
+                  gridTemplateColumns: 'auto 1fr',
+                  gridTemplateRows: 'auto auto',
+                }}
+              >
                 {item?.image ? (
-                  <div className="m-product__testimonials__avatar">
+                  <div
+                    className="mr-2 size-9 self-center rounded-full bg-neutral-100 p-2"
+                    style={{ gridArea: 'avatar' }}
+                  >
                     <Img image={item?.image} />
                   </div>
                 ) : (
-                  <CiUser className="m-product__testimonials__avatar" />
+                  <CiUser
+                    className="mr-2 size-9 self-center rounded-full bg-neutral-100 p-2"
+                    style={{ gridArea: 'avatar' }}
+                  />
                 )}
-                {item?.name ? <p className="m-product__testimonials__name">{item.name}</p> : null}
-                {item?.role ? <p className="m-product__testimonials__role">{item.role}</p> : null}
+                {item?.name ? (
+                  <p className="font-semibold" style={{ gridArea: 'name' }}>
+                    {item.name}
+                  </p>
+                ) : null}
+                {item?.role ? <p style={{ gridArea: 'role' }}>{item.role}</p> : null}
               </div>
             ) : null}
           </div>

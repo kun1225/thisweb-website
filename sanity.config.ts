@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
+ * This configuration is used to for the Sanity Studio that's mounted on the `/app/studio/[[...tool]]/page.tsx` route
  */
 
 import { visionTool } from '@sanity/vision';
@@ -15,7 +15,7 @@ import { structure } from './src/sanity/structure';
 
 // Others Plugins
 import { codeInput } from '@sanity/code-input';
-import { iconPicker } from 'sanity-plugin-icon-picker';
+// import { iconPicker } from 'sanity-plugin-icon-picker';
 
 export default defineConfig({
   basePath: '/studio',
@@ -23,13 +23,13 @@ export default defineConfig({
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
-  schema: { types: schemas },
+  schema: { types: schemas as any },
   plugins: [
     structureTool({ structure }),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     codeInput(),
-    iconPicker(),
+    // iconPicker(),
   ],
 });

@@ -1,8 +1,9 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 
-export default function PostsEmptyPage() {
+export function PostsEmptyPage() {
   const router = useRouter();
 
   return (
@@ -11,7 +12,7 @@ export default function PostsEmptyPage() {
       <button
         type="button"
         aria-label="回上一頁"
-        className="hover:text-blue flex items-center gap-2 text-sm transition"
+        className="flex items-center gap-2 text-sm transition hover:text-blue"
         onClick={() => router.back()}
       >
         <IoIosArrowRoundBack />

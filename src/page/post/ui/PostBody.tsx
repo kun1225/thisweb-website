@@ -8,7 +8,10 @@ import { TypePost } from '@/src/types/typePosts';
 export function PostBody({ data }: { data: TypePost }) {
   return (
     <>
-      <section className="p-post__body">
+      <section
+        className="flex flex-col items-center transition xl:flex-row xl:justify-center"
+        style={{ '--top': 'calc(32px + var(--header-height))' } as React.CSSProperties}
+      >
         <PostToc data={data} />
         <PostArticle data={data} />
         <PostSidebar data={data} />

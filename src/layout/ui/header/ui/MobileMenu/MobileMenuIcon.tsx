@@ -2,7 +2,6 @@
 
 // Hooks
 import { useState } from 'react';
-
 // Libs
 import { cn } from '@/src/shared/lib/utils';
 
@@ -25,11 +24,31 @@ export const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
     <button
       type="button"
       aria-label="Toggle Menu"
-      className={`g-header__mobile-menu__trigger ${cn(
-        mobileMenuOpen && 'is-open',
-        isInitialRender && 'is-initial'
-      )}`}
+      className={cn(
+        'relative flex h-8 w-8 flex-col items-center justify-center focus:outline-none',
+        mobileMenuOpen ? 'text-gray-900' : 'text-gray-600',
+        isInitialRender && 'transition-none'
+      )}
       onClick={toggleMenu}
-    />
+    >
+      <span
+        className={cn(
+          'absolute block h-0.5 w-6 transform bg-current transition-transform duration-300',
+          mobileMenuOpen ? 'rotate-45' : '-translate-y-1.5'
+        )}
+      />
+      <span
+        className={cn(
+          'absolute block h-0.5 w-6 bg-current transition-opacity duration-300',
+          mobileMenuOpen && 'opacity-0'
+        )}
+      />
+      <span
+        className={cn(
+          'absolute block h-0.5 w-6 transform bg-current transition-transform duration-300',
+          mobileMenuOpen ? '-rotate-45' : 'translate-y-1.5'
+        )}
+      />
+    </button>
   );
 };

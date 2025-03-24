@@ -13,7 +13,7 @@ export function HeaderOverlay({
       type="button"
       aria-label="Close the mega menu"
       className={cn(
-        'g-header__overlay',
+        'fixed top-0 left-0 z-10 h-screen w-full',
         currentIndex !== -1 ? 'pointer-events-auto' : 'pointer-events-none'
       )}
       onClick={closeMegaMenu}

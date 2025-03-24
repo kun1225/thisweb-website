@@ -1,15 +1,12 @@
-// Libs
-import { hasArrayValue, hasObjectValue } from '@/src/shared/lib/utils';
-// Components
-import Media from '@/src/shared/ui/Media';
-import NumberCounter from '@/src/shared/ui/NumberCounter';
-import ModuleProductHeading from './ModuleProductHeading';
-import ModuleProductParagraph from './ModuleProductParagraph';
-// Types
 import {
   TypeModuleProductAbout,
   TypeModuleProductAboutAchievements,
 } from '@/src/types/typeModules';
+import { hasArrayValue, hasObjectValue } from '@/src/shared/lib/utils';
+import Media from '@/src/shared/ui/Media';
+import NumberCounter from '@/src/shared/ui/NumberCounter';
+import ModuleProductHeading from './ModuleProductHeading';
+import ModuleProductParagraph from './ModuleProductParagraph';
 
 export default function ModuleProductAbout({ data }: { data: TypeModuleProductAbout }) {
   if (!hasObjectValue(data)) return null;
@@ -17,13 +14,13 @@ export default function ModuleProductAbout({ data }: { data: TypeModuleProductAb
   const { heading, headingId, paragraph, media, achievements } = data;
 
   return (
-    <section className="m-product__about">
+    <section className="c py-32">
       <ModuleProductHeading heading={heading} headingId={headingId} />
-      <div className="m-product__about__content">
-        <Media data={media} className="m-product__about__media" />
-        <ModuleProductParagraph paragraph={paragraph} />
+      <div className="mx-auto my-8 flex max-w-4xl flex-col items-center justify-between gap-8 md:my-24 md:flex-row md:gap-16">
+        <Media data={media} className="aspect-square max-w-xs drop-shadow-xl" />
+        <ModuleProductParagraph paragraph={paragraph} className="m-0 md:text-left" />
       </div>
-      <ModuleProductAboutAchievements achievements={achievements} />
+      {/* <ModuleProductAboutAchievements achievements={achievements} /> */}
     </section>
   );
 }

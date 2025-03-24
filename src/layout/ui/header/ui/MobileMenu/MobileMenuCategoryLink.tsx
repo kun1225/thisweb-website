@@ -1,27 +1,26 @@
-// Libs
-import { getPostsUrl } from '../../../../lib/getPostsUrl';
-// Components
 import Link from 'next/link';
-// Type
 import { TypeCategory } from '@/src/types/typeGlobalHeader';
+import { getPostsUrl } from '../../../../lib/getPostsUrl';
 
 export function MobileMenuCategoryLink({
   category,
   closeMobileMenu,
+  index,
 }: {
   category: TypeCategory;
   closeMobileMenu: () => void;
+  index: number;
 }) {
   return (
-    <li>
+    <li className="border-blue border-b">
       <Link
         href={getPostsUrl(category.url)}
-        className="g-header__mobile-menu__link"
+        className="text-blue block py-6 font-bold"
         onClick={closeMobileMenu}
         aria-label={`前往${category.title}頁面`}
       >
-        {category.title}
-        <span className="sr-only">前往{category.title}頁面</span>
+        <span className="mr-6 font-mono text-sm">{`${index.toString().padStart(2, '0')}`}</span>
+        <span>{category.title}</span>
       </Link>
     </li>
   );

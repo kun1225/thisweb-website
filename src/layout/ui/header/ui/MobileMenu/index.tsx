@@ -1,17 +1,17 @@
 'use client';
+
 // Hooks
 import { useState } from 'react';
-// Libs
-import { cn } from '@/src/shared/lib/utils';
-// Components
-import { MobileMenuIcon } from './MobileMenuIcon';
-import { MobileMenuContent } from './MobileMenuContent';
 // Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
+// Libs
+import { cn } from '@/src/shared/lib/utils';
+import { MobileMenuContent } from './MobileMenuContent';
+// Components
+import { MobileMenuIcon } from './MobileMenuIcon';
 
 export function MobileMenu({
   headerContent,
-  className = '',
 }: {
   headerContent: TypeGlobalHeaderContent;
   className?: React.HtmlHTMLAttributes<HTMLElement>['className'];
@@ -19,15 +19,13 @@ export function MobileMenu({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className={className}>
+    <div className="grid place-content-center md:hidden">
       <MobileMenuIcon mobileMenuOpen={isMobileMenuOpen} setMobileMenuOpen={setIsMobileMenuOpen} />
-      <div className={cn('g-header__mobile-menu', isMobileMenuOpen && 'is-open')}>
-        <MobileMenuContent
-          headerContent={headerContent}
-          isMobileMenuOpen={isMobileMenuOpen}
-          closeMobileMenu={() => setIsMobileMenuOpen(false)}
-        />
-      </div>
+      <MobileMenuContent
+        headerContent={headerContent}
+        isMobileMenuOpen={isMobileMenuOpen}
+        closeMobileMenu={() => setIsMobileMenuOpen(false)}
+      />
     </div>
   );
 }

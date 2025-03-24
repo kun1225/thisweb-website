@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/src/shared/lib/utils';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 const transition = {
   type: 'spring',
@@ -15,7 +15,7 @@ const Skeleton = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={transition}
-      className={cn('bg-muted origin-left animate-pulse rounded-md bg-gray-200', className)}
+      className={cn('bg-muted bg-gray origin-left animate-pulse rounded-md', className)}
     />
   );
 };

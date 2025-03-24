@@ -1,11 +1,5 @@
-// Components
-import PostsHeader from './_components/PostsHeader';
+import { LayoutPosts } from '@/src/page/posts';
 
-export default function PostsLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="p-posts">
-      <PostsHeader />
-      {children}
-    </div>
-  );
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <LayoutPosts>{children}</LayoutPosts>;
 }

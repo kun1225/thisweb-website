@@ -1,13 +1,14 @@
 import { MetadataRoute } from 'next';
 import {
   CATEGORIES_QUERY,
-  POSTS_QUERY,
-  POSTS_COUNTS_QUERY,
   POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
+  POSTS_COUNTS_QUERY,
+  POSTS_QUERY,
 } from '@/src/libs/sanity/queries';
-import { getProductAllUrl } from '../shared/api/apiPageProduct';
-import { CategoriesType, PostsType } from '@/src/libs/sanity/type';
 import { client } from '@/src/shared/lib/sanity';
+import type { TypeCategories, TypeCategory } from '@/src/types/typeCategories';
+import type { TypePosts } from '@/src/types/typePosts';
+import { getProductAllUrl } from '../shared/api/apiPageProduct';
 
 const PRIORITY_TABLE = {
   home: 1,
@@ -20,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const PER_NUMBER_PAGE = 9;
   const NOW = new Date();
 
-  const categories = await client.fetch<CategoriesType>(
+  const categories = await client.fetch<TypeCategories>(
     CATEGORIES_QUERY,
     {},
     {
@@ -31,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const categoryPagesCounts = await Promise.all(
-    categories.map(async (category) => {
+    categories.map(async (category: TypeCategory) => {
       const count = await client.fetch<number>(
         POSTS_COUNTS_BY_CATEGORY_TITLE_QUERY,
         { categoryTitle: category.title },
@@ -74,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  const posts = await client.fetch<PostsType>(
+  const posts = await client.fetch<TypePosts>(
     POSTS_QUERY,
     {},
     {
@@ -92,7 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const productsUrl = await getProductAllUrl();
   const productsSitemap: MetadataRoute.Sitemap = productsUrl.map((url: string) => ({
-    url,
+    url: `https://www.thisweb.dev/product/${url}`,
     lastModified: NOW,
     changeFrequency: 'monthly',
     priority: PRIORITY_TABLE.product,

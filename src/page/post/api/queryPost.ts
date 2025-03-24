@@ -42,7 +42,6 @@ function relatedPost() {
   return groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && _id != ^._id && (
     (defined(secondLevelCategory) && secondLevelCategory._ref == ^.secondLevelCategory._ref)
     || (defined(category) && category._ref == ^.category._ref)
-
   )] | order(publishedAt desc) [0...4] {
     _key,
     title,
@@ -74,5 +73,3 @@ function recommendation() {
       }
   }`;
 }
-
-export const RELATED_POSTS_QUERY = groq`*[_type == "post" && defined(slug) && defined(title) && status == 'done' && category->title == $categoryTitle && secondLevelCategory->title == $secondLevelCategory]{title, _id, slug} | order(publishedAt asc)`;

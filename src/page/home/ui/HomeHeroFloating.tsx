@@ -1,14 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useMouse } from '../../../shared/hooks/useMouse';
-import { randomInt } from '@/src/shared/lib/utils';
-// Components
-import { ImHtmlFive2, ImCss3, ImCodepen } from 'react-icons/im';
-import { FaSquareJs, FaReact, FaCode, FaRegFileCode } from 'react-icons/fa6';
-
 import type { IconType } from 'react-icons';
+import { FaCode, FaReact, FaRegFileCode, FaSquareJs } from 'react-icons/fa6';
+// Components
+import { ImCodepen, ImCss3, ImHtmlFive2 } from 'react-icons/im';
+import { randomInt } from '@/src/shared/lib/utils';
+import { useMouse } from '../../../shared/hooks/useMouse';
+import { motion } from 'motion/react';
 
 interface FloatingIconProps {
   Icon: IconType;
@@ -28,45 +27,45 @@ interface IconConfig {
 const ICONS_CONFIG: IconConfig[] = [
   {
     Icon: ImHtmlFive2,
-    left: 12,
-    top: 20,
-    scale: randomInt(7, 10) / 10,
+    left: 8,
+    top: 21,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: ImCss3,
-    left: 75,
-    top: 5,
-    scale: randomInt(7, 10) / 10,
+    left: 88,
+    top: 16,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: FaSquareJs,
-    left: 45,
-    top: 15,
-    scale: randomInt(7, 10) / 10,
+    left: 35,
+    top: 12,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: FaReact,
-    left: 88,
-    top: 55,
-    scale: randomInt(7, 10) / 10,
+    left: 59,
+    top: 10,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: FaCode,
     left: 15,
     top: 85,
-    scale: randomInt(7, 10) / 10,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: ImCodepen,
     left: 77,
     top: 88,
-    scale: randomInt(7, 10) / 10,
+    scale: randomInt(8, 10) / 10,
   },
   {
     Icon: FaRegFileCode,
     left: 45,
-    top: 95,
-    scale: randomInt(7, 10) / 10,
+    top: 75,
+    scale: randomInt(8, 10) / 10,
   },
 ];
 
@@ -101,15 +100,16 @@ function HomeHeroIcon({ Icon, x, y, scale = 0, style = {} }: FloatingIconProps) 
     <motion.div
       className="absolute"
       initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 0.08, scale }}
+      animate={{ opacity: 0.06, scale }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
+        ease: 'anticipate',
       }}
       style={{
         ...style,
         x: x * randomMometun.current,
         y: y * randomMometun.current,
-        transition: 'transform 0.3s ease-out',
+        transition: 'transform 0.5s ease-out',
       }}
     >
       <Icon className="h-12 w-12" />

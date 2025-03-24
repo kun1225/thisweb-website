@@ -1,21 +1,17 @@
 import dynamic from 'next/dynamic';
-
+import { TypeModulesProduct } from '@/src/types/typeModules';
+import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
+import ModuleProductAbout from './components/ModuleProductAbout';
+import ModuleProductFAQs from './components/ModuleProductFAQs';
+import ModuleProductsFeatures from './components/ModuleProductFeatures';
 import ModuleProductHero from './components/ModuleProductHero';
+import ModuleProductPricing from './components/ModuleProductPricing';
 import ModuleProductProblems from './components/ModuleProductProblems';
 import ModuleProductSolutions from './components/ModuleProductSolutions';
 import ModuleProductSteps from './components/ModuleProductSteps';
-import ModuleProductsFeatures from './components/ModuleProductFeatures';
-import ModuleProductAbout from './components/ModuleProductAbout';
-import ModuleProductPricing from './components/ModuleProductPricing';
 import ModuleProductTestimonials from './components/ModuleProductTestimonials';
-import ModuleProductFAQs from './components/ModuleProductFAQs';
 
-import { TypeModulesProduct } from '@/src/types/typeModules';
-import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
-
-const PageProductAnnouncement = dynamic(() => import('./components/PageProductAnnouncement'), {
-  ssr: false,
-});
+const PageProductAnnouncement = dynamic(() => import('./components/PageProductAnnouncement'), {});
 
 export default function PageProduct({
   modules,

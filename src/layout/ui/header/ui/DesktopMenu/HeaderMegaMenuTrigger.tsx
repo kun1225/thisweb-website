@@ -1,7 +1,5 @@
-// Hooks & Libs
-import { cn } from '@/src/shared/lib/utils';
-// Components
 import { FaCaretDown } from 'react-icons/fa6';
+import { cn } from '@/src/shared/lib/utils';
 
 export function HeaderMegaMenuTrigger({
   title,
@@ -18,7 +16,7 @@ export function HeaderMegaMenuTrigger({
     <button
       type="button"
       aria-label="Open the mega menu"
-      className="g-header__megamenu-trigger"
+      className="hover:text-blue-1 hover:bg-blue-5 relative cursor-pointer rounded-sm whitespace-nowrap text-gray-500 transition-colors"
       onClick={() => switchMegaMenu(index)}
     >
       <div className="flex items-center gap-2 p-1">

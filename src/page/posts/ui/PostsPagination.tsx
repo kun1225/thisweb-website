@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { cn } from '@/src/shared/lib/utils';
 
-export default function PostsPagination({
+export function PostsPagination({
   currentPage,
   totalPages,
   articlesPerPage,
@@ -22,7 +22,7 @@ export default function PostsPagination({
   };
 
   return (
-    <div className="p-posts__pagination">
+    <div className="flex justify-center gap-3 text-base md:gap-6">
       {currentPage > 1 && (
         <Link href={`${currentPage - 2}`}>
           <p className="hover:text-blue-1 duration-200">
