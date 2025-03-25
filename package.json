@@ -15,6 +15,7 @@
   "dependencies": {
     "@bprogress/next": "^3.2.10",
     "@hookform/resolvers": "^3.10.0",
+    "@next/third-parties": "^15.2.4",
     "@portabletext/block-tools": "^1.1.13",
     "@portabletext/react": "^3.1.0",
     "@radix-ui/react-slot": "^1.1.1",

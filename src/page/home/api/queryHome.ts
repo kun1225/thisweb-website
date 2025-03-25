@@ -45,7 +45,7 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     headingId,
     subheading,
     postsCount,
-    "posts": *[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(publishedAt desc) [0...20] {
+    "posts": *[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(publishedAt desc) [0...8] {
       title,
       description,
       publishedAt,
