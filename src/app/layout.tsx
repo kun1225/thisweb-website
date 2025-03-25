@@ -1,8 +1,8 @@
 import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { getHeaderData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
-// import './_styles/globals-scss.scss';
 import './globals.css';
 
 const NotoSansTC = Noto_Sans_TC({
@@ -45,6 +45,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
         <link rel="alternate" hrefLang="x-default" href="https://thisweb.dev/" />
       </head>
       <body className="selection:bg-blue-1 min-h-full bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white">
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
         <RootLayout headerContent={headerContent}>{children}</RootLayout>
       </body>
     </html>
