@@ -1,5 +1,5 @@
-import { format, parseISO } from 'date-fns';
 import type { TypePost } from '@/src/types/typePosts';
+import { format, parseISO } from 'date-fns';
 
 export function PostHeader({ data }: { data: TypePost }) {
   const { publishedAt: date, title, category: topic } = data;
@@ -63,7 +63,7 @@ function PostHeaderInfo({ date, topic }: { date?: string; topic: string }) {
 function PostHeaderTitle({ title }: { title: string }) {
   return title ? (
     <h1
-      className="text-pretty text-3xl font-semibold opacity-0 drop-shadow-md md:text-4xl md:leading-relaxed"
+      className="text-3xl font-semibold text-pretty opacity-0 drop-shadow-md md:text-4xl md:leading-relaxed"
       style={{ animation: 'fade-in 0.6s 0.2s linear forwards' }}
     >
       {title}
@@ -75,8 +75,8 @@ function PostHeaderAuthor() {
   return (
     <div className="flex items-center justify-center gap-4 md:justify-between md:gap-16">
       <div
-        className="inline-block h-[1px] flex-1 origin-left scale-0 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
-        style={{ animation: 'scale-in 1.6s 0.4s ease-in-out forwards' }}
+        className="inline-block h-[1px] flex-1 origin-left bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
+        style={{ animation: 'scale-in-x 1.6s 0.4s ease-in-out forwards', transform: 'scaleX(0)' }}
       />
       <p
         className="text-xs text-gray-600 opacity-0"
@@ -87,8 +87,8 @@ function PostHeaderAuthor() {
         this.web
       </p>
       <div
-        className="inline-block h-[1px] flex-1 origin-right scale-0 bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
-        style={{ animation: 'scale-in 1.6s 0.4s ease-in-out forwards' }}
+        className="inline-block h-[1px] flex-1 origin-right bg-[rgba(0,0,0,0.1)] md:bg-[rgba(0,0,0,0.3)]"
+        style={{ animation: 'scale-in-x 1.6s 0.4s ease-in-out forwards', transform: 'scaleX(0)' }}
       />
     </div>
   );
