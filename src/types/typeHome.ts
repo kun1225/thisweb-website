@@ -40,6 +40,27 @@ export type TypeHome = {
       url: string;
     }[];
   };
+  popularPosts: {
+    heading: string;
+    headingId: string;
+    subheading: string;
+    paragraph: PortableTextBlock;
+    posts: {
+      _key: string;
+      title: string;
+      slug: {
+        current: string;
+      };
+      excerpt?: string;
+      sharing?: {
+        shareGraphic?: any;
+        description?: string;
+      };
+      category: {
+        title: string;
+      };
+    }[];
+  };
   latestPosts: {
     subheading: string;
     heading: string;

@@ -48,9 +48,11 @@
   );
 
   /* shadow */
+  --shadow-sm: 0 0 3px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 0 7px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
+  --drop-shadow-sm: 0 0 3px rgba(0, 0, 0, 0.06);
   --drop-shadow-md: 0 0 7px rgba(0, 0, 0, 0.06);
   --drop-shadow-lg: 0 0 14px rgba(0, 0, 0, 0.08);
   --drop-shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);

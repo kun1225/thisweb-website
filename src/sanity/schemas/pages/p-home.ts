@@ -9,6 +9,7 @@ export default defineType({
     { title: 'Hero', name: 'hero' },
     { title: 'Lead Magnet', name: 'leadMagnet' },
     { title: 'Categories Navigation', name: 'categoriesNav' },
+    { title: 'Popular Posts', name: 'popularPosts' },
     { title: 'Latest Posts', name: 'latestPosts' },
     { title: 'Site Owner', name: 'siteOwner' },
     { title: 'Recommendation', name: 'recommendation' },
@@ -19,6 +20,7 @@ export default defineType({
     heroSection(),
     leadMagnetSection(),
     categoriesNavSection(),
+    popularPostsSection(),
     latestPostsSection(),
     siteOwnerSection(),
     recommendationSection(),
@@ -231,6 +233,46 @@ function categoriesNavSection() {
             ],
           },
         ],
+      }),
+    ],
+  });
+}
+
+function popularPostsSection() {
+  return defineField({
+    title: 'Popular Posts',
+    name: 'popularPosts',
+    type: 'object',
+    group: 'popularPosts',
+    fields: [
+      defineField({
+        title: 'Heading',
+        name: 'heading',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Heading ID',
+        name: 'headingId',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Subheading',
+        name: 'subheading',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Popular Posts',
+        name: 'posts',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: { type: 'post' },
+            validation: (Rule) => Rule.required(),
+          },
+        ],
+        validation: (Rule) => Rule.required().min(2),
+        description: 'Select posts to display in alternating layout',
       }),
     ],
   });

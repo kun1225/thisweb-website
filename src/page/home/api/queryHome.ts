@@ -40,6 +40,26 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     }[]
   },
 
+  popularPosts {
+    heading,
+    headingId,
+    subheading,
+    posts[]->{
+      title,
+      publishedAt,
+      slug {
+        current,
+      },
+      category -> {
+        title,
+      },
+      sharing {
+        shareGraphic,
+        description,
+      },
+    },
+  },
+
   latestPosts {
     heading,
     headingId,
@@ -78,5 +98,4 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     media,
     cta,
   }
-
 }`;
