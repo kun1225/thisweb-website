@@ -4,6 +4,9 @@ import {
   POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
   POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
 } from '@/src/libs/sanity/queries';
+import type { TypeCategories, TypeCategory } from '@/src/types/typeCategories';
+import type { TypePosts } from '@/src/types/typePosts';
+import { sanityFetch } from '@/src/shared/lib/sanity';
 import {
   POSTS_PER_PAGE,
   PagePosts,
@@ -11,9 +14,6 @@ import {
   getPostsByCategoryUrl,
   getPostsBySecondLevelCategoryUrl,
 } from '@/src/page/posts';
-import { sanityFetch } from '@/src/shared/lib/sanity';
-import type { TypeCategories, TypeCategory } from '@/src/types/typeCategories';
-import type { TypePosts } from '@/src/types/typePosts';
 
 export const metadata: Metadata = {
   title: '文章列表 | 請網這邊走 ThisWeb',
@@ -54,12 +54,12 @@ export const generateStaticParams = async () => {
   return result;
 };
 
-const PostsPage: React.FC<{
-  params: {
+export default async function PostsPage(props: {
+  params: Promise<{
     category: string;
     page: string;
-  };
-}> = async props => {
+  }>;
+}) {
   const params = await props.params;
   const numPage = parseInt(params.page);
 
@@ -121,6 +121,4 @@ const PostsPage: React.FC<{
       totalPages={totalPages}
     />
   );
-};
-
-export default PostsPage;
+}

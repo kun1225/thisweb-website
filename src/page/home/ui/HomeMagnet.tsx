@@ -10,7 +10,7 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
 
   return (
     <section className="c overflow-x-hidden py-8 text-center">
-      <div className="bg-blue-5 border-gray rounded-lg border px-6 py-32 shadow-xl">
+      <div className="bg-blue-5 border-gray rounded-lg border px-8 py-32 shadow-xl">
         <HomeSubheading subheading={subheading} />
         <HomeHeading heading={heading} headingId={headingId} />
 

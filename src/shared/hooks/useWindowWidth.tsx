@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import theme from '@/src/app/_styles/theme';
+import theme from '@/src/styles/theme';
 
 const useWindowWidth = () => {
   const { lg, md } = theme.screens;

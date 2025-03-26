@@ -162,15 +162,6 @@
       @apply outline-blue;
     }
   }
-
-  @keyframes scale-in-x {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
 }
 
 @utility c {
@@ -224,6 +215,23 @@ html[data-megamenu-open='false'] {
   #g-footer {
     @apply blur-none;
   }
+}
+
+.p-post__recommendation__content ul,
+.p-post__recommendation__content ol {
+  @apply my-1 list-inside md:mb-2 xl:mb-1;
+}
+
+.p-post__recommendation__content li {
+  @apply mb-0.5 md:mb-1 xl:mb-0.5;
+}
+
+.p-post__recommendation__content ul {
+  @apply list-disc;
+}
+
+.p-post__recommendation__content ol {
+  @apply list-decimal;
 }
 
 .c-carousel {

@@ -1,11 +1,17 @@
+import dynamic from 'next/dynamic';
 import { TypeHome } from '@/src/types/typeHome';
-import { HomeAbout } from './HomeAbout';
-import { HomeCategories } from './HomeCategories';
 import { HomeHero } from './HomeHero';
-import { HomeLatestPosts } from './HomeLatestPosts';
-import { HomeMagnet } from './HomeMagnet';
-import { HomePopularPosts } from './HomePopularPosts';
-import { HomeRecommendation } from './HomeRecommendation';
+
+const HomeMagnet = dynamic(() => import('./HomeMagnet').then((m) => m.HomeMagnet));
+const HomeAbout = dynamic(() => import('./HomeAbout').then((m) => m.HomeAbout));
+const HomeCategories = dynamic(() => import('./HomeCategories').then((m) => m.HomeCategories));
+const HomeLatestPosts = dynamic(() => import('./HomeLatestPosts').then((m) => m.HomeLatestPosts));
+const HomePopularPosts = dynamic(() =>
+  import('./HomePopularPosts').then((m) => m.HomePopularPosts)
+);
+const HomeRecommendation = dynamic(() =>
+  import('./HomeRecommendation').then((m) => m.HomeRecommendation)
+);
 
 export function PageHome({ data }: { data: TypeHome }) {
   const { hero, leadMagnet, categoriesNav, popularPosts, latestPosts, siteOwner, recommendation } =

@@ -147,6 +147,15 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes scale-in-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 /* Utility classes */

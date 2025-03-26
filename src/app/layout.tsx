@@ -3,7 +3,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { getHeaderData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
-import './globals.css';
+import '../styles/globals.css';
 
 const NotoSansTC = Noto_Sans_TC({
   weight: ['400', '600'],
