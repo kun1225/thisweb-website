@@ -1,8 +1,9 @@
 'use client';
-import { createPortal } from 'react-dom';
-import { useState, useEffect, useRef } from 'react';
-import { hasArrayValue } from '@/src/shared/lib/utils';
+
+import { useEffect, useRef, useState } from 'react';
 import type { TypePageProductAnnouncement } from '@/src/types/typePageProduct';
+import { createPortal } from 'react-dom';
+import { hasArrayValue } from '@/src/shared/lib/utils';
 
 export default function PageProductAnnouncement({ data }: { data: TypePageProductAnnouncement }) {
   const announcementRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,10 @@ export default function PageProductAnnouncement({ data }: { data: TypePageProduc
   if (!hasArrayValue(data) || typeof window === 'undefined') return null;
 
   return createPortal(
-    <div ref={announcementRef} className="m-product__announcement">
+    <div
+      ref={announcementRef}
+      className="bg-blue-1 fixed top-0 left-0 z-(--z-header) flex w-full justify-center gap-1 py-1 text-sm text-white"
+    >
       {data.map((item) => {
         switch (item._type) {
           case 'dueDate':

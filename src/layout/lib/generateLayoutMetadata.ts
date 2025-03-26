@@ -1,7 +1,8 @@
-import { getSettingsGeneral } from '../api/apiSettingsGeneral';
+import type { Metadata } from 'next';
 import { imgBuilder } from '@/src/shared/lib/sanity';
+import { getSettingsGeneral } from '../api/apiSettingsGeneral';
 
-export async function generateLayoutMetadata() {
+export async function generateLayoutMetadata(): Promise<Metadata> {
   const data: any = await getSettingsGeneral();
 
   const { siteTitle, siteDescription, shareGraphic } = data;
@@ -14,10 +15,14 @@ export async function generateLayoutMetadata() {
     creator: siteTitle,
     publisher: siteTitle,
     applicationName: siteTitle,
+    authors: {
+      name: siteTitle,
+      url: 'https://thisweb.dev',
+    },
     openGraph: {
       title: siteTitle,
       description: siteDescription,
-      images: [shareGraphicUrl],
+      images: shareGraphicUrl ? [shareGraphicUrl] : [],
       url: 'https://thisweb.dev',
       siteName: siteTitle,
       locale: 'zh-hant',
@@ -28,9 +33,9 @@ export async function generateLayoutMetadata() {
       title: siteTitle,
       description: siteDescription,
       creator: siteTitle,
-      images: [shareGraphicUrl],
+      images: shareGraphicUrl ? [shareGraphicUrl] : [],
     },
-    metadataBase: 'https://thisweb.dev',
+    metadataBase: new URL('https://thisweb.dev'),
     alternates: {
       languages: {
         'zh-hant': '/',

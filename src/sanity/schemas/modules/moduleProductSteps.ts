@@ -25,15 +25,15 @@ export default defineField({
           name: 'step',
           type: 'object',
           fields: [
-            defineField({
-              title: 'Icon',
-              name: 'icon',
-              type: 'iconPicker',
-              options: {
-                providers: ['fa'],
-                outputFormat: 'react',
-              },
-            }),
+            // defineField({
+            //   title: 'Icon',
+            //   name: 'icon',
+            //   type: 'iconPicker',
+            //   options: {
+            //     providers: ['fa'],
+            //     outputFormat: 'react',
+            //   },
+            // }),
             defineField({
               title: 'Heading',
               name: 'heading',

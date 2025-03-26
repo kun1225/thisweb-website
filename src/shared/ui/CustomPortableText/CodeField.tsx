@@ -1,14 +1,13 @@
 import { Refractor, registerLanguage } from 'react-refractor';
-
-import bash from 'refractor/lang/bash';
-import css from 'refractor/lang/css';
-import go from 'refractor/lang/go';
-import js from 'refractor/lang/javascript';
-import template from 'refractor/lang/js-templates';
-import jsx from 'refractor/lang/jsx';
-import scss from 'refractor/lang/scss';
-import tsx from 'refractor/lang/tsx';
-import ts from 'refractor/lang/typescript';
+import bash from 'refractor/bash';
+import css from 'refractor/css';
+import go from 'refractor/go';
+import js from 'refractor/javascript';
+import template from 'refractor/js-templates';
+import jsx from 'refractor/jsx';
+import scss from 'refractor/scss';
+import tsx from 'refractor/tsx';
+import ts from 'refractor/typescript';
 
 // Language
 registerLanguage(js);

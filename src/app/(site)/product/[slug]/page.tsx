@@ -14,7 +14,8 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const {
     sharing: { metaTitle, metaDesc, shareGraphic },
   } =
@@ -56,7 +57,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { modules, announcement } = (await getProductData({ slug: params.slug })) || {};
 
   if (!hasArrayValue(modules)) {

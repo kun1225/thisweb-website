@@ -1,6 +1,6 @@
+import type { PortableTextBlock } from 'next-sanity';
 import type { TypeCta } from './typeCta';
 import type { TypeMedia } from './typeMedia';
-import type { PortableTextBlock } from 'next-sanity';
 
 export type TypeHome = {
   hero: {
@@ -9,7 +9,14 @@ export type TypeHome = {
     subheading: string;
     paragraph: string;
     media: TypeMedia;
-    cta: TypeCta;
+    isShowFormOrCta: 'form' | 'cta';
+    form?: {
+      formId: string;
+      btnLabel: string;
+      successMessage: string;
+      errorMessage: string;
+    };
+    cta?: TypeCta;
   };
   leadMagnet: {
     subheading: string;
@@ -31,6 +38,27 @@ export type TypeHome = {
       paragraph: string;
       defaultTitle: string;
       url: string;
+    }[];
+  };
+  popularPosts: {
+    heading: string;
+    headingId: string;
+    subheading: string;
+    paragraph: PortableTextBlock;
+    posts: {
+      _key: string;
+      title: string;
+      slug: {
+        current: string;
+      };
+      excerpt?: string;
+      sharing?: {
+        shareGraphic?: any;
+        description?: string;
+      };
+      category: {
+        title: string;
+      };
     }[];
   };
   latestPosts: {

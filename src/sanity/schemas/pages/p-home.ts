@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity';
 import { customCta } from '../libs/customCta';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   title: 'Home Page',
@@ -9,6 +9,7 @@ export default defineType({
     { title: 'Hero', name: 'hero' },
     { title: 'Lead Magnet', name: 'leadMagnet' },
     { title: 'Categories Navigation', name: 'categoriesNav' },
+    { title: 'Popular Posts', name: 'popularPosts' },
     { title: 'Latest Posts', name: 'latestPosts' },
     { title: 'Site Owner', name: 'siteOwner' },
     { title: 'Recommendation', name: 'recommendation' },
@@ -19,6 +20,7 @@ export default defineType({
     heroSection(),
     leadMagnetSection(),
     categoriesNavSection(),
+    popularPostsSection(),
     latestPostsSection(),
     siteOwnerSection(),
     recommendationSection(),
@@ -84,7 +86,50 @@ function heroSection() {
         name: 'media',
         type: 'media',
       }),
-      customCta({}),
+      defineField({
+        title: 'Show Form or CTA',
+        name: 'isShowFormOrCta',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'Show Form', value: 'form' },
+            { title: 'Show CTA', value: 'cta' },
+          ],
+        },
+        initialValue: 'form',
+      }),
+      defineField({
+        title: 'Form',
+        name: 'form',
+        type: 'object',
+        hidden: ({ parent }: { parent: any }) => parent?.isShowFormOrCta === 'cta',
+        fields: [
+          defineField({
+            title: 'Form ID',
+            name: 'formId',
+            type: 'string',
+            validation: (Rule) => Rule.required(),
+          }),
+          defineField({
+            title: 'Button Label',
+            name: 'btnLabel',
+            type: 'string',
+          }),
+          defineField({
+            title: 'Success Message',
+            name: 'successMessage',
+            type: 'string',
+          }),
+          defineField({
+            title: 'Error Message',
+            name: 'errorMessage',
+            type: 'string',
+          }),
+        ],
+      }),
+      customCta({
+        hidden: ({ parent }: { parent: any }) => parent?.isShowFormOrCta === 'form',
+      }),
     ],
   });
 }
@@ -188,6 +233,46 @@ function categoriesNavSection() {
             ],
           },
         ],
+      }),
+    ],
+  });
+}
+
+function popularPostsSection() {
+  return defineField({
+    title: 'Popular Posts',
+    name: 'popularPosts',
+    type: 'object',
+    group: 'popularPosts',
+    fields: [
+      defineField({
+        title: 'Heading',
+        name: 'heading',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Heading ID',
+        name: 'headingId',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Subheading',
+        name: 'subheading',
+        type: 'string',
+      }),
+      defineField({
+        title: 'Popular Posts',
+        name: 'posts',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: { type: 'post' },
+            validation: (Rule) => Rule.required(),
+          },
+        ],
+        validation: (Rule) => Rule.required().min(2),
+        description: 'Select posts to display in alternating layout',
       }),
     ],
   });

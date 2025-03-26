@@ -1,13 +1,13 @@
 'use client';
 
 // Hooks & Libs
-import { usePathname } from 'next/navigation';
-import { cn } from '@/src/shared/lib/utils';
 // Components
 import Link from 'next/link';
-import { Button } from '@/src/shared/ui/Button';
+import { usePathname } from 'next/navigation';
 // Types
 import type { TypeNormalLink } from '@/src/types/typeGlobalHeader';
+import { cn } from '@/src/shared/lib/utils';
+import { Button } from '@/src/shared/ui/Button';
 
 export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onClick: () => void }) {
   const pathname = usePathname();
@@ -15,11 +15,11 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
 
   let className;
   if (pathname === linkUrl) {
-    className = 'text-blue-1 font-semibold drop-shadow-md';
+    className = 'text-blue-1 font-semibold  transition-colors';
   } else if (isButton) {
     className = '';
   } else {
-    className = 'text-gray-500 hover:text-blue-1';
+    className = 'text-gray-500 hover:text-blue-1 hover:bg-blue-5 rounded-sm transition-colors';
   }
 
   return (
@@ -27,7 +27,11 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
       <Link
         href={linkUrl}
         onClick={onClick}
-        className={cn('g-header__normal-link', className, isButton && 'is-button')}
+        className={cn(
+          'g-header__normal-link block p-1 whitespace-nowrap',
+          className,
+          isButton && 'is-button'
+        )}
       >
         {linkText}
       </Link>

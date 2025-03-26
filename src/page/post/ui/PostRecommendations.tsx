@@ -1,11 +1,9 @@
-import { hasArrayValue, cn } from '@/src/shared/lib/utils';
-
-import Img from '@/src/shared/ui/Img';
+import Link from 'next/link';
+import type { TypePost } from '@/src/types/typePosts';
+import { cn, hasArrayValue } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
 import CustomPortableText from '@/src/shared/ui/CustomPortableText';
-
-import type { TypePost } from '@/src/types/typePosts';
-import Link from 'next/link';
+import Img from '@/src/shared/ui/Img';
 
 export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {
   const { recommendations } = data;
@@ -13,23 +11,25 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
   if (!hasArrayValue(recommendations)) return null;
 
   return (
-    <div className={cn('p-post__recommendations', className)}>
+    <section className={cn('mt-12 flex-col gap-6 xl:mt-0', className)}>
       {recommendations.map((item) => {
         const { imageSection, title, _key, contentSection } = item;
 
         const hasContent =
-          contentSection?.content?.length &&
+          contentSection?.content?.length !== undefined &&
           contentSection?.content?.length > 0 &&
-          contentSection?.contentCta?.url;
+          contentSection?.contentCta?.url !== undefined;
 
         return (
-          <div key={_key} className="p-post__recommendation">
-            <p className="p-post__recommendation__title">{title}</p>
-            <div className="p-post__recommendation__img">
+          <div key={_key} className="border-gray rounded-md border p-4 shadow md:p-8 xl:p-3.5">
+            <p className="text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base">
+              {title}
+            </p>
+            <div className="relative">
               <Img image={imageSection?.image} />
               {imageSection?.imageCta?.url ? (
                 <Link
-                  className="p-post__recommendation__img__cta"
+                  className="bg-blue/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm"
                   href={imageSection?.imageCta?.url}
                   target={imageSection?.imageCta?.isOpenNewTab ? '_blank' : '_self'}
                 >
@@ -37,30 +37,40 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
                 </Link>
               ) : null}
             </div>
-            {hasContent ? (
-              <div className="p-post__recommendation__content">
-                <CustomPortableText value={contentSection?.content} />
-                {contentSection?.contentCta?.url ? (
-                  <Button
-                    className="p-post__recommendation__cta"
-                    variant="outline"
-                    asChild
-                    size="sm"
-                    disabled={contentSection?.contentCta?.isDisabled}
-                  >
-                    <Link
-                      href={contentSection?.contentCta?.url}
-                      target={contentSection?.contentCta?.isOpenNewTab ? '_blank' : '_self'}
-                    >
-                      {contentSection?.contentCta?.label || ''}
-                    </Link>
-                  </Button>
-                ) : null}
-              </div>
-            ) : null}
+            <PostRecommendationContent hasContent={hasContent} contentSection={contentSection} />
           </div>
         );
       })}
-    </div>
+    </section>
   );
+}
+
+function PostRecommendationContent({
+  hasContent,
+  contentSection,
+}: {
+  hasContent: boolean;
+  contentSection: TypePost['recommendations'][0]['contentSection'];
+}) {
+  return hasContent ? (
+    <div className="p-post__recommendation__content mt-3 px-2 text-sm text-gray-500 md:text-base xl:text-sm">
+      <CustomPortableText value={contentSection?.content} />
+      {contentSection?.contentCta?.url ? (
+        <Button
+          className="mt-3 w-full md:mt-4 md:py-2 xl:mt-3 xl:py-1"
+          variant="outline"
+          asChild
+          size="sm"
+          disabled={contentSection?.contentCta?.isDisabled}
+        >
+          <Link
+            href={contentSection?.contentCta?.url}
+            target={contentSection?.contentCta?.isOpenNewTab ? '_blank' : '_self'}
+          >
+            {contentSection?.contentCta?.label || ''}
+          </Link>
+        </Button>
+      ) : null}
+    </div>
+  ) : null;
 }

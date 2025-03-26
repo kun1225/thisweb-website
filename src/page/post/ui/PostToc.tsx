@@ -1,11 +1,12 @@
 'use client';
+
 // Hooks & Libs
-import { useState, useMemo, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+//Types
+import { TypePost, TypePostTocHeading } from '@/src/types/typePosts';
 import GithubSlugger from 'github-slugger';
 // Components
 import { PostTocBody } from './PostTocBody';
-//Types
-import { TypePost, TypePostTocHeading } from '@/src/types/typePosts';
 
 export function PostToc({ data }: { data: TypePost }) {
   const [activeId, setActiveId] = useState<string>();
@@ -25,8 +26,11 @@ export function PostToc({ data }: { data: TypePost }) {
   }, [setActiveId]);
 
   return (
-    <aside className="p-post__toc">
-      <div className="p-post__toc__menu">
+    <aside
+      className="border-gray w-full max-w-3xl border p-8 opacity-0 shadow xl:sticky xl:top-[var(--top)] xl:mr-[1.25vw] xl:mb-0 xl:max-w-64 xl:flex-1 xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pr-[0.25vw] xl:pl-0 xl:shadow-none"
+      style={{ animation: 'fade-in 0.6s 0.8s linear forwards' }}
+    >
+      <div className="xl:max-h-[60vh]">
         <PostTocHeader />
         <PostTocBody structuredHeadings={structuredHeadings} activeId={activeId} />
       </div>
@@ -36,7 +40,10 @@ export function PostToc({ data }: { data: TypePost }) {
 
 function PostTocHeader() {
   return (
-    <p className="p-post__toc__header" data-testid="toc-header-title">
+    <p
+      className="text-blue mb-4 flex items-center justify-between gap-2 font-bold"
+      data-testid="toc-header-title"
+    >
       文章目錄
     </p>
   );

@@ -8,7 +8,10 @@ const footerNav = [
 
 export function Footer() {
   return (
-    <footer className="bg-blue px-edge-dynamic pb-4 pt-16 text-white" id="g-footer">
+    <footer
+      className="bg-blue px-edge-dynamic pt-16 pb-4 text-white transition-all duration-[0.4s]"
+      id="g-footer"
+    >
       <div className="flex flex-col justify-between gap-8 md:flex-row">
         <div>
           <p className="text-base">頁面導覽</p>
@@ -16,7 +19,12 @@ export function Footer() {
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             {footerNav.map(({ title, url }) => (
               <li key={title}>
-                <Link href={url}>{title}</Link>
+                <Link
+                  href={url}
+                  className="border-b border-transparent transition-colors hover:border-white"
+                >
+                  {title}
+                </Link>
               </li>
             ))}
           </ul>
@@ -25,10 +33,19 @@ export function Footer() {
           <p className="text-base">聯絡資訊</p>
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             <li>
-              <Link href="mailto:thisweb.tech@gmail.com">Email: thisweb.tech@gmail.com</Link>
+              <Link
+                href="mailto:thisweb.tech@gmail.com"
+                className="border-b border-transparent transition-colors hover:border-white"
+              >
+                Email: thisweb.tech@gmail.com
+              </Link>
             </li>
             <li>
-              <Link href="https://www.instagram.com/this.web" target="_blank">
+              <Link
+                href="https://www.instagram.com/this.web"
+                target="_blank"
+                className="border-b border-transparent transition-colors hover:border-white"
+              >
                 Instagram: this.web
               </Link>
             </li>

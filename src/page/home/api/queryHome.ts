@@ -8,6 +8,12 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     paragraph,
     media,
     cta,
+    isShowFormOrCta,
+    form {
+      formId,
+      btnLabel,
+      successMessage,
+    },
   },
 
   leadMagnet {
@@ -34,12 +40,32 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     }[]
   },
 
+  popularPosts {
+    heading,
+    headingId,
+    subheading,
+    posts[]->{
+      title,
+      publishedAt,
+      slug {
+        current,
+      },
+      category -> {
+        title,
+      },
+      sharing {
+        shareGraphic,
+        description,
+      },
+    },
+  },
+
   latestPosts {
     heading,
     headingId,
     subheading,
     postsCount,
-    "posts": *[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(_createdAt desc) [0...20] {
+    "posts": *[_type == "post" && defined(slug) && defined(title) && status == 'done'] | order(publishedAt desc) [0...8] {
       title,
       description,
       publishedAt,
@@ -72,5 +98,4 @@ export const queryHome = groq`*[_type == "pHome"][0]{
     media,
     cta,
   }
-
 }`;

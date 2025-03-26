@@ -1,13 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useMouse, type TypeMouseState } from '@/src/shared/hooks/useMouse';
-
-import { HomeHeading, HomeSubheading } from './HomeHeading';
 import Link from 'next/link';
-import { Button } from '@/src/shared/ui/Button';
-
 import type { TypeHome } from '@/src/types/typeHome';
+import { type TypeMouseState, useMouse } from '@/src/shared/hooks/useMouse';
+import { Button } from '@/src/shared/ui/Button';
+import { HomeHeading, HomeSubheading } from './HomeHeading';
+import { motion } from 'motion/react';
 
 export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const { heading, headingId, subheading, categories } = data;
@@ -15,8 +13,8 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const [mousePosition, ref] = useMouse();
 
   return (
-    <section className="group relative px-edge-dynamic py-32 text-center" ref={ref}>
-      <HomeCategoriesBg mousePosition={mousePosition} />
+    <section className="c group relative overflow-x-hidden py-32 text-center" ref={ref}>
+      {/* <HomeCategoriesBg mousePosition={mousePosition} /> */}
 
       <HomeSubheading subheading={subheading} />
       <HomeHeading heading={heading} headingId={headingId} />
@@ -32,7 +30,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
           href="/posts/page/0"
           aria-label="閱讀全部文章"
           title="閱讀全部文章"
-          className="mt-16 text-black-light"
+          className="text-black-light mt-16"
         >
           或是，閱讀全部文章
         </Link>
@@ -46,7 +44,7 @@ function HomeCategoriesBg({ mousePosition }: { mousePosition: TypeMouseState }) 
 
   return (
     <motion.div
-      className="absolute -left-48 -top-48 -z-10 size-96 rounded-full bg-sky-50 opacity-0 blur-xl transition ease-linear group-hover:opacity-100"
+      className="absolute -top-48 -left-48 -z-10 size-96 rounded-full bg-sky-50 opacity-0 blur-xl transition ease-linear group-hover:opacity-100"
       style={{ x, y }}
     />
   );
@@ -58,16 +56,16 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
   const { elementX: x, elementY: y } = mousePosition;
 
   return (
-    <li className="group/cateogry-card relative">
+    <li className="group/category-card relative">
       <article
         ref={ref}
-        className="border-black-5 relative z-10 h-full rounded-lg border bg-white-pure/90 p-10 transition group-hover/cateogry-card:-translate-y-2 md:p-edge"
+        className="bg-white-pure/90 md:p-edge border-blue-5 relative z-10 h-full rounded-lg p-10 transition group-hover/category-card:-translate-y-2"
       >
         <h3 className="mb-4 text-2xl font-bold">{category.title || category.defaultTitle}</h3>
         <p className="text-pretty">{category.paragraph}</p>
 
         <Link
-          className="absolute inset-0"
+          className="absolute inset-0 cursor-pointer"
           href={`/posts/${category.url}/0`}
           title={`前往${category.title}分類頁面`}
           aria-label={`前往${category.title}分類頁面`}
@@ -75,12 +73,12 @@ function HomeCategory({ category }: { category: TypeHome['categoriesNav']['categ
       </article>
 
       <div
-        className="pointer-events-none absolute -inset-0.5 -z-10 rounded-lg opacity-0 transition group-hover/cateogry-card:-translate-y-2 group-hover/cateogry-card:opacity-100"
+        className="pointer-events-none absolute -inset-0.5 -z-10 rounded-lg opacity-0 transition group-hover/category-card:-translate-y-2 group-hover/category-card:opacity-100"
         style={{
           background: `
           radial-gradient(
             160px circle at ${x}px ${y}px,
-            rgb(var(--cr-blue-3)),
+            rgb(50, 147, 200),
             transparent 100%
             )
             `,

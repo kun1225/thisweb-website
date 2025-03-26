@@ -13,7 +13,7 @@ export function PostTocBody({
   activeId: string | undefined;
 }) {
   return (
-    <div className="p-post__toc__body">
+    <div className="flex flex-col gap-3 text-sm">
       {structuredHeadings.map((heading: TypePostTocHeading) => {
         return heading.children.length === 0 ? (
           <HeadingButton

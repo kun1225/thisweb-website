@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, createContext, useContext, HtmlHTMLAttributes } from 'react';
-import { cn } from '@/src/shared/lib/utils';
+import React, { HtmlHTMLAttributes, createContext, useContext, useState } from 'react';
 import { RxCaretDown } from 'react-icons/rx';
+import { cn } from '@/src/shared/lib/utils';
 
 // Context to share the Accordion state and functionality across the compound components
 interface AccordionContextType {
@@ -37,7 +37,9 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <AccordionContext.Provider value={{ isExpanded, toggle, stretch, iconPosition, duration }}>
-      <div className={cn(isExpanded ? 'is-active' : '', className)}>{children}</div>
+      <div className={cn(isExpanded ? 'is-active' : '', className)} data-active={isExpanded}>
+        {children}
+      </div>
     </AccordionContext.Provider>
   );
 };
@@ -58,7 +60,7 @@ const AccordionTitle: React.FC<TitlePropsType> = ({ children, className = '', as
 
   return (
     <Tag
-      className={cn('flex select-none items-center gap-2', stretch && 'cursor-pointer', className)}
+      className={cn('flex items-center gap-2 select-none', stretch && 'cursor-pointer', className)}
       onClick={stretch ? toggle : undefined}
       data-testid="accordionTitle"
     >

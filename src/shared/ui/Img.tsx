@@ -1,16 +1,17 @@
 // Hooks & Libs
 import { HTMLAttributes } from 'react';
-import { imgBuilder } from '@/src/shared/lib/sanity';
-import { cn } from '@/src/shared/lib/utils';
 // Components
 import Image from 'next/image';
 // Type
 import { TypeImage } from '@/src/types/typeImage';
+import { imgBuilder } from '@/src/shared/lib/sanity';
+import { cn } from '@/src/shared/lib/utils';
 
 export default function Img({
   image,
   alt,
   className,
+  imgClassName,
   responsiveImage,
   breakpoint = 768,
   quality = 80,
@@ -21,6 +22,7 @@ export default function Img({
   image: TypeImage;
   alt?: string;
   className?: HTMLAttributes<HTMLElement>['className'];
+  imgClassName?: HTMLAttributes<HTMLImageElement>['className'];
   responsiveImage?: any;
   breakpoint?: number;
   quality?: number;
@@ -50,8 +52,16 @@ export default function Img({
     <picture className={cn('relative block w-full', className)} {...props}>
       {responsiveImageSrc ? (
         <>
-          <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={src} />
-          <source media={`(max-width: ${breakpoint}px)`} srcSet={responsiveImageSrc} />
+          <source
+            media={`(min-width: ${breakpoint + 1}px)`}
+            srcSet={src}
+            className={imgClassName}
+          />
+          <source
+            media={`(max-width: ${breakpoint}px)`}
+            srcSet={responsiveImageSrc}
+            className={imgClassName}
+          />
         </>
       ) : null}
       <Image
@@ -61,8 +71,8 @@ export default function Img({
         width={imageWidth}
         height={imageHeight}
         alt={alt || image?.alt || 'image'}
-        className={cn('h-full w-full object-contain', {
-          'rounded border bg-neutral-100': withPlaceholder,
+        className={cn('h-full w-full object-contain', imgClassName, {
+          'rounded bg-neutral-100': withPlaceholder,
         })}
       />
     </picture>

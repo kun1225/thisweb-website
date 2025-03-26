@@ -1,11 +1,9 @@
-// Libs
-import { cn } from '@/src/shared/lib/utils';
+import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { getHeaderData } from '@/src/shared/api';
+import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
-// Fonts
-import { Noto_Sans_TC, Fira_Code } from 'next/font/google';
-// Style
-import './_styles/globals.scss';
+import '../styles/globals.css';
 
 const NotoSansTC = Noto_Sans_TC({
   weight: ['400', '600'],
@@ -31,15 +29,25 @@ export default async function Layout({ children }: { children: React.ReactNode }
   const headerContent = await getHeaderData();
 
   return (
-    <html lang="zh-TW">
+    <html
+      lang="zh-TW"
+      className={cn(
+        'min-h-full scroll-p-[120px] scroll-smooth',
+        NotoSansTC.variable,
+        FiraCode.variable
+      )}
+    >
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+        <link rel="alternate" hrefLang="zh-TW" href="https://thisweb.dev/" />
+        <link rel="alternate" hrefLang="x-default" href="https://thisweb.dev/" />
       </head>
-      <body className={`${cn(NotoSansTC.variable, FiraCode.variable)}`}>
+      <body className="selection:bg-blue-1 min-h-full bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white">
         <RootLayout headerContent={headerContent}>{children}</RootLayout>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
     </html>
   );
 }
