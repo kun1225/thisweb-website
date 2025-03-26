@@ -74,7 +74,7 @@ export function HomeHeroFloating() {
   const { x, y } = mousePosition;
 
   return (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10 hidden md:block">
       {ICONS_CONFIG.map((config, index) => {
         const { left, top } = config;
 

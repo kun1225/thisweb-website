@@ -15,10 +15,10 @@ export function PageHome({ data }: { data: TypeHome }) {
     <>
       <HomeHero data={hero} />
       <HomeMagnet data={leadMagnet} />
+      <HomeAbout data={siteOwner} />
       <HomeCategories data={categoriesNav} />
       <HomePopularPosts data={popularPosts} />
       <HomeLatestPosts data={latestPosts} />
-      <HomeAbout data={siteOwner} />
       <HomeRecommendation data={recommendation} />
     </>
   );

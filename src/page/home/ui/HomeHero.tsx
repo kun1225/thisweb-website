@@ -49,7 +49,11 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
         ) : null}
       </div>
 
-      <Media data={media} className="max-w-xs drop-shadow-xl md:max-w-sm" />
+      <Media
+        data={media}
+        className="max-w-xs drop-shadow-xl md:max-w-sm"
+        imgClassName="border-gray border"
+      />
     </section>
   );
 }

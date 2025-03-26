@@ -15,7 +15,7 @@ export function HomeAbout({ data }: { data: TypeHome['siteOwner'] }) {
       </div>
 
       <div className="md:gap-edge flex flex-col items-center justify-center gap-10 md:flex-row">
-        <div className="aspect-square max-w-sm">
+        <div className="aspect-square w-full max-w-sm">
           <Media data={media} withPlaceholder={false} className="object-fit h-full w-full" />
         </div>
         <div className="prose lg:prose-lg max-w-xl">

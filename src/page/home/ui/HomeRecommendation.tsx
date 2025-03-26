@@ -10,7 +10,7 @@ export function HomeRecommendation({ data }: { data: TypeHome['recommendation'] 
   const { heading, headingId, subheading, paragraph, media, cta } = data;
 
   return (
-    <section className="c py-8 text-center">
+    <section className="c mb-32 py-8 text-center">
       <div className="border-gray bg-blue-5 flex flex-col items-center rounded-3xl border px-4 py-32 shadow-xl">
         <HomeSubheading subheading={subheading} />
         <HomeHeading heading={heading} headingId={headingId} />
