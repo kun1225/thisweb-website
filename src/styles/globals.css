@@ -36,11 +36,11 @@
   /* spacing */
   --header-height: 67.5px;
   --spacing-header: var(--header-height);
-  --spacing-edge-xs: 2vw;
-  --spacing-edge-sm: 3vw;
-  --spacing-edge: 4.5vw;
-  --spacing-edge-lg: 5vw;
-  --spacing-contain: max(var(--spacing-edge), 8px);
+  --spacing-edge-xs: min(2vw, 32px);
+  --spacing-edge-sm: min(3vw, 64px);
+  --spacing-edge: min(4.5vw, 96px);
+  --spacing-edge-lg: min(5vw, 128px);
+  --spacing-contain: max(var(--spacing-edge), 16px);
   --spacing-contain-max: 1600px;
   --spacing-edge-dynamic: max(
     var(--spacing-contain),
