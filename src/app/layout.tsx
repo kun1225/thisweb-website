@@ -3,6 +3,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { getHeaderData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
+import { Providers } from '../providers';
 import '../styles/globals.css';
 
 const NotoSansTC = Noto_Sans_TC({
@@ -45,7 +46,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
         <link rel="alternate" hrefLang="x-default" href="https://thisweb.dev/" />
       </head>
       <body className="selection:bg-blue-1 min-h-full bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white">
-        <RootLayout headerContent={headerContent}>{children}</RootLayout>
+        <Providers>
+          <RootLayout headerContent={headerContent}>{children}</RootLayout>
+        </Providers>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
     </html>
