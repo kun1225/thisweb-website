@@ -19,7 +19,8 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
   } else if (isButton) {
     className = '';
   } else {
-    className = 'text-gray-500 hover:text-blue-1 hover:bg-blue-5 rounded-sm transition-colors';
+    className =
+      'before:bg-blue-5 hover:text-blue-1 relative z-10 rounded-sm text-gray-500 transition-colors before:absolute before:-inset-0 before:-z-10 before:scale-50 before:rounded-sm before:opacity-0 before:transition before:duration-300 hover:before:scale-100 hover:before:opacity-100';
   }
 
   return (
