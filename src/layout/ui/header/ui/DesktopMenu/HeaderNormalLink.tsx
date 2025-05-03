@@ -20,7 +20,7 @@ export function HeaderNormalLink({ item, onClick }: { item: TypeNormalLink; onCl
     className = '';
   } else {
     className =
-      'before:bg-blue-5 hover:text-blue-1 relative z-10 rounded-sm text-gray-500 transition-colors before:absolute before:-inset-0 before:-z-10 before:scale-50 before:rounded-sm before:opacity-0 before:transition before:duration-300 hover:before:scale-100 hover:before:opacity-100';
+      'before:bg-blue-5 hover:text-blue-1 relative z-10 rounded-sm text-gray-500 transition-colors before:absolute before:-inset-0 before:-z-10 before:scale-50 before:rounded-sm before:opacity-0 before:transition before:duration-300 hover:before:scale-100 hover:before:opacity-100 before:ease-bounce-2';
   }
 
   return (
