@@ -36,11 +36,11 @@
   /* spacing */
   --header-height: 67.5px;
   --spacing-header: var(--header-height);
-  --spacing-edge-xs: 2vw;
-  --spacing-edge-sm: 3vw;
-  --spacing-edge: 4.5vw;
-  --spacing-edge-lg: 5vw;
-  --spacing-contain: max(var(--spacing-edge), 8px);
+  --spacing-edge-xs: min(2vw, 32px);
+  --spacing-edge-sm: min(3vw, 64px);
+  --spacing-edge: min(4.5vw, 96px);
+  --spacing-edge-lg: min(5vw, 128px);
+  --spacing-contain: max(var(--spacing-edge), 16px);
   --spacing-contain-max: 1600px;
   --spacing-edge-dynamic: max(
     var(--spacing-contain),
@@ -58,7 +58,11 @@
   --drop-shadow-xl: 0 0 28px rgba(0, 0, 0, 0.08);
 
   /* transition */
-  --t-circ-ease-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --ease-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  --ease-bounce-1: cubic-bezier(0.27, 0.3, 0.21, 1.2);
+  --ease-bounce-2: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-bounce-3: cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  --ease-bounce-4: cubic-bezier(0.87, -0.41, 0.19, 1.44);
 
   /* z-index */
   --z-header-overlay: 99;
@@ -160,6 +164,15 @@
 
     :focus-visible {
       @apply outline-blue;
+    }
+  }
+
+  @keyframes scale-in-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
     }
   }
 }

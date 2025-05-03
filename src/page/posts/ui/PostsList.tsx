@@ -26,8 +26,8 @@ function PostsListItem({ item, index }: { item: TypePost; index: number }) {
     <li
       key={_id}
       className={cn(
-        'relative animate-[fade-in_0.6s_ease-in-out_forwards,_slide-in-from-bottom-50_0.8s_ease-in-out] py-4 opacity-0 transition duration-400 hover:scale-102',
-        'hover:before:bg-blue-5 before:absolute before:-inset-x-4 before:inset-y-0 before:-z-10 before:rounded-xl before:bg-transparent before:transition-colors before:duration-400'
+        'relative animate-[fade-in_0.6s_ease-in-out_forwards,_slide-in-from-bottom-50_0.8s_ease-in-out] py-4 opacity-0 transition duration-250 hover:scale-102',
+        'hover:before:bg-blue-5 before:absolute before:-inset-x-4 before:inset-y-0 before:-z-10 before:scale-75 before:rounded-xl before:bg-transparent before:transition before:duration-250 hover:before:scale-100'
       )}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
