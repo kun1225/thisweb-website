@@ -1,16 +1,11 @@
 'use client';
 
-// Hooks & Libs
 import { useEffect } from 'react';
-// Type
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 import useWindowWidth from '@/src/shared/hooks/useWindowWidth';
 import { DesktopMenu } from './DesktopMenu';
-// Components
 import { HeaderLogo } from './HeaderLogo';
 import { MobileMenu } from './MobileMenu';
-
-const SCROLLED_THRESHOLD = 0;
 
 export function Header({ headerContent }: { headerContent: TypeGlobalHeaderContent }) {
   const { isMobile } = useWindowWidth();
