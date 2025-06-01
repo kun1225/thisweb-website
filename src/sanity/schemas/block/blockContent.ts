@@ -1,6 +1,6 @@
-import { defineType, defineArrayMember, defineField } from 'sanity';
-import { ArrowTopRightIcon, LinkIcon, ImageIcon, PlayIcon, EnvelopeIcon } from '@sanity/icons';
+import { ArrowTopRightIcon, EnvelopeIcon, ImageIcon, LinkIcon, PlayIcon } from '@sanity/icons';
 import { FaCodepen, FaRegLightbulb } from 'react-icons/fa6';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
   title: 'Block Content',
@@ -35,7 +35,6 @@ export default defineType({
             name: 'link',
             type: 'object',
             title: 'URL',
-            // @ts-ignore
             icon: ArrowTopRightIcon,
             fields: [
               {

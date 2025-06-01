@@ -1,8 +1,7 @@
 import Link from 'next/link';
-// Type
 import type { TypeHome } from '@/src/types/typeHome';
 import { Button } from '@/src/shared/ui/Button';
-import CustomPortableText from '@/src/shared/ui/CustomPortableText';
+import { CustomPortableText } from '@/src/shared/ui/CustomPortableText';
 import Media from '@/src/shared/ui/Media';
 import { HomeHeading, HomeSubheading } from './HomeHeading';
 

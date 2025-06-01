@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import type { TypePost } from '@/src/types/typePosts';
+import { type TypePost } from '@/src/types/typePosts';
 import { cn, hasArrayValue } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
-import CustomPortableText from '@/src/shared/ui/CustomPortableText';
+import { CustomPortableText } from '@/src/shared/ui/CustomPortableText';
 import Img from '@/src/shared/ui/Img';
 
 export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {

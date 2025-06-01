@@ -1,11 +1,11 @@
 import { TypeModulesProduct } from './typeModules';
 
 export type TypePageProduct = {
-  announcement: TypePageProductAnnouncement;
+  announcement: TypeProductAnnouncement;
   modules: TypeModulesProduct;
 };
 
-export type TypePageProductAnnouncement =
+export type TypeProductAnnouncement =
   | {
       _type: 'dueDate';
       _key: 'string';

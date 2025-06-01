@@ -1,24 +1,18 @@
 'use client';
 
-// Hooks & Lib
-// Components
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-// Type
-import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
+import { type TypeLayout } from '@/src/types/typeLayout';
 import { Footer } from '@/src/layout/ui/footer';
 import { Header } from '@/src/layout/ui/header';
+import { Announcement } from './Announcement';
 
 const RootLayoutProgressBar = dynamic(() => import('@/src/layout/ui/progress-bar'));
 
-export function RootLayout({
-  headerContent,
-  children,
-}: {
-  headerContent: TypeGlobalHeaderContent;
-  children: React.ReactNode;
-}) {
+export function RootLayout({ data, children }: { data: TypeLayout; children: React.ReactNode }) {
+  const { header, announcement } = data;
+
   const pathname = usePathname();
   if (pathname?.startsWith('/studio')) return children;
 
@@ -27,7 +21,8 @@ export function RootLayout({
       <Suspense>
         <RootLayoutProgressBar />
       </Suspense>
-      <Header headerContent={headerContent} />
+      <Announcement data={announcement} />
+      <Header headerContent={header} />
       <main id="main" className="pt-(--header-height) transition-all duration-200 ease-linear">
         {children}
       </main>

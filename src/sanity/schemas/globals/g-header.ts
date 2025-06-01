@@ -1,5 +1,4 @@
 import { LinkIcon, StackCompactIcon } from '@sanity/icons';
-import { apiVersion } from '../../env';
 import { defineField, defineType } from 'sanity';
 
 export default defineType({

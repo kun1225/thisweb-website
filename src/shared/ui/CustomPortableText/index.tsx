@@ -1,18 +1,15 @@
 'use client';
 
-// Components
-import { PortableText } from '@portabletext/react';
-import { RiExternalLinkLine } from 'react-icons/ri';
 import Link from 'next/link';
+import { PortableText } from '@portabletext/react';
+import GithubSlugger from 'github-slugger';
+import { RiExternalLinkLine } from 'react-icons/ri';
 import { Codepen } from '../Codepen';
+import { Callout } from './Callout';
 import { CodeField } from './CodeField';
 import { KitForm } from './KitForm';
-import { PortableVideo } from './PortableVideo';
 import { PortableImg } from './PortableImg';
-import { Callout } from './Callout';
-// Utils
-import GithubSlugger from 'github-slugger';
-// Types
+import { PortableVideo } from './PortableVideo';
 
 const slugger = new GithubSlugger();
 
@@ -115,7 +112,7 @@ const myPortableTextComponents = {
       const { href } = value;
       return (
         <a href={href} target="_blank" rel="noopener" className={linkClassName}>
-          <RiExternalLinkLine className="mb-1 mr-1 inline-block" />
+          <RiExternalLinkLine className="mr-1 mb-1 inline-block" />
           {children}
         </a>
       );
@@ -124,12 +121,10 @@ const myPortableTextComponents = {
   },
 };
 
-const CustomPortableText = (props: any) => {
+export const CustomPortableText = (props: any) => {
   slugger.reset();
   return (
     // @ts-ignore
     <PortableText value={props.value} components={myPortableTextComponents} />
   );
 };
-
-export default CustomPortableText;

@@ -1,10 +1,7 @@
-// Libs
-// Components
 import Link from 'next/link';
-// Types
 import { TypeCategory } from '@/src/types/typeGlobalHeader';
 import { Accordion, AccordionContent, AccordionTitle } from '@/src/shared/ui/Accordion';
-import { getPostsUrl } from '../../../../lib/getPostsUrl';
+import { getPostsUrl } from '@/src/layout/lib/getPostsUrl';
 
 export function MobileMenuAccordion({
   category,

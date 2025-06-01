@@ -67,7 +67,8 @@
   /* z-index */
   --z-header-overlay: 99;
   --z-header: 100;
-  --z-toast: 101;
+  --z-announcement: 101;
+  --z-toast: 102;
   --z-overlay: 150;
   --z-modal: 200;
 
