@@ -1,5 +1,5 @@
 import type { TypeHome } from '@/src/types/typeHome';
-import CustomPortableText from '@/src/shared/ui/CustomPortableText';
+import { CustomPortableText } from '@/src/shared/ui/CustomPortableText';
 import Media from '@/src/shared/ui/Media';
 import { HomeForm } from './HomeForm';
 import { HomeHeading, HomeSubheading } from './HomeHeading';

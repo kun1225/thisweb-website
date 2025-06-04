@@ -1,5 +1,5 @@
-import type { TypeImage } from './typeImage';
 import type { TypeCta } from './typeCta';
+import type { TypeImage } from './typeImage';
 
 export type TypePost = {
   _id: string;
@@ -17,7 +17,7 @@ export type TypePost = {
   };
   relatedPosts?: TypeRelatedPost[];
   recommendations: {
-    _key: string;
+    _id: string;
     title: string;
     imageSection: {
       image: TypeImage;

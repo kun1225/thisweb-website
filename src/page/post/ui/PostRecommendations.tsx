@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import type { TypePost } from '@/src/types/typePosts';
+import { type TypePost } from '@/src/types/typePosts';
 import { cn, hasArrayValue } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
-import CustomPortableText from '@/src/shared/ui/CustomPortableText';
+import { CustomPortableText } from '@/src/shared/ui/CustomPortableText';
 import Img from '@/src/shared/ui/Img';
 
 export function PostRecommendations({ data, className }: { data: TypePost; className?: string }) {
@@ -11,9 +11,9 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
   if (!hasArrayValue(recommendations)) return null;
 
   return (
-    <section className={cn('mt-12 flex-col gap-6 xl:mt-0', className)}>
+    <section className={cn('mt-12 flex flex-col gap-6 xl:mt-0', className)}>
       {recommendations.map((item) => {
-        const { imageSection, title, _key, contentSection } = item;
+        const { imageSection, title, contentSection, _id } = item;
 
         const hasContent =
           contentSection?.content?.length !== undefined &&
@@ -21,15 +21,15 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
           contentSection?.contentCta?.url !== undefined;
 
         return (
-          <div key={_key} className="border-gray rounded-md border p-4 shadow md:p-8 xl:p-3.5">
+          <div key={_id} className="border-gray rounded-md border p-4 shadow-sm md:p-8 xl:p-3.5">
             <p className="text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base">
               {title}
             </p>
             <div className="relative">
-              <Img image={imageSection?.image} />
+              <Img image={imageSection?.image} className="rounded-md" imgClassName="rounded-md" />
               {imageSection?.imageCta?.url ? (
                 <Link
-                  className="bg-blue/80 absolute inset-0 z-10 flex items-center justify-center text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm"
+                  className="bg-blue/80 absolute inset-0 z-10 flex items-center justify-center rounded-md text-sm tracking-wider text-white opacity-0 backdrop-blur-sm transition duration-200 hover:opacity-100 md:text-xl lg:text-sm"
                   href={imageSection?.imageCta?.url}
                   target={imageSection?.imageCta?.isOpenNewTab ? '_blank' : '_self'}
                 >
@@ -54,7 +54,9 @@ function PostRecommendationContent({
 }) {
   return hasContent ? (
     <div className="p-post__recommendation__content mt-3 px-2 text-sm text-gray-500 md:text-base xl:text-sm">
-      <CustomPortableText value={contentSection?.content} />
+      <div className="text-pretty">
+        <CustomPortableText value={contentSection?.content} />
+      </div>
       {contentSection?.contentCta?.url ? (
         <Button
           className="mt-3 w-full md:mt-4 md:py-2 xl:mt-3 xl:py-1"

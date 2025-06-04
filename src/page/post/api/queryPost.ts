@@ -58,7 +58,7 @@ function recommendation() {
     || (displayScopeSection.displayScope == "secondLevelCategory" && displayScopeSection.secondLevelCategory._ref == ^.secondLevelCategory._ref)
     )][]
     {
-      _key,
+      _id,
       title,
       imageSection {
         image,

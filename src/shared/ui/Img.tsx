@@ -72,7 +72,7 @@ export default function Img({
         height={imageHeight}
         alt={alt || image?.alt || 'image'}
         className={cn('h-full w-full object-contain', imgClassName, {
-          'rounded bg-neutral-100': withPlaceholder,
+          'bg-neutral-100': withPlaceholder,
         })}
       />
     </picture>

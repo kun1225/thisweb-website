@@ -1,6 +1,6 @@
 import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { getHeaderData } from '@/src/shared/api';
+import { getLayoutData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
 import { RootLayout, generateLayoutMetadata } from '@/src/layout';
 import { Providers } from '../providers';
@@ -27,7 +27,7 @@ export async function generateMetadata() {
 }
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-  const headerContent = await getHeaderData();
+  const data = await getLayoutData();
 
   return (
     <html
@@ -47,7 +47,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
       </head>
       <body className="selection:bg-blue-1 min-h-full bg-gray-50 font-sans font-normal tracking-wide text-slate-800 selection:text-white">
         <Providers>
-          <RootLayout headerContent={headerContent}>{children}</RootLayout>
+          <RootLayout data={data}>{children}</RootLayout>
         </Providers>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />

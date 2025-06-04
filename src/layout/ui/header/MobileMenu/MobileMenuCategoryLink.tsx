@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { TypeCategory } from '@/src/types/typeGlobalHeader';
-import { getPostsUrl } from '../../../../lib/getPostsUrl';
+import { getPostsUrl } from '@/src/layout/lib/getPostsUrl';
 
 export function MobileMenuCategoryLink({
   category,

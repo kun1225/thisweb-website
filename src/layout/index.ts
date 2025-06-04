@@ -1,4 +1,4 @@
 export { RootLayout } from './ui';
 export { generateLayoutMetadata } from './lib/generateLayoutMetadata';
-export { getHeaderData } from './api/apiHeader';
+export { getLayoutData } from './api/apiLayout';
 export { getSettingsGeneral } from './api/apiSettingsGeneral';

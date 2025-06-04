@@ -1,7 +1,6 @@
-// Types
-import { TypePost } from '@/src/types/typePosts';
+import { type TypePost } from '@/src/types/typePosts';
 import { hasArrayValue } from '@/src/shared/lib/utils';
-import CustomPortableText from '@/src/shared/ui/CustomPortableText';
+import { CustomPortableText } from '@/src/shared/ui/CustomPortableText';
 import { PostRelated } from './PostRelated';
 
 export function PostArticle({ data }: { data: TypePost }) {
