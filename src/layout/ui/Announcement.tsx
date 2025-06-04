@@ -33,10 +33,20 @@ export function Announcement({ data }: { data: TypeGlobalAnnouncement }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--announcement-height',
-      `${announcementRef.current?.clientHeight || 0}px`
-    );
+    const setAnnouncementHeight = () => {
+      document.documentElement.style.setProperty(
+        '--announcement-height',
+        `${announcementRef.current?.clientHeight || 0}px`
+      );
+    };
+
+    setAnnouncementHeight();
+
+    window.addEventListener('resize', setAnnouncementHeight);
+
+    return () => {
+      window.removeEventListener('resize', setAnnouncementHeight);
+    };
   }, [shouldShow]);
 
   if (!data || !hasArrayValue(data?.announcement) || !shouldShow) return null;
@@ -45,7 +55,7 @@ export function Announcement({ data }: { data: TypeGlobalAnnouncement }) {
     <div
       ref={announcementRef}
       id="g-announcement"
-      className="bg-blue-1 fixed top-0 left-0 z-(--z-announcement) flex w-full justify-center gap-1 py-1 text-sm text-white"
+      className="bg-blue-1 fixed top-0 left-0 z-(--z-announcement) flex w-full flex-wrap justify-center gap-1 p-2 text-center text-sm text-pretty text-white"
     >
       {announcement.map((item) => {
         switch (item._type) {
