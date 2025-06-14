@@ -10,7 +10,7 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
   return (
     <section className="c px-edge-dynamic flex flex-col py-32 md:flex-row md:gap-20">
       <div className="text-nowrap">
-        <div className="relative md:sticky md:top-[calc(var(--header-height)_+_16px)]">
+        <div className="md:top-top-space-4 relative md:sticky">
           <HomeSubheading subheading={subheading} />
           <HomeHeading heading={heading} headingId={headingId} />
         </div>

@@ -31,11 +31,14 @@
   --color-black-light: rgb(71, 85, 105); /* slate-500 */
   --color-inline-code-bg: hsl(220, 13%, 93%);
   --color-header: rgb(249, 250, 251, 0.93);
-  --color-gray: oklch(0.928 0.006 264.531); /* gray */
+  --color-gray: oklch(0.928 0.006 264.531);
 
   /* spacing */
   --header-height: 67.5px;
+  --announcement-height: 36px;
   --spacing-header: var(--header-height);
+  --spacing-announcement: var(--announcement-height);
+  --spacing-top-space: calc(var(--spacing-header) + var(--spacing-announcement));
   --spacing-edge-xs: min(2vw, 32px);
   --spacing-edge-sm: min(3vw, 64px);
   --spacing-edge: min(4.5vw, 96px);
@@ -181,6 +184,16 @@
 @utility c {
   padding-left: var(--spacing-edge-dynamic);
   padding-right: var(--spacing-edge-dynamic);
+}
+
+@utility top-top-space-* {
+  top: calc(var(--spacing-top-space) + --value(number) * var(--spacing));
+  top: calc(var(--spacing-top-space) + --value([ *]));
+}
+
+@utility mt-top-space-* {
+  margin-top: calc(var(--spacing-top-space) + --value(number) * var(--spacing));
+  margin-top: calc(var(--spacing-top-space) + --value([ *]));
 }
 
 /* .dark {

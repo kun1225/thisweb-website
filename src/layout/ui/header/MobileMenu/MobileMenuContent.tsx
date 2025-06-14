@@ -53,7 +53,7 @@ export function MobileMenuContent({
         isMobileMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
       )}
     >
-      <ul className="c mt-[calc(var(--header-height)+var(--announcement-height)+16px)] flex h-full flex-col overflow-y-auto pb-[calc(var(--header-height)*2)] text-xl">
+      <ul className="c mt-top-space-4 flex h-full flex-col overflow-y-auto pb-[calc(var(--header-height)*2)] text-xl">
         {hasArrayValue(normalLinksContent)
           ? normalLinksContent?.map((link) => {
               index++;
