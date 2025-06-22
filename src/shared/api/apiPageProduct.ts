@@ -1,11 +1,11 @@
+import { type TypePageProduct } from '@/src/types/typePageProduct';
+import { type TypeGlobalSharing } from '../../types/typeGlobalSharing';
 import { sanityFetch } from '../lib/sanity';
 import {
   pProductAllUrlQuery,
-  pProductSharingQuery,
   pProductDataQuery,
+  pProductSharingQuery,
 } from '../query/queryModuleProduct';
-import { type TypeGlobalSharing } from '../../types/typeGlobalSharing';
-import { type TypePageProduct } from '@/src/types/typePageProduct';
 
 export const getProductAllUrl = async () => {
   return sanityFetch<string[]>({

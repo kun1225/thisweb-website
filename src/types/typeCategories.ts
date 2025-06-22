@@ -3,6 +3,7 @@ import type { SanityDocument } from '@sanity/client';
 export type TypeCategory = SanityDocument & {
   title: string;
   url: string;
+  postCount?: number;
   description?: string;
   priority?: number;
   secondLevelCategory?: (SanityDocument & {
