@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
-import { getCategories, getProductAllUrl } from '@/src/shared/api';
+import { getCategories } from '@/src/shared/api';
 import { POSTS_PER_PAGE, getPostsCounts, getPostsSitemapData } from '../page/posts';
+import { getProductAllUrl } from '../page/product/api/apiPageProduct';
 
 const PRIORITY_TABLE = {
   home: 1,
