@@ -7,6 +7,7 @@ import gheader from './schemas/globals/g-header';
 import postMegamenu from './schemas/globals/postMegamenu';
 import recommendation from './schemas/globals/recommendation';
 import settingsGeneral from './schemas/globals/settings-general';
+import settingsLLMs from './schemas/globals/settings-llm';
 import moduleProductAbout from './schemas/modules/moduleProductAbout';
 import moduleProductFAQs from './schemas/modules/moduleProductFAQs';
 import moduleProductFeatures from './schemas/modules/moduleProductFeatures';
@@ -30,6 +31,7 @@ import thirdLevelCategory from './schemas/posts/thirdLevelCategory';
 
 export const schemas = [
   settingsGeneral,
+  settingsLLMs,
 
   gheader,
   postMegamenu,
