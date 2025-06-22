@@ -13,6 +13,8 @@ export default function ProductAnnouncement({ data }: { data: TypeProductAnnounc
   const announcementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (document.getElementById('g-announcement')) return;
+
     document.documentElement.style.setProperty(
       '--announcement-height',
       `${announcementRef.current?.clientHeight || 0}px`
