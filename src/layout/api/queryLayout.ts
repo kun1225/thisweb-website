@@ -2,7 +2,8 @@ import { groq } from 'next-sanity';
 
 export const queryLayout = groq`{
 "header": ${queryHeader()},
-"announcement": ${queryAnnouncement()}
+"announcement": ${queryAnnouncement()},
+"products": ${queryProducts()}
 }`;
 
 function queryHeader() {
@@ -52,5 +53,18 @@ function queryAnnouncement() {
       },
     }
   }[0]
+`;
+}
+
+function queryProducts() {
+  return groq`
+  *[_type == "pProduct"] {
+    slug {
+      current,
+    },
+    announcement[] {
+      _id,
+    }
+  }[]
 `;
 }

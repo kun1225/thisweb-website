@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { PortableText } from 'next-sanity';
 import type { PortableTextComponents } from 'next-sanity';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { TypeGlobalAnnouncement } from '@/src/types/typeGlobalAnnouncement';
+import { TypeLayout } from '@/src/types/typeLayout';
 import { hasArrayValue } from '@/src/shared/lib/utils';
 import { AnnouncementCountdown } from '@/src/shared/ui/AnnouncementCountDown';
 
@@ -21,16 +23,22 @@ const announcementPortableTextComponents: PortableTextComponents = {
   },
 };
 
-export function Announcement({ data }: { data: TypeGlobalAnnouncement }) {
+export function Announcement({
+  data,
+  products,
+}: {
+  data: TypeGlobalAnnouncement;
+  products: TypeLayout['products'];
+}) {
   const { announcement } = data;
 
-  const announcementRef = useRef<HTMLDivElement>(null);
-  const [shouldShow, setShouldShow] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const hasProductAnnouncement = document.getElementById('p-product-announcement');
-    setShouldShow(!hasProductAnnouncement);
-  }, []);
+  const currentProductPage = products.find((product) => pathname.includes(product.slug.current));
+  const shouldShowAnnouncement =
+    currentProductPage && hasArrayValue(currentProductPage?.announcement);
+
+  const announcementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const setAnnouncementHeight = () => {
@@ -43,13 +51,12 @@ export function Announcement({ data }: { data: TypeGlobalAnnouncement }) {
     setAnnouncementHeight();
 
     window.addEventListener('resize', setAnnouncementHeight);
-
     return () => {
       window.removeEventListener('resize', setAnnouncementHeight);
     };
-  }, [shouldShow]);
+  }, []);
 
-  if (!data || !hasArrayValue(data?.announcement) || !shouldShow) return null;
+  if (!data || !hasArrayValue(data?.announcement) || !shouldShowAnnouncement) return null;
 
   return (
     <div

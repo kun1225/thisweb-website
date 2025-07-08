@@ -11,7 +11,7 @@ import { Announcement } from './Announcement';
 const RootLayoutProgressBar = dynamic(() => import('@/src/layout/ui/progress-bar'));
 
 export function RootLayout({ data, children }: { data: TypeLayout; children: React.ReactNode }) {
-  const { header, announcement } = data;
+  const { header, announcement, products } = data;
 
   const pathname = usePathname();
   if (pathname?.startsWith('/studio')) return children;
@@ -21,7 +21,7 @@ export function RootLayout({ data, children }: { data: TypeLayout; children: Rea
       <Suspense>
         <RootLayoutProgressBar />
       </Suspense>
-      <Announcement data={announcement} />
+      <Announcement data={announcement} products={products} />
       <Header headerContent={header} />
       <main id="main" className="pt-(--header-height) transition-all duration-200 ease-linear">
         {children}
