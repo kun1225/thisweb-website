@@ -2,11 +2,11 @@
 
 // Hooks & Libs
 import { useEffect, useState } from 'react';
-// Types
-import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 import { HeaderNavContents } from './HeaderNavContents';
 // Components
 import { HeaderOverlay } from './HeaderOverlay';
+// Types
+import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
 export function DesktopMenu({ headerContent }: { headerContent: TypeGlobalHeaderContent }) {
   const [currentIndex, setCurrentIndex] = useState(-1);

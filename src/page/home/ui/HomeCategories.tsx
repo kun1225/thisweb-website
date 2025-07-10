@@ -1,41 +1,49 @@
 'use client';
 
 import Link from 'next/link';
-import type { TypeHome } from '@/src/types/typeHome';
+import { InView } from 'react-intersection-observer';
+import { cn } from '@/src/shared/lib/utils';
 import { type TypeMouseState, useMouse } from '@/src/shared/hooks/useMouse';
 import { Button } from '@/src/shared/ui/Button';
 import { HomeHeading, HomeSubheading } from './HomeHeading';
 import { motion } from 'motion/react';
+import type { TypeHome } from '@/src/types/typeHome';
 
 export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const { heading, headingId, subheading, categories } = data;
 
-  const [mousePosition, ref] = useMouse();
-
   return (
-    <section className="c group relative overflow-x-hidden py-32 text-center" ref={ref}>
-      {/* <HomeCategoriesBg mousePosition={mousePosition} /> */}
-
-      <HomeSubheading subheading={subheading} />
-      <HomeHeading heading={heading} headingId={headingId} />
-
-      <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
-        {categories.map((category) => (
-          <HomeCategory key={category._key} category={category} />
-        ))}
-      </ul>
-
-      <Button asChild variant="link">
-        <Link
-          href="/posts/page/0"
-          aria-label="閱讀全部文章"
-          title="閱讀全部文章"
-          className="text-black-light mt-16"
+    <InView threshold={0.4}>
+      {({ inView, ref }) => (
+        <section
+          ref={ref}
+          className={cn(
+            'c group relative overflow-x-hidden py-32 text-center transition-opacity duration-400 ease-linear',
+            inView ? 'opacity-100' : 'opacity-0'
+          )}
         >
-          或是，閱讀全部文章
-        </Link>
-      </Button>
-    </section>
+          <HomeSubheading subheading={subheading} />
+          <HomeHeading heading={heading} headingId={headingId} />
+
+          <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+            {categories.map((category) => (
+              <HomeCategory key={category._key} category={category} />
+            ))}
+          </ul>
+
+          <Button asChild variant="link">
+            <Link
+              href="/posts/page/0"
+              aria-label="閱讀全部文章"
+              title="閱讀全部文章"
+              className="text-black-light mt-16"
+            >
+              或是，閱讀全部文章
+            </Link>
+          </Button>
+        </section>
+      )}
+    </InView>
   );
 }
 

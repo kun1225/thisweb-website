@@ -1,10 +1,13 @@
+'use client';
+
 import Link from 'next/link';
-import { TypeHome } from '@/src/types/typeHome';
 import { LuArrowRight } from 'react-icons/lu';
+import { InView } from 'react-intersection-observer';
 import { cn } from '@/src/shared/lib/utils';
 import Img from '@/src/shared/ui/Img';
 import { HomeSubheading } from './HomeHeading';
 import { HomeHeading } from './HomeHeading';
+import type { TypeHome } from '@/src/types/typeHome';
 
 export function HomePopularPosts({ data }: { data: TypeHome['popularPosts'] }) {
   const { heading, headingId, subheading, posts } = data || {};
@@ -12,18 +15,28 @@ export function HomePopularPosts({ data }: { data: TypeHome['popularPosts'] }) {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <section className="c py-32">
-      <div className="mb-12 text-center">
-        <HomeSubheading subheading={subheading} />
-        <HomeHeading heading={heading} headingId={headingId} />
-      </div>
+    <InView threshold={0.4}>
+      {({ inView, ref }) => (
+        <section
+          ref={ref}
+          className={cn(
+            'c py-32 transition-opacity duration-400 ease-linear',
+            inView ? 'opacity-100' : 'opacity-0'
+          )}
+        >
+          <div className="mb-12 text-center">
+            <HomeSubheading subheading={subheading} />
+            <HomeHeading heading={heading} headingId={headingId} />
+          </div>
 
-      <div className="group/container mx-auto grid grid-cols-1 gap-8 md:has-[*:hover]:*:not-hover:opacity-40 md:has-[*:hover]:*:not-hover:blur-[2px] lg:grid-cols-2">
-        {posts.map((post: TypeHome['popularPosts']['posts'][0], index: number) => (
-          <PopularPost key={post.slug.current} post={post} index={index} />
-        ))}
-      </div>
-    </section>
+          <div className="group/container mx-auto grid grid-cols-1 gap-8 md:has-[*:hover]:*:not-hover:opacity-40 md:has-[*:hover]:*:not-hover:blur-[2px] lg:grid-cols-2">
+            {posts.map((post: TypeHome['popularPosts']['posts'][0], index: number) => (
+              <PopularPost key={post.slug.current} post={post} index={index} />
+            ))}
+          </div>
+        </section>
+      )}
+    </InView>
   );
 }
 

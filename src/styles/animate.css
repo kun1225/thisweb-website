@@ -66,19 +66,19 @@
 
   @keyframes enter {
     from {
-      opacity: var(--tw-enter-opacity, 1);
+      opacity: var(--tw-enter-opacity, 1) !important;
       transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
         scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1))
-        rotate(var(--tw-enter-rotate, 0)) scaleX(var(--tw-enter-scale-x, 1));
+        rotate(var(--tw-enter-rotate, 0)) scaleX(var(--tw-enter-scale-x, 1)) !important;
     }
   }
 
   @keyframes exit {
     to {
-      opacity: var(--tw-exit-opacity, 1);
+      opacity: var(--tw-exit-opacity, 1) !important;
       transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0)
         scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1))
-        rotate(var(--tw-exit-rotate, 0)) scaleX(var(--tw-exit-scale-x, 1));
+        rotate(var(--tw-exit-rotate, 0)) scaleX(var(--tw-exit-scale-x, 1)) !important;
     }
   }
 
@@ -183,14 +183,14 @@
 }
 
 @utility fade-in {
-  --tw-enter-opacity: 0;
+  --tw-enter-opacity: 0 !important;
 }
 @utility fade-in-* {
   --tw-enter-opacity: --value(--percentage- *, [ *]);
 }
 
 @utility fade-out {
-  --tw-exit-opacity: 0;
+  --tw-exit-opacity: 0 !important;
 }
 @utility fade-out-* {
   --tw-exit-opacity: --value(--percentage- *, [ *]);
