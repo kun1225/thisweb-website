@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import type { TypeHome } from '@/src/types/typeHome';
 import { formatBrNewLine } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
 import Media from '@/src/shared/ui/Media';
 import { HomeForm } from './HomeForm';
 import { HomeHeroFloating } from './HomeHeroFloating';
+import type { TypeHome } from '@/src/types/typeHome';
 
 export function HomeHero({ data }: { data: TypeHome['hero'] }) {
   const { heading, headingId, paragraph, subheading, cta, media, isShowFormOrCta, form } = data;
@@ -49,7 +49,7 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
       <Media
         data={media}
         className="max-w-xs drop-shadow-xl md:max-w-sm"
-        imgClassName="border-gray border"
+        imgClassName="border-gray border rounded-md"
       />
     </section>
   );

@@ -26,7 +26,7 @@ export function RootLayout({ data, children }: { data: TypeLayout; children: Rea
         <Header headerContent={header} />
       </div>
       <div className="h-top-space" />
-      <main id="main" className="transition-[filter] duration-200 ease-linear">
+      <main id="main" className="transition-[filter,opacity] duration-200 ease-linear">
         {children}
       </main>
       <Footer />
