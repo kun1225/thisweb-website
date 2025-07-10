@@ -25,7 +25,7 @@ export const MobileMenuIcon: React.FC<MobileMenuPropsType> = ({
       type="button"
       aria-label="Toggle Menu"
       className={cn(
-        'relative flex h-8 w-8 flex-col items-center justify-center focus:outline-none',
+        'relative flex size-8 flex-col items-center justify-center focus:outline-none',
         mobileMenuOpen ? 'text-gray-900' : 'text-gray-600',
         isInitialRender && 'transition-none'
       )}

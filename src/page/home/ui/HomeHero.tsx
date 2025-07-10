@@ -1,8 +1,5 @@
-// Components
 import Link from 'next/link';
-// Types
 import type { TypeHome } from '@/src/types/typeHome';
-// Utils
 import { formatBrNewLine } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
 import Media from '@/src/shared/ui/Media';
@@ -14,7 +11,7 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
   const { formId, btnLabel, successMessage, errorMessage } = form || {};
 
   return (
-    <section className="c relative z-10 flex flex-col items-center justify-center gap-10 pt-[calc(var(--announcement-height)+var(--spacing)*12)] pb-24 text-pretty transition-all duration-300 md:flex-row md:gap-[7vw] md:pt-64 md:pb-72">
+    <section className="c relative z-10 flex flex-col items-center justify-center gap-10 pb-24 text-pretty transition-all duration-300 md:flex-row md:gap-[7vw] md:pt-56 md:pb-72">
       <HomeHeroFloating />
 
       <div className="text-center md:text-left">

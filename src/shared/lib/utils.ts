@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import sanitizeHtml from 'sanitize-html';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -31,7 +31,11 @@ export function hasObjectValue(obj: { [key: string]: any }) {
 }
 
 export function hasArrayValue(array: any[] | undefined) {
-  return Array.isArray(array) && array.length > 0;
+  return (
+    Array.isArray(array) &&
+    array.length > 0 &&
+    array.every((item) => item !== undefined && item !== null)
+  );
 }
 
 // usage: <p dangerouslySetInnerHTML={{ __html: formatBrNewLine(text) }}/>

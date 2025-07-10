@@ -1,5 +1,5 @@
-import { defineField, defineType } from 'sanity';
 import moduleProduct from '../libs/moduleProduct';
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   title: 'Product Page',
@@ -27,33 +27,7 @@ export default defineType({
     defineField({
       title: 'Announcement',
       name: 'announcement',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          title: 'Paragraph',
-          name: 'paragraph',
-          fields: [
-            defineField({
-              title: 'Paragraph',
-              name: 'paragraph',
-              type: 'text',
-            }),
-          ],
-        },
-        {
-          type: 'object',
-          title: 'Due Date',
-          name: 'dueDate',
-          fields: [
-            defineField({
-              title: 'Time',
-              name: 'time',
-              type: 'datetime',
-            }),
-          ],
-        },
-      ],
+      type: 'announcement',
     }),
 
     moduleProduct(),

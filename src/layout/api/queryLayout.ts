@@ -41,8 +41,8 @@ function queryHeader() {
 
 function queryAnnouncement() {
   return groq`
-  *[_type == "gAnnouncement"] {
-    announcement[] {
+  {
+    "global": *[_type == "gAnnouncement"].data[] {
       _type,
       _key,
       _type == "dueDate" => {
@@ -51,8 +51,21 @@ function queryAnnouncement() {
       _type == "paragraph" => {
         paragraph,
       },
-    }
-  }[0]
+    },
+    "products": *[_type == "pProduct"] {
+      "slug": slug.current,
+      "announcement": announcement.data[] {
+        _type,
+        _key,
+        _type == "dueDate" => {
+         time,
+        },
+        _type == "paragraph" => {
+          paragraph,
+        },
+      }
+    }[]
+  }
 `;
 }
 
@@ -63,7 +76,14 @@ function queryProducts() {
       current,
     },
     announcement[] {
-      _id,
+      _type,
+      _key,
+      _type == "dueDate" => {
+        time,
+      },
+      _type == "paragraph" => {
+        paragraph,
+      },
     }
   }[]
 `;

@@ -1,5 +1,6 @@
 import { TypeGlobalAnnouncement } from './typeGlobalAnnouncement';
 import { TypeGlobalHeaderContent } from './typeGlobalHeader';
+import { TypeProductAnnouncement } from './typePageProduct';
 
 export type TypeLayout = {
   header: TypeGlobalHeaderContent;
@@ -8,8 +9,6 @@ export type TypeLayout = {
     slug: {
       current: string;
     };
-    announcement: {
-      _id: string;
-    }[];
+    announcement: TypeProductAnnouncement;
   }[];
 };
