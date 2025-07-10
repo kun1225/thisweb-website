@@ -13,7 +13,7 @@ export function HomeMagnet({ data }: { data: TypeHome['leadMagnet'] }) {
     data;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

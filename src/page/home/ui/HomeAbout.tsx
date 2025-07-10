@@ -11,7 +11,7 @@ export function HomeAbout({ data }: { data: TypeHome['siteOwner'] }) {
   const { heading, headingId, subheading, paragraph, achievements, media } = data;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

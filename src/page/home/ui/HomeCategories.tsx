@@ -13,7 +13,7 @@ export function HomeCategories({ data }: { data: TypeHome['categoriesNav'] }) {
   const { heading, headingId, subheading, categories } = data;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

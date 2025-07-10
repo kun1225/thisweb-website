@@ -14,7 +14,7 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
   const { formId, btnLabel, successMessage, errorMessage } = form || {};
 
   return (
-    <InView>
+    <InView triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

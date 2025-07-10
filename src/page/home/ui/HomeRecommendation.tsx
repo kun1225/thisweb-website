@@ -13,7 +13,7 @@ export function HomeRecommendation({ data }: { data: TypeHome['recommendation'] 
   const { heading, headingId, subheading, paragraph, media, cta } = data;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

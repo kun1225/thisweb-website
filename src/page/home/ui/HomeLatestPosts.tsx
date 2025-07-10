@@ -11,7 +11,7 @@ export function HomeLatestPosts({ data }: { data: TypeHome['latestPosts'] }) {
   const { heading, headingId, subheading, postsCount, posts } = data;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}

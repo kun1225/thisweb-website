@@ -15,7 +15,7 @@ export function HomePopularPosts({ data }: { data: TypeHome['popularPosts'] }) {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <InView threshold={0.4}>
+    <InView threshold={0.2} triggerOnce>
       {({ inView, ref }) => (
         <section
           ref={ref}
