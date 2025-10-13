@@ -3,10 +3,10 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { type TypeLayout } from '@/src/types/typeLayout';
 import { Footer } from '@/src/layout/ui/footer';
 import { Header } from '@/src/layout/ui/header';
 import { Announcement } from './Announcement';
+import { type TypeLayout } from '@/src/types/typeLayout';
 
 const RootLayoutProgressBar = dynamic(() => import('@/src/layout/ui/progress-bar'));
 

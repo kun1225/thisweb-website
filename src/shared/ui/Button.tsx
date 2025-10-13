@@ -9,15 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-blue-1 text-white shadow hover:bg-blue-2 hover:shadow-xl hover:scale-[1.02]',
+        default:
+          'bg-blue-1 text-white shadow shadow-blue-2/20 hover:bg-blue-2 hover:shadow-lg hover:scale-[1.02]',
         outline:
-          'border-2 border-blue-1 shadow text-blue-1 hover:shadow-xl hover:scale-[1.02] hover:bg-blue-2 hover:text-white',
-        dark: 'bg-blue text-white shadow hover:shadow-xl hover:scale-[1.02]',
+          'border-2 border-blue-1 shadow text-blue-1 hover:shadow-lg hover:scale-[1.02] hover:bg-blue-2 hover:text-white',
+        dark: 'bg-blue text-white shadow shadow-blue/20 hover:shadow-lg hover:scale-[1.02]',
         link: 'underline before:rounded-sm relative before:absolute before:inset-0 before:bg-blue-5 before:opacity-0 before:transition-opacity before:duration-200 hover:before:opacity-100 before:-z-10',
       },
       size: {
         xs: 'px-0 text-sm',
-        sm: 'px-8 py-1 text-sm rounded-sm',
+        sm: 'px-8 py-1.5 text-sm rounded-sm',
         default: 'px-10 py-2 rounded-md',
         hero: 'w-full md:w-80 px-6 py-2 rounded-md',
       },
