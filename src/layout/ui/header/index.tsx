@@ -32,7 +32,7 @@ export function Header({ headerContent }: { headerContent: TypeGlobalHeaderConte
 
   return (
     <header
-      className="c bg-header relative z-(--z-header) w-full py-4 transition-all duration-400"
+      className="c bg-header relative z-(--z-header) w-full py-3 shadow-md backdrop-blur-sm transition-all duration-400"
       id="g-header"
     >
       <div className="animate-out fade-out-100 fill-mode-forwards flex items-center justify-between opacity-0 duration-400 ease-linear">

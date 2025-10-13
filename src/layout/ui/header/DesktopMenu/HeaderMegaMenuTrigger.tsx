@@ -16,12 +16,14 @@ export function HeaderMegaMenuTrigger({
     <button
       type="button"
       aria-label="Open the mega menu"
-      className="before:bg-blue-5 hover:text-blue-1 before:ease-bounce-2 relative z-10 cursor-pointer whitespace-nowrap text-gray-500 transition-colors before:absolute before:-inset-0 before:-z-10 before:scale-75 before:rounded-sm before:opacity-0 before:transition before:duration-300 hover:before:scale-100 hover:before:opacity-100"
+      className="before:bg-blue-5 hover:text-blue-1 before:ease-bounce-2 relative z-10 ml-2 cursor-pointer whitespace-nowrap text-gray-500 transition-colors before:absolute before:-inset-0 before:-z-10 before:scale-75 before:rounded-sm before:opacity-0 before:transition before:duration-300 hover:before:scale-100 hover:before:opacity-100"
       onClick={() => switchMegaMenu(index)}
     >
-      <div className="flex items-center gap-2 p-1">
-        {title}
-        <FaCaretDown className={cn('transition', index === currentIndex && 'rotate-180')} />
+      <div className="flex items-center gap-1 p-1">
+        <span>{title}</span>
+        <FaCaretDown
+          className={cn('size-4 transition-transform', index === currentIndex && 'rotate-180')}
+        />
       </div>
     </button>
   );
