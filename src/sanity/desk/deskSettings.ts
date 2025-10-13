@@ -1,4 +1,4 @@
-import { CogIcon, EarthGlobeIcon } from '@sanity/icons';
+import { CogIcon, EarthGlobeIcon, EyeOpenIcon } from '@sanity/icons';
 
 export const deskSettings = (S: any) => {
   return S.listItem()
@@ -16,6 +16,12 @@ export const deskSettings = (S: any) => {
                 .documentId('settingsGeneral')
             )
             .icon(EarthGlobeIcon),
+          S.listItem()
+            .title('LLMs Text')
+            .child(
+              S.editor().id('settingsLLMs').schemaType('settingsLLMs').documentId('settingsLLMs')
+            )
+            .icon(EyeOpenIcon),
         ])
     )
     .icon(CogIcon);

@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
 import { TypeModulesProduct } from '@/src/types/typeModules';
-import type { TypeProductAnnouncement } from '@/src/types/typePageProduct';
 import ModuleProductAbout from './components/ModuleProductAbout';
 import ModuleProductFAQs from './components/ModuleProductFAQs';
 import ModuleProductsFeatures from './components/ModuleProductFeatures';
@@ -11,18 +9,9 @@ import ModuleProductSolutions from './components/ModuleProductSolutions';
 import ModuleProductSteps from './components/ModuleProductSteps';
 import ModuleProductTestimonials from './components/ModuleProductTestimonials';
 
-const ProductAnnouncement = dynamic(() => import('./components/ProductAnnouncement'));
-
-export default function PageProduct({
-  modules,
-  announcement,
-}: {
-  modules: TypeModulesProduct;
-  announcement: TypeProductAnnouncement;
-}) {
+export default function PageProduct({ modules }: { modules: TypeModulesProduct }) {
   return (
     <>
-      <ProductAnnouncement data={announcement} />
       {modules.map((module) => {
         switch (module._type) {
           case 'moduleProductHero':

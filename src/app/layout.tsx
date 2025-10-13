@@ -1,8 +1,7 @@
 import { Fira_Code, Noto_Sans_TC } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { getLayoutData } from '@/src/shared/api';
 import { cn } from '@/src/shared/lib/utils';
-import { RootLayout, generateLayoutMetadata } from '@/src/layout';
+import { RootLayout, generateLayoutMetadata, getLayoutData } from '@/src/layout';
 import { Providers } from '../providers';
 import '../styles/globals.css';
 

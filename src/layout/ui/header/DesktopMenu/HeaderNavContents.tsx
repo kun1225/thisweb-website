@@ -1,5 +1,5 @@
-import { HeaderNormalLink } from './HeaderNormalLink';
 import { HeaderMegaMenu } from './HeaderMegaMenu';
+import { HeaderNormalLink } from './HeaderNormalLink';
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
 
 export function HeaderNavContents({

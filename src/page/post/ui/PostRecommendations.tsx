@@ -21,7 +21,10 @@ export function PostRecommendations({ data, className }: { data: TypePost; class
           contentSection?.contentCta?.url !== undefined;
 
         return (
-          <div key={_id} className="border-gray rounded-md border p-4 shadow-sm md:p-8 xl:p-3.5">
+          <div
+            key={_id}
+            className="border-gray rounded-md border p-4 shadow-sm md:p-8 xl:px-3 xl:py-4"
+          >
             <p className="text-blue mb-2 px-1 font-bold md:mb-6 md:text-2xl xl:mb-2 xl:text-base">
               {title}
             </p>

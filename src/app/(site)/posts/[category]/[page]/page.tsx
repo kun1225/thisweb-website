@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import {
-  CATEGORIES_QUERY,
   POSTS_COUNTS_BY_CATEGORY_URL_QUERY,
   POSTS_COUNTS_BY_SECOND_LEVEL_CATEGORY_URL_QUERY,
 } from '@/src/libs/sanity/queries';
 import type { TypeCategories, TypeCategory } from '@/src/types/typeCategories';
 import type { TypePosts } from '@/src/types/typePosts';
+import { getCategories } from '@/src/shared/api';
 import { sanityFetch } from '@/src/shared/lib/sanity';
 import {
   POSTS_PER_PAGE,
@@ -20,10 +20,7 @@ export const metadata: Metadata = {
 };
 
 export const generateStaticParams = async () => {
-  const categories = await sanityFetch<TypeCategories>({
-    query: CATEGORIES_QUERY,
-    tags: ['category'],
-  });
+  const categories = await getCategories();
 
   const pagesByCategories = await Promise.all(
     categories.map(async (category: TypeCategory) => {
@@ -66,10 +63,7 @@ export default async function PostsPage(props: {
   const startIndex = numPage * POSTS_PER_PAGE;
   const endIndex = (numPage + 1) * POSTS_PER_PAGE;
 
-  const categories = await sanityFetch<TypeCategories>({
-    query: CATEGORIES_QUERY,
-    tags: ['category'],
-  });
+  const categories = await getCategories();
 
   const isFirstLevelCategory = categories.map((category) => category.url).includes(params.category);
 

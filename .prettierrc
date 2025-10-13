@@ -23,6 +23,6 @@
     "^@/src/page",
     "^[./_components]",
     "^[./]",
-    "^@/types"
+    "^@/src/types"
   ]
 }

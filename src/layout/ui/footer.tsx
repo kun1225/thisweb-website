@@ -9,7 +9,7 @@ const footerNav = [
 export function Footer() {
   return (
     <footer
-      className="bg-blue c pt-16 pb-4 text-white transition-all duration-200 ease-linear"
+      className="bg-blue c pt-16 pb-4 text-white transition-[filter] duration-200 ease-linear"
       id="g-footer"
     >
       <div className="flex flex-col justify-between gap-8 md:flex-row">

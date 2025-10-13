@@ -11,16 +11,6 @@ export const pProductSharingQuery = groq`*[_type == "pProduct" && defined(slug.c
 }[0]`;
 
 export const pProductDataQuery = groq`*[_type == "pProduct" && defined(slug.current) && slug.current == $slug]{
-  announcement[] {
-    _type,
-    _key,
-    _type == "dueDate" => {
-    time,
-    },
-    _type == "paragraph" => {
-    paragraph,
-    },
-  },
   modules[] {
     _type,
     _type == "moduleProductHero" => {

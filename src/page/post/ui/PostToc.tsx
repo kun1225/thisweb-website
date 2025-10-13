@@ -27,10 +27,10 @@ export function PostToc({ data }: { data: TypePost }) {
 
   return (
     <aside
-      className="border-gray w-full max-w-3xl border p-8 opacity-0 shadow xl:sticky xl:top-[var(--top)] xl:mr-[1.25vw] xl:mb-0 xl:max-w-64 xl:flex-1 xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pr-[0.25vw] xl:pl-0 xl:shadow-none"
+      className="border-gray mb-8 w-full max-w-2xl border p-8 opacity-0 shadow xl:sticky xl:top-[var(--top)] xl:mb-0 xl:max-w-2xs xl:flex-1 xl:self-start xl:overflow-y-auto xl:border-0 xl:py-0 xl:pr-[0.25vw] xl:pl-0 xl:shadow-none"
       style={{ animation: 'fade-in 0.6s 0.8s linear forwards' }}
     >
-      <div className="xl:max-h-[60vh]">
+      <div className="xl:max-h-[80vh]">
         <PostTocHeader />
         <PostTocBody structuredHeadings={structuredHeadings} activeId={activeId} />
       </div>

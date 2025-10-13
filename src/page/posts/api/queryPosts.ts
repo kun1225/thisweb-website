@@ -29,3 +29,23 @@ export const postsBySecondLevelCategoryUrlQuery = groq`
   | order(publishedAt desc)
   [$start...$end]
 `;
+
+export const postsSitemapDataQuery = groq`*
+  [
+    _type == "post" && 
+    defined(slug) && 
+    defined(title) && 
+    status == 'done'
+  ] {
+    slug {
+      current
+    }
+  }`;
+
+export const postSlugQuery = groq`*
+  [
+    _type == "post" && 
+    defined(slug.current) && 
+    defined(slug) && 
+    defined(title) && status == 'done'
+  ][].slug.current`;

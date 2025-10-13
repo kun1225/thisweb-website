@@ -2,7 +2,8 @@ import { groq } from 'next-sanity';
 
 export const queryLayout = groq`{
 "header": ${queryHeader()},
-"announcement": ${queryAnnouncement()}
+"announcement": ${queryAnnouncement()},
+"products": ${queryProducts()}
 }`;
 
 function queryHeader() {
@@ -40,7 +41,40 @@ function queryHeader() {
 
 function queryAnnouncement() {
   return groq`
-  *[_type == "gAnnouncement"] {
+  {
+    "global": *[_type == "gAnnouncement"].data[] {
+      _type,
+      _key,
+      _type == "dueDate" => {
+        time,
+      },
+      _type == "paragraph" => {
+        paragraph,
+      },
+    },
+    "products": *[_type == "pProduct"] {
+      "slug": slug.current,
+      "announcement": announcement.data[] {
+        _type,
+        _key,
+        _type == "dueDate" => {
+         time,
+        },
+        _type == "paragraph" => {
+          paragraph,
+        },
+      }
+    }[]
+  }
+`;
+}
+
+function queryProducts() {
+  return groq`
+  *[_type == "pProduct"] {
+    slug {
+      current,
+    },
     announcement[] {
       _type,
       _key,
@@ -51,6 +85,6 @@ function queryAnnouncement() {
         paragraph,
       },
     }
-  }[0]
+  }[]
 `;
 }

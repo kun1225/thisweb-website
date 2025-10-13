@@ -1,12 +1,12 @@
+import { notFound } from 'next/navigation';
 import { imgBuilder } from '@/src/shared/lib/sanity';
 import { hasArrayValue } from '@/src/shared/lib/utils';
+import PageProduct from '@/src/page/product';
 import {
   getProductAllUrl,
-  getProductSharing,
   getProductData,
-} from '@/src/shared/api/apiPageProduct';
-import PageProduct from '@/src/page/product';
-import { notFound } from 'next/navigation';
+  getProductSharing,
+} from '@/src/page/product/api/apiPageProduct';
 
 export async function generateStaticParams() {
   const slugs = await getProductAllUrl();

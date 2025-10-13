@@ -4,5 +4,6 @@ export {
   getPostsCounts,
   getPostsByCategoryUrl,
   getPostsBySecondLevelCategoryUrl,
+  getPostsSitemapData,
 } from './api/apiPosts';
 export { POSTS_PER_PAGE } from './lib/variables';

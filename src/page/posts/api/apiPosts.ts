@@ -1,10 +1,12 @@
+import { type TypePost, type TypePosts } from '@/src/types/typePosts';
 import { sanityFetch } from '@/src/shared/lib/sanity';
-import { type TypePosts } from '@/src/types/typePosts';
 import {
+  postSlugQuery,
   postsByCategoryUrlQuery,
   postsBySecondLevelCategoryUrlQuery,
   postsCountsQuery,
   postsLimitedQuery,
+  postsSitemapDataQuery,
 } from './queryPosts';
 
 export const getPostsLimited = async ({
@@ -67,6 +69,20 @@ export const getPostsBySecondLevelCategoryUrl = async ({
       start: startIndex,
       end: endIndex,
     },
+    tags: ['post'],
+  });
+};
+
+export const getPostsSitemapData = async () => {
+  return sanityFetch<Pick<TypePost, 'slug'>[]>({
+    query: postsSitemapDataQuery,
+    tags: ['post'],
+  });
+};
+
+export const getPostSlug = async () => {
+  return sanityFetch<string[]>({
+    query: postSlugQuery,
     tags: ['post'],
   });
 };
