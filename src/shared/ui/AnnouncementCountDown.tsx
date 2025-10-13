@@ -29,7 +29,7 @@ export function AnnouncementCountdown({
   );
 }
 
-function calculateTimeLeft(targetTime: string) {
+export function calculateTimeLeft(targetTime: string) {
   const targetDate = new Date(targetTime);
 
   if (isNaN(targetDate.getTime())) {

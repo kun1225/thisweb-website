@@ -4,7 +4,6 @@ import { getLLMsDescription } from '@/src/shared/api/apiLLMs';
 export async function GET() {
   try {
     const data = await getLLMsDescription();
-    console.log('🚀 ~ GET ~ data:', data);
 
     return new NextResponse(data?.description ?? '', {
       headers: {

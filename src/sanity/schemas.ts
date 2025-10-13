@@ -18,6 +18,7 @@ import moduleProductSolutions from './schemas/modules/moduleProductSolutions';
 import moduleProductSteps from './schemas/modules/moduleProductSteps';
 import moduleProductTestimonials from './schemas/modules/moduleProductTestimonials';
 import achievements from './schemas/objects/achievements';
+import announcement from './schemas/objects/announcement';
 import codepen from './schemas/objects/codepen';
 import media from './schemas/objects/media';
 import sharing from './schemas/objects/sharing';
@@ -66,4 +67,5 @@ export const schemas = [
   media,
   codepen,
   achievements,
+  announcement,
 ];

@@ -5,6 +5,6 @@ import { queryLayout } from './queryLayout';
 export const getLayoutData = async () => {
   return sanityFetch<TypeLayout>({
     query: queryLayout,
-    tags: ['gHeader', 'gAnnouncement'],
+    tags: ['gHeader', 'gAnnouncement', `pProduct`], // get product announcement
   });
 };
