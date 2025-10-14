@@ -19,12 +19,10 @@ export function HomeHero({ data }: { data: TypeHome['hero'] }) {
         <section
           ref={ref}
           className={cn(
-            'c relative z-10 flex flex-col items-center justify-center gap-10 pb-24 text-pretty transition-opacity duration-400 ease-linear md:flex-row md:gap-[7vw] md:pt-56 md:pb-72',
+            'c relative z-10 flex flex-col items-center justify-center gap-10 pt-12 pb-24 text-pretty transition-opacity duration-400 ease-linear md:flex-row md:gap-[7vw] md:pt-56 md:pb-72',
             inView ? 'opacity-100' : 'opacity-0'
           )}
         >
-          {/* <HomeHeroFloating /> */}
-
           <div className="text-center md:text-left">
             {subheading ? (
               <p

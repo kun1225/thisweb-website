@@ -2,11 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import {
-  TypeGlobalHeaderContent,
-  TypeMegamenu,
-  TypeNormalLink,
-} from '@/src/types/typeGlobalHeader';
 import { cn } from '@/src/shared/lib/utils';
 import { hasArrayValue } from '@/src/shared/lib/utils';
 import { Button } from '@/src/shared/ui/Button';
@@ -14,6 +9,11 @@ import { Button } from '@/src/shared/ui/Button';
 import { MobileMenuAccordion } from './MobileMenuAccordion';
 import { MobileMenuCategoryLink } from './MobileMenuCategoryLink';
 import { MobileMenuNormalLink } from './MobileMenuNormalLink';
+import {
+  TypeGlobalHeaderContent,
+  TypeMegamenu,
+  TypeNormalLink,
+} from '@/src/types/typeGlobalHeader';
 
 export function MobileMenuContent({
   headerContent,
@@ -49,11 +49,20 @@ export function MobileMenuContent({
   return (
     <div
       className={cn(
-        'border-blue-4 fixed top-0 left-0 -z-10 h-full w-full bg-white/90 backdrop-blur-sm transition-all duration-300 ease-in-out',
-        isMobileMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        'border-blue-4 ease-circ-in-out fixed top-0 left-0 -z-10 h-svh w-full bg-white transition-all',
+        isMobileMenuOpen
+          ? 'duration-650 [clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'
+          : 'duration-400 [clip-path:polygon(0_0,100%_0,100%_0,0_0)]'
       )}
     >
-      <ul className="c mt-top-space-4 flex h-full flex-col overflow-y-auto pb-[calc(var(--header-height)*2)] text-xl">
+      <ul
+        className={cn(
+          'c mt-top-space-4 flex h-full flex-col overflow-y-auto pb-[calc(var(--header-height)*2)] text-xl ease-linear',
+          isMobileMenuOpen
+            ? 'pointer-events-auto opacity-100 duration-500'
+            : 'pointer-events-none opacity-0 duration-300'
+        )}
+      >
         {hasArrayValue(normalLinksContent)
           ? normalLinksContent?.map((link) => {
               index++;

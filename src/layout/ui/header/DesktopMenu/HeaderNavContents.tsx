@@ -1,3 +1,4 @@
+import { cn } from '@/src/shared/lib/utils';
 import { HeaderMegaMenu } from './HeaderMegaMenu';
 import { HeaderNormalLink } from './HeaderNormalLink';
 import { TypeGlobalHeaderContent } from '@/src/types/typeGlobalHeader';
@@ -18,7 +19,15 @@ export function HeaderNavContents({
         switch (item._type) {
           case 'normalLink':
             return (
-              <li key={item._key}>
+              <li
+                key={item._key}
+                className={cn(
+                  'animate-out fade-out-100 fill-mode-forwards opacity-0 duration-1000 ease-linear'
+                )}
+                style={{
+                  animationDelay: `${index * 150 + 300}ms`,
+                }}
+              >
                 <HeaderNormalLink item={item} onClick={closeMegaMenu} />
               </li>
             );

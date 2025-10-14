@@ -35,7 +35,7 @@ export function Header({ headerContent }: { headerContent: TypeGlobalHeaderConte
       className="c bg-header relative z-(--z-header) w-full py-3 shadow-md backdrop-blur-sm transition-all duration-400"
       id="g-header"
     >
-      <div className="animate-out fade-out-100 fill-mode-forwards flex items-center justify-between opacity-0 duration-400 ease-linear">
+      <div className="flex items-center justify-between">
         <HeaderLogo />
         <MobileMenu headerContent={headerContent} />
         <DesktopMenu headerContent={headerContent} />
