@@ -48,7 +48,7 @@
     "github-slugger": "^2.0.0",
     "lucide-react": "^0.482.0",
     "motion": "12.0.0-alpha.2",
-    "next": "15.2.2",
+    "next": "15.2.6",
     "next-sanity": "^9.4.7",
     "nprogress": "^0.2.0",
     "postcss-nested": "^6.2.0",
